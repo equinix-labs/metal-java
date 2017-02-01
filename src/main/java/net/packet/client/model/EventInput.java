@@ -35,7 +35,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * EventInput
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-01-17T14:09:01.179-05:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-01T08:27:06.669-05:00")
 public class EventInput   {
   @JsonProperty("type")
   private String type = null;

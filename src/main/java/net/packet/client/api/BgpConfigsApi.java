@@ -32,6 +32,7 @@ import net.packet.client.Configuration;
 import net.packet.client.model.*;
 import net.packet.client.Pair;
 
+import net.packet.client.model.BgpConfig;
 import net.packet.client.model.BgpConfigRequestInput;
 
 
@@ -40,7 +41,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-01-17T14:09:01.179-05:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-01T08:27:06.669-05:00")
 public class BgpConfigsApi {
   private ApiClient apiClient;
 
@@ -60,6 +61,50 @@ public class BgpConfigsApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Retrieve a bgp config
+   * Returns a bgp config
+   * @param id Project UUID (required)
+   * @param include related attributes to include (optional)
+   * @return BgpConfig
+   * @throws ApiException if fails to make API call
+   */
+  public BgpConfig findBgpConfigByProject(String id, String include) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      throw new ApiException(400, "Missing the required parameter 'id' when calling findBgpConfigByProject");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/projects/{id}/bgp-config".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "include", include));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "x_auth_token" };
+
+    GenericType<BgpConfig> localVarReturnType = new GenericType<BgpConfig>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
   /**
    * Requesting bgp config
    * Requests to enable bgp configuration for a project.
@@ -81,7 +126,7 @@ public class BgpConfigsApi {
     }
     
     // create path and map variables
-    String localVarPath = "/projects/{id}/bgp-config".replaceAll("\\{format\\}","json")
+    String localVarPath = "/projects/{id}/bgp-configs".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
     // query params

@@ -38,7 +38,7 @@ import net.packet.client.model.VolumeAttachment;
 /**
  * VolumeAttachmentList
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-01-17T14:09:01.179-05:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-01T08:27:06.669-05:00")
 public class VolumeAttachmentList   {
   @JsonProperty("attachments")
   private List<VolumeAttachment> attachments = new ArrayList<VolumeAttachment>();
