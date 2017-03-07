@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * DeviceCreateInput
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-01T08:27:06.669-05:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-07T12:34:34.416-05:00")
 public class DeviceCreateInput   {
   @JsonProperty("facility")
   private String facility = null;
@@ -56,6 +56,9 @@ public class DeviceCreateInput   {
 
   @JsonProperty("operating_system")
   private String operatingSystem = null;
+
+  @JsonProperty("ipxe_script_url")
+  private String ipxeScriptUrl = null;
 
   @JsonProperty("userdata")
   private String userdata = null;
@@ -184,6 +187,24 @@ public class DeviceCreateInput   {
 
   public void setOperatingSystem(String operatingSystem) {
     this.operatingSystem = operatingSystem;
+  }
+
+  public DeviceCreateInput ipxeScriptUrl(String ipxeScriptUrl) {
+    this.ipxeScriptUrl = ipxeScriptUrl;
+    return this;
+  }
+
+   /**
+   * Get ipxeScriptUrl
+   * @return ipxeScriptUrl
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getIpxeScriptUrl() {
+    return ipxeScriptUrl;
+  }
+
+  public void setIpxeScriptUrl(String ipxeScriptUrl) {
+    this.ipxeScriptUrl = ipxeScriptUrl;
   }
 
   public DeviceCreateInput userdata(String userdata) {
@@ -348,6 +369,7 @@ public class DeviceCreateInput   {
         Objects.equals(this.description, deviceCreateInput.description) &&
         Objects.equals(this.billingCycle, deviceCreateInput.billingCycle) &&
         Objects.equals(this.operatingSystem, deviceCreateInput.operatingSystem) &&
+        Objects.equals(this.ipxeScriptUrl, deviceCreateInput.ipxeScriptUrl) &&
         Objects.equals(this.userdata, deviceCreateInput.userdata) &&
         Objects.equals(this.locked, deviceCreateInput.locked) &&
         Objects.equals(this.spotInstance, deviceCreateInput.spotInstance) &&
@@ -359,7 +381,7 @@ public class DeviceCreateInput   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(facility, plan, hostname, description, billingCycle, operatingSystem, userdata, locked, spotInstance, tags, projectSshKeys, userSshKeys, features);
+    return Objects.hash(facility, plan, hostname, description, billingCycle, operatingSystem, ipxeScriptUrl, userdata, locked, spotInstance, tags, projectSshKeys, userSshKeys, features);
   }
 
   @Override
@@ -373,6 +395,7 @@ public class DeviceCreateInput   {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    billingCycle: ").append(toIndentedString(billingCycle)).append("\n");
     sb.append("    operatingSystem: ").append(toIndentedString(operatingSystem)).append("\n");
+    sb.append("    ipxeScriptUrl: ").append(toIndentedString(ipxeScriptUrl)).append("\n");
     sb.append("    userdata: ").append(toIndentedString(userdata)).append("\n");
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
     sb.append("    spotInstance: ").append(toIndentedString(spotInstance)).append("\n");

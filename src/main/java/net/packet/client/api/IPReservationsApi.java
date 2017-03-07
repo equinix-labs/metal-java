@@ -34,6 +34,7 @@ import net.packet.client.Pair;
 
 import net.packet.client.model.IPReservation;
 import net.packet.client.model.IPReservationRequestInput;
+import net.packet.client.model.IPReservationRequest;
 
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-01T08:27:06.669-05:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-07T12:34:34.416-05:00")
 public class IPReservationsApi {
   private ApiClient apiClient;
 
@@ -148,12 +149,13 @@ public class IPReservationsApi {
       }
   /**
    * Requesting ip reservations
-   * Request more IP space for a project in order to have additional IP addresses to assign to devices.
+   * Request more IP space for a project in order to have additional IP addresses to assign to devices.  If the request is within the max quota, ip reservation will be created, else, the request will be submitted.
    * @param projectId Project UUID (required)
    * @param ipReservationRequest IP Reservation Request to create (required)
+   * @return IPReservationRequest
    * @throws ApiException if fails to make API call
    */
-  public void requestIPReservation(String projectId, IPReservationRequestInput ipReservationRequest) throws ApiException {
+  public IPReservationRequest requestIPReservation(String projectId, IPReservationRequestInput ipReservationRequest) throws ApiException {
     Object localVarPostBody = ipReservationRequest;
     
     // verify the required parameter 'projectId' is set
@@ -190,7 +192,7 @@ public class IPReservationsApi {
 
     String[] localVarAuthNames = new String[] { "x_auth_token" };
 
-
-    apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
-  }
+    GenericType<IPReservationRequest> localVarReturnType = new GenericType<IPReservationRequest>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
 }

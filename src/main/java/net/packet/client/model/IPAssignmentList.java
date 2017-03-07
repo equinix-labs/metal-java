@@ -30,53 +30,40 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
+import net.packet.client.model.IPAssignment;
 
 
 /**
- * SnapshotPolicyInput
+ * IPAssignmentList
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-07T12:34:34.416-05:00")
-public class SnapshotPolicyInput   {
-  @JsonProperty("snapshot_count")
-  private Integer snapshotCount = null;
+public class IPAssignmentList   {
+  @JsonProperty("ip_addresses")
+  private List<IPAssignment> ipAddresses = new ArrayList<IPAssignment>();
 
-  @JsonProperty("snapshot_frequency")
-  private String snapshotFrequency = null;
+  public IPAssignmentList ipAddresses(List<IPAssignment> ipAddresses) {
+    this.ipAddresses = ipAddresses;
+    return this;
+  }
 
-  public SnapshotPolicyInput snapshotCount(Integer snapshotCount) {
-    this.snapshotCount = snapshotCount;
+  public IPAssignmentList addIpAddressesItem(IPAssignment ipAddressesItem) {
+    this.ipAddresses.add(ipAddressesItem);
     return this;
   }
 
    /**
-   * Get snapshotCount
-   * @return snapshotCount
+   * Get ipAddresses
+   * @return ipAddresses
   **/
   @ApiModelProperty(example = "null", value = "")
-  public Integer getSnapshotCount() {
-    return snapshotCount;
+  public List<IPAssignment> getIpAddresses() {
+    return ipAddresses;
   }
 
-  public void setSnapshotCount(Integer snapshotCount) {
-    this.snapshotCount = snapshotCount;
-  }
-
-  public SnapshotPolicyInput snapshotFrequency(String snapshotFrequency) {
-    this.snapshotFrequency = snapshotFrequency;
-    return this;
-  }
-
-   /**
-   * Get snapshotFrequency
-   * @return snapshotFrequency
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getSnapshotFrequency() {
-    return snapshotFrequency;
-  }
-
-  public void setSnapshotFrequency(String snapshotFrequency) {
-    this.snapshotFrequency = snapshotFrequency;
+  public void setIpAddresses(List<IPAssignment> ipAddresses) {
+    this.ipAddresses = ipAddresses;
   }
 
 
@@ -88,23 +75,21 @@ public class SnapshotPolicyInput   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SnapshotPolicyInput snapshotPolicyInput = (SnapshotPolicyInput) o;
-    return Objects.equals(this.snapshotCount, snapshotPolicyInput.snapshotCount) &&
-        Objects.equals(this.snapshotFrequency, snapshotPolicyInput.snapshotFrequency);
+    IPAssignmentList iPAssignmentList = (IPAssignmentList) o;
+    return Objects.equals(this.ipAddresses, iPAssignmentList.ipAddresses);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(snapshotCount, snapshotFrequency);
+    return Objects.hash(ipAddresses);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SnapshotPolicyInput {\n");
+    sb.append("class IPAssignmentList {\n");
     
-    sb.append("    snapshotCount: ").append(toIndentedString(snapshotCount)).append("\n");
-    sb.append("    snapshotFrequency: ").append(toIndentedString(snapshotFrequency)).append("\n");
+    sb.append("    ipAddresses: ").append(toIndentedString(ipAddresses)).append("\n");
     sb.append("}");
     return sb.toString();
   }

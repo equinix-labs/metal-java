@@ -30,53 +30,60 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
- * SnapshotPolicyInput
+ * IPReservationMessage
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-07T12:34:34.416-05:00")
-public class SnapshotPolicyInput   {
-  @JsonProperty("snapshot_count")
-  private Integer snapshotCount = null;
+public class IPReservationMessage   {
+  @JsonProperty("reasons")
+  private List<String> reasons = new ArrayList<String>();
 
-  @JsonProperty("snapshot_frequency")
-  private String snapshotFrequency = null;
+  @JsonProperty("address")
+  private String address = null;
 
-  public SnapshotPolicyInput snapshotCount(Integer snapshotCount) {
-    this.snapshotCount = snapshotCount;
+  public IPReservationMessage reasons(List<String> reasons) {
+    this.reasons = reasons;
+    return this;
+  }
+
+  public IPReservationMessage addReasonsItem(String reasonsItem) {
+    this.reasons.add(reasonsItem);
     return this;
   }
 
    /**
-   * Get snapshotCount
-   * @return snapshotCount
+   * Get reasons
+   * @return reasons
   **/
   @ApiModelProperty(example = "null", value = "")
-  public Integer getSnapshotCount() {
-    return snapshotCount;
+  public List<String> getReasons() {
+    return reasons;
   }
 
-  public void setSnapshotCount(Integer snapshotCount) {
-    this.snapshotCount = snapshotCount;
+  public void setReasons(List<String> reasons) {
+    this.reasons = reasons;
   }
 
-  public SnapshotPolicyInput snapshotFrequency(String snapshotFrequency) {
-    this.snapshotFrequency = snapshotFrequency;
+  public IPReservationMessage address(String address) {
+    this.address = address;
     return this;
   }
 
    /**
-   * Get snapshotFrequency
-   * @return snapshotFrequency
+   * Get address
+   * @return address
   **/
   @ApiModelProperty(example = "null", value = "")
-  public String getSnapshotFrequency() {
-    return snapshotFrequency;
+  public String getAddress() {
+    return address;
   }
 
-  public void setSnapshotFrequency(String snapshotFrequency) {
-    this.snapshotFrequency = snapshotFrequency;
+  public void setAddress(String address) {
+    this.address = address;
   }
 
 
@@ -88,23 +95,23 @@ public class SnapshotPolicyInput   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SnapshotPolicyInput snapshotPolicyInput = (SnapshotPolicyInput) o;
-    return Objects.equals(this.snapshotCount, snapshotPolicyInput.snapshotCount) &&
-        Objects.equals(this.snapshotFrequency, snapshotPolicyInput.snapshotFrequency);
+    IPReservationMessage iPReservationMessage = (IPReservationMessage) o;
+    return Objects.equals(this.reasons, iPReservationMessage.reasons) &&
+        Objects.equals(this.address, iPReservationMessage.address);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(snapshotCount, snapshotFrequency);
+    return Objects.hash(reasons, address);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SnapshotPolicyInput {\n");
+    sb.append("class IPReservationMessage {\n");
     
-    sb.append("    snapshotCount: ").append(toIndentedString(snapshotCount)).append("\n");
-    sb.append("    snapshotFrequency: ").append(toIndentedString(snapshotFrequency)).append("\n");
+    sb.append("    reasons: ").append(toIndentedString(reasons)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("}");
     return sb.toString();
   }

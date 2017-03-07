@@ -32,8 +32,9 @@ import net.packet.client.Configuration;
 import net.packet.client.model.*;
 import net.packet.client.Pair;
 
-import net.packet.client.model.Membership;
-import net.packet.client.model.MembershipInput;
+import net.packet.client.model.IPAssignment;
+import net.packet.client.model.IPAssignmentInput;
+import net.packet.client.model.IPAssignmentList;
 
 
 import java.util.ArrayList;
@@ -42,14 +43,14 @@ import java.util.List;
 import java.util.Map;
 
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-07T12:34:34.416-05:00")
-public class MembershipsApi {
+public class IPAssignmentsApi {
   private ApiClient apiClient;
 
-  public MembershipsApi() {
+  public IPAssignmentsApi() {
     this(Configuration.getDefaultApiClient());
   }
 
-  public MembershipsApi(ApiClient apiClient) {
+  public IPAssignmentsApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
@@ -62,21 +63,28 @@ public class MembershipsApi {
   }
 
   /**
-   * Delete the membership
-   * Deletes the membership.
-   * @param id Membership UUID (required)
+   * Create a ip assignment
+   * Creates an ip assignment for a device.
+   * @param id Device UUID (required)
+   * @param ipAssignment IPAssignment to create (required)
+   * @return IPAssignment
    * @throws ApiException if fails to make API call
    */
-  public void deleteMembership(String id) throws ApiException {
-    Object localVarPostBody = null;
+  public IPAssignment createIPAssignment(String id, IPAssignmentInput ipAssignment) throws ApiException {
+    Object localVarPostBody = ipAssignment;
     
     // verify the required parameter 'id' is set
     if (id == null) {
-      throw new ApiException(400, "Missing the required parameter 'id' when calling deleteMembership");
+      throw new ApiException(400, "Missing the required parameter 'id' when calling createIPAssignment");
+    }
+    
+    // verify the required parameter 'ipAssignment' is set
+    if (ipAssignment == null) {
+      throw new ApiException(400, "Missing the required parameter 'ipAssignment' when calling createIPAssignment");
     }
     
     // create path and map variables
-    String localVarPath = "/memberships/{id}".replaceAll("\\{format\\}","json")
+    String localVarPath = "/devices/{id}/ips".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
     // query params
@@ -99,27 +107,27 @@ public class MembershipsApi {
 
     String[] localVarAuthNames = new String[] { "x_auth_token" };
 
-
-    apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
-  }
+    GenericType<IPAssignment> localVarReturnType = new GenericType<IPAssignment>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
   /**
-   * Retrieve a membership
-   * Returns a single membership.
-   * @param id Membership UUID (required)
+   * Retrieve all ip assignments
+   * Returns all ip assignments for a device.
+   * @param id Device UUID (required)
    * @param include related attributes to include (optional)
-   * @return Membership
+   * @return IPAssignmentList
    * @throws ApiException if fails to make API call
    */
-  public Membership findMembershipById(String id, String include) throws ApiException {
+  public IPAssignmentList findIPAssignments(String id, String include) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'id' is set
     if (id == null) {
-      throw new ApiException(400, "Missing the required parameter 'id' when calling findMembershipById");
+      throw new ApiException(400, "Missing the required parameter 'id' when calling findIPAssignments");
     }
     
     // create path and map variables
-    String localVarPath = "/memberships/{id}".replaceAll("\\{format\\}","json")
+    String localVarPath = "/devices/{id}/ips".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
     // query params
@@ -143,55 +151,7 @@ public class MembershipsApi {
 
     String[] localVarAuthNames = new String[] { "x_auth_token" };
 
-    GenericType<Membership> localVarReturnType = new GenericType<Membership>() {};
+    GenericType<IPAssignmentList> localVarReturnType = new GenericType<IPAssignmentList>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Update the membership
-   * Updates the membership.
-   * @param id Membership UUID (required)
-   * @param membership Membership to update (required)
-   * @return Membership
-   * @throws ApiException if fails to make API call
-   */
-  public Membership updateMembership(String id, MembershipInput membership) throws ApiException {
-    Object localVarPostBody = membership;
-    
-    // verify the required parameter 'id' is set
-    if (id == null) {
-      throw new ApiException(400, "Missing the required parameter 'id' when calling updateMembership");
-    }
-    
-    // verify the required parameter 'membership' is set
-    if (membership == null) {
-      throw new ApiException(400, "Missing the required parameter 'membership' when calling updateMembership");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/memberships/{id}".replaceAll("\\{format\\}","json")
-      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "x_auth_token" };
-
-    GenericType<Membership> localVarReturnType = new GenericType<Membership>() {};
-    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 }

@@ -33,50 +33,50 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 /**
- * SnapshotPolicyInput
+ * IPAssignmentInput
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-07T12:34:34.416-05:00")
-public class SnapshotPolicyInput   {
-  @JsonProperty("snapshot_count")
-  private Integer snapshotCount = null;
+public class IPAssignmentInput   {
+  @JsonProperty("address")
+  private String address = null;
 
-  @JsonProperty("snapshot_frequency")
-  private String snapshotFrequency = null;
+  @JsonProperty("manageable")
+  private Boolean manageable = null;
 
-  public SnapshotPolicyInput snapshotCount(Integer snapshotCount) {
-    this.snapshotCount = snapshotCount;
+  public IPAssignmentInput address(String address) {
+    this.address = address;
     return this;
   }
 
    /**
-   * Get snapshotCount
-   * @return snapshotCount
+   * Get address
+   * @return address
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public Integer getSnapshotCount() {
-    return snapshotCount;
+  @ApiModelProperty(example = "null", required = true, value = "")
+  public String getAddress() {
+    return address;
   }
 
-  public void setSnapshotCount(Integer snapshotCount) {
-    this.snapshotCount = snapshotCount;
+  public void setAddress(String address) {
+    this.address = address;
   }
 
-  public SnapshotPolicyInput snapshotFrequency(String snapshotFrequency) {
-    this.snapshotFrequency = snapshotFrequency;
+  public IPAssignmentInput manageable(Boolean manageable) {
+    this.manageable = manageable;
     return this;
   }
 
    /**
-   * Get snapshotFrequency
-   * @return snapshotFrequency
+   * Get manageable
+   * @return manageable
   **/
   @ApiModelProperty(example = "null", value = "")
-  public String getSnapshotFrequency() {
-    return snapshotFrequency;
+  public Boolean getManageable() {
+    return manageable;
   }
 
-  public void setSnapshotFrequency(String snapshotFrequency) {
-    this.snapshotFrequency = snapshotFrequency;
+  public void setManageable(Boolean manageable) {
+    this.manageable = manageable;
   }
 
 
@@ -88,23 +88,23 @@ public class SnapshotPolicyInput   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SnapshotPolicyInput snapshotPolicyInput = (SnapshotPolicyInput) o;
-    return Objects.equals(this.snapshotCount, snapshotPolicyInput.snapshotCount) &&
-        Objects.equals(this.snapshotFrequency, snapshotPolicyInput.snapshotFrequency);
+    IPAssignmentInput iPAssignmentInput = (IPAssignmentInput) o;
+    return Objects.equals(this.address, iPAssignmentInput.address) &&
+        Objects.equals(this.manageable, iPAssignmentInput.manageable);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(snapshotCount, snapshotFrequency);
+    return Objects.hash(address, manageable);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SnapshotPolicyInput {\n");
+    sb.append("class IPAssignmentInput {\n");
     
-    sb.append("    snapshotCount: ").append(toIndentedString(snapshotCount)).append("\n");
-    sb.append("    snapshotFrequency: ").append(toIndentedString(snapshotFrequency)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    manageable: ").append(toIndentedString(manageable)).append("\n");
     sb.append("}");
     return sb.toString();
   }

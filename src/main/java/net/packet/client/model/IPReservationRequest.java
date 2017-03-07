@@ -30,53 +30,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import net.packet.client.model.IPReservationMessage;
 
 
 /**
- * SnapshotPolicyInput
+ * IPReservationRequest
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-07T12:34:34.416-05:00")
-public class SnapshotPolicyInput   {
-  @JsonProperty("snapshot_count")
-  private Integer snapshotCount = null;
+public class IPReservationRequest   {
+  @JsonProperty("message")
+  private IPReservationMessage message = null;
 
-  @JsonProperty("snapshot_frequency")
-  private String snapshotFrequency = null;
-
-  public SnapshotPolicyInput snapshotCount(Integer snapshotCount) {
-    this.snapshotCount = snapshotCount;
+  public IPReservationRequest message(IPReservationMessage message) {
+    this.message = message;
     return this;
   }
 
    /**
-   * Get snapshotCount
-   * @return snapshotCount
+   * Get message
+   * @return message
   **/
   @ApiModelProperty(example = "null", value = "")
-  public Integer getSnapshotCount() {
-    return snapshotCount;
+  public IPReservationMessage getMessage() {
+    return message;
   }
 
-  public void setSnapshotCount(Integer snapshotCount) {
-    this.snapshotCount = snapshotCount;
-  }
-
-  public SnapshotPolicyInput snapshotFrequency(String snapshotFrequency) {
-    this.snapshotFrequency = snapshotFrequency;
-    return this;
-  }
-
-   /**
-   * Get snapshotFrequency
-   * @return snapshotFrequency
-  **/
-  @ApiModelProperty(example = "null", value = "")
-  public String getSnapshotFrequency() {
-    return snapshotFrequency;
-  }
-
-  public void setSnapshotFrequency(String snapshotFrequency) {
-    this.snapshotFrequency = snapshotFrequency;
+  public void setMessage(IPReservationMessage message) {
+    this.message = message;
   }
 
 
@@ -88,23 +68,21 @@ public class SnapshotPolicyInput   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SnapshotPolicyInput snapshotPolicyInput = (SnapshotPolicyInput) o;
-    return Objects.equals(this.snapshotCount, snapshotPolicyInput.snapshotCount) &&
-        Objects.equals(this.snapshotFrequency, snapshotPolicyInput.snapshotFrequency);
+    IPReservationRequest iPReservationRequest = (IPReservationRequest) o;
+    return Objects.equals(this.message, iPReservationRequest.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(snapshotCount, snapshotFrequency);
+    return Objects.hash(message);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SnapshotPolicyInput {\n");
+    sb.append("class IPReservationRequest {\n");
     
-    sb.append("    snapshotCount: ").append(toIndentedString(snapshotCount)).append("\n");
-    sb.append("    snapshotFrequency: ").append(toIndentedString(snapshotFrequency)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

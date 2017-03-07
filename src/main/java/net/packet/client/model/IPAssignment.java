@@ -31,13 +31,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import net.packet.client.model.Href;
+import net.packet.client.model.ParentBlock;
 import org.joda.time.DateTime;
 
 
 /**
  * IPAssignment
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-01T08:27:06.669-05:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-07T12:34:34.416-05:00")
 public class IPAssignment   {
   @JsonProperty("id")
   private String id = null;
@@ -80,6 +81,9 @@ public class IPAssignment   {
 
   @JsonProperty("created_at")
   private DateTime createdAt = null;
+
+  @JsonProperty("parent_block")
+  private ParentBlock parentBlock = null;
 
   public IPAssignment id(String id) {
     this.id = id;
@@ -333,6 +337,24 @@ public class IPAssignment   {
     this.createdAt = createdAt;
   }
 
+  public IPAssignment parentBlock(ParentBlock parentBlock) {
+    this.parentBlock = parentBlock;
+    return this;
+  }
+
+   /**
+   * Get parentBlock
+   * @return parentBlock
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public ParentBlock getParentBlock() {
+    return parentBlock;
+  }
+
+  public void setParentBlock(ParentBlock parentBlock) {
+    this.parentBlock = parentBlock;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -356,12 +378,13 @@ public class IPAssignment   {
         Objects.equals(this.address, iPAssignment.address) &&
         Objects.equals(this.gateway, iPAssignment.gateway) &&
         Objects.equals(this.href, iPAssignment.href) &&
-        Objects.equals(this.createdAt, iPAssignment.createdAt);
+        Objects.equals(this.createdAt, iPAssignment.createdAt) &&
+        Objects.equals(this.parentBlock, iPAssignment.parentBlock);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, addressFamily, netmask, _public, enabled, cidr, management, manageable, assignedTo, network, address, gateway, href, createdAt);
+    return Objects.hash(id, addressFamily, netmask, _public, enabled, cidr, management, manageable, assignedTo, network, address, gateway, href, createdAt, parentBlock);
   }
 
   @Override
@@ -383,6 +406,7 @@ public class IPAssignment   {
     sb.append("    gateway: ").append(toIndentedString(gateway)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    parentBlock: ").append(toIndentedString(parentBlock)).append("\n");
     sb.append("}");
     return sb.toString();
   }

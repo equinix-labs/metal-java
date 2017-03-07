@@ -38,7 +38,7 @@ import net.packet.client.model.Href;
 /**
  * Plan
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-01T08:27:06.669-05:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-07T12:34:34.416-05:00")
 public class Plan   {
   @JsonProperty("id")
   private String id = null;

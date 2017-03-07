@@ -33,50 +33,92 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 /**
- * SnapshotPolicyInput
+ * ParentBlock
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-07T12:34:34.416-05:00")
-public class SnapshotPolicyInput   {
-  @JsonProperty("snapshot_count")
-  private Integer snapshotCount = null;
+public class ParentBlock   {
+  @JsonProperty("network")
+  private String network = null;
 
-  @JsonProperty("snapshot_frequency")
-  private String snapshotFrequency = null;
+  @JsonProperty("netmask")
+  private String netmask = null;
 
-  public SnapshotPolicyInput snapshotCount(Integer snapshotCount) {
-    this.snapshotCount = snapshotCount;
+  @JsonProperty("cidr")
+  private Integer cidr = null;
+
+  @JsonProperty("href")
+  private String href = null;
+
+  public ParentBlock network(String network) {
+    this.network = network;
     return this;
   }
 
    /**
-   * Get snapshotCount
-   * @return snapshotCount
+   * Get network
+   * @return network
   **/
   @ApiModelProperty(example = "null", value = "")
-  public Integer getSnapshotCount() {
-    return snapshotCount;
+  public String getNetwork() {
+    return network;
   }
 
-  public void setSnapshotCount(Integer snapshotCount) {
-    this.snapshotCount = snapshotCount;
+  public void setNetwork(String network) {
+    this.network = network;
   }
 
-  public SnapshotPolicyInput snapshotFrequency(String snapshotFrequency) {
-    this.snapshotFrequency = snapshotFrequency;
+  public ParentBlock netmask(String netmask) {
+    this.netmask = netmask;
     return this;
   }
 
    /**
-   * Get snapshotFrequency
-   * @return snapshotFrequency
+   * Get netmask
+   * @return netmask
   **/
   @ApiModelProperty(example = "null", value = "")
-  public String getSnapshotFrequency() {
-    return snapshotFrequency;
+  public String getNetmask() {
+    return netmask;
   }
 
-  public void setSnapshotFrequency(String snapshotFrequency) {
-    this.snapshotFrequency = snapshotFrequency;
+  public void setNetmask(String netmask) {
+    this.netmask = netmask;
+  }
+
+  public ParentBlock cidr(Integer cidr) {
+    this.cidr = cidr;
+    return this;
+  }
+
+   /**
+   * Get cidr
+   * @return cidr
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public Integer getCidr() {
+    return cidr;
+  }
+
+  public void setCidr(Integer cidr) {
+    this.cidr = cidr;
+  }
+
+  public ParentBlock href(String href) {
+    this.href = href;
+    return this;
+  }
+
+   /**
+   * Get href
+   * @return href
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getHref() {
+    return href;
+  }
+
+  public void setHref(String href) {
+    this.href = href;
   }
 
 
@@ -88,23 +130,27 @@ public class SnapshotPolicyInput   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SnapshotPolicyInput snapshotPolicyInput = (SnapshotPolicyInput) o;
-    return Objects.equals(this.snapshotCount, snapshotPolicyInput.snapshotCount) &&
-        Objects.equals(this.snapshotFrequency, snapshotPolicyInput.snapshotFrequency);
+    ParentBlock parentBlock = (ParentBlock) o;
+    return Objects.equals(this.network, parentBlock.network) &&
+        Objects.equals(this.netmask, parentBlock.netmask) &&
+        Objects.equals(this.cidr, parentBlock.cidr) &&
+        Objects.equals(this.href, parentBlock.href);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(snapshotCount, snapshotFrequency);
+    return Objects.hash(network, netmask, cidr, href);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SnapshotPolicyInput {\n");
+    sb.append("class ParentBlock {\n");
     
-    sb.append("    snapshotCount: ").append(toIndentedString(snapshotCount)).append("\n");
-    sb.append("    snapshotFrequency: ").append(toIndentedString(snapshotFrequency)).append("\n");
+    sb.append("    network: ").append(toIndentedString(network)).append("\n");
+    sb.append("    netmask: ").append(toIndentedString(netmask)).append("\n");
+    sb.append("    cidr: ").append(toIndentedString(cidr)).append("\n");
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("}");
     return sb.toString();
   }

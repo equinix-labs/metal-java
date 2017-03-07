@@ -45,7 +45,7 @@ import org.joda.time.DateTime;
 /**
  * Device
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-01T08:27:06.669-05:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-03-07T12:34:34.416-05:00")
 public class Device   {
   @JsonProperty("id")
   private String id = null;
@@ -64,6 +64,9 @@ public class Device   {
 
   @JsonProperty("tags")
   private List<String> tags = new ArrayList<String>();
+
+  @JsonProperty("image_url")
+  private String imageUrl = null;
 
   @JsonProperty("billing_cycle")
   private String billingCycle = null;
@@ -97,6 +100,9 @@ public class Device   {
 
   @JsonProperty("operating_system")
   private OperatingSystem operatingSystem = null;
+
+  @JsonProperty("ipxe_script_url")
+  private String ipxeScriptUrl = null;
 
   @JsonProperty("location")
   private HardwareLocation location = null;
@@ -245,6 +251,24 @@ public class Device   {
 
   public void setTags(List<String> tags) {
     this.tags = tags;
+  }
+
+  public Device imageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+    return this;
+  }
+
+   /**
+   * Get imageUrl
+   * @return imageUrl
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
   }
 
   public Device billingCycle(String billingCycle) {
@@ -443,6 +467,24 @@ public class Device   {
 
   public void setOperatingSystem(OperatingSystem operatingSystem) {
     this.operatingSystem = operatingSystem;
+  }
+
+  public Device ipxeScriptUrl(String ipxeScriptUrl) {
+    this.ipxeScriptUrl = ipxeScriptUrl;
+    return this;
+  }
+
+   /**
+   * Get ipxeScriptUrl
+   * @return ipxeScriptUrl
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getIpxeScriptUrl() {
+    return ipxeScriptUrl;
+  }
+
+  public void setIpxeScriptUrl(String ipxeScriptUrl) {
+    this.ipxeScriptUrl = ipxeScriptUrl;
   }
 
   public Device location(HardwareLocation location) {
@@ -692,6 +734,7 @@ public class Device   {
         Objects.equals(this.description, device.description) &&
         Objects.equals(this.state, device.state) &&
         Objects.equals(this.tags, device.tags) &&
+        Objects.equals(this.imageUrl, device.imageUrl) &&
         Objects.equals(this.billingCycle, device.billingCycle) &&
         Objects.equals(this.user, device.user) &&
         Objects.equals(this.iqn, device.iqn) &&
@@ -703,6 +746,7 @@ public class Device   {
         Objects.equals(this.terminationTime, device.terminationTime) &&
         Objects.equals(this.provisioningPercentage, device.provisioningPercentage) &&
         Objects.equals(this.operatingSystem, device.operatingSystem) &&
+        Objects.equals(this.ipxeScriptUrl, device.ipxeScriptUrl) &&
         Objects.equals(this.location, device.location) &&
         Objects.equals(this.facility, device.facility) &&
         Objects.equals(this.plan, device.plan) &&
@@ -719,7 +763,7 @@ public class Device   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, shortId, hostname, description, state, tags, billingCycle, user, iqn, locked, bondingMode, createdAt, updatedAt, spotInstance, terminationTime, provisioningPercentage, operatingSystem, location, facility, plan, userdata, rootPassword, href, project, projectLite, volumes, sshKeys, ipAddresses, provisioningEvents);
+    return Objects.hash(id, shortId, hostname, description, state, tags, imageUrl, billingCycle, user, iqn, locked, bondingMode, createdAt, updatedAt, spotInstance, terminationTime, provisioningPercentage, operatingSystem, ipxeScriptUrl, location, facility, plan, userdata, rootPassword, href, project, projectLite, volumes, sshKeys, ipAddresses, provisioningEvents);
   }
 
   @Override
@@ -733,6 +777,7 @@ public class Device   {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    billingCycle: ").append(toIndentedString(billingCycle)).append("\n");
     sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    iqn: ").append(toIndentedString(iqn)).append("\n");
@@ -744,6 +789,7 @@ public class Device   {
     sb.append("    terminationTime: ").append(toIndentedString(terminationTime)).append("\n");
     sb.append("    provisioningPercentage: ").append(toIndentedString(provisioningPercentage)).append("\n");
     sb.append("    operatingSystem: ").append(toIndentedString(operatingSystem)).append("\n");
+    sb.append("    ipxeScriptUrl: ").append(toIndentedString(ipxeScriptUrl)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    facility: ").append(toIndentedString(facility)).append("\n");
     sb.append("    plan: ").append(toIndentedString(plan)).append("\n");
