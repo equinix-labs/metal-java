@@ -11,4 +11,7 @@ generate:
 		--model-package $(PACKAGE).model \
 		--group-id net.packet \
 		--artifact-id packet-api-client \
+		--git-repo-base-url https://github.com \
+		--git-repo-id packet-api-java \
+		--git-user-id packethost \
 		-o /local/
