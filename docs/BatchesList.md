@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**batches** | [**List&lt;Batch&gt;**](Batch.md) |  |  [optional]
+**batches** | [**List&lt;InlineResponse200&gt;**](InlineResponse200.md) |  |  [optional]
 
 
 

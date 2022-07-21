@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**apiKeys** | [**List&lt;AuthToken&gt;**](AuthToken.md) |  |  [optional]
+**apiKeys** | [**List&lt;InlineResponse20036ApiKeys&gt;**](InlineResponse20036ApiKeys.md) |  |  [optional]
 
 
 

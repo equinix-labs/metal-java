@@ -4,14 +4,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**UUID**](UUID.md) |  |  [optional]
+**createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**devices** | [**List&lt;InlineResponse200Devices&gt;**](InlineResponse200Devices.md) |  |  [optional]
 **errorMessages** | **List&lt;String&gt;** |  |  [optional]
+**id** | [**UUID**](UUID.md) |  |  [optional]
+**project** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
 **quantity** | **Integer** |  |  [optional]
 **state** | **String** |  |  [optional]
-**createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**devices** | [**List&lt;Href&gt;**](Href.md) |  |  [optional]
-**project** | [**Href**](Href.md) |  |  [optional]
 
 
 

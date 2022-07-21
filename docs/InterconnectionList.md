@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**interconnections** | [**List&lt;Interconnection&gt;**](Interconnection.md) |  |  [optional]
+**interconnections** | [**List&lt;InlineResponse2006&gt;**](InlineResponse2006.md) |  |  [optional]
 
 
 

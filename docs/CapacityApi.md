@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="checkCapacityForFacility"></a>
 # **checkCapacityForFacility**
-> CapacityCheckPerFacilityList checkCapacityForFacility(facility)
+> InlineResponse2003 checkCapacityForFacility(body)
 
 Check capacity
 
@@ -23,11 +23,11 @@ Validates if a deploy can be fulfilled.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.CapacityApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.CapacityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -38,9 +38,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 //x_auth_token.setApiKeyPrefix("Token");
 
 CapacityApi apiInstance = new CapacityApi();
-CapacityInput facility = new CapacityInput(); // CapacityInput | Facility to check capacity in
+Body body = new Body(); // Body | Facility to check capacity in
 try {
-    CapacityCheckPerFacilityList result = apiInstance.checkCapacityForFacility(facility);
+    InlineResponse2003 result = apiInstance.checkCapacityForFacility(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CapacityApi#checkCapacityForFacility");
@@ -52,11 +52,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **facility** | [**CapacityInput**](CapacityInput.md)| Facility to check capacity in |
+ **body** | [**Body**](Body.md)| Facility to check capacity in |
 
 ### Return type
 
-[**CapacityCheckPerFacilityList**](CapacityCheckPerFacilityList.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 <a name="checkCapacityForMetro"></a>
 # **checkCapacityForMetro**
-> CapacityCheckPerMetroList checkCapacityForMetro(servers)
+> InlineResponse2005 checkCapacityForMetro(body)
 
 Check capacity for a metro
 
@@ -78,11 +78,11 @@ Validates if a deploy can be fulfilled in a metro.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.CapacityApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.CapacityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -93,9 +93,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 //x_auth_token.setApiKeyPrefix("Token");
 
 CapacityApi apiInstance = new CapacityApi();
-CapacityPerMetroInput servers = new CapacityPerMetroInput(); // CapacityPerMetroInput | Metro to check capacity in
+Body1 body = new Body1(); // Body1 | Metro to check capacity in
 try {
-    CapacityCheckPerMetroList result = apiInstance.checkCapacityForMetro(servers);
+    InlineResponse2005 result = apiInstance.checkCapacityForMetro(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CapacityApi#checkCapacityForMetro");
@@ -107,11 +107,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **servers** | [**CapacityPerMetroInput**](CapacityPerMetroInput.md)| Metro to check capacity in |
+ **body** | [**Body1**](Body1.md)| Metro to check capacity in |
 
 ### Return type
 
-[**CapacityCheckPerMetroList**](CapacityCheckPerMetroList.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 <a name="findCapacityForFacility"></a>
 # **findCapacityForFacility**
-> CapacityList findCapacityForFacility()
+> InlineResponse2002 findCapacityForFacility()
 
 View capacity
 
@@ -133,11 +133,11 @@ Returns a list of facilities and plans with their current capacity.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.CapacityApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.CapacityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -149,7 +149,7 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 CapacityApi apiInstance = new CapacityApi();
 try {
-    CapacityList result = apiInstance.findCapacityForFacility();
+    InlineResponse2002 result = apiInstance.findCapacityForFacility();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CapacityApi#findCapacityForFacility");
@@ -162,7 +162,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**CapacityList**](CapacityList.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -170,12 +170,12 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findCapacityForMetro"></a>
 # **findCapacityForMetro**
-> MetroCapacityList findCapacityForMetro()
+> InlineResponse2004 findCapacityForMetro()
 
 View capacity for metros
 
@@ -184,11 +184,11 @@ Returns a list of metros and plans with their current capacity.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.CapacityApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.CapacityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -200,7 +200,7 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 CapacityApi apiInstance = new CapacityApi();
 try {
-    MetroCapacityList result = apiInstance.findCapacityForMetro();
+    InlineResponse2004 result = apiInstance.findCapacityForMetro();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CapacityApi#findCapacityForMetro");
@@ -213,7 +213,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MetroCapacityList**](MetroCapacityList.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -221,12 +221,12 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findOrganizationCapacityPerFacility"></a>
 # **findOrganizationCapacityPerFacility**
-> CapacityList findOrganizationCapacityPerFacility(id)
+> InlineResponse2002 findOrganizationCapacityPerFacility(id)
 
 View available hardware plans per Facility for given organization
 
@@ -235,11 +235,11 @@ Returns a list of facilities and plans with their current capacity.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.CapacityApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.CapacityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -252,7 +252,7 @@ x_auth_token.setApiKey("YOUR API KEY");
 CapacityApi apiInstance = new CapacityApi();
 UUID id = new UUID(); // UUID | Organization UUID
 try {
-    CapacityList result = apiInstance.findOrganizationCapacityPerFacility(id);
+    InlineResponse2002 result = apiInstance.findOrganizationCapacityPerFacility(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CapacityApi#findOrganizationCapacityPerFacility");
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CapacityList**](CapacityList.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -276,12 +276,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findOrganizationCapacityPerMetro"></a>
 # **findOrganizationCapacityPerMetro**
-> MetroCapacityList findOrganizationCapacityPerMetro(id)
+> InlineResponse2004 findOrganizationCapacityPerMetro(id)
 
 View available hardware plans per Metro for given organization
 
@@ -290,11 +290,11 @@ Returns a list of metros and plans with their current capacity.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.CapacityApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.CapacityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -307,7 +307,7 @@ x_auth_token.setApiKey("YOUR API KEY");
 CapacityApi apiInstance = new CapacityApi();
 UUID id = new UUID(); // UUID | Organization UUID
 try {
-    MetroCapacityList result = apiInstance.findOrganizationCapacityPerMetro(id);
+    InlineResponse2004 result = apiInstance.findOrganizationCapacityPerMetro(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CapacityApi#findOrganizationCapacityPerMetro");
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MetroCapacityList**](MetroCapacityList.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -331,6 +331,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**facilities** | [**List&lt;Facility&gt;**](Facility.md) |  |  [optional]
+**facilities** | [**List&lt;InlineResponse2009Facility&gt;**](InlineResponse2009Facility.md) |  |  [optional]
 
 
 

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**batches** | [**List&lt;InstancesBatchCreateInputBatches&gt;**](InstancesBatchCreateInputBatches.md) |  |  [optional]
+**batches** | [**List&lt;ProjectsiddevicesbatchBatches&gt;**](ProjectsiddevicesbatchBatches.md) |  |  [optional]
 
 
 

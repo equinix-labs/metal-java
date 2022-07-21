@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**capacity** | [**MetroCapacityReport**](MetroCapacityReport.md) |  |  [optional]
+**capacity** | [**InlineResponse2004Capacity**](InlineResponse2004Capacity.md) |  |  [optional]
 
 
 

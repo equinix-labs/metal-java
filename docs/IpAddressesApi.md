@@ -4,133 +4,14 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createIPAssignment**](IpAddressesApi.md#createIPAssignment) | **POST** /devices/{id}/ips | Create an ip assignment
-[**createSelfServiceReservation**](IpAddressesApi.md#createSelfServiceReservation) | **POST** /projects/{project_id}/self-service/reservations | Create a reservation
 [**deleteIPAddress**](IpAddressesApi.md#deleteIPAddress) | **DELETE** /ips/{id} | Unassign an ip address
 [**findIPAddressById**](IpAddressesApi.md#findIPAddressById) | **GET** /ips/{id} | Retrieve an ip address
 [**findIPAddressCustomdata**](IpAddressesApi.md#findIPAddressCustomdata) | **GET** /ips/{id}/customdata | Retrieve the custom metadata of an IP Reservation or IP Assignment
-[**findIPAssignments**](IpAddressesApi.md#findIPAssignments) | **GET** /devices/{id}/ips | Retrieve all ip assignments
 [**findIPAvailabilities**](IpAddressesApi.md#findIPAvailabilities) | **GET** /ips/{id}/available | Retrieve all available subnets of a particular reservation
 [**findIPReservations**](IpAddressesApi.md#findIPReservations) | **GET** /projects/{id}/ips | Retrieve all ip reservations
-[**findSelfServiceReservation**](IpAddressesApi.md#findSelfServiceReservation) | **GET** /projects/{project_id}/self-service/reservations/{id} | Retrieve a reservation
-[**findSelfServiceReservations**](IpAddressesApi.md#findSelfServiceReservations) | **GET** /projects/{project_id}/self-service/reservations | Retrieve all reservations
 [**requestIPReservation**](IpAddressesApi.md#requestIPReservation) | **POST** /projects/{id}/ips | Requesting IP reservations
 [**updateIPAddress**](IpAddressesApi.md#updateIPAddress) | **PATCH** /ips/{id} | Update an ip address
 
-
-<a name="createIPAssignment"></a>
-# **createIPAssignment**
-> IPAssignment createIPAssignment(id, ipAssignment)
-
-Create an ip assignment
-
-Creates an ip assignment for a device.
-
-### Example
-```java
-// Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.IpAddressesApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: x_auth_token
-ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
-x_auth_token.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//x_auth_token.setApiKeyPrefix("Token");
-
-IpAddressesApi apiInstance = new IpAddressesApi();
-UUID id = new UUID(); // UUID | Device UUID
-IPAssignmentInput ipAssignment = new IPAssignmentInput(); // IPAssignmentInput | IPAssignment to create
-try {
-    IPAssignment result = apiInstance.createIPAssignment(id, ipAssignment);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IpAddressesApi#createIPAssignment");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md)| Device UUID |
- **ipAssignment** | [**IPAssignmentInput**](IPAssignmentInput.md)| IPAssignment to create |
-
-### Return type
-
-[**IPAssignment**](IPAssignment.md)
-
-### Authorization
-
-[x_auth_token](../README.md#x_auth_token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="createSelfServiceReservation"></a>
-# **createSelfServiceReservation**
-> SelfServiceReservationResponse createSelfServiceReservation(reservation, projectId)
-
-Create a reservation
-
-Creates a reservation.
-
-### Example
-```java
-// Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.IpAddressesApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: x_auth_token
-ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
-x_auth_token.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//x_auth_token.setApiKeyPrefix("Token");
-
-IpAddressesApi apiInstance = new IpAddressesApi();
-CreateSelfServiceReservationRequest reservation = new CreateSelfServiceReservationRequest(); // CreateSelfServiceReservationRequest | reservation to create
-UUID projectId = new UUID(); // UUID | Project UUID
-try {
-    SelfServiceReservationResponse result = apiInstance.createSelfServiceReservation(reservation, projectId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IpAddressesApi#createSelfServiceReservation");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **reservation** | [**CreateSelfServiceReservationRequest**](CreateSelfServiceReservationRequest.md)| reservation to create |
- **projectId** | [**UUID**](.md)| Project UUID |
-
-### Return type
-
-[**SelfServiceReservationResponse**](SelfServiceReservationResponse.md)
-
-### Authorization
-
-[x_auth_token](../README.md#x_auth_token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
 
 <a name="deleteIPAddress"></a>
 # **deleteIPAddress**
@@ -143,11 +24,11 @@ Note! This call can be used to un-assign an IP assignment or delete an IP reserv
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.IpAddressesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.IpAddressesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -183,12 +64,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findIPAddressById"></a>
 # **findIPAddressById**
-> IPAssignment findIPAddressById(id, include, exclude)
+> Object findIPAddressById(id, include, exclude)
 
 Retrieve an ip address
 
@@ -197,11 +78,11 @@ Returns a single ip address if the user has access.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.IpAddressesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.IpAddressesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -216,7 +97,7 @@ UUID id = new UUID(); // UUID | IP Address UUID
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    IPAssignment result = apiInstance.findIPAddressById(id, include, exclude);
+    Object result = apiInstance.findIPAddressById(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IpAddressesApi#findIPAddressById");
@@ -234,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IPAssignment**](IPAssignment.md)
+**Object**
 
 ### Authorization
 
@@ -242,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findIPAddressCustomdata"></a>
@@ -256,11 +137,11 @@ Provides the custom metadata stored for this IP Reservation or IP Assignment in 
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.IpAddressesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.IpAddressesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -296,71 +177,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="findIPAssignments"></a>
-# **findIPAssignments**
-> IPAssignmentList findIPAssignments(id, include, exclude)
-
-Retrieve all ip assignments
-
-Returns all ip assignments for a device.
-
-### Example
-```java
-// Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.IpAddressesApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: x_auth_token
-ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
-x_auth_token.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//x_auth_token.setApiKeyPrefix("Token");
-
-IpAddressesApi apiInstance = new IpAddressesApi();
-UUID id = new UUID(); // UUID | Device UUID
-List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
-try {
-    IPAssignmentList result = apiInstance.findIPAssignments(id, include, exclude);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IpAddressesApi#findIPAssignments");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md)| Device UUID |
- **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional]
- **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional]
-
-### Return type
-
-[**IPAssignmentList**](IPAssignmentList.md)
-
-### Authorization
-
-[x_auth_token](../README.md#x_auth_token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findIPAvailabilities"></a>
 # **findIPAvailabilities**
-> IPAvailabilitiesList findIPAvailabilities(id, cidr)
+> InlineResponse20019 findIPAvailabilities(id, cidr)
 
 Retrieve all available subnets of a particular reservation
 
@@ -369,11 +191,11 @@ Provides a list of IP resevations for a single project.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.IpAddressesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.IpAddressesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -387,7 +209,7 @@ IpAddressesApi apiInstance = new IpAddressesApi();
 UUID id = new UUID(); // UUID | IP Reservation UUID
 String cidr = "cidr_example"; // String | Size of subnets in bits
 try {
-    IPAvailabilitiesList result = apiInstance.findIPAvailabilities(id, cidr);
+    InlineResponse20019 result = apiInstance.findIPAvailabilities(id, cidr);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IpAddressesApi#findIPAvailabilities");
@@ -404,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IPAvailabilitiesList**](IPAvailabilitiesList.md)
+[**InlineResponse20019**](InlineResponse20019.md)
 
 ### Authorization
 
@@ -412,25 +234,25 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findIPReservations"></a>
 # **findIPReservations**
-> IPReservationList findIPReservations(id, include, exclude)
+> InlineResponse20041 findIPReservations(id, types, include, exclude)
 
 Retrieve all ip reservations
 
-Provides a list of IP resevations for a single project.
+Provides a paginated list of IP reservations for a single project.
 
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.IpAddressesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.IpAddressesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -442,10 +264,11 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 IpAddressesApi apiInstance = new IpAddressesApi();
 UUID id = new UUID(); // UUID | Project UUID
+List<String> types = Arrays.asList("types_example"); // List<String> | Filter project IP reservations by reservation type
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    IPReservationList result = apiInstance.findIPReservations(id, include, exclude);
+    InlineResponse20041 result = apiInstance.findIPReservations(id, types, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IpAddressesApi#findIPReservations");
@@ -458,12 +281,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Project UUID |
+ **types** | [**List&lt;String&gt;**](String.md)| Filter project IP reservations by reservation type | [optional] [enum: global_ipv4, private_ipv4, public_ipv4, public_ipv6, vrf]
  **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional]
  **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional]
 
 ### Return type
 
-[**IPReservationList**](IPReservationList.md)
+[**InlineResponse20041**](InlineResponse20041.md)
 
 ### Authorization
 
@@ -471,128 +295,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="findSelfServiceReservation"></a>
-# **findSelfServiceReservation**
-> SelfServiceReservationResponse findSelfServiceReservation(id, projectId)
-
-Retrieve a reservation
-
-Returns a reservation
-
-### Example
-```java
-// Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.IpAddressesApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: x_auth_token
-ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
-x_auth_token.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//x_auth_token.setApiKeyPrefix("Token");
-
-IpAddressesApi apiInstance = new IpAddressesApi();
-UUID id = new UUID(); // UUID | Reservation short_id
-UUID projectId = new UUID(); // UUID | Project UUID
-try {
-    SelfServiceReservationResponse result = apiInstance.findSelfServiceReservation(id, projectId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IpAddressesApi#findSelfServiceReservation");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md)| Reservation short_id |
- **projectId** | [**UUID**](.md)| Project UUID |
-
-### Return type
-
-[**SelfServiceReservationResponse**](SelfServiceReservationResponse.md)
-
-### Authorization
-
-[x_auth_token](../README.md#x_auth_token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="findSelfServiceReservations"></a>
-# **findSelfServiceReservations**
-> SelfServiceReservationList findSelfServiceReservations(projectId, page, perPage)
-
-Retrieve all reservations
-
-Returns all reservations.
-
-### Example
-```java
-// Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.IpAddressesApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: x_auth_token
-ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
-x_auth_token.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//x_auth_token.setApiKeyPrefix("Token");
-
-IpAddressesApi apiInstance = new IpAddressesApi();
-UUID projectId = new UUID(); // UUID | Project UUID
-Integer page = 1; // Integer | Page to return
-Integer perPage = 10; // Integer | Items returned per page
-try {
-    SelfServiceReservationList result = apiInstance.findSelfServiceReservations(projectId, page, perPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IpAddressesApi#findSelfServiceReservations");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectId** | [**UUID**](.md)| Project UUID |
- **page** | **Integer**| Page to return | [optional] [default to 1]
- **perPage** | **Integer**| Items returned per page | [optional] [default to 10]
-
-### Return type
-
-[**SelfServiceReservationList**](SelfServiceReservationList.md)
-
-### Authorization
-
-[x_auth_token](../README.md#x_auth_token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="requestIPReservation"></a>
 # **requestIPReservation**
-> IPReservation requestIPReservation(id, ipReservationRequest)
+> Object requestIPReservation(id, body)
 
 Requesting IP reservations
 
@@ -601,11 +309,11 @@ Request more IP space for a project in order to have additional IP addresses to 
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.IpAddressesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.IpAddressesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -617,9 +325,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 IpAddressesApi apiInstance = new IpAddressesApi();
 UUID id = new UUID(); // UUID | Project UUID
-IPReservationRequestInput ipReservationRequest = new IPReservationRequestInput(); // IPReservationRequestInput | IP Reservation Request to create
+Object body = null; // Object | IP Reservation Request to create
 try {
-    IPReservation result = apiInstance.requestIPReservation(id, ipReservationRequest);
+    Object result = apiInstance.requestIPReservation(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IpAddressesApi#requestIPReservation");
@@ -632,11 +340,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Project UUID |
- **ipReservationRequest** | [**IPReservationRequestInput**](IPReservationRequestInput.md)| IP Reservation Request to create |
+ **body** | **Object**| IP Reservation Request to create |
 
 ### Return type
 
-[**IPReservation**](IPReservation.md)
+**Object**
 
 ### Authorization
 
@@ -649,7 +357,7 @@ Name | Type | Description  | Notes
 
 <a name="updateIPAddress"></a>
 # **updateIPAddress**
-> IPAssignment updateIPAddress(id, details, customdata)
+> Object updateIPAddress(id, details, customdata)
 
 Update an ip address
 
@@ -658,11 +366,11 @@ Update details about an ip address
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.IpAddressesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.IpAddressesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -677,7 +385,7 @@ UUID id = new UUID(); // UUID | IP Address UUID
 String details = "details_example"; // String | Notes for this IP Assignment
 String customdata = "customdata_example"; // String | Provides the custom metadata stored for this IP Assignment in json format
 try {
-    IPAssignment result = apiInstance.updateIPAddress(id, details, customdata);
+    Object result = apiInstance.updateIPAddress(id, details, customdata);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IpAddressesApi#updateIPAddress");
@@ -695,7 +403,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IPAssignment**](IPAssignment.md)
+**Object**
 
 ### Authorization
 
@@ -703,6 +411,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

@@ -19,11 +19,11 @@ Creates a password reset token
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PasswordResetTokensApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PasswordResetTokensApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -59,12 +59,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="resetPassword"></a>
 # **resetPassword**
-> NewPassword resetPassword()
+> InlineResponse2012 resetPassword()
 
 Reset current user password
 
@@ -73,11 +73,11 @@ Resets current user password.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PasswordResetTokensApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PasswordResetTokensApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -89,7 +89,7 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 PasswordResetTokensApi apiInstance = new PasswordResetTokensApi();
 try {
-    NewPassword result = apiInstance.resetPassword();
+    InlineResponse2012 result = apiInstance.resetPassword();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PasswordResetTokensApi#resetPassword");
@@ -102,7 +102,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**NewPassword**](NewPassword.md)
+[**InlineResponse2012**](InlineResponse2012.md)
 
 ### Authorization
 
@@ -110,6 +110,6 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

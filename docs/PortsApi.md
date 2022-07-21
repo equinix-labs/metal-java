@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 <a name="assignNativeVlan"></a>
 # **assignNativeVlan**
-> Port assignNativeVlan(id, vnid)
+> InlineResponse20033 assignNativeVlan(id, vnid)
 
 Assign a native VLAN
 
@@ -31,11 +31,11 @@ Sets a virtual network on this port as a \&quot;native VLAN\&quot;. The VLAN mus
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -49,7 +49,7 @@ PortsApi apiInstance = new PortsApi();
 UUID id = new UUID(); // UUID | Port UUID
 String vnid = "vnid_example"; // String | Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: '1001').
 try {
-    Port result = apiInstance.assignNativeVlan(id, vnid);
+    InlineResponse20033 result = apiInstance.assignNativeVlan(id, vnid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#assignNativeVlan");
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Port**](Port.md)
+[**InlineResponse20033**](InlineResponse20033.md)
 
 ### Authorization
 
@@ -74,25 +74,25 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="assignPort"></a>
 # **assignPort**
-> Port assignPort(id, vnid)
+> InlineResponse20033 assignPort(id, body)
 
 Assign a port to virtual network
 
-Assign a port for a hardware to virtual network.
+Assign a hardware port to a virtual network.
 
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -104,9 +104,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 PortsApi apiInstance = new PortsApi();
 UUID id = new UUID(); // UUID | Port UUID
-PortAssignInput vnid = new PortAssignInput(); // PortAssignInput | Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: '1001').
+Body18 body = new Body18(); // Body18 | 
 try {
-    Port result = apiInstance.assignPort(id, vnid);
+    InlineResponse20033 result = apiInstance.assignPort(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#assignPort");
@@ -119,11 +119,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Port UUID |
- **vnid** | [**PortAssignInput**](PortAssignInput.md)| Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). |
+ **body** | [**Body18**](Body18.md)|  |
 
 ### Return type
 
-[**Port**](Port.md)
+[**InlineResponse20033**](InlineResponse20033.md)
 
 ### Authorization
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 <a name="bondPort"></a>
 # **bondPort**
-> Port bondPort(id, bulkEnable)
+> InlineResponse20033 bondPort(id, bulkEnable)
 
 Enabling bonding
 
@@ -145,11 +145,11 @@ Enabling bonding for one or all ports
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -163,7 +163,7 @@ PortsApi apiInstance = new PortsApi();
 UUID id = new UUID(); // UUID | Port UUID
 Boolean bulkEnable = true; // Boolean | enable both ports
 try {
-    Port result = apiInstance.bondPort(id, bulkEnable);
+    InlineResponse20033 result = apiInstance.bondPort(id, bulkEnable);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#bondPort");
@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Port**](Port.md)
+[**InlineResponse20033**](InlineResponse20033.md)
 
 ### Authorization
 
@@ -188,12 +188,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="convertLayer2"></a>
 # **convertLayer2**
-> Port convertLayer2(id, vnid)
+> InlineResponse20033 convertLayer2(id, body)
 
 Convert to Layer 2
 
@@ -202,11 +202,11 @@ Converts a bond port to Layer 2. IP assignments of the port will be removed.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -218,9 +218,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 PortsApi apiInstance = new PortsApi();
 UUID id = new UUID(); // UUID | Port UUID
-PortAssignInput vnid = new PortAssignInput(); // PortAssignInput | Virtual Network ID
+Body19 body = new Body19(); // Body19 | Virtual Network ID
 try {
-    Port result = apiInstance.convertLayer2(id, vnid);
+    InlineResponse20033 result = apiInstance.convertLayer2(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#convertLayer2");
@@ -233,11 +233,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Port UUID |
- **vnid** | [**PortAssignInput**](PortAssignInput.md)| Virtual Network ID | [optional]
+ **body** | [**Body19**](Body19.md)| Virtual Network ID | [optional]
 
 ### Return type
 
-[**Port**](Port.md)
+[**InlineResponse20033**](InlineResponse20033.md)
 
 ### Authorization
 
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 <a name="convertLayer3"></a>
 # **convertLayer3**
-> Port convertLayer3(id, requestIps)
+> InlineResponse20033 convertLayer3(id, body)
 
 Convert to Layer 3
 
@@ -259,11 +259,11 @@ Converts a bond port to Layer 3. VLANs must first be unassigned.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -275,9 +275,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 PortsApi apiInstance = new PortsApi();
 UUID id = new UUID(); // UUID | Port UUID
-PortConvertLayer3Input requestIps = new PortConvertLayer3Input(); // PortConvertLayer3Input | IPs to request
+Body20 body = new Body20(); // Body20 | IPs to request
 try {
-    Port result = apiInstance.convertLayer3(id, requestIps);
+    InlineResponse20033 result = apiInstance.convertLayer3(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#convertLayer3");
@@ -290,11 +290,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Port UUID |
- **requestIps** | [**PortConvertLayer3Input**](PortConvertLayer3Input.md)| IPs to request | [optional]
+ **body** | [**Body20**](Body20.md)| IPs to request | [optional]
 
 ### Return type
 
-[**Port**](Port.md)
+[**InlineResponse20033**](InlineResponse20033.md)
 
 ### Authorization
 
@@ -307,7 +307,7 @@ Name | Type | Description  | Notes
 
 <a name="createPortVlanAssignmentBatch"></a>
 # **createPortVlanAssignmentBatch**
-> PortVlanAssignmentBatch createPortVlanAssignmentBatch(id, vlanAssignments)
+> InlineResponse20035Batches createPortVlanAssignmentBatch(id, body)
 
 Create a new Port-VLAN Assignment management batch
 
@@ -316,11 +316,11 @@ Create a new asynchronous batch request which handles adding and/or removing the
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -332,9 +332,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 PortsApi apiInstance = new PortsApi();
 UUID id = new UUID(); // UUID | Port UUID
-PortVlanAssignmentBatchCreateInput vlanAssignments = new PortVlanAssignmentBatchCreateInput(); // PortVlanAssignmentBatchCreateInput | VLAN Assignment batch details
+Body22 body = new Body22(); // Body22 | VLAN Assignment batch details
 try {
-    PortVlanAssignmentBatch result = apiInstance.createPortVlanAssignmentBatch(id, vlanAssignments);
+    InlineResponse20035Batches result = apiInstance.createPortVlanAssignmentBatch(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#createPortVlanAssignmentBatch");
@@ -347,11 +347,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Port UUID |
- **vlanAssignments** | [**PortVlanAssignmentBatchCreateInput**](PortVlanAssignmentBatchCreateInput.md)| VLAN Assignment batch details |
+ **body** | [**Body22**](Body22.md)| VLAN Assignment batch details |
 
 ### Return type
 
-[**PortVlanAssignmentBatch**](PortVlanAssignmentBatch.md)
+[**InlineResponse20035Batches**](InlineResponse20035Batches.md)
 
 ### Authorization
 
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteNativeVlan"></a>
 # **deleteNativeVlan**
-> Port deleteNativeVlan(id)
+> InlineResponse20033 deleteNativeVlan(id)
 
 Remove native VLAN
 
@@ -373,11 +373,11 @@ Removes the native VLAN from this port
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -390,7 +390,7 @@ x_auth_token.setApiKey("YOUR API KEY");
 PortsApi apiInstance = new PortsApi();
 UUID id = new UUID(); // UUID | Port UUID
 try {
-    Port result = apiInstance.deleteNativeVlan(id);
+    InlineResponse20033 result = apiInstance.deleteNativeVlan(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#deleteNativeVlan");
@@ -406,7 +406,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Port**](Port.md)
+[**InlineResponse20033**](InlineResponse20033.md)
 
 ### Authorization
 
@@ -414,12 +414,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="disbondPort"></a>
 # **disbondPort**
-> Port disbondPort(id, bulkDisable)
+> InlineResponse20033 disbondPort(id, bulkDisable)
 
 Disabling bonding
 
@@ -428,11 +428,11 @@ Disabling bonding for one or all ports
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -446,7 +446,7 @@ PortsApi apiInstance = new PortsApi();
 UUID id = new UUID(); // UUID | Port UUID
 Boolean bulkDisable = true; // Boolean | disable both ports
 try {
-    Port result = apiInstance.disbondPort(id, bulkDisable);
+    InlineResponse20033 result = apiInstance.disbondPort(id, bulkDisable);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#disbondPort");
@@ -463,7 +463,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Port**](Port.md)
+[**InlineResponse20033**](InlineResponse20033.md)
 
 ### Authorization
 
@@ -471,12 +471,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findPortById"></a>
 # **findPortById**
-> Port findPortById(id, include, exclude)
+> InlineResponse20033 findPortById(id, include, exclude)
 
 Retrieve a port
 
@@ -485,11 +485,11 @@ Returns a port
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -504,7 +504,7 @@ UUID id = new UUID(); // UUID | Port UUID
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    Port result = apiInstance.findPortById(id, include, exclude);
+    InlineResponse20033 result = apiInstance.findPortById(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#findPortById");
@@ -522,7 +522,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Port**](Port.md)
+[**InlineResponse20033**](InlineResponse20033.md)
 
 ### Authorization
 
@@ -530,12 +530,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findPortVlanAssignmentBatchByPortIdAndBatchId"></a>
 # **findPortVlanAssignmentBatchByPortIdAndBatchId**
-> PortVlanAssignmentBatch findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId)
+> InlineResponse20035Batches findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId)
 
 Retrieve a VLAN Assignment Batch&#39;s details
 
@@ -544,11 +544,11 @@ Returns the details of an existing Port-VLAN Assignment batch, including the lis
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -562,7 +562,7 @@ PortsApi apiInstance = new PortsApi();
 UUID id = new UUID(); // UUID | Port UUID
 UUID batchId = new UUID(); // UUID | Batch ID
 try {
-    PortVlanAssignmentBatch result = apiInstance.findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId);
+    InlineResponse20035Batches result = apiInstance.findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#findPortVlanAssignmentBatchByPortIdAndBatchId");
@@ -579,7 +579,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PortVlanAssignmentBatch**](PortVlanAssignmentBatch.md)
+[**InlineResponse20035Batches**](InlineResponse20035Batches.md)
 
 ### Authorization
 
@@ -587,12 +587,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findPortVlanAssignmentBatches"></a>
 # **findPortVlanAssignmentBatches**
-> PortVlanAssignmentBatchList findPortVlanAssignmentBatches(id)
+> InlineResponse20035 findPortVlanAssignmentBatches(id)
 
 List the VLAN Assignment Batches for a port
 
@@ -601,11 +601,11 @@ Show all the VLAN assignment batches that have been created for managing this po
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -618,7 +618,7 @@ x_auth_token.setApiKey("YOUR API KEY");
 PortsApi apiInstance = new PortsApi();
 UUID id = new UUID(); // UUID | Port UUID
 try {
-    PortVlanAssignmentBatchList result = apiInstance.findPortVlanAssignmentBatches(id);
+    InlineResponse20035 result = apiInstance.findPortVlanAssignmentBatches(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#findPortVlanAssignmentBatches");
@@ -634,7 +634,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PortVlanAssignmentBatchList**](PortVlanAssignmentBatchList.md)
+[**InlineResponse20035**](InlineResponse20035.md)
 
 ### Authorization
 
@@ -642,12 +642,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findPortVlanAssignmentByPortIdAndAssignmentId"></a>
 # **findPortVlanAssignmentByPortIdAndAssignmentId**
-> PortVlanAssignment findPortVlanAssignmentByPortIdAndAssignmentId(id, assignmentId, include, exclude)
+> InlineResponse20034VlanAssignments findPortVlanAssignmentByPortIdAndAssignmentId(id, assignmentId, include, exclude)
 
 Show a particular Port VLAN assignment&#39;s details
 
@@ -656,11 +656,11 @@ Show the details of a specific Port-VLAN assignment, including the current state
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -676,7 +676,7 @@ UUID assignmentId = new UUID(); // UUID | Assignment ID
 List<String> include = Arrays.asList("[\"port\",\"virtual_network\"]"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    PortVlanAssignment result = apiInstance.findPortVlanAssignmentByPortIdAndAssignmentId(id, assignmentId, include, exclude);
+    InlineResponse20034VlanAssignments result = apiInstance.findPortVlanAssignmentByPortIdAndAssignmentId(id, assignmentId, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#findPortVlanAssignmentByPortIdAndAssignmentId");
@@ -695,7 +695,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PortVlanAssignment**](PortVlanAssignment.md)
+[**InlineResponse20034VlanAssignments**](InlineResponse20034VlanAssignments.md)
 
 ### Authorization
 
@@ -703,12 +703,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findPortVlanAssignments"></a>
 # **findPortVlanAssignments**
-> PortVlanAssignmentList findPortVlanAssignments(id, include, exclude)
+> InlineResponse20034 findPortVlanAssignments(id, include, exclude)
 
 List Current VLAN assignments for a port
 
@@ -717,11 +717,11 @@ Show the port&#39;s current VLAN assignments, including if this VLAN is set as n
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -736,7 +736,7 @@ UUID id = new UUID(); // UUID | Port UUID
 List<String> include = Arrays.asList("[\"port\",\"virtual_network\"]"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    PortVlanAssignmentList result = apiInstance.findPortVlanAssignments(id, include, exclude);
+    InlineResponse20034 result = apiInstance.findPortVlanAssignments(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#findPortVlanAssignments");
@@ -754,7 +754,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PortVlanAssignmentList**](PortVlanAssignmentList.md)
+[**InlineResponse20034**](InlineResponse20034.md)
 
 ### Authorization
 
@@ -762,12 +762,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="unassignPort"></a>
 # **unassignPort**
-> Port unassignPort(id, vnid)
+> InlineResponse20033 unassignPort(id, body)
 
 Unassign a port
 
@@ -776,11 +776,11 @@ Unassign a port for a hardware.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.PortsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.PortsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -792,9 +792,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 PortsApi apiInstance = new PortsApi();
 UUID id = new UUID(); // UUID | Port UUID
-PortAssignInput vnid = new PortAssignInput(); // PortAssignInput | Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: '1001').
+Body21 body = new Body21(); // Body21 | Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: '1001').
 try {
-    Port result = apiInstance.unassignPort(id, vnid);
+    InlineResponse20033 result = apiInstance.unassignPort(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortsApi#unassignPort");
@@ -807,11 +807,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Port UUID |
- **vnid** | [**PortAssignInput**](PortAssignInput.md)| Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). |
+ **body** | [**Body21**](Body21.md)| Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). |
 
 ### Return type
 
-[**Port**](Port.md)
+[**InlineResponse20033**](InlineResponse20033.md)
 
 ### Authorization
 

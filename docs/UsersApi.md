@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="createUser"></a>
 # **createUser**
-> User createUser(user)
+> InlineResponse20046CreatedBy createUser(body)
 
 Create a user
 
@@ -24,11 +24,11 @@ Creates a user.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.UsersApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.UsersApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -39,9 +39,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 //x_auth_token.setApiKeyPrefix("Token");
 
 UsersApi apiInstance = new UsersApi();
-UserCreateInput user = new UserCreateInput(); // UserCreateInput | User to create
+Body42 body = new Body42(); // Body42 | User to create
 try {
-    User result = apiInstance.createUser(user);
+    InlineResponse20046CreatedBy result = apiInstance.createUser(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#createUser");
@@ -53,11 +53,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | [**UserCreateInput**](UserCreateInput.md)| User to create |
+ **body** | [**Body42**](Body42.md)| User to create |
 
 ### Return type
 
-[**User**](User.md)
+[**InlineResponse20046CreatedBy**](InlineResponse20046CreatedBy.md)
 
 ### Authorization
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 <a name="findCurrentUser"></a>
 # **findCurrentUser**
-> User findCurrentUser(include, exclude)
+> InlineResponse20046CreatedBy findCurrentUser(include, exclude)
 
 Retrieve the current user
 
@@ -79,11 +79,11 @@ Returns the user object for the currently logged-in user.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.UsersApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.UsersApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -97,7 +97,7 @@ UsersApi apiInstance = new UsersApi();
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    User result = apiInstance.findCurrentUser(include, exclude);
+    InlineResponse20046CreatedBy result = apiInstance.findCurrentUser(include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#findCurrentUser");
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**InlineResponse20046CreatedBy**](InlineResponse20046CreatedBy.md)
 
 ### Authorization
 
@@ -122,12 +122,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findInvitations"></a>
 # **findInvitations**
-> InvitationList findInvitations(include, exclude, page, perPage)
+> InlineResponse20017 findInvitations(include, exclude, page, perPage)
 
 Retrieve current user invitations
 
@@ -136,11 +136,11 @@ Returns all invitations in current user.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.UsersApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.UsersApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -156,7 +156,7 @@ List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Neste
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    InvitationList result = apiInstance.findInvitations(include, exclude, page, perPage);
+    InlineResponse20017 result = apiInstance.findInvitations(include, exclude, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#findInvitations");
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InvitationList**](InvitationList.md)
+[**InlineResponse20017**](InlineResponse20017.md)
 
 ### Authorization
 
@@ -183,12 +183,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findUserById"></a>
 # **findUserById**
-> User findUserById(id, include, exclude)
+> InlineResponse20046CreatedBy findUserById(id, include, exclude)
 
 Retrieve a user
 
@@ -197,11 +197,11 @@ Returns a single user if the user has access
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.UsersApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.UsersApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -216,7 +216,7 @@ UUID id = new UUID(); // UUID | User UUID
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    User result = apiInstance.findUserById(id, include, exclude);
+    InlineResponse20046CreatedBy result = apiInstance.findUserById(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#findUserById");
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**InlineResponse20046CreatedBy**](InlineResponse20046CreatedBy.md)
 
 ### Authorization
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findUserCustomdata"></a>
@@ -256,11 +256,11 @@ Provides the custom metadata stored for this user in json format
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.UsersApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.UsersApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -296,12 +296,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findUsers"></a>
 # **findUsers**
-> UserList findUsers(include, exclude, page, perPage)
+> InlineResponse20051 findUsers(include, exclude, page, perPage)
 
 Retrieve all users
 
@@ -310,11 +310,11 @@ Returns a list of users that the are accessible to the current user (all users i
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.UsersApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.UsersApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -330,7 +330,7 @@ List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Neste
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    UserList result = apiInstance.findUsers(include, exclude, page, perPage);
+    InlineResponse20051 result = apiInstance.findUsers(include, exclude, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#findUsers");
@@ -349,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserList**](UserList.md)
+[**InlineResponse20051**](InlineResponse20051.md)
 
 ### Authorization
 
@@ -357,12 +357,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="updateCurrentUser"></a>
 # **updateCurrentUser**
-> User updateCurrentUser(user)
+> InlineResponse20046CreatedBy updateCurrentUser(body)
 
 Update the current user
 
@@ -371,11 +371,11 @@ Updates the currently logged-in user.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.UsersApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.UsersApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -386,9 +386,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 //x_auth_token.setApiKeyPrefix("Token");
 
 UsersApi apiInstance = new UsersApi();
-UserUpdateInput user = new UserUpdateInput(); // UserUpdateInput | User to update
+Body40 body = new Body40(); // Body40 | User to update
 try {
-    User result = apiInstance.updateCurrentUser(user);
+    InlineResponse20046CreatedBy result = apiInstance.updateCurrentUser(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#updateCurrentUser");
@@ -400,11 +400,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | [**UserUpdateInput**](UserUpdateInput.md)| User to update |
+ **body** | [**Body40**](Body40.md)| User to update |
 
 ### Return type
 
-[**User**](User.md)
+[**InlineResponse20046CreatedBy**](InlineResponse20046CreatedBy.md)
 
 ### Authorization
 

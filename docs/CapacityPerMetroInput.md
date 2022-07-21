@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**servers** | [**List&lt;MetroServerInfo&gt;**](MetroServerInfo.md) |  |  [optional]
+**servers** | [**List&lt;CapacitymetrosServers&gt;**](CapacitymetrosServers.md) |  |  [optional]
 
 
 

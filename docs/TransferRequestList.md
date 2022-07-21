@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transfers** | [**List&lt;TransferRequest&gt;**](TransferRequest.md) |  |  [optional]
+**transfers** | [**List&lt;InlineResponse20031Transfers&gt;**](InlineResponse20031Transfers.md) |  |  [optional]
 
 
 

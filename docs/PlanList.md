@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**plans** | [**List&lt;Plan&gt;**](Plan.md) |  |  [optional]
+**plans** | [**List&lt;InlineResponse2009Plan&gt;**](InlineResponse2009Plan.md) |  |  [optional]
 
 
 

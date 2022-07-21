@@ -4,13 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ny** | [**SpotPricesPerFacility**](SpotPricesPerFacility.md) |  |  [optional]
-**sv** | [**SpotPricesPerFacility**](SpotPricesPerFacility.md) |  |  [optional]
-**am** | [**SpotPricesPerFacility**](SpotPricesPerFacility.md) |  |  [optional]
-**ch** | [**SpotPricesPerFacility**](SpotPricesPerFacility.md) |  |  [optional]
-**la** | [**SpotPricesPerFacility**](SpotPricesPerFacility.md) |  |  [optional]
-**sg** | [**SpotPricesPerFacility**](SpotPricesPerFacility.md) |  |  [optional]
-**da** | [**SpotPricesPerFacility**](SpotPricesPerFacility.md) |  |  [optional]
+**am** | [**InlineResponse20022SpotMarketPricesAms1**](InlineResponse20022SpotMarketPricesAms1.md) |  |  [optional]
+**ch** | [**InlineResponse20022SpotMarketPricesAms1**](InlineResponse20022SpotMarketPricesAms1.md) |  |  [optional]
+**da** | [**InlineResponse20022SpotMarketPricesAms1**](InlineResponse20022SpotMarketPricesAms1.md) |  |  [optional]
+**la** | [**InlineResponse20022SpotMarketPricesAms1**](InlineResponse20022SpotMarketPricesAms1.md) |  |  [optional]
+**ny** | [**InlineResponse20022SpotMarketPricesAms1**](InlineResponse20022SpotMarketPricesAms1.md) |  |  [optional]
+**sg** | [**InlineResponse20022SpotMarketPricesAms1**](InlineResponse20022SpotMarketPricesAms1.md) |  |  [optional]
+**sv** | [**InlineResponse20022SpotMarketPricesAms1**](InlineResponse20022SpotMarketPricesAms1.md) |  |  [optional]
 
 
 

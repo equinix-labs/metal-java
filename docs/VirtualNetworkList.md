@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**virtualNetworks** | [**List&lt;VirtualNetwork&gt;**](VirtualNetwork.md) |  |  [optional]
+**virtualNetworks** | [**List&lt;InlineResponse20045VirtualNetworks&gt;**](InlineResponse20045VirtualNetworks.md) |  |  [optional]
 
 
 

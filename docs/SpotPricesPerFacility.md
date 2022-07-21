@@ -4,15 +4,15 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**baremetal2a** | [**SpotPricesPerBaremetal**](SpotPricesPerBaremetal.md) |  |  [optional]
-**baremetal2a2** | [**SpotPricesPerBaremetal**](SpotPricesPerBaremetal.md) |  |  [optional]
-**baremetal1** | [**SpotPricesPerBaremetal**](SpotPricesPerBaremetal.md) |  |  [optional]
-**baremetal3** | [**SpotPricesPerBaremetal**](SpotPricesPerBaremetal.md) |  |  [optional]
-**c2MediumX86** | [**SpotPricesPerBaremetal**](SpotPricesPerBaremetal.md) |  |  [optional]
-**baremetal2** | [**SpotPricesPerBaremetal**](SpotPricesPerBaremetal.md) |  |  [optional]
-**m2XlargeX86** | [**SpotPricesPerBaremetal**](SpotPricesPerBaremetal.md) |  |  [optional]
-**baremetalS** | [**SpotPricesPerBaremetal**](SpotPricesPerBaremetal.md) |  |  [optional]
-**baremetal0** | [**SpotPricesPerBaremetal**](SpotPricesPerBaremetal.md) |  |  [optional]
+**baremetal0** | [**InlineResponse20022SpotMarketPricesAms1Baremetal0**](InlineResponse20022SpotMarketPricesAms1Baremetal0.md) |  |  [optional]
+**baremetal1** | [**InlineResponse20022SpotMarketPricesAms1Baremetal0**](InlineResponse20022SpotMarketPricesAms1Baremetal0.md) |  |  [optional]
+**baremetal2** | [**InlineResponse20022SpotMarketPricesAms1Baremetal0**](InlineResponse20022SpotMarketPricesAms1Baremetal0.md) |  |  [optional]
+**baremetal2a** | [**InlineResponse20022SpotMarketPricesAms1Baremetal0**](InlineResponse20022SpotMarketPricesAms1Baremetal0.md) |  |  [optional]
+**baremetal2a2** | [**InlineResponse20022SpotMarketPricesAms1Baremetal0**](InlineResponse20022SpotMarketPricesAms1Baremetal0.md) |  |  [optional]
+**baremetal3** | [**InlineResponse20022SpotMarketPricesAms1Baremetal0**](InlineResponse20022SpotMarketPricesAms1Baremetal0.md) |  |  [optional]
+**baremetalS** | [**InlineResponse20022SpotMarketPricesAms1Baremetal0**](InlineResponse20022SpotMarketPricesAms1Baremetal0.md) |  |  [optional]
+**c2MediumX86** | [**InlineResponse20022SpotMarketPricesAms1Baremetal0**](InlineResponse20022SpotMarketPricesAms1Baremetal0.md) |  |  [optional]
+**m2XlargeX86** | [**InlineResponse20022SpotMarketPricesAms1Baremetal0**](InlineResponse20022SpotMarketPricesAms1Baremetal0.md) |  |  [optional]
 
 
 

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**reservations** | [**List&lt;SelfServiceReservationResponse&gt;**](SelfServiceReservationResponse.md) |  |  [optional]
+**reservations** | [**List&lt;InlineResponse20049Reservations&gt;**](InlineResponse20049Reservations.md) |  |  [optional]
 
 
 

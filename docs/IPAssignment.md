@@ -4,23 +4,23 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**UUID**](UUID.md) |  |  [optional]
-**addressFamily** | **Integer** |  |  [optional]
-**netmask** | **String** |  |  [optional]
-**_public** | **Boolean** |  |  [optional]
-**enabled** | **Boolean** |  |  [optional]
-**cidr** | **Integer** |  |  [optional]
-**management** | **Boolean** |  |  [optional]
-**manageable** | **Boolean** |  |  [optional]
-**globalIp** | **Boolean** |  |  [optional]
-**assignedTo** | [**Href**](Href.md) |  |  [optional]
-**network** | **String** |  |  [optional]
 **address** | **String** |  |  [optional]
-**gateway** | **String** |  |  [optional]
-**href** | **String** |  |  [optional]
+**addressFamily** | **Integer** |  |  [optional]
+**assignedTo** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
+**cidr** | **Integer** |  |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**metro** | [**AuthTokenUser**](AuthTokenUser.md) |  |  [optional]
-**parentBlock** | [**ParentBlock**](ParentBlock.md) |  |  [optional]
+**enabled** | **Boolean** |  |  [optional]
+**gateway** | **String** |  |  [optional]
+**globalIp** | **Boolean** |  |  [optional]
+**href** | **String** |  |  [optional]
+**id** | [**UUID**](UUID.md) |  |  [optional]
+**manageable** | **Boolean** |  |  [optional]
+**management** | **Boolean** |  |  [optional]
+**metro** | [**InlineResponse2006Metro**](InlineResponse2006Metro.md) |  |  [optional]
+**netmask** | **String** |  |  [optional]
+**network** | **String** |  |  [optional]
+**parentBlock** | [**InlineResponse2009ParentBlock**](InlineResponse2009ParentBlock.md) |  |  [optional]
+**_public** | **Boolean** |  |  [optional]
 
 
 

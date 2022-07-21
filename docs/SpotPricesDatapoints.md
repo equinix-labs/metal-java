@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**datapoints** | [**List&lt;SpotPricesDatapointsList&gt;**](SpotPricesDatapointsList.md) |  |  [optional]
+**datapoints** | [**List&lt;List&lt;BigDecimal&gt;&gt;**](List.md) |  |  [optional]
 
 
 

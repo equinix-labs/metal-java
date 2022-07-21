@@ -4,11 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**subject** | **String** |  | 
-**message** | **String** |  | 
-**projectId** | **String** |  |  [optional]
 **deviceId** | **String** |  |  [optional]
+**message** | **String** |  | 
 **priority** | [**PriorityEnum**](#PriorityEnum) |  |  [optional]
+**projectId** | **String** |  |  [optional]
+**subject** | **String** |  | 
 
 
 <a name="PriorityEnum"></a>

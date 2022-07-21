@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**spotMarketRequests** | [**List&lt;SpotMarketRequest&gt;**](SpotMarketRequest.md) |  |  [optional]
+**spotMarketRequests** | [**List&lt;InlineResponse20043SpotMarketRequests&gt;**](InlineResponse20043SpotMarketRequests.md) |  |  [optional]
 
 
 

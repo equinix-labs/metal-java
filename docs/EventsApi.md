@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="findConnectionEvents"></a>
 # **findConnectionEvents**
-> Event findConnectionEvents(connectionId, include, exclude, page, perPage)
+> InlineResponse2007 findConnectionEvents(connectionId, include, exclude, page, perPage)
 
 Retrieve connection events
 
@@ -25,11 +25,11 @@ Returns a list of the connection events
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.EventsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.EventsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -46,7 +46,7 @@ List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Neste
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    Event result = apiInstance.findConnectionEvents(connectionId, include, exclude, page, perPage);
+    InlineResponse2007 result = apiInstance.findConnectionEvents(connectionId, include, exclude, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EventsApi#findConnectionEvents");
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Event**](Event.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -74,12 +74,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findConnectionPortEvents"></a>
 # **findConnectionPortEvents**
-> Event findConnectionPortEvents(connectionId, id, include, exclude, page, perPage)
+> InlineResponse2007 findConnectionPortEvents(connectionId, id, include, exclude, page, perPage)
 
 Retrieve connection port events
 
@@ -88,11 +88,11 @@ Returns a list of the connection port events
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.EventsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.EventsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -110,7 +110,7 @@ List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Neste
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    Event result = apiInstance.findConnectionPortEvents(connectionId, id, include, exclude, page, perPage);
+    InlineResponse2007 result = apiInstance.findConnectionPortEvents(connectionId, id, include, exclude, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EventsApi#findConnectionPortEvents");
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Event**](Event.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -139,12 +139,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findDeviceEvents"></a>
 # **findDeviceEvents**
-> EventList findDeviceEvents(id, include, exclude, page, perPage)
+> InlineResponse20012 findDeviceEvents(id, include, exclude, page, perPage)
 
 Retrieve device&#39;s events
 
@@ -153,11 +153,11 @@ Returns a list of events pertaining to a specific device
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.EventsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.EventsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -174,7 +174,7 @@ List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Neste
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    EventList result = apiInstance.findDeviceEvents(id, include, exclude, page, perPage);
+    InlineResponse20012 result = apiInstance.findDeviceEvents(id, include, exclude, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EventsApi#findDeviceEvents");
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EventList**](EventList.md)
+[**InlineResponse20012**](InlineResponse20012.md)
 
 ### Authorization
 
@@ -202,12 +202,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findEventById"></a>
 # **findEventById**
-> Event findEventById(id, include, exclude)
+> InlineResponse2007 findEventById(id, include, exclude)
 
 Retrieve an event
 
@@ -216,11 +216,11 @@ Returns a single event if the user has access
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.EventsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.EventsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -235,7 +235,7 @@ UUID id = new UUID(); // UUID | Event UUID
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    Event result = apiInstance.findEventById(id, include, exclude);
+    InlineResponse2007 result = apiInstance.findEventById(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EventsApi#findEventById");
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Event**](Event.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -261,12 +261,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findEvents"></a>
 # **findEvents**
-> EventList findEvents(include, exclude, page, perPage)
+> InlineResponse20012 findEvents(include, exclude, page, perPage)
 
 Retrieve current user&#39;s events
 
@@ -275,11 +275,11 @@ Returns a list of the current user’s events
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.EventsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.EventsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -295,7 +295,7 @@ List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Neste
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    EventList result = apiInstance.findEvents(include, exclude, page, perPage);
+    InlineResponse20012 result = apiInstance.findEvents(include, exclude, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EventsApi#findEvents");
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EventList**](EventList.md)
+[**InlineResponse20012**](InlineResponse20012.md)
 
 ### Authorization
 
@@ -322,12 +322,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findOrganizationEvents"></a>
 # **findOrganizationEvents**
-> EventList findOrganizationEvents(id, include, exclude, page, perPage)
+> InlineResponse20012 findOrganizationEvents(id, include, exclude, page, perPage)
 
 Retrieve organization&#39;s events
 
@@ -336,11 +336,11 @@ Returns a list of events for a single organization
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.EventsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.EventsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -357,7 +357,7 @@ List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Neste
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    EventList result = apiInstance.findOrganizationEvents(id, include, exclude, page, perPage);
+    InlineResponse20012 result = apiInstance.findOrganizationEvents(id, include, exclude, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EventsApi#findOrganizationEvents");
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EventList**](EventList.md)
+[**InlineResponse20012**](InlineResponse20012.md)
 
 ### Authorization
 
@@ -385,12 +385,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findProjectEvents"></a>
 # **findProjectEvents**
-> EventList findProjectEvents(id, include, exclude, page, perPage)
+> InlineResponse20012 findProjectEvents(id, include, exclude, page, perPage)
 
 Retrieve project&#39;s events
 
@@ -399,11 +399,11 @@ Returns a list of events for a single project
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.EventsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.EventsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -420,7 +420,7 @@ List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Neste
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    EventList result = apiInstance.findProjectEvents(id, include, exclude, page, perPage);
+    InlineResponse20012 result = apiInstance.findProjectEvents(id, include, exclude, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EventsApi#findProjectEvents");
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EventList**](EventList.md)
+[**InlineResponse20012**](InlineResponse20012.md)
 
 ### Authorization
 
@@ -448,12 +448,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findVirtualCircuitEvents"></a>
 # **findVirtualCircuitEvents**
-> Event findVirtualCircuitEvents(id, include, exclude, page, perPage)
+> InlineResponse2007 findVirtualCircuitEvents(id, include, exclude, page, perPage)
 
 Retrieve connection events
 
@@ -462,11 +462,11 @@ Returns a list of the virtual circuit events
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.EventsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.EventsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -483,7 +483,7 @@ List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Neste
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    Event result = apiInstance.findVirtualCircuitEvents(id, include, exclude, page, perPage);
+    InlineResponse2007 result = apiInstance.findVirtualCircuitEvents(id, include, exclude, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EventsApi#findVirtualCircuitEvents");
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Event**](Event.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -511,6 +511,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="createLicense"></a>
 # **createLicense**
-> License createLicense(id, license)
+> InlineResponse20020 createLicense(id, body)
 
 Create a License
 
@@ -22,11 +22,11 @@ Creates a new license for the given project
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.LicensesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.LicensesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -38,9 +38,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 LicensesApi apiInstance = new LicensesApi();
 UUID id = new UUID(); // UUID | Project UUID
-LicenseCreateInput license = new LicenseCreateInput(); // LicenseCreateInput | License to create
+Body28 body = new Body28(); // Body28 | License to create
 try {
-    License result = apiInstance.createLicense(id, license);
+    InlineResponse20020 result = apiInstance.createLicense(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LicensesApi#createLicense");
@@ -53,11 +53,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Project UUID |
- **license** | [**LicenseCreateInput**](LicenseCreateInput.md)| License to create |
+ **body** | [**Body28**](Body28.md)| License to create |
 
 ### Return type
 
-[**License**](License.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -79,11 +79,11 @@ Deletes a license.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.LicensesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.LicensesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -119,12 +119,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findLicenseById"></a>
 # **findLicenseById**
-> License findLicenseById(id, include, exclude)
+> InlineResponse20020 findLicenseById(id, include, exclude)
 
 Retrieve a license
 
@@ -133,11 +133,11 @@ Returns a license
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.LicensesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.LicensesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -152,7 +152,7 @@ UUID id = new UUID(); // UUID | License UUID
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    License result = apiInstance.findLicenseById(id, include, exclude);
+    InlineResponse20020 result = apiInstance.findLicenseById(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LicensesApi#findLicenseById");
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**License**](License.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -178,12 +178,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findProjectLicenses"></a>
 # **findProjectLicenses**
-> LicenseList findProjectLicenses(id, include, exclude, page, perPage)
+> InlineResponse20042 findProjectLicenses(id, include, exclude, page, perPage)
 
 Retrieve all licenses
 
@@ -192,11 +192,11 @@ Provides a collection of licenses for a given project.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.LicensesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.LicensesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -213,7 +213,7 @@ List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Neste
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    LicenseList result = apiInstance.findProjectLicenses(id, include, exclude, page, perPage);
+    InlineResponse20042 result = apiInstance.findProjectLicenses(id, include, exclude, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LicensesApi#findProjectLicenses");
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LicenseList**](LicenseList.md)
+[**InlineResponse20042**](InlineResponse20042.md)
 
 ### Authorization
 
@@ -241,12 +241,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="updateLicense"></a>
 # **updateLicense**
-> License updateLicense(id, license)
+> InlineResponse20020 updateLicense(id, body)
 
 Update the license
 
@@ -255,11 +255,11 @@ Updates the license.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.LicensesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.LicensesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -271,9 +271,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 LicensesApi apiInstance = new LicensesApi();
 UUID id = new UUID(); // UUID | License UUID
-LicenseUpdateInput license = new LicenseUpdateInput(); // LicenseUpdateInput | License to update
+Body9 body = new Body9(); // Body9 | License to update
 try {
-    License result = apiInstance.updateLicense(id, license);
+    InlineResponse20020 result = apiInstance.updateLicense(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LicensesApi#updateLicense");
@@ -286,11 +286,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| License UUID |
- **license** | [**LicenseUpdateInput**](LicenseUpdateInput.md)| License to update |
+ **body** | [**Body9**](Body9.md)| License to update |
 
 ### Return type
 
-[**License**](License.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 

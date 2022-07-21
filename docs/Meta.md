@@ -4,11 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**first** | [**Href**](Href.md) |  |  [optional]
-**previous** | [**Href**](Href.md) |  |  [optional]
-**self** | [**Href**](Href.md) |  |  [optional]
-**next** | [**Href**](Href.md) |  |  [optional]
-**last** | [**Href**](Href.md) |  |  [optional]
+**first** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
+**last** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
+**next** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
+**previous** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
+**self** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
 **total** | **Integer** |  |  [optional]
 
 

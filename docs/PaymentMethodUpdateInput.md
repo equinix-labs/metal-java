@@ -4,12 +4,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  |  [optional]
-**_default** | **Boolean** |  |  [optional]
+**billingAddress** | **Object** |  |  [optional]
 **cardholderName** | **String** |  |  [optional]
+**_default** | **Boolean** |  |  [optional]
 **expirationMonth** | **String** |  |  [optional]
 **expirationYear** | **Integer** |  |  [optional]
-**billingAddress** | **Object** |  |  [optional]
+**name** | **String** |  |  [optional]
 
 
 

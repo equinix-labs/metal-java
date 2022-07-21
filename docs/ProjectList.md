@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**projects** | [**List&lt;Project&gt;**](Project.md) |  |  [optional]
-**meta** | [**Meta**](Meta.md) |  |  [optional]
+**meta** | [**InlineResponse20012Meta**](InlineResponse20012Meta.md) |  |  [optional]
+**projects** | [**List&lt;InlineResponse2011Project&gt;**](InlineResponse2011Project.md) |  |  [optional]
 
 
 

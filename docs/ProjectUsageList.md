@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**usages** | [**List&lt;ProjectUsage&gt;**](ProjectUsage.md) |  |  [optional]
+**usages** | [**List&lt;InlineResponse20044Usages&gt;**](InlineResponse20044Usages.md) |  |  [optional]
 
 
 

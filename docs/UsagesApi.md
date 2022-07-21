@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="findDeviceUsages"></a>
 # **findDeviceUsages**
-> DeviceUsageList findDeviceUsages(id, createdAfter, createdBefore)
+> InlineResponse20015 findDeviceUsages(id, createdAfter, createdBefore)
 
 Retrieve all usages for device
 
@@ -19,11 +19,11 @@ Returns all usages for a device.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.UsagesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.UsagesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -38,7 +38,7 @@ UUID id = new UUID(); // UUID | Device UUID
 String createdAfter = "createdAfter_example"; // String | Filter usages created after this date
 String createdBefore = "createdBefore_example"; // String | Filter usages created before this date
 try {
-    DeviceUsageList result = apiInstance.findDeviceUsages(id, createdAfter, createdBefore);
+    InlineResponse20015 result = apiInstance.findDeviceUsages(id, createdAfter, createdBefore);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsagesApi#findDeviceUsages");
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeviceUsageList**](DeviceUsageList.md)
+[**InlineResponse20015**](InlineResponse20015.md)
 
 ### Authorization
 
@@ -64,12 +64,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findProjectUsage"></a>
 # **findProjectUsage**
-> ProjectUsageList findProjectUsage(id, createdAfter, createdBefore)
+> InlineResponse20044 findProjectUsage(id, createdAfter, createdBefore)
 
 Retrieve all usages for project
 
@@ -78,11 +78,11 @@ Returns all usages for a project.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.UsagesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.UsagesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -97,7 +97,7 @@ UUID id = new UUID(); // UUID | Project UUID
 String createdAfter = "createdAfter_example"; // String | Filter usages created after this date
 String createdBefore = "createdBefore_example"; // String | Filter usages created before this date
 try {
-    ProjectUsageList result = apiInstance.findProjectUsage(id, createdAfter, createdBefore);
+    InlineResponse20044 result = apiInstance.findProjectUsage(id, createdAfter, createdBefore);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsagesApi#findProjectUsage");
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectUsageList**](ProjectUsageList.md)
+[**InlineResponse20044**](InlineResponse20044.md)
 
 ### Authorization
 
@@ -123,6 +123,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

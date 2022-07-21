@@ -4,17 +4,17 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**UUID**](UUID.md) |  |  [optional]
-**devicesMin** | **Integer** |  |  [optional]
-**devicesMax** | **Integer** |  |  [optional]
-**maxBidPrice** | **Float** |  |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**devicesMax** | **Integer** |  |  [optional]
+**devicesMin** | **Integer** |  |  [optional]
 **endAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**facilities** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
 **href** | **String** |  |  [optional]
-**facilities** | [**Href**](Href.md) |  |  [optional]
-**metro** | [**AuthTokenUser**](AuthTokenUser.md) |  |  [optional]
-**project** | [**Href**](Href.md) |  |  [optional]
-**instances** | [**Href**](Href.md) |  |  [optional]
+**id** | [**UUID**](UUID.md) |  |  [optional]
+**instances** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
+**maxBidPrice** | **Float** |  |  [optional]
+**metro** | [**InlineResponse2006Metro**](InlineResponse2006Metro.md) |  |  [optional]
+**project** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
 
 
 

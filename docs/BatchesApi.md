@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="createDeviceBatch"></a>
 # **createDeviceBatch**
-> BatchesList createDeviceBatch(id, batch)
+> InlineResponse20037 createDeviceBatch(id, body)
 
 Create a devices batch
 
@@ -21,11 +21,11 @@ Creates new devices in batch and provisions them in our datacenter.  Type-specif
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.BatchesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.BatchesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -37,9 +37,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 BatchesApi apiInstance = new BatchesApi();
 UUID id = new UUID(); // UUID | Project UUID
-InstancesBatchCreateInput batch = new InstancesBatchCreateInput(); // InstancesBatchCreateInput | Batches to create
+Body27 body = new Body27(); // Body27 | Batches to create
 try {
-    BatchesList result = apiInstance.createDeviceBatch(id, batch);
+    InlineResponse20037 result = apiInstance.createDeviceBatch(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BatchesApi#createDeviceBatch");
@@ -52,11 +52,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Project UUID |
- **batch** | [**InstancesBatchCreateInput**](InstancesBatchCreateInput.md)| Batches to create |
+ **body** | [**Body27**](Body27.md)| Batches to create |
 
 ### Return type
 
-[**BatchesList**](BatchesList.md)
+[**InlineResponse20037**](InlineResponse20037.md)
 
 ### Authorization
 
@@ -78,11 +78,11 @@ Deletes the Batch.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.BatchesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.BatchesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -120,12 +120,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findBatchById"></a>
 # **findBatchById**
-> Batch findBatchById(id, include, exclude)
+> InlineResponse200 findBatchById(id, include, exclude)
 
 Retrieve a Batch
 
@@ -134,11 +134,11 @@ Returns a Batch
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.BatchesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.BatchesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -153,7 +153,7 @@ UUID id = new UUID(); // UUID | Batch UUID
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    Batch result = apiInstance.findBatchById(id, include, exclude);
+    InlineResponse200 result = apiInstance.findBatchById(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BatchesApi#findBatchById");
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Batch**](Batch.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -179,12 +179,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findBatchesByProject"></a>
 # **findBatchesByProject**
-> BatchesList findBatchesByProject(id, include, exclude)
+> InlineResponse20037 findBatchesByProject(id, include, exclude)
 
 Retrieve all batches by project
 
@@ -193,11 +193,11 @@ Returns all batches for the given project
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.BatchesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.BatchesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -212,7 +212,7 @@ UUID id = new UUID(); // UUID | Project UUID
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    BatchesList result = apiInstance.findBatchesByProject(id, include, exclude);
+    InlineResponse20037 result = apiInstance.findBatchesByProject(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BatchesApi#findBatchesByProject");
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BatchesList**](BatchesList.md)
+[**InlineResponse20037**](InlineResponse20037.md)
 
 ### Authorization
 
@@ -238,6 +238,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

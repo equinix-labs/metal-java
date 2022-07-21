@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="createMetalGateway"></a>
 # **createMetalGateway**
-> MetalGateway createMetalGateway(projectId, metalGateway, page, perPage)
+> Object createMetalGateway(projectId, body, page, perPage)
 
 Create a metal gateway
 
@@ -21,11 +21,11 @@ Create a metal gateway in a project
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.MetalGatewaysApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.MetalGatewaysApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -37,11 +37,11 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 MetalGatewaysApi apiInstance = new MetalGatewaysApi();
 UUID projectId = new UUID(); // UUID | Project UUID
-MetalGatewayInput metalGateway = new MetalGatewayInput(); // MetalGatewayInput | Metal Gateway to create
+Object body = null; // Object | Metal Gateway to create
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    MetalGateway result = apiInstance.createMetalGateway(projectId, metalGateway, page, perPage);
+    Object result = apiInstance.createMetalGateway(projectId, body, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MetalGatewaysApi#createMetalGateway");
@@ -54,13 +54,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | [**UUID**](.md)| Project UUID |
- **metalGateway** | [**MetalGatewayInput**](MetalGatewayInput.md)| Metal Gateway to create |
+ **body** | **Object**| Metal Gateway to create |
  **page** | **Integer**| Page to return | [optional] [default to 1]
  **perPage** | **Integer**| Items returned per page | [optional] [default to 10]
 
 ### Return type
 
-[**MetalGateway**](MetalGateway.md)
+**Object**
 
 ### Authorization
 
@@ -82,11 +82,11 @@ Deletes a specific metal gateway
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.MetalGatewaysApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.MetalGatewaysApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -122,12 +122,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findMetalGatewayById"></a>
 # **findMetalGatewayById**
-> MetalGateway findMetalGatewayById(id)
+> Object findMetalGatewayById(id)
 
 Returns the metal gateway
 
@@ -136,11 +136,11 @@ Returns a specific metal gateway
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.MetalGatewaysApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.MetalGatewaysApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -153,7 +153,7 @@ x_auth_token.setApiKey("YOUR API KEY");
 MetalGatewaysApi apiInstance = new MetalGatewaysApi();
 UUID id = new UUID(); // UUID | Metal Gateway UUID
 try {
-    MetalGateway result = apiInstance.findMetalGatewayById(id);
+    Object result = apiInstance.findMetalGatewayById(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MetalGatewaysApi#findMetalGatewayById");
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MetalGateway**](MetalGateway.md)
+**Object**
 
 ### Authorization
 
@@ -177,12 +177,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findMetalGatewaysByProject"></a>
 # **findMetalGatewaysByProject**
-> MetalGatewayList findMetalGatewaysByProject(projectId, page, perPage)
+> InlineResponse20048 findMetalGatewaysByProject(projectId, page, perPage)
 
 Returns all metal gateways for a project
 
@@ -191,11 +191,11 @@ Return all metal gateways for a project
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.MetalGatewaysApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.MetalGatewaysApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -210,7 +210,7 @@ UUID projectId = new UUID(); // UUID | Project UUID
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    MetalGatewayList result = apiInstance.findMetalGatewaysByProject(projectId, page, perPage);
+    InlineResponse20048 result = apiInstance.findMetalGatewaysByProject(projectId, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MetalGatewaysApi#findMetalGatewaysByProject");
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MetalGatewayList**](MetalGatewayList.md)
+[**InlineResponse20048**](InlineResponse20048.md)
 
 ### Authorization
 
@@ -236,6 +236,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

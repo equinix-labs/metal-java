@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="createProjectSSHKey"></a>
 # **createProjectSSHKey**
-> SSHKey createProjectSSHKey(id, sshKey)
+> InlineResponse20014SshKeys createProjectSSHKey(id, body)
 
 Create a ssh key for the given project
 
@@ -25,11 +25,11 @@ Creates a ssh key.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.SshKeysApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.SshKeysApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -41,9 +41,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 SshKeysApi apiInstance = new SshKeysApi();
 UUID id = new UUID(); // UUID | Project UUID
-SSHKeyCreateInput sshKey = new SSHKeyCreateInput(); // SSHKeyCreateInput | ssh key to create
+Body30 body = new Body30(); // Body30 | ssh key to create
 try {
-    SSHKey result = apiInstance.createProjectSSHKey(id, sshKey);
+    InlineResponse20014SshKeys result = apiInstance.createProjectSSHKey(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SshKeysApi#createProjectSSHKey");
@@ -56,11 +56,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Project UUID |
- **sshKey** | [**SSHKeyCreateInput**](SSHKeyCreateInput.md)| ssh key to create |
+ **body** | [**Body30**](Body30.md)| ssh key to create |
 
 ### Return type
 
-[**SSHKey**](SSHKey.md)
+[**InlineResponse20014SshKeys**](InlineResponse20014SshKeys.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 <a name="createSSHKey"></a>
 # **createSSHKey**
-> SSHKey createSSHKey(sshKey)
+> InlineResponse20014SshKeys createSSHKey(body)
 
 Create a ssh key for the current user
 
@@ -82,11 +82,11 @@ Creates a ssh key.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.SshKeysApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.SshKeysApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -97,9 +97,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 //x_auth_token.setApiKeyPrefix("Token");
 
 SshKeysApi apiInstance = new SshKeysApi();
-SSHKeyCreateInput sshKey = new SSHKeyCreateInput(); // SSHKeyCreateInput | ssh key to create
+Body37 body = new Body37(); // Body37 | ssh key to create
 try {
-    SSHKey result = apiInstance.createSSHKey(sshKey);
+    InlineResponse20014SshKeys result = apiInstance.createSSHKey(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SshKeysApi#createSSHKey");
@@ -111,11 +111,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sshKey** | [**SSHKeyCreateInput**](SSHKeyCreateInput.md)| ssh key to create |
+ **body** | [**Body37**](Body37.md)| ssh key to create |
 
 ### Return type
 
-[**SSHKey**](SSHKey.md)
+[**InlineResponse20014SshKeys**](InlineResponse20014SshKeys.md)
 
 ### Authorization
 
@@ -137,11 +137,11 @@ Deletes the ssh key.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.SshKeysApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.SshKeysApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -177,12 +177,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findDeviceSSHKeys"></a>
 # **findDeviceSSHKeys**
-> SSHKeyList findDeviceSSHKeys(id, searchString, include, exclude)
+> InlineResponse20014 findDeviceSSHKeys(id, searchString, include, exclude)
 
 Retrieve a device&#39;s ssh keys
 
@@ -191,11 +191,11 @@ Returns a collection of the device&#39;s ssh keys.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.SshKeysApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.SshKeysApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -211,7 +211,7 @@ String searchString = "searchString_example"; // String | Search by key, label, 
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    SSHKeyList result = apiInstance.findDeviceSSHKeys(id, searchString, include, exclude);
+    InlineResponse20014 result = apiInstance.findDeviceSSHKeys(id, searchString, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SshKeysApi#findDeviceSSHKeys");
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SSHKeyList**](SSHKeyList.md)
+[**InlineResponse20014**](InlineResponse20014.md)
 
 ### Authorization
 
@@ -238,12 +238,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findProjectSSHKeys"></a>
 # **findProjectSSHKeys**
-> SSHKeyList findProjectSSHKeys(id, searchString, include, exclude)
+> InlineResponse20014 findProjectSSHKeys(id, searchString, include, exclude)
 
 Retrieve a project&#39;s ssh keys
 
@@ -252,11 +252,11 @@ Returns a collection of the project&#39;s ssh keys.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.SshKeysApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.SshKeysApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -272,7 +272,7 @@ String searchString = "searchString_example"; // String | Search by key, label, 
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    SSHKeyList result = apiInstance.findProjectSSHKeys(id, searchString, include, exclude);
+    InlineResponse20014 result = apiInstance.findProjectSSHKeys(id, searchString, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SshKeysApi#findProjectSSHKeys");
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SSHKeyList**](SSHKeyList.md)
+[**InlineResponse20014**](InlineResponse20014.md)
 
 ### Authorization
 
@@ -299,12 +299,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findSSHKeyById"></a>
 # **findSSHKeyById**
-> SSHKey findSSHKeyById(id, include, exclude)
+> InlineResponse20014SshKeys findSSHKeyById(id, include, exclude)
 
 Retrieve a ssh key
 
@@ -313,11 +313,11 @@ Returns a single ssh key if the user has access
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.SshKeysApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.SshKeysApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -332,7 +332,7 @@ UUID id = new UUID(); // UUID | SSH Key UUID
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    SSHKey result = apiInstance.findSSHKeyById(id, include, exclude);
+    InlineResponse20014SshKeys result = apiInstance.findSSHKeyById(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SshKeysApi#findSSHKeyById");
@@ -350,7 +350,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SSHKey**](SSHKey.md)
+[**InlineResponse20014SshKeys**](InlineResponse20014SshKeys.md)
 
 ### Authorization
 
@@ -358,12 +358,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findSSHKeys"></a>
 # **findSSHKeys**
-> SSHKeyList findSSHKeys(searchString, include, exclude)
+> InlineResponse20014 findSSHKeys(searchString, include, exclude)
 
 Retrieve all ssh keys
 
@@ -372,11 +372,11 @@ Returns a collection of the user’s ssh keys.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.SshKeysApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.SshKeysApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -391,7 +391,7 @@ String searchString = "searchString_example"; // String | Search by key, label, 
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    SSHKeyList result = apiInstance.findSSHKeys(searchString, include, exclude);
+    InlineResponse20014 result = apiInstance.findSSHKeys(searchString, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SshKeysApi#findSSHKeys");
@@ -409,7 +409,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SSHKeyList**](SSHKeyList.md)
+[**InlineResponse20014**](InlineResponse20014.md)
 
 ### Authorization
 
@@ -417,12 +417,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="updateSSHKey"></a>
 # **updateSSHKey**
-> SSHKey updateSSHKey(id, sshKey)
+> InlineResponse20014SshKeys updateSSHKey(id, body)
 
 Update the ssh key
 
@@ -431,11 +431,11 @@ Updates the ssh key.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.SshKeysApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.SshKeysApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -447,9 +447,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 SshKeysApi apiInstance = new SshKeysApi();
 UUID id = new UUID(); // UUID | SSH Key UUID
-SSHKeyInput sshKey = new SSHKeyInput(); // SSHKeyInput | ssh key to update
+Body38 body = new Body38(); // Body38 | ssh key to update
 try {
-    SSHKey result = apiInstance.updateSSHKey(id, sshKey);
+    InlineResponse20014SshKeys result = apiInstance.updateSSHKey(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SshKeysApi#updateSSHKey");
@@ -462,11 +462,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| SSH Key UUID |
- **sshKey** | [**SSHKeyInput**](SSHKeyInput.md)| ssh key to update |
+ **body** | [**Body38**](Body38.md)| ssh key to update |
 
 ### Return type
 
-[**SSHKey**](SSHKey.md)
+[**InlineResponse20014SshKeys**](InlineResponse20014SshKeys.md)
 
 ### Authorization
 
