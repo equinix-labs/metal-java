@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **facility** | **String** |  |  [optional]
-**type** | **String** |  |  [optional]
 **name** | **String** |  |  [optional]
 **plan** | **String** |  |  [optional]
 **planVersion** | **String** |  |  [optional]
-**quantity** | **String** |  |  [optional]
-**unit** | **String** |  |  [optional]
 **price** | **String** |  |  [optional]
+**quantity** | **String** |  |  [optional]
 **total** | **String** |  |  [optional]
+**type** | **String** |  |  [optional]
+**unit** | **String** |  |  [optional]
 
 
 

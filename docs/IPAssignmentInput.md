@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **String** |  | 
-**manageable** | **Boolean** |  |  [optional]
 **customdata** | **Object** |  |  [optional]
+**manageable** | **Boolean** |  |  [optional]
 
 
 

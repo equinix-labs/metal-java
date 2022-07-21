@@ -4,12 +4,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**UUID**](UUID.md) |  |  [optional]
 **description** | **String** |  |  [optional]
+**id** | [**UUID**](UUID.md) |  |  [optional]
 **licenseKey** | **String** |  |  [optional]
-**licenseeProduct** | [**Href**](Href.md) |  |  [optional]
+**licenseeProduct** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
+**project** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
 **size** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
-**project** | [**Href**](Href.md) |  |  [optional]
 
 
 

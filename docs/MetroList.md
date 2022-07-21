@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metros** | [**List&lt;Metro&gt;**](Metro.md) |  |  [optional]
+**metros** | [**List&lt;InlineResponse20021Metros&gt;**](InlineResponse20021Metros.md) |  |  [optional]
 
 
 

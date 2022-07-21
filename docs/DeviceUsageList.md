@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**usages** | [**List&lt;DeviceUsage&gt;**](DeviceUsage.md) |  |  [optional]
+**usages** | [**List&lt;InlineResponse20015Usages&gt;**](InlineResponse20015Usages.md) |  |  [optional]
 
 
 

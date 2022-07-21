@@ -4,22 +4,22 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**firstName** | **String** |  | 
-**lastName** | **String** |  | 
-**phoneNumber** | **String** |  |  [optional]
-**timezone** | **String** |  |  [optional]
-**password** | **String** |  |  [optional]
-**level** | **String** |  |  [optional]
-**title** | **String** |  |  [optional]
+**avatar** | **byte[]** |  |  [optional]
 **companyName** | **String** |  |  [optional]
 **companyUrl** | **String** |  |  [optional]
-**verifiedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**socialAccounts** | **Object** |  |  [optional]
-**twoFactorAuth** | **String** |  |  [optional]
-**avatar** | **byte[]** |  |  [optional]
-**emails** | [**List&lt;EmailInput&gt;**](EmailInput.md) |  | 
-**locked** | **Boolean** |  |  [optional]
 **customdata** | **Object** |  |  [optional]
+**emails** | [**List&lt;UsersEmails&gt;**](UsersEmails.md) |  | 
+**firstName** | **String** |  | 
+**lastName** | **String** |  | 
+**level** | **String** |  |  [optional]
+**locked** | **Boolean** |  |  [optional]
+**password** | **String** |  |  [optional]
+**phoneNumber** | **String** |  |  [optional]
+**socialAccounts** | **Object** |  |  [optional]
+**timezone** | **String** |  |  [optional]
+**title** | **String** |  |  [optional]
+**twoFactorAuth** | **String** |  |  [optional]
+**verifiedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 
 
 

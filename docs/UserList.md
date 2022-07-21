@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**users** | [**List&lt;User&gt;**](User.md) |  |  [optional]
-**meta** | [**Meta**](Meta.md) |  |  [optional]
+**meta** | [**InlineResponse20012Meta**](InlineResponse20012Meta.md) |  |  [optional]
+**users** | [**List&lt;InlineResponse20046CreatedBy&gt;**](InlineResponse20046CreatedBy.md) |  |  [optional]
 
 
 

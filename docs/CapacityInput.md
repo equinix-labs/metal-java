@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**servers** | [**List&lt;ServerInfo&gt;**](ServerInfo.md) |  |  [optional]
+**servers** | [**List&lt;CapacityServers&gt;**](CapacityServers.md) |  |  [optional]
 
 
 

@@ -4,14 +4,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**UUID**](UUID.md) |  |  [optional]
-**label** | **String** |  |  [optional]
-**key** | **String** |  |  [optional]
-**fingerprint** | **String** |  |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**entity** | [**Href**](Href.md) |  |  [optional]
+**entity** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
+**fingerprint** | **String** |  |  [optional]
 **href** | **String** |  |  [optional]
+**id** | [**UUID**](UUID.md) |  |  [optional]
+**key** | **String** |  |  [optional]
+**label** | **String** |  |  [optional]
+**updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 
 
 

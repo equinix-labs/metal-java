@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**organizations** | [**List&lt;Organization&gt;**](Organization.md) |  |  [optional]
-**meta** | [**Meta**](Meta.md) |  |  [optional]
+**meta** | [**InlineResponse20012Meta**](InlineResponse20012Meta.md) |  |  [optional]
+**organizations** | [**List&lt;InlineResponse20026Organizations&gt;**](InlineResponse20026Organizations.md) |  |  [optional]
 
 
 

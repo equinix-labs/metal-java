@@ -4,24 +4,23 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**UUID**](UUID.md) |  |  [optional]
-**name** | **String** |  |  [optional]
-**description** | **String** |  |  [optional]
-**website** | **String** |  |  [optional]
-**twitter** | **String** |  |  [optional]
-**logo** | **byte[]** |  |  [optional]
+**address** | [**InlineResponse2009FacilityAddress**](InlineResponse2009FacilityAddress.md) |  |  [optional]
+**billingAddress** | [**InlineResponse2009FacilityAddress**](InlineResponse2009FacilityAddress.md) |  |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**projects** | [**List&lt;Href&gt;**](Href.md) |  |  [optional]
-**members** | [**List&lt;Href&gt;**](Href.md) |  |  [optional]
-**memberships** | [**List&lt;Href&gt;**](Href.md) |  |  [optional]
-**address** | [**Address**](Address.md) |  |  [optional]
-**billingAddress** | [**Address**](Address.md) |  |  [optional]
-**entitlement** | [**Entitlement**](Entitlement.md) |  |  [optional]
-**terms** | **Integer** |  |  [optional]
 **creditAmount** | **Float** |  |  [optional]
 **customdata** | **Object** |  |  [optional]
+**description** | **String** |  |  [optional]
 **enforce2faAt** | [**OffsetDateTime**](OffsetDateTime.md) | Force to all members to have enabled the two factor authentication after that date, unless the value is null |  [optional]
+**id** | [**UUID**](UUID.md) |  |  [optional]
+**logo** | **byte[]** |  |  [optional]
+**members** | [**List&lt;InlineResponse200Devices&gt;**](InlineResponse200Devices.md) |  |  [optional]
+**memberships** | [**List&lt;InlineResponse200Devices&gt;**](InlineResponse200Devices.md) |  |  [optional]
+**name** | **String** |  |  [optional]
+**projects** | [**List&lt;InlineResponse200Devices&gt;**](InlineResponse200Devices.md) |  |  [optional]
+**terms** | **Integer** |  |  [optional]
+**twitter** | **String** |  |  [optional]
+**updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**website** | **String** |  |  [optional]
 
 
 

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**paymentMethods** | [**List&lt;PaymentMethod&gt;**](PaymentMethod.md) |  |  [optional]
+**paymentMethods** | [**List&lt;InlineResponse20028PaymentMethods&gt;**](InlineResponse20028PaymentMethods.md) |  |  [optional]
 
 
 

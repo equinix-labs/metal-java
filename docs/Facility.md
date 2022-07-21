@@ -4,13 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**UUID**](UUID.md) |  |  [optional]
-**name** | **String** |  |  [optional]
+**address** | [**InlineResponse2009FacilityAddress**](InlineResponse2009FacilityAddress.md) |  |  [optional]
 **code** | **String** |  |  [optional]
 **features** | [**List&lt;FeaturesEnum&gt;**](#List&lt;FeaturesEnum&gt;) |  |  [optional]
+**id** | [**UUID**](UUID.md) |  |  [optional]
 **ipRanges** | **List&lt;String&gt;** | IP ranges registered in facility. Can be used for GeoIP location |  [optional]
-**address** | [**Address**](Address.md) |  |  [optional]
-**metro** | [**AuthTokenUser**](AuthTokenUser.md) |  |  [optional]
+**metro** | [**InlineResponse2006Metro**](InlineResponse2006Metro.md) |  |  [optional]
+**name** | **String** |  |  [optional]
 
 
 <a name="List<FeaturesEnum>"></a>

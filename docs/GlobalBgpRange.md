@@ -4,11 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**UUID**](UUID.md) |  |  [optional]
 **addressFamily** | **Integer** |  |  [optional]
-**range** | **String** |  |  [optional]
 **href** | **String** |  |  [optional]
-**project** | [**Href**](Href.md) |  |  [optional]
+**id** | [**UUID**](UUID.md) |  |  [optional]
+**project** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
+**range** | **String** |  |  [optional]
 
 
 

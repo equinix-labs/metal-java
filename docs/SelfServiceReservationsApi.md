@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="createSelfServiceReservation"></a>
 # **createSelfServiceReservation**
-> SelfServiceReservationResponse createSelfServiceReservation(reservation, projectId)
+> InlineResponse20049Reservations createSelfServiceReservation(projectId, body)
 
 Create a reservation
 
@@ -20,11 +20,11 @@ Creates a reservation.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.SelfServiceReservationsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.SelfServiceReservationsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -35,10 +35,10 @@ x_auth_token.setApiKey("YOUR API KEY");
 //x_auth_token.setApiKeyPrefix("Token");
 
 SelfServiceReservationsApi apiInstance = new SelfServiceReservationsApi();
-CreateSelfServiceReservationRequest reservation = new CreateSelfServiceReservationRequest(); // CreateSelfServiceReservationRequest | reservation to create
 UUID projectId = new UUID(); // UUID | Project UUID
+Body36 body = new Body36(); // Body36 | reservation to create
 try {
-    SelfServiceReservationResponse result = apiInstance.createSelfServiceReservation(reservation, projectId);
+    InlineResponse20049Reservations result = apiInstance.createSelfServiceReservation(projectId, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SelfServiceReservationsApi#createSelfServiceReservation");
@@ -50,12 +50,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reservation** | [**CreateSelfServiceReservationRequest**](CreateSelfServiceReservationRequest.md)| reservation to create |
  **projectId** | [**UUID**](.md)| Project UUID |
+ **body** | [**Body36**](Body36.md)| reservation to create |
 
 ### Return type
 
-[**SelfServiceReservationResponse**](SelfServiceReservationResponse.md)
+[**InlineResponse20049Reservations**](InlineResponse20049Reservations.md)
 
 ### Authorization
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 <a name="findSelfServiceReservation"></a>
 # **findSelfServiceReservation**
-> SelfServiceReservationResponse findSelfServiceReservation(id, projectId)
+> InlineResponse20049Reservations findSelfServiceReservation(id, projectId)
 
 Retrieve a reservation
 
@@ -77,11 +77,11 @@ Returns a reservation
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.SelfServiceReservationsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.SelfServiceReservationsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -95,7 +95,7 @@ SelfServiceReservationsApi apiInstance = new SelfServiceReservationsApi();
 UUID id = new UUID(); // UUID | Reservation short_id
 UUID projectId = new UUID(); // UUID | Project UUID
 try {
-    SelfServiceReservationResponse result = apiInstance.findSelfServiceReservation(id, projectId);
+    InlineResponse20049Reservations result = apiInstance.findSelfServiceReservation(id, projectId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SelfServiceReservationsApi#findSelfServiceReservation");
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SelfServiceReservationResponse**](SelfServiceReservationResponse.md)
+[**InlineResponse20049Reservations**](InlineResponse20049Reservations.md)
 
 ### Authorization
 
@@ -120,12 +120,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findSelfServiceReservations"></a>
 # **findSelfServiceReservations**
-> SelfServiceReservationList findSelfServiceReservations(projectId, page, perPage)
+> InlineResponse20049 findSelfServiceReservations(projectId, page, perPage)
 
 Retrieve all reservations
 
@@ -134,11 +134,11 @@ Returns all reservations.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.SelfServiceReservationsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.SelfServiceReservationsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -153,7 +153,7 @@ UUID projectId = new UUID(); // UUID | Project UUID
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    SelfServiceReservationList result = apiInstance.findSelfServiceReservations(projectId, page, perPage);
+    InlineResponse20049 result = apiInstance.findSelfServiceReservations(projectId, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SelfServiceReservationsApi#findSelfServiceReservations");
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SelfServiceReservationList**](SelfServiceReservationList.md)
+[**InlineResponse20049**](InlineResponse20049.md)
 
 ### Authorization
 
@@ -179,6 +179,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

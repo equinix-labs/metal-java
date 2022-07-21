@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="createEmail"></a>
 # **createEmail**
-> Email createEmail(email)
+> InlineResponse201 createEmail(body)
 
 Create an email
 
@@ -21,11 +21,11 @@ Add a new email address to the current user.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.EmailsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.EmailsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -36,9 +36,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 //x_auth_token.setApiKeyPrefix("Token");
 
 EmailsApi apiInstance = new EmailsApi();
-CreateEmailInput email = new CreateEmailInput(); // CreateEmailInput | Email to create
+Body7 body = new Body7(); // Body7 | Email to create
 try {
-    Email result = apiInstance.createEmail(email);
+    InlineResponse201 result = apiInstance.createEmail(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EmailsApi#createEmail");
@@ -50,11 +50,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | [**CreateEmailInput**](CreateEmailInput.md)| Email to create |
+ **body** | [**Body7**](Body7.md)| Email to create |
 
 ### Return type
 
-[**Email**](Email.md)
+[**InlineResponse201**](InlineResponse201.md)
 
 ### Authorization
 
@@ -76,11 +76,11 @@ Deletes the email.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.EmailsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.EmailsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -116,12 +116,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findEmailById"></a>
 # **findEmailById**
-> Email findEmailById(id, include, exclude)
+> InlineResponse201 findEmailById(id, include, exclude)
 
 Retrieve an email
 
@@ -130,11 +130,11 @@ Provides one of the user’s emails.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.EmailsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.EmailsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -149,7 +149,7 @@ UUID id = new UUID(); // UUID | Email UUID
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    Email result = apiInstance.findEmailById(id, include, exclude);
+    InlineResponse201 result = apiInstance.findEmailById(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EmailsApi#findEmailById");
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Email**](Email.md)
+[**InlineResponse201**](InlineResponse201.md)
 
 ### Authorization
 
@@ -175,12 +175,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="updateEmail"></a>
 # **updateEmail**
-> Email updateEmail(id, email)
+> InlineResponse201 updateEmail(id, body)
 
 Update the email
 
@@ -189,11 +189,11 @@ Updates the email.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.EmailsApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.EmailsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -205,9 +205,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 EmailsApi apiInstance = new EmailsApi();
 UUID id = new UUID(); // UUID | Email UUID
-UpdateEmailInput email = new UpdateEmailInput(); // UpdateEmailInput | email to update
+Body8 body = new Body8(); // Body8 | email to update
 try {
-    Email result = apiInstance.updateEmail(id, email);
+    InlineResponse201 result = apiInstance.updateEmail(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EmailsApi#updateEmail");
@@ -220,11 +220,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Email UUID |
- **email** | [**UpdateEmailInput**](UpdateEmailInput.md)| email to update |
+ **body** | [**Body8**](Body8.md)| email to update |
 
 ### Return type
 
-[**Email**](Email.md)
+[**InlineResponse201**](InlineResponse201.md)
 
 ### Authorization
 

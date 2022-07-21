@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **multihop** | **Boolean** | True when the BGP session should be configured as multihop. |  [optional]
 **peerAs** | [**BigDecimal**](BigDecimal.md) | The Peer ASN to use when configuring BGP on your device. |  [optional]
 **peerIps** | **List&lt;String&gt;** | A list of one or more IP addresses to use for the Peer IP section of your BGP configuration. For non-multihop sessions, this will typically be a single gateway address for the device. For multihop sessions, it will be a list of IPs. |  [optional]
-**routesIn** | [**List&lt;BgpNeighborDataRoutesIn&gt;**](BgpNeighborDataRoutesIn.md) | A list of project subnets |  [optional]
-**routesOut** | [**List&lt;BgpNeighborDataRoutesOut&gt;**](BgpNeighborDataRoutesOut.md) | A list of outgoing routes. Only populated if the BGP session has default route enabled. |  [optional]
+**routesIn** | [**List&lt;InlineResponse20010RoutesIn&gt;**](InlineResponse20010RoutesIn.md) | A list of project subnets |  [optional]
+**routesOut** | [**List&lt;InlineResponse20010RoutesOut&gt;**](InlineResponse20010RoutesOut.md) | A list of outgoing routes. Only populated if the BGP session has default route enabled. |  [optional]
 
 
 

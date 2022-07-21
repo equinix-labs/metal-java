@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**servers** | [**List&lt;CapacityCheckPerFacilityInfo&gt;**](CapacityCheckPerFacilityInfo.md) |  |  [optional]
+**servers** | [**List&lt;InlineResponse2003Servers&gt;**](InlineResponse2003Servers.md) |  |  [optional]
 
 
 

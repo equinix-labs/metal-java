@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="findMetros"></a>
 # **findMetros**
-> MetroList findMetros()
+> InlineResponse20021 findMetros()
 
 Retrieve all metros
 
@@ -19,11 +19,11 @@ Provides a listing of available metros
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.MetrosApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.MetrosApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -35,7 +35,7 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 MetrosApi apiInstance = new MetrosApi();
 try {
-    MetroList result = apiInstance.findMetros();
+    InlineResponse20021 result = apiInstance.findMetros();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MetrosApi#findMetros");
@@ -48,7 +48,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MetroList**](MetroList.md)
+[**InlineResponse20021**](InlineResponse20021.md)
 
 ### Authorization
 
@@ -56,12 +56,12 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="getMetro"></a>
 # **getMetro**
-> Metro getMetro(id)
+> InlineResponse20021Metros getMetro(id)
 
 Retrieve a specific Metro&#39;s details
 
@@ -70,11 +70,11 @@ Show the details for a metro, including name, code, and country.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.MetrosApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.MetrosApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -87,7 +87,7 @@ x_auth_token.setApiKey("YOUR API KEY");
 MetrosApi apiInstance = new MetrosApi();
 UUID id = new UUID(); // UUID | Metro UUID
 try {
-    Metro result = apiInstance.getMetro(id);
+    InlineResponse20021Metros result = apiInstance.getMetro(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MetrosApi#getMetro");
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Metro**](Metro.md)
+[**InlineResponse20021Metros**](InlineResponse20021Metros.md)
 
 ### Authorization
 
@@ -111,6 +111,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

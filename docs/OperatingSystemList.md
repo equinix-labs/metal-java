@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**operatingSystems** | [**List&lt;OperatingSystem&gt;**](OperatingSystem.md) |  |  [optional]
+**operatingSystems** | [**List&lt;InlineResponse2009OperatingSystem&gt;**](InlineResponse2009OperatingSystem.md) |  |  [optional]
 
 
 

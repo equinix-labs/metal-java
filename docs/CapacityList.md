@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**capacity** | [**CapacityReport**](CapacityReport.md) |  |  [optional]
+**capacity** | [**InlineResponse2002Capacity**](InlineResponse2002Capacity.md) |  |  [optional]
 
 
 

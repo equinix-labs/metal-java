@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**spotMarketPrices** | [**SpotPricesReport**](SpotPricesReport.md) |  |  [optional]
+**spotMarketPrices** | [**InlineResponse20022SpotMarketPrices**](InlineResponse20022SpotMarketPrices.md) |  |  [optional]
 
 
 

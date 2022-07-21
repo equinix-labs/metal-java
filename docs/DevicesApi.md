@@ -6,20 +6,16 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createBgpSession**](DevicesApi.md#createBgpSession) | **POST** /devices/{id}/bgp/sessions | Create a BGP session
 [**createDevice**](DevicesApi.md#createDevice) | **POST** /projects/{id}/devices | Create a device
-[**createDeviceBatch**](DevicesApi.md#createDeviceBatch) | **POST** /projects/{id}/devices/batch | Create a devices batch
 [**createIPAssignment**](DevicesApi.md#createIPAssignment) | **POST** /devices/{id}/ips | Create an ip assignment
 [**deleteDevice**](DevicesApi.md#deleteDevice) | **DELETE** /devices/{id} | Delete the device
 [**findBgpSessions**](DevicesApi.md#findBgpSessions) | **GET** /devices/{id}/bgp/sessions | Retrieve all BGP sessions
 [**findDeviceById**](DevicesApi.md#findDeviceById) | **GET** /devices/{id} | Retrieve a device
 [**findDeviceCustomdata**](DevicesApi.md#findDeviceCustomdata) | **GET** /devices/{id}/customdata | Retrieve the custom metadata of an instance
-[**findDeviceEvents**](DevicesApi.md#findDeviceEvents) | **GET** /devices/{id}/events | Retrieve device&#39;s events
-[**findDeviceUsages**](DevicesApi.md#findDeviceUsages) | **GET** /devices/{id}/usages | Retrieve all usages for device
 [**findIPAssignmentCustomdata**](DevicesApi.md#findIPAssignmentCustomdata) | **GET** /devices/{instance_id}/ips/{id}/customdata | Retrieve the custom metadata of an IP Assignment
 [**findIPAssignments**](DevicesApi.md#findIPAssignments) | **GET** /devices/{id}/ips | Retrieve all ip assignments
 [**findInstanceBandwidth**](DevicesApi.md#findInstanceBandwidth) | **GET** /devices/{id}/bandwidth | Retrieve an instance bandwidth
 [**findOrganizationDevices**](DevicesApi.md#findOrganizationDevices) | **GET** /organizations/{id}/devices | Retrieve all devices of an organization
 [**findProjectDevices**](DevicesApi.md#findProjectDevices) | **GET** /projects/{id}/devices | Retrieve all devices of a project
-[**findProjectUsage**](DevicesApi.md#findProjectUsage) | **GET** /projects/{id}/usages | Retrieve all usages for project
 [**findTraffic**](DevicesApi.md#findTraffic) | **GET** /devices/{id}/traffic | Retrieve device traffic
 [**getBgpNeighborData**](DevicesApi.md#getBgpNeighborData) | **GET** /devices/{id}/bgp/neighbors | Retrieve BGP neighbor data for this device
 [**performAction**](DevicesApi.md#performAction) | **POST** /devices/{id}/actions | Perform an action
@@ -28,7 +24,7 @@ Method | HTTP request | Description
 
 <a name="createBgpSession"></a>
 # **createBgpSession**
-> BgpSession createBgpSession(id, bgpSession)
+> InlineResponse2001 createBgpSession(id, body)
 
 Create a BGP session
 
@@ -37,11 +33,11 @@ Creates a BGP session.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -53,9 +49,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 DevicesApi apiInstance = new DevicesApi();
 UUID id = new UUID(); // UUID | Device UUID
-BGPSessionInput bgpSession = new BGPSessionInput(); // BGPSessionInput | BGP session to create
+Body4 body = new Body4(); // Body4 | BGP session to create
 try {
-    BgpSession result = apiInstance.createBgpSession(id, bgpSession);
+    InlineResponse2001 result = apiInstance.createBgpSession(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DevicesApi#createBgpSession");
@@ -68,11 +64,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Device UUID |
- **bgpSession** | [**BGPSessionInput**](BGPSessionInput.md)| BGP session to create |
+ **body** | [**Body4**](Body4.md)| BGP session to create |
 
 ### Return type
 
-[**BgpSession**](BgpSession.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -85,20 +81,20 @@ Name | Type | Description  | Notes
 
 <a name="createDevice"></a>
 # **createDevice**
-> Device createDevice(id, device)
+> InlineResponse2009 createDevice(id, body)
 
 Create a device
 
-Creates a new device and provisions it in the specified location.        Device type-specific options are accepted.  For example, &#x60;baremetal&#x60; devices accept &#x60;operating_system&#x60;, &#x60;hostname&#x60;, and &#x60;plan&#x60;. These parameters may not be accepted for other device types. The default device type is &#x60;baremetal&#x60;.
+Creates a new device and provisions it in the specified location.  Device type-specific options are accepted.  For example, &#x60;baremetal&#x60; devices accept &#x60;operating_system&#x60;, &#x60;hostname&#x60;, and &#x60;plan&#x60;. These parameters may not be accepted for other device types. The default device type is &#x60;baremetal&#x60;.
 
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -110,9 +106,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 DevicesApi apiInstance = new DevicesApi();
 UUID id = new UUID(); // UUID | Project UUID
-DeviceCreateInput device = new DeviceCreateInput(); // DeviceCreateInput | Device to create
+object body = new object(); // object | Device to create
 try {
-    Device result = apiInstance.createDevice(id, device);
+    InlineResponse2009 result = apiInstance.createDevice(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DevicesApi#createDevice");
@@ -125,68 +121,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Project UUID |
- **device** | [**DeviceCreateInput**](DeviceCreateInput.md)| Device to create |
+ **body** | [**object**](.md)| Device to create |
 
 ### Return type
 
-[**Device**](Device.md)
-
-### Authorization
-
-[x_auth_token](../README.md#x_auth_token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="createDeviceBatch"></a>
-# **createDeviceBatch**
-> BatchesList createDeviceBatch(id, batch)
-
-Create a devices batch
-
-Creates new devices in batch and provisions them in our datacenter.  Type-specific options (such as operating_system for baremetal devices) should be included in the main data structure alongside hostname and plan.  The features attribute allows you to optionally specify what features your server should have.  For example, if you require a server with a TPM chip, you may specify &#x60;{ \&quot;features\&quot;: { \&quot;tpm\&quot;: \&quot;required\&quot; } }&#x60; (or &#x60;{ \&quot;features\&quot;: [\&quot;tpm\&quot;] }&#x60; in shorthand).  The request will fail if there are no available servers matching your criteria. Alternatively, if you do not require a certain feature, but would prefer to be assigned a server with that feature if there are any available, you may specify that feature with a preferred value (see the example request below).  The request will not fail if we have no servers with that feature in our inventory.  The facilities attribute specifies in what datacenter you wish to create the device.  You can either specify a single facility &#x60;{ \&quot;facility\&quot;: \&quot;f1\&quot; }&#x60; , or you can instruct to create the device in the best available datacenter &#x60;{ \&quot;facility\&quot;: \&quot;any\&quot; }&#x60;. Additionally it is possible to set a prioritized location selection.  For example &#x60;{ \&quot;facility\&quot;: [\&quot;f3\&quot;, \&quot;f2\&quot;, \&quot;any\&quot;] }&#x60; will try to assign to the facility f3, if there are no available f2, and so on. If \&quot;any\&quot; is not specified for \&quot;facility\&quot;, the request will fail unless it can assign in the selected locations.  With &#x60;{ \&quot;facility\&quot;: \&quot;any\&quot; }&#x60; you have the option to diversify to indicate how many facilities you are willing to be spread across. For this purpose use parameter: &#x60;facility_diversity_level &#x3D; N&#x60;.  For example:  &#x60;{ \&quot;facilities\&quot;: [\&quot;sjc1\&quot;, \&quot;ewr1\&quot;, \&quot;any\&quot;] ,  \&quot;facility_diversity_level\&quot; &#x3D; 1, \&quot;quantity\&quot; &#x3D; 10 }&#x60; will assign 10 devices into the same facility, trying first in \&quot;sjc1\&quot;, and if there aren’t available, it will try in  \&quot;ewr1\&quot;, otherwise any other.  The &#x60;ip_addresses&#x60; attribute will allow you to specify the addresses you want created with your device.  To maintain backwards compatibility, If the attribute is not sent in the request, it will be treated as if &#x60;{ \&quot;ip_addresses\&quot;: [{ \&quot;address_family\&quot;: 4, \&quot;public\&quot;: true }, { \&quot;address_family\&quot;: 4, \&quot;public\&quot;: false }, { \&quot;address_family\&quot;: 6, \&quot;public\&quot;: true }] }&#x60; was sent.  The private IPv4 address is required and always need to be sent in the array. Not all operating systems support no public IPv4 address, so in those cases you will receive an error message.  For example, to only configure your server with a private IPv4 address, you can send &#x60;{ \&quot;ip_addresses\&quot;: [{ \&quot;address_family\&quot;: 4, \&quot;public\&quot;: false }] }&#x60;.  Note: when specifying a subnet size larger than a /30, you will need to supply the UUID(s) of existing ip_reservations in your project to assign IPs from.  For example, &#x60;{ \&quot;ip_addresses\&quot;: [..., {\&quot;address_family\&quot;: 4, \&quot;public\&quot;: true, \&quot;ip_reservations\&quot;: [\&quot;uuid1\&quot;, \&quot;uuid2\&quot;]}] }&#x60;  To access a server without public IPs, you can use our Out-of-Band console access (SOS) or use another server with public IPs as a proxy.
-
-### Example
-```java
-// Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: x_auth_token
-ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
-x_auth_token.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//x_auth_token.setApiKeyPrefix("Token");
-
-DevicesApi apiInstance = new DevicesApi();
-UUID id = new UUID(); // UUID | Project UUID
-InstancesBatchCreateInput batch = new InstancesBatchCreateInput(); // InstancesBatchCreateInput | Batches to create
-try {
-    BatchesList result = apiInstance.createDeviceBatch(id, batch);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DevicesApi#createDeviceBatch");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md)| Project UUID |
- **batch** | [**InstancesBatchCreateInput**](InstancesBatchCreateInput.md)| Batches to create |
-
-### Return type
-
-[**BatchesList**](BatchesList.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 
@@ -199,7 +138,7 @@ Name | Type | Description  | Notes
 
 <a name="createIPAssignment"></a>
 # **createIPAssignment**
-> IPAssignment createIPAssignment(id, ipAssignment)
+> InlineResponse2009IpAddresses createIPAssignment(id, body)
 
 Create an ip assignment
 
@@ -208,11 +147,11 @@ Creates an ip assignment for a device.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -224,9 +163,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 DevicesApi apiInstance = new DevicesApi();
 UUID id = new UUID(); // UUID | Device UUID
-IPAssignmentInput ipAssignment = new IPAssignmentInput(); // IPAssignmentInput | IPAssignment to create
+Body5 body = new Body5(); // Body5 | IPAssignment to create
 try {
-    IPAssignment result = apiInstance.createIPAssignment(id, ipAssignment);
+    InlineResponse2009IpAddresses result = apiInstance.createIPAssignment(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DevicesApi#createIPAssignment");
@@ -239,11 +178,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Device UUID |
- **ipAssignment** | [**IPAssignmentInput**](IPAssignmentInput.md)| IPAssignment to create |
+ **body** | [**Body5**](Body5.md)| IPAssignment to create |
 
 ### Return type
 
-[**IPAssignment**](IPAssignment.md)
+[**InlineResponse2009IpAddresses**](InlineResponse2009IpAddresses.md)
 
 ### Authorization
 
@@ -265,11 +204,11 @@ Deletes a device and deprovisions it in our datacenter.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -307,12 +246,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findBgpSessions"></a>
 # **findBgpSessions**
-> BgpSessionList findBgpSessions(id)
+> InlineResponse20011 findBgpSessions(id)
 
 Retrieve all BGP sessions
 
@@ -321,11 +260,11 @@ Provides a listing of available BGP sessions for the device.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -338,7 +277,7 @@ x_auth_token.setApiKey("YOUR API KEY");
 DevicesApi apiInstance = new DevicesApi();
 UUID id = new UUID(); // UUID | Device UUID
 try {
-    BgpSessionList result = apiInstance.findBgpSessions(id);
+    InlineResponse20011 result = apiInstance.findBgpSessions(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DevicesApi#findBgpSessions");
@@ -354,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BgpSessionList**](BgpSessionList.md)
+[**InlineResponse20011**](InlineResponse20011.md)
 
 ### Authorization
 
@@ -362,12 +301,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findDeviceById"></a>
 # **findDeviceById**
-> Device findDeviceById(id, include, exclude)
+> InlineResponse2009 findDeviceById(id, include, exclude)
 
 Retrieve a device
 
@@ -376,11 +315,11 @@ Type-specific options (such as facility for baremetal devices) will be included 
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -395,7 +334,7 @@ UUID id = new UUID(); // UUID | Device UUID
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    Device result = apiInstance.findDeviceById(id, include, exclude);
+    InlineResponse2009 result = apiInstance.findDeviceById(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DevicesApi#findDeviceById");
@@ -413,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Device**](Device.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 
@@ -421,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findDeviceCustomdata"></a>
@@ -435,11 +374,11 @@ Provides the custom metadata stored for this instance in json format
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -475,129 +414,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="findDeviceEvents"></a>
-# **findDeviceEvents**
-> EventList findDeviceEvents(id, include, exclude, page, perPage)
-
-Retrieve device&#39;s events
-
-Returns a list of events pertaining to a specific device
-
-### Example
-```java
-// Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: x_auth_token
-ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
-x_auth_token.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//x_auth_token.setApiKeyPrefix("Token");
-
-DevicesApi apiInstance = new DevicesApi();
-UUID id = new UUID(); // UUID | Device UUID
-List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
-Integer page = 1; // Integer | Page to return
-Integer perPage = 10; // Integer | Items returned per page
-try {
-    EventList result = apiInstance.findDeviceEvents(id, include, exclude, page, perPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DevicesApi#findDeviceEvents");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md)| Device UUID |
- **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional]
- **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional]
- **page** | **Integer**| Page to return | [optional] [default to 1]
- **perPage** | **Integer**| Items returned per page | [optional] [default to 10]
-
-### Return type
-
-[**EventList**](EventList.md)
-
-### Authorization
-
-[x_auth_token](../README.md#x_auth_token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="findDeviceUsages"></a>
-# **findDeviceUsages**
-> DeviceUsageList findDeviceUsages(id, createdAfter, createdBefore)
-
-Retrieve all usages for device
-
-Returns all usages for a device.
-
-### Example
-```java
-// Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: x_auth_token
-ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
-x_auth_token.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//x_auth_token.setApiKeyPrefix("Token");
-
-DevicesApi apiInstance = new DevicesApi();
-UUID id = new UUID(); // UUID | Device UUID
-String createdAfter = "createdAfter_example"; // String | Filter usages created after this date
-String createdBefore = "createdBefore_example"; // String | Filter usages created before this date
-try {
-    DeviceUsageList result = apiInstance.findDeviceUsages(id, createdAfter, createdBefore);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DevicesApi#findDeviceUsages");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md)| Device UUID |
- **createdAfter** | **String**| Filter usages created after this date | [optional]
- **createdBefore** | **String**| Filter usages created before this date | [optional]
-
-### Return type
-
-[**DeviceUsageList**](DeviceUsageList.md)
-
-### Authorization
-
-[x_auth_token](../README.md#x_auth_token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findIPAssignmentCustomdata"></a>
@@ -611,11 +428,11 @@ Provides the custom metadata stored for this IP Assignment in json format
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -653,12 +470,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findIPAssignments"></a>
 # **findIPAssignments**
-> IPAssignmentList findIPAssignments(id, include, exclude)
+> InlineResponse20013 findIPAssignments(id, include, exclude)
 
 Retrieve all ip assignments
 
@@ -667,11 +484,11 @@ Returns all ip assignments for a device.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -686,7 +503,7 @@ UUID id = new UUID(); // UUID | Device UUID
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    IPAssignmentList result = apiInstance.findIPAssignments(id, include, exclude);
+    InlineResponse20013 result = apiInstance.findIPAssignments(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DevicesApi#findIPAssignments");
@@ -704,7 +521,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IPAssignmentList**](IPAssignmentList.md)
+[**InlineResponse20013**](InlineResponse20013.md)
 
 ### Authorization
 
@@ -712,7 +529,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findInstanceBandwidth"></a>
@@ -726,11 +543,11 @@ Retrieve an instance bandwidth for a given period of time.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -770,12 +587,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findOrganizationDevices"></a>
 # **findOrganizationDevices**
-> DeviceList findOrganizationDevices(id, include, exclude, page, perPage)
+> InlineResponse20027 findOrganizationDevices(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage)
 
 Retrieve all devices of an organization
 
@@ -784,11 +601,11 @@ Provides a collection of devices for a given organization.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -800,12 +617,17 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 DevicesApi apiInstance = new DevicesApi();
 UUID id = new UUID(); // UUID | Organization UUID
+String facility = "facility_example"; // String | Filter by device facility
+String hostname = "hostname_example"; // String | Filter by partial hostname
+Boolean reserved = true; // Boolean | Filter only reserved instances
+String tag = "tag_example"; // String | Filter by device tag
+String type = "type_example"; // String | Filter by instance type (ondemand,spot,reserved)
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    DeviceList result = apiInstance.findOrganizationDevices(id, include, exclude, page, perPage);
+    InlineResponse20027 result = apiInstance.findOrganizationDevices(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DevicesApi#findOrganizationDevices");
@@ -818,6 +640,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Organization UUID |
+ **facility** | **String**| Filter by device facility | [optional]
+ **hostname** | **String**| Filter by partial hostname | [optional]
+ **reserved** | **Boolean**| Filter only reserved instances | [optional]
+ **tag** | **String**| Filter by device tag | [optional]
+ **type** | **String**| Filter by instance type (ondemand,spot,reserved) | [optional]
  **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional]
  **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional]
  **page** | **Integer**| Page to return | [optional] [default to 1]
@@ -825,7 +652,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeviceList**](DeviceList.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -833,12 +660,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findProjectDevices"></a>
 # **findProjectDevices**
-> DeviceList findProjectDevices(id, include, exclude, page, perPage)
+> InlineResponse20027 findProjectDevices(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage)
 
 Retrieve all devices of a project
 
@@ -847,11 +674,11 @@ Provides a collection of devices for a given project.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -863,12 +690,17 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 DevicesApi apiInstance = new DevicesApi();
 UUID id = new UUID(); // UUID | Project UUID
+String facility = "facility_example"; // String | Filter by device facility
+String hostname = "hostname_example"; // String | Filter by partial hostname
+Boolean reserved = true; // Boolean | Filter only reserved instances
+String tag = "tag_example"; // String | Filter by device tag
+String type = "type_example"; // String | Filter by instance type (ondemand,spot,reserved)
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 Integer page = 1; // Integer | Page to return
 Integer perPage = 10; // Integer | Items returned per page
 try {
-    DeviceList result = apiInstance.findProjectDevices(id, include, exclude, page, perPage);
+    InlineResponse20027 result = apiInstance.findProjectDevices(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DevicesApi#findProjectDevices");
@@ -881,6 +713,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Project UUID |
+ **facility** | **String**| Filter by device facility | [optional]
+ **hostname** | **String**| Filter by partial hostname | [optional]
+ **reserved** | **Boolean**| Filter only reserved instances | [optional]
+ **tag** | **String**| Filter by device tag | [optional]
+ **type** | **String**| Filter by instance type (ondemand,spot,reserved) | [optional]
  **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional]
  **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional]
  **page** | **Integer**| Page to return | [optional] [default to 1]
@@ -888,7 +725,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeviceList**](DeviceList.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -896,71 +733,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="findProjectUsage"></a>
-# **findProjectUsage**
-> ProjectUsageList findProjectUsage(id, createdAfter, createdBefore)
-
-Retrieve all usages for project
-
-Returns all usages for a project.
-
-### Example
-```java
-// Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: x_auth_token
-ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
-x_auth_token.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//x_auth_token.setApiKeyPrefix("Token");
-
-DevicesApi apiInstance = new DevicesApi();
-UUID id = new UUID(); // UUID | Project UUID
-String createdAfter = "createdAfter_example"; // String | Filter usages created after this date
-String createdBefore = "createdBefore_example"; // String | Filter usages created before this date
-try {
-    ProjectUsageList result = apiInstance.findProjectUsage(id, createdAfter, createdBefore);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DevicesApi#findProjectUsage");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md)| Project UUID |
- **createdAfter** | **String**| Filter usages created after this date | [optional]
- **createdBefore** | **String**| Filter usages created before this date | [optional]
-
-### Return type
-
-[**ProjectUsageList**](ProjectUsageList.md)
-
-### Authorization
-
-[x_auth_token](../README.md#x_auth_token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findTraffic"></a>
 # **findTraffic**
-> findTraffic(id, direction, timeframe, interval, bucket)
+> findTraffic(id, direction, body, interval, bucket)
 
 Retrieve device traffic
 
@@ -969,11 +747,11 @@ Returns traffic for a specific device.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -986,11 +764,11 @@ x_auth_token.setApiKey("YOUR API KEY");
 DevicesApi apiInstance = new DevicesApi();
 UUID id = new UUID(); // UUID | Device UUID
 String direction = "direction_example"; // String | Traffic direction
-Timeframe timeframe = new Timeframe(); // Timeframe | Traffic timeframe
+Body6 body = new Body6(); // Body6 | Traffic timeframe
 String interval = "interval_example"; // String | Traffic interval
 String bucket = "bucket_example"; // String | Traffic bucket
 try {
-    apiInstance.findTraffic(id, direction, timeframe, interval, bucket);
+    apiInstance.findTraffic(id, direction, body, interval, bucket);
 } catch (ApiException e) {
     System.err.println("Exception when calling DevicesApi#findTraffic");
     e.printStackTrace();
@@ -1003,7 +781,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Device UUID |
  **direction** | **String**| Traffic direction | [enum: inbound, outbound]
- **timeframe** | [**Timeframe**](Timeframe.md)| Traffic timeframe |
+ **body** | [**Body6**](Body6.md)| Traffic timeframe |
  **interval** | **String**| Traffic interval | [optional] [enum: minute, hour, day, week, month, year, hour_of_day, day_of_week, day_of_month, month_of_year]
  **bucket** | **String**| Traffic bucket | [optional] [enum: internal, external]
 
@@ -1022,7 +800,7 @@ null (empty response body)
 
 <a name="getBgpNeighborData"></a>
 # **getBgpNeighborData**
-> BgpSessionNeighbors getBgpNeighborData(id)
+> InlineResponse20010 getBgpNeighborData(id)
 
 Retrieve BGP neighbor data for this device
 
@@ -1031,11 +809,11 @@ Provides a summary of the BGP neighbor data associated to the BGP sessions for t
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -1048,7 +826,7 @@ x_auth_token.setApiKey("YOUR API KEY");
 DevicesApi apiInstance = new DevicesApi();
 UUID id = new UUID(); // UUID | Device UUID
 try {
-    BgpSessionNeighbors result = apiInstance.getBgpNeighborData(id);
+    InlineResponse20010 result = apiInstance.getBgpNeighborData(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DevicesApi#getBgpNeighborData");
@@ -1064,7 +842,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BgpSessionNeighbors**](BgpSessionNeighbors.md)
+[**InlineResponse20010**](InlineResponse20010.md)
 
 ### Authorization
 
@@ -1072,7 +850,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="performAction"></a>
@@ -1086,11 +864,11 @@ Performs an action for the given device.  Possible actions include: power_on, po
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -1128,12 +906,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="updateDevice"></a>
 # **updateDevice**
-> Device updateDevice(id, device)
+> InlineResponse2009 updateDevice(id, body)
 
 Update the device
 
@@ -1142,11 +920,11 @@ Updates the device.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.DevicesApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.DevicesApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -1158,9 +936,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 DevicesApi apiInstance = new DevicesApi();
 UUID id = new UUID(); // UUID | Device UUID
-DeviceUpdateInput device = new DeviceUpdateInput(); // DeviceUpdateInput | Facility to update
+Body3 body = new Body3(); // Body3 | Facility to update
 try {
-    Device result = apiInstance.updateDevice(id, device);
+    InlineResponse2009 result = apiInstance.updateDevice(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DevicesApi#updateDevice");
@@ -1173,11 +951,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Device UUID |
- **device** | [**DeviceUpdateInput**](DeviceUpdateInput.md)| Facility to update |
+ **body** | [**Body3**](Body3.md)| Facility to update |
 
 ### Return type
 
-[**Device**](Device.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 

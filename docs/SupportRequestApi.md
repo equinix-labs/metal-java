@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="requestSuppert"></a>
 # **requestSuppert**
-> requestSuppert(supportRequest)
+> requestSuppert(body)
 
 Create a support ticket
 
@@ -18,11 +18,11 @@ Support Ticket.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.SupportRequestApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.SupportRequestApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -33,9 +33,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 //x_auth_token.setApiKeyPrefix("Token");
 
 SupportRequestApi apiInstance = new SupportRequestApi();
-SupportRequestInput supportRequest = new SupportRequestInput(); // SupportRequestInput | Support Request to create
+Body39 body = new Body39(); // Body39 | Support Request to create
 try {
-    apiInstance.requestSuppert(supportRequest);
+    apiInstance.requestSuppert(body);
 } catch (ApiException e) {
     System.err.println("Exception when calling SupportRequestApi#requestSuppert");
     e.printStackTrace();
@@ -46,7 +46,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **supportRequest** | [**SupportRequestInput**](SupportRequestInput.md)| Support Request to create |
+ **body** | [**Body39**](Body39.md)| Support Request to create |
 
 ### Return type
 

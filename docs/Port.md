@@ -4,13 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**UUID**](UUID.md) |  |  [optional]
-**type** | **String** |  |  [optional]
-**name** | **String** |  |  [optional]
 **data** | **Object** |  |  [optional]
 **disbondOperationSupported** | **Boolean** | Indicates whether or not the bond can be broken on the port (when applicable). |  [optional]
-**virtualNetworks** | [**List&lt;Href&gt;**](Href.md) |  |  [optional]
 **href** | **String** |  |  [optional]
+**id** | [**UUID**](UUID.md) |  |  [optional]
+**name** | **String** |  |  [optional]
+**type** | **String** |  |  [optional]
+**virtualNetworks** | [**List&lt;InlineResponse200Devices&gt;**](InlineResponse200Devices.md) |  |  [optional]
 
 
 

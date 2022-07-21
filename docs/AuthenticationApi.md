@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="createAPIKey"></a>
 # **createAPIKey**
-> AuthToken createAPIKey(authToken)
+> InlineResponse20036ApiKeys createAPIKey(body)
 
 Create a API key
 
@@ -23,11 +23,11 @@ Creates a API key for the current user.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.AuthenticationApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.AuthenticationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -38,9 +38,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 //x_auth_token.setApiKeyPrefix("Token");
 
 AuthenticationApi apiInstance = new AuthenticationApi();
-AuthTokenInput authToken = new AuthTokenInput(); // AuthTokenInput | API key to create
+Body41 body = new Body41(); // Body41 | API key to create
 try {
-    AuthToken result = apiInstance.createAPIKey(authToken);
+    InlineResponse20036ApiKeys result = apiInstance.createAPIKey(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AuthenticationApi#createAPIKey");
@@ -52,11 +52,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authToken** | [**AuthTokenInput**](AuthTokenInput.md)| API key to create |
+ **body** | [**Body41**](Body41.md)| API key to create |
 
 ### Return type
 
-[**AuthToken**](AuthToken.md)
+[**InlineResponse20036ApiKeys**](InlineResponse20036ApiKeys.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 <a name="createProjectAPIKey"></a>
 # **createProjectAPIKey**
-> AuthToken createProjectAPIKey(id, authToken)
+> InlineResponse20036ApiKeys createProjectAPIKey(id, body)
 
 Create an API key for a project.
 
@@ -78,11 +78,11 @@ Creates an API key for a project.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.AuthenticationApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.AuthenticationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -94,9 +94,9 @@ x_auth_token.setApiKey("YOUR API KEY");
 
 AuthenticationApi apiInstance = new AuthenticationApi();
 UUID id = new UUID(); // UUID | Project UUID
-AuthTokenInput authToken = new AuthTokenInput(); // AuthTokenInput | API Key to create
+Body25 body = new Body25(); // Body25 | API Key to create
 try {
-    AuthToken result = apiInstance.createProjectAPIKey(id, authToken);
+    InlineResponse20036ApiKeys result = apiInstance.createProjectAPIKey(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AuthenticationApi#createProjectAPIKey");
@@ -109,11 +109,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**UUID**](.md)| Project UUID |
- **authToken** | [**AuthTokenInput**](AuthTokenInput.md)| API Key to create |
+ **body** | [**Body25**](Body25.md)| API Key to create |
 
 ### Return type
 
-[**AuthToken**](AuthToken.md)
+[**InlineResponse20036ApiKeys**](InlineResponse20036ApiKeys.md)
 
 ### Authorization
 
@@ -135,11 +135,11 @@ Deletes the API key.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.AuthenticationApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.AuthenticationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -175,7 +175,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="deleteUserAPIKey"></a>
@@ -189,11 +189,11 @@ Deletes the current user API key.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.AuthenticationApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.AuthenticationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -229,12 +229,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findAPIKeys"></a>
 # **findAPIKeys**
-> AuthTokenList findAPIKeys(include, exclude)
+> InlineResponse20036 findAPIKeys(include, exclude)
 
 Retrieve all user API keys
 
@@ -243,11 +243,11 @@ Returns all API keys for the current user.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.AuthenticationApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.AuthenticationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -261,7 +261,7 @@ AuthenticationApi apiInstance = new AuthenticationApi();
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    AuthTokenList result = apiInstance.findAPIKeys(include, exclude);
+    InlineResponse20036 result = apiInstance.findAPIKeys(include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AuthenticationApi#findAPIKeys");
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AuthTokenList**](AuthTokenList.md)
+[**InlineResponse20036**](InlineResponse20036.md)
 
 ### Authorization
 
@@ -286,12 +286,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="findProjectAPIKeys"></a>
 # **findProjectAPIKeys**
-> AuthTokenList findProjectAPIKeys(id, include, exclude)
+> InlineResponse20036 findProjectAPIKeys(id, include, exclude)
 
 Retrieve all API keys for the project.
 
@@ -300,11 +300,11 @@ Returns all API keys for a specific project.
 ### Example
 ```java
 // Import classes:
-//import net.packet.client.ApiClient;
-//import net.packet.client.ApiException;
-//import net.packet.client.Configuration;
-//import net.packet.client.auth.*;
-//import net.packet.client.api.AuthenticationApi;
+//import com.equinix.openapi.metal.v1.ApiClient;
+//import com.equinix.openapi.metal.v1.ApiException;
+//import com.equinix.openapi.metal.v1.Configuration;
+//import com.equinix.openapi.metal.v1.auth.*;
+//import com.equinix.openapi.metal.v1.api.AuthenticationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -319,7 +319,7 @@ UUID id = new UUID(); // UUID | Project UUID
 List<String> include = Arrays.asList("include_example"); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
 List<String> exclude = Arrays.asList("exclude_example"); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
 try {
-    AuthTokenList result = apiInstance.findProjectAPIKeys(id, include, exclude);
+    InlineResponse20036 result = apiInstance.findProjectAPIKeys(id, include, exclude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AuthenticationApi#findProjectAPIKeys");
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AuthTokenList**](AuthTokenList.md)
+[**InlineResponse20036**](InlineResponse20036.md)
 
 ### Authorization
 
@@ -345,6 +345,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

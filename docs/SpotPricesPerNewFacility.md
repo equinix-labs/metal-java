@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**baremetal1e** | [**SpotPricesPerBaremetal**](SpotPricesPerBaremetal.md) |  |  [optional]
+**baremetal1e** | [**InlineResponse20022SpotMarketPricesAms1Baremetal0**](InlineResponse20022SpotMarketPricesAms1Baremetal0.md) |  |  [optional]
 
 
 

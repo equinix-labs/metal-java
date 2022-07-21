@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sshKeys** | [**List&lt;SSHKey&gt;**](SSHKey.md) |  |  [optional]
+**sshKeys** | [**List&lt;InlineResponse20014SshKeys&gt;**](InlineResponse20014SshKeys.md) |  |  [optional]
 
 
 

@@ -4,14 +4,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**UUID**](UUID.md) |  |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**id** | [**UUID**](UUID.md) |  |  [optional]
 **_native** | **Boolean** |  |  [optional]
+**port** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
 **state** | [**StateEnum**](#StateEnum) |  |  [optional]
+**updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**virtualNetwork** | [**InlineResponse200Devices**](InlineResponse200Devices.md) |  |  [optional]
 **vlan** | **Integer** |  |  [optional]
-**port** | [**Href**](Href.md) |  |  [optional]
-**virtualNetwork** | [**Href**](Href.md) |  |  [optional]
 
 
 <a name="StateEnum"></a>

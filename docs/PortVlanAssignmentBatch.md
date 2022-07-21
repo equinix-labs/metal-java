@@ -4,14 +4,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**UUID**](UUID.md) |  |  [optional]
+**createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **errorMessages** | **List&lt;String&gt;** |  |  [optional]
+**id** | [**UUID**](UUID.md) |  |  [optional]
+**port** | [**InlineResponse20033**](InlineResponse20033.md) |  |  [optional]
 **quantity** | **Integer** |  |  [optional]
 **state** | [**StateEnum**](#StateEnum) |  |  [optional]
-**createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**port** | [**Port**](Port.md) |  |  [optional]
-**vlanAssignments** | [**List&lt;PortVlanAssignmentBatchVlanAssignments&gt;**](PortVlanAssignmentBatchVlanAssignments.md) |  |  [optional]
+**vlanAssignments** | [**List&lt;InlineResponse20035VlanAssignments&gt;**](InlineResponse20035VlanAssignments.md) |  |  [optional]
 
 
 <a name="StateEnum"></a>

@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**devices** | [**List&lt;Device&gt;**](Device.md) |  |  [optional]
-**meta** | [**Meta**](Meta.md) |  |  [optional]
+**devices** | [**List&lt;InlineResponse2009&gt;**](InlineResponse2009.md) |  |  [optional]
+**meta** | [**InlineResponse20012Meta**](InlineResponse20012Meta.md) |  |  [optional]
 
 
 

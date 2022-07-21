@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pricesHistory** | [**SpotPricesDatapoints**](SpotPricesDatapoints.md) |  |  [optional]
+**pricesHistory** | [**InlineResponse20023PricesHistory**](InlineResponse20023PricesHistory.md) |  |  [optional]
 
 
 
