@@ -101,7 +101,7 @@ public class VirtualCircuit {
   @SerializedName(SERIALIZED_NAME_VNID)
   private Integer vnid;
 
-  public VirtualCircuit() { 
+  public VirtualCircuit() {
   }
 
   public VirtualCircuit bill(Boolean bill) {
@@ -384,6 +384,41 @@ public class VirtualCircuit {
     this.vnid = vnid;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public VirtualCircuit putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -406,12 +441,13 @@ public class VirtualCircuit {
         Objects.equals(this.status, virtualCircuit.status) &&
         Objects.equals(this.tags, virtualCircuit.tags) &&
         Objects.equals(this.virtualNetwork, virtualCircuit.virtualNetwork) &&
-        Objects.equals(this.vnid, virtualCircuit.vnid);
+        Objects.equals(this.vnid, virtualCircuit.vnid)&&
+        Objects.equals(this.additionalProperties, virtualCircuit.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bill, description, id, name, nniVlan, port, project, speed, status, tags, virtualNetwork, vnid);
+    return Objects.hash(bill, description, id, name, nniVlan, port, project, speed, status, tags, virtualNetwork, vnid, additionalProperties);
   }
 
   @Override
@@ -430,6 +466,7 @@ public class VirtualCircuit {
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    virtualNetwork: ").append(toIndentedString(virtualNetwork)).append("\n");
     sb.append("    vnid: ").append(toIndentedString(vnid)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -495,46 +532,38 @@ public class VirtualCircuit {
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!VirtualCircuit.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `VirtualCircuit` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : VirtualCircuit.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonPrimitive()) {
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (jsonObj.get("name") != null && !jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the optional field `port`
-      if (jsonObj.getAsJsonObject("port") != null) {
+      if (jsonObj.get("port") != null && !jsonObj.get("port").isJsonNull()) {
         Href.validateJsonObject(jsonObj.getAsJsonObject("port"));
       }
       // validate the optional field `project`
-      if (jsonObj.getAsJsonObject("project") != null) {
+      if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
         Href.validateJsonObject(jsonObj.getAsJsonObject("project"));
       }
-      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonPrimitive()) {
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       // ensure the json data is an array
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       // validate the optional field `virtual_network`
-      if (jsonObj.getAsJsonObject("virtual_network") != null) {
+      if (jsonObj.get("virtual_network") != null && !jsonObj.get("virtual_network").isJsonNull()) {
         Href.validateJsonObject(jsonObj.getAsJsonObject("virtual_network"));
       }
   }
@@ -554,6 +583,23 @@ public class VirtualCircuit {
            @Override
            public void write(JsonWriter out, VirtualCircuit value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -561,7 +607,25 @@ public class VirtualCircuit {
            public VirtualCircuit read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             VirtualCircuit instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

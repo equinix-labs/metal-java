@@ -85,7 +85,7 @@ public class AuthToken {
   @SerializedName(SERIALIZED_NAME_USER)
   private AuthTokenUser user;
 
-  public AuthToken() { 
+  public AuthToken() {
   }
 
   public AuthToken createdAt(OffsetDateTime createdAt) {
@@ -271,6 +271,41 @@ public class AuthToken {
     this.user = user;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public AuthToken putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -289,12 +324,13 @@ public class AuthToken {
         Objects.equals(this.readOnly, authToken.readOnly) &&
         Objects.equals(this.token, authToken.token) &&
         Objects.equals(this.updatedAt, authToken.updatedAt) &&
-        Objects.equals(this.user, authToken.user);
+        Objects.equals(this.user, authToken.user)&&
+        Objects.equals(this.additionalProperties, authToken.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, description, id, project, readOnly, token, updatedAt, user);
+    return Objects.hash(createdAt, description, id, project, readOnly, token, updatedAt, user, additionalProperties);
   }
 
   @Override
@@ -309,6 +345,7 @@ public class AuthToken {
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    user: ").append(toIndentedString(user)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -358,29 +395,21 @@ public class AuthToken {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AuthToken is not found in the empty JSON string", AuthToken.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!AuthToken.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AuthToken` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonPrimitive()) {
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // validate the optional field `project`
-      if (jsonObj.getAsJsonObject("project") != null) {
+      if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
         AuthTokenProject.validateJsonObject(jsonObj.getAsJsonObject("project"));
       }
-      if (jsonObj.get("token") != null && !jsonObj.get("token").isJsonPrimitive()) {
+      if ((jsonObj.get("token") != null && !jsonObj.get("token").isJsonNull()) && !jsonObj.get("token").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token").toString()));
       }
       // validate the optional field `user`
-      if (jsonObj.getAsJsonObject("user") != null) {
+      if (jsonObj.get("user") != null && !jsonObj.get("user").isJsonNull()) {
         AuthTokenUser.validateJsonObject(jsonObj.getAsJsonObject("user"));
       }
   }
@@ -400,6 +429,23 @@ public class AuthToken {
            @Override
            public void write(JsonWriter out, AuthToken value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -407,7 +453,25 @@ public class AuthToken {
            public AuthToken read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             AuthToken instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

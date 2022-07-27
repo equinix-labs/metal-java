@@ -20,10 +20,10 @@ SPEC_PATCHED_FILE:=spec/oas3.patched.json
 OPENAPI_CONFIG:=spec/oas3.config.json
 OPENAPI_GENERATED_CLIENT=equinix-openapi-metal/
 
-OPENAPI_CODEGEN_TAG=v6.0.1
+OPENAPI_CODEGEN_TAG=latest
+OPENAPI_CODEGEN_BRANCH=master
 
 # Patches
-
 SPEC_FETCHED_PATCHES=patches/spec.fetched.json
 
 ##
@@ -36,7 +36,7 @@ OPENAPI_GIT_JAR=modules/openapi-generator-cli/target/openapi-generator-cli.jar
 git_run: pre-common clone git_generate post-common
 
 clone:
-	git clone ${OPENAPI_GIT_URL} --branch ${OPENAPI_CODEGEN_TAG} --single-branch
+	git clone ${OPENAPI_GIT_URL} --branch ${OPENAPI_CODEGEN_BRANCH} --single-branch
 	cd ${OPENAPI_GIT_DIR}; mvn clean package
 
 git_generate:

@@ -118,7 +118,7 @@ public class UserCreateInput {
   @SerializedName(SERIALIZED_NAME_VERIFIED_AT)
   private OffsetDateTime verifiedAt;
 
-  public UserCreateInput() { 
+  public UserCreateInput() {
   }
 
   public UserCreateInput avatar(File avatar) {
@@ -493,6 +493,41 @@ public class UserCreateInput {
     this.verifiedAt = verifiedAt;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public UserCreateInput putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -519,12 +554,13 @@ public class UserCreateInput {
         Objects.equals(this.timezone, userCreateInput.timezone) &&
         Objects.equals(this.title, userCreateInput.title) &&
         Objects.equals(this.twoFactorAuth, userCreateInput.twoFactorAuth) &&
-        Objects.equals(this.verifiedAt, userCreateInput.verifiedAt);
+        Objects.equals(this.verifiedAt, userCreateInput.verifiedAt)&&
+        Objects.equals(this.additionalProperties, userCreateInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(avatar, companyName, companyUrl, customdata, emails, firstName, lastName, level, locked, password, phoneNumber, socialAccounts, timezone, title, twoFactorAuth, verifiedAt);
+    return Objects.hash(avatar, companyName, companyUrl, customdata, emails, firstName, lastName, level, locked, password, phoneNumber, socialAccounts, timezone, title, twoFactorAuth, verifiedAt, additionalProperties);
   }
 
   @Override
@@ -547,6 +583,7 @@ public class UserCreateInput {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    twoFactorAuth: ").append(toIndentedString(twoFactorAuth)).append("\n");
     sb.append("    verifiedAt: ").append(toIndentedString(verifiedAt)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -608,24 +645,16 @@ public class UserCreateInput {
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!UserCreateInput.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UserCreateInput` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : UserCreateInput.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (jsonObj.get("company_name") != null && !jsonObj.get("company_name").isJsonPrimitive()) {
+      if ((jsonObj.get("company_name") != null && !jsonObj.get("company_name").isJsonNull()) && !jsonObj.get("company_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `company_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company_name").toString()));
       }
-      if (jsonObj.get("company_url") != null && !jsonObj.get("company_url").isJsonPrimitive()) {
+      if ((jsonObj.get("company_url") != null && !jsonObj.get("company_url").isJsonNull()) && !jsonObj.get("company_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `company_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company_url").toString()));
       }
       JsonArray jsonArrayemails = jsonObj.getAsJsonArray("emails");
@@ -640,28 +669,28 @@ public class UserCreateInput {
           EmailInput.validateJsonObject(jsonArrayemails.get(i).getAsJsonObject());
         };
       }
-      if (jsonObj.get("first_name") != null && !jsonObj.get("first_name").isJsonPrimitive()) {
+      if ((jsonObj.get("first_name") != null && !jsonObj.get("first_name").isJsonNull()) && !jsonObj.get("first_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `first_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("first_name").toString()));
       }
-      if (jsonObj.get("last_name") != null && !jsonObj.get("last_name").isJsonPrimitive()) {
+      if ((jsonObj.get("last_name") != null && !jsonObj.get("last_name").isJsonNull()) && !jsonObj.get("last_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `last_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("last_name").toString()));
       }
-      if (jsonObj.get("level") != null && !jsonObj.get("level").isJsonPrimitive()) {
+      if ((jsonObj.get("level") != null && !jsonObj.get("level").isJsonNull()) && !jsonObj.get("level").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `level` to be a primitive type in the JSON string but got `%s`", jsonObj.get("level").toString()));
       }
-      if (jsonObj.get("password") != null && !jsonObj.get("password").isJsonPrimitive()) {
+      if ((jsonObj.get("password") != null && !jsonObj.get("password").isJsonNull()) && !jsonObj.get("password").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("password").toString()));
       }
-      if (jsonObj.get("phone_number") != null && !jsonObj.get("phone_number").isJsonPrimitive()) {
+      if ((jsonObj.get("phone_number") != null && !jsonObj.get("phone_number").isJsonNull()) && !jsonObj.get("phone_number").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `phone_number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phone_number").toString()));
       }
-      if (jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonPrimitive()) {
+      if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
       }
-      if (jsonObj.get("title") != null && !jsonObj.get("title").isJsonPrimitive()) {
+      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
       }
-      if (jsonObj.get("two_factor_auth") != null && !jsonObj.get("two_factor_auth").isJsonPrimitive()) {
+      if ((jsonObj.get("two_factor_auth") != null && !jsonObj.get("two_factor_auth").isJsonNull()) && !jsonObj.get("two_factor_auth").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `two_factor_auth` to be a primitive type in the JSON string but got `%s`", jsonObj.get("two_factor_auth").toString()));
       }
   }
@@ -681,6 +710,23 @@ public class UserCreateInput {
            @Override
            public void write(JsonWriter out, UserCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -688,7 +734,25 @@ public class UserCreateInput {
            public UserCreateInput read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             UserCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

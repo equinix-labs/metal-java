@@ -6,5 +6,6 @@
    "invokerPackage": "com.equinix.openapi",
    "modelPackage": "com.equinix.openapi.metal.v1.model",
    "apiPackage": "com.equinix.openapi.metal.v1.api",
-   "hideGenerationTimestamp": true
+   "hideGenerationTimestamp": true,
+   "disallowAdditionalPropertiesIfNotPresent": false
 }
