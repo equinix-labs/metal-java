@@ -1,6 +1,9 @@
-# Java client for Equinix Metal
+# OpenAPI Generated Java Client for Equinix Metal
 
-This is experimental. Don't use it in production. Examples demonstrate that this client is usable. Please submit patches and open issues with your experience. This repo contains java code generated from customized Equinix Metal oas3. The client is generated using the java client support built into the swagger-generator.
+[![Experimental](https://img.shields.io/badge/Stability-Experimental-red.svg)](https://github.com/equinix-labs/equinix-labs/blob/main/uniform-standards.md)
+
+> **[Experimental](https://github.com/equinix-labs/equinix-labs/blob/main/experimental-statement.md)**
+> This is experimental. Don't use it in production. Examples demonstrate that this client is usable. Please submit patches and open issues with your experience. This repo contains java code generated from customized Equinix Metal oas3. The client is generated using the java client support built into the swagger-generator.
 
 ## Prerequisite:
 
