@@ -15,7 +15,6 @@ package com.equinix.openapi.metal.v1.model;
 
 import com.equinix.openapi.metal.v1.model.Address;
 import com.equinix.openapi.metal.v1.model.DeviceMetro;
-import com.equinix.openapi.metal.v1.model.Facility;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;

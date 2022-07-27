@@ -56,7 +56,7 @@ public class AuthTokenList {
   @SerializedName(SERIALIZED_NAME_API_KEYS)
   private List<AuthToken> apiKeys = null;
 
-  public AuthTokenList() { 
+  public AuthTokenList() {
   }
 
   public AuthTokenList apiKeys(List<AuthToken> apiKeys) {
@@ -89,6 +89,41 @@ public class AuthTokenList {
     this.apiKeys = apiKeys;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public AuthTokenList putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -100,12 +135,13 @@ public class AuthTokenList {
       return false;
     }
     AuthTokenList authTokenList = (AuthTokenList) o;
-    return Objects.equals(this.apiKeys, authTokenList.apiKeys);
+    return Objects.equals(this.apiKeys, authTokenList.apiKeys)&&
+        Objects.equals(this.additionalProperties, authTokenList.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiKeys);
+    return Objects.hash(apiKeys, additionalProperties);
   }
 
   @Override
@@ -113,6 +149,7 @@ public class AuthTokenList {
     StringBuilder sb = new StringBuilder();
     sb.append("class AuthTokenList {\n");
     sb.append("    apiKeys: ").append(toIndentedString(apiKeys)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,14 +192,6 @@ public class AuthTokenList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AuthTokenList is not found in the empty JSON string", AuthTokenList.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!AuthTokenList.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AuthTokenList` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
       JsonArray jsonArrayapiKeys = jsonObj.getAsJsonArray("api_keys");
       if (jsonArrayapiKeys != null) {
         // ensure the json data is an array
@@ -192,6 +221,23 @@ public class AuthTokenList {
            @Override
            public void write(JsonWriter out, AuthTokenList value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -199,7 +245,25 @@ public class AuthTokenList {
            public AuthTokenList read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             AuthTokenList instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

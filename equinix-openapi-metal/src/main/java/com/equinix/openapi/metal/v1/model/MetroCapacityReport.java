@@ -130,7 +130,7 @@ public class MetroCapacityReport {
   @SerializedName(SERIALIZED_NAME_TY)
   private CapacityPerFacility ty;
 
-  public MetroCapacityReport() { 
+  public MetroCapacityReport() {
   }
 
   public MetroCapacityReport am(CapacityPerFacility am) {
@@ -592,6 +592,41 @@ public class MetroCapacityReport {
     this.ty = ty;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public MetroCapacityReport putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -622,12 +657,13 @@ public class MetroCapacityReport {
         Objects.equals(this.sv, metroCapacityReport.sv) &&
         Objects.equals(this.sy, metroCapacityReport.sy) &&
         Objects.equals(this.tr, metroCapacityReport.tr) &&
-        Objects.equals(this.ty, metroCapacityReport.ty);
+        Objects.equals(this.ty, metroCapacityReport.ty)&&
+        Objects.equals(this.additionalProperties, metroCapacityReport.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(am, at, ch, da, dc, fr, hk, la, ld, md, ny, pa, se, sg, sl, sp, sv, sy, tr, ty);
+    return Objects.hash(am, at, ch, da, dc, fr, hk, la, ld, md, ny, pa, se, sg, sl, sp, sv, sy, tr, ty, additionalProperties);
   }
 
   @Override
@@ -654,6 +690,7 @@ public class MetroCapacityReport {
     sb.append("    sy: ").append(toIndentedString(sy)).append("\n");
     sb.append("    tr: ").append(toIndentedString(tr)).append("\n");
     sb.append("    ty: ").append(toIndentedString(ty)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -715,92 +752,84 @@ public class MetroCapacityReport {
           throw new IllegalArgumentException(String.format("The required field(s) %s in MetroCapacityReport is not found in the empty JSON string", MetroCapacityReport.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!MetroCapacityReport.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MetroCapacityReport` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
       // validate the optional field `am`
-      if (jsonObj.getAsJsonObject("am") != null) {
+      if (jsonObj.get("am") != null && !jsonObj.get("am").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("am"));
       }
       // validate the optional field `at`
-      if (jsonObj.getAsJsonObject("at") != null) {
+      if (jsonObj.get("at") != null && !jsonObj.get("at").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("at"));
       }
       // validate the optional field `ch`
-      if (jsonObj.getAsJsonObject("ch") != null) {
+      if (jsonObj.get("ch") != null && !jsonObj.get("ch").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("ch"));
       }
       // validate the optional field `da`
-      if (jsonObj.getAsJsonObject("da") != null) {
+      if (jsonObj.get("da") != null && !jsonObj.get("da").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("da"));
       }
       // validate the optional field `dc`
-      if (jsonObj.getAsJsonObject("dc") != null) {
+      if (jsonObj.get("dc") != null && !jsonObj.get("dc").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("dc"));
       }
       // validate the optional field `fr`
-      if (jsonObj.getAsJsonObject("fr") != null) {
+      if (jsonObj.get("fr") != null && !jsonObj.get("fr").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("fr"));
       }
       // validate the optional field `hk`
-      if (jsonObj.getAsJsonObject("hk") != null) {
+      if (jsonObj.get("hk") != null && !jsonObj.get("hk").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("hk"));
       }
       // validate the optional field `la`
-      if (jsonObj.getAsJsonObject("la") != null) {
+      if (jsonObj.get("la") != null && !jsonObj.get("la").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("la"));
       }
       // validate the optional field `ld`
-      if (jsonObj.getAsJsonObject("ld") != null) {
+      if (jsonObj.get("ld") != null && !jsonObj.get("ld").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("ld"));
       }
       // validate the optional field `md`
-      if (jsonObj.getAsJsonObject("md") != null) {
+      if (jsonObj.get("md") != null && !jsonObj.get("md").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("md"));
       }
       // validate the optional field `ny`
-      if (jsonObj.getAsJsonObject("ny") != null) {
+      if (jsonObj.get("ny") != null && !jsonObj.get("ny").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("ny"));
       }
       // validate the optional field `pa`
-      if (jsonObj.getAsJsonObject("pa") != null) {
+      if (jsonObj.get("pa") != null && !jsonObj.get("pa").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("pa"));
       }
       // validate the optional field `se`
-      if (jsonObj.getAsJsonObject("se") != null) {
+      if (jsonObj.get("se") != null && !jsonObj.get("se").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("se"));
       }
       // validate the optional field `sg`
-      if (jsonObj.getAsJsonObject("sg") != null) {
+      if (jsonObj.get("sg") != null && !jsonObj.get("sg").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("sg"));
       }
       // validate the optional field `sl`
-      if (jsonObj.getAsJsonObject("sl") != null) {
+      if (jsonObj.get("sl") != null && !jsonObj.get("sl").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("sl"));
       }
       // validate the optional field `sp`
-      if (jsonObj.getAsJsonObject("sp") != null) {
+      if (jsonObj.get("sp") != null && !jsonObj.get("sp").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("sp"));
       }
       // validate the optional field `sv`
-      if (jsonObj.getAsJsonObject("sv") != null) {
+      if (jsonObj.get("sv") != null && !jsonObj.get("sv").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("sv"));
       }
       // validate the optional field `sy`
-      if (jsonObj.getAsJsonObject("sy") != null) {
+      if (jsonObj.get("sy") != null && !jsonObj.get("sy").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("sy"));
       }
       // validate the optional field `tr`
-      if (jsonObj.getAsJsonObject("tr") != null) {
+      if (jsonObj.get("tr") != null && !jsonObj.get("tr").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("tr"));
       }
       // validate the optional field `ty`
-      if (jsonObj.getAsJsonObject("ty") != null) {
+      if (jsonObj.get("ty") != null && !jsonObj.get("ty").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("ty"));
       }
   }
@@ -820,6 +849,23 @@ public class MetroCapacityReport {
            @Override
            public void write(JsonWriter out, MetroCapacityReport value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -827,7 +873,25 @@ public class MetroCapacityReport {
            public MetroCapacityReport read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             MetroCapacityReport instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

@@ -107,7 +107,7 @@ public class CapacityReport {
   @SerializedName(SERIALIZED_NAME_YYZ1)
   private CapacityPerNewFacility yyz1;
 
-  public CapacityReport() { 
+  public CapacityReport() {
   }
 
   public CapacityReport ams1(CapacityPerFacility ams1) {
@@ -431,6 +431,41 @@ public class CapacityReport {
     this.yyz1 = yyz1;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public CapacityReport putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -455,12 +490,13 @@ public class CapacityReport {
         Objects.equals(this.sin1, capacityReport.sin1) &&
         Objects.equals(this.sjc1, capacityReport.sjc1) &&
         Objects.equals(this.syd1, capacityReport.syd1) &&
-        Objects.equals(this.yyz1, capacityReport.yyz1);
+        Objects.equals(this.yyz1, capacityReport.yyz1)&&
+        Objects.equals(this.additionalProperties, capacityReport.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ams1, atl1, dfw1, ewr1, fra1, iad1, lax1, nrt1, ord1, sea1, sin1, sjc1, syd1, yyz1);
+    return Objects.hash(ams1, atl1, dfw1, ewr1, fra1, iad1, lax1, nrt1, ord1, sea1, sin1, sjc1, syd1, yyz1, additionalProperties);
   }
 
   @Override
@@ -481,6 +517,7 @@ public class CapacityReport {
     sb.append("    sjc1: ").append(toIndentedString(sjc1)).append("\n");
     sb.append("    syd1: ").append(toIndentedString(syd1)).append("\n");
     sb.append("    yyz1: ").append(toIndentedString(yyz1)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -536,68 +573,60 @@ public class CapacityReport {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CapacityReport is not found in the empty JSON string", CapacityReport.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!CapacityReport.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CapacityReport` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
       // validate the optional field `ams1`
-      if (jsonObj.getAsJsonObject("ams1") != null) {
+      if (jsonObj.get("ams1") != null && !jsonObj.get("ams1").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("ams1"));
       }
       // validate the optional field `atl1`
-      if (jsonObj.getAsJsonObject("atl1") != null) {
+      if (jsonObj.get("atl1") != null && !jsonObj.get("atl1").isJsonNull()) {
         CapacityPerNewFacility.validateJsonObject(jsonObj.getAsJsonObject("atl1"));
       }
       // validate the optional field `dfw1`
-      if (jsonObj.getAsJsonObject("dfw1") != null) {
+      if (jsonObj.get("dfw1") != null && !jsonObj.get("dfw1").isJsonNull()) {
         CapacityPerNewFacility.validateJsonObject(jsonObj.getAsJsonObject("dfw1"));
       }
       // validate the optional field `ewr1`
-      if (jsonObj.getAsJsonObject("ewr1") != null) {
+      if (jsonObj.get("ewr1") != null && !jsonObj.get("ewr1").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("ewr1"));
       }
       // validate the optional field `fra1`
-      if (jsonObj.getAsJsonObject("fra1") != null) {
+      if (jsonObj.get("fra1") != null && !jsonObj.get("fra1").isJsonNull()) {
         CapacityPerNewFacility.validateJsonObject(jsonObj.getAsJsonObject("fra1"));
       }
       // validate the optional field `iad1`
-      if (jsonObj.getAsJsonObject("iad1") != null) {
+      if (jsonObj.get("iad1") != null && !jsonObj.get("iad1").isJsonNull()) {
         CapacityPerNewFacility.validateJsonObject(jsonObj.getAsJsonObject("iad1"));
       }
       // validate the optional field `lax1`
-      if (jsonObj.getAsJsonObject("lax1") != null) {
+      if (jsonObj.get("lax1") != null && !jsonObj.get("lax1").isJsonNull()) {
         CapacityPerNewFacility.validateJsonObject(jsonObj.getAsJsonObject("lax1"));
       }
       // validate the optional field `nrt1`
-      if (jsonObj.getAsJsonObject("nrt1") != null) {
+      if (jsonObj.get("nrt1") != null && !jsonObj.get("nrt1").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("nrt1"));
       }
       // validate the optional field `ord1`
-      if (jsonObj.getAsJsonObject("ord1") != null) {
+      if (jsonObj.get("ord1") != null && !jsonObj.get("ord1").isJsonNull()) {
         CapacityPerNewFacility.validateJsonObject(jsonObj.getAsJsonObject("ord1"));
       }
       // validate the optional field `sea1`
-      if (jsonObj.getAsJsonObject("sea1") != null) {
+      if (jsonObj.get("sea1") != null && !jsonObj.get("sea1").isJsonNull()) {
         CapacityPerNewFacility.validateJsonObject(jsonObj.getAsJsonObject("sea1"));
       }
       // validate the optional field `sin1`
-      if (jsonObj.getAsJsonObject("sin1") != null) {
+      if (jsonObj.get("sin1") != null && !jsonObj.get("sin1").isJsonNull()) {
         CapacityPerNewFacility.validateJsonObject(jsonObj.getAsJsonObject("sin1"));
       }
       // validate the optional field `sjc1`
-      if (jsonObj.getAsJsonObject("sjc1") != null) {
+      if (jsonObj.get("sjc1") != null && !jsonObj.get("sjc1").isJsonNull()) {
         CapacityPerFacility.validateJsonObject(jsonObj.getAsJsonObject("sjc1"));
       }
       // validate the optional field `syd1`
-      if (jsonObj.getAsJsonObject("syd1") != null) {
+      if (jsonObj.get("syd1") != null && !jsonObj.get("syd1").isJsonNull()) {
         CapacityPerNewFacility.validateJsonObject(jsonObj.getAsJsonObject("syd1"));
       }
       // validate the optional field `yyz1`
-      if (jsonObj.getAsJsonObject("yyz1") != null) {
+      if (jsonObj.get("yyz1") != null && !jsonObj.get("yyz1").isJsonNull()) {
         CapacityPerNewFacility.validateJsonObject(jsonObj.getAsJsonObject("yyz1"));
       }
   }
@@ -617,6 +646,23 @@ public class CapacityReport {
            @Override
            public void write(JsonWriter out, CapacityReport value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -624,7 +670,25 @@ public class CapacityReport {
            public CapacityReport read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             CapacityReport instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

@@ -86,7 +86,7 @@ public class SpotPricesPerFacility {
   @SerializedName(SERIALIZED_NAME_M2_XLARGE_X86)
   private SpotPricesPerBaremetal m2XlargeX86;
 
-  public SpotPricesPerFacility() { 
+  public SpotPricesPerFacility() {
   }
 
   public SpotPricesPerFacility baremetal0(SpotPricesPerBaremetal baremetal0) {
@@ -295,6 +295,41 @@ public class SpotPricesPerFacility {
     this.m2XlargeX86 = m2XlargeX86;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public SpotPricesPerFacility putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -314,12 +349,13 @@ public class SpotPricesPerFacility {
         Objects.equals(this.baremetal3, spotPricesPerFacility.baremetal3) &&
         Objects.equals(this.baremetalS, spotPricesPerFacility.baremetalS) &&
         Objects.equals(this.c2MediumX86, spotPricesPerFacility.c2MediumX86) &&
-        Objects.equals(this.m2XlargeX86, spotPricesPerFacility.m2XlargeX86);
+        Objects.equals(this.m2XlargeX86, spotPricesPerFacility.m2XlargeX86)&&
+        Objects.equals(this.additionalProperties, spotPricesPerFacility.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(baremetal0, baremetal1, baremetal2, baremetal2a, baremetal2a2, baremetal3, baremetalS, c2MediumX86, m2XlargeX86);
+    return Objects.hash(baremetal0, baremetal1, baremetal2, baremetal2a, baremetal2a2, baremetal3, baremetalS, c2MediumX86, m2XlargeX86, additionalProperties);
   }
 
   @Override
@@ -335,6 +371,7 @@ public class SpotPricesPerFacility {
     sb.append("    baremetalS: ").append(toIndentedString(baremetalS)).append("\n");
     sb.append("    c2MediumX86: ").append(toIndentedString(c2MediumX86)).append("\n");
     sb.append("    m2XlargeX86: ").append(toIndentedString(m2XlargeX86)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -385,48 +422,40 @@ public class SpotPricesPerFacility {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SpotPricesPerFacility is not found in the empty JSON string", SpotPricesPerFacility.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!SpotPricesPerFacility.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SpotPricesPerFacility` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
       // validate the optional field `baremetal_0`
-      if (jsonObj.getAsJsonObject("baremetal_0") != null) {
+      if (jsonObj.get("baremetal_0") != null && !jsonObj.get("baremetal_0").isJsonNull()) {
         SpotPricesPerBaremetal.validateJsonObject(jsonObj.getAsJsonObject("baremetal_0"));
       }
       // validate the optional field `baremetal_1`
-      if (jsonObj.getAsJsonObject("baremetal_1") != null) {
+      if (jsonObj.get("baremetal_1") != null && !jsonObj.get("baremetal_1").isJsonNull()) {
         SpotPricesPerBaremetal.validateJsonObject(jsonObj.getAsJsonObject("baremetal_1"));
       }
       // validate the optional field `baremetal_2`
-      if (jsonObj.getAsJsonObject("baremetal_2") != null) {
+      if (jsonObj.get("baremetal_2") != null && !jsonObj.get("baremetal_2").isJsonNull()) {
         SpotPricesPerBaremetal.validateJsonObject(jsonObj.getAsJsonObject("baremetal_2"));
       }
       // validate the optional field `baremetal_2a`
-      if (jsonObj.getAsJsonObject("baremetal_2a") != null) {
+      if (jsonObj.get("baremetal_2a") != null && !jsonObj.get("baremetal_2a").isJsonNull()) {
         SpotPricesPerBaremetal.validateJsonObject(jsonObj.getAsJsonObject("baremetal_2a"));
       }
       // validate the optional field `baremetal_2a2`
-      if (jsonObj.getAsJsonObject("baremetal_2a2") != null) {
+      if (jsonObj.get("baremetal_2a2") != null && !jsonObj.get("baremetal_2a2").isJsonNull()) {
         SpotPricesPerBaremetal.validateJsonObject(jsonObj.getAsJsonObject("baremetal_2a2"));
       }
       // validate the optional field `baremetal_3`
-      if (jsonObj.getAsJsonObject("baremetal_3") != null) {
+      if (jsonObj.get("baremetal_3") != null && !jsonObj.get("baremetal_3").isJsonNull()) {
         SpotPricesPerBaremetal.validateJsonObject(jsonObj.getAsJsonObject("baremetal_3"));
       }
       // validate the optional field `baremetal_s`
-      if (jsonObj.getAsJsonObject("baremetal_s") != null) {
+      if (jsonObj.get("baremetal_s") != null && !jsonObj.get("baremetal_s").isJsonNull()) {
         SpotPricesPerBaremetal.validateJsonObject(jsonObj.getAsJsonObject("baremetal_s"));
       }
       // validate the optional field `c2.medium.x86`
-      if (jsonObj.getAsJsonObject("c2.medium.x86") != null) {
+      if (jsonObj.get("c2.medium.x86") != null && !jsonObj.get("c2.medium.x86").isJsonNull()) {
         SpotPricesPerBaremetal.validateJsonObject(jsonObj.getAsJsonObject("c2.medium.x86"));
       }
       // validate the optional field `m2.xlarge.x86`
-      if (jsonObj.getAsJsonObject("m2.xlarge.x86") != null) {
+      if (jsonObj.get("m2.xlarge.x86") != null && !jsonObj.get("m2.xlarge.x86").isJsonNull()) {
         SpotPricesPerBaremetal.validateJsonObject(jsonObj.getAsJsonObject("m2.xlarge.x86"));
       }
   }
@@ -446,6 +475,23 @@ public class SpotPricesPerFacility {
            @Override
            public void write(JsonWriter out, SpotPricesPerFacility value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -453,7 +499,25 @@ public class SpotPricesPerFacility {
            public SpotPricesPerFacility read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             SpotPricesPerFacility instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

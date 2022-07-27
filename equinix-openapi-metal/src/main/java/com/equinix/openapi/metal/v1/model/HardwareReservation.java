@@ -107,7 +107,7 @@ public class HardwareReservation {
   @SerializedName(SERIALIZED_NAME_SWITCH_UUID)
   private String switchUuid;
 
-  public HardwareReservation() { 
+  public HardwareReservation() {
   }
 
   public HardwareReservation createdAt(OffsetDateTime createdAt) {
@@ -408,6 +408,41 @@ public class HardwareReservation {
     this.switchUuid = switchUuid;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public HardwareReservation putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -431,12 +466,13 @@ public class HardwareReservation {
         Objects.equals(this.provisionable, hardwareReservation.provisionable) &&
         Objects.equals(this.shortId, hardwareReservation.shortId) &&
         Objects.equals(this.spare, hardwareReservation.spare) &&
-        Objects.equals(this.switchUuid, hardwareReservation.switchUuid);
+        Objects.equals(this.switchUuid, hardwareReservation.switchUuid)&&
+        Objects.equals(this.additionalProperties, hardwareReservation.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, customRate, device, facility, href, id, needOfService, plan, project, provisionable, shortId, spare, switchUuid);
+    return Objects.hash(createdAt, customRate, device, facility, href, id, needOfService, plan, project, provisionable, shortId, spare, switchUuid, additionalProperties);
   }
 
   @Override
@@ -456,6 +492,7 @@ public class HardwareReservation {
     sb.append("    shortId: ").append(toIndentedString(shortId)).append("\n");
     sb.append("    spare: ").append(toIndentedString(spare)).append("\n");
     sb.append("    switchUuid: ").append(toIndentedString(switchUuid)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -510,40 +547,32 @@ public class HardwareReservation {
           throw new IllegalArgumentException(String.format("The required field(s) %s in HardwareReservation is not found in the empty JSON string", HardwareReservation.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!HardwareReservation.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `HardwareReservation` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
       // validate the optional field `device`
-      if (jsonObj.getAsJsonObject("device") != null) {
+      if (jsonObj.get("device") != null && !jsonObj.get("device").isJsonNull()) {
         Device.validateJsonObject(jsonObj.getAsJsonObject("device"));
       }
       // validate the optional field `facility`
-      if (jsonObj.getAsJsonObject("facility") != null) {
+      if (jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonNull()) {
         Facility.validateJsonObject(jsonObj.getAsJsonObject("facility"));
       }
-      if (jsonObj.get("href") != null && !jsonObj.get("href").isJsonPrimitive()) {
+      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
-      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // validate the optional field `plan`
-      if (jsonObj.getAsJsonObject("plan") != null) {
+      if (jsonObj.get("plan") != null && !jsonObj.get("plan").isJsonNull()) {
         Plan.validateJsonObject(jsonObj.getAsJsonObject("plan"));
       }
       // validate the optional field `project`
-      if (jsonObj.getAsJsonObject("project") != null) {
+      if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
         Project.validateJsonObject(jsonObj.getAsJsonObject("project"));
       }
-      if (jsonObj.get("short_id") != null && !jsonObj.get("short_id").isJsonPrimitive()) {
+      if ((jsonObj.get("short_id") != null && !jsonObj.get("short_id").isJsonNull()) && !jsonObj.get("short_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `short_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("short_id").toString()));
       }
-      if (jsonObj.get("switch_uuid") != null && !jsonObj.get("switch_uuid").isJsonPrimitive()) {
+      if ((jsonObj.get("switch_uuid") != null && !jsonObj.get("switch_uuid").isJsonNull()) && !jsonObj.get("switch_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `switch_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("switch_uuid").toString()));
       }
   }
@@ -563,6 +592,23 @@ public class HardwareReservation {
            @Override
            public void write(JsonWriter out, HardwareReservation value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additonal properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -570,7 +616,25 @@ public class HardwareReservation {
            public HardwareReservation read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             HardwareReservation instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else { // non-primitive type
+                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();
