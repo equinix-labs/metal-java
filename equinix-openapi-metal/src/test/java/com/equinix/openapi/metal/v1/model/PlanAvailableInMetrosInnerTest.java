@@ -13,7 +13,7 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.Href;
+import com.equinix.openapi.metal.v1.model.PlanAvailableInMetrosInnerPrice;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,41 +22,22 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for DeviceNetworkPorts
+ * Model tests for PlanAvailableInMetrosInner
  */
-public class DeviceNetworkPortsTest {
-    private final DeviceNetworkPorts model = new DeviceNetworkPorts();
+public class PlanAvailableInMetrosInnerTest {
+    private final PlanAvailableInMetrosInner model = new PlanAvailableInMetrosInner();
 
     /**
-     * Model tests for DeviceNetworkPorts
+     * Model tests for PlanAvailableInMetrosInner
      */
     @Test
-    public void testDeviceNetworkPorts() {
-        // TODO: test DeviceNetworkPorts
-    }
-
-    /**
-     * Test the property 'data'
-     */
-    @Test
-    public void dataTest() {
-        // TODO: test data
-    }
-
-    /**
-     * Test the property 'disbondOperationSupported'
-     */
-    @Test
-    public void disbondOperationSupportedTest() {
-        // TODO: test disbondOperationSupported
+    public void testPlanAvailableInMetrosInner() {
+        // TODO: test PlanAvailableInMetrosInner
     }
 
     /**
@@ -68,35 +49,11 @@ public class DeviceNetworkPortsTest {
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'price'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'type'
-     */
-    @Test
-    public void typeTest() {
-        // TODO: test type
-    }
-
-    /**
-     * Test the property 'virtualNetworks'
-     */
-    @Test
-    public void virtualNetworksTest() {
-        // TODO: test virtualNetworks
+    public void priceTest() {
+        // TODO: test price
     }
 
 }

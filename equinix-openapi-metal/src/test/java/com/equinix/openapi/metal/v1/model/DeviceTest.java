@@ -13,9 +13,9 @@
 
 package com.equinix.openapi.metal.v1.model;
 
+import com.equinix.openapi.metal.v1.model.DeviceActionsInner;
 import com.equinix.openapi.metal.v1.model.DeviceCreatedBy;
 import com.equinix.openapi.metal.v1.model.DeviceMetro;
-import com.equinix.openapi.metal.v1.model.DeviceNetworkPorts;
 import com.equinix.openapi.metal.v1.model.DeviceProject;
 import com.equinix.openapi.metal.v1.model.DeviceProjectLite;
 import com.equinix.openapi.metal.v1.model.Event;
@@ -24,6 +24,7 @@ import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.IPAssignment;
 import com.equinix.openapi.metal.v1.model.OperatingSystem;
 import com.equinix.openapi.metal.v1.model.Plan;
+import com.equinix.openapi.metal.v1.model.Port;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -212,6 +213,14 @@ public class DeviceTest {
     @Test
     public void operatingSystemTest() {
         // TODO: test operatingSystem
+    }
+
+    /**
+     * Test the property 'actions'
+     */
+    @Test
+    public void actionsTest() {
+        // TODO: test actions
     }
 
     /**

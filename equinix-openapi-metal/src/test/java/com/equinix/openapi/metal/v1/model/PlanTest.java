@@ -14,6 +14,7 @@
 package com.equinix.openapi.metal.v1.model;
 
 import com.equinix.openapi.metal.v1.model.Href;
+import com.equinix.openapi.metal.v1.model.PlanAvailableInMetrosInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,6 +50,22 @@ public class PlanTest {
     @Test
     public void availableInTest() {
         // TODO: test availableIn
+    }
+
+    /**
+     * Test the property 'deploymentTypes'
+     */
+    @Test
+    public void deploymentTypesTest() {
+        // TODO: test deploymentTypes
+    }
+
+    /**
+     * Test the property 'availableInMetros'
+     */
+    @Test
+    public void availableInMetrosTest() {
+        // TODO: test availableInMetros
     }
 
     /**

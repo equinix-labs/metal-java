@@ -12177,7 +12177,25 @@ components:
           state: state
           body: body
           type: type
-        network_ports: null
+        network_ports:
+        - disbond_operation_supported: true
+          data: "{}"
+          name: name
+          virtual_networks:
+          - href: href
+          - href: href
+          href: href
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: type
+        - disbond_operation_supported: true
+          data: "{}"
+          name: name
+          virtual_networks:
+          - href: href
+          - href: href
+          href: href
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: type
         userdata: userdata
         hostname: hostname
         updated_at: 2000-01-23T04:56:07.000+00:00
@@ -12199,12 +12217,22 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: state
         locked: true
-        spot_price_max: 2.302136
+        spot_price_max: 7.0614014
         plan:
           specs: "{}"
           legacy: true
+          deployment_types:
+          - deployment_types
+          - deployment_types
           line: line
           name: name
+          available_in_metros:
+          - price:
+              hour: 5.637377
+            href: href
+          - price:
+              hour: 5.637377
+            href: href
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           available_in:
@@ -12213,7 +12241,7 @@ components:
           class: class
           pricing: "{}"
           slug: slug
-        provisioning_percentage: 5.637377
+        provisioning_percentage: 2.302136
         image_url: image_url
         root_password: root_password
         volumes:
@@ -12257,6 +12285,11 @@ components:
           metro: null
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        actions:
+        - name: name
+          type: type
+        - name: name
+          type: type
         user: user
       properties:
         always_pxe:
@@ -12300,9 +12333,15 @@ components:
         metro:
           $ref: '#/components/schemas/Device_metro'
         network_ports:
-          $ref: '#/components/schemas/Device_network_ports'
+          items:
+            $ref: '#/components/schemas/Port'
+          type: array
         operating_system:
           $ref: '#/components/schemas/OperatingSystem'
+        actions:
+          items:
+            $ref: '#/components/schemas/Device_actions_inner'
+          type: array
         plan:
           $ref: '#/components/schemas/Plan'
         project:
@@ -12701,7 +12740,25 @@ components:
             state: state
             body: body
             type: type
-          network_ports: null
+          network_ports:
+          - disbond_operation_supported: true
+            data: "{}"
+            name: name
+            virtual_networks:
+            - href: href
+            - href: href
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: type
+          - disbond_operation_supported: true
+            data: "{}"
+            name: name
+            virtual_networks:
+            - href: href
+            - href: href
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: type
           userdata: userdata
           hostname: hostname
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -12723,12 +12780,22 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: state
           locked: true
-          spot_price_max: 2.302136
+          spot_price_max: 7.0614014
           plan:
             specs: "{}"
             legacy: true
+            deployment_types:
+            - deployment_types
+            - deployment_types
             line: line
             name: name
+            available_in_metros:
+            - price:
+                hour: 5.637377
+              href: href
+            - price:
+                hour: 5.637377
+              href: href
             description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             available_in:
@@ -12737,7 +12804,7 @@ components:
             class: class
             pricing: "{}"
             slug: slug
-          provisioning_percentage: 5.637377
+          provisioning_percentage: 2.302136
           image_url: image_url
           root_password: root_password
           volumes:
@@ -12781,6 +12848,11 @@ components:
             metro: null
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          actions:
+          - name: name
+            type: type
+          - name: name
+            type: type
           user: user
         - ip_addresses:
           - address: address
@@ -12854,7 +12926,25 @@ components:
             state: state
             body: body
             type: type
-          network_ports: null
+          network_ports:
+          - disbond_operation_supported: true
+            data: "{}"
+            name: name
+            virtual_networks:
+            - href: href
+            - href: href
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: type
+          - disbond_operation_supported: true
+            data: "{}"
+            name: name
+            virtual_networks:
+            - href: href
+            - href: href
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: type
           userdata: userdata
           hostname: hostname
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -12876,12 +12966,22 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: state
           locked: true
-          spot_price_max: 2.302136
+          spot_price_max: 7.0614014
           plan:
             specs: "{}"
             legacy: true
+            deployment_types:
+            - deployment_types
+            - deployment_types
             line: line
             name: name
+            available_in_metros:
+            - price:
+                hour: 5.637377
+              href: href
+            - price:
+                hour: 5.637377
+              href: href
             description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             available_in:
@@ -12890,7 +12990,7 @@ components:
             class: class
             pricing: "{}"
             slug: slug
-          provisioning_percentage: 5.637377
+          provisioning_percentage: 2.302136
           image_url: image_url
           root_password: root_password
           volumes:
@@ -12934,6 +13034,11 @@ components:
             metro: null
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          actions:
+          - name: name
+            type: type
+          - name: name
+            type: type
           user: user
         meta:
           next:
@@ -13499,7 +13604,25 @@ components:
             state: state
             body: body
             type: type
-          network_ports: null
+          network_ports:
+          - disbond_operation_supported: true
+            data: "{}"
+            name: name
+            virtual_networks:
+            - href: href
+            - href: href
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: type
+          - disbond_operation_supported: true
+            data: "{}"
+            name: name
+            virtual_networks:
+            - href: href
+            - href: href
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: type
           userdata: userdata
           hostname: hostname
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -13521,12 +13644,22 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: state
           locked: true
-          spot_price_max: 2.302136
+          spot_price_max: 7.0614014
           plan:
             specs: "{}"
             legacy: true
+            deployment_types:
+            - deployment_types
+            - deployment_types
             line: line
             name: name
+            available_in_metros:
+            - price:
+                hour: 5.637377
+              href: href
+            - price:
+                hour: 5.637377
+              href: href
             description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             available_in:
@@ -13535,7 +13668,7 @@ components:
             class: class
             pricing: "{}"
             slug: slug
-          provisioning_percentage: 5.637377
+          provisioning_percentage: 2.302136
           image_url: image_url
           root_password: root_password
           volumes:
@@ -13579,6 +13712,11 @@ components:
             metro: null
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          actions:
+          - name: name
+            type: type
+          - name: name
+            type: type
           user: user
         facility:
           features:
@@ -13605,8 +13743,18 @@ components:
         plan:
           specs: "{}"
           legacy: true
+          deployment_types:
+          - deployment_types
+          - deployment_types
           line: line
           name: name
+          available_in_metros:
+          - price:
+              hour: 5.637377
+            href: href
+          - price:
+              hour: 5.637377
+            href: href
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           available_in:
@@ -13785,7 +13933,25 @@ components:
               state: state
               body: body
               type: type
-            network_ports: null
+            network_ports:
+            - disbond_operation_supported: true
+              data: "{}"
+              name: name
+              virtual_networks:
+              - href: href
+              - href: href
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              type: type
+            - disbond_operation_supported: true
+              data: "{}"
+              name: name
+              virtual_networks:
+              - href: href
+              - href: href
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              type: type
             userdata: userdata
             hostname: hostname
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -13807,12 +13973,22 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: state
             locked: true
-            spot_price_max: 2.302136
+            spot_price_max: 7.0614014
             plan:
               specs: "{}"
               legacy: true
+              deployment_types:
+              - deployment_types
+              - deployment_types
               line: line
               name: name
+              available_in_metros:
+              - price:
+                  hour: 5.637377
+                href: href
+              - price:
+                  hour: 5.637377
+                href: href
               description: description
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               available_in:
@@ -13821,7 +13997,7 @@ components:
               class: class
               pricing: "{}"
               slug: slug
-            provisioning_percentage: 5.637377
+            provisioning_percentage: 2.302136
             image_url: image_url
             root_password: root_password
             volumes:
@@ -13865,6 +14041,11 @@ components:
               metro: null
               name: name
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            actions:
+            - name: name
+              type: type
+            - name: name
+              type: type
             user: user
           facility:
             features:
@@ -13891,8 +14072,18 @@ components:
           plan:
             specs: "{}"
             legacy: true
+            deployment_types:
+            - deployment_types
+            - deployment_types
             line: line
             name: name
+            available_in_metros:
+            - price:
+                hour: 5.637377
+              href: href
+            - price:
+                hour: 5.637377
+              href: href
             description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             available_in:
@@ -14013,7 +14204,25 @@ components:
               state: state
               body: body
               type: type
-            network_ports: null
+            network_ports:
+            - disbond_operation_supported: true
+              data: "{}"
+              name: name
+              virtual_networks:
+              - href: href
+              - href: href
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              type: type
+            - disbond_operation_supported: true
+              data: "{}"
+              name: name
+              virtual_networks:
+              - href: href
+              - href: href
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              type: type
             userdata: userdata
             hostname: hostname
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -14035,12 +14244,22 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: state
             locked: true
-            spot_price_max: 2.302136
+            spot_price_max: 7.0614014
             plan:
               specs: "{}"
               legacy: true
+              deployment_types:
+              - deployment_types
+              - deployment_types
               line: line
               name: name
+              available_in_metros:
+              - price:
+                  hour: 5.637377
+                href: href
+              - price:
+                  hour: 5.637377
+                href: href
               description: description
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               available_in:
@@ -14049,7 +14268,7 @@ components:
               class: class
               pricing: "{}"
               slug: slug
-            provisioning_percentage: 5.637377
+            provisioning_percentage: 2.302136
             image_url: image_url
             root_password: root_password
             volumes:
@@ -14093,6 +14312,11 @@ components:
               metro: null
               name: name
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            actions:
+            - name: name
+              type: type
+            - name: name
+              type: type
             user: user
           facility:
             features:
@@ -14119,8 +14343,18 @@ components:
           plan:
             specs: "{}"
             legacy: true
+            deployment_types:
+            - deployment_types
+            - deployment_types
             line: line
             name: name
+            available_in_metros:
+            - price:
+                hour: 5.637377
+              href: href
+            - price:
+                hour: 5.637377
+              href: href
             description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             available_in:
@@ -16636,8 +16870,18 @@ components:
       example:
         specs: "{}"
         legacy: true
+        deployment_types:
+        - deployment_types
+        - deployment_types
         line: line
         name: name
+        available_in_metros:
+        - price:
+            hour: 5.637377
+          href: href
+        - price:
+            hour: 5.637377
+          href: href
         description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         available_in:
@@ -16652,6 +16896,16 @@ components:
             \ price if it is different from the default price."
           items:
             $ref: '#/components/schemas/Href'
+          type: array
+        deployment_types:
+          items:
+            type: string
+          type: array
+        available_in_metros:
+          description: "Shows which metros the plan is available in, and the metro-based\
+            \ price if it is different from the default price."
+          items:
+            $ref: '#/components/schemas/Plan_available_in_metros_inner'
           type: array
         class:
           type: string
@@ -16678,8 +16932,18 @@ components:
         plans:
         - specs: "{}"
           legacy: true
+          deployment_types:
+          - deployment_types
+          - deployment_types
           line: line
           name: name
+          available_in_metros:
+          - price:
+              hour: 5.637377
+            href: href
+          - price:
+              hour: 5.637377
+            href: href
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           available_in:
@@ -16690,8 +16954,18 @@ components:
           slug: slug
         - specs: "{}"
           legacy: true
+          deployment_types:
+          - deployment_types
+          - deployment_types
           line: line
           name: name
+          available_in_metros:
+          - price:
+              hour: 5.637377
+            href: href
+          - price:
+              hour: 5.637377
+            href: href
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           available_in:
@@ -20014,14 +20288,16 @@ components:
       allOf:
       - $ref: '#/components/schemas/Metro'
       - description: The metro the facility is in
-    Device_network_ports:
-      allOf:
-      - $ref: '#/components/schemas/Port'
-      - description: "By default, servers at Equinix Metal are configured in a “bonded”\
-          \ mode\nusing LACP (Link Aggregation Control Protocol). Each 2-NIC server\
-          \ is\nconfigured with a single bond (namely bond0) with both interfaces\
-          \ eth0\nand eth1 as members of the bond in a default Layer 3 mode. Some\
-          \ device\nplans may have a different number of ports and bonds available."
+    Device_actions_inner:
+      example:
+        name: name
+        type: type
+      properties:
+        type:
+          type: string
+        name:
+          type: string
+      type: object
     Device_project:
       allOf:
       - $ref: '#/components/schemas/Href'
@@ -20238,6 +20514,25 @@ components:
       anyOf:
       - $ref: '#/components/schemas/MetalGateway'
       - $ref: '#/components/schemas/VrfMetalGateway'
+    Plan_available_in_metros_inner_price:
+      example:
+        hour: 5.637377
+      properties:
+        hour:
+          format: float
+          type: number
+      type: object
+    Plan_available_in_metros_inner:
+      example:
+        price:
+          hour: 5.637377
+        href: href
+      properties:
+        href:
+          type: string
+        price:
+          $ref: '#/components/schemas/Plan_available_in_metros_inner_price'
+      type: object
     PortConvertLayer3Input_request_ips_inner:
       example:
         address_family: 0

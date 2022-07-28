@@ -25,8 +25,9 @@
 |**iqn** | **String** |  |  [optional] |
 |**locked** | **Boolean** |  |  [optional] |
 |**metro** | [**DeviceMetro**](DeviceMetro.md) |  |  [optional] |
-|**networkPorts** | [**DeviceNetworkPorts**](DeviceNetworkPorts.md) |  |  [optional] |
+|**networkPorts** | [**List&lt;Port&gt;**](Port.md) |  |  [optional] |
 |**operatingSystem** | [**OperatingSystem**](OperatingSystem.md) |  |  [optional] |
+|**actions** | [**List&lt;DeviceActionsInner&gt;**](DeviceActionsInner.md) |  |  [optional] |
 |**plan** | [**Plan**](Plan.md) |  |  [optional] |
 |**project** | [**DeviceProject**](DeviceProject.md) |  |  [optional] |
 |**projectLite** | [**DeviceProjectLite**](DeviceProjectLite.md) |  |  [optional] |

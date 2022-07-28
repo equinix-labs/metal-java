@@ -16,6 +16,7 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
+import com.equinix.openapi.metal.v1.model.PlanAvailableInMetrosInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -56,6 +57,14 @@ public class Plan {
   public static final String SERIALIZED_NAME_AVAILABLE_IN = "available_in";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_IN)
   private List<Href> availableIn = null;
+
+  public static final String SERIALIZED_NAME_DEPLOYMENT_TYPES = "deployment_types";
+  @SerializedName(SERIALIZED_NAME_DEPLOYMENT_TYPES)
+  private List<String> deploymentTypes = null;
+
+  public static final String SERIALIZED_NAME_AVAILABLE_IN_METROS = "available_in_metros";
+  @SerializedName(SERIALIZED_NAME_AVAILABLE_IN_METROS)
+  private List<PlanAvailableInMetrosInner> availableInMetros = null;
 
   public static final String SERIALIZED_NAME_PROPERTY_CLASS = "class";
   @SerializedName(SERIALIZED_NAME_PROPERTY_CLASS)
@@ -124,6 +133,68 @@ public class Plan {
 
   public void setAvailableIn(List<Href> availableIn) {
     this.availableIn = availableIn;
+  }
+
+
+  public Plan deploymentTypes(List<String> deploymentTypes) {
+    
+    this.deploymentTypes = deploymentTypes;
+    return this;
+  }
+
+  public Plan addDeploymentTypesItem(String deploymentTypesItem) {
+    if (this.deploymentTypes == null) {
+      this.deploymentTypes = new ArrayList<>();
+    }
+    this.deploymentTypes.add(deploymentTypesItem);
+    return this;
+  }
+
+   /**
+   * Get deploymentTypes
+   * @return deploymentTypes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<String> getDeploymentTypes() {
+    return deploymentTypes;
+  }
+
+
+  public void setDeploymentTypes(List<String> deploymentTypes) {
+    this.deploymentTypes = deploymentTypes;
+  }
+
+
+  public Plan availableInMetros(List<PlanAvailableInMetrosInner> availableInMetros) {
+    
+    this.availableInMetros = availableInMetros;
+    return this;
+  }
+
+  public Plan addAvailableInMetrosItem(PlanAvailableInMetrosInner availableInMetrosItem) {
+    if (this.availableInMetros == null) {
+      this.availableInMetros = new ArrayList<>();
+    }
+    this.availableInMetros.add(availableInMetrosItem);
+    return this;
+  }
+
+   /**
+   * Shows which metros the plan is available in, and the metro-based price if it is different from the default price.
+   * @return availableInMetros
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Shows which metros the plan is available in, and the metro-based price if it is different from the default price.")
+
+  public List<PlanAvailableInMetrosInner> getAvailableInMetros() {
+    return availableInMetros;
+  }
+
+
+  public void setAvailableInMetros(List<PlanAvailableInMetrosInner> availableInMetros) {
+    this.availableInMetros = availableInMetros;
   }
 
 
@@ -380,6 +451,8 @@ public class Plan {
     }
     Plan plan = (Plan) o;
     return Objects.equals(this.availableIn, plan.availableIn) &&
+        Objects.equals(this.deploymentTypes, plan.deploymentTypes) &&
+        Objects.equals(this.availableInMetros, plan.availableInMetros) &&
         Objects.equals(this.propertyClass, plan.propertyClass) &&
         Objects.equals(this.description, plan.description) &&
         Objects.equals(this.id, plan.id) &&
@@ -394,7 +467,7 @@ public class Plan {
 
   @Override
   public int hashCode() {
-    return Objects.hash(availableIn, propertyClass, description, id, legacy, line, name, pricing, slug, specs, additionalProperties);
+    return Objects.hash(availableIn, deploymentTypes, availableInMetros, propertyClass, description, id, legacy, line, name, pricing, slug, specs, additionalProperties);
   }
 
   @Override
@@ -402,6 +475,8 @@ public class Plan {
     StringBuilder sb = new StringBuilder();
     sb.append("class Plan {\n");
     sb.append("    availableIn: ").append(toIndentedString(availableIn)).append("\n");
+    sb.append("    deploymentTypes: ").append(toIndentedString(deploymentTypes)).append("\n");
+    sb.append("    availableInMetros: ").append(toIndentedString(availableInMetros)).append("\n");
     sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
@@ -435,6 +510,8 @@ public class Plan {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("available_in");
+    openapiFields.add("deployment_types");
+    openapiFields.add("available_in_metros");
     openapiFields.add("class");
     openapiFields.add("description");
     openapiFields.add("id");
@@ -473,6 +550,22 @@ public class Plan {
         // validate the optional field `available_in` (array)
         for (int i = 0; i < jsonArrayavailableIn.size(); i++) {
           Href.validateJsonObject(jsonArrayavailableIn.get(i).getAsJsonObject());
+        };
+      }
+      // ensure the json data is an array
+      if ((jsonObj.get("deployment_types") != null && !jsonObj.get("deployment_types").isJsonNull()) && !jsonObj.get("deployment_types").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `deployment_types` to be an array in the JSON string but got `%s`", jsonObj.get("deployment_types").toString()));
+      }
+      JsonArray jsonArrayavailableInMetros = jsonObj.getAsJsonArray("available_in_metros");
+      if (jsonArrayavailableInMetros != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("available_in_metros").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `available_in_metros` to be an array in the JSON string but got `%s`", jsonObj.get("available_in_metros").toString()));
+        }
+
+        // validate the optional field `available_in_metros` (array)
+        for (int i = 0; i < jsonArrayavailableInMetros.size(); i++) {
+          PlanAvailableInMetrosInner.validateJsonObject(jsonArrayavailableInMetros.get(i).getAsJsonObject());
         };
       }
       if ((jsonObj.get("class") != null && !jsonObj.get("class").isJsonNull()) && !jsonObj.get("class").isJsonPrimitive()) {
