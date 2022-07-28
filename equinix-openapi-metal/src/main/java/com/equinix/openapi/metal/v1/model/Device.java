@@ -15,9 +15,9 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.equinix.openapi.metal.v1.model.DeviceActionsInner;
 import com.equinix.openapi.metal.v1.model.DeviceCreatedBy;
 import com.equinix.openapi.metal.v1.model.DeviceMetro;
-import com.equinix.openapi.metal.v1.model.DeviceNetworkPorts;
 import com.equinix.openapi.metal.v1.model.DeviceProject;
 import com.equinix.openapi.metal.v1.model.DeviceProjectLite;
 import com.equinix.openapi.metal.v1.model.Event;
@@ -26,6 +26,7 @@ import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.IPAssignment;
 import com.equinix.openapi.metal.v1.model.OperatingSystem;
 import com.equinix.openapi.metal.v1.model.Plan;
+import com.equinix.openapi.metal.v1.model.Port;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -138,11 +139,15 @@ public class Device {
 
   public static final String SERIALIZED_NAME_NETWORK_PORTS = "network_ports";
   @SerializedName(SERIALIZED_NAME_NETWORK_PORTS)
-  private DeviceNetworkPorts networkPorts;
+  private List<Port> networkPorts = null;
 
   public static final String SERIALIZED_NAME_OPERATING_SYSTEM = "operating_system";
   @SerializedName(SERIALIZED_NAME_OPERATING_SYSTEM)
   private OperatingSystem operatingSystem;
+
+  public static final String SERIALIZED_NAME_ACTIONS = "actions";
+  @SerializedName(SERIALIZED_NAME_ACTIONS)
+  private List<DeviceActionsInner> actions = null;
 
   public static final String SERIALIZED_NAME_PLAN = "plan";
   @SerializedName(SERIALIZED_NAME_PLAN)
@@ -641,9 +646,17 @@ public class Device {
   }
 
 
-  public Device networkPorts(DeviceNetworkPorts networkPorts) {
+  public Device networkPorts(List<Port> networkPorts) {
     
     this.networkPorts = networkPorts;
+    return this;
+  }
+
+  public Device addNetworkPortsItem(Port networkPortsItem) {
+    if (this.networkPorts == null) {
+      this.networkPorts = new ArrayList<>();
+    }
+    this.networkPorts.add(networkPortsItem);
     return this;
   }
 
@@ -654,12 +667,12 @@ public class Device {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public DeviceNetworkPorts getNetworkPorts() {
+  public List<Port> getNetworkPorts() {
     return networkPorts;
   }
 
 
-  public void setNetworkPorts(DeviceNetworkPorts networkPorts) {
+  public void setNetworkPorts(List<Port> networkPorts) {
     this.networkPorts = networkPorts;
   }
 
@@ -684,6 +697,37 @@ public class Device {
 
   public void setOperatingSystem(OperatingSystem operatingSystem) {
     this.operatingSystem = operatingSystem;
+  }
+
+
+  public Device actions(List<DeviceActionsInner> actions) {
+    
+    this.actions = actions;
+    return this;
+  }
+
+  public Device addActionsItem(DeviceActionsInner actionsItem) {
+    if (this.actions == null) {
+      this.actions = new ArrayList<>();
+    }
+    this.actions.add(actionsItem);
+    return this;
+  }
+
+   /**
+   * Get actions
+   * @return actions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<DeviceActionsInner> getActions() {
+    return actions;
+  }
+
+
+  public void setActions(List<DeviceActionsInner> actions) {
+    this.actions = actions;
   }
 
 
@@ -1198,6 +1242,7 @@ public class Device {
         Objects.equals(this.metro, device.metro) &&
         Objects.equals(this.networkPorts, device.networkPorts) &&
         Objects.equals(this.operatingSystem, device.operatingSystem) &&
+        Objects.equals(this.actions, device.actions) &&
         Objects.equals(this.plan, device.plan) &&
         Objects.equals(this.project, device.project) &&
         Objects.equals(this.projectLite, device.projectLite) &&
@@ -1221,7 +1266,7 @@ public class Device {
 
   @Override
   public int hashCode() {
-    return Objects.hash(alwaysPxe, billingCycle, bondingMode, createdAt, createdBy, customdata, description, facility, hardwareReservation, hostname, href, id, imageUrl, ipAddresses, ipxeScriptUrl, iqn, locked, metro, networkPorts, operatingSystem, plan, project, projectLite, provisioningEvents, provisioningPercentage, rootPassword, shortId, spotInstance, spotPriceMax, sshKeys, state, switchUuid, tags, terminationTime, updatedAt, user, userdata, volumes, additionalProperties);
+    return Objects.hash(alwaysPxe, billingCycle, bondingMode, createdAt, createdBy, customdata, description, facility, hardwareReservation, hostname, href, id, imageUrl, ipAddresses, ipxeScriptUrl, iqn, locked, metro, networkPorts, operatingSystem, actions, plan, project, projectLite, provisioningEvents, provisioningPercentage, rootPassword, shortId, spotInstance, spotPriceMax, sshKeys, state, switchUuid, tags, terminationTime, updatedAt, user, userdata, volumes, additionalProperties);
   }
 
   @Override
@@ -1248,6 +1293,7 @@ public class Device {
     sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
     sb.append("    networkPorts: ").append(toIndentedString(networkPorts)).append("\n");
     sb.append("    operatingSystem: ").append(toIndentedString(operatingSystem)).append("\n");
+    sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
     sb.append("    plan: ").append(toIndentedString(plan)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    projectLite: ").append(toIndentedString(projectLite)).append("\n");
@@ -1309,6 +1355,7 @@ public class Device {
     openapiFields.add("metro");
     openapiFields.add("network_ports");
     openapiFields.add("operating_system");
+    openapiFields.add("actions");
     openapiFields.add("plan");
     openapiFields.add("project");
     openapiFields.add("project_lite");
@@ -1398,13 +1445,33 @@ public class Device {
       if (jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) {
         DeviceMetro.validateJsonObject(jsonObj.getAsJsonObject("metro"));
       }
-      // validate the optional field `network_ports`
-      if (jsonObj.get("network_ports") != null && !jsonObj.get("network_ports").isJsonNull()) {
-        DeviceNetworkPorts.validateJsonObject(jsonObj.getAsJsonObject("network_ports"));
+      JsonArray jsonArraynetworkPorts = jsonObj.getAsJsonArray("network_ports");
+      if (jsonArraynetworkPorts != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("network_ports").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `network_ports` to be an array in the JSON string but got `%s`", jsonObj.get("network_ports").toString()));
+        }
+
+        // validate the optional field `network_ports` (array)
+        for (int i = 0; i < jsonArraynetworkPorts.size(); i++) {
+          Port.validateJsonObject(jsonArraynetworkPorts.get(i).getAsJsonObject());
+        };
       }
       // validate the optional field `operating_system`
       if (jsonObj.get("operating_system") != null && !jsonObj.get("operating_system").isJsonNull()) {
         OperatingSystem.validateJsonObject(jsonObj.getAsJsonObject("operating_system"));
+      }
+      JsonArray jsonArrayactions = jsonObj.getAsJsonArray("actions");
+      if (jsonArrayactions != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("actions").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `actions` to be an array in the JSON string but got `%s`", jsonObj.get("actions").toString()));
+        }
+
+        // validate the optional field `actions` (array)
+        for (int i = 0; i < jsonArrayactions.size(); i++) {
+          DeviceActionsInner.validateJsonObject(jsonArrayactions.get(i).getAsJsonObject());
+        };
       }
       // validate the optional field `plan`
       if (jsonObj.get("plan") != null && !jsonObj.get("plan").isJsonNull()) {
