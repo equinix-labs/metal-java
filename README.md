@@ -3,7 +3,7 @@
 [![Experimental](https://img.shields.io/badge/Stability-Experimental-red.svg)](https://github.com/equinix-labs/equinix-labs/blob/main/uniform-standards.md)
 
 > **[Experimental](https://github.com/equinix-labs/equinix-labs/blob/main/experimental-statement.md)**
-> This is experimental. Don't use it in production. Examples demonstrate that this client is usable. Please submit patches and open issues with your experience. This repo contains java code generated from customized Equinix Metal oas3. The client is generated using the java client support built into the swagger-generator.
+> This is experimental. Don't use it in production. Examples demonstrate that this client is usable. Please submit patches and open issues with your experience. This repo contains java code generated from customized Equinix Metal oas3. The client is generated using the java client support built into the openapi-generator.
 
 ## Prerequisite:
 
@@ -29,7 +29,7 @@ mvn clean package
 
 Following command executes list metro sample by consuming local jars produced after building generated metal-java client:
 ```
-java -classpath "equinix-openapi-metal/target/equinix-openapi-metal-1.0.0.jar:equinix-openapi-metal/target/lib/*" examples/metros/ListMetros.java <API KEY TOKEN>
+java -classpath "equinix-openapi-metal/target/equinix-openapi-metal-1.0.0.jar:equinix-openapi-metal/target/lib/*" examples/ListMetros.java <API KEY TOKEN>
 ```
 
 ## Generate and build equinix metal java client:
@@ -44,4 +44,4 @@ Using openapi generator v3 git repo :
 make git_run
 ```
 
-Note : Both docker and git pulls v6.0.1 tagged version of openapi generator.
+Note : Both docker and git pulls latest version of openapi generator.
