@@ -1,0 +1,76 @@
+diff --git a/spec/oas3.patched.json b/spec/oas3.patched.json
+index 0450117..c4384a9 100644
+--- a/spec/oas3.patched.json
++++ b/spec/oas3.patched.json
+@@ -867,18 +867,28 @@
+              ]
+            },
+            "network_ports": {
+-             "allOf": [
+-               {
+-                 "$ref": "#/components/schemas/Port"
+-               },
+-               {
+-                 "description": "By default, servers at Equinix Metal are configured in a “bonded” mode\nusing LACP (Link Aggregation Control Protocol). Each 2-NIC server is\nconfigured with a single bond (namely bond0) with both interfaces eth0\nand eth1 as members of the bond in a default Layer 3 mode. Some device\nplans may have a different number of ports and bonds available."
+-               }
+-             ]
+-           },
++             "items": {
++                "$ref": "#/components/schemas/Port"
++              },
++              "type": "array"
++            },
+            "operating_system": {
+              "$ref": "#/components/schemas/OperatingSystem"
+            },
++           "actions":{
++              "items": {
++                "properties" :{
++                  "type": {
++                    "type": "string"
++                  },
++                  "name": {
++                    "type": "string"
++                  }
++                },
++                "type": "object"
++              },
++              "type": "array"
++           },
+            "plan": {
+              "$ref": "#/components/schemas/Plan"
+            },
+@@ -3016,6 +3026,33 @@
+              },
+              "type": "array"
+            },
++           "deployment_types": {
++              "items": {
++                "type": "string"
++              },
++              "type": "array"
++            },
++            "available_in_metros": {
++              "description": "Shows which metros the plan is available in, and the metro-based price if it is different from the default price.",
++              "items": {
++                "properties": {
++                  "href": {
++                    "type": "string"
++                  },
++                  "price": {
++                    "properties": {
++                      "hour": {
++                        "format": "float",
++                        "type": "number"
++                      }
++                    },
++                    "type": "object"
++                  }
++                },
++                "type": "object"
++              },
++              "type": "array"
++           },
+            "class": {
+              "type": "string"
+            },
