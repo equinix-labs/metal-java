@@ -80,7 +80,7 @@ clean:
 
 pre-common: clean pre-spec-patch
 
-post-common: build_client
+post-common: move-workflow build_client
 
 # For patches summary refer : metal-java/patches/README.md
 pre-spec-patch:
@@ -94,6 +94,9 @@ pre-spec-patch:
 	done
 
 patch-client-post:
+
+move-workflow:
+	cp -r internal/workflow equinix-openapi-metal/src/main/java/com/equinix/
 
 build_client:
 	cd ${OPENAPI_GENERATED_CLIENT}; mvn clean package
