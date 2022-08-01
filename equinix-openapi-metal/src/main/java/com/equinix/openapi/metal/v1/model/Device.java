@@ -189,9 +189,62 @@ public class Device {
   @SerializedName(SERIALIZED_NAME_SSH_KEYS)
   private List<Href> sshKeys = null;
 
+  /**
+   * Gets or Sets state
+   */
+  @JsonAdapter(StateEnum.Adapter.class)
+  public enum StateEnum {
+    ACTIVE("active"),
+    
+    FAILED("failed"),
+    
+    QUEUED("queued"),
+    
+    PROVISIONING("provisioning"),
+    
+    REINSTALLING("reinstalling");
+
+    private String value;
+
+    StateEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StateEnum fromValue(String value) {
+      for (StateEnum b : StateEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StateEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StateEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StateEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
-  private String state;
+  private StateEnum state;
 
   public static final String SERIALIZED_NAME_SWITCH_UUID = "switch_uuid";
   @SerializedName(SERIALIZED_NAME_SWITCH_UUID)
@@ -977,7 +1030,7 @@ public class Device {
   }
 
 
-  public Device state(String state) {
+  public Device state(StateEnum state) {
     
     this.state = state;
     return this;
@@ -990,12 +1043,12 @@ public class Device {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getState() {
+  public StateEnum getState() {
     return state;
   }
 
 
-  public void setState(String state) {
+  public void setState(StateEnum state) {
     this.state = state;
   }
 

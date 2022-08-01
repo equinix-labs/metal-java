@@ -1,0 +1,20 @@
+diff --git a/spec/oas3.patched.json b/spec/oas3.patched.json
+index c4384a9..26cc226 100644
+--- a/spec/oas3.patched.json
++++ b/spec/oas3.patched.json
+@@ -946,7 +946,14 @@
+              "type": "array"
+            },
+            "state": {
+-             "type": "string"
++              "enum": [
++                "active",
++                "failed",
++                "queued",
++                "provisioning",
++                "reinstalling"
++              ],
++              "type": "string"
+            },
+            "switch_uuid": {
+              "description": "Switch short id. This can be used to determine if two devices are\nconnected to the same switch, for example.",
