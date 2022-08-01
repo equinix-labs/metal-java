@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class DeviceManager {
+public class DeviceOperator {
    private DevicesApi deviceApiInstance;
 
-   public DeviceManager(ApiClient client) {
+   public DeviceOperator(ApiClient client) {
       this.deviceApiInstance = new DevicesApi(client);
    }
 
