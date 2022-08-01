@@ -12215,7 +12215,7 @@ components:
         customdata: "{}"
         href: href
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        state: state
+        state: active
         locked: true
         spot_price_max: 7.0614014
         plan:
@@ -12376,6 +12376,12 @@ components:
             $ref: '#/components/schemas/Href'
           type: array
         state:
+          enum:
+          - active
+          - failed
+          - queued
+          - provisioning
+          - reinstalling
           type: string
         switch_uuid:
           description: "Switch short id. This can be used to determine if two devices\
@@ -12778,7 +12784,7 @@ components:
           customdata: "{}"
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: state
+          state: active
           locked: true
           spot_price_max: 7.0614014
           plan:
@@ -12964,7 +12970,7 @@ components:
           customdata: "{}"
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: state
+          state: active
           locked: true
           spot_price_max: 7.0614014
           plan:
@@ -13642,7 +13648,7 @@ components:
           customdata: "{}"
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: state
+          state: active
           locked: true
           spot_price_max: 7.0614014
           plan:
@@ -13971,7 +13977,7 @@ components:
             customdata: "{}"
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: state
+            state: active
             locked: true
             spot_price_max: 7.0614014
             plan:
@@ -14242,7 +14248,7 @@ components:
             customdata: "{}"
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: state
+            state: active
             locked: true
             spot_price_max: 7.0614014
             plan:

@@ -38,7 +38,7 @@
 |**spotInstance** | **Boolean** | Whether or not the device is a spot instance. |  [optional] |
 |**spotPriceMax** | **Float** | The maximum price per hour you are willing to pay to keep this spot instance.  If you are outbid, the termination will be set allowing two minutes before shutdown. |  [optional] |
 |**sshKeys** | [**List&lt;Href&gt;**](Href.md) |  |  [optional] |
-|**state** | **String** |  |  [optional] |
+|**state** | [**StateEnum**](#StateEnum) |  |  [optional] |
 |**switchUuid** | **String** | Switch short id. This can be used to determine if two devices are connected to the same switch, for example. |  [optional] |
 |**tags** | **List&lt;String&gt;** |  |  [optional] |
 |**terminationTime** | **OffsetDateTime** | When the device will be terminated. This is commonly set in advance for ephemeral spot market instances but this field may also be set with on-demand and reservation instances to automatically delete the resource at a given time. The termination time can also be used to release a hardware reservation instance at a given time, keeping the reservation open for other uses.  On a spot market device, the termination time will be set automatically when outbid. |  [optional] |
@@ -46,6 +46,18 @@
 |**user** | **String** |  |  [optional] |
 |**userdata** | **String** |  |  [optional] |
 |**volumes** | [**List&lt;Href&gt;**](Href.md) |  |  [optional] |
+
+
+
+## Enum: StateEnum
+
+| Name | Value |
+|---- | -----|
+| ACTIVE | &quot;active&quot; |
+| FAILED | &quot;failed&quot; |
+| QUEUED | &quot;queued&quot; |
+| PROVISIONING | &quot;provisioning&quot; |
+| REINSTALLING | &quot;reinstalling&quot; |
 
 
 
