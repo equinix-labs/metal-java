@@ -5,8 +5,9 @@ name: Maven publish package
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      # listen to tags that starts with the letter v as a convention to release tags.
+      - v*
 
 jobs:
   build:
