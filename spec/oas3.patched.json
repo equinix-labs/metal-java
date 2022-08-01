@@ -946,7 +946,14 @@
              "type": "array"
            },
            "state": {
-             "type": "string"
+              "enum": [
+                "active",
+                "failed",
+                "queued",
+                "provisioning",
+                "reinstalling"
+              ],
+              "type": "string"
            },
            "switch_uuid": {
              "description": "Switch short id. This can be used to determine if two devices are\nconnected to the same switch, for example.",
