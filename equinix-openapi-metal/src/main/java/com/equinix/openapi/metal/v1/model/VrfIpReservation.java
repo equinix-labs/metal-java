@@ -460,8 +460,8 @@ public class VrfIpReservation {
    * Get vrf
    * @return vrf
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
   public Vrf getVrf() {
     return vrf;
@@ -601,6 +601,7 @@ public class VrfIpReservation {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("vrf");
   }
 
  /**
@@ -615,6 +616,13 @@ public class VrfIpReservation {
           return;
         } else { // has required fields
           throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIpReservation is not found in the empty JSON string", VrfIpReservation.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : VrfIpReservation.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
       // validate the optional field `created_by`

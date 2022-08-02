@@ -19527,6 +19527,9 @@ components:
           type: string
         vrf:
           $ref: '#/components/schemas/Vrf'
+      required:
+      - vrf
+      type: object
     VrfIpReservationCreateInput:
       properties:
         cidr:

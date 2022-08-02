@@ -35,7 +35,7 @@
 |**details** | **String** |  |  [optional] |
 |**project** | [**Project**](Project.md) |  |  [optional] |
 |**type** | **String** |  |  [optional] |
-|**vrf** | [**Vrf**](Vrf.md) |  |  [optional] |
+|**vrf** | [**Vrf**](Vrf.md) |  |  |
 
 
 
