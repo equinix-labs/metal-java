@@ -4745,7 +4745,11 @@
            "vrf": {
              "$ref": "#/components/schemas/Vrf"
            }
-         }
+         },
+         "required": [
+          "vrf"
+         ],
+         "type": "object"
        },
        "VrfIpReservationCreateInput": {
          "properties": {
