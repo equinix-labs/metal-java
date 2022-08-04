@@ -21,7 +21,7 @@
 |**state** | **String** |  |  [optional] |
 |**tags** | **List&lt;String&gt;** |  |  [optional] |
 |**type** | **String** |  |  [optional] |
-|**vrf** | [**Vrf**](Vrf.md) |  |  [optional] |
+|**vrf** | [**Vrf**](Vrf.md) |  |  |
 
 
 
