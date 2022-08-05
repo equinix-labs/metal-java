@@ -1,0 +1,61 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Execute functional tests for Metal Gateway APIs
+
+on:
+  workflow_dispatch:
+    inputs:
+      metro:
+        description: 'metro code where you want to deploy'
+        default: 'DA'
+        required: true
+      privateIpv4SubnetSize:
+        description: 'private ipv4 subnet size'
+        default: '16'
+        required: true
+      vxlan:
+        description: 'vxlan id'
+        default: '100'
+        required: true
+      token:
+        description: 'Users temp API KEY token (Note: delete after use)'
+        required: true
+      project_uuid:
+        description: 'Project UUID where to deploy instance'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Run equinix metal-java make
+        run: make docker_run
+
+      - name: Install equinix client
+        working-directory: ./equinix-openapi-metal
+        run: mvn clean install --file pom.xml
+
+      - name: Set env parameters amd create metalgateway-test props file
+        run: |
+          echo "metro=${{ github.event.inputs.metro }}" > equinix-functional-test/src/test/resources/metalgateway-test.properties
+          echo -e "\nprivateIpv4SubnetSize=${{ github.event.inputs.privateIpv4SubnetSize }}" >> equinix-functional-test/src/test/resources/metalgateway-test.properties
+          echo -e "\nvxlan=${{ github.event.inputs.vxlan }}" >> equinix-functional-test/src/test/resources/metalgateway-test.properties
+          
+          echo `cat equinix-functional-test/src/test/resources/metalgateway-test.properties`
+
+      - name: Run functional tests for MetalGatewayOperator.
+        working-directory: ./equinix-functional-test
+        run: mvn clean test -Dtest=com.equinix.test.functional.TestMetalGatewayOperator.java --file pom.xml
+        env:
+          FUNCTIONAL_TEST_TOKEN: ${{ github.event.inputs.token }}
+          FUNCTIONAL_TEST_PROJECT_UUID: ${{ github.event.inputs.project_uuid }}
