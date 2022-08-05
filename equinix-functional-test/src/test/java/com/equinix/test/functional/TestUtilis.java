@@ -1,4 +1,4 @@
-package com.equinix.functional.test;
+package com.equinix.test.functional;
 
 import java.io.File;
 import java.io.FileInputStream;
