@@ -27,8 +27,9 @@ cd equinix-openapi-metal
 mvn clean package
 ```
 
-Following command executes list metro sample by consuming local jars produced after building generated metal-java client:
+The following executes list metro sample by consuming local jars produced after building generated metal-java client:
 ```
+cd ..
 java -classpath "equinix-openapi-metal/target/equinix-openapi-metal-1.0.0.jar:equinix-openapi-metal/target/lib/*" examples/ListMetros.java <API KEY TOKEN>
 ```
 
