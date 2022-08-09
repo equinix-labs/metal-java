@@ -64,7 +64,7 @@ public class VirtualNetwork {
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private UUID description;
+  private String description;
 
   public static final String SERIALIZED_NAME_FACILITY = "facility";
   @SerializedName(SERIALIZED_NAME_FACILITY)
@@ -147,7 +147,7 @@ public class VirtualNetwork {
   }
 
 
-  public VirtualNetwork description(UUID description) {
+  public VirtualNetwork description(String description) {
     
     this.description = description;
     return this;
@@ -160,12 +160,12 @@ public class VirtualNetwork {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public UUID getDescription() {
+  public String getDescription() {
     return description;
   }
 
 
-  public void setDescription(UUID description) {
+  public void setDescription(String description) {
     this.description = description;
   }
 

@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**assignedTo** | [**Href**](Href.md) |  |  [optional] |
 |**assignedToVirtualCircuit** | **Boolean** | True if the virtual network is attached to a virtual circuit. False if not. |  [optional] |
-|**description** | **UUID** |  |  [optional] |
+|**description** | **String** |  |  [optional] |
 |**facility** | [**Href**](Href.md) |  |  [optional] |
 |**href** | **String** |  |  [optional] |
 |**id** | **UUID** |  |  [optional] |
