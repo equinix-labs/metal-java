@@ -19085,7 +19085,7 @@ components:
         - href: href
         metro:
           href: href
-        description: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        description: description
         href: href
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         facility:
@@ -19101,7 +19101,6 @@ components:
             False if not.
           type: boolean
         description:
-          format: uuid
           type: string
         facility:
           $ref: '#/components/schemas/Href'
@@ -19176,7 +19175,7 @@ components:
           - href: href
           metro:
             href: href
-          description: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          description: description
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           facility:
@@ -19199,7 +19198,7 @@ components:
           - href: href
           metro:
             href: href
-          description: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          description: description
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           facility:
