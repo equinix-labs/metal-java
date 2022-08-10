@@ -76,7 +76,9 @@ public class MetalGatewaysApiTest {
     @Test
     public void findMetalGatewayByIdTest() throws ApiException {
         UUID id = null;
-        FindMetalGatewayById200Response response = api.findMetalGatewayById(id);
+        List<String> include = null;
+        List<String> exclude = null;
+        FindMetalGatewayById200Response response = api.findMetalGatewayById(id, include, exclude);
         // TODO: test validations
     }
 
