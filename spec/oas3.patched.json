@@ -4549,8 +4549,12 @@
              },
              "type": "array"
            },
-           "metal_gateway": {
-             "$ref": "#/components/schemas/MetalGatewayLite"
+           "metal_gateways": {
+             "description": "A list of metal gateways currently associated to this Virtual Network.",
+             "items": {
+               "$ref": "#/components/schemas/Href"
+             },
+             "type": "array"
            },
            "metro": {
              "$ref": "#/components/schemas/Href"
@@ -9416,6 +9420,12 @@
                "format": "uuid",
                "type": "string"
              }
+           },
+           {
+             "$ref": "#/components/parameters/Include"
+           },
+           {
+             "$ref": "#/components/parameters/Exclude"
            }
          ],
          "responses": {
