@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -101,11 +100,11 @@ public class VirtualNetworkTest {
     }
 
     /**
-     * Test the property 'metalGateway'
+     * Test the property 'metalGateways'
      */
     @Test
-    public void metalGatewayTest() {
-        // TODO: test metalGateway
+    public void metalGatewaysTest() {
+        // TODO: test metalGateways
     }
 
     /**
