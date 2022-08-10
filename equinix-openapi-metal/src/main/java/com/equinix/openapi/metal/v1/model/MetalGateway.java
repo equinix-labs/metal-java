@@ -16,6 +16,9 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
+import com.equinix.openapi.metal.v1.model.IPReservation;
+import com.equinix.openapi.metal.v1.model.Project;
+import com.equinix.openapi.metal.v1.model.VirtualNetwork;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -70,11 +73,11 @@ public class MetalGateway {
 
   public static final String SERIALIZED_NAME_IP_RESERVATION = "ip_reservation";
   @SerializedName(SERIALIZED_NAME_IP_RESERVATION)
-  private Href ipReservation;
+  private IPReservation ipReservation;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
-  private Href project;
+  private Project project;
 
   /**
    * The current state of the Metal Gateway. &#39;Ready&#39; indicates the gateway record has been configured, but is currently not active on the network. &#39;Active&#39; indicates the gateway has been configured on the network. &#39;Deleting&#39; is a temporary state used to indicate that the gateway is in the process of being un-configured from the network, after which the gateway record will be deleted.
@@ -135,7 +138,7 @@ public class MetalGateway {
 
   public static final String SERIALIZED_NAME_VIRTUAL_NETWORK = "virtual_network";
   @SerializedName(SERIALIZED_NAME_VIRTUAL_NETWORK)
-  private Href virtualNetwork;
+  private VirtualNetwork virtualNetwork;
 
   public MetalGateway() {
   }
@@ -232,7 +235,7 @@ public class MetalGateway {
   }
 
 
-  public MetalGateway ipReservation(Href ipReservation) {
+  public MetalGateway ipReservation(IPReservation ipReservation) {
     
     this.ipReservation = ipReservation;
     return this;
@@ -245,17 +248,17 @@ public class MetalGateway {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Href getIpReservation() {
+  public IPReservation getIpReservation() {
     return ipReservation;
   }
 
 
-  public void setIpReservation(Href ipReservation) {
+  public void setIpReservation(IPReservation ipReservation) {
     this.ipReservation = ipReservation;
   }
 
 
-  public MetalGateway project(Href project) {
+  public MetalGateway project(Project project) {
     
     this.project = project;
     return this;
@@ -268,12 +271,12 @@ public class MetalGateway {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Href getProject() {
+  public Project getProject() {
     return project;
   }
 
 
-  public void setProject(Href project) {
+  public void setProject(Project project) {
     this.project = project;
   }
 
@@ -324,7 +327,7 @@ public class MetalGateway {
   }
 
 
-  public MetalGateway virtualNetwork(Href virtualNetwork) {
+  public MetalGateway virtualNetwork(VirtualNetwork virtualNetwork) {
     
     this.virtualNetwork = virtualNetwork;
     return this;
@@ -337,12 +340,12 @@ public class MetalGateway {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Href getVirtualNetwork() {
+  public VirtualNetwork getVirtualNetwork() {
     return virtualNetwork;
   }
 
 
-  public void setVirtualNetwork(Href virtualNetwork) {
+  public void setVirtualNetwork(VirtualNetwork virtualNetwork) {
     this.virtualNetwork = virtualNetwork;
   }
 
@@ -485,18 +488,18 @@ public class MetalGateway {
       }
       // validate the optional field `ip_reservation`
       if (jsonObj.get("ip_reservation") != null && !jsonObj.get("ip_reservation").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("ip_reservation"));
+        IPReservation.validateJsonObject(jsonObj.getAsJsonObject("ip_reservation"));
       }
       // validate the optional field `project`
       if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("project"));
+        Project.validateJsonObject(jsonObj.getAsJsonObject("project"));
       }
       if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
       }
       // validate the optional field `virtual_network`
       if (jsonObj.get("virtual_network") != null && !jsonObj.get("virtual_network").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("virtual_network"));
+        VirtualNetwork.validateJsonObject(jsonObj.getAsJsonObject("virtual_network"));
       }
   }
 
