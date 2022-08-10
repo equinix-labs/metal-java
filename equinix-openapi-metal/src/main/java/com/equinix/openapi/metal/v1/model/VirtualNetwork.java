@@ -16,7 +16,6 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -82,9 +81,9 @@ public class VirtualNetwork {
   @SerializedName(SERIALIZED_NAME_INSTANCES)
   private List<Href> instances = null;
 
-  public static final String SERIALIZED_NAME_METAL_GATEWAY = "metal_gateway";
-  @SerializedName(SERIALIZED_NAME_METAL_GATEWAY)
-  private MetalGatewayLite metalGateway;
+  public static final String SERIALIZED_NAME_METAL_GATEWAYS = "metal_gateways";
+  @SerializedName(SERIALIZED_NAME_METAL_GATEWAYS)
+  private List<Href> metalGateways = null;
 
   public static final String SERIALIZED_NAME_METRO = "metro";
   @SerializedName(SERIALIZED_NAME_METRO)
@@ -270,26 +269,34 @@ public class VirtualNetwork {
   }
 
 
-  public VirtualNetwork metalGateway(MetalGatewayLite metalGateway) {
+  public VirtualNetwork metalGateways(List<Href> metalGateways) {
     
-    this.metalGateway = metalGateway;
+    this.metalGateways = metalGateways;
+    return this;
+  }
+
+  public VirtualNetwork addMetalGatewaysItem(Href metalGatewaysItem) {
+    if (this.metalGateways == null) {
+      this.metalGateways = new ArrayList<>();
+    }
+    this.metalGateways.add(metalGatewaysItem);
     return this;
   }
 
    /**
-   * Get metalGateway
-   * @return metalGateway
+   * A list of metal gateways currently associated to this Virtual Network.
+   * @return metalGateways
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A list of metal gateways currently associated to this Virtual Network.")
 
-  public MetalGatewayLite getMetalGateway() {
-    return metalGateway;
+  public List<Href> getMetalGateways() {
+    return metalGateways;
   }
 
 
-  public void setMetalGateway(MetalGatewayLite metalGateway) {
-    this.metalGateway = metalGateway;
+  public void setMetalGateways(List<Href> metalGateways) {
+    this.metalGateways = metalGateways;
   }
 
 
@@ -414,7 +421,7 @@ public class VirtualNetwork {
         Objects.equals(this.href, virtualNetwork.href) &&
         Objects.equals(this.id, virtualNetwork.id) &&
         Objects.equals(this.instances, virtualNetwork.instances) &&
-        Objects.equals(this.metalGateway, virtualNetwork.metalGateway) &&
+        Objects.equals(this.metalGateways, virtualNetwork.metalGateways) &&
         Objects.equals(this.metro, virtualNetwork.metro) &&
         Objects.equals(this.metroCode, virtualNetwork.metroCode) &&
         Objects.equals(this.vxlan, virtualNetwork.vxlan)&&
@@ -423,7 +430,7 @@ public class VirtualNetwork {
 
   @Override
   public int hashCode() {
-    return Objects.hash(assignedTo, assignedToVirtualCircuit, description, facility, href, id, instances, metalGateway, metro, metroCode, vxlan, additionalProperties);
+    return Objects.hash(assignedTo, assignedToVirtualCircuit, description, facility, href, id, instances, metalGateways, metro, metroCode, vxlan, additionalProperties);
   }
 
   @Override
@@ -437,7 +444,7 @@ public class VirtualNetwork {
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    instances: ").append(toIndentedString(instances)).append("\n");
-    sb.append("    metalGateway: ").append(toIndentedString(metalGateway)).append("\n");
+    sb.append("    metalGateways: ").append(toIndentedString(metalGateways)).append("\n");
     sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
     sb.append("    metroCode: ").append(toIndentedString(metroCode)).append("\n");
     sb.append("    vxlan: ").append(toIndentedString(vxlan)).append("\n");
@@ -471,7 +478,7 @@ public class VirtualNetwork {
     openapiFields.add("href");
     openapiFields.add("id");
     openapiFields.add("instances");
-    openapiFields.add("metal_gateway");
+    openapiFields.add("metal_gateways");
     openapiFields.add("metro");
     openapiFields.add("metro_code");
     openapiFields.add("vxlan");
@@ -523,9 +530,17 @@ public class VirtualNetwork {
           Href.validateJsonObject(jsonArrayinstances.get(i).getAsJsonObject());
         };
       }
-      // validate the optional field `metal_gateway`
-      if (jsonObj.get("metal_gateway") != null && !jsonObj.get("metal_gateway").isJsonNull()) {
-        MetalGatewayLite.validateJsonObject(jsonObj.getAsJsonObject("metal_gateway"));
+      JsonArray jsonArraymetalGateways = jsonObj.getAsJsonArray("metal_gateways");
+      if (jsonArraymetalGateways != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("metal_gateways").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `metal_gateways` to be an array in the JSON string but got `%s`", jsonObj.get("metal_gateways").toString()));
+        }
+
+        // validate the optional field `metal_gateways` (array)
+        for (int i = 0; i < jsonArraymetalGateways.size(); i++) {
+          Href.validateJsonObject(jsonArraymetalGateways.get(i).getAsJsonObject());
+        };
       }
       // validate the optional field `metro`
       if (jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) {
