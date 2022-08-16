@@ -1,0 +1,17 @@
+diff --git a/spec/oas3.patched.json b/spec/oas3.patched.json
+index 04dc65a..3a21ad4 100644
+--- a/spec/oas3.patched.json
++++ b/spec/oas3.patched.json
+@@ -9416,6 +9416,12 @@
+                "format": "uuid",
+                "type": "string"
+              }
++           },
++           {
++             "$ref": "#/components/parameters/Include"
++           },
++           {
++             "$ref": "#/components/parameters/Exclude"
+            }
+          ],
+          "responses": {

@@ -160,7 +160,7 @@ null (empty response body)
 
 <a name="findMetalGatewayById"></a>
 # **findMetalGatewayById**
-> FindMetalGatewayById200Response findMetalGatewayById(id)
+> FindMetalGatewayById200Response findMetalGatewayById(id, include, exclude)
 
 Returns the metal gateway
 
@@ -189,8 +189,10 @@ public class Example {
 
     MetalGatewaysApi apiInstance = new MetalGatewaysApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Metal Gateway UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      FindMetalGatewayById200Response result = apiInstance.findMetalGatewayById(id);
+      FindMetalGatewayById200Response result = apiInstance.findMetalGatewayById(id, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetalGatewaysApi#findMetalGatewayById");
@@ -208,6 +210,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Metal Gateway UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

@@ -3822,6 +3822,32 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -15400,9 +15426,9 @@ components:
           format: uuid
           type: string
         ip_reservation:
-          $ref: '#/components/schemas/Href'
+          $ref: '#/components/schemas/IPReservation'
         project:
-          $ref: '#/components/schemas/Href'
+          $ref: '#/components/schemas/Project'
         state:
           description: "The current state of the Metal Gateway. 'Ready' indicates\
             \ the gateway record has been configured, but is currently not active\
@@ -15419,7 +15445,7 @@ components:
           format: date-time
           type: string
         virtual_network:
-          $ref: '#/components/schemas/Href'
+          $ref: '#/components/schemas/VirtualNetwork'
       type: object
     MetalGatewayInput:
       properties:
@@ -15460,7 +15486,7 @@ components:
       example:
         gateway_address: gateway_address
         updated_at: 2000-01-23T04:56:07.000+00:00
-        vlan: 0.8008281904610115
+        vlan: 1.4658129805029452
         created_at: 2000-01-23T04:56:07.000+00:00
         href: href
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19070,15 +19096,10 @@ components:
       type: object
     VirtualNetwork:
       example:
-        vxlan: 6
-        metal_gateway:
-          gateway_address: gateway_address
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          vlan: 0.8008281904610115
-          created_at: 2000-01-23T04:56:07.000+00:00
-          href: href
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: ready
+        vxlan: 0
+        metal_gateways:
+        - href: href
+        - href: href
         metro_code: metro_code
         instances:
         - href: href
@@ -19115,8 +19136,12 @@ components:
           items:
             $ref: '#/components/schemas/Href'
           type: array
-        metal_gateway:
-          $ref: '#/components/schemas/MetalGatewayLite'
+        metal_gateways:
+          description: A list of metal gateways currently associated to this Virtual
+            Network.
+          items:
+            $ref: '#/components/schemas/Href'
+          type: array
         metro:
           $ref: '#/components/schemas/Href'
         metro_code:
@@ -19160,15 +19185,10 @@ components:
     VirtualNetworkList:
       example:
         virtual_networks:
-        - vxlan: 6
-          metal_gateway:
-            gateway_address: gateway_address
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            vlan: 0.8008281904610115
-            created_at: 2000-01-23T04:56:07.000+00:00
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: ready
+        - vxlan: 0
+          metal_gateways:
+          - href: href
+          - href: href
           metro_code: metro_code
           instances:
           - href: href
@@ -19183,15 +19203,10 @@ components:
           assigned_to_virtual_circuit: true
           assigned_to:
             href: href
-        - vxlan: 6
-          metal_gateway:
-            gateway_address: gateway_address
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            vlan: 0.8008281904610115
-            created_at: 2000-01-23T04:56:07.000+00:00
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: ready
+        - vxlan: 0
+          metal_gateways:
+          - href: href
+          - href: href
           metro_code: metro_code
           instances:
           - href: href
@@ -19478,7 +19493,7 @@ components:
         metal_gateway:
           gateway_address: gateway_address
           updated_at: 2000-01-23T04:56:07.000+00:00
-          vlan: 0.8008281904610115
+          vlan: 1.4658129805029452
           created_at: 2000-01-23T04:56:07.000+00:00
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19673,7 +19688,7 @@ components:
           metal_gateway:
             gateway_address: gateway_address
             updated_at: 2000-01-23T04:56:07.000+00:00
-            vlan: 0.8008281904610115
+            vlan: 1.4658129805029452
             created_at: 2000-01-23T04:56:07.000+00:00
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19793,7 +19808,7 @@ components:
           metal_gateway:
             gateway_address: gateway_address
             updated_at: 2000-01-23T04:56:07.000+00:00
-            vlan: 0.8008281904610115
+            vlan: 1.4658129805029452
             created_at: 2000-01-23T04:56:07.000+00:00
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

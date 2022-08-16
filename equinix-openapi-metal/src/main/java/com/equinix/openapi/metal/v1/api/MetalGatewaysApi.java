@@ -375,6 +375,8 @@ public class MetalGatewaysApi {
     /**
      * Build call for findMetalGatewayById
      * @param id Metal Gateway UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -386,7 +388,7 @@ public class MetalGatewaysApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findMetalGatewayByIdCall(UUID id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findMetalGatewayByIdCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -412,6 +414,14 @@ public class MetalGatewaysApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -433,7 +443,7 @@ public class MetalGatewaysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findMetalGatewayByIdValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findMetalGatewayByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
@@ -441,7 +451,7 @@ public class MetalGatewaysApi {
         }
         
 
-        okhttp3.Call localVarCall = findMetalGatewayByIdCall(id, _callback);
+        okhttp3.Call localVarCall = findMetalGatewayByIdCall(id, include, exclude, _callback);
         return localVarCall;
 
     }
@@ -450,6 +460,8 @@ public class MetalGatewaysApi {
      * Returns the metal gateway
      * Returns a specific metal gateway
      * @param id Metal Gateway UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return FindMetalGatewayById200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -460,8 +472,8 @@ public class MetalGatewaysApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public FindMetalGatewayById200Response findMetalGatewayById(UUID id) throws ApiException {
-        ApiResponse<FindMetalGatewayById200Response> localVarResp = findMetalGatewayByIdWithHttpInfo(id);
+    public FindMetalGatewayById200Response findMetalGatewayById(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<FindMetalGatewayById200Response> localVarResp = findMetalGatewayByIdWithHttpInfo(id, include, exclude);
         return localVarResp.getData();
     }
 
@@ -469,6 +481,8 @@ public class MetalGatewaysApi {
      * Returns the metal gateway
      * Returns a specific metal gateway
      * @param id Metal Gateway UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;FindMetalGatewayById200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -479,8 +493,8 @@ public class MetalGatewaysApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FindMetalGatewayById200Response> findMetalGatewayByIdWithHttpInfo(UUID id) throws ApiException {
-        okhttp3.Call localVarCall = findMetalGatewayByIdValidateBeforeCall(id, null);
+    public ApiResponse<FindMetalGatewayById200Response> findMetalGatewayByIdWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = findMetalGatewayByIdValidateBeforeCall(id, include, exclude, null);
         Type localVarReturnType = new TypeToken<FindMetalGatewayById200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -489,6 +503,8 @@ public class MetalGatewaysApi {
      * Returns the metal gateway (asynchronously)
      * Returns a specific metal gateway
      * @param id Metal Gateway UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -500,9 +516,9 @@ public class MetalGatewaysApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findMetalGatewayByIdAsync(UUID id, final ApiCallback<FindMetalGatewayById200Response> _callback) throws ApiException {
+    public okhttp3.Call findMetalGatewayByIdAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<FindMetalGatewayById200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findMetalGatewayByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = findMetalGatewayByIdValidateBeforeCall(id, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<FindMetalGatewayById200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
