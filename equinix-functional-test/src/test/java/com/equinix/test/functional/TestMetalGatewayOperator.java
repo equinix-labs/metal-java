@@ -14,11 +14,8 @@ import com.equinix.openapi.ApiClient;
 import com.equinix.openapi.ApiException;
 import com.equinix.openapi.Configuration;
 import com.equinix.openapi.auth.ApiKeyAuth;
-import com.equinix.openapi.metal.v1.api.VlansApi;
 import com.equinix.openapi.metal.v1.model.MetalGateway;
-import com.equinix.openapi.metal.v1.model.MetalGatewayInput;
 import com.equinix.openapi.metal.v1.model.VirtualNetwork;
-import com.equinix.openapi.metal.v1.model.VirtualNetworkCreateInput;
 import com.equinix.workflow.MetalGatewayOperator;
 
 public class TestMetalGatewayOperator {
@@ -30,11 +27,10 @@ public class TestMetalGatewayOperator {
 
     private HashMap<String, String> props;
     private MetalGatewayOperator metalGatewayOperator;
-    private VlansApi vlansApi;
 
     @Before
     public void setup() {
-        logger.info("Executing TestDMetalGatewayOperator setup...");
+        logger.info("Executing TestMetalGatewayOperator setup...");
         props = TestUtilis.ReadPropertiesFile(propFilename);
 
         // These properties need to be added dynamically before test execution.
@@ -45,52 +41,39 @@ public class TestMetalGatewayOperator {
         ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
         x_auth_token.setApiKey(token);
         metalGatewayOperator = new MetalGatewayOperator(defaultClient);
-        vlansApi = new VlansApi(defaultClient);
-    }
-
-    public VirtualNetwork createVlan(UUID projectId) throws ApiException {
-        VirtualNetworkCreateInput vlanInput=new VirtualNetworkCreateInput()
-                .metro(props.get("metro"))
-                .projectId(projectId)
-                .vxlan(Integer.valueOf(props.get("vxlan")));
-        return vlansApi.createVirtualNetwork(projectId, vlanInput);
-    }
-
-    public void deleteVlan(UUID vlanId) throws ApiException {
-        vlansApi.deleteVirtualNetwork(vlanId);
     }
 
     @Test
     public void testMetalGatewayCreationAndPolling() throws ApiException, InterruptedException {
-        logger.info("Executing Test: testMetalGatewayCreationAndPolling");
+
+        logger.info("Executing Test: testMetalGatewayCreationAndPolling...");
+        Integer vxlan = Integer.valueOf(props.get("vxlan"));
+        String metro = props.get("metro");
+        Integer privateIpv4SubnetSize = Integer.valueOf(props.get("privateIpv4SubnetSize"));
         UUID projectId = UUID.fromString(System.getenv(sysProjUuidKey));
-
-        logger.info("Creating vlan ...");
-        VirtualNetwork vlan = createVlan(projectId);
-
-        MetalGatewayInput metalGatewayInput = new MetalGatewayInput()
-                .privateIpv4SubnetSize(Integer.valueOf(props.get("privateIpv4SubnetSize")))
-                .virtualNetworkId(vlan.getId());
-
         int retries = 10;
         Duration wait = Duration.ofSeconds(5);
+
         logger.info("Provisioning metal gateway with the vlan attached to it...");
-        MetalGateway metalGateway = metalGatewayOperator.createMetalGatewayAndPoll(metalGatewayInput, projectId, retries, wait);
+        MetalGateway createdMetalGateway = metalGatewayOperator.createMetalGatewayWithPrivateIpBlockAndPoll(projectId, metro, vxlan, privateIpv4SubnetSize, retries, wait);
 
-        UUID metalGatewayId=metalGateway.getId();
-        Assert.assertNotNull(metalGateway.getState());
-        logger.info(String.format("Metal Gateway state : %s and ID : %s", metalGateway.getState(), metalGatewayId.toString()));
+        UUID metalGatewayId = createdMetalGateway.getId();
+        Assert.assertNotNull(createdMetalGateway.getState());
+        logger.info(String.format("Metal Gateway state : %s", createdMetalGateway.getState()));
 
-        String[] vlanHrefLink = metalGateway.getVirtualNetwork().getHref().split("/");
-        String vlanId = vlanHrefLink[vlanHrefLink.length-1];
-        Assert.assertEquals(vlan.getId().toString(), vlanId);
-        logger.info(String.format("ID of associated VLAN: %s", vlanId));
+        VirtualNetwork vlanOfMetalGateway = metalGatewayOperator.getVlanOfMetalGateway(metalGatewayId);
+        Assert.assertNotNull(vlanOfMetalGateway);
+        // check by vxlan id
+        Assert.assertEquals(vlanOfMetalGateway.getVxlan(), vxlan);
+        VirtualNetwork checkVlan = metalGatewayOperator.getVlanByVxlanInProjectMetro(projectId, metro, vxlan);
+        Assert.assertNotNull(checkVlan);
+        // check by vlan uuid
+        Assert.assertEquals(checkVlan.getId(), vlanOfMetalGateway.getId());
+        logger.info(String.format("Vxlan ID of associated VLAN: %s", vlanOfMetalGateway.getVxlan()));
 
-        logger.info("Deprovisioning metal gateway ...");
-        metalGatewayOperator.deleteMetalGateway(metalGatewayId);
-        Assert.assertThrows(ApiException.class, () -> metalGatewayOperator.findMetalGateway(metalGatewayId));
-
-        logger.info("Deleting vlan ...");
-        deleteVlan(vlan.getId());
+        logger.info("Deleting vlan and metal gateway ...");
+        metalGatewayOperator.deleteVlanAndMetalGateway(metalGatewayId);
+        Assert.assertNull(metalGatewayOperator.getVlanByVxlanInProjectMetro(projectId, metro, vxlan));
+        Assert.assertThrows(ApiException.class, () -> metalGatewayOperator.getMetalGateway(metalGatewayId, null, null));
     }
 }
