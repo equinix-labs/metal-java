@@ -4,10 +4,19 @@
 name: Execute functional tests for MetalGateway related workflows
 
 on:
+  workflow_call:
+    secrets:
+      token:
+        description: 'API token key for tests'
+        required: true
+      project_uuid:
+        description: 'UUID of project to perform tests'
+        required: true
+
   workflow_dispatch:
     inputs:
       metro:
-        description: 'metro code where you want to deploy'
+        description: 'metro code where you want to deploy the metal gateway'
         default: 'DA'
         required: true
       privateIpv4SubnetSize:
@@ -15,14 +24,8 @@ on:
         default: '16'
         required: true
       vxlan:
-        description: 'vxlan id'
+        description: 'vxlan id of associated vlan [WARNING: the test will delete the vlan even if pre-provisioned, specify an unused vxlan id]'
         default: '100'
-        required: true
-      token:
-        description: 'Users temp API KEY token (Note: delete after use)'
-        required: true
-      project_uuid:
-        description: 'Project UUID where to deploy instance'
         required: true
 
 jobs:
@@ -57,5 +60,5 @@ jobs:
         working-directory: ./equinix-functional-test
         run: mvn clean test -Dtest=com.equinix.test.functional.TestMetalGatewayOperator.java --file pom.xml
         env:
-          FUNCTIONAL_TEST_TOKEN: ${{ github.event.inputs.token }}
-          FUNCTIONAL_TEST_PROJECT_UUID: ${{ github.event.inputs.project_uuid }}
+          FUNCTIONAL_TEST_TOKEN: ${{ secrets.token }}
+          FUNCTIONAL_TEST_PROJECT_UUID: ${{ secrets.project_uuid }}
