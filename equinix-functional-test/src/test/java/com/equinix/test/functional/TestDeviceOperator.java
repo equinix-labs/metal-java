@@ -1,4 +1,4 @@
-package com.equinix.functional.test;
+package com.equinix.test.functional;
 
 import com.equinix.workflow.DeviceOperator;
 import com.equinix.openapi.ApiClient;
@@ -9,9 +9,7 @@ import com.equinix.openapi.metal.v1.model.Device;
 import com.equinix.openapi.metal.v1.model.DeviceCreateInput;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 import org.junit.Test;

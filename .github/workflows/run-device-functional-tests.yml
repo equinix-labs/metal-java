@@ -1,13 +1,22 @@
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: Execute functional tests
+name: Execute functional tests for device related workflows
 
 on:
+  workflow_call:
+    secrets:
+      token:
+        description: 'API token key for tests'
+        required: true
+      project_uuid:
+        description: 'UUID of project to perform tests'
+        required: true
+
   workflow_dispatch:
     inputs:
         metro:
-          description: 'metro code where you want to deploy'
+          description: 'metro code where you want to deploy the instance'
           default: 'DA'
           required: true
         os:
@@ -17,12 +26,6 @@ on:
         plan:
           description: 'instance server plan'
           default: 'c3.small.x86'
-          required: true
-        token:
-          description: 'Users temp API KEY token (Note: delete after use)'
-          required: true
-        project_uuid:
-          description: 'Project UUID where to deploy instance'
           required: true
 
 jobs:
@@ -53,9 +56,9 @@ jobs:
 
         echo `cat equinix-functional-test/src/test/resources/device-test.properties`
 
-    - name: Run functional test.
+    - name: Run functional tests for DeviceOperator.
       working-directory: ./equinix-functional-test
-      run: mvn clean package --file pom.xml
+      run: mvn clean test -Dtest=com.equinix.test.functional.TestDeviceOperator.java --file pom.xml
       env:
-        FUNCTIONAL_TEST_TOKEN: ${{ github.event.inputs.token }}
-        FUNCTIONAL_TEST_PROJECT_UUID: ${{ github.event.inputs.project_uuid }}
+        FUNCTIONAL_TEST_TOKEN: ${{ secrets.token }}
+        FUNCTIONAL_TEST_PROJECT_UUID: ${{ secrets.project_uuid }}
