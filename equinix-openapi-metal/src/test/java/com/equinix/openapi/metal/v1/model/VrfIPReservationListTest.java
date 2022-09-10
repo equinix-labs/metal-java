@@ -13,7 +13,7 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.VrfIpReservation;
+import com.equinix.openapi.metal.v1.model.VrfIPReservation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -29,17 +29,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for VrfIpReservationList
+ * Model tests for VrfIPReservationList
  */
-public class VrfIpReservationListTest {
-    private final VrfIpReservationList model = new VrfIpReservationList();
+public class VrfIPReservationListTest {
+    private final VrfIPReservationList model = new VrfIPReservationList();
 
     /**
-     * Model tests for VrfIpReservationList
+     * Model tests for VrfIPReservationList
      */
     @Test
-    public void testVrfIpReservationList() {
-        // TODO: test VrfIpReservationList
+    public void testVrfIPReservationList() {
+        // TODO: test VrfIPReservationList
     }
 
     /**

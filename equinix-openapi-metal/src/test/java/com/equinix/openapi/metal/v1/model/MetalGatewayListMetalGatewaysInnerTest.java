@@ -18,7 +18,7 @@ import com.equinix.openapi.metal.v1.model.MetalGateway;
 import com.equinix.openapi.metal.v1.model.Project;
 import com.equinix.openapi.metal.v1.model.VirtualNetwork;
 import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfIpReservation;
+import com.equinix.openapi.metal.v1.model.VrfIPReservation;
 import com.equinix.openapi.metal.v1.model.VrfMetalGateway;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;

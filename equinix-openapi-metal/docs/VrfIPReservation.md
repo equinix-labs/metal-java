@@ -1,6 +1,6 @@
 
 
-# VrfIpReservation
+# VrfIPReservation
 
 
 ## Properties

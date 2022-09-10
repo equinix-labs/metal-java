@@ -1,13 +1,13 @@
 
 
-# VrfIpReservationList
+# VrfIPReservationList
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**ipAddresses** | [**List&lt;VrfIpReservation&gt;**](VrfIpReservation.md) |  |  [optional] |
+|**ipAddresses** | [**List&lt;VrfIPReservation&gt;**](VrfIPReservation.md) |  |  [optional] |
 
 
 

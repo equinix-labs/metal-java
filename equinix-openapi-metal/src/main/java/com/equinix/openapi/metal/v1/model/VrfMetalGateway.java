@@ -19,7 +19,7 @@ import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.Project;
 import com.equinix.openapi.metal.v1.model.VirtualNetwork;
 import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfIpReservation;
+import com.equinix.openapi.metal.v1.model.VrfIPReservation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -74,7 +74,7 @@ public class VrfMetalGateway {
 
   public static final String SERIALIZED_NAME_IP_RESERVATION = "ip_reservation";
   @SerializedName(SERIALIZED_NAME_IP_RESERVATION)
-  private VrfIpReservation ipReservation;
+  private VrfIPReservation ipReservation;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -240,7 +240,7 @@ public class VrfMetalGateway {
   }
 
 
-  public VrfMetalGateway ipReservation(VrfIpReservation ipReservation) {
+  public VrfMetalGateway ipReservation(VrfIPReservation ipReservation) {
     
     this.ipReservation = ipReservation;
     return this;
@@ -253,12 +253,12 @@ public class VrfMetalGateway {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public VrfIpReservation getIpReservation() {
+  public VrfIPReservation getIpReservation() {
     return ipReservation;
   }
 
 
-  public void setIpReservation(VrfIpReservation ipReservation) {
+  public void setIpReservation(VrfIPReservation ipReservation) {
     this.ipReservation = ipReservation;
   }
 
@@ -519,7 +519,7 @@ public class VrfMetalGateway {
       }
       // validate the optional field `ip_reservation`
       if (jsonObj.get("ip_reservation") != null && !jsonObj.get("ip_reservation").isJsonNull()) {
-        VrfIpReservation.validateJsonObject(jsonObj.getAsJsonObject("ip_reservation"));
+        VrfIPReservation.validateJsonObject(jsonObj.getAsJsonObject("ip_reservation"));
       }
       // validate the optional field `project`
       if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {

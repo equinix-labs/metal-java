@@ -319,7 +319,7 @@ Class | Method | HTTP request | Description
 *VrfsApi* | [**createVrf**](docs/VrfsApi.md#createVrf) | **POST** /projects/{id}/vrfs | Create a new VRF in the specified project
 *VrfsApi* | [**deleteVrf**](docs/VrfsApi.md#deleteVrf) | **DELETE** /vrfs/{id} | Delete the VRF
 *VrfsApi* | [**findVrfById**](docs/VrfsApi.md#findVrfById) | **GET** /vrfs/{id} | Retrieve a VRF
-*VrfsApi* | [**findVrfIpReservations**](docs/VrfsApi.md#findVrfIpReservations) | **GET** /vrfs/{id}/ips | Retrieve all VRF IP Reservations in the VRF
+*VrfsApi* | [**findVrfIPReservations**](docs/VrfsApi.md#findVrfIPReservations) | **GET** /vrfs/{id}/ips | Retrieve all VRF IP Reservations in the VRF
 *VrfsApi* | [**findVrfs**](docs/VrfsApi.md#findVrfs) | **GET** /projects/{id}/vrfs | Retrieve all VRFs in the project
 *VrfsApi* | [**updateVrf**](docs/VrfsApi.md#updateVrf) | **PUT** /vrfs/{id} | Update the VRF
 
@@ -514,9 +514,9 @@ Class | Method | HTTP request | Description
  - [VirtualNetworkList](docs/VirtualNetworkList.md)
  - [Vrf](docs/Vrf.md)
  - [VrfCreateInput](docs/VrfCreateInput.md)
- - [VrfIpReservation](docs/VrfIpReservation.md)
- - [VrfIpReservationCreateInput](docs/VrfIpReservationCreateInput.md)
- - [VrfIpReservationList](docs/VrfIpReservationList.md)
+ - [VrfIPReservation](docs/VrfIPReservation.md)
+ - [VrfIPReservationCreateInput](docs/VrfIPReservationCreateInput.md)
+ - [VrfIPReservationList](docs/VrfIPReservationList.md)
  - [VrfList](docs/VrfList.md)
  - [VrfMetalGateway](docs/VrfMetalGateway.md)
  - [VrfMetalGatewayCreateInput](docs/VrfMetalGatewayCreateInput.md)

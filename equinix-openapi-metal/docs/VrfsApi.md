@@ -7,7 +7,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**createVrf**](VrfsApi.md#createVrf) | **POST** /projects/{id}/vrfs | Create a new VRF in the specified project |
 | [**deleteVrf**](VrfsApi.md#deleteVrf) | **DELETE** /vrfs/{id} | Delete the VRF |
 | [**findVrfById**](VrfsApi.md#findVrfById) | **GET** /vrfs/{id} | Retrieve a VRF |
-| [**findVrfIpReservations**](VrfsApi.md#findVrfIpReservations) | **GET** /vrfs/{id}/ips | Retrieve all VRF IP Reservations in the VRF |
+| [**findVrfIPReservations**](VrfsApi.md#findVrfIPReservations) | **GET** /vrfs/{id}/ips | Retrieve all VRF IP Reservations in the VRF |
 | [**findVrfs**](VrfsApi.md#findVrfs) | **GET** /projects/{id}/vrfs | Retrieve all VRFs in the project |
 | [**updateVrf**](VrfsApi.md#updateVrf) | **PUT** /vrfs/{id} | Update the VRF |
 
@@ -233,9 +233,9 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findVrfIpReservations"></a>
-# **findVrfIpReservations**
-> VrfIpReservationList findVrfIpReservations(id, include, exclude)
+<a name="findVrfIPReservations"></a>
+# **findVrfIPReservations**
+> VrfIPReservationList findVrfIPReservations(id, include, exclude)
 
 Retrieve all VRF IP Reservations in the VRF
 
@@ -267,10 +267,10 @@ public class Example {
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      VrfIpReservationList result = apiInstance.findVrfIpReservations(id, include, exclude);
+      VrfIPReservationList result = apiInstance.findVrfIPReservations(id, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling VrfsApi#findVrfIpReservations");
+      System.err.println("Exception when calling VrfsApi#findVrfIPReservations");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -290,7 +290,7 @@ public class Example {
 
 ### Return type
 
-[**VrfIpReservationList**](VrfIpReservationList.md)
+[**VrfIPReservationList**](VrfIPReservationList.md)
 
 ### Authorization
 

@@ -24,7 +24,7 @@ import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.equinix.openapi.metal.v1.model.Project;
 import com.equinix.openapi.metal.v1.model.User;
 import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfIpReservation;
+import com.equinix.openapi.metal.v1.model.VrfIPReservation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -84,7 +84,7 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<IPReservation> adapterIPReservation = gson.getDelegateAdapter(this, TypeToken.get(IPReservation.class));
-            final TypeAdapter<VrfIpReservation> adapterVrfIpReservation = gson.getDelegateAdapter(this, TypeToken.get(VrfIpReservation.class));
+            final TypeAdapter<VrfIPReservation> adapterVrfIPReservation = gson.getDelegateAdapter(this, TypeToken.get(VrfIPReservation.class));
 
             return (TypeAdapter<T>) new TypeAdapter<RequestIPReservation201Response>() {
                 @Override
@@ -101,14 +101,14 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `VrfIpReservation`
-                    if (value.getActualInstance() instanceof VrfIpReservation) {
-                        JsonObject obj = adapterVrfIpReservation.toJsonTree((VrfIpReservation)value.getActualInstance()).getAsJsonObject();
+                    // check if the actual instance is of the type `VrfIPReservation`
+                    if (value.getActualInstance() instanceof VrfIPReservation) {
+                        JsonObject obj = adapterVrfIPReservation.toJsonTree((VrfIPReservation)value.getActualInstance()).getAsJsonObject();
                         elementAdapter.write(out, obj);
                         return;
                     }
 
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: IPReservation, VrfIpReservation");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: IPReservation, VrfIPReservation");
                 }
 
                 @Override
@@ -133,17 +133,17 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data does not match schema 'IPReservation'", e);
                     }
 
-                    // deserialize VrfIpReservation
+                    // deserialize VrfIPReservation
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        VrfIpReservation.validateJsonObject(jsonObject);
-                        actualAdapter = adapterVrfIpReservation;
+                        VrfIPReservation.validateJsonObject(jsonObject);
+                        actualAdapter = adapterVrfIPReservation;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'VrfIpReservation'");
+                        log.log(Level.FINER, "Input data matches schema 'VrfIPReservation'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for VrfIpReservation failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'VrfIpReservation'", e);
+                        errorMessages.add(String.format("Deserialization for VrfIPReservation failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'VrfIPReservation'", e);
                     }
 
                     if (match == 1) {
@@ -170,7 +170,7 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
-    public RequestIPReservation201Response(VrfIpReservation o) {
+    public RequestIPReservation201Response(VrfIPReservation o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -178,7 +178,7 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
     static {
         schemas.put("IPReservation", new GenericType<IPReservation>() {
         });
-        schemas.put("VrfIpReservation", new GenericType<VrfIpReservation>() {
+        schemas.put("VrfIPReservation", new GenericType<VrfIPReservation>() {
         });
     }
 
@@ -190,7 +190,7 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * IPReservation, VrfIpReservation
+     * IPReservation, VrfIPReservation
      *
      * It could be an instance of the 'oneOf' schemas.
      * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
@@ -202,19 +202,19 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
             return;
         }
 
-        if (instance instanceof VrfIpReservation) {
+        if (instance instanceof VrfIPReservation) {
             super.setActualInstance(instance);
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be IPReservation, VrfIpReservation");
+        throw new RuntimeException("Invalid instance type. Must be IPReservation, VrfIPReservation");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * IPReservation, VrfIpReservation
+     * IPReservation, VrfIPReservation
      *
-     * @return The actual instance (IPReservation, VrfIpReservation)
+     * @return The actual instance (IPReservation, VrfIPReservation)
      */
     @Override
     public Object getActualInstance() {
@@ -233,14 +233,14 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
     }
 
     /**
-     * Get the actual instance of `VrfIpReservation`. If the actual instance is not `VrfIpReservation`,
+     * Get the actual instance of `VrfIPReservation`. If the actual instance is not `VrfIPReservation`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `VrfIpReservation`
-     * @throws ClassCastException if the instance is not `VrfIpReservation`
+     * @return The actual instance of `VrfIPReservation`
+     * @throws ClassCastException if the instance is not `VrfIPReservation`
      */
-    public VrfIpReservation getVrfIpReservation() throws ClassCastException {
-        return (VrfIpReservation)super.getActualInstance();
+    public VrfIPReservation getVrfIPReservation() throws ClassCastException {
+        return (VrfIPReservation)super.getActualInstance();
     }
 
 
@@ -262,16 +262,16 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
       errorMessages.add(String.format("Deserialization for IPReservation failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
-    // validate the json string with VrfIpReservation
+    // validate the json string with VrfIPReservation
     try {
-      VrfIpReservation.validateJsonObject(jsonObj);
+      VrfIPReservation.validateJsonObject(jsonObj);
       validCount++;
     } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for VrfIpReservation failed with `%s`.", e.getMessage()));
+      errorMessages.add(String.format("Deserialization for VrfIPReservation failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
     if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for RequestIPReservation201Response with oneOf schemas: IPReservation, VrfIpReservation. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
+      throw new IOException(String.format("The JSON string is invalid for RequestIPReservation201Response with oneOf schemas: IPReservation, VrfIPReservation. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
     }
   }
 

@@ -13,6 +13,10 @@
 
 package com.equinix.openapi.metal.v1.model;
 
+import com.equinix.openapi.metal.v1.model.Href;
+import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
+import com.equinix.openapi.metal.v1.model.Project;
+import com.equinix.openapi.metal.v1.model.Vrf;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -21,6 +25,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -29,17 +34,25 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for VrfIpReservationCreateInput
+ * Model tests for VrfIPReservation
  */
-public class VrfIpReservationCreateInputTest {
-    private final VrfIpReservationCreateInput model = new VrfIpReservationCreateInput();
+public class VrfIPReservationTest {
+    private final VrfIPReservation model = new VrfIPReservation();
 
     /**
-     * Model tests for VrfIpReservationCreateInput
+     * Model tests for VrfIPReservation
      */
     @Test
-    public void testVrfIpReservationCreateInput() {
-        // TODO: test VrfIpReservationCreateInput
+    public void testVrfIPReservation() {
+        // TODO: test VrfIPReservation
+    }
+
+    /**
+     * Test the property 'addressFamily'
+     */
+    @Test
+    public void addressFamilyTest() {
+        // TODO: test addressFamily
     }
 
     /**
@@ -51,11 +64,19 @@ public class VrfIpReservationCreateInputTest {
     }
 
     /**
-     * Test the property 'customdata'
+     * Test the property 'createdAt'
      */
     @Test
-    public void customdataTest() {
-        // TODO: test customdata
+    public void createdAtTest() {
+        // TODO: test createdAt
+    }
+
+    /**
+     * Test the property 'createdBy'
+     */
+    @Test
+    public void createdByTest() {
+        // TODO: test createdBy
     }
 
     /**
@@ -67,11 +88,59 @@ public class VrfIpReservationCreateInputTest {
     }
 
     /**
+     * Test the property 'href'
+     */
+    @Test
+    public void hrefTest() {
+        // TODO: test href
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
+     * Test the property 'metalGateway'
+     */
+    @Test
+    public void metalGatewayTest() {
+        // TODO: test metalGateway
+    }
+
+    /**
+     * Test the property 'netmask'
+     */
+    @Test
+    public void netmaskTest() {
+        // TODO: test netmask
+    }
+
+    /**
      * Test the property 'network'
      */
     @Test
     public void networkTest() {
         // TODO: test network
+    }
+
+    /**
+     * Test the property 'project'
+     */
+    @Test
+    public void projectTest() {
+        // TODO: test project
+    }
+
+    /**
+     * Test the property 'state'
+     */
+    @Test
+    public void stateTest() {
+        // TODO: test state
     }
 
     /**
@@ -91,11 +160,11 @@ public class VrfIpReservationCreateInputTest {
     }
 
     /**
-     * Test the property 'vrfId'
+     * Test the property 'vrf'
      */
     @Test
-    public void vrfIdTest() {
-        // TODO: test vrfId
+    public void vrfTest() {
+        // TODO: test vrf
     }
 
 }

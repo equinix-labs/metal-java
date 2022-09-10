@@ -31,7 +31,7 @@ import com.equinix.openapi.metal.v1.model.CreateVrfRequest;
 import com.equinix.openapi.metal.v1.model.Error;
 import java.util.UUID;
 import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfIpReservationList;
+import com.equinix.openapi.metal.v1.model.VrfIPReservationList;
 import com.equinix.openapi.metal.v1.model.VrfList;
 import com.equinix.openapi.metal.v1.model.VrfUpdateInput;
 
@@ -518,7 +518,7 @@ public class VrfsApi {
         return localVarCall;
     }
     /**
-     * Build call for findVrfIpReservations
+     * Build call for findVrfIPReservations
      * @param id VRF UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
@@ -533,7 +533,7 @@ public class VrfsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findVrfIpReservationsCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findVrfIPReservationsCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -588,15 +588,15 @@ public class VrfsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findVrfIpReservationsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findVrfIPReservationsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling findVrfIpReservations(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling findVrfIPReservations(Async)");
         }
         
 
-        okhttp3.Call localVarCall = findVrfIpReservationsCall(id, include, exclude, _callback);
+        okhttp3.Call localVarCall = findVrfIPReservationsCall(id, include, exclude, _callback);
         return localVarCall;
 
     }
@@ -607,7 +607,7 @@ public class VrfsApi {
      * @param id VRF UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @return VrfIpReservationList
+     * @return VrfIPReservationList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -617,8 +617,8 @@ public class VrfsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public VrfIpReservationList findVrfIpReservations(UUID id, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<VrfIpReservationList> localVarResp = findVrfIpReservationsWithHttpInfo(id, include, exclude);
+    public VrfIPReservationList findVrfIPReservations(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<VrfIPReservationList> localVarResp = findVrfIPReservationsWithHttpInfo(id, include, exclude);
         return localVarResp.getData();
     }
 
@@ -628,7 +628,7 @@ public class VrfsApi {
      * @param id VRF UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @return ApiResponse&lt;VrfIpReservationList&gt;
+     * @return ApiResponse&lt;VrfIPReservationList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -638,9 +638,9 @@ public class VrfsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VrfIpReservationList> findVrfIpReservationsWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = findVrfIpReservationsValidateBeforeCall(id, include, exclude, null);
-        Type localVarReturnType = new TypeToken<VrfIpReservationList>(){}.getType();
+    public ApiResponse<VrfIPReservationList> findVrfIPReservationsWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = findVrfIPReservationsValidateBeforeCall(id, include, exclude, null);
+        Type localVarReturnType = new TypeToken<VrfIPReservationList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -661,10 +661,10 @@ public class VrfsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findVrfIpReservationsAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<VrfIpReservationList> _callback) throws ApiException {
+    public okhttp3.Call findVrfIPReservationsAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<VrfIPReservationList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findVrfIpReservationsValidateBeforeCall(id, include, exclude, _callback);
-        Type localVarReturnType = new TypeToken<VrfIpReservationList>(){}.getType();
+        okhttp3.Call localVarCall = findVrfIPReservationsValidateBeforeCall(id, include, exclude, _callback);
+        Type localVarReturnType = new TypeToken<VrfIPReservationList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

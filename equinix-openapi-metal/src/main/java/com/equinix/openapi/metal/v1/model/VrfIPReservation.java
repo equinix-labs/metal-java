@@ -53,10 +53,10 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * VrfIpReservation
+ * VrfIPReservation
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VrfIpReservation {
+public class VrfIPReservation {
   public static final String SERIALIZED_NAME_ADDRESS_FAMILY = "address_family";
   @SerializedName(SERIALIZED_NAME_ADDRESS_FAMILY)
   private Integer addressFamily;
@@ -162,10 +162,10 @@ public class VrfIpReservation {
   @SerializedName(SERIALIZED_NAME_VRF)
   private Vrf vrf;
 
-  public VrfIpReservation() {
+  public VrfIPReservation() {
   }
 
-  public VrfIpReservation addressFamily(Integer addressFamily) {
+  public VrfIPReservation addressFamily(Integer addressFamily) {
     
     this.addressFamily = addressFamily;
     return this;
@@ -188,7 +188,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation cidr(Integer cidr) {
+  public VrfIPReservation cidr(Integer cidr) {
     
     this.cidr = cidr;
     return this;
@@ -211,7 +211,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation createdAt(OffsetDateTime createdAt) {
+  public VrfIPReservation createdAt(OffsetDateTime createdAt) {
     
     this.createdAt = createdAt;
     return this;
@@ -234,7 +234,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation createdBy(Href createdBy) {
+  public VrfIPReservation createdBy(Href createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -257,7 +257,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation details(String details) {
+  public VrfIPReservation details(String details) {
     
     this.details = details;
     return this;
@@ -280,7 +280,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation href(String href) {
+  public VrfIPReservation href(String href) {
     
     this.href = href;
     return this;
@@ -303,7 +303,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation id(UUID id) {
+  public VrfIPReservation id(UUID id) {
     
     this.id = id;
     return this;
@@ -326,7 +326,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation metalGateway(MetalGatewayLite metalGateway) {
+  public VrfIPReservation metalGateway(MetalGatewayLite metalGateway) {
     
     this.metalGateway = metalGateway;
     return this;
@@ -349,7 +349,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation netmask(String netmask) {
+  public VrfIPReservation netmask(String netmask) {
     
     this.netmask = netmask;
     return this;
@@ -372,7 +372,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation network(String network) {
+  public VrfIPReservation network(String network) {
     
     this.network = network;
     return this;
@@ -395,7 +395,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation project(Project project) {
+  public VrfIPReservation project(Project project) {
     
     this.project = project;
     return this;
@@ -418,7 +418,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation state(String state) {
+  public VrfIPReservation state(String state) {
     
     this.state = state;
     return this;
@@ -441,13 +441,13 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation tags(List<String> tags) {
+  public VrfIPReservation tags(List<String> tags) {
     
     this.tags = tags;
     return this;
   }
 
-  public VrfIpReservation addTagsItem(String tagsItem) {
+  public VrfIPReservation addTagsItem(String tagsItem) {
     if (this.tags == null) {
       this.tags = new ArrayList<>();
     }
@@ -472,7 +472,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation type(TypeEnum type) {
+  public VrfIPReservation type(TypeEnum type) {
     
     this.type = type;
     return this;
@@ -495,7 +495,7 @@ public class VrfIpReservation {
   }
 
 
-  public VrfIpReservation vrf(Vrf vrf) {
+  public VrfIPReservation vrf(Vrf vrf) {
     
     this.vrf = vrf;
     return this;
@@ -528,7 +528,7 @@ public class VrfIpReservation {
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
    */
-  public VrfIpReservation putAdditionalProperty(String key, Object value) {
+  public VrfIPReservation putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -562,23 +562,23 @@ public class VrfIpReservation {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VrfIpReservation vrfIpReservation = (VrfIpReservation) o;
-    return Objects.equals(this.addressFamily, vrfIpReservation.addressFamily) &&
-        Objects.equals(this.cidr, vrfIpReservation.cidr) &&
-        Objects.equals(this.createdAt, vrfIpReservation.createdAt) &&
-        Objects.equals(this.createdBy, vrfIpReservation.createdBy) &&
-        Objects.equals(this.details, vrfIpReservation.details) &&
-        Objects.equals(this.href, vrfIpReservation.href) &&
-        Objects.equals(this.id, vrfIpReservation.id) &&
-        Objects.equals(this.metalGateway, vrfIpReservation.metalGateway) &&
-        Objects.equals(this.netmask, vrfIpReservation.netmask) &&
-        Objects.equals(this.network, vrfIpReservation.network) &&
-        Objects.equals(this.project, vrfIpReservation.project) &&
-        Objects.equals(this.state, vrfIpReservation.state) &&
-        Objects.equals(this.tags, vrfIpReservation.tags) &&
-        Objects.equals(this.type, vrfIpReservation.type) &&
-        Objects.equals(this.vrf, vrfIpReservation.vrf)&&
-        Objects.equals(this.additionalProperties, vrfIpReservation.additionalProperties);
+    VrfIPReservation vrfIPReservation = (VrfIPReservation) o;
+    return Objects.equals(this.addressFamily, vrfIPReservation.addressFamily) &&
+        Objects.equals(this.cidr, vrfIPReservation.cidr) &&
+        Objects.equals(this.createdAt, vrfIPReservation.createdAt) &&
+        Objects.equals(this.createdBy, vrfIPReservation.createdBy) &&
+        Objects.equals(this.details, vrfIPReservation.details) &&
+        Objects.equals(this.href, vrfIPReservation.href) &&
+        Objects.equals(this.id, vrfIPReservation.id) &&
+        Objects.equals(this.metalGateway, vrfIPReservation.metalGateway) &&
+        Objects.equals(this.netmask, vrfIPReservation.netmask) &&
+        Objects.equals(this.network, vrfIPReservation.network) &&
+        Objects.equals(this.project, vrfIPReservation.project) &&
+        Objects.equals(this.state, vrfIPReservation.state) &&
+        Objects.equals(this.tags, vrfIPReservation.tags) &&
+        Objects.equals(this.type, vrfIPReservation.type) &&
+        Objects.equals(this.vrf, vrfIPReservation.vrf)&&
+        Objects.equals(this.additionalProperties, vrfIPReservation.additionalProperties);
   }
 
   @Override
@@ -589,7 +589,7 @@ public class VrfIpReservation {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VrfIpReservation {\n");
+    sb.append("class VrfIPReservation {\n");
     sb.append("    addressFamily: ").append(toIndentedString(addressFamily)).append("\n");
     sb.append("    cidr: ").append(toIndentedString(cidr)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
@@ -654,19 +654,19 @@ public class VrfIpReservation {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VrfIpReservation
+  * @throws IOException if the JSON Object is invalid with respect to VrfIPReservation
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VrfIpReservation.openapiRequiredFields.isEmpty()) {
+        if (VrfIPReservation.openapiRequiredFields.isEmpty()) {
           return;
         } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIpReservation is not found in the empty JSON string", VrfIpReservation.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIPReservation is not found in the empty JSON string", VrfIPReservation.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VrfIpReservation.openapiRequiredFields) {
+      for (String requiredField : VrfIPReservation.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
@@ -718,16 +718,16 @@ public class VrfIpReservation {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VrfIpReservation.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VrfIpReservation' and its subtypes
+       if (!VrfIPReservation.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'VrfIPReservation' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VrfIpReservation> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VrfIpReservation.class));
+       final TypeAdapter<VrfIPReservation> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(VrfIPReservation.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<VrfIpReservation>() {
+       return (TypeAdapter<T>) new TypeAdapter<VrfIPReservation>() {
            @Override
-           public void write(JsonWriter out, VrfIpReservation value) throws IOException {
+           public void write(JsonWriter out, VrfIPReservation value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additonal properties
@@ -750,11 +750,11 @@ public class VrfIpReservation {
            }
 
            @Override
-           public VrfIpReservation read(JsonReader in) throws IOException {
+           public VrfIPReservation read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             VrfIpReservation instance = thisAdapter.fromJsonTree(jsonObj);
+             VrfIPReservation instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -779,18 +779,18 @@ public class VrfIpReservation {
   }
 
  /**
-  * Create an instance of VrfIpReservation given an JSON string
+  * Create an instance of VrfIPReservation given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of VrfIpReservation
-  * @throws IOException if the JSON string is invalid with respect to VrfIpReservation
+  * @return An instance of VrfIPReservation
+  * @throws IOException if the JSON string is invalid with respect to VrfIPReservation
   */
-  public static VrfIpReservation fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VrfIpReservation.class);
+  public static VrfIPReservation fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VrfIPReservation.class);
   }
 
  /**
-  * Convert an instance of VrfIpReservation to an JSON string
+  * Convert an instance of VrfIPReservation to an JSON string
   *
   * @return JSON string
   */
