@@ -1832,8 +1832,45 @@
                "type": "string"
              },
              "type": "array"
+           },
+           "details": {
+             "type": "string"
+           },
+           "customdata": {
+             "type": "object"
+           },
+           "project": {
+             "$ref": "#/components/schemas/Project"
+           },
+           "project_lite": {
+             "$ref": "#/components/schemas/Href"
+           },
+           "requested_by": {
+             "$ref": "#/components/schemas/User"
+           },
+           "address": {
+             "type": "string"
+           },
+           "gateway": {
+             "type": "string"
+           },
+           "available": {
+             "type": "string"
+           },
+           "type": {
+             "type": "string",
+             "enum": [
+               "global_ipv4",
+               "public_ipv4",
+               "private_ipv4",
+               "public_ipv6"
+             ]
            }
          },
+         "required": [
+           "type"
+         ],
+         "additionalProperties": false,
          "type": "object"
        },
        "IPReservationList": {
@@ -4743,14 +4780,15 @@
            },
            "type": {
              "type": "string",
-             "example": "vrf"
+             "enum": ["vrf"]
            },
            "vrf": {
              "$ref": "#/components/schemas/Vrf"
            }
          },
          "required": [
-          "vrf"
+           "vrf",
+           "type"
          ],
          "type": "object"
        },
