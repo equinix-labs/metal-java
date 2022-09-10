@@ -22,6 +22,7 @@ import com.equinix.openapi.metal.v1.model.IPReservationFacility;
 import com.equinix.openapi.metal.v1.model.IPReservationMetro;
 import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.equinix.openapi.metal.v1.model.Project;
+import com.equinix.openapi.metal.v1.model.User;
 import com.equinix.openapi.metal.v1.model.Vrf;
 import com.equinix.openapi.metal.v1.model.VrfIpReservation;
 import com.google.gson.TypeAdapter;

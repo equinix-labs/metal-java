@@ -20,6 +20,7 @@ import com.equinix.openapi.metal.v1.model.IPReservationFacility;
 import com.equinix.openapi.metal.v1.model.IPReservationMetro;
 import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.equinix.openapi.metal.v1.model.Project;
+import com.equinix.openapi.metal.v1.model.User;
 import com.equinix.openapi.metal.v1.model.Vrf;
 import com.equinix.openapi.metal.v1.model.VrfIpReservation;
 import com.google.gson.TypeAdapter;
@@ -213,19 +214,19 @@ public class IPReservationListIpAddressesInnerTest {
     }
 
     /**
-     * Test the property 'createdBy'
-     */
-    @Test
-    public void createdByTest() {
-        // TODO: test createdBy
-    }
-
-    /**
      * Test the property 'details'
      */
     @Test
     public void detailsTest() {
         // TODO: test details
+    }
+
+    /**
+     * Test the property 'customdata'
+     */
+    @Test
+    public void customdataTest() {
+        // TODO: test customdata
     }
 
     /**
@@ -237,11 +238,59 @@ public class IPReservationListIpAddressesInnerTest {
     }
 
     /**
+     * Test the property 'projectLite'
+     */
+    @Test
+    public void projectLiteTest() {
+        // TODO: test projectLite
+    }
+
+    /**
+     * Test the property 'requestedBy'
+     */
+    @Test
+    public void requestedByTest() {
+        // TODO: test requestedBy
+    }
+
+    /**
+     * Test the property 'address'
+     */
+    @Test
+    public void addressTest() {
+        // TODO: test address
+    }
+
+    /**
+     * Test the property 'gateway'
+     */
+    @Test
+    public void gatewayTest() {
+        // TODO: test gateway
+    }
+
+    /**
+     * Test the property 'available'
+     */
+    @Test
+    public void availableTest() {
+        // TODO: test available
+    }
+
+    /**
      * Test the property 'type'
      */
     @Test
     public void typeTest() {
         // TODO: test type
+    }
+
+    /**
+     * Test the property 'createdBy'
+     */
+    @Test
+    public void createdByTest() {
+        // TODO: test createdBy
     }
 
     /**

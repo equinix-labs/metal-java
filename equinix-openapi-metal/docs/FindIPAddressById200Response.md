@@ -31,11 +31,23 @@
 |**metalGateway** | [**MetalGatewayLite**](MetalGatewayLite.md) |  |  [optional] |
 |**state** | **String** |  |  [optional] |
 |**tags** | **List&lt;String&gt;** |  |  [optional] |
-|**createdBy** | [**Href**](Href.md) |  |  [optional] |
 |**details** | **String** |  |  [optional] |
+|**customdata** | **Object** |  |  [optional] |
 |**project** | [**Project**](Project.md) |  |  [optional] |
-|**type** | **String** |  |  [optional] |
+|**projectLite** | [**Href**](Href.md) |  |  [optional] |
+|**requestedBy** | [**User**](User.md) |  |  [optional] |
+|**available** | **String** |  |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) |  |  |
+|**createdBy** | [**Href**](Href.md) |  |  [optional] |
 |**vrf** | [**Vrf**](Vrf.md) |  |  |
+
+
+
+## Enum: TypeEnum
+
+| Name | Value |
+|---- | -----|
+| VRF | &quot;vrf&quot; |
 
 
 

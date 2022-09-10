@@ -20,8 +20,16 @@
 |**project** | [**Project**](Project.md) |  |  [optional] |
 |**state** | **String** |  |  [optional] |
 |**tags** | **List&lt;String&gt;** |  |  [optional] |
-|**type** | **String** |  |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) |  |  |
 |**vrf** | [**Vrf**](Vrf.md) |  |  |
+
+
+
+## Enum: TypeEnum
+
+| Name | Value |
+|---- | -----|
+| VRF | &quot;vrf&quot; |
 
 
 

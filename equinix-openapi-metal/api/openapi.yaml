@@ -14555,6 +14555,7 @@ components:
           type: array
       type: object
     IPReservation:
+      additionalProperties: false
       properties:
         addon:
           type: boolean
@@ -14602,6 +14603,31 @@ components:
           items:
             type: string
           type: array
+        details:
+          type: string
+        customdata:
+          type: object
+        project:
+          $ref: '#/components/schemas/Project'
+        project_lite:
+          $ref: '#/components/schemas/Href'
+        requested_by:
+          $ref: '#/components/schemas/User'
+        address:
+          type: string
+        gateway:
+          type: string
+        available:
+          type: string
+        type:
+          enum:
+          - global_ipv4
+          - public_ipv4
+          - private_ipv4
+          - public_ipv6
+          type: string
+      required:
+      - type
       type: object
     IPReservationList:
       example:
@@ -19537,11 +19563,13 @@ components:
             type: string
           type: array
         type:
-          example: vrf
+          enum:
+          - vrf
           type: string
         vrf:
           $ref: '#/components/schemas/Vrf'
       required:
+      - type
       - vrf
       type: object
     VrfIpReservationCreateInput:
