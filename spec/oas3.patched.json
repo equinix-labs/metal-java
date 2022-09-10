@@ -1882,7 +1882,7 @@
                    "$ref": "#/components/schemas/IPReservation"
                  },
                  {
-                   "$ref": "#/components/schemas/VrfIpReservation"
+                   "$ref": "#/components/schemas/VrfIPReservation"
                  }
                ]
              },
@@ -4664,7 +4664,7 @@
              "format": "int32"
            },
            "ip_ranges": {
-             "$ref": "#/components/schemas/VrfIpRangeList"
+             "$ref": "#/components/schemas/VrfIPRangeList"
            },
            "project": {
              "$ref": "#/components/schemas/Project"
@@ -4687,7 +4687,7 @@
              "type": "string"
            },
            "ip_ranges": {
-             "$ref": "#/components/schemas/VrfIpRangeCreateInput"
+             "$ref": "#/components/schemas/VrfIPRangeCreateInput"
            },
            "local_asn": {
              "type": "integer",
@@ -4711,28 +4711,28 @@
            "project_id"
          ]
        },
-       "VrfIpRangeCreateInput": {
+       "VrfIPRangeCreateInput": {
          "type": "array",
          "items": {
            "type": "string"
          },
          "description": "A list of CIDR network addresses. Like [\"10.0.0.0/16\", \"2001:d78::/56\"]. IPv4 blocks must be between /8 and /29 in size. IPv6 blocks must be between /56 and /64. A VRF\\'s IP ranges must be defined in order to create VRF IP Reservations, which can then be used for Metal Gateways or Virtual Circuits."
        },
-       "VrfIpRangeList": {
+       "VrfIPRangeList": {
          "type": "array",
          "items": {
            "type": "string"
          },
          "description": "A list of CIDR network addresses. Like [\"10.0.0.0/16\", \"2001:d78::/56\"]."
        },
-       "VrfIpRangeUpdateInput": {
+       "VrfIPRangeUpdateInput": {
          "type": "array",
          "items": {
            "type": "string"
          },
          "description": "A list of CIDR network addresses. Like [\"10.0.0.0/16\", \"2001:d78::/56\"]. IPv4 blocks must be between /8 and /29 in size. IPv6 blocks must be between /56 and /64. A VRF\\'s IP ranges must be defined in order to create VRF IP Reservations, which can then be used for Metal Gateways or Virtual Circuits. Adding a new CIDR address to the list will result in the creation of a new IP Range for this VRF. Removal of an existing CIDR address from the list will result in the deletion of an existing IP Range for this VRF. Deleting an IP Range will result in the deletion of any VRF IP Reservations contained within the IP Range, as well as the VRF IP Reservation\\'s associated Metal Gateways or Virtual Circuits. If you do not wish to add or remove IP Ranges, either include the full existing list of IP Ranges in the update request, or do not specify the `ip_ranges` field in the update request. Specifying a value of `[]` will remove all existing IP Ranges from the VRF."
        },
-       "VrfIpReservation": {
+       "VrfIPReservation": {
          "properties": {
            "address_family": {
              "type": "integer"
@@ -4792,7 +4792,7 @@
          ],
          "type": "object"
        },
-       "VrfIpReservationCreateInput": {
+       "VrfIPReservationCreateInput": {
          "properties": {
            "cidr": {
              "type": "integer",
@@ -4834,11 +4834,11 @@
            "vrf_id"
          ]
        },
-       "VrfIpReservationList": {
+       "VrfIPReservationList": {
          "properties": {
            "ip_addresses": {
              "items": {
-               "$ref": "#/components/schemas/VrfIpReservation"
+               "$ref": "#/components/schemas/VrfIPReservation"
              },
              "type": "array"
            }
@@ -4873,7 +4873,7 @@
              "type": "string"
            },
            "ip_reservation": {
-             "$ref": "#/components/schemas/VrfIpReservation"
+             "$ref": "#/components/schemas/VrfIPReservation"
            },
            "project": {
              "$ref": "#/components/schemas/Project"
@@ -4924,7 +4924,7 @@
              "type": "string"
            },
            "ip_ranges": {
-             "$ref": "#/components/schemas/VrfIpRangeUpdateInput"
+             "$ref": "#/components/schemas/VrfIPRangeUpdateInput"
            },
            "local_asn": {
              "type": "integer",
@@ -8323,7 +8323,7 @@
                        "$ref": "#/components/schemas/IPReservation"
                      },
                      {
-                       "$ref": "#/components/schemas/VrfIpReservation"
+                       "$ref": "#/components/schemas/VrfIPReservation"
                      }
                    ]
                  }
@@ -8413,7 +8413,7 @@
                        "$ref": "#/components/schemas/IPReservation"
                      },
                      {
-                       "$ref": "#/components/schemas/VrfIpReservation"
+                       "$ref": "#/components/schemas/VrfIPReservation"
                      }
                    ]
                  }
@@ -13855,7 +13855,7 @@
                      "$ref": "#/components/schemas/IPReservationRequestInput"
                    },
                    {
-                     "$ref": "#/components/schemas/VrfIpReservationCreateInput"
+                     "$ref": "#/components/schemas/VrfIPReservationCreateInput"
                    }
                  ]
                }
@@ -13874,7 +13874,7 @@
                        "$ref": "#/components/schemas/IPReservation"
                      },
                      {
-                       "$ref": "#/components/schemas/VrfIpReservation"
+                       "$ref": "#/components/schemas/VrfIPReservation"
                      }
                    ]
                  }
@@ -17991,7 +17991,7 @@
      "/vrfs/{id}/ips": {
        "get": {
          "description": "Returns the list of VRF IP Reservations for the VRF.",
-         "operationId": "findVrfIpReservations",
+         "operationId": "findVrfIPReservations",
          "parameters": [
            {
              "description": "VRF UUID",
@@ -18033,7 +18033,7 @@
              "content": {
                "application/json": {
                  "schema": {
-                   "$ref": "#/components/schemas/VrfIpReservationList"
+                   "$ref": "#/components/schemas/VrfIPReservationList"
                  }
                }
              },
