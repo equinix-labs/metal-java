@@ -14,9 +14,10 @@
 package com.equinix.openapi.metal.v1.model;
 
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.IPReservation;
+import com.equinix.openapi.metal.v1.model.MetalGatewayIpReservation;
 import com.equinix.openapi.metal.v1.model.Project;
 import com.equinix.openapi.metal.v1.model.VirtualNetwork;
+import com.equinix.openapi.metal.v1.model.Vrf;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -115,6 +116,14 @@ public class MetalGatewayTest {
     @Test
     public void virtualNetworkTest() {
         // TODO: test virtualNetwork
+    }
+
+    /**
+     * Test the property 'vrf'
+     */
+    @Test
+    public void vrfTest() {
+        // TODO: test vrf
     }
 
 }

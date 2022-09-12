@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**ipAddresses** | [**List&lt;IPReservationListIpAddressesInner&gt;**](IPReservationListIpAddressesInner.md) |  |  [optional] |
+|**ipAddresses** | [**List&lt;IPReservation&gt;**](IPReservation.md) |  |  [optional] |
 
 
 

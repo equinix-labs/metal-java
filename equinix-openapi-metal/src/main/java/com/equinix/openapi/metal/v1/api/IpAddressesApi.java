@@ -30,8 +30,8 @@ import java.io.IOException;
 import com.equinix.openapi.metal.v1.model.Error;
 import com.equinix.openapi.metal.v1.model.FindIPAddressById200Response;
 import com.equinix.openapi.metal.v1.model.IPAvailabilitiesList;
+import com.equinix.openapi.metal.v1.model.IPReservation;
 import com.equinix.openapi.metal.v1.model.IPReservationList;
-import com.equinix.openapi.metal.v1.model.RequestIPReservation201Response;
 import com.equinix.openapi.metal.v1.model.RequestIPReservationRequest;
 import java.util.UUID;
 
@@ -906,7 +906,7 @@ public class IpAddressesApi {
      * Request more IP space for a project in order to have additional IP addresses to assign to devices.  If the request is within the max quota, an IP reservation will be created. If the project will exceed its IP quota, a request will be submitted for review, and will return an IP Reservation with a &#x60;state&#x60; of &#x60;pending&#x60;. You can automatically have the request fail with HTTP status 422 instead of triggering the review process by providing the &#x60;fail_on_approval_required&#x60; parameter set to &#x60;true&#x60; in the request.
      * @param id Project UUID (required)
      * @param requestIPReservationRequest IP Reservation Request to create (required)
-     * @return RequestIPReservation201Response
+     * @return IPReservation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -918,8 +918,8 @@ public class IpAddressesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public RequestIPReservation201Response requestIPReservation(UUID id, RequestIPReservationRequest requestIPReservationRequest) throws ApiException {
-        ApiResponse<RequestIPReservation201Response> localVarResp = requestIPReservationWithHttpInfo(id, requestIPReservationRequest);
+    public IPReservation requestIPReservation(UUID id, RequestIPReservationRequest requestIPReservationRequest) throws ApiException {
+        ApiResponse<IPReservation> localVarResp = requestIPReservationWithHttpInfo(id, requestIPReservationRequest);
         return localVarResp.getData();
     }
 
@@ -928,7 +928,7 @@ public class IpAddressesApi {
      * Request more IP space for a project in order to have additional IP addresses to assign to devices.  If the request is within the max quota, an IP reservation will be created. If the project will exceed its IP quota, a request will be submitted for review, and will return an IP Reservation with a &#x60;state&#x60; of &#x60;pending&#x60;. You can automatically have the request fail with HTTP status 422 instead of triggering the review process by providing the &#x60;fail_on_approval_required&#x60; parameter set to &#x60;true&#x60; in the request.
      * @param id Project UUID (required)
      * @param requestIPReservationRequest IP Reservation Request to create (required)
-     * @return ApiResponse&lt;RequestIPReservation201Response&gt;
+     * @return ApiResponse&lt;IPReservation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -940,9 +940,9 @@ public class IpAddressesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RequestIPReservation201Response> requestIPReservationWithHttpInfo(UUID id, RequestIPReservationRequest requestIPReservationRequest) throws ApiException {
+    public ApiResponse<IPReservation> requestIPReservationWithHttpInfo(UUID id, RequestIPReservationRequest requestIPReservationRequest) throws ApiException {
         okhttp3.Call localVarCall = requestIPReservationValidateBeforeCall(id, requestIPReservationRequest, null);
-        Type localVarReturnType = new TypeToken<RequestIPReservation201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<IPReservation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -964,10 +964,10 @@ public class IpAddressesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call requestIPReservationAsync(UUID id, RequestIPReservationRequest requestIPReservationRequest, final ApiCallback<RequestIPReservation201Response> _callback) throws ApiException {
+    public okhttp3.Call requestIPReservationAsync(UUID id, RequestIPReservationRequest requestIPReservationRequest, final ApiCallback<IPReservation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = requestIPReservationValidateBeforeCall(id, requestIPReservationRequest, _callback);
-        Type localVarReturnType = new TypeToken<RequestIPReservation201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<IPReservation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -16,7 +16,7 @@ package com.equinix.openapi.metal.v1.api;
 import com.equinix.openapi.ApiException;
 import com.equinix.openapi.metal.v1.model.CreateMetalGatewayRequest;
 import com.equinix.openapi.metal.v1.model.Error;
-import com.equinix.openapi.metal.v1.model.FindMetalGatewayById200Response;
+import com.equinix.openapi.metal.v1.model.MetalGateway;
 import com.equinix.openapi.metal.v1.model.MetalGatewayList;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
@@ -48,7 +48,7 @@ public class MetalGatewaysApiTest {
         CreateMetalGatewayRequest createMetalGatewayRequest = null;
         Integer page = null;
         Integer perPage = null;
-        FindMetalGatewayById200Response response = api.createMetalGateway(projectId, createMetalGatewayRequest, page, perPage);
+        MetalGateway response = api.createMetalGateway(projectId, createMetalGatewayRequest, page, perPage);
         // TODO: test validations
     }
 
@@ -78,7 +78,7 @@ public class MetalGatewaysApiTest {
         UUID id = null;
         List<String> include = null;
         List<String> exclude = null;
-        FindMetalGatewayById200Response response = api.findMetalGatewayById(id, include, exclude);
+        MetalGateway response = api.findMetalGatewayById(id, include, exclude);
         // TODO: test validations
     }
 

@@ -58,6 +58,20 @@ public class JSON {
     @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
+                .registerTypeSelector(com.equinix.openapi.metal.v1.model.IPReservation.class, new TypeSelector<com.equinix.openapi.metal.v1.model.IPReservation>() {
+                    @Override
+                    public Class<? extends com.equinix.openapi.metal.v1.model.IPReservation> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("global_ipv4", com.equinix.openapi.metal.v1.model.DefaultIPReservation.class);
+                        classByDiscriminatorValue.put("private_ipv4", com.equinix.openapi.metal.v1.model.DefaultIPReservation.class);
+                        classByDiscriminatorValue.put("public_ipv4", com.equinix.openapi.metal.v1.model.DefaultIPReservation.class);
+                        classByDiscriminatorValue.put("public_ipv6", com.equinix.openapi.metal.v1.model.DefaultIPReservation.class);
+                        classByDiscriminatorValue.put("vrf", com.equinix.openapi.metal.v1.model.VrfIPReservation.class);
+                        classByDiscriminatorValue.put("IPReservation", com.equinix.openapi.metal.v1.model.IPReservation.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "type"));
+                    }
+          })
         ;
         GsonBuilder builder = fireBuilder.createGsonBuilder();
         return builder;
@@ -129,6 +143,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.CreateSelfServiceReservationRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.CreateSelfServiceReservationRequestPeriod.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.CreateVrfRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.DefaultIPReservation.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.DefaultIPReservationAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.Device.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.DeviceActionsInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.DeviceCreateInput.CustomTypeAdapterFactory());
@@ -151,21 +167,18 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.Facility.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.FacilityList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.FindIPAddressById200Response.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.FindMetalGatewayById200Response.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.GlobalBgpRange.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.GlobalBgpRangeList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.HardwareReservation.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.HardwareReservationList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.Href.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.HrefOnly.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.IPAssignment.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.IPAssignmentInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.IPAssignmentList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.IPAssignmentMetro.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.IPAvailabilitiesList.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.IPReservation.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.IPReservationFacility.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.IPReservationList.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.IPReservationListIpAddressesInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.IPReservationMetro.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.IPReservationRequestInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.InstancesBatchCreateInput.CustomTypeAdapterFactory());
@@ -191,8 +204,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.Meta.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.MetalGateway.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.MetalGatewayInput.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.MetalGatewayIpReservation.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.MetalGatewayList.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.MetalGatewayListMetalGatewaysInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.MetalGatewayLite.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.Metro.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.MetroCapacityList.CustomTypeAdapterFactory());
@@ -234,7 +247,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.ProjectUsage.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.ProjectUsageList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.RecoveryCodeList.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.RequestIPReservation201Response.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.RequestIPReservationRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.SSHKey.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.SSHKeyCreateInput.CustomTypeAdapterFactory());
@@ -282,10 +294,10 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.Vrf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.VrfCreateInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.VrfIPReservation.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.VrfIPReservationAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.VrfIPReservationCreateInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.VrfIPReservationList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.VrfList.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.VrfMetalGateway.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.VrfMetalGatewayCreateInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.VrfUpdateInput.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.equinix.openapi.metal.v1.model.VrfVirtualCircuit.CustomTypeAdapterFactory());

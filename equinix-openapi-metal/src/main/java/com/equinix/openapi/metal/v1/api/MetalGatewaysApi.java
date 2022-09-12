@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import com.equinix.openapi.metal.v1.model.CreateMetalGatewayRequest;
 import com.equinix.openapi.metal.v1.model.Error;
-import com.equinix.openapi.metal.v1.model.FindMetalGatewayById200Response;
+import com.equinix.openapi.metal.v1.model.MetalGateway;
 import com.equinix.openapi.metal.v1.model.MetalGatewayList;
 import java.util.UUID;
 
@@ -175,7 +175,7 @@ public class MetalGatewaysApi {
      * @param createMetalGatewayRequest Metal Gateway to create (required)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
-     * @return FindMetalGatewayById200Response
+     * @return MetalGateway
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -186,8 +186,8 @@ public class MetalGatewaysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public FindMetalGatewayById200Response createMetalGateway(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<FindMetalGatewayById200Response> localVarResp = createMetalGatewayWithHttpInfo(projectId, createMetalGatewayRequest, page, perPage);
+    public MetalGateway createMetalGateway(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<MetalGateway> localVarResp = createMetalGatewayWithHttpInfo(projectId, createMetalGatewayRequest, page, perPage);
         return localVarResp.getData();
     }
 
@@ -198,7 +198,7 @@ public class MetalGatewaysApi {
      * @param createMetalGatewayRequest Metal Gateway to create (required)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
-     * @return ApiResponse&lt;FindMetalGatewayById200Response&gt;
+     * @return ApiResponse&lt;MetalGateway&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -209,9 +209,9 @@ public class MetalGatewaysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FindMetalGatewayById200Response> createMetalGatewayWithHttpInfo(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, Integer page, Integer perPage) throws ApiException {
+    public ApiResponse<MetalGateway> createMetalGatewayWithHttpInfo(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, Integer page, Integer perPage) throws ApiException {
         okhttp3.Call localVarCall = createMetalGatewayValidateBeforeCall(projectId, createMetalGatewayRequest, page, perPage, null);
-        Type localVarReturnType = new TypeToken<FindMetalGatewayById200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<MetalGateway>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -234,10 +234,10 @@ public class MetalGatewaysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createMetalGatewayAsync(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, Integer page, Integer perPage, final ApiCallback<FindMetalGatewayById200Response> _callback) throws ApiException {
+    public okhttp3.Call createMetalGatewayAsync(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, Integer page, Integer perPage, final ApiCallback<MetalGateway> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createMetalGatewayValidateBeforeCall(projectId, createMetalGatewayRequest, page, perPage, _callback);
-        Type localVarReturnType = new TypeToken<FindMetalGatewayById200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<MetalGateway>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -462,7 +462,7 @@ public class MetalGatewaysApi {
      * @param id Metal Gateway UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @return FindMetalGatewayById200Response
+     * @return MetalGateway
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -472,8 +472,8 @@ public class MetalGatewaysApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public FindMetalGatewayById200Response findMetalGatewayById(UUID id, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<FindMetalGatewayById200Response> localVarResp = findMetalGatewayByIdWithHttpInfo(id, include, exclude);
+    public MetalGateway findMetalGatewayById(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<MetalGateway> localVarResp = findMetalGatewayByIdWithHttpInfo(id, include, exclude);
         return localVarResp.getData();
     }
 
@@ -483,7 +483,7 @@ public class MetalGatewaysApi {
      * @param id Metal Gateway UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @return ApiResponse&lt;FindMetalGatewayById200Response&gt;
+     * @return ApiResponse&lt;MetalGateway&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -493,9 +493,9 @@ public class MetalGatewaysApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FindMetalGatewayById200Response> findMetalGatewayByIdWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
+    public ApiResponse<MetalGateway> findMetalGatewayByIdWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
         okhttp3.Call localVarCall = findMetalGatewayByIdValidateBeforeCall(id, include, exclude, null);
-        Type localVarReturnType = new TypeToken<FindMetalGatewayById200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<MetalGateway>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -516,10 +516,10 @@ public class MetalGatewaysApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findMetalGatewayByIdAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<FindMetalGatewayById200Response> _callback) throws ApiException {
+    public okhttp3.Call findMetalGatewayByIdAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<MetalGateway> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = findMetalGatewayByIdValidateBeforeCall(id, include, exclude, _callback);
-        Type localVarReturnType = new TypeToken<FindMetalGatewayById200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<MetalGateway>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -13,7 +13,6 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.MetalGateway;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,32 +21,30 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for MetalGatewayList
+ * Model tests for HrefOnly
  */
-public class MetalGatewayListTest {
-    private final MetalGatewayList model = new MetalGatewayList();
+public class HrefOnlyTest {
+    private final HrefOnly model = new HrefOnly();
 
     /**
-     * Model tests for MetalGatewayList
+     * Model tests for HrefOnly
      */
     @Test
-    public void testMetalGatewayList() {
-        // TODO: test MetalGatewayList
+    public void testHrefOnly() {
+        // TODO: test HrefOnly
     }
 
     /**
-     * Test the property 'metalGateways'
+     * Test the property 'href'
      */
     @Test
-    public void metalGatewaysTest() {
-        // TODO: test metalGateways
+    public void hrefTest() {
+        // TODO: test href
     }
 
 }

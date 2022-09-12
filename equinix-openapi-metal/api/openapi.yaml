@@ -3853,7 +3853,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/findMetalGatewayById_200_response'
+                $ref: '#/components/schemas/MetalGateway'
           description: ok
         "401":
           content:
@@ -7685,7 +7685,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/requestIPReservation_201_response'
+                $ref: '#/components/schemas/IPReservation'
           description: created
         "401":
           content:
@@ -8997,7 +8997,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/findMetalGatewayById_200_response'
+                $ref: '#/components/schemas/MetalGateway'
           description: created
         "401":
           content:
@@ -14413,6 +14413,10 @@ components:
       required:
       - href
       type: object
+    HrefOnly:
+      additionalProperties: false
+      allOf:
+      - $ref: '#/components/schemas/Href'
     IPAssignment:
       example:
         address: address
@@ -14555,16 +14559,80 @@ components:
           type: array
       type: object
     IPReservation:
-      additionalProperties: false
+      description: Base class for all IP Reservations
+      discriminator:
+        mapping:
+          vrf: '#/components/schemas/VrfIPReservation'
+          global_ipv4: '#/components/schemas/DefaultIPReservation'
+          public_ipv4: '#/components/schemas/DefaultIPReservation'
+          private_ipv4: '#/components/schemas/DefaultIPReservation'
+          public_ipv6: '#/components/schemas/DefaultIPReservation'
+        propertyName: type
+      example:
+        address: address
+        bill: true
+        created_at: 2000-01-23T04:56:07.000+00:00
+        project:
+          devices:
+          - href: href
+          - href: href
+          volumes:
+          - href: href
+          - href: href
+          created_at: 2000-01-23T04:56:07.000+00:00
+          memberships:
+          - href: href
+          - href: href
+          bgp_config:
+            href: href
+          max_devices: "{}"
+          ssh_keys:
+          - href: href
+          - href: href
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          invitations:
+          - href: href
+          - href: href
+          members:
+          - href: href
+          - href: href
+          name: name
+          network_status: "{}"
+          customdata: "{}"
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          payment_method:
+            href: href
+        project_lite:
+          href: href
+        type: type
+        manageable: true
+        network: network
+        tags:
+        - tags
+        - tags
+        metal_gateway:
+          gateway_address: gateway_address
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          vlan: 1.4658129805029452
+          created_at: 2000-01-23T04:56:07.000+00:00
+          href: href
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: ready
+        address_family: 0
+        public: true
+        management: true
+        netmask: netmask
+        metro: null
+        cidr: 6
+        details: details
+        href: href
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        state: state
+        customdata: "{}"
+        gateway: gateway
       properties:
-        addon:
-          type: boolean
         address_family:
           type: integer
-        assignments:
-          items:
-            $ref: '#/components/schemas/IPAssignment'
-          type: array
         bill:
           type: boolean
         cidr:
@@ -14572,12 +14640,6 @@ components:
         created_at:
           format: date-time
           type: string
-        enabled:
-          type: boolean
-        facility:
-          $ref: '#/components/schemas/IPReservation_facility'
-        global_ip:
-          type: boolean
         href:
           type: string
         id:
@@ -14611,33 +14673,149 @@ components:
           $ref: '#/components/schemas/Project'
         project_lite:
           $ref: '#/components/schemas/Href'
-        requested_by:
-          $ref: '#/components/schemas/User'
         address:
           type: string
         gateway:
           type: string
-        available:
-          type: string
         type:
-          enum:
-          - global_ipv4
-          - public_ipv4
-          - private_ipv4
-          - public_ipv6
           type: string
       required:
       - type
+    DefaultIPReservation:
+      additionalProperties: false
+      allOf:
+      - $ref: '#/components/schemas/IPReservation'
+      - $ref: '#/components/schemas/DefaultIPReservation_allOf'
       type: object
     IPReservationList:
       example:
         ip_addresses:
-        - null
-        - null
+        - address: address
+          bill: true
+          created_at: 2000-01-23T04:56:07.000+00:00
+          project:
+            devices:
+            - href: href
+            - href: href
+            volumes:
+            - href: href
+            - href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            memberships:
+            - href: href
+            - href: href
+            bgp_config:
+              href: href
+            max_devices: "{}"
+            ssh_keys:
+            - href: href
+            - href: href
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            invitations:
+            - href: href
+            - href: href
+            members:
+            - href: href
+            - href: href
+            name: name
+            network_status: "{}"
+            customdata: "{}"
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            payment_method:
+              href: href
+          project_lite:
+            href: href
+          type: type
+          manageable: true
+          network: network
+          tags:
+          - tags
+          - tags
+          metal_gateway:
+            gateway_address: gateway_address
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            vlan: 1.4658129805029452
+            created_at: 2000-01-23T04:56:07.000+00:00
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: ready
+          address_family: 0
+          public: true
+          management: true
+          netmask: netmask
+          metro: null
+          cidr: 6
+          details: details
+          href: href
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: state
+          customdata: "{}"
+          gateway: gateway
+        - address: address
+          bill: true
+          created_at: 2000-01-23T04:56:07.000+00:00
+          project:
+            devices:
+            - href: href
+            - href: href
+            volumes:
+            - href: href
+            - href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            memberships:
+            - href: href
+            - href: href
+            bgp_config:
+              href: href
+            max_devices: "{}"
+            ssh_keys:
+            - href: href
+            - href: href
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            invitations:
+            - href: href
+            - href: href
+            members:
+            - href: href
+            - href: href
+            name: name
+            network_status: "{}"
+            customdata: "{}"
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            payment_method:
+              href: href
+          project_lite:
+            href: href
+          type: type
+          manageable: true
+          network: network
+          tags:
+          - tags
+          - tags
+          metal_gateway:
+            gateway_address: gateway_address
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            vlan: 1.4658129805029452
+            created_at: 2000-01-23T04:56:07.000+00:00
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: ready
+          address_family: 0
+          public: true
+          management: true
+          netmask: netmask
+          metro: null
+          cidr: 6
+          details: details
+          href: href
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: state
+          customdata: "{}"
+          gateway: gateway
       properties:
         ip_addresses:
           items:
-            $ref: '#/components/schemas/IPReservationList_ip_addresses_inner'
+            $ref: '#/components/schemas/IPReservation'
           type: array
       type: object
     IPReservationRequestInput:
@@ -15440,6 +15618,134 @@ components:
           type: integer
       type: object
     MetalGateway:
+      example:
+        virtual_network:
+          vxlan: 0
+          metal_gateways:
+          - href: href
+          - href: href
+          metro_code: metro_code
+          instances:
+          - href: href
+          - href: href
+          metro:
+            href: href
+          description: description
+          href: href
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          facility:
+            href: href
+          assigned_to_virtual_circuit: true
+          assigned_to:
+            href: href
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        ip_reservation: null
+        created_at: 2000-01-23T04:56:07.000+00:00
+        project:
+          devices:
+          - href: href
+          - href: href
+          volumes:
+          - href: href
+          - href: href
+          created_at: 2000-01-23T04:56:07.000+00:00
+          memberships:
+          - href: href
+          - href: href
+          bgp_config:
+            href: href
+          max_devices: "{}"
+          ssh_keys:
+          - href: href
+          - href: href
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          invitations:
+          - href: href
+          - href: href
+          members:
+          - href: href
+          - href: href
+          name: name
+          network_status: "{}"
+          customdata: "{}"
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          payment_method:
+            href: href
+        href: href
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        state: ready
+        vrf:
+          local_asn: 6
+          ip_ranges:
+          - ip_ranges
+          - ip_ranges
+          metro:
+            country: country
+            code: code
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          description: description
+          project:
+            devices:
+            - href: href
+            - href: href
+            volumes:
+            - href: href
+            - href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            memberships:
+            - href: href
+            - href: href
+            bgp_config:
+              href: href
+            max_devices: "{}"
+            ssh_keys:
+            - href: href
+            - href: href
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            invitations:
+            - href: href
+            - href: href
+            members:
+            - href: href
+            - href: href
+            name: name
+            network_status: "{}"
+            customdata: "{}"
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            payment_method:
+              href: href
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          href: href
+          created_by:
+            avatar_thumb_url: avatar_thumb_url
+            last_login_at: 2000-01-23T04:56:07.000+00:00
+            max_projects: 5
+            timezone: timezone
+            created_at: 2000-01-23T04:56:07.000+00:00
+            last_name: last_name
+            short_id: short_id
+            fraud_score: fraud_score
+            emails:
+            - href: href
+            - href: href
+            features:
+            - features
+            - features
+            full_name: full_name
+            avatar_url: avatar_url
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            phone_number: phone_number
+            customdata: "{}"
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            first_name: first_name
+            max_organizations: 1
+            two_factor_auth: two_factor_auth
+            email: email
+        created_by:
+          href: href
       properties:
         created_at:
           format: date-time
@@ -15452,7 +15758,7 @@ components:
           format: uuid
           type: string
         ip_reservation:
-          $ref: '#/components/schemas/IPReservation'
+          $ref: '#/components/schemas/MetalGateway_ip_reservation'
         project:
           $ref: '#/components/schemas/Project'
         state:
@@ -15472,6 +15778,8 @@ components:
           type: string
         virtual_network:
           $ref: '#/components/schemas/VirtualNetwork'
+        vrf:
+          $ref: '#/components/schemas/Vrf'
       type: object
     MetalGatewayInput:
       properties:
@@ -15499,13 +15807,265 @@ components:
       type: object
     MetalGatewayList:
       example:
-        MetalGateways:
-        - null
-        - null
+        metal_gateways:
+        - virtual_network:
+            vxlan: 0
+            metal_gateways:
+            - href: href
+            - href: href
+            metro_code: metro_code
+            instances:
+            - href: href
+            - href: href
+            metro:
+              href: href
+            description: description
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            facility:
+              href: href
+            assigned_to_virtual_circuit: true
+            assigned_to:
+              href: href
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          ip_reservation: null
+          created_at: 2000-01-23T04:56:07.000+00:00
+          project:
+            devices:
+            - href: href
+            - href: href
+            volumes:
+            - href: href
+            - href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            memberships:
+            - href: href
+            - href: href
+            bgp_config:
+              href: href
+            max_devices: "{}"
+            ssh_keys:
+            - href: href
+            - href: href
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            invitations:
+            - href: href
+            - href: href
+            members:
+            - href: href
+            - href: href
+            name: name
+            network_status: "{}"
+            customdata: "{}"
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            payment_method:
+              href: href
+          href: href
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: ready
+          vrf:
+            local_asn: 6
+            ip_ranges:
+            - ip_ranges
+            - ip_ranges
+            metro:
+              country: country
+              code: code
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            description: description
+            project:
+              devices:
+              - href: href
+              - href: href
+              volumes:
+              - href: href
+              - href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              memberships:
+              - href: href
+              - href: href
+              bgp_config:
+                href: href
+              max_devices: "{}"
+              ssh_keys:
+              - href: href
+              - href: href
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              invitations:
+              - href: href
+              - href: href
+              members:
+              - href: href
+              - href: href
+              name: name
+              network_status: "{}"
+              customdata: "{}"
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              payment_method:
+                href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href: href
+            created_by:
+              avatar_thumb_url: avatar_thumb_url
+              last_login_at: 2000-01-23T04:56:07.000+00:00
+              max_projects: 5
+              timezone: timezone
+              created_at: 2000-01-23T04:56:07.000+00:00
+              last_name: last_name
+              short_id: short_id
+              fraud_score: fraud_score
+              emails:
+              - href: href
+              - href: href
+              features:
+              - features
+              - features
+              full_name: full_name
+              avatar_url: avatar_url
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              phone_number: phone_number
+              customdata: "{}"
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              first_name: first_name
+              max_organizations: 1
+              two_factor_auth: two_factor_auth
+              email: email
+          created_by:
+            href: href
+        - virtual_network:
+            vxlan: 0
+            metal_gateways:
+            - href: href
+            - href: href
+            metro_code: metro_code
+            instances:
+            - href: href
+            - href: href
+            metro:
+              href: href
+            description: description
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            facility:
+              href: href
+            assigned_to_virtual_circuit: true
+            assigned_to:
+              href: href
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          ip_reservation: null
+          created_at: 2000-01-23T04:56:07.000+00:00
+          project:
+            devices:
+            - href: href
+            - href: href
+            volumes:
+            - href: href
+            - href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            memberships:
+            - href: href
+            - href: href
+            bgp_config:
+              href: href
+            max_devices: "{}"
+            ssh_keys:
+            - href: href
+            - href: href
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            invitations:
+            - href: href
+            - href: href
+            members:
+            - href: href
+            - href: href
+            name: name
+            network_status: "{}"
+            customdata: "{}"
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            payment_method:
+              href: href
+          href: href
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: ready
+          vrf:
+            local_asn: 6
+            ip_ranges:
+            - ip_ranges
+            - ip_ranges
+            metro:
+              country: country
+              code: code
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            description: description
+            project:
+              devices:
+              - href: href
+              - href: href
+              volumes:
+              - href: href
+              - href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              memberships:
+              - href: href
+              - href: href
+              bgp_config:
+                href: href
+              max_devices: "{}"
+              ssh_keys:
+              - href: href
+              - href: href
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              invitations:
+              - href: href
+              - href: href
+              members:
+              - href: href
+              - href: href
+              name: name
+              network_status: "{}"
+              customdata: "{}"
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              payment_method:
+                href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href: href
+            created_by:
+              avatar_thumb_url: avatar_thumb_url
+              last_login_at: 2000-01-23T04:56:07.000+00:00
+              max_projects: 5
+              timezone: timezone
+              created_at: 2000-01-23T04:56:07.000+00:00
+              last_name: last_name
+              short_id: short_id
+              fraud_score: fraud_score
+              emails:
+              - href: href
+              - href: href
+              features:
+              - features
+              - features
+              full_name: full_name
+              avatar_url: avatar_url
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              phone_number: phone_number
+              customdata: "{}"
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              first_name: first_name
+              max_organizations: 1
+              two_factor_auth: two_factor_auth
+              email: email
+          created_by:
+            href: href
       properties:
-        MetalGateways:
+        metal_gateways:
           items:
-            $ref: '#/components/schemas/MetalGatewayList_MetalGateways_inner'
+            $ref: '#/components/schemas/MetalGateway'
           type: array
       type: object
     MetalGatewayLite:
@@ -18756,7 +19316,7 @@ components:
       example:
         avatar_thumb_url: avatar_thumb_url
         last_login_at: 2000-01-23T04:56:07.000+00:00
-        max_projects: 1
+        max_projects: 5
         timezone: timezone
         created_at: 2000-01-23T04:56:07.000+00:00
         last_name: last_name
@@ -18765,6 +19325,9 @@ components:
         emails:
         - href: href
         - href: href
+        features:
+        - features
+        - features
         full_name: full_name
         avatar_url: avatar_url
         updated_at: 2000-01-23T04:56:07.000+00:00
@@ -18773,7 +19336,7 @@ components:
         href: href
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         first_name: first_name
-        max_organizations: 6
+        max_organizations: 1
         two_factor_auth: two_factor_auth
         email: email
       properties:
@@ -18823,6 +19386,10 @@ components:
         updated_at:
           format: date-time
           type: string
+        features:
+          items:
+            type: string
+          type: array
       type: object
     UserCreateInput:
       example:
@@ -18905,7 +19472,7 @@ components:
         users:
         - avatar_thumb_url: avatar_thumb_url
           last_login_at: 2000-01-23T04:56:07.000+00:00
-          max_projects: 1
+          max_projects: 5
           timezone: timezone
           created_at: 2000-01-23T04:56:07.000+00:00
           last_name: last_name
@@ -18914,6 +19481,9 @@ components:
           emails:
           - href: href
           - href: href
+          features:
+          - features
+          - features
           full_name: full_name
           avatar_url: avatar_url
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -18922,12 +19492,12 @@ components:
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           first_name: first_name
-          max_organizations: 6
+          max_organizations: 1
           two_factor_auth: two_factor_auth
           email: email
         - avatar_thumb_url: avatar_thumb_url
           last_login_at: 2000-01-23T04:56:07.000+00:00
-          max_projects: 1
+          max_projects: 5
           timezone: timezone
           created_at: 2000-01-23T04:56:07.000+00:00
           last_name: last_name
@@ -18936,6 +19506,9 @@ components:
           emails:
           - href: href
           - href: href
+          features:
+          - features
+          - features
           full_name: full_name
           avatar_url: avatar_url
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -18944,7 +19517,7 @@ components:
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           first_name: first_name
-          max_organizations: 6
+          max_organizations: 1
           two_factor_auth: two_factor_auth
           email: email
       properties:
@@ -19255,7 +19828,7 @@ components:
       type: object
     Vrf:
       example:
-        local_asn: 0
+        local_asn: 6
         ip_ranges:
         - ip_ranges
         - ip_ranges
@@ -19301,7 +19874,7 @@ components:
         created_by:
           avatar_thumb_url: avatar_thumb_url
           last_login_at: 2000-01-23T04:56:07.000+00:00
-          max_projects: 1
+          max_projects: 5
           timezone: timezone
           created_at: 2000-01-23T04:56:07.000+00:00
           last_name: last_name
@@ -19310,6 +19883,9 @@ components:
           emails:
           - href: href
           - href: href
+          features:
+          - features
+          - features
           full_name: full_name
           avatar_url: avatar_url
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -19318,7 +19894,7 @@ components:
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           first_name: first_name
-          max_organizations: 6
+          max_organizations: 1
           two_factor_auth: two_factor_auth
           email: email
       properties:
@@ -19410,166 +19986,11 @@ components:
         type: string
       type: array
     VrfIPReservation:
-      example:
-        created_at: 2000-01-23T04:56:07.000+00:00
-        project:
-          devices:
-          - href: href
-          - href: href
-          volumes:
-          - href: href
-          - href: href
-          created_at: 2000-01-23T04:56:07.000+00:00
-          memberships:
-          - href: href
-          - href: href
-          bgp_config:
-            href: href
-          max_devices: "{}"
-          ssh_keys:
-          - href: href
-          - href: href
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          invitations:
-          - href: href
-          - href: href
-          members:
-          - href: href
-          - href: href
-          name: name
-          network_status: "{}"
-          customdata: "{}"
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          payment_method:
-            href: href
-        vrf:
-          local_asn: 0
-          ip_ranges:
-          - ip_ranges
-          - ip_ranges
-          metro:
-            country: country
-            code: code
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          description: description
-          project:
-            devices:
-            - href: href
-            - href: href
-            volumes:
-            - href: href
-            - href: href
-            created_at: 2000-01-23T04:56:07.000+00:00
-            memberships:
-            - href: href
-            - href: href
-            bgp_config:
-              href: href
-            max_devices: "{}"
-            ssh_keys:
-            - href: href
-            - href: href
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            invitations:
-            - href: href
-            - href: href
-            members:
-            - href: href
-            - href: href
-            name: name
-            network_status: "{}"
-            customdata: "{}"
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            payment_method:
-              href: href
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          href: href
-          created_by:
-            avatar_thumb_url: avatar_thumb_url
-            last_login_at: 2000-01-23T04:56:07.000+00:00
-            max_projects: 1
-            timezone: timezone
-            created_at: 2000-01-23T04:56:07.000+00:00
-            last_name: last_name
-            short_id: short_id
-            fraud_score: fraud_score
-            emails:
-            - href: href
-            - href: href
-            full_name: full_name
-            avatar_url: avatar_url
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            phone_number: phone_number
-            customdata: "{}"
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            first_name: first_name
-            max_organizations: 6
-            two_factor_auth: two_factor_auth
-            email: email
-        type: vrf
-        created_by:
-          href: href
-        network: network
-        tags:
-        - tags
-        - tags
-        metal_gateway:
-          gateway_address: gateway_address
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          vlan: 1.4658129805029452
-          created_at: 2000-01-23T04:56:07.000+00:00
-          href: href
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: ready
-        address_family: 0
-        netmask: netmask
-        cidr: 6
-        details: details
-        href: href
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        state: state
-      properties:
-        address_family:
-          type: integer
-        cidr:
-          type: integer
-        created_at:
-          format: date-time
-          type: string
-        created_by:
-          $ref: '#/components/schemas/Href'
-        details:
-          type: string
-        href:
-          type: string
-        id:
-          format: uuid
-          type: string
-        metal_gateway:
-          $ref: '#/components/schemas/MetalGatewayLite'
-        netmask:
-          type: string
-        network:
-          type: string
-        project:
-          $ref: '#/components/schemas/Project'
-        state:
-          type: string
-        tags:
-          items:
-            type: string
-          type: array
-        type:
-          enum:
-          - vrf
-          type: string
-        vrf:
-          $ref: '#/components/schemas/Vrf'
+      additionalProperties: false
+      allOf:
+      - $ref: '#/components/schemas/IPReservation'
+      - $ref: '#/components/schemas/VrfIPReservation_allOf'
       required:
-      - type
       - vrf
       type: object
     VrfIPReservationCreateInput:
@@ -19608,246 +20029,8 @@ components:
     VrfIPReservationList:
       example:
         ip_addresses:
-        - created_at: 2000-01-23T04:56:07.000+00:00
-          project:
-            devices:
-            - href: href
-            - href: href
-            volumes:
-            - href: href
-            - href: href
-            created_at: 2000-01-23T04:56:07.000+00:00
-            memberships:
-            - href: href
-            - href: href
-            bgp_config:
-              href: href
-            max_devices: "{}"
-            ssh_keys:
-            - href: href
-            - href: href
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            invitations:
-            - href: href
-            - href: href
-            members:
-            - href: href
-            - href: href
-            name: name
-            network_status: "{}"
-            customdata: "{}"
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            payment_method:
-              href: href
-          vrf:
-            local_asn: 0
-            ip_ranges:
-            - ip_ranges
-            - ip_ranges
-            metro:
-              country: country
-              code: code
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            name: name
-            description: description
-            project:
-              devices:
-              - href: href
-              - href: href
-              volumes:
-              - href: href
-              - href: href
-              created_at: 2000-01-23T04:56:07.000+00:00
-              memberships:
-              - href: href
-              - href: href
-              bgp_config:
-                href: href
-              max_devices: "{}"
-              ssh_keys:
-              - href: href
-              - href: href
-              updated_at: 2000-01-23T04:56:07.000+00:00
-              invitations:
-              - href: href
-              - href: href
-              members:
-              - href: href
-              - href: href
-              name: name
-              network_status: "{}"
-              customdata: "{}"
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              payment_method:
-                href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            href: href
-            created_by:
-              avatar_thumb_url: avatar_thumb_url
-              last_login_at: 2000-01-23T04:56:07.000+00:00
-              max_projects: 1
-              timezone: timezone
-              created_at: 2000-01-23T04:56:07.000+00:00
-              last_name: last_name
-              short_id: short_id
-              fraud_score: fraud_score
-              emails:
-              - href: href
-              - href: href
-              full_name: full_name
-              avatar_url: avatar_url
-              updated_at: 2000-01-23T04:56:07.000+00:00
-              phone_number: phone_number
-              customdata: "{}"
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              first_name: first_name
-              max_organizations: 6
-              two_factor_auth: two_factor_auth
-              email: email
-          type: vrf
-          created_by:
-            href: href
-          network: network
-          tags:
-          - tags
-          - tags
-          metal_gateway:
-            gateway_address: gateway_address
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            vlan: 1.4658129805029452
-            created_at: 2000-01-23T04:56:07.000+00:00
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: ready
-          address_family: 0
-          netmask: netmask
-          cidr: 6
-          details: details
-          href: href
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: state
-        - created_at: 2000-01-23T04:56:07.000+00:00
-          project:
-            devices:
-            - href: href
-            - href: href
-            volumes:
-            - href: href
-            - href: href
-            created_at: 2000-01-23T04:56:07.000+00:00
-            memberships:
-            - href: href
-            - href: href
-            bgp_config:
-              href: href
-            max_devices: "{}"
-            ssh_keys:
-            - href: href
-            - href: href
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            invitations:
-            - href: href
-            - href: href
-            members:
-            - href: href
-            - href: href
-            name: name
-            network_status: "{}"
-            customdata: "{}"
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            payment_method:
-              href: href
-          vrf:
-            local_asn: 0
-            ip_ranges:
-            - ip_ranges
-            - ip_ranges
-            metro:
-              country: country
-              code: code
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            name: name
-            description: description
-            project:
-              devices:
-              - href: href
-              - href: href
-              volumes:
-              - href: href
-              - href: href
-              created_at: 2000-01-23T04:56:07.000+00:00
-              memberships:
-              - href: href
-              - href: href
-              bgp_config:
-                href: href
-              max_devices: "{}"
-              ssh_keys:
-              - href: href
-              - href: href
-              updated_at: 2000-01-23T04:56:07.000+00:00
-              invitations:
-              - href: href
-              - href: href
-              members:
-              - href: href
-              - href: href
-              name: name
-              network_status: "{}"
-              customdata: "{}"
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              payment_method:
-                href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            href: href
-            created_by:
-              avatar_thumb_url: avatar_thumb_url
-              last_login_at: 2000-01-23T04:56:07.000+00:00
-              max_projects: 1
-              timezone: timezone
-              created_at: 2000-01-23T04:56:07.000+00:00
-              last_name: last_name
-              short_id: short_id
-              fraud_score: fraud_score
-              emails:
-              - href: href
-              - href: href
-              full_name: full_name
-              avatar_url: avatar_url
-              updated_at: 2000-01-23T04:56:07.000+00:00
-              phone_number: phone_number
-              customdata: "{}"
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              first_name: first_name
-              max_organizations: 6
-              two_factor_auth: two_factor_auth
-              email: email
-          type: vrf
-          created_by:
-            href: href
-          network: network
-          tags:
-          - tags
-          - tags
-          metal_gateway:
-            gateway_address: gateway_address
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            vlan: 1.4658129805029452
-            created_at: 2000-01-23T04:56:07.000+00:00
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: ready
-          address_family: 0
-          netmask: netmask
-          cidr: 6
-          details: details
-          href: href
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: state
+        - null
+        - null
       properties:
         ip_addresses:
           items:
@@ -19857,7 +20040,7 @@ components:
     VrfList:
       example:
         vrfs:
-        - local_asn: 0
+        - local_asn: 6
           ip_ranges:
           - ip_ranges
           - ip_ranges
@@ -19903,7 +20086,7 @@ components:
           created_by:
             avatar_thumb_url: avatar_thumb_url
             last_login_at: 2000-01-23T04:56:07.000+00:00
-            max_projects: 1
+            max_projects: 5
             timezone: timezone
             created_at: 2000-01-23T04:56:07.000+00:00
             last_name: last_name
@@ -19912,6 +20095,9 @@ components:
             emails:
             - href: href
             - href: href
+            features:
+            - features
+            - features
             full_name: full_name
             avatar_url: avatar_url
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -19920,10 +20106,10 @@ components:
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             first_name: first_name
-            max_organizations: 6
+            max_organizations: 1
             two_factor_auth: two_factor_auth
             email: email
-        - local_asn: 0
+        - local_asn: 6
           ip_ranges:
           - ip_ranges
           - ip_ranges
@@ -19969,7 +20155,7 @@ components:
           created_by:
             avatar_thumb_url: avatar_thumb_url
             last_login_at: 2000-01-23T04:56:07.000+00:00
-            max_projects: 1
+            max_projects: 5
             timezone: timezone
             created_at: 2000-01-23T04:56:07.000+00:00
             last_name: last_name
@@ -19978,6 +20164,9 @@ components:
             emails:
             - href: href
             - href: href
+            features:
+            - features
+            - features
             full_name: full_name
             avatar_url: avatar_url
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -19986,7 +20175,7 @@ components:
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             first_name: first_name
-            max_organizations: 6
+            max_organizations: 1
             two_factor_auth: two_factor_auth
             email: email
       properties:
@@ -19994,42 +20183,6 @@ components:
           items:
             $ref: '#/components/schemas/Vrf'
           type: array
-      type: object
-    VrfMetalGateway:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        created_by:
-          $ref: '#/components/schemas/Href'
-        href:
-          type: string
-        id:
-          format: uuid
-          type: string
-        ip_reservation:
-          $ref: '#/components/schemas/VrfIPReservation'
-        project:
-          $ref: '#/components/schemas/Project'
-        state:
-          description: "The current state of the Metal Gateway. 'Ready' indicates\
-            \ the gateway record has been configured, but is currently not active\
-            \ on the network. 'Active' indicates the gateway has been configured on\
-            \ the network. 'Deleting' is a temporary state used to indicate that the\
-            \ gateway is in the process of being un-configured from the network, after\
-            \ which the gateway record will be deleted."
-          enum:
-          - ready
-          - active
-          - deleting
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        virtual_network:
-          $ref: '#/components/schemas/VirtualNetwork'
-        vrf:
-          $ref: '#/components/schemas/Vrf'
       type: object
     VrfMetalGatewayCreateInput:
       properties:
@@ -20235,19 +20388,10 @@ components:
       oneOf:
       - $ref: '#/components/schemas/IPAssignment'
       - $ref: '#/components/schemas/IPReservation'
-      - $ref: '#/components/schemas/VrfIPReservation'
-    findMetalGatewayById_200_response:
-      oneOf:
-      - $ref: '#/components/schemas/MetalGateway'
-      - $ref: '#/components/schemas/VrfMetalGateway'
     requestIPReservation_request:
       oneOf:
       - $ref: '#/components/schemas/IPReservationRequestInput'
       - $ref: '#/components/schemas/VrfIPReservationCreateInput'
-    requestIPReservation_201_response:
-      oneOf:
-      - $ref: '#/components/schemas/IPReservation'
-      - $ref: '#/components/schemas/VrfIPReservation'
     createVrf_request:
       properties:
         description:
@@ -20396,23 +20540,35 @@ components:
       allOf:
       - $ref: '#/components/schemas/Metro'
       - description: The metro the IP address is in
-    IPReservation_facility:
-      allOf:
-      - $ref: '#/components/schemas/Facility'
-      - description: "The facility the IP reservation is in. If the facility the IP\
-          \ reservation was requested in is in a metro, a metro value will also be\
-          \ set, and the subsequent IP reservation can be used on a metro level. Can\
-          \ be null if requesting an IP reservation in a metro."
     IPReservation_metro:
       allOf:
       - $ref: '#/components/schemas/Metro'
       - description: "The metro the IP reservation is in. As long as the IP reservation\
           \ has a metro, it can be used on a metro level. Can be null if requesting\
           \ an IP reservation in a facility that is not in a metro."
-    IPReservationList_ip_addresses_inner:
-      anyOf:
-      - $ref: '#/components/schemas/IPReservation'
-      - $ref: '#/components/schemas/VrfIPReservation'
+    DefaultIPReservation_allOf:
+      properties:
+        addon:
+          type: boolean
+        assignments:
+          items:
+            $ref: '#/components/schemas/IPAssignment'
+          type: array
+        enabled:
+          type: boolean
+        facility:
+          allOf:
+          - $ref: '#/components/schemas/Facility'
+          - description: "The facility the IP reservation is in. If the facility the\
+              \ IP reservation was requested in is in a metro, a metro value will\
+              \ also be set, and the subsequent IP reservation can be used on a metro\
+              \ level. Can be null if requesting an IP reservation in a metro."
+        global_ip:
+          type: boolean
+        requested_by:
+          $ref: '#/components/schemas/User'
+        available:
+          type: string
     InstancesBatchCreateInput_batches_inner_ip_addresses_inner:
       example:
         address_family: 4
@@ -20561,10 +20717,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/Metro'
       - description: Details of the metro the facility is in
-    MetalGatewayList_MetalGateways_inner:
-      anyOf:
-      - $ref: '#/components/schemas/MetalGateway'
-      - $ref: '#/components/schemas/VrfMetalGateway'
+    MetalGateway_ip_reservation:
+      oneOf:
+      - $ref: '#/components/schemas/IPReservation'
+      - $ref: '#/components/schemas/HrefOnly'
     Plan_available_in_metros_inner_price:
       example:
         hour: 5.637377
@@ -20721,6 +20877,12 @@ components:
       anyOf:
       - $ref: '#/components/schemas/VirtualCircuit'
       - $ref: '#/components/schemas/VrfVirtualCircuit'
+    VrfIPReservation_allOf:
+      properties:
+        vrf:
+          $ref: '#/components/schemas/Vrf'
+        created_by:
+          $ref: '#/components/schemas/User'
   securitySchemes:
     x_auth_token:
       in: header

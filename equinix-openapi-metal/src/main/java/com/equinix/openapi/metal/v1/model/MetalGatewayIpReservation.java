@@ -16,15 +16,11 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.IPAssignment;
+import com.equinix.openapi.metal.v1.model.HrefOnly;
 import com.equinix.openapi.metal.v1.model.IPReservation;
-import com.equinix.openapi.metal.v1.model.IPReservationFacility;
 import com.equinix.openapi.metal.v1.model.IPReservationMetro;
 import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.equinix.openapi.metal.v1.model.Project;
-import com.equinix.openapi.metal.v1.model.User;
-import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfIPReservation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -72,25 +68,32 @@ import com.google.gson.JsonParseException;
 import com.equinix.openapi.JSON;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class RequestIPReservation201Response extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(RequestIPReservation201Response.class.getName());
+public class MetalGatewayIpReservation extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(MetalGatewayIpReservation.class.getName());
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!RequestIPReservation201Response.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'RequestIPReservation201Response' and its subtypes
+            if (!MetalGatewayIpReservation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'MetalGatewayIpReservation' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<HrefOnly> adapterHrefOnly = gson.getDelegateAdapter(this, TypeToken.get(HrefOnly.class));
             final TypeAdapter<IPReservation> adapterIPReservation = gson.getDelegateAdapter(this, TypeToken.get(IPReservation.class));
-            final TypeAdapter<VrfIPReservation> adapterVrfIPReservation = gson.getDelegateAdapter(this, TypeToken.get(VrfIPReservation.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<RequestIPReservation201Response>() {
+            return (TypeAdapter<T>) new TypeAdapter<MetalGatewayIpReservation>() {
                 @Override
-                public void write(JsonWriter out, RequestIPReservation201Response value) throws IOException {
+                public void write(JsonWriter out, MetalGatewayIpReservation value) throws IOException {
                     if (value == null || value.getActualInstance() == null) {
                         elementAdapter.write(out, null);
+                        return;
+                    }
+
+                    // check if the actual instance is of the type `HrefOnly`
+                    if (value.getActualInstance() instanceof HrefOnly) {
+                        JsonObject obj = adapterHrefOnly.toJsonTree((HrefOnly)value.getActualInstance()).getAsJsonObject();
+                        elementAdapter.write(out, obj);
                         return;
                     }
 
@@ -101,24 +104,30 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `VrfIPReservation`
-                    if (value.getActualInstance() instanceof VrfIPReservation) {
-                        JsonObject obj = adapterVrfIPReservation.toJsonTree((VrfIPReservation)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
-                    }
-
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: IPReservation, VrfIPReservation");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: HrefOnly, IPReservation");
                 }
 
                 @Override
-                public RequestIPReservation201Response read(JsonReader in) throws IOException {
+                public MetalGatewayIpReservation read(JsonReader in) throws IOException {
                     Object deserialized = null;
                     JsonObject jsonObject = elementAdapter.read(in).getAsJsonObject();
 
                     int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
+
+                    // deserialize HrefOnly
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        HrefOnly.validateJsonObject(jsonObject);
+                        actualAdapter = adapterHrefOnly;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'HrefOnly'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for HrefOnly failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'HrefOnly'", e);
+                    }
 
                     // deserialize IPReservation
                     try {
@@ -133,26 +142,13 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data does not match schema 'IPReservation'", e);
                     }
 
-                    // deserialize VrfIPReservation
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        VrfIPReservation.validateJsonObject(jsonObject);
-                        actualAdapter = adapterVrfIPReservation;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'VrfIPReservation'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for VrfIPReservation failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'VrfIPReservation'", e);
-                    }
-
                     if (match == 1) {
-                        RequestIPReservation201Response ret = new RequestIPReservation201Response();
+                        MetalGatewayIpReservation ret = new MetalGatewayIpReservation();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonObject));
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for RequestIPReservation201Response: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonObject.toString()));
+                    throw new IOException(String.format("Failed deserialization for MetalGatewayIpReservation: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonObject.toString()));
                 }
             }.nullSafe();
         }
@@ -161,64 +157,75 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
     // store a list of schema names defined in oneOf
     public static final Map<String, GenericType> schemas = new HashMap<String, GenericType>();
 
-    public RequestIPReservation201Response() {
+    public MetalGatewayIpReservation() {
         super("oneOf", Boolean.FALSE);
     }
 
-    public RequestIPReservation201Response(IPReservation o) {
+    public MetalGatewayIpReservation(HrefOnly o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
 
-    public RequestIPReservation201Response(VrfIPReservation o) {
+    public MetalGatewayIpReservation(IPReservation o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
 
     static {
-        schemas.put("IPReservation", new GenericType<IPReservation>() {
+        schemas.put("HrefOnly", new GenericType<HrefOnly>() {
         });
-        schemas.put("VrfIPReservation", new GenericType<VrfIPReservation>() {
+        schemas.put("IPReservation", new GenericType<IPReservation>() {
         });
     }
 
     @Override
     public Map<String, GenericType> getSchemas() {
-        return RequestIPReservation201Response.schemas;
+        return MetalGatewayIpReservation.schemas;
     }
 
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * IPReservation, VrfIPReservation
+     * HrefOnly, IPReservation
      *
      * It could be an instance of the 'oneOf' schemas.
      * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
      */
     @Override
     public void setActualInstance(Object instance) {
+        if (instance instanceof HrefOnly) {
+            super.setActualInstance(instance);
+            return;
+        }
+
         if (instance instanceof IPReservation) {
             super.setActualInstance(instance);
             return;
         }
 
-        if (instance instanceof VrfIPReservation) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be IPReservation, VrfIPReservation");
+        throw new RuntimeException("Invalid instance type. Must be HrefOnly, IPReservation");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * IPReservation, VrfIPReservation
+     * HrefOnly, IPReservation
      *
-     * @return The actual instance (IPReservation, VrfIPReservation)
+     * @return The actual instance (HrefOnly, IPReservation)
      */
     @Override
     public Object getActualInstance() {
         return super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `HrefOnly`. If the actual instance is not `HrefOnly`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `HrefOnly`
+     * @throws ClassCastException if the instance is not `HrefOnly`
+     */
+    public HrefOnly getHrefOnly() throws ClassCastException {
+        return (HrefOnly)super.getActualInstance();
     }
 
     /**
@@ -232,28 +239,25 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
         return (IPReservation)super.getActualInstance();
     }
 
-    /**
-     * Get the actual instance of `VrfIPReservation`. If the actual instance is not `VrfIPReservation`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `VrfIPReservation`
-     * @throws ClassCastException if the instance is not `VrfIPReservation`
-     */
-    public VrfIPReservation getVrfIPReservation() throws ClassCastException {
-        return (VrfIPReservation)super.getActualInstance();
-    }
-
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to RequestIPReservation201Response
+  * @throws IOException if the JSON Object is invalid with respect to MetalGatewayIpReservation
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
     // validate oneOf schemas one by one
     int validCount = 0;
     ArrayList<String> errorMessages = new ArrayList<>();
+    // validate the json string with HrefOnly
+    try {
+      HrefOnly.validateJsonObject(jsonObj);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for HrefOnly failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
     // validate the json string with IPReservation
     try {
       IPReservation.validateJsonObject(jsonObj);
@@ -262,32 +266,24 @@ public class RequestIPReservation201Response extends AbstractOpenApiSchema {
       errorMessages.add(String.format("Deserialization for IPReservation failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
-    // validate the json string with VrfIPReservation
-    try {
-      VrfIPReservation.validateJsonObject(jsonObj);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for VrfIPReservation failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
     if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for RequestIPReservation201Response with oneOf schemas: IPReservation, VrfIPReservation. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
+      throw new IOException(String.format("The JSON string is invalid for MetalGatewayIpReservation with oneOf schemas: HrefOnly, IPReservation. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
     }
   }
 
  /**
-  * Create an instance of RequestIPReservation201Response given an JSON string
+  * Create an instance of MetalGatewayIpReservation given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of RequestIPReservation201Response
-  * @throws IOException if the JSON string is invalid with respect to RequestIPReservation201Response
+  * @return An instance of MetalGatewayIpReservation
+  * @throws IOException if the JSON string is invalid with respect to MetalGatewayIpReservation
   */
-  public static RequestIPReservation201Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RequestIPReservation201Response.class);
+  public static MetalGatewayIpReservation fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MetalGatewayIpReservation.class);
   }
 
  /**
-  * Convert an instance of RequestIPReservation201Response to an JSON string
+  * Convert an instance of MetalGatewayIpReservation to an JSON string
   *
   * @return JSON string
   */

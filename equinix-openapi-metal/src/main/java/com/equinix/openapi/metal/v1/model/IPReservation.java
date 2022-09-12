@@ -16,12 +16,9 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.IPAssignment;
-import com.equinix.openapi.metal.v1.model.IPReservationFacility;
 import com.equinix.openapi.metal.v1.model.IPReservationMetro;
 import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.equinix.openapi.metal.v1.model.Project;
-import com.equinix.openapi.metal.v1.model.User;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -56,21 +53,14 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * IPReservation
+ * Base class for all IP Reservations
  */
+@ApiModel(description = "Base class for all IP Reservations")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IPReservation {
-  public static final String SERIALIZED_NAME_ADDON = "addon";
-  @SerializedName(SERIALIZED_NAME_ADDON)
-  private Boolean addon;
-
   public static final String SERIALIZED_NAME_ADDRESS_FAMILY = "address_family";
   @SerializedName(SERIALIZED_NAME_ADDRESS_FAMILY)
   private Integer addressFamily;
-
-  public static final String SERIALIZED_NAME_ASSIGNMENTS = "assignments";
-  @SerializedName(SERIALIZED_NAME_ASSIGNMENTS)
-  private List<IPAssignment> assignments = null;
 
   public static final String SERIALIZED_NAME_BILL = "bill";
   @SerializedName(SERIALIZED_NAME_BILL)
@@ -83,18 +73,6 @@ public class IPReservation {
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
-
-  public static final String SERIALIZED_NAME_ENABLED = "enabled";
-  @SerializedName(SERIALIZED_NAME_ENABLED)
-  private Boolean enabled;
-
-  public static final String SERIALIZED_NAME_FACILITY = "facility";
-  @SerializedName(SERIALIZED_NAME_FACILITY)
-  private IPReservationFacility facility;
-
-  public static final String SERIALIZED_NAME_GLOBAL_IP = "global_ip";
-  @SerializedName(SERIALIZED_NAME_GLOBAL_IP)
-  private Boolean globalIp;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -156,10 +134,6 @@ public class IPReservation {
   @SerializedName(SERIALIZED_NAME_PROJECT_LITE)
   private Href projectLite;
 
-  public static final String SERIALIZED_NAME_REQUESTED_BY = "requested_by";
-  @SerializedName(SERIALIZED_NAME_REQUESTED_BY)
-  private User requestedBy;
-
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
   private String address;
@@ -168,90 +142,13 @@ public class IPReservation {
   @SerializedName(SERIALIZED_NAME_GATEWAY)
   private String gateway;
 
-  public static final String SERIALIZED_NAME_AVAILABLE = "available";
-  @SerializedName(SERIALIZED_NAME_AVAILABLE)
-  private String available;
-
-  /**
-   * Gets or Sets type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    GLOBAL_IPV4("global_ipv4"),
-    
-    PUBLIC_IPV4("public_ipv4"),
-    
-    PRIVATE_IPV4("private_ipv4"),
-    
-    PUBLIC_IPV6("public_ipv6");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  protected String type;
 
   public IPReservation() {
+    this.type = this.getClass().getSimpleName();
   }
-
-  public IPReservation addon(Boolean addon) {
-    
-    this.addon = addon;
-    return this;
-  }
-
-   /**
-   * Get addon
-   * @return addon
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getAddon() {
-    return addon;
-  }
-
-
-  public void setAddon(Boolean addon) {
-    this.addon = addon;
-  }
-
 
   public IPReservation addressFamily(Integer addressFamily) {
     
@@ -273,37 +170,6 @@ public class IPReservation {
 
   public void setAddressFamily(Integer addressFamily) {
     this.addressFamily = addressFamily;
-  }
-
-
-  public IPReservation assignments(List<IPAssignment> assignments) {
-    
-    this.assignments = assignments;
-    return this;
-  }
-
-  public IPReservation addAssignmentsItem(IPAssignment assignmentsItem) {
-    if (this.assignments == null) {
-      this.assignments = new ArrayList<>();
-    }
-    this.assignments.add(assignmentsItem);
-    return this;
-  }
-
-   /**
-   * Get assignments
-   * @return assignments
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<IPAssignment> getAssignments() {
-    return assignments;
-  }
-
-
-  public void setAssignments(List<IPAssignment> assignments) {
-    this.assignments = assignments;
   }
 
 
@@ -373,75 +239,6 @@ public class IPReservation {
 
   public void setCreatedAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
-  }
-
-
-  public IPReservation enabled(Boolean enabled) {
-    
-    this.enabled = enabled;
-    return this;
-  }
-
-   /**
-   * Get enabled
-   * @return enabled
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getEnabled() {
-    return enabled;
-  }
-
-
-  public void setEnabled(Boolean enabled) {
-    this.enabled = enabled;
-  }
-
-
-  public IPReservation facility(IPReservationFacility facility) {
-    
-    this.facility = facility;
-    return this;
-  }
-
-   /**
-   * Get facility
-   * @return facility
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public IPReservationFacility getFacility() {
-    return facility;
-  }
-
-
-  public void setFacility(IPReservationFacility facility) {
-    this.facility = facility;
-  }
-
-
-  public IPReservation globalIp(Boolean globalIp) {
-    
-    this.globalIp = globalIp;
-    return this;
-  }
-
-   /**
-   * Get globalIp
-   * @return globalIp
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getGlobalIp() {
-    return globalIp;
-  }
-
-
-  public void setGlobalIp(Boolean globalIp) {
-    this.globalIp = globalIp;
   }
 
 
@@ -798,29 +595,6 @@ public class IPReservation {
   }
 
 
-  public IPReservation requestedBy(User requestedBy) {
-    
-    this.requestedBy = requestedBy;
-    return this;
-  }
-
-   /**
-   * Get requestedBy
-   * @return requestedBy
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public User getRequestedBy() {
-    return requestedBy;
-  }
-
-
-  public void setRequestedBy(User requestedBy) {
-    this.requestedBy = requestedBy;
-  }
-
-
   public IPReservation address(String address) {
     
     this.address = address;
@@ -867,30 +641,7 @@ public class IPReservation {
   }
 
 
-  public IPReservation available(String available) {
-    
-    this.available = available;
-    return this;
-  }
-
-   /**
-   * Get available
-   * @return available
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getAvailable() {
-    return available;
-  }
-
-
-  public void setAvailable(String available) {
-    this.available = available;
-  }
-
-
-  public IPReservation type(TypeEnum type) {
+  public IPReservation type(String type) {
     
     this.type = type;
     return this;
@@ -903,15 +654,50 @@ public class IPReservation {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public TypeEnum getType() {
+  public String getType() {
     return type;
   }
 
 
-  public void setType(TypeEnum type) {
+  public void setType(String type) {
     this.type = type;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   */
+  public IPReservation putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -923,15 +709,10 @@ public class IPReservation {
       return false;
     }
     IPReservation ipReservation = (IPReservation) o;
-    return Objects.equals(this.addon, ipReservation.addon) &&
-        Objects.equals(this.addressFamily, ipReservation.addressFamily) &&
-        Objects.equals(this.assignments, ipReservation.assignments) &&
+    return Objects.equals(this.addressFamily, ipReservation.addressFamily) &&
         Objects.equals(this.bill, ipReservation.bill) &&
         Objects.equals(this.cidr, ipReservation.cidr) &&
         Objects.equals(this.createdAt, ipReservation.createdAt) &&
-        Objects.equals(this.enabled, ipReservation.enabled) &&
-        Objects.equals(this.facility, ipReservation.facility) &&
-        Objects.equals(this.globalIp, ipReservation.globalIp) &&
         Objects.equals(this.href, ipReservation.href) &&
         Objects.equals(this.id, ipReservation.id) &&
         Objects.equals(this.manageable, ipReservation.manageable) &&
@@ -947,31 +728,25 @@ public class IPReservation {
         Objects.equals(this.customdata, ipReservation.customdata) &&
         Objects.equals(this.project, ipReservation.project) &&
         Objects.equals(this.projectLite, ipReservation.projectLite) &&
-        Objects.equals(this.requestedBy, ipReservation.requestedBy) &&
         Objects.equals(this.address, ipReservation.address) &&
         Objects.equals(this.gateway, ipReservation.gateway) &&
-        Objects.equals(this.available, ipReservation.available) &&
-        Objects.equals(this.type, ipReservation.type);
+        Objects.equals(this.type, ipReservation.type)&&
+        Objects.equals(this.additionalProperties, ipReservation.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addon, addressFamily, assignments, bill, cidr, createdAt, enabled, facility, globalIp, href, id, manageable, management, metalGateway, metro, netmask, network, _public, state, tags, details, customdata, project, projectLite, requestedBy, address, gateway, available, type);
+    return Objects.hash(addressFamily, bill, cidr, createdAt, href, id, manageable, management, metalGateway, metro, netmask, network, _public, state, tags, details, customdata, project, projectLite, address, gateway, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IPReservation {\n");
-    sb.append("    addon: ").append(toIndentedString(addon)).append("\n");
     sb.append("    addressFamily: ").append(toIndentedString(addressFamily)).append("\n");
-    sb.append("    assignments: ").append(toIndentedString(assignments)).append("\n");
     sb.append("    bill: ").append(toIndentedString(bill)).append("\n");
     sb.append("    cidr: ").append(toIndentedString(cidr)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    facility: ").append(toIndentedString(facility)).append("\n");
-    sb.append("    globalIp: ").append(toIndentedString(globalIp)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    manageable: ").append(toIndentedString(manageable)).append("\n");
@@ -987,11 +762,10 @@ public class IPReservation {
     sb.append("    customdata: ").append(toIndentedString(customdata)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    projectLite: ").append(toIndentedString(projectLite)).append("\n");
-    sb.append("    requestedBy: ").append(toIndentedString(requestedBy)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    gateway: ").append(toIndentedString(gateway)).append("\n");
-    sb.append("    available: ").append(toIndentedString(available)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1014,15 +788,10 @@ public class IPReservation {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("addon");
     openapiFields.add("address_family");
-    openapiFields.add("assignments");
     openapiFields.add("bill");
     openapiFields.add("cidr");
     openapiFields.add("created_at");
-    openapiFields.add("enabled");
-    openapiFields.add("facility");
-    openapiFields.add("global_ip");
     openapiFields.add("href");
     openapiFields.add("id");
     openapiFields.add("manageable");
@@ -1038,10 +807,8 @@ public class IPReservation {
     openapiFields.add("customdata");
     openapiFields.add("project");
     openapiFields.add("project_lite");
-    openapiFields.add("requested_by");
     openapiFields.add("address");
     openapiFields.add("gateway");
-    openapiFields.add("available");
     openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
@@ -1064,120 +831,28 @@ public class IPReservation {
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!IPReservation.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IPReservation` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : IPReservation.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      JsonArray jsonArrayassignments = jsonObj.getAsJsonArray("assignments");
-      if (jsonArrayassignments != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("assignments").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `assignments` to be an array in the JSON string but got `%s`", jsonObj.get("assignments").toString()));
-        }
-
-        // validate the optional field `assignments` (array)
-        for (int i = 0; i < jsonArrayassignments.size(); i++) {
-          IPAssignment.validateJsonObject(jsonArrayassignments.get(i).getAsJsonObject());
-        };
-      }
-      // validate the optional field `facility`
-      if (jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonNull()) {
-        IPReservationFacility.validateJsonObject(jsonObj.getAsJsonObject("facility"));
-      }
-      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      // validate the optional field `metal_gateway`
-      if (jsonObj.get("metal_gateway") != null && !jsonObj.get("metal_gateway").isJsonNull()) {
-        MetalGatewayLite.validateJsonObject(jsonObj.getAsJsonObject("metal_gateway"));
-      }
-      // validate the optional field `metro`
-      if (jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) {
-        IPReservationMetro.validateJsonObject(jsonObj.getAsJsonObject("metro"));
-      }
-      if ((jsonObj.get("netmask") != null && !jsonObj.get("netmask").isJsonNull()) && !jsonObj.get("netmask").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `netmask` to be a primitive type in the JSON string but got `%s`", jsonObj.get("netmask").toString()));
-      }
-      if ((jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) && !jsonObj.get("network").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `network` to be a primitive type in the JSON string but got `%s`", jsonObj.get("network").toString()));
-      }
-      if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
-      }
-      // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
-      }
-      if ((jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) && !jsonObj.get("details").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `details` to be a primitive type in the JSON string but got `%s`", jsonObj.get("details").toString()));
-      }
-      // validate the optional field `project`
-      if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
-        Project.validateJsonObject(jsonObj.getAsJsonObject("project"));
-      }
-      // validate the optional field `project_lite`
-      if (jsonObj.get("project_lite") != null && !jsonObj.get("project_lite").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("project_lite"));
-      }
-      // validate the optional field `requested_by`
-      if (jsonObj.get("requested_by") != null && !jsonObj.get("requested_by").isJsonNull()) {
-        User.validateJsonObject(jsonObj.getAsJsonObject("requested_by"));
-      }
-      if ((jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) && !jsonObj.get("address").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
-      }
-      if ((jsonObj.get("gateway") != null && !jsonObj.get("gateway").isJsonNull()) && !jsonObj.get("gateway").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `gateway` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gateway").toString()));
-      }
-      if ((jsonObj.get("available") != null && !jsonObj.get("available").isJsonNull()) && !jsonObj.get("available").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `available` to be a primitive type in the JSON string but got `%s`", jsonObj.get("available").toString()));
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      String discriminatorValue = jsonObj.get("type").getAsString();
+      switch (discriminatorValue) {
+        case "global_ipv4":
+          DefaultIPReservation.validateJsonObject(jsonObj);
+          break;
+        case "private_ipv4":
+          DefaultIPReservation.validateJsonObject(jsonObj);
+          break;
+        case "public_ipv4":
+          DefaultIPReservation.validateJsonObject(jsonObj);
+          break;
+        case "public_ipv6":
+          DefaultIPReservation.validateJsonObject(jsonObj);
+          break;
+        case "vrf":
+          VrfIPReservation.validateJsonObject(jsonObj);
+          break;
+        default: 
+          throw new IllegalArgumentException(String.format("The value of the `type` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IPReservation.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IPReservation' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IPReservation> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IPReservation.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<IPReservation>() {
-           @Override
-           public void write(JsonWriter out, IPReservation value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public IPReservation read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
-    }
-  }
 
  /**
   * Create an instance of IPReservation given an JSON string

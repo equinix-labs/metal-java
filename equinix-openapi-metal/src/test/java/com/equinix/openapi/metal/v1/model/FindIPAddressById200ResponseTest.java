@@ -15,15 +15,11 @@ package com.equinix.openapi.metal.v1.model;
 
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.IPAssignment;
+import com.equinix.openapi.metal.v1.model.IPAssignmentMetro;
 import com.equinix.openapi.metal.v1.model.IPReservation;
-import com.equinix.openapi.metal.v1.model.IPReservationFacility;
-import com.equinix.openapi.metal.v1.model.IPReservationMetro;
 import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.equinix.openapi.metal.v1.model.ParentBlock;
 import com.equinix.openapi.metal.v1.model.Project;
-import com.equinix.openapi.metal.v1.model.User;
-import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfIPReservation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -191,35 +187,11 @@ public class FindIPAddressById200ResponseTest {
     }
 
     /**
-     * Test the property 'addon'
-     */
-    @Test
-    public void addonTest() {
-        // TODO: test addon
-    }
-
-    /**
-     * Test the property 'assignments'
-     */
-    @Test
-    public void assignmentsTest() {
-        // TODO: test assignments
-    }
-
-    /**
      * Test the property 'bill'
      */
     @Test
     public void billTest() {
         // TODO: test bill
-    }
-
-    /**
-     * Test the property 'facility'
-     */
-    @Test
-    public void facilityTest() {
-        // TODO: test facility
     }
 
     /**
@@ -279,43 +251,11 @@ public class FindIPAddressById200ResponseTest {
     }
 
     /**
-     * Test the property 'requestedBy'
-     */
-    @Test
-    public void requestedByTest() {
-        // TODO: test requestedBy
-    }
-
-    /**
-     * Test the property 'available'
-     */
-    @Test
-    public void availableTest() {
-        // TODO: test available
-    }
-
-    /**
      * Test the property 'type'
      */
     @Test
     public void typeTest() {
         // TODO: test type
-    }
-
-    /**
-     * Test the property 'createdBy'
-     */
-    @Test
-    public void createdByTest() {
-        // TODO: test createdBy
-    }
-
-    /**
-     * Test the property 'vrf'
-     */
-    @Test
-    public void vrfTest() {
-        // TODO: test vrf
     }
 
 }

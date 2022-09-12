@@ -15,7 +15,7 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.MetalGatewayListMetalGatewaysInner;
+import com.equinix.openapi.metal.v1.model.MetalGateway;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,20 +52,20 @@ import com.equinix.openapi.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MetalGatewayList {
-  public static final String SERIALIZED_NAME_METAL_GATEWAYS = "MetalGateways";
+  public static final String SERIALIZED_NAME_METAL_GATEWAYS = "metal_gateways";
   @SerializedName(SERIALIZED_NAME_METAL_GATEWAYS)
-  private List<MetalGatewayListMetalGatewaysInner> metalGateways = null;
+  private List<MetalGateway> metalGateways = null;
 
   public MetalGatewayList() {
   }
 
-  public MetalGatewayList metalGateways(List<MetalGatewayListMetalGatewaysInner> metalGateways) {
+  public MetalGatewayList metalGateways(List<MetalGateway> metalGateways) {
     
     this.metalGateways = metalGateways;
     return this;
   }
 
-  public MetalGatewayList addMetalGatewaysItem(MetalGatewayListMetalGatewaysInner metalGatewaysItem) {
+  public MetalGatewayList addMetalGatewaysItem(MetalGateway metalGatewaysItem) {
     if (this.metalGateways == null) {
       this.metalGateways = new ArrayList<>();
     }
@@ -80,12 +80,12 @@ public class MetalGatewayList {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<MetalGatewayListMetalGatewaysInner> getMetalGateways() {
+  public List<MetalGateway> getMetalGateways() {
     return metalGateways;
   }
 
 
-  public void setMetalGateways(List<MetalGatewayListMetalGatewaysInner> metalGateways) {
+  public void setMetalGateways(List<MetalGateway> metalGateways) {
     this.metalGateways = metalGateways;
   }
 
@@ -172,7 +172,7 @@ public class MetalGatewayList {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("MetalGateways");
+    openapiFields.add("metal_gateways");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -192,16 +192,16 @@ public class MetalGatewayList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in MetalGatewayList is not found in the empty JSON string", MetalGatewayList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraymetalGateways = jsonObj.getAsJsonArray("MetalGateways");
+      JsonArray jsonArraymetalGateways = jsonObj.getAsJsonArray("metal_gateways");
       if (jsonArraymetalGateways != null) {
         // ensure the json data is an array
-        if (!jsonObj.get("MetalGateways").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `MetalGateways` to be an array in the JSON string but got `%s`", jsonObj.get("MetalGateways").toString()));
+        if (!jsonObj.get("metal_gateways").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `metal_gateways` to be an array in the JSON string but got `%s`", jsonObj.get("metal_gateways").toString()));
         }
 
-        // validate the optional field `MetalGateways` (array)
+        // validate the optional field `metal_gateways` (array)
         for (int i = 0; i < jsonArraymetalGateways.size(); i++) {
-          MetalGatewayListMetalGatewaysInner.validateJsonObject(jsonArraymetalGateways.get(i).getAsJsonObject());
+          MetalGateway.validateJsonObject(jsonArraymetalGateways.get(i).getAsJsonObject());
         };
       }
   }

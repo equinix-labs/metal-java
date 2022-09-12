@@ -17,8 +17,8 @@ import com.equinix.openapi.ApiException;
 import com.equinix.openapi.metal.v1.model.Error;
 import com.equinix.openapi.metal.v1.model.FindIPAddressById200Response;
 import com.equinix.openapi.metal.v1.model.IPAvailabilitiesList;
+import com.equinix.openapi.metal.v1.model.IPReservation;
 import com.equinix.openapi.metal.v1.model.IPReservationList;
-import com.equinix.openapi.metal.v1.model.RequestIPReservation201Response;
 import com.equinix.openapi.metal.v1.model.RequestIPReservationRequest;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
@@ -124,7 +124,7 @@ public class IpAddressesApiTest {
     public void requestIPReservationTest() throws ApiException {
         UUID id = null;
         RequestIPReservationRequest requestIPReservationRequest = null;
-        RequestIPReservation201Response response = api.requestIPReservation(id, requestIPReservationRequest);
+        IPReservation response = api.requestIPReservation(id, requestIPReservationRequest);
         // TODO: test validations
     }
 

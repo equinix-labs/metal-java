@@ -16,9 +16,10 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.IPReservation;
+import com.equinix.openapi.metal.v1.model.MetalGatewayIpReservation;
 import com.equinix.openapi.metal.v1.model.Project;
 import com.equinix.openapi.metal.v1.model.VirtualNetwork;
+import com.equinix.openapi.metal.v1.model.Vrf;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -73,7 +74,7 @@ public class MetalGateway {
 
   public static final String SERIALIZED_NAME_IP_RESERVATION = "ip_reservation";
   @SerializedName(SERIALIZED_NAME_IP_RESERVATION)
-  private IPReservation ipReservation;
+  private MetalGatewayIpReservation ipReservation;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -139,6 +140,10 @@ public class MetalGateway {
   public static final String SERIALIZED_NAME_VIRTUAL_NETWORK = "virtual_network";
   @SerializedName(SERIALIZED_NAME_VIRTUAL_NETWORK)
   private VirtualNetwork virtualNetwork;
+
+  public static final String SERIALIZED_NAME_VRF = "vrf";
+  @SerializedName(SERIALIZED_NAME_VRF)
+  private Vrf vrf;
 
   public MetalGateway() {
   }
@@ -235,7 +240,7 @@ public class MetalGateway {
   }
 
 
-  public MetalGateway ipReservation(IPReservation ipReservation) {
+  public MetalGateway ipReservation(MetalGatewayIpReservation ipReservation) {
     
     this.ipReservation = ipReservation;
     return this;
@@ -248,12 +253,12 @@ public class MetalGateway {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public IPReservation getIpReservation() {
+  public MetalGatewayIpReservation getIpReservation() {
     return ipReservation;
   }
 
 
-  public void setIpReservation(IPReservation ipReservation) {
+  public void setIpReservation(MetalGatewayIpReservation ipReservation) {
     this.ipReservation = ipReservation;
   }
 
@@ -349,6 +354,29 @@ public class MetalGateway {
     this.virtualNetwork = virtualNetwork;
   }
 
+
+  public MetalGateway vrf(Vrf vrf) {
+    
+    this.vrf = vrf;
+    return this;
+  }
+
+   /**
+   * Get vrf
+   * @return vrf
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Vrf getVrf() {
+    return vrf;
+  }
+
+
+  public void setVrf(Vrf vrf) {
+    this.vrf = vrf;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -403,13 +431,14 @@ public class MetalGateway {
         Objects.equals(this.project, metalGateway.project) &&
         Objects.equals(this.state, metalGateway.state) &&
         Objects.equals(this.updatedAt, metalGateway.updatedAt) &&
-        Objects.equals(this.virtualNetwork, metalGateway.virtualNetwork)&&
+        Objects.equals(this.virtualNetwork, metalGateway.virtualNetwork) &&
+        Objects.equals(this.vrf, metalGateway.vrf)&&
         Objects.equals(this.additionalProperties, metalGateway.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, createdBy, href, id, ipReservation, project, state, updatedAt, virtualNetwork, additionalProperties);
+    return Objects.hash(createdAt, createdBy, href, id, ipReservation, project, state, updatedAt, virtualNetwork, vrf, additionalProperties);
   }
 
   @Override
@@ -425,6 +454,7 @@ public class MetalGateway {
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    virtualNetwork: ").append(toIndentedString(virtualNetwork)).append("\n");
+    sb.append("    vrf: ").append(toIndentedString(vrf)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -457,6 +487,7 @@ public class MetalGateway {
     openapiFields.add("state");
     openapiFields.add("updated_at");
     openapiFields.add("virtual_network");
+    openapiFields.add("vrf");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -488,7 +519,7 @@ public class MetalGateway {
       }
       // validate the optional field `ip_reservation`
       if (jsonObj.get("ip_reservation") != null && !jsonObj.get("ip_reservation").isJsonNull()) {
-        IPReservation.validateJsonObject(jsonObj.getAsJsonObject("ip_reservation"));
+        MetalGatewayIpReservation.validateJsonObject(jsonObj.getAsJsonObject("ip_reservation"));
       }
       // validate the optional field `project`
       if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
@@ -500,6 +531,10 @@ public class MetalGateway {
       // validate the optional field `virtual_network`
       if (jsonObj.get("virtual_network") != null && !jsonObj.get("virtual_network").isJsonNull()) {
         VirtualNetwork.validateJsonObject(jsonObj.getAsJsonObject("virtual_network"));
+      }
+      // validate the optional field `vrf`
+      if (jsonObj.get("vrf") != null && !jsonObj.get("vrf").isJsonNull()) {
+        Vrf.validateJsonObject(jsonObj.getAsJsonObject("vrf"));
       }
   }
 

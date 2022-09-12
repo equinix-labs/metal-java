@@ -16,8 +16,11 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
+import com.equinix.openapi.metal.v1.model.IPReservation;
+import com.equinix.openapi.metal.v1.model.IPReservationMetro;
 import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.equinix.openapi.metal.v1.model.Project;
+import com.equinix.openapi.metal.v1.model.User;
 import com.equinix.openapi.metal.v1.model.Vrf;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -56,444 +59,17 @@ import com.equinix.openapi.JSON;
  * VrfIPReservation
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VrfIPReservation {
-  public static final String SERIALIZED_NAME_ADDRESS_FAMILY = "address_family";
-  @SerializedName(SERIALIZED_NAME_ADDRESS_FAMILY)
-  private Integer addressFamily;
-
-  public static final String SERIALIZED_NAME_CIDR = "cidr";
-  @SerializedName(SERIALIZED_NAME_CIDR)
-  private Integer cidr;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
-  public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Href createdBy;
-
-  public static final String SERIALIZED_NAME_DETAILS = "details";
-  @SerializedName(SERIALIZED_NAME_DETAILS)
-  private String details;
-
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private String href;
-
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private UUID id;
-
-  public static final String SERIALIZED_NAME_METAL_GATEWAY = "metal_gateway";
-  @SerializedName(SERIALIZED_NAME_METAL_GATEWAY)
-  private MetalGatewayLite metalGateway;
-
-  public static final String SERIALIZED_NAME_NETMASK = "netmask";
-  @SerializedName(SERIALIZED_NAME_NETMASK)
-  private String netmask;
-
-  public static final String SERIALIZED_NAME_NETWORK = "network";
-  @SerializedName(SERIALIZED_NAME_NETWORK)
-  private String network;
-
-  public static final String SERIALIZED_NAME_PROJECT = "project";
-  @SerializedName(SERIALIZED_NAME_PROJECT)
-  private Project project;
-
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
-  private String state;
-
-  public static final String SERIALIZED_NAME_TAGS = "tags";
-  @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
-
-  /**
-   * Gets or Sets type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    VRF("vrf");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
-
+public class VrfIPReservation extends IPReservation {
   public static final String SERIALIZED_NAME_VRF = "vrf";
   @SerializedName(SERIALIZED_NAME_VRF)
   private Vrf vrf;
 
+  public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY)
+  private User createdBy;
+
   public VrfIPReservation() {
   }
-
-  public VrfIPReservation addressFamily(Integer addressFamily) {
-    
-    this.addressFamily = addressFamily;
-    return this;
-  }
-
-   /**
-   * Get addressFamily
-   * @return addressFamily
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getAddressFamily() {
-    return addressFamily;
-  }
-
-
-  public void setAddressFamily(Integer addressFamily) {
-    this.addressFamily = addressFamily;
-  }
-
-
-  public VrfIPReservation cidr(Integer cidr) {
-    
-    this.cidr = cidr;
-    return this;
-  }
-
-   /**
-   * Get cidr
-   * @return cidr
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getCidr() {
-    return cidr;
-  }
-
-
-  public void setCidr(Integer cidr) {
-    this.cidr = cidr;
-  }
-
-
-  public VrfIPReservation createdAt(OffsetDateTime createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public VrfIPReservation createdBy(Href createdBy) {
-    
-    this.createdBy = createdBy;
-    return this;
-  }
-
-   /**
-   * Get createdBy
-   * @return createdBy
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Href getCreatedBy() {
-    return createdBy;
-  }
-
-
-  public void setCreatedBy(Href createdBy) {
-    this.createdBy = createdBy;
-  }
-
-
-  public VrfIPReservation details(String details) {
-    
-    this.details = details;
-    return this;
-  }
-
-   /**
-   * Get details
-   * @return details
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getDetails() {
-    return details;
-  }
-
-
-  public void setDetails(String details) {
-    this.details = details;
-  }
-
-
-  public VrfIPReservation href(String href) {
-    
-    this.href = href;
-    return this;
-  }
-
-   /**
-   * Get href
-   * @return href
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getHref() {
-    return href;
-  }
-
-
-  public void setHref(String href) {
-    this.href = href;
-  }
-
-
-  public VrfIPReservation id(UUID id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public UUID getId() {
-    return id;
-  }
-
-
-  public void setId(UUID id) {
-    this.id = id;
-  }
-
-
-  public VrfIPReservation metalGateway(MetalGatewayLite metalGateway) {
-    
-    this.metalGateway = metalGateway;
-    return this;
-  }
-
-   /**
-   * Get metalGateway
-   * @return metalGateway
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public MetalGatewayLite getMetalGateway() {
-    return metalGateway;
-  }
-
-
-  public void setMetalGateway(MetalGatewayLite metalGateway) {
-    this.metalGateway = metalGateway;
-  }
-
-
-  public VrfIPReservation netmask(String netmask) {
-    
-    this.netmask = netmask;
-    return this;
-  }
-
-   /**
-   * Get netmask
-   * @return netmask
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getNetmask() {
-    return netmask;
-  }
-
-
-  public void setNetmask(String netmask) {
-    this.netmask = netmask;
-  }
-
-
-  public VrfIPReservation network(String network) {
-    
-    this.network = network;
-    return this;
-  }
-
-   /**
-   * Get network
-   * @return network
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getNetwork() {
-    return network;
-  }
-
-
-  public void setNetwork(String network) {
-    this.network = network;
-  }
-
-
-  public VrfIPReservation project(Project project) {
-    
-    this.project = project;
-    return this;
-  }
-
-   /**
-   * Get project
-   * @return project
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Project getProject() {
-    return project;
-  }
-
-
-  public void setProject(Project project) {
-    this.project = project;
-  }
-
-
-  public VrfIPReservation state(String state) {
-    
-    this.state = state;
-    return this;
-  }
-
-   /**
-   * Get state
-   * @return state
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getState() {
-    return state;
-  }
-
-
-  public void setState(String state) {
-    this.state = state;
-  }
-
-
-  public VrfIPReservation tags(List<String> tags) {
-    
-    this.tags = tags;
-    return this;
-  }
-
-  public VrfIPReservation addTagsItem(String tagsItem) {
-    if (this.tags == null) {
-      this.tags = new ArrayList<>();
-    }
-    this.tags.add(tagsItem);
-    return this;
-  }
-
-   /**
-   * Get tags
-   * @return tags
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<String> getTags() {
-    return tags;
-  }
-
-
-  public void setTags(List<String> tags) {
-    this.tags = tags;
-  }
-
-
-  public VrfIPReservation type(TypeEnum type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public TypeEnum getType() {
-    return type;
-  }
-
-
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
 
   public VrfIPReservation vrf(Vrf vrf) {
     
@@ -517,41 +93,29 @@ public class VrfIPReservation {
     this.vrf = vrf;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
 
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   */
-  public VrfIPReservation putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
+  public VrfIPReservation createdBy(User createdBy) {
+    
+    this.createdBy = createdBy;
     return this;
   }
 
-  /**
-   * Return the additional (undeclared) property.
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
+   /**
+   * Get createdBy
+   * @return createdBy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public User getCreatedBy() {
+    return createdBy;
   }
 
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
+
+  public void setCreatedBy(User createdBy) {
+    this.createdBy = createdBy;
   }
+
 
 
   @Override
@@ -563,49 +127,23 @@ public class VrfIPReservation {
       return false;
     }
     VrfIPReservation vrfIPReservation = (VrfIPReservation) o;
-    return Objects.equals(this.addressFamily, vrfIPReservation.addressFamily) &&
-        Objects.equals(this.cidr, vrfIPReservation.cidr) &&
-        Objects.equals(this.createdAt, vrfIPReservation.createdAt) &&
+    return Objects.equals(this.vrf, vrfIPReservation.vrf) &&
         Objects.equals(this.createdBy, vrfIPReservation.createdBy) &&
-        Objects.equals(this.details, vrfIPReservation.details) &&
-        Objects.equals(this.href, vrfIPReservation.href) &&
-        Objects.equals(this.id, vrfIPReservation.id) &&
-        Objects.equals(this.metalGateway, vrfIPReservation.metalGateway) &&
-        Objects.equals(this.netmask, vrfIPReservation.netmask) &&
-        Objects.equals(this.network, vrfIPReservation.network) &&
-        Objects.equals(this.project, vrfIPReservation.project) &&
-        Objects.equals(this.state, vrfIPReservation.state) &&
-        Objects.equals(this.tags, vrfIPReservation.tags) &&
-        Objects.equals(this.type, vrfIPReservation.type) &&
-        Objects.equals(this.vrf, vrfIPReservation.vrf)&&
-        Objects.equals(this.additionalProperties, vrfIPReservation.additionalProperties);
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addressFamily, cidr, createdAt, createdBy, details, href, id, metalGateway, netmask, network, project, state, tags, type, vrf, additionalProperties);
+    return Objects.hash(vrf, createdBy, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class VrfIPReservation {\n");
-    sb.append("    addressFamily: ").append(toIndentedString(addressFamily)).append("\n");
-    sb.append("    cidr: ").append(toIndentedString(cidr)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
-    sb.append("    details: ").append(toIndentedString(details)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    metalGateway: ").append(toIndentedString(metalGateway)).append("\n");
-    sb.append("    netmask: ").append(toIndentedString(netmask)).append("\n");
-    sb.append("    network: ").append(toIndentedString(network)).append("\n");
-    sb.append("    project: ").append(toIndentedString(project)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    vrf: ").append(toIndentedString(vrf)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -629,25 +167,34 @@ public class VrfIPReservation {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("address_family");
+    openapiFields.add("bill");
     openapiFields.add("cidr");
     openapiFields.add("created_at");
-    openapiFields.add("created_by");
-    openapiFields.add("details");
     openapiFields.add("href");
     openapiFields.add("id");
+    openapiFields.add("manageable");
+    openapiFields.add("management");
     openapiFields.add("metal_gateway");
+    openapiFields.add("metro");
     openapiFields.add("netmask");
     openapiFields.add("network");
-    openapiFields.add("project");
+    openapiFields.add("public");
     openapiFields.add("state");
     openapiFields.add("tags");
+    openapiFields.add("details");
+    openapiFields.add("customdata");
+    openapiFields.add("project");
+    openapiFields.add("project_lite");
+    openapiFields.add("address");
+    openapiFields.add("gateway");
     openapiFields.add("type");
     openapiFields.add("vrf");
+    openapiFields.add("created_by");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
     openapiRequiredFields.add("vrf");
+    openapiRequiredFields.add("type");
   }
 
  /**
@@ -665,52 +212,27 @@ public class VrfIPReservation {
         }
       }
 
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!VrfIPReservation.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `VrfIPReservation` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : VrfIPReservation.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      // validate the optional field `created_by`
-      if (jsonObj.get("created_by") != null && !jsonObj.get("created_by").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("created_by"));
-      }
-      if ((jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) && !jsonObj.get("details").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `details` to be a primitive type in the JSON string but got `%s`", jsonObj.get("details").toString()));
-      }
-      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      // validate the optional field `metal_gateway`
-      if (jsonObj.get("metal_gateway") != null && !jsonObj.get("metal_gateway").isJsonNull()) {
-        MetalGatewayLite.validateJsonObject(jsonObj.getAsJsonObject("metal_gateway"));
-      }
-      if ((jsonObj.get("netmask") != null && !jsonObj.get("netmask").isJsonNull()) && !jsonObj.get("netmask").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `netmask` to be a primitive type in the JSON string but got `%s`", jsonObj.get("netmask").toString()));
-      }
-      if ((jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) && !jsonObj.get("network").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `network` to be a primitive type in the JSON string but got `%s`", jsonObj.get("network").toString()));
-      }
-      // validate the optional field `project`
-      if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
-        Project.validateJsonObject(jsonObj.getAsJsonObject("project"));
-      }
-      if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
-      }
-      // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `vrf`
       if (jsonObj.get("vrf") != null && !jsonObj.get("vrf").isJsonNull()) {
         Vrf.validateJsonObject(jsonObj.getAsJsonObject("vrf"));
+      }
+      // validate the optional field `created_by`
+      if (jsonObj.get("created_by") != null && !jsonObj.get("created_by").isJsonNull()) {
+        User.validateJsonObject(jsonObj.getAsJsonObject("created_by"));
       }
   }
 
@@ -729,23 +251,6 @@ public class VrfIPReservation {
            @Override
            public void write(JsonWriter out, VrfIPReservation value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
@@ -753,25 +258,7 @@ public class VrfIPReservation {
            public VrfIPReservation read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             VrfIPReservation instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             return thisAdapter.fromJsonTree(jsonObj);
            }
 
        }.nullSafe();

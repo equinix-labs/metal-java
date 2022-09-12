@@ -15,7 +15,8 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.IPReservation;
+import com.equinix.openapi.metal.v1.model.User;
+import com.equinix.openapi.metal.v1.model.Vrf;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,8 +25,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,45 +47,64 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * IPReservationList
+ * VrfIPReservationAllOf
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class IPReservationList {
-  public static final String SERIALIZED_NAME_IP_ADDRESSES = "ip_addresses";
-  @SerializedName(SERIALIZED_NAME_IP_ADDRESSES)
-  private List<IPReservation> ipAddresses = null;
+public class VrfIPReservationAllOf {
+  public static final String SERIALIZED_NAME_VRF = "vrf";
+  @SerializedName(SERIALIZED_NAME_VRF)
+  private Vrf vrf;
 
-  public IPReservationList() {
+  public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY)
+  private User createdBy;
+
+  public VrfIPReservationAllOf() {
   }
 
-  public IPReservationList ipAddresses(List<IPReservation> ipAddresses) {
+  public VrfIPReservationAllOf vrf(Vrf vrf) {
     
-    this.ipAddresses = ipAddresses;
-    return this;
-  }
-
-  public IPReservationList addIpAddressesItem(IPReservation ipAddressesItem) {
-    if (this.ipAddresses == null) {
-      this.ipAddresses = new ArrayList<>();
-    }
-    this.ipAddresses.add(ipAddressesItem);
+    this.vrf = vrf;
     return this;
   }
 
    /**
-   * Get ipAddresses
-   * @return ipAddresses
+   * Get vrf
+   * @return vrf
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<IPReservation> getIpAddresses() {
-    return ipAddresses;
+  public Vrf getVrf() {
+    return vrf;
   }
 
 
-  public void setIpAddresses(List<IPReservation> ipAddresses) {
-    this.ipAddresses = ipAddresses;
+  public void setVrf(Vrf vrf) {
+    this.vrf = vrf;
+  }
+
+
+  public VrfIPReservationAllOf createdBy(User createdBy) {
+    
+    this.createdBy = createdBy;
+    return this;
+  }
+
+   /**
+   * Get createdBy
+   * @return createdBy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public User getCreatedBy() {
+    return createdBy;
+  }
+
+
+  public void setCreatedBy(User createdBy) {
+    this.createdBy = createdBy;
   }
 
   /**
@@ -100,7 +118,7 @@ public class IPReservationList {
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
    */
-  public IPReservationList putAdditionalProperty(String key, Object value) {
+  public VrfIPReservationAllOf putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -134,21 +152,23 @@ public class IPReservationList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IPReservationList ipReservationList = (IPReservationList) o;
-    return Objects.equals(this.ipAddresses, ipReservationList.ipAddresses)&&
-        Objects.equals(this.additionalProperties, ipReservationList.additionalProperties);
+    VrfIPReservationAllOf vrfIPReservationAllOf = (VrfIPReservationAllOf) o;
+    return Objects.equals(this.vrf, vrfIPReservationAllOf.vrf) &&
+        Objects.equals(this.createdBy, vrfIPReservationAllOf.createdBy)&&
+        Objects.equals(this.additionalProperties, vrfIPReservationAllOf.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddresses, additionalProperties);
+    return Objects.hash(vrf, createdBy, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IPReservationList {\n");
-    sb.append("    ipAddresses: ").append(toIndentedString(ipAddresses)).append("\n");
+    sb.append("class VrfIPReservationAllOf {\n");
+    sb.append("    vrf: ").append(toIndentedString(vrf)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -172,7 +192,8 @@ public class IPReservationList {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("ip_addresses");
+    openapiFields.add("vrf");
+    openapiFields.add("created_by");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -182,27 +203,23 @@ public class IPReservationList {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to IPReservationList
+  * @throws IOException if the JSON Object is invalid with respect to VrfIPReservationAllOf
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (IPReservationList.openapiRequiredFields.isEmpty()) {
+        if (VrfIPReservationAllOf.openapiRequiredFields.isEmpty()) {
           return;
         } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in IPReservationList is not found in the empty JSON string", IPReservationList.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIPReservationAllOf is not found in the empty JSON string", VrfIPReservationAllOf.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayipAddresses = jsonObj.getAsJsonArray("ip_addresses");
-      if (jsonArrayipAddresses != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("ip_addresses").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `ip_addresses` to be an array in the JSON string but got `%s`", jsonObj.get("ip_addresses").toString()));
-        }
-
-        // validate the optional field `ip_addresses` (array)
-        for (int i = 0; i < jsonArrayipAddresses.size(); i++) {
-          IPReservation.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
-        };
+      // validate the optional field `vrf`
+      if (jsonObj.get("vrf") != null && !jsonObj.get("vrf").isJsonNull()) {
+        Vrf.validateJsonObject(jsonObj.getAsJsonObject("vrf"));
+      }
+      // validate the optional field `created_by`
+      if (jsonObj.get("created_by") != null && !jsonObj.get("created_by").isJsonNull()) {
+        User.validateJsonObject(jsonObj.getAsJsonObject("created_by"));
       }
   }
 
@@ -210,16 +227,16 @@ public class IPReservationList {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IPReservationList.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IPReservationList' and its subtypes
+       if (!VrfIPReservationAllOf.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'VrfIPReservationAllOf' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IPReservationList> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IPReservationList.class));
+       final TypeAdapter<VrfIPReservationAllOf> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(VrfIPReservationAllOf.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<IPReservationList>() {
+       return (TypeAdapter<T>) new TypeAdapter<VrfIPReservationAllOf>() {
            @Override
-           public void write(JsonWriter out, IPReservationList value) throws IOException {
+           public void write(JsonWriter out, VrfIPReservationAllOf value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additonal properties
@@ -242,11 +259,11 @@ public class IPReservationList {
            }
 
            @Override
-           public IPReservationList read(JsonReader in) throws IOException {
+           public VrfIPReservationAllOf read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             IPReservationList instance = thisAdapter.fromJsonTree(jsonObj);
+             VrfIPReservationAllOf instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -271,18 +288,18 @@ public class IPReservationList {
   }
 
  /**
-  * Create an instance of IPReservationList given an JSON string
+  * Create an instance of VrfIPReservationAllOf given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of IPReservationList
-  * @throws IOException if the JSON string is invalid with respect to IPReservationList
+  * @return An instance of VrfIPReservationAllOf
+  * @throws IOException if the JSON string is invalid with respect to VrfIPReservationAllOf
   */
-  public static IPReservationList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, IPReservationList.class);
+  public static VrfIPReservationAllOf fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VrfIPReservationAllOf.class);
   }
 
  /**
-  * Convert an instance of IPReservationList to an JSON string
+  * Convert an instance of VrfIPReservationAllOf to an JSON string
   *
   * @return JSON string
   */
