@@ -10,7 +10,6 @@ import com.equinix.openapi.ApiClient;
 import com.equinix.openapi.ApiException;
 import com.equinix.openapi.metal.v1.api.MetalGatewaysApi;
 import com.equinix.openapi.metal.v1.model.CreateMetalGatewayRequest;
-import com.equinix.openapi.metal.v1.model.FindMetalGatewayById200Response;
 import com.equinix.openapi.metal.v1.model.MetalGateway;
 import com.equinix.openapi.metal.v1.model.MetalGateway.StateEnum;
 import com.equinix.openapi.metal.v1.model.MetalGatewayInput;
@@ -29,8 +28,7 @@ public class MetalGatewayOperator {
 
     // Returns the metal gateway queried by its id
     public MetalGateway getMetalGateway(UUID metalGatewayId, List<String> include, List<String> exclude) throws ApiException {
-        FindMetalGatewayById200Response response = metalGatewaysApi.findMetalGatewayById(metalGatewayId, include, exclude);
-        return response.getMetalGateway();
+        return metalGatewaysApi.findMetalGatewayById(metalGatewayId, include, exclude);
     }
 
     // Returns the vlan associated with the metal gateway queried by its id
@@ -52,8 +50,7 @@ public class MetalGatewayOperator {
                 .virtualNetworkId(vlan.getId());
 
         CreateMetalGatewayRequest createMetalGatewayRequest = new CreateMetalGatewayRequest(metalGatewayInput);
-        FindMetalGatewayById200Response response = metalGatewaysApi.createMetalGateway(projectId, createMetalGatewayRequest,1, 10);
-        MetalGateway metalGateway = response.getMetalGateway();
+        MetalGateway metalGateway  = metalGatewaysApi.createMetalGateway(projectId, createMetalGatewayRequest,1, 10);
         return metalGatewayCreatedAndPoll(metalGateway, retries, wait);
     }
 
