@@ -134,6 +134,10 @@ public class User {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
+  public static final String SERIALIZED_NAME_FEATURES = "features";
+  @SerializedName(SERIALIZED_NAME_FEATURES)
+  private List<String> features = null;
+
   public User() {
   }
 
@@ -604,6 +608,37 @@ public class User {
     this.updatedAt = updatedAt;
   }
 
+
+  public User features(List<String> features) {
+    
+    this.features = features;
+    return this;
+  }
+
+  public User addFeaturesItem(String featuresItem) {
+    if (this.features == null) {
+      this.features = new ArrayList<>();
+    }
+    this.features.add(featuresItem);
+    return this;
+  }
+
+   /**
+   * Get features
+   * @return features
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<String> getFeatures() {
+    return features;
+  }
+
+
+  public void setFeatures(List<String> features) {
+    this.features = features;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -669,13 +704,14 @@ public class User {
         Objects.equals(this.shortId, user.shortId) &&
         Objects.equals(this.timezone, user.timezone) &&
         Objects.equals(this.twoFactorAuth, user.twoFactorAuth) &&
-        Objects.equals(this.updatedAt, user.updatedAt)&&
+        Objects.equals(this.updatedAt, user.updatedAt) &&
+        Objects.equals(this.features, user.features)&&
         Objects.equals(this.additionalProperties, user.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(avatarThumbUrl, avatarUrl, createdAt, customdata, email, emails, firstName, fraudScore, fullName, href, id, lastLoginAt, lastName, maxOrganizations, maxProjects, phoneNumber, shortId, timezone, twoFactorAuth, updatedAt, additionalProperties);
+    return Objects.hash(avatarThumbUrl, avatarUrl, createdAt, customdata, email, emails, firstName, fraudScore, fullName, href, id, lastLoginAt, lastName, maxOrganizations, maxProjects, phoneNumber, shortId, timezone, twoFactorAuth, updatedAt, features, additionalProperties);
   }
 
   @Override
@@ -702,6 +738,7 @@ public class User {
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    twoFactorAuth: ").append(toIndentedString(twoFactorAuth)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    features: ").append(toIndentedString(features)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -745,6 +782,7 @@ public class User {
     openapiFields.add("timezone");
     openapiFields.add("two_factor_auth");
     openapiFields.add("updated_at");
+    openapiFields.add("features");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -814,6 +852,10 @@ public class User {
       }
       if ((jsonObj.get("two_factor_auth") != null && !jsonObj.get("two_factor_auth").isJsonNull()) && !jsonObj.get("two_factor_auth").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `two_factor_auth` to be a primitive type in the JSON string but got `%s`", jsonObj.get("two_factor_auth").toString()));
+      }
+      // ensure the json data is an array
+      if ((jsonObj.get("features") != null && !jsonObj.get("features").isJsonNull()) && !jsonObj.get("features").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `features` to be an array in the JSON string but got `%s`", jsonObj.get("features").toString()));
       }
   }
 

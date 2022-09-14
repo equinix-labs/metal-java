@@ -29,17 +29,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for VrfIpReservationCreateInput
+ * Model tests for VrfIPReservationCreateInput
  */
-public class VrfIpReservationCreateInputTest {
-    private final VrfIpReservationCreateInput model = new VrfIpReservationCreateInput();
+public class VrfIPReservationCreateInputTest {
+    private final VrfIPReservationCreateInput model = new VrfIPReservationCreateInput();
 
     /**
-     * Model tests for VrfIpReservationCreateInput
+     * Model tests for VrfIPReservationCreateInput
      */
     @Test
-    public void testVrfIpReservationCreateInput() {
-        // TODO: test VrfIpReservationCreateInput
+    public void testVrfIPReservationCreateInput() {
+        // TODO: test VrfIPReservationCreateInput
     }
 
     /**

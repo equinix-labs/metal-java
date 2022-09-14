@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**metalGateways** | [**List&lt;MetalGatewayListMetalGatewaysInner&gt;**](MetalGatewayListMetalGatewaysInner.md) |  |  [optional] |
+|**metalGateways** | [**List&lt;MetalGateway&gt;**](MetalGateway.md) |  |  [optional] |
 
 
 

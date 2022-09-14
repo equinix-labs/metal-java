@@ -14,8 +14,11 @@
 package com.equinix.openapi.metal.v1.model;
 
 import com.equinix.openapi.metal.v1.model.Href;
+import com.equinix.openapi.metal.v1.model.IPReservation;
+import com.equinix.openapi.metal.v1.model.IPReservationMetro;
 import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.equinix.openapi.metal.v1.model.Project;
+import com.equinix.openapi.metal.v1.model.User;
 import com.equinix.openapi.metal.v1.model.Vrf;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -34,17 +37,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for VrfIpReservation
+ * Model tests for VrfIPReservation
  */
-public class VrfIpReservationTest {
-    private final VrfIpReservation model = new VrfIpReservation();
+public class VrfIPReservationTest {
+    private final VrfIPReservation model = new VrfIPReservation();
 
     /**
-     * Model tests for VrfIpReservation
+     * Model tests for VrfIPReservation
      */
     @Test
-    public void testVrfIpReservation() {
-        // TODO: test VrfIpReservation
+    public void testVrfIPReservation() {
+        // TODO: test VrfIPReservation
     }
 
     /**
@@ -53,6 +56,14 @@ public class VrfIpReservationTest {
     @Test
     public void addressFamilyTest() {
         // TODO: test addressFamily
+    }
+
+    /**
+     * Test the property 'bill'
+     */
+    @Test
+    public void billTest() {
+        // TODO: test bill
     }
 
     /**
@@ -72,22 +83,6 @@ public class VrfIpReservationTest {
     }
 
     /**
-     * Test the property 'createdBy'
-     */
-    @Test
-    public void createdByTest() {
-        // TODO: test createdBy
-    }
-
-    /**
-     * Test the property 'details'
-     */
-    @Test
-    public void detailsTest() {
-        // TODO: test details
-    }
-
-    /**
      * Test the property 'href'
      */
     @Test
@@ -104,11 +99,35 @@ public class VrfIpReservationTest {
     }
 
     /**
+     * Test the property 'manageable'
+     */
+    @Test
+    public void manageableTest() {
+        // TODO: test manageable
+    }
+
+    /**
+     * Test the property 'management'
+     */
+    @Test
+    public void managementTest() {
+        // TODO: test management
+    }
+
+    /**
      * Test the property 'metalGateway'
      */
     @Test
     public void metalGatewayTest() {
         // TODO: test metalGateway
+    }
+
+    /**
+     * Test the property 'metro'
+     */
+    @Test
+    public void metroTest() {
+        // TODO: test metro
     }
 
     /**
@@ -128,11 +147,11 @@ public class VrfIpReservationTest {
     }
 
     /**
-     * Test the property 'project'
+     * Test the property '_public'
      */
     @Test
-    public void projectTest() {
-        // TODO: test project
+    public void _publicTest() {
+        // TODO: test _public
     }
 
     /**
@@ -152,6 +171,54 @@ public class VrfIpReservationTest {
     }
 
     /**
+     * Test the property 'details'
+     */
+    @Test
+    public void detailsTest() {
+        // TODO: test details
+    }
+
+    /**
+     * Test the property 'customdata'
+     */
+    @Test
+    public void customdataTest() {
+        // TODO: test customdata
+    }
+
+    /**
+     * Test the property 'project'
+     */
+    @Test
+    public void projectTest() {
+        // TODO: test project
+    }
+
+    /**
+     * Test the property 'projectLite'
+     */
+    @Test
+    public void projectLiteTest() {
+        // TODO: test projectLite
+    }
+
+    /**
+     * Test the property 'address'
+     */
+    @Test
+    public void addressTest() {
+        // TODO: test address
+    }
+
+    /**
+     * Test the property 'gateway'
+     */
+    @Test
+    public void gatewayTest() {
+        // TODO: test gateway
+    }
+
+    /**
      * Test the property 'type'
      */
     @Test
@@ -165,6 +232,14 @@ public class VrfIpReservationTest {
     @Test
     public void vrfTest() {
         // TODO: test vrf
+    }
+
+    /**
+     * Test the property 'createdBy'
+     */
+    @Test
+    public void createdByTest() {
+        // TODO: test createdBy
     }
 
 }

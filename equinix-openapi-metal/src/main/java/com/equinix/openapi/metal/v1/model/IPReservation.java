@@ -15,10 +15,10 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.IPAssignment;
-import com.equinix.openapi.metal.v1.model.IPReservationFacility;
+import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.IPReservationMetro;
 import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
+import com.equinix.openapi.metal.v1.model.Project;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -53,21 +53,14 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * IPReservation
+ * Base class for all IP Reservations
  */
+@ApiModel(description = "Base class for all IP Reservations")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IPReservation {
-  public static final String SERIALIZED_NAME_ADDON = "addon";
-  @SerializedName(SERIALIZED_NAME_ADDON)
-  private Boolean addon;
-
   public static final String SERIALIZED_NAME_ADDRESS_FAMILY = "address_family";
   @SerializedName(SERIALIZED_NAME_ADDRESS_FAMILY)
   private Integer addressFamily;
-
-  public static final String SERIALIZED_NAME_ASSIGNMENTS = "assignments";
-  @SerializedName(SERIALIZED_NAME_ASSIGNMENTS)
-  private List<IPAssignment> assignments = null;
 
   public static final String SERIALIZED_NAME_BILL = "bill";
   @SerializedName(SERIALIZED_NAME_BILL)
@@ -80,18 +73,6 @@ public class IPReservation {
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private OffsetDateTime createdAt;
-
-  public static final String SERIALIZED_NAME_ENABLED = "enabled";
-  @SerializedName(SERIALIZED_NAME_ENABLED)
-  private Boolean enabled;
-
-  public static final String SERIALIZED_NAME_FACILITY = "facility";
-  @SerializedName(SERIALIZED_NAME_FACILITY)
-  private IPReservationFacility facility;
-
-  public static final String SERIALIZED_NAME_GLOBAL_IP = "global_ip";
-  @SerializedName(SERIALIZED_NAME_GLOBAL_IP)
-  private Boolean globalIp;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -137,31 +118,37 @@ public class IPReservation {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  public static final String SERIALIZED_NAME_DETAILS = "details";
+  @SerializedName(SERIALIZED_NAME_DETAILS)
+  private String details;
+
+  public static final String SERIALIZED_NAME_CUSTOMDATA = "customdata";
+  @SerializedName(SERIALIZED_NAME_CUSTOMDATA)
+  private Object customdata;
+
+  public static final String SERIALIZED_NAME_PROJECT = "project";
+  @SerializedName(SERIALIZED_NAME_PROJECT)
+  private Project project;
+
+  public static final String SERIALIZED_NAME_PROJECT_LITE = "project_lite";
+  @SerializedName(SERIALIZED_NAME_PROJECT_LITE)
+  private Href projectLite;
+
+  public static final String SERIALIZED_NAME_ADDRESS = "address";
+  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  private String address;
+
+  public static final String SERIALIZED_NAME_GATEWAY = "gateway";
+  @SerializedName(SERIALIZED_NAME_GATEWAY)
+  private String gateway;
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  protected String type;
+
   public IPReservation() {
+    this.type = this.getClass().getSimpleName();
   }
-
-  public IPReservation addon(Boolean addon) {
-    
-    this.addon = addon;
-    return this;
-  }
-
-   /**
-   * Get addon
-   * @return addon
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getAddon() {
-    return addon;
-  }
-
-
-  public void setAddon(Boolean addon) {
-    this.addon = addon;
-  }
-
 
   public IPReservation addressFamily(Integer addressFamily) {
     
@@ -183,37 +170,6 @@ public class IPReservation {
 
   public void setAddressFamily(Integer addressFamily) {
     this.addressFamily = addressFamily;
-  }
-
-
-  public IPReservation assignments(List<IPAssignment> assignments) {
-    
-    this.assignments = assignments;
-    return this;
-  }
-
-  public IPReservation addAssignmentsItem(IPAssignment assignmentsItem) {
-    if (this.assignments == null) {
-      this.assignments = new ArrayList<>();
-    }
-    this.assignments.add(assignmentsItem);
-    return this;
-  }
-
-   /**
-   * Get assignments
-   * @return assignments
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<IPAssignment> getAssignments() {
-    return assignments;
-  }
-
-
-  public void setAssignments(List<IPAssignment> assignments) {
-    this.assignments = assignments;
   }
 
 
@@ -283,75 +239,6 @@ public class IPReservation {
 
   public void setCreatedAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
-  }
-
-
-  public IPReservation enabled(Boolean enabled) {
-    
-    this.enabled = enabled;
-    return this;
-  }
-
-   /**
-   * Get enabled
-   * @return enabled
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getEnabled() {
-    return enabled;
-  }
-
-
-  public void setEnabled(Boolean enabled) {
-    this.enabled = enabled;
-  }
-
-
-  public IPReservation facility(IPReservationFacility facility) {
-    
-    this.facility = facility;
-    return this;
-  }
-
-   /**
-   * Get facility
-   * @return facility
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public IPReservationFacility getFacility() {
-    return facility;
-  }
-
-
-  public void setFacility(IPReservationFacility facility) {
-    this.facility = facility;
-  }
-
-
-  public IPReservation globalIp(Boolean globalIp) {
-    
-    this.globalIp = globalIp;
-    return this;
-  }
-
-   /**
-   * Get globalIp
-   * @return globalIp
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getGlobalIp() {
-    return globalIp;
-  }
-
-
-  public void setGlobalIp(Boolean globalIp) {
-    this.globalIp = globalIp;
   }
 
 
@@ -615,6 +502,167 @@ public class IPReservation {
     this.tags = tags;
   }
 
+
+  public IPReservation details(String details) {
+    
+    this.details = details;
+    return this;
+  }
+
+   /**
+   * Get details
+   * @return details
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDetails() {
+    return details;
+  }
+
+
+  public void setDetails(String details) {
+    this.details = details;
+  }
+
+
+  public IPReservation customdata(Object customdata) {
+    
+    this.customdata = customdata;
+    return this;
+  }
+
+   /**
+   * Get customdata
+   * @return customdata
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Object getCustomdata() {
+    return customdata;
+  }
+
+
+  public void setCustomdata(Object customdata) {
+    this.customdata = customdata;
+  }
+
+
+  public IPReservation project(Project project) {
+    
+    this.project = project;
+    return this;
+  }
+
+   /**
+   * Get project
+   * @return project
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Project getProject() {
+    return project;
+  }
+
+
+  public void setProject(Project project) {
+    this.project = project;
+  }
+
+
+  public IPReservation projectLite(Href projectLite) {
+    
+    this.projectLite = projectLite;
+    return this;
+  }
+
+   /**
+   * Get projectLite
+   * @return projectLite
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Href getProjectLite() {
+    return projectLite;
+  }
+
+
+  public void setProjectLite(Href projectLite) {
+    this.projectLite = projectLite;
+  }
+
+
+  public IPReservation address(String address) {
+    
+    this.address = address;
+    return this;
+  }
+
+   /**
+   * Get address
+   * @return address
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getAddress() {
+    return address;
+  }
+
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
+
+  public IPReservation gateway(String gateway) {
+    
+    this.gateway = gateway;
+    return this;
+  }
+
+   /**
+   * Get gateway
+   * @return gateway
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getGateway() {
+    return gateway;
+  }
+
+
+  public void setGateway(String gateway) {
+    this.gateway = gateway;
+  }
+
+
+  public IPReservation type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -661,15 +709,10 @@ public class IPReservation {
       return false;
     }
     IPReservation ipReservation = (IPReservation) o;
-    return Objects.equals(this.addon, ipReservation.addon) &&
-        Objects.equals(this.addressFamily, ipReservation.addressFamily) &&
-        Objects.equals(this.assignments, ipReservation.assignments) &&
+    return Objects.equals(this.addressFamily, ipReservation.addressFamily) &&
         Objects.equals(this.bill, ipReservation.bill) &&
         Objects.equals(this.cidr, ipReservation.cidr) &&
         Objects.equals(this.createdAt, ipReservation.createdAt) &&
-        Objects.equals(this.enabled, ipReservation.enabled) &&
-        Objects.equals(this.facility, ipReservation.facility) &&
-        Objects.equals(this.globalIp, ipReservation.globalIp) &&
         Objects.equals(this.href, ipReservation.href) &&
         Objects.equals(this.id, ipReservation.id) &&
         Objects.equals(this.manageable, ipReservation.manageable) &&
@@ -680,28 +723,30 @@ public class IPReservation {
         Objects.equals(this.network, ipReservation.network) &&
         Objects.equals(this._public, ipReservation._public) &&
         Objects.equals(this.state, ipReservation.state) &&
-        Objects.equals(this.tags, ipReservation.tags)&&
+        Objects.equals(this.tags, ipReservation.tags) &&
+        Objects.equals(this.details, ipReservation.details) &&
+        Objects.equals(this.customdata, ipReservation.customdata) &&
+        Objects.equals(this.project, ipReservation.project) &&
+        Objects.equals(this.projectLite, ipReservation.projectLite) &&
+        Objects.equals(this.address, ipReservation.address) &&
+        Objects.equals(this.gateway, ipReservation.gateway) &&
+        Objects.equals(this.type, ipReservation.type)&&
         Objects.equals(this.additionalProperties, ipReservation.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addon, addressFamily, assignments, bill, cidr, createdAt, enabled, facility, globalIp, href, id, manageable, management, metalGateway, metro, netmask, network, _public, state, tags, additionalProperties);
+    return Objects.hash(addressFamily, bill, cidr, createdAt, href, id, manageable, management, metalGateway, metro, netmask, network, _public, state, tags, details, customdata, project, projectLite, address, gateway, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IPReservation {\n");
-    sb.append("    addon: ").append(toIndentedString(addon)).append("\n");
     sb.append("    addressFamily: ").append(toIndentedString(addressFamily)).append("\n");
-    sb.append("    assignments: ").append(toIndentedString(assignments)).append("\n");
     sb.append("    bill: ").append(toIndentedString(bill)).append("\n");
     sb.append("    cidr: ").append(toIndentedString(cidr)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    facility: ").append(toIndentedString(facility)).append("\n");
-    sb.append("    globalIp: ").append(toIndentedString(globalIp)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    manageable: ").append(toIndentedString(manageable)).append("\n");
@@ -713,6 +758,13 @@ public class IPReservation {
     sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    customdata: ").append(toIndentedString(customdata)).append("\n");
+    sb.append("    project: ").append(toIndentedString(project)).append("\n");
+    sb.append("    projectLite: ").append(toIndentedString(projectLite)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    gateway: ").append(toIndentedString(gateway)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -736,15 +788,10 @@ public class IPReservation {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("addon");
     openapiFields.add("address_family");
-    openapiFields.add("assignments");
     openapiFields.add("bill");
     openapiFields.add("cidr");
     openapiFields.add("created_at");
-    openapiFields.add("enabled");
-    openapiFields.add("facility");
-    openapiFields.add("global_ip");
     openapiFields.add("href");
     openapiFields.add("id");
     openapiFields.add("manageable");
@@ -756,9 +803,17 @@ public class IPReservation {
     openapiFields.add("public");
     openapiFields.add("state");
     openapiFields.add("tags");
+    openapiFields.add("details");
+    openapiFields.add("customdata");
+    openapiFields.add("project");
+    openapiFields.add("project_lite");
+    openapiFields.add("address");
+    openapiFields.add("gateway");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("type");
   }
 
  /**
@@ -775,114 +830,29 @@ public class IPReservation {
           throw new IllegalArgumentException(String.format("The required field(s) %s in IPReservation is not found in the empty JSON string", IPReservation.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayassignments = jsonObj.getAsJsonArray("assignments");
-      if (jsonArrayassignments != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("assignments").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `assignments` to be an array in the JSON string but got `%s`", jsonObj.get("assignments").toString()));
-        }
 
-        // validate the optional field `assignments` (array)
-        for (int i = 0; i < jsonArrayassignments.size(); i++) {
-          IPAssignment.validateJsonObject(jsonArrayassignments.get(i).getAsJsonObject());
-        };
-      }
-      // validate the optional field `facility`
-      if (jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonNull()) {
-        IPReservationFacility.validateJsonObject(jsonObj.getAsJsonObject("facility"));
-      }
-      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      // validate the optional field `metal_gateway`
-      if (jsonObj.get("metal_gateway") != null && !jsonObj.get("metal_gateway").isJsonNull()) {
-        MetalGatewayLite.validateJsonObject(jsonObj.getAsJsonObject("metal_gateway"));
-      }
-      // validate the optional field `metro`
-      if (jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) {
-        IPReservationMetro.validateJsonObject(jsonObj.getAsJsonObject("metro"));
-      }
-      if ((jsonObj.get("netmask") != null && !jsonObj.get("netmask").isJsonNull()) && !jsonObj.get("netmask").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `netmask` to be a primitive type in the JSON string but got `%s`", jsonObj.get("netmask").toString()));
-      }
-      if ((jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) && !jsonObj.get("network").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `network` to be a primitive type in the JSON string but got `%s`", jsonObj.get("network").toString()));
-      }
-      if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
-      }
-      // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
+      String discriminatorValue = jsonObj.get("type").getAsString();
+      switch (discriminatorValue) {
+        case "global_ipv4":
+          DefaultIPReservation.validateJsonObject(jsonObj);
+          break;
+        case "private_ipv4":
+          DefaultIPReservation.validateJsonObject(jsonObj);
+          break;
+        case "public_ipv4":
+          DefaultIPReservation.validateJsonObject(jsonObj);
+          break;
+        case "public_ipv6":
+          DefaultIPReservation.validateJsonObject(jsonObj);
+          break;
+        case "vrf":
+          VrfIPReservation.validateJsonObject(jsonObj);
+          break;
+        default: 
+          throw new IllegalArgumentException(String.format("The value of the `type` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IPReservation.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IPReservation' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IPReservation> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IPReservation.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<IPReservation>() {
-           @Override
-           public void write(JsonWriter out, IPReservation value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additonal properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public IPReservation read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             IPReservation instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
-           }
-
-       }.nullSafe();
-    }
-  }
 
  /**
   * Create an instance of IPReservation given an JSON string

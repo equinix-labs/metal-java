@@ -204,4 +204,12 @@ public class AuthTokenUserTest {
         // TODO: test updatedAt
     }
 
+    /**
+     * Test the property 'features'
+     */
+    @Test
+    public void featuresTest() {
+        // TODO: test features
+    }
+
 }

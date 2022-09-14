@@ -13,15 +13,14 @@
 
 package com.equinix.openapi.metal.v1.model;
 
+import com.equinix.openapi.metal.v1.model.Facility;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.IPAssignment;
 import com.equinix.openapi.metal.v1.model.IPReservation;
-import com.equinix.openapi.metal.v1.model.IPReservationFacility;
 import com.equinix.openapi.metal.v1.model.IPReservationMetro;
 import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.equinix.openapi.metal.v1.model.Project;
-import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfIpReservation;
+import com.equinix.openapi.metal.v1.model.User;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -39,25 +38,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for IPReservationListIpAddressesInner
+ * Model tests for DefaultIPReservation
  */
-public class IPReservationListIpAddressesInnerTest {
-    private final IPReservationListIpAddressesInner model = new IPReservationListIpAddressesInner();
+public class DefaultIPReservationTest {
+    private final DefaultIPReservation model = new DefaultIPReservation();
 
     /**
-     * Model tests for IPReservationListIpAddressesInner
+     * Model tests for DefaultIPReservation
      */
     @Test
-    public void testIPReservationListIpAddressesInner() {
-        // TODO: test IPReservationListIpAddressesInner
-    }
-
-    /**
-     * Test the property 'addon'
-     */
-    @Test
-    public void addonTest() {
-        // TODO: test addon
+    public void testDefaultIPReservation() {
+        // TODO: test DefaultIPReservation
     }
 
     /**
@@ -66,14 +57,6 @@ public class IPReservationListIpAddressesInnerTest {
     @Test
     public void addressFamilyTest() {
         // TODO: test addressFamily
-    }
-
-    /**
-     * Test the property 'assignments'
-     */
-    @Test
-    public void assignmentsTest() {
-        // TODO: test assignments
     }
 
     /**
@@ -98,30 +81,6 @@ public class IPReservationListIpAddressesInnerTest {
     @Test
     public void createdAtTest() {
         // TODO: test createdAt
-    }
-
-    /**
-     * Test the property 'enabled'
-     */
-    @Test
-    public void enabledTest() {
-        // TODO: test enabled
-    }
-
-    /**
-     * Test the property 'facility'
-     */
-    @Test
-    public void facilityTest() {
-        // TODO: test facility
-    }
-
-    /**
-     * Test the property 'globalIp'
-     */
-    @Test
-    public void globalIpTest() {
-        // TODO: test globalIp
     }
 
     /**
@@ -213,19 +172,19 @@ public class IPReservationListIpAddressesInnerTest {
     }
 
     /**
-     * Test the property 'createdBy'
-     */
-    @Test
-    public void createdByTest() {
-        // TODO: test createdBy
-    }
-
-    /**
      * Test the property 'details'
      */
     @Test
     public void detailsTest() {
         // TODO: test details
+    }
+
+    /**
+     * Test the property 'customdata'
+     */
+    @Test
+    public void customdataTest() {
+        // TODO: test customdata
     }
 
     /**
@@ -237,6 +196,30 @@ public class IPReservationListIpAddressesInnerTest {
     }
 
     /**
+     * Test the property 'projectLite'
+     */
+    @Test
+    public void projectLiteTest() {
+        // TODO: test projectLite
+    }
+
+    /**
+     * Test the property 'address'
+     */
+    @Test
+    public void addressTest() {
+        // TODO: test address
+    }
+
+    /**
+     * Test the property 'gateway'
+     */
+    @Test
+    public void gatewayTest() {
+        // TODO: test gateway
+    }
+
+    /**
      * Test the property 'type'
      */
     @Test
@@ -245,11 +228,59 @@ public class IPReservationListIpAddressesInnerTest {
     }
 
     /**
-     * Test the property 'vrf'
+     * Test the property 'addon'
      */
     @Test
-    public void vrfTest() {
-        // TODO: test vrf
+    public void addonTest() {
+        // TODO: test addon
+    }
+
+    /**
+     * Test the property 'assignments'
+     */
+    @Test
+    public void assignmentsTest() {
+        // TODO: test assignments
+    }
+
+    /**
+     * Test the property 'enabled'
+     */
+    @Test
+    public void enabledTest() {
+        // TODO: test enabled
+    }
+
+    /**
+     * Test the property 'facility'
+     */
+    @Test
+    public void facilityTest() {
+        // TODO: test facility
+    }
+
+    /**
+     * Test the property 'globalIp'
+     */
+    @Test
+    public void globalIpTest() {
+        // TODO: test globalIp
+    }
+
+    /**
+     * Test the property 'requestedBy'
+     */
+    @Test
+    public void requestedByTest() {
+        // TODO: test requestedBy
+    }
+
+    /**
+     * Test the property 'available'
+     */
+    @Test
+    public void availableTest() {
+        // TODO: test available
     }
 
 }

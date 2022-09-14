@@ -13,7 +13,7 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.MetalGateway;
+import com.equinix.openapi.metal.v1.model.VrfIPReservation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -29,25 +29,25 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for MetalGatewayList
+ * Model tests for VrfIPReservationList
  */
-public class MetalGatewayListTest {
-    private final MetalGatewayList model = new MetalGatewayList();
+public class VrfIPReservationListTest {
+    private final VrfIPReservationList model = new VrfIPReservationList();
 
     /**
-     * Model tests for MetalGatewayList
+     * Model tests for VrfIPReservationList
      */
     @Test
-    public void testMetalGatewayList() {
-        // TODO: test MetalGatewayList
+    public void testVrfIPReservationList() {
+        // TODO: test VrfIPReservationList
     }
 
     /**
-     * Test the property 'metalGateways'
+     * Test the property 'ipAddresses'
      */
     @Test
-    public void metalGatewaysTest() {
-        // TODO: test metalGateways
+    public void ipAddressesTest() {
+        // TODO: test ipAddresses
     }
 
 }

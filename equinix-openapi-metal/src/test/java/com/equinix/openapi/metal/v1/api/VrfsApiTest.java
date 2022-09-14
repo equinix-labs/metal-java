@@ -18,7 +18,7 @@ import com.equinix.openapi.metal.v1.model.CreateVrfRequest;
 import com.equinix.openapi.metal.v1.model.Error;
 import java.util.UUID;
 import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfIpReservationList;
+import com.equinix.openapi.metal.v1.model.VrfIPReservationList;
 import com.equinix.openapi.metal.v1.model.VrfList;
 import com.equinix.openapi.metal.v1.model.VrfUpdateInput;
 import org.junit.jupiter.api.Disabled;
@@ -90,11 +90,11 @@ public class VrfsApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void findVrfIpReservationsTest() throws ApiException {
+    public void findVrfIPReservationsTest() throws ApiException {
         UUID id = null;
         List<String> include = null;
         List<String> exclude = null;
-        VrfIpReservationList response = api.findVrfIpReservations(id, include, exclude);
+        VrfIPReservationList response = api.findVrfIPReservations(id, include, exclude);
         // TODO: test validations
     }
 

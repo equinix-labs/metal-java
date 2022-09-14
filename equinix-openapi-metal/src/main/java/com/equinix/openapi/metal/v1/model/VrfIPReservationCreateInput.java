@@ -48,10 +48,10 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * VrfIpReservationCreateInput
+ * VrfIPReservationCreateInput
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VrfIpReservationCreateInput {
+public class VrfIPReservationCreateInput {
   public static final String SERIALIZED_NAME_CIDR = "cidr";
   @SerializedName(SERIALIZED_NAME_CIDR)
   private Integer cidr;
@@ -80,10 +80,10 @@ public class VrfIpReservationCreateInput {
   @SerializedName(SERIALIZED_NAME_VRF_ID)
   private UUID vrfId;
 
-  public VrfIpReservationCreateInput() {
+  public VrfIPReservationCreateInput() {
   }
 
-  public VrfIpReservationCreateInput cidr(Integer cidr) {
+  public VrfIPReservationCreateInput cidr(Integer cidr) {
     
     this.cidr = cidr;
     return this;
@@ -106,7 +106,7 @@ public class VrfIpReservationCreateInput {
   }
 
 
-  public VrfIpReservationCreateInput customdata(Object customdata) {
+  public VrfIPReservationCreateInput customdata(Object customdata) {
     
     this.customdata = customdata;
     return this;
@@ -129,7 +129,7 @@ public class VrfIpReservationCreateInput {
   }
 
 
-  public VrfIpReservationCreateInput details(String details) {
+  public VrfIPReservationCreateInput details(String details) {
     
     this.details = details;
     return this;
@@ -152,7 +152,7 @@ public class VrfIpReservationCreateInput {
   }
 
 
-  public VrfIpReservationCreateInput network(String network) {
+  public VrfIPReservationCreateInput network(String network) {
     
     this.network = network;
     return this;
@@ -175,13 +175,13 @@ public class VrfIpReservationCreateInput {
   }
 
 
-  public VrfIpReservationCreateInput tags(List<String> tags) {
+  public VrfIPReservationCreateInput tags(List<String> tags) {
     
     this.tags = tags;
     return this;
   }
 
-  public VrfIpReservationCreateInput addTagsItem(String tagsItem) {
+  public VrfIPReservationCreateInput addTagsItem(String tagsItem) {
     if (this.tags == null) {
       this.tags = new ArrayList<>();
     }
@@ -206,7 +206,7 @@ public class VrfIpReservationCreateInput {
   }
 
 
-  public VrfIpReservationCreateInput type(String type) {
+  public VrfIPReservationCreateInput type(String type) {
     
     this.type = type;
     return this;
@@ -229,7 +229,7 @@ public class VrfIpReservationCreateInput {
   }
 
 
-  public VrfIpReservationCreateInput vrfId(UUID vrfId) {
+  public VrfIPReservationCreateInput vrfId(UUID vrfId) {
     
     this.vrfId = vrfId;
     return this;
@@ -262,7 +262,7 @@ public class VrfIpReservationCreateInput {
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
    */
-  public VrfIpReservationCreateInput putAdditionalProperty(String key, Object value) {
+  public VrfIPReservationCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -296,15 +296,15 @@ public class VrfIpReservationCreateInput {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VrfIpReservationCreateInput vrfIpReservationCreateInput = (VrfIpReservationCreateInput) o;
-    return Objects.equals(this.cidr, vrfIpReservationCreateInput.cidr) &&
-        Objects.equals(this.customdata, vrfIpReservationCreateInput.customdata) &&
-        Objects.equals(this.details, vrfIpReservationCreateInput.details) &&
-        Objects.equals(this.network, vrfIpReservationCreateInput.network) &&
-        Objects.equals(this.tags, vrfIpReservationCreateInput.tags) &&
-        Objects.equals(this.type, vrfIpReservationCreateInput.type) &&
-        Objects.equals(this.vrfId, vrfIpReservationCreateInput.vrfId)&&
-        Objects.equals(this.additionalProperties, vrfIpReservationCreateInput.additionalProperties);
+    VrfIPReservationCreateInput vrfIPReservationCreateInput = (VrfIPReservationCreateInput) o;
+    return Objects.equals(this.cidr, vrfIPReservationCreateInput.cidr) &&
+        Objects.equals(this.customdata, vrfIPReservationCreateInput.customdata) &&
+        Objects.equals(this.details, vrfIPReservationCreateInput.details) &&
+        Objects.equals(this.network, vrfIPReservationCreateInput.network) &&
+        Objects.equals(this.tags, vrfIPReservationCreateInput.tags) &&
+        Objects.equals(this.type, vrfIPReservationCreateInput.type) &&
+        Objects.equals(this.vrfId, vrfIPReservationCreateInput.vrfId)&&
+        Objects.equals(this.additionalProperties, vrfIPReservationCreateInput.additionalProperties);
   }
 
   @Override
@@ -315,7 +315,7 @@ public class VrfIpReservationCreateInput {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VrfIpReservationCreateInput {\n");
+    sb.append("class VrfIPReservationCreateInput {\n");
     sb.append("    cidr: ").append(toIndentedString(cidr)).append("\n");
     sb.append("    customdata: ").append(toIndentedString(customdata)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
@@ -366,19 +366,19 @@ public class VrfIpReservationCreateInput {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VrfIpReservationCreateInput
+  * @throws IOException if the JSON Object is invalid with respect to VrfIPReservationCreateInput
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VrfIpReservationCreateInput.openapiRequiredFields.isEmpty()) {
+        if (VrfIPReservationCreateInput.openapiRequiredFields.isEmpty()) {
           return;
         } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIpReservationCreateInput is not found in the empty JSON string", VrfIpReservationCreateInput.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIPReservationCreateInput is not found in the empty JSON string", VrfIPReservationCreateInput.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VrfIpReservationCreateInput.openapiRequiredFields) {
+      for (String requiredField : VrfIPReservationCreateInput.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
@@ -405,16 +405,16 @@ public class VrfIpReservationCreateInput {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VrfIpReservationCreateInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VrfIpReservationCreateInput' and its subtypes
+       if (!VrfIPReservationCreateInput.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'VrfIPReservationCreateInput' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VrfIpReservationCreateInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VrfIpReservationCreateInput.class));
+       final TypeAdapter<VrfIPReservationCreateInput> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(VrfIPReservationCreateInput.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<VrfIpReservationCreateInput>() {
+       return (TypeAdapter<T>) new TypeAdapter<VrfIPReservationCreateInput>() {
            @Override
-           public void write(JsonWriter out, VrfIpReservationCreateInput value) throws IOException {
+           public void write(JsonWriter out, VrfIPReservationCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additonal properties
@@ -437,11 +437,11 @@ public class VrfIpReservationCreateInput {
            }
 
            @Override
-           public VrfIpReservationCreateInput read(JsonReader in) throws IOException {
+           public VrfIPReservationCreateInput read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             VrfIpReservationCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
+             VrfIPReservationCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -466,18 +466,18 @@ public class VrfIpReservationCreateInput {
   }
 
  /**
-  * Create an instance of VrfIpReservationCreateInput given an JSON string
+  * Create an instance of VrfIPReservationCreateInput given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of VrfIpReservationCreateInput
-  * @throws IOException if the JSON string is invalid with respect to VrfIpReservationCreateInput
+  * @return An instance of VrfIPReservationCreateInput
+  * @throws IOException if the JSON string is invalid with respect to VrfIPReservationCreateInput
   */
-  public static VrfIpReservationCreateInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VrfIpReservationCreateInput.class);
+  public static VrfIPReservationCreateInput fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VrfIPReservationCreateInput.class);
   }
 
  /**
-  * Convert an instance of VrfIpReservationCreateInput to an JSON string
+  * Convert an instance of VrfIPReservationCreateInput to an JSON string
   *
   * @return JSON string
   */

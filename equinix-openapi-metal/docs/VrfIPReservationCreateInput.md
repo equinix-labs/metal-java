@@ -1,6 +1,6 @@
 
 
-# VrfIpReservationCreateInput
+# VrfIPReservationCreateInput
 
 
 ## Properties

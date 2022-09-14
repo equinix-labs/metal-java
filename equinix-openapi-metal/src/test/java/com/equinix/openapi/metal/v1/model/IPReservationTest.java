@@ -13,10 +13,10 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.IPAssignment;
-import com.equinix.openapi.metal.v1.model.IPReservationFacility;
+import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.IPReservationMetro;
 import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
+import com.equinix.openapi.metal.v1.model.Project;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -48,27 +48,11 @@ public class IPReservationTest {
     }
 
     /**
-     * Test the property 'addon'
-     */
-    @Test
-    public void addonTest() {
-        // TODO: test addon
-    }
-
-    /**
      * Test the property 'addressFamily'
      */
     @Test
     public void addressFamilyTest() {
         // TODO: test addressFamily
-    }
-
-    /**
-     * Test the property 'assignments'
-     */
-    @Test
-    public void assignmentsTest() {
-        // TODO: test assignments
     }
 
     /**
@@ -93,30 +77,6 @@ public class IPReservationTest {
     @Test
     public void createdAtTest() {
         // TODO: test createdAt
-    }
-
-    /**
-     * Test the property 'enabled'
-     */
-    @Test
-    public void enabledTest() {
-        // TODO: test enabled
-    }
-
-    /**
-     * Test the property 'facility'
-     */
-    @Test
-    public void facilityTest() {
-        // TODO: test facility
-    }
-
-    /**
-     * Test the property 'globalIp'
-     */
-    @Test
-    public void globalIpTest() {
-        // TODO: test globalIp
     }
 
     /**
@@ -205,6 +165,62 @@ public class IPReservationTest {
     @Test
     public void tagsTest() {
         // TODO: test tags
+    }
+
+    /**
+     * Test the property 'details'
+     */
+    @Test
+    public void detailsTest() {
+        // TODO: test details
+    }
+
+    /**
+     * Test the property 'customdata'
+     */
+    @Test
+    public void customdataTest() {
+        // TODO: test customdata
+    }
+
+    /**
+     * Test the property 'project'
+     */
+    @Test
+    public void projectTest() {
+        // TODO: test project
+    }
+
+    /**
+     * Test the property 'projectLite'
+     */
+    @Test
+    public void projectLiteTest() {
+        // TODO: test projectLite
+    }
+
+    /**
+     * Test the property 'address'
+     */
+    @Test
+    public void addressTest() {
+        // TODO: test address
+    }
+
+    /**
+     * Test the property 'gateway'
+     */
+    @Test
+    public void gatewayTest() {
+        // TODO: test gateway
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
     }
 
 }

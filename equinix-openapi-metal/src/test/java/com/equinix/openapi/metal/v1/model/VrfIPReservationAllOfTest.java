@@ -13,7 +13,8 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.VrfIpReservation;
+import com.equinix.openapi.metal.v1.model.User;
+import com.equinix.openapi.metal.v1.model.Vrf;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,32 +23,38 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for VrfIpReservationList
+ * Model tests for VrfIPReservationAllOf
  */
-public class VrfIpReservationListTest {
-    private final VrfIpReservationList model = new VrfIpReservationList();
+public class VrfIPReservationAllOfTest {
+    private final VrfIPReservationAllOf model = new VrfIPReservationAllOf();
 
     /**
-     * Model tests for VrfIpReservationList
+     * Model tests for VrfIPReservationAllOf
      */
     @Test
-    public void testVrfIpReservationList() {
-        // TODO: test VrfIpReservationList
+    public void testVrfIPReservationAllOf() {
+        // TODO: test VrfIPReservationAllOf
     }
 
     /**
-     * Test the property 'ipAddresses'
+     * Test the property 'vrf'
      */
     @Test
-    public void ipAddressesTest() {
-        // TODO: test ipAddresses
+    public void vrfTest() {
+        // TODO: test vrf
+    }
+
+    /**
+     * Test the property 'createdBy'
+     */
+    @Test
+    public void createdByTest() {
+        // TODO: test createdBy
     }
 
 }

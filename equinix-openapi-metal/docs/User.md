@@ -27,6 +27,7 @@
 |**timezone** | **String** |  |  [optional] |
 |**twoFactorAuth** | **String** |  |  [optional] |
 |**updatedAt** | **OffsetDateTime** |  |  [optional] |
+|**features** | **List&lt;String&gt;** |  |  [optional] |
 
 
 

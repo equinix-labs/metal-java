@@ -204,4 +204,12 @@ public class UserTest {
         // TODO: test updatedAt
     }
 
+    /**
+     * Test the property 'features'
+     */
+    @Test
+    public void featuresTest() {
+        // TODO: test features
+    }
+
 }

@@ -7,5 +7,6 @@
    "modelPackage": "com.equinix.openapi.metal.v1.model",
    "apiPackage": "com.equinix.openapi.metal.v1.api",
    "hideGenerationTimestamp": true,
-   "disallowAdditionalPropertiesIfNotPresent": false
+   "disallowAdditionalPropertiesIfNotPresent": false,
+   "legacyDiscriminatorBehavior": true
 }

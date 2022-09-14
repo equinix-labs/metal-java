@@ -20,7 +20,7 @@ import com.equinix.workflow.MetalGatewayOperator;
 import com.equinix.workflow.helpers.VlanHelper;
 
 public class TestMetalGatewayOperator {
-    private static final Logger logger = LoggerFactory.getLogger(TestDeviceOperator.class);
+    private static final Logger logger = LoggerFactory.getLogger(TestMetalGatewayOperator.class);
 
     private final String propFilename = "src/test/resources/metalgateway-test.properties";
     private final String sysTokenKey = "FUNCTIONAL_TEST_TOKEN";

@@ -13,8 +13,9 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.Address;
-import com.equinix.openapi.metal.v1.model.DeviceMetro;
+import com.equinix.openapi.metal.v1.model.Facility;
+import com.equinix.openapi.metal.v1.model.IPAssignment;
+import com.equinix.openapi.metal.v1.model.User;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,79 +26,78 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for IPReservationFacility
+ * Model tests for DefaultIPReservationAllOf
  */
-public class IPReservationFacilityTest {
-    private final IPReservationFacility model = new IPReservationFacility();
+public class DefaultIPReservationAllOfTest {
+    private final DefaultIPReservationAllOf model = new DefaultIPReservationAllOf();
 
     /**
-     * Model tests for IPReservationFacility
+     * Model tests for DefaultIPReservationAllOf
      */
     @Test
-    public void testIPReservationFacility() {
-        // TODO: test IPReservationFacility
+    public void testDefaultIPReservationAllOf() {
+        // TODO: test DefaultIPReservationAllOf
     }
 
     /**
-     * Test the property 'address'
+     * Test the property 'addon'
      */
     @Test
-    public void addressTest() {
-        // TODO: test address
+    public void addonTest() {
+        // TODO: test addon
     }
 
     /**
-     * Test the property 'code'
+     * Test the property 'assignments'
      */
     @Test
-    public void codeTest() {
-        // TODO: test code
+    public void assignmentsTest() {
+        // TODO: test assignments
     }
 
     /**
-     * Test the property 'features'
+     * Test the property 'enabled'
      */
     @Test
-    public void featuresTest() {
-        // TODO: test features
+    public void enabledTest() {
+        // TODO: test enabled
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'facility'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
+    public void facilityTest() {
+        // TODO: test facility
     }
 
     /**
-     * Test the property 'ipRanges'
+     * Test the property 'globalIp'
      */
     @Test
-    public void ipRangesTest() {
-        // TODO: test ipRanges
+    public void globalIpTest() {
+        // TODO: test globalIp
     }
 
     /**
-     * Test the property 'metro'
+     * Test the property 'requestedBy'
      */
     @Test
-    public void metroTest() {
-        // TODO: test metro
+    public void requestedByTest() {
+        // TODO: test requestedBy
     }
 
     /**
-     * Test the property 'name'
+     * Test the property 'available'
      */
     @Test
-    public void nameTest() {
-        // TODO: test name
+    public void availableTest() {
+        // TODO: test available
     }
 
 }

@@ -385,7 +385,7 @@ public class Example {
 
 <a name="requestIPReservation"></a>
 # **requestIPReservation**
-> RequestIPReservation201Response requestIPReservation(id, requestIPReservationRequest)
+> IPReservation requestIPReservation(id, requestIPReservationRequest)
 
 Requesting IP reservations
 
@@ -416,7 +416,7 @@ public class Example {
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     RequestIPReservationRequest requestIPReservationRequest = new RequestIPReservationRequest(); // RequestIPReservationRequest | IP Reservation Request to create
     try {
-      RequestIPReservation201Response result = apiInstance.requestIPReservation(id, requestIPReservationRequest);
+      IPReservation result = apiInstance.requestIPReservation(id, requestIPReservationRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IpAddressesApi#requestIPReservation");
@@ -438,7 +438,7 @@ public class Example {
 
 ### Return type
 
-[**RequestIPReservation201Response**](RequestIPReservation201Response.md)
+[**IPReservation**](IPReservation.md)
 
 ### Authorization
 

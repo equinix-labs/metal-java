@@ -1,13 +1,13 @@
 
 
-# VrfIpReservationList
+# MetalGatewayIpReservation
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**ipAddresses** | [**List&lt;VrfIpReservation&gt;**](VrfIpReservation.md) |  |  [optional] |
+|**href** | **String** |  |  |
 
 
 
