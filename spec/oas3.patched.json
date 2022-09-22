@@ -1898,7 +1898,7 @@
          },
          "type": "object"
        },
-       "IPReservationRequestInput": {
+       "DefaultIPReservationCreateInput": {
          "properties": {
            "comments": {
              "type": "string"
@@ -2560,7 +2560,7 @@
          },
          "type": "object"
        },
-       "MetalGatewayInput": {
+       "MetalGatewayCreateInput": {
          "properties": {
            "ip_reservation_id": {
              "description": "The UUID of an IP reservation that belongs to the same project as where the metal gateway will be created in. This field is required unless the private IPv4 subnet size is specified.",
@@ -13752,7 +13752,7 @@
                "schema": {
                  "oneOf": [
                    {
-                     "$ref": "#/components/schemas/IPReservationRequestInput"
+                     "$ref": "#/components/schemas/DefaultIPReservationCreateInput"
                    },
                    {
                      "$ref": "#/components/schemas/VrfIPReservationCreateInput"
@@ -15297,7 +15297,7 @@
                "schema": {
                  "oneOf": [
                    {
-                     "$ref": "#/components/schemas/MetalGatewayInput"
+                     "$ref": "#/components/schemas/MetalGatewayCreateInput"
                    },
                    {
                      "$ref": "#/components/schemas/VrfMetalGatewayCreateInput"
