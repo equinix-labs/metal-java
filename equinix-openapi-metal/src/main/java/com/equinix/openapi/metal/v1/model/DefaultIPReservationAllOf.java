@@ -374,17 +374,19 @@ public class DefaultIPReservationAllOf {
           throw new IllegalArgumentException(String.format("The required field(s) %s in DefaultIPReservationAllOf is not found in the empty JSON string", DefaultIPReservationAllOf.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayassignments = jsonObj.getAsJsonArray("assignments");
-      if (jsonArrayassignments != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("assignments").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `assignments` to be an array in the JSON string but got `%s`", jsonObj.get("assignments").toString()));
-        }
+      if (jsonObj.get("assignments") != null && !jsonObj.get("assignments").isJsonNull()) {
+        JsonArray jsonArrayassignments = jsonObj.getAsJsonArray("assignments");
+        if (jsonArrayassignments != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("assignments").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `assignments` to be an array in the JSON string but got `%s`", jsonObj.get("assignments").toString()));
+          }
 
-        // validate the optional field `assignments` (array)
-        for (int i = 0; i < jsonArrayassignments.size(); i++) {
-          IPAssignment.validateJsonObject(jsonArrayassignments.get(i).getAsJsonObject());
-        };
+          // validate the optional field `assignments` (array)
+          for (int i = 0; i < jsonArrayassignments.size(); i++) {
+            IPAssignment.validateJsonObject(jsonArrayassignments.get(i).getAsJsonObject());
+          };
+        }
       }
       // validate the optional field `facility`
       if (jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonNull()) {

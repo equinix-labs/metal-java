@@ -192,17 +192,19 @@ public class SelfServiceReservationList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SelfServiceReservationList is not found in the empty JSON string", SelfServiceReservationList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayreservations = jsonObj.getAsJsonArray("reservations");
-      if (jsonArrayreservations != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("reservations").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `reservations` to be an array in the JSON string but got `%s`", jsonObj.get("reservations").toString()));
-        }
+      if (jsonObj.get("reservations") != null && !jsonObj.get("reservations").isJsonNull()) {
+        JsonArray jsonArrayreservations = jsonObj.getAsJsonArray("reservations");
+        if (jsonArrayreservations != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("reservations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `reservations` to be an array in the JSON string but got `%s`", jsonObj.get("reservations").toString()));
+          }
 
-        // validate the optional field `reservations` (array)
-        for (int i = 0; i < jsonArrayreservations.size(); i++) {
-          SelfServiceReservationResponse.validateJsonObject(jsonArrayreservations.get(i).getAsJsonObject());
-        };
+          // validate the optional field `reservations` (array)
+          for (int i = 0; i < jsonArrayreservations.size(); i++) {
+            SelfServiceReservationResponse.validateJsonObject(jsonArrayreservations.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

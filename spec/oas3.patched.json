@@ -1898,7 +1898,7 @@
          },
          "type": "object"
        },
-       "IPReservationRequestInput": {
+       "DefaultIPReservationCreateInput": {
          "properties": {
            "comments": {
              "type": "string"
@@ -2560,7 +2560,7 @@
          },
          "type": "object"
        },
-       "MetalGatewayInput": {
+       "MetalGatewayCreateInput": {
          "properties": {
            "ip_reservation_id": {
              "description": "The UUID of an IP reservation that belongs to the same project as where the metal gateway will be created in. This field is required unless the private IPv4 subnet size is specified.",
@@ -4631,19 +4631,12 @@
              "description": "The UUID (or metro code) for the Metro in which to create this Virtual Network.",
              "type": "string"
            },
-           "project_id": {
-             "format": "uuid",
-             "type": "string"
-           },
            "vxlan": {
              "description": "VLAN ID between 2-3999. Must be unique for the project within the Metro in which this Virtual Network is being created. If no value is specified, the next-available VLAN ID in the range 1000-1999 will be automatically selected.",
              "example": 1099,
              "type": "integer"
            }
          },
-         "required": [
-           "project_id"
-         ],
          "type": "object"
        },
        "VirtualNetworkList": {
@@ -4711,16 +4704,11 @@
            },
            "name": {
              "type": "string"
-           },
-           "project_id": {
-             "format": "uuid",
-             "type": "string"
            }
          },
          "required": [
            "metro",
-           "name",
-           "project_id"
+           "name"
          ]
        },
        "VrfIPRangeCreateInput": {
@@ -13764,7 +13752,7 @@
                "schema": {
                  "oneOf": [
                    {
-                     "$ref": "#/components/schemas/IPReservationRequestInput"
+                     "$ref": "#/components/schemas/DefaultIPReservationCreateInput"
                    },
                    {
                      "$ref": "#/components/schemas/VrfIPReservationCreateInput"
@@ -14723,38 +14711,7 @@
            "content": {
              "application/json": {
                "schema": {
-                 "properties": {
-                   "description": {
-                     "type": "string"
-                   },
-                   "ip_ranges": {
-                     "type": "array",
-                     "items": {
-                       "type": "string"
-                     },
-                     "description": "A list of CIDR network addresses. Like [\"10.0.0.0/16\", \"2001:d78::/56\"]. IPv4 blocks must be between /8 and /29 in size. IPv6 blocks must be between /56 and /64. A VRF\\'s IP ranges must be defined in order to create VRF IP Reservations, which can then be used for Metal Gateways or Virtual Circuits."
-                   },
-                   "local_asn": {
-                     "type": "integer",
-                     "format": "int32"
-                   },
-                   "metro": {
-                     "description": "The UUID (or metro code) for the Metro in which to create this VRF.",
-                     "type": "string"
-                   },
-                   "name": {
-                     "type": "string"
-                   },
-                   "project_id": {
-                     "format": "uuid",
-                     "type": "string"
-                   }
-                 },
-                 "required": [
-                   "metro",
-                   "name",
-                   "project_id"
-                 ]
+                 "$ref": "#/components/schemas/VrfCreateInput"
                }
              }
            },
@@ -15314,7 +15271,7 @@
                "schema": {
                  "oneOf": [
                    {
-                     "$ref": "#/components/schemas/MetalGatewayInput"
+                     "$ref": "#/components/schemas/MetalGatewayCreateInput"
                    },
                    {
                      "$ref": "#/components/schemas/VrfMetalGatewayCreateInput"

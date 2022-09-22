@@ -27,10 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.equinix.openapi.metal.v1.model.CreateVrfRequest;
 import com.equinix.openapi.metal.v1.model.Error;
 import java.util.UUID;
 import com.equinix.openapi.metal.v1.model.Vrf;
+import com.equinix.openapi.metal.v1.model.VrfCreateInput;
 import com.equinix.openapi.metal.v1.model.VrfIPReservationList;
 import com.equinix.openapi.metal.v1.model.VrfList;
 import com.equinix.openapi.metal.v1.model.VrfUpdateInput;
@@ -82,7 +82,7 @@ public class VrfsApi {
     /**
      * Build call for createVrf
      * @param id Project UUID (required)
-     * @param createVrfRequest VRF to create (required)
+     * @param vrfCreateInput VRF to create (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -95,7 +95,7 @@ public class VrfsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createVrfCall(UUID id, CreateVrfRequest createVrfRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createVrfCall(UUID id, VrfCreateInput vrfCreateInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -109,7 +109,7 @@ public class VrfsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createVrfRequest;
+        Object localVarPostBody = vrfCreateInput;
 
         // create path and map variables
         String localVarPath = "/projects/{id}/vrfs"
@@ -142,20 +142,20 @@ public class VrfsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createVrfValidateBeforeCall(UUID id, CreateVrfRequest createVrfRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createVrfValidateBeforeCall(UUID id, VrfCreateInput vrfCreateInput, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createVrf(Async)");
         }
         
-        // verify the required parameter 'createVrfRequest' is set
-        if (createVrfRequest == null) {
-            throw new ApiException("Missing the required parameter 'createVrfRequest' when calling createVrf(Async)");
+        // verify the required parameter 'vrfCreateInput' is set
+        if (vrfCreateInput == null) {
+            throw new ApiException("Missing the required parameter 'vrfCreateInput' when calling createVrf(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createVrfCall(id, createVrfRequest, _callback);
+        okhttp3.Call localVarCall = createVrfCall(id, vrfCreateInput, _callback);
         return localVarCall;
 
     }
@@ -164,7 +164,7 @@ public class VrfsApi {
      * Create a new VRF in the specified project
      * Creates a new VRF in the specified project
      * @param id Project UUID (required)
-     * @param createVrfRequest VRF to create (required)
+     * @param vrfCreateInput VRF to create (required)
      * @return Vrf
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -176,8 +176,8 @@ public class VrfsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Vrf createVrf(UUID id, CreateVrfRequest createVrfRequest) throws ApiException {
-        ApiResponse<Vrf> localVarResp = createVrfWithHttpInfo(id, createVrfRequest);
+    public Vrf createVrf(UUID id, VrfCreateInput vrfCreateInput) throws ApiException {
+        ApiResponse<Vrf> localVarResp = createVrfWithHttpInfo(id, vrfCreateInput);
         return localVarResp.getData();
     }
 
@@ -185,7 +185,7 @@ public class VrfsApi {
      * Create a new VRF in the specified project
      * Creates a new VRF in the specified project
      * @param id Project UUID (required)
-     * @param createVrfRequest VRF to create (required)
+     * @param vrfCreateInput VRF to create (required)
      * @return ApiResponse&lt;Vrf&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -197,8 +197,8 @@ public class VrfsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Vrf> createVrfWithHttpInfo(UUID id, CreateVrfRequest createVrfRequest) throws ApiException {
-        okhttp3.Call localVarCall = createVrfValidateBeforeCall(id, createVrfRequest, null);
+    public ApiResponse<Vrf> createVrfWithHttpInfo(UUID id, VrfCreateInput vrfCreateInput) throws ApiException {
+        okhttp3.Call localVarCall = createVrfValidateBeforeCall(id, vrfCreateInput, null);
         Type localVarReturnType = new TypeToken<Vrf>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -207,7 +207,7 @@ public class VrfsApi {
      * Create a new VRF in the specified project (asynchronously)
      * Creates a new VRF in the specified project
      * @param id Project UUID (required)
-     * @param createVrfRequest VRF to create (required)
+     * @param vrfCreateInput VRF to create (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -220,9 +220,9 @@ public class VrfsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createVrfAsync(UUID id, CreateVrfRequest createVrfRequest, final ApiCallback<Vrf> _callback) throws ApiException {
+    public okhttp3.Call createVrfAsync(UUID id, VrfCreateInput vrfCreateInput, final ApiCallback<Vrf> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createVrfValidateBeforeCall(id, createVrfRequest, _callback);
+        okhttp3.Call localVarCall = createVrfValidateBeforeCall(id, vrfCreateInput, _callback);
         Type localVarReturnType = new TypeToken<Vrf>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

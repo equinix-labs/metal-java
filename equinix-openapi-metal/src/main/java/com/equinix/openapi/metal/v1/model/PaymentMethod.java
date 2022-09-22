@@ -648,17 +648,19 @@ public class PaymentMethod {
       if (jsonObj.get("organization") != null && !jsonObj.get("organization").isJsonNull()) {
         Href.validateJsonObject(jsonObj.getAsJsonObject("organization"));
       }
-      JsonArray jsonArrayprojects = jsonObj.getAsJsonArray("projects");
-      if (jsonArrayprojects != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("projects").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `projects` to be an array in the JSON string but got `%s`", jsonObj.get("projects").toString()));
-        }
+      if (jsonObj.get("projects") != null && !jsonObj.get("projects").isJsonNull()) {
+        JsonArray jsonArrayprojects = jsonObj.getAsJsonArray("projects");
+        if (jsonArrayprojects != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("projects").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `projects` to be an array in the JSON string but got `%s`", jsonObj.get("projects").toString()));
+          }
 
-        // validate the optional field `projects` (array)
-        for (int i = 0; i < jsonArrayprojects.size(); i++) {
-          Href.validateJsonObject(jsonArrayprojects.get(i).getAsJsonObject());
-        };
+          // validate the optional field `projects` (array)
+          for (int i = 0; i < jsonArrayprojects.size(); i++) {
+            Href.validateJsonObject(jsonArrayprojects.get(i).getAsJsonObject());
+          };
+        }
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

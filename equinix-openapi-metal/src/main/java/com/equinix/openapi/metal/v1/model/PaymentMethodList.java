@@ -192,17 +192,19 @@ public class PaymentMethodList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PaymentMethodList is not found in the empty JSON string", PaymentMethodList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraypaymentMethods = jsonObj.getAsJsonArray("payment_methods");
-      if (jsonArraypaymentMethods != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("payment_methods").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `payment_methods` to be an array in the JSON string but got `%s`", jsonObj.get("payment_methods").toString()));
-        }
+      if (jsonObj.get("payment_methods") != null && !jsonObj.get("payment_methods").isJsonNull()) {
+        JsonArray jsonArraypaymentMethods = jsonObj.getAsJsonArray("payment_methods");
+        if (jsonArraypaymentMethods != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("payment_methods").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `payment_methods` to be an array in the JSON string but got `%s`", jsonObj.get("payment_methods").toString()));
+          }
 
-        // validate the optional field `payment_methods` (array)
-        for (int i = 0; i < jsonArraypaymentMethods.size(); i++) {
-          PaymentMethod.validateJsonObject(jsonArraypaymentMethods.get(i).getAsJsonObject());
-        };
+          // validate the optional field `payment_methods` (array)
+          for (int i = 0; i < jsonArraypaymentMethods.size(); i++) {
+            PaymentMethod.validateJsonObject(jsonArraypaymentMethods.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

@@ -192,17 +192,19 @@ public class CapacityPerMetroInput {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CapacityPerMetroInput is not found in the empty JSON string", CapacityPerMetroInput.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayservers = jsonObj.getAsJsonArray("servers");
-      if (jsonArrayservers != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("servers").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `servers` to be an array in the JSON string but got `%s`", jsonObj.get("servers").toString()));
-        }
+      if (jsonObj.get("servers") != null && !jsonObj.get("servers").isJsonNull()) {
+        JsonArray jsonArrayservers = jsonObj.getAsJsonArray("servers");
+        if (jsonArrayservers != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("servers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `servers` to be an array in the JSON string but got `%s`", jsonObj.get("servers").toString()));
+          }
 
-        // validate the optional field `servers` (array)
-        for (int i = 0; i < jsonArrayservers.size(); i++) {
-          MetroServerInfo.validateJsonObject(jsonArrayservers.get(i).getAsJsonObject());
-        };
+          // validate the optional field `servers` (array)
+          for (int i = 0; i < jsonArrayservers.size(); i++) {
+            MetroServerInfo.validateJsonObject(jsonArrayservers.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

@@ -192,17 +192,19 @@ public class InterconnectionList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in InterconnectionList is not found in the empty JSON string", InterconnectionList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayinterconnections = jsonObj.getAsJsonArray("interconnections");
-      if (jsonArrayinterconnections != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("interconnections").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `interconnections` to be an array in the JSON string but got `%s`", jsonObj.get("interconnections").toString()));
-        }
+      if (jsonObj.get("interconnections") != null && !jsonObj.get("interconnections").isJsonNull()) {
+        JsonArray jsonArrayinterconnections = jsonObj.getAsJsonArray("interconnections");
+        if (jsonArrayinterconnections != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("interconnections").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `interconnections` to be an array in the JSON string but got `%s`", jsonObj.get("interconnections").toString()));
+          }
 
-        // validate the optional field `interconnections` (array)
-        for (int i = 0; i < jsonArrayinterconnections.size(); i++) {
-          Interconnection.validateJsonObject(jsonArrayinterconnections.get(i).getAsJsonObject());
-        };
+          // validate the optional field `interconnections` (array)
+          for (int i = 0; i < jsonArrayinterconnections.size(); i++) {
+            Interconnection.validateJsonObject(jsonArrayinterconnections.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

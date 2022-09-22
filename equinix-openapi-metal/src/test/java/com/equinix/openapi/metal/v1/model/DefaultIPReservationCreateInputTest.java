@@ -28,17 +28,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for IPReservationRequestInput
+ * Model tests for DefaultIPReservationCreateInput
  */
-public class IPReservationRequestInputTest {
-    private final IPReservationRequestInput model = new IPReservationRequestInput();
+public class DefaultIPReservationCreateInputTest {
+    private final DefaultIPReservationCreateInput model = new DefaultIPReservationCreateInput();
 
     /**
-     * Model tests for IPReservationRequestInput
+     * Model tests for DefaultIPReservationCreateInput
      */
     @Test
-    public void testIPReservationRequestInput() {
-        // TODO: test IPReservationRequestInput
+    public void testDefaultIPReservationCreateInput() {
+        // TODO: test DefaultIPReservationCreateInput
     }
 
     /**

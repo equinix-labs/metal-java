@@ -227,17 +227,19 @@ public class UserList {
       if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
         Meta.validateJsonObject(jsonObj.getAsJsonObject("meta"));
       }
-      JsonArray jsonArrayusers = jsonObj.getAsJsonArray("users");
-      if (jsonArrayusers != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("users").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `users` to be an array in the JSON string but got `%s`", jsonObj.get("users").toString()));
-        }
+      if (jsonObj.get("users") != null && !jsonObj.get("users").isJsonNull()) {
+        JsonArray jsonArrayusers = jsonObj.getAsJsonArray("users");
+        if (jsonArrayusers != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("users").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `users` to be an array in the JSON string but got `%s`", jsonObj.get("users").toString()));
+          }
 
-        // validate the optional field `users` (array)
-        for (int i = 0; i < jsonArrayusers.size(); i++) {
-          User.validateJsonObject(jsonArrayusers.get(i).getAsJsonObject());
-        };
+          // validate the optional field `users` (array)
+          for (int i = 0; i < jsonArrayusers.size(); i++) {
+            User.validateJsonObject(jsonArrayusers.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

@@ -1,6 +1,6 @@
 
 
-# MetalGatewayInput
+# MetalGatewayCreateInput
 
 
 ## Properties

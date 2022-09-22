@@ -192,17 +192,19 @@ public class FacilityList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in FacilityList is not found in the empty JSON string", FacilityList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayfacilities = jsonObj.getAsJsonArray("facilities");
-      if (jsonArrayfacilities != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("facilities").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `facilities` to be an array in the JSON string but got `%s`", jsonObj.get("facilities").toString()));
-        }
+      if (jsonObj.get("facilities") != null && !jsonObj.get("facilities").isJsonNull()) {
+        JsonArray jsonArrayfacilities = jsonObj.getAsJsonArray("facilities");
+        if (jsonArrayfacilities != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("facilities").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `facilities` to be an array in the JSON string but got `%s`", jsonObj.get("facilities").toString()));
+          }
 
-        // validate the optional field `facilities` (array)
-        for (int i = 0; i < jsonArrayfacilities.size(); i++) {
-          Facility.validateJsonObject(jsonArrayfacilities.get(i).getAsJsonObject());
-        };
+          // validate the optional field `facilities` (array)
+          for (int i = 0; i < jsonArrayfacilities.size(); i++) {
+            Facility.validateJsonObject(jsonArrayfacilities.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

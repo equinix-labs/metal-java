@@ -14,7 +14,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="createVrf"></a>
 # **createVrf**
-> Vrf createVrf(id, createVrfRequest)
+> Vrf createVrf(id, vrfCreateInput)
 
 Create a new VRF in the specified project
 
@@ -43,9 +43,9 @@ public class Example {
 
     VrfsApi apiInstance = new VrfsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
-    CreateVrfRequest createVrfRequest = new CreateVrfRequest(); // CreateVrfRequest | VRF to create
+    VrfCreateInput vrfCreateInput = new VrfCreateInput(); // VrfCreateInput | VRF to create
     try {
-      Vrf result = apiInstance.createVrf(id, createVrfRequest);
+      Vrf result = apiInstance.createVrf(id, vrfCreateInput);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VrfsApi#createVrf");
@@ -63,7 +63,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
-| **createVrfRequest** | [**CreateVrfRequest**](CreateVrfRequest.md)| VRF to create | |
+| **vrfCreateInput** | [**VrfCreateInput**](VrfCreateInput.md)| VRF to create | |
 
 ### Return type
 

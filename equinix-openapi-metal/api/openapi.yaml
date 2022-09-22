@@ -3,10 +3,12 @@ info:
   contact:
     email: support@equinixmetal.com
     name: Equinix Metal API Team
-  description: "This is the API for Equinix Metal. The API allows you to programmatically\
-    \ interact with all\nof your Equinix Metal resources, including devices, networks,\
-    \ addresses, organizations,\nprojects, and your user account.\n\nThe official\
-    \ API docs are hosted at <https://metal.equinix.com/developers/api>.\n"
+  description: |
+    This is the API for Equinix Metal. The API allows you to programmatically interact with all
+    of your Equinix Metal resources, including devices, networks, addresses, organizations,
+    projects, and your user account.
+
+    The official API docs are hosted at <https://metal.equinix.com/developers/api>.
   license:
     name: Equinix Metal
     url: https://metal.equinix.com/legal/
@@ -18,83 +20,134 @@ servers:
 security:
 - x_auth_token: []
 tags:
-- description: "Hint: Equinix Metal's API can be reached at https://api.equinix.com/metal/v1\n\
-    \nMost of the endpoints in the API require authentication. Authenticating is done\
-    \ with an authentication token in the X-Auth-Token header.\n\n```\ncurl -H 'X-Auth-Token:\
-    \ my_authentication_token'\n```\n\nAuthentication tokens are used to identify\
-    \ the user your application is connecting to the API on behalf of. Think of authentication\
-    \ tokens as permanent sessions—the user creates authentication tokens, and your\
-    \ app can use them to connect to the API on their behalf until they delete the\
-    \ token.\n\n"
+- description: |+
+    Hint: Equinix Metal's API can be reached at https://api.equinix.com/metal/v1
+
+    Most of the endpoints in the API require authentication. Authenticating is done with an authentication token in the X-Auth-Token header.
+
+    ```
+    curl -H 'X-Auth-Token: my_authentication_token'
+    ```
+
+    Authentication tokens are used to identify the user your application is connecting to the API on behalf of. Think of authentication tokens as permanent sessions—the user creates authentication tokens, and your app can use them to connect to the API on their behalf until they delete the token.
+
   externalDocs:
     url: https://metal.equinix.com/developers/docs/accounts/users/#api-keys
   name: Authentication
-- description: "The Equinix Metal API uses a few methods to minimize network traffic\
-    \ and bandwidth:\n\n`include`\n\nFor resources that contain collections of other\
-    \ resources, the Equinix Metal API will return links to the other resources by\
-    \ default.\n\n```json\n{\n  ...\n  // Includes \"href\" links if the resource\
-    \ is reachable through the API.\n  \"projects\": [\n    { \"href\": \"/projects/5b590e4f-be96-4400-ae32-c315ee67964d\"\
-    \ },\n    { \"href\": \"/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\" }\n \
-    \ ],\n  // Includes \"id\" attributes if not.\n  \"emails\": [\n    { \"id\":\
-    \ \"eb5d8c89-4d15-4c87-859c-5ae190ad5d9a\" },\n    { \"id\": \"c17f77ad-9070-4084-abaa-7538581d9523\"\
-    \ }\n  ]\n  ...\n}\n```\n\nHowever, if you're interested in acting on resources\
-    \ in the projects collection, it doesn't make sense to make a separate API call\
-    \ to retrieve each project. Instead, you can specify which collections you'd like\
-    \ to be included using the include parameter.\n\n```\n/user?include=projects\n\
-    ```\nwill return\n\n```json\n{\n  ...\n  \"projects\": [\n    {\n      \"href\"\
-    : \"/projects/c851d3c5-d55d-4b1a-99f1-96fc64768bc3\",\n      \"id\": \"c851d3c5-d55d-4b1a-99f1-96fc64768bc3\"\
-    ,\n      \"name\": \"Project 1\",\n      ...\n    },\n    {\n      \"href\": \"\
-    /projects/21f8e88b-bd4e-44ca-b956-4f3f88e6e5f2\",\n      \"id\": \"21f8e88b-bd4e-44ca-b956-4f3f88e6e5f2\"\
-    ,\n      \"name\": \"Project 2\",\n      ...\n    }\n  ],\n  ...\n}\n```\n\nThe\
-    \ `include` parameter is accepted for all `GET` requests on all resources and\
-    \ collections, and should be specified as a comma-separated list.\n\n```\n/user?include=emails,projects,memberships\n\
-    ```\n\nYou may also include nested associations up to 3 levels deep using dot\
-    \ notation:\n\n```\n/user?include=memberships.projects\n```\n"
+- description: |
+    The Equinix Metal API uses a few methods to minimize network traffic and bandwidth:
+
+    `include`
+
+    For resources that contain collections of other resources, the Equinix Metal API will return links to the other resources by default.
+
+    ```json
+    {
+      ...
+      // Includes "href" links if the resource is reachable through the API.
+      "projects": [
+        { "href": "/projects/5b590e4f-be96-4400-ae32-c315ee67964d" },
+        { "href": "/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd" }
+      ],
+      // Includes "id" attributes if not.
+      "emails": [
+        { "id": "eb5d8c89-4d15-4c87-859c-5ae190ad5d9a" },
+        { "id": "c17f77ad-9070-4084-abaa-7538581d9523" }
+      ]
+      ...
+    }
+    ```
+
+    However, if you're interested in acting on resources in the projects collection, it doesn't make sense to make a separate API call to retrieve each project. Instead, you can specify which collections you'd like to be included using the include parameter.
+
+    ```
+    /user?include=projects
+    ```
+    will return
+
+    ```json
+    {
+      ...
+      "projects": [
+        {
+          "href": "/projects/c851d3c5-d55d-4b1a-99f1-96fc64768bc3",
+          "id": "c851d3c5-d55d-4b1a-99f1-96fc64768bc3",
+          "name": "Project 1",
+          ...
+        },
+        {
+          "href": "/projects/21f8e88b-bd4e-44ca-b956-4f3f88e6e5f2",
+          "id": "21f8e88b-bd4e-44ca-b956-4f3f88e6e5f2",
+          "name": "Project 2",
+          ...
+        }
+      ],
+      ...
+    }
+    ```
+
+    The `include` parameter is accepted for all `GET` requests on all resources and collections, and should be specified as a comma-separated list.
+
+    ```
+    /user?include=emails,projects,memberships
+    ```
+
+    You may also include nested associations up to 3 levels deep using dot notation:
+
+    ```
+    /user?include=memberships.projects
+    ```
   name: Common Parameters
-- description: "Equinix Metal uses conventional HTTP response codes to indicate the\
-    \ success or failure of an API request.\n\nIn general: Codes in the 2xx range\
-    \ indicate success. Codes in the 4xx range indicate an error that failed given\
-    \ the information provided (e.g., a required parameter was omitted, a charge failed,\
-    \ etc.). Codes in the 5xx range indicate an error with Equinix Metal's servers\
-    \ (these are rare).\n\n| Code                               | Summary\n| ----------------------------------\
-    \ | ------------------------------------------------------\n| 200 OK         \
-    \                    | Everything worked as expected.\n| 201 Create          \
-    \               | Everything worked as expected, the resource was created.\n|\
-    \ 422 Bad Request                    | The request was unacceptable, often due\
-    \ to missing a required parameter.\n| 401 Unauthorized                   | No\
-    \ valid API key provided.\n| 404 Not Found                      | The requested\
-    \ resource doesn't exist.\n| 500, 502, 503, 504 - Server Errors | Something went\
-    \ wrong on Equinix Metal's end. (These are rare.)\n\nErrors (4xx, 5xx) reported\
-    \ by the API will include a JSON error response.  This response will be structured\
-    \ as one of the following:\n\n```json\n{\"error\": \"the error message\"}\n```\n\
-    \nor\n\n```json\n{\"errors\": [\"one error\", \"another error\"}\n```\n\nThe JSON\
-    \ response is not guaranteed so check the HTTP status message. JSON may not be\
-    \ included if the error is reported by an API intermediary, like a loadbalancer\
-    \ service.\n"
+- description: |
+    Equinix Metal uses conventional HTTP response codes to indicate the success or failure of an API request.
+
+    In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Equinix Metal's servers (these are rare).
+
+    | Code                               | Summary
+    | ---------------------------------- | ------------------------------------------------------
+    | 200 OK                             | Everything worked as expected.
+    | 201 Create                         | Everything worked as expected, the resource was created.
+    | 422 Bad Request                    | The request was unacceptable, often due to missing a required parameter.
+    | 401 Unauthorized                   | No valid API key provided.
+    | 404 Not Found                      | The requested resource doesn't exist.
+    | 500, 502, 503, 504 - Server Errors | Something went wrong on Equinix Metal's end. (These are rare.)
+
+    Errors (4xx, 5xx) reported by the API will include a JSON error response.  This response will be structured as one of the following:
+
+    ```json
+    {"error": "the error message"}
+    ```
+
+    or
+
+    ```json
+    {"errors": ["one error", "another error"}
+    ```
+
+    The JSON response is not guaranteed so check the HTTP status message. JSON may not be included if the error is reported by an API intermediary, like a loadbalancer service.
   name: Errors
-- description: "Manage device batches. See project endpoints to list batches for a\
-    \ particular project. Check out the product docs to learn more about [Batch Deployment](https://metal.equinix.com/developers/docs/deploy/batch-deployment/).\n"
+- description: |
+    Manage device batches. See project endpoints to list batches for a particular project. Check out the product docs to learn more about [Batch Deployment](https://metal.equinix.com/developers/docs/deploy/batch-deployment/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/deploy/batch-deployment/
   name: Batches
-- description: "Manage BGP configs and sessions. See device endpoints to create and\
-    \ list BGP sessions for a particular device. Check out the product docs to learn\
-    \ more about [Local and Global BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).\n"
+- description: |
+    Manage BGP configs and sessions. See device endpoints to create and list BGP sessions for a particular device. Check out the product docs to learn more about [Local and Global BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/bgp/bgp-on-equinix-metal/
   name: BGP
-- description: "Capacity Management. Check out the product docs to learn more about\
-    \ [Capacity](https://metal.equinix.com/developers/docs/locations/capacity/).\n"
+- description: |
+    Capacity Management. Check out the product docs to learn more about [Capacity](https://metal.equinix.com/developers/docs/locations/capacity/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/locations/capacity/
   name: Capacity
-- description: "Network Interconnections. See Instructions to create Network Interconnections\
-    \ at Check out the product docs to learn more about [Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).\n"
+- description: |
+    Network Interconnections. See Instructions to create Network Interconnections at Check out the product docs to learn more about [Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/equinix-interconnect/introduction/
   name: Connections
-- description: "Device Management. Check out the product docs to learn more about\
-    \ [Server Devices](https://metal.equinix.com/developers/docs/servers/).\n"
+- description: |
+    Device Management. Check out the product docs to learn more about [Server Devices](https://metal.equinix.com/developers/docs/servers/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/deploy/on-demand/
   name: Devices
@@ -102,16 +155,16 @@ tags:
   name: Emails
 - description: Event Management
   name: Events
-- description: "Facility Management. Check out the product docs to learn more about\
-    \ [Facilities](https://metal.equinix.com/developers/docs/locations/).\n"
+- description: |
+    Facility Management. Check out the product docs to learn more about [Facilities](https://metal.equinix.com/developers/docs/locations/).
   name: Facilities
 - description: |
     Global BGP Range Management
   externalDocs:
     url: https://metal.equinix.com/developers/docs/bgp/global-bgp/
   name: GlobalBgpRanges
-- description: "Hardware Reservation Management. Check out the product docs to learn\
-    \ more about [Reserved Hardware](https://metal.equinix.com/developers/docs/deploy/reserved/).\n"
+- description: |
+    Hardware Reservation Management. Check out the product docs to learn more about [Reserved Hardware](https://metal.equinix.com/developers/docs/deploy/reserved/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/deploy/reserved/
   name: HardwareReservations
@@ -120,12 +173,11 @@ tags:
   externalDocs:
     url: https://metal.equinix.com/developers/docs/locations/maintenance/
   name: Incidents
-- description: "Manage invitations. See project endpoints to create a new invitation.\
-    \ Check out the product docs to learn more about [Invitations](https://metal.equinix.com/developers/docs/accounts/).\n"
+- description: |
+    Manage invitations. See project endpoints to create a new invitation. Check out the product docs to learn more about [Invitations](https://metal.equinix.com/developers/docs/accounts/).
   name: Invitations
-- description: "Manage IP addresses. See device and project endpoints to list and\
-    \ create IP assignments for a particular project or device. Check out the product\
-    \ docs to learn more about [the basic networking features](https://metal.equinix.com/developers/docs/networking/standard-ips/).\n"
+- description: |
+    Manage IP addresses. See device and project endpoints to list and create IP assignments for a particular project or device. Check out the product docs to learn more about [the basic networking features](https://metal.equinix.com/developers/docs/networking/standard-ips/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/networking/
   name: IPAddresses
@@ -134,13 +186,13 @@ tags:
   externalDocs:
     url: https://metal.equinix.com/developers/docs/operating-systems/licensed/
   name: Licenses
-- description: "Membership Management (Project). Check out the product docs to learn\
-    \ more about [Membership](https://metal.equinix.com/developers/docs/accounts/).\n"
+- description: |
+    Membership Management (Project). Check out the product docs to learn more about [Membership](https://metal.equinix.com/developers/docs/accounts/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/accounts/projects/#inviting-a-user-to-a-project
   name: Memberships
-- description: "Metal Gateway Management.Check out the product docs to learn more\
-    \ about [Metal Gateways](https://metal.equinix.com/developers/docs/networking/metal-gateway/).\n"
+- description: |
+    Metal Gateway Management.Check out the product docs to learn more about [Metal Gateways](https://metal.equinix.com/developers/docs/networking/metal-gateway/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/networking/metal-gateway/
   name: MetalGateways
@@ -148,15 +200,16 @@ tags:
   externalDocs:
     url: https://metal.equinix.com/developers/docs/locations/metros/
   name: Metros
-- description: "Operating System Management. Check out the product docs to learn more\
-    \ about [Operating Systems choices](https://metal.equinix.com/developers/docs/operating-systems/).\n"
+- description: |
+    Operating System Management. Check out the product docs to learn more about [Operating Systems choices](https://metal.equinix.com/developers/docs/operating-systems/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/operating-systems/supported/
   name: OperatingSystems
 - description: "Organizations Management. Check out the product docs to learn more\
     \ about [Organizations](https://metal.equinix.com/developers/docs/accounts/)."
   name: Organizations
-- description: "OTP Management. Check out the product docs to learn more about [OTP](https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/).\n"
+- description: |
+    OTP Management. Check out the product docs to learn more about [OTP](https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/
   name: Otps
@@ -170,16 +223,16 @@ tags:
   externalDocs:
     url: https://metal.equinix.com/developers/docs/billing/payment-methods/
   name: PaymentMethods
-- description: "Plan Management (Device). Check out the product docs to learn more\
-    \ about [Device Plans](https://metal.equinix.com/developers/docs/servers/).\n"
+- description: |
+    Plan Management (Device). Check out the product docs to learn more about [Device Plans](https://metal.equinix.com/developers/docs/servers/).
   name: Plans
-- description: "Port ManagementCheck out the product docs to learn more about [Port\
-    \ configurations](https://metal.equinix.com/developers/docs/layer2-networking/overview/).\n"
+- description: |
+    Port ManagementCheck out the product docs to learn more about [Port configurations](https://metal.equinix.com/developers/docs/layer2-networking/overview/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/layer2-networking/overview/
   name: Ports
-- description: "Project Management. Check out the product docs to learn more about\
-    \ [Projects](https://metal.equinix.com/developers/docs/accounts/projects/).\n"
+- description: |
+    Project Management. Check out the product docs to learn more about [Projects](https://metal.equinix.com/developers/docs/accounts/projects/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/accounts/projects/
   name: Projects
@@ -188,8 +241,8 @@ tags:
   externalDocs:
     url: https://metal.equinix.com/developers/docs/deploy/reserved/
   name: SelfServiceReservations
-- description: "Spot Market Pricing and Requests Management. Check out the product\
-    \ docs to learn more about [Spot Market features](https://metal.equinix.com/developers/docs/deploy/spot-market/).\n"
+- description: |
+    Spot Market Pricing and Requests Management. Check out the product docs to learn more about [Spot Market features](https://metal.equinix.com/developers/docs/deploy/spot-market/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/deploy/spot-market/
   name: SpotMarket
@@ -208,8 +261,8 @@ tags:
   externalDocs:
     url: https://metal.equinix.com/developers/docs/accounts/projects/#transferring-a-project
   name: TransferRequests
-- description: "Two Factor Authentication Management. Check out the product docs to\
-    \ learn more about [2FA](https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/).\n"
+- description: |
+    Two Factor Authentication Management. Check out the product docs to learn more about [2FA](https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/
   name: TwoFactorAuth
@@ -232,24 +285,18 @@ tags:
   externalDocs:
     url: https://metal.equinix.com/developers/docs/accounts/organizations/#managing-team-members
   name: UserVerificationTokens
-- description: "Manage virtual networks (VLANs). See project endpoints to list and\
-    \ create virtual networks. Check out the product docs to learn more about [VLANs](https://metal.equinix.com/developers/docs/networking/layer2/).\n"
+- description: |
+    Manage virtual networks (VLANs). See project endpoints to list and create virtual networks. Check out the product docs to learn more about [VLANs](https://metal.equinix.com/developers/docs/networking/layer2/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/networking/layer2/
   name: VLANs
-- description: "Volume Management (Block Storage). Notice: Block storage support will\
-    \ be deprecated soon. Please check here: https://metal.equinix.com/developers/docs/resilience-recovery/elastic-block-storage/\
-    \ for more details.\n"
+- description: |
+    Volume Management (Block Storage). Notice: Block storage support will be deprecated soon. Please check here: https://metal.equinix.com/developers/docs/resilience-recovery/elastic-block-storage/ for more details.
   externalDocs:
     url: https://metal.equinix.com/developers/docs/resilience-recovery/elastic-block-storage/
   name: Volumes
-- description: "VRF Management. A VRF is a project-scoped virtual router resource\
-    \ that defines a collection of customer-manager IP blocks that can be used in\
-    \ BGP peering on one or more virtual networks. Metal Gateways and Interconnection\
-    \ Virtual Circuits can take advantage of VRFs to enable Layer 3 routing with bespoke\
-    \ network ranges. Notice: VRFs are a test feature currently under active development,\
-    \ and only available to certain users. Please contact Customer Success for more\
-    \ information.\n"
+- description: |
+    VRF Management. A VRF is a project-scoped virtual router resource that defines a collection of customer-manager IP blocks that can be used in BGP peering on one or more virtual networks. Metal Gateways and Interconnection Virtual Circuits can take advantage of VRFs to enable Layer 3 routing with bespoke network ranges. Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information.
   name: VRFs
 paths:
   /api-keys/{id}:
@@ -1212,9 +1259,9 @@ paths:
       - Devices
       x-accepts: application/json
     get:
-      description: "Type-specific options (such as facility for baremetal devices)\
-        \ will be included as part of the main data structure.\n                 \
-        \        State value can be one of: active inactive queued or provisioning"
+      description: |-
+        Type-specific options (such as facility for baremetal devices) will be included as part of the main data structure.
+                                 State value can be one of: active inactive queued or provisioning
       operationId: findDeviceById
       parameters:
       - description: Device UUID
@@ -3501,9 +3548,10 @@ paths:
       x-accepts: application/json
   /market/spot/prices/history:
     get:
-      description: "Get spot market prices for a given plan and facility in a fixed\
-        \ period of time\n\n*Note: In the `200` response, the property `datapoints`\
-        \ contains arrays of `[float, integer]`.*"
+      description: |-
+        Get spot market prices for a given plan and facility in a fixed period of time
+
+        *Note: In the `200` response, the property `datapoints` contains arrays of `[float, integer]`.*
       operationId: findSpotMarketPricesHistory
       parameters:
       - description: Facility to check spot market prices
@@ -4712,9 +4760,9 @@ paths:
       - Organizations
       x-accepts: application/json
     post:
-      description: "In order to add a user to an organization, they must first be\
-        \ invited.\nTo invite to several projects the parameter `projects_ids:[a,b,c]`\
-        \ can be used"
+      description: |-
+        In order to add a user to an organization, they must first be invited.
+        To invite to several projects the parameter `projects_ids:[a,b,c]` can be used
       operationId: createOrganizationInvitation
       parameters:
       - description: Organization UUID
@@ -7115,10 +7163,10 @@ paths:
       - Devices
       x-accepts: application/json
     post:
-      description: "Creates a new device and provisions it in the specified location.\n\
-        \nDevice type-specific options are accepted.  For example, `baremetal` devices\
-        \ accept `operating_system`, `hostname`, and `plan`. These parameters may\
-        \ not be accepted for other device types. The default device type is `baremetal`."
+      description: |-
+        Creates a new device and provisions it in the specified location.
+
+        Device type-specific options are accepted.  For example, `baremetal` devices accept `operating_system`, `hostname`, and `plan`. These parameters may not be accepted for other device types. The default device type is `baremetal`.
       operationId: createDevice
       parameters:
       - description: Project UUID
@@ -7175,48 +7223,44 @@ paths:
       x-accepts: application/json
   /projects/{id}/devices/batch:
     post:
-      description: "Creates new devices in batch and provisions them in our datacenter.\n\
-        \nType-specific options (such as operating_system for baremetal devices) should\
-        \ be included in the main data structure alongside hostname and plan.\n\n\
-        The features attribute allows you to optionally specify what features your\
-        \ server should have.\n\nFor example, if you require a server with a TPM chip,\
-        \ you may specify `{ \"features\": { \"tpm\": \"required\" } }` (or `{ \"\
-        features\": [\"tpm\"] }` in shorthand).\n\nThe request will fail if there\
-        \ are no available servers matching your criteria. Alternatively, if you do\
-        \ not require a certain feature, but would prefer to be assigned a server\
-        \ with that feature if there are any available, you may specify that feature\
-        \ with a preferred value (see the example request below).\n\nThe request will\
-        \ not fail if we have no servers with that feature in our inventory.\n\nThe\
-        \ facilities attribute specifies in what datacenter you wish to create the\
-        \ device.\n\nYou can either specify a single facility `{ \"facility\": \"\
-        f1\" }` , or you can instruct to create the device in the best available datacenter\
-        \ `{ \"facility\": \"any\" }`. Additionally it is possible to set a prioritized\
-        \ location selection.\n\nFor example `{ \"facility\": [\"f3\", \"f2\", \"\
-        any\"] }` will try to assign to the facility f3, if there are no available\
-        \ f2, and so on. If \"any\" is not specified for \"facility\", the request\
-        \ will fail unless it can assign in the selected locations.\n\nWith `{ \"\
-        facility\": \"any\" }` you have the option to diversify to indicate how many\
-        \ facilities you are willing to be spread across. For this purpose use parameter:\
-        \ `facility_diversity_level = N`.\n\nFor example:\n\n`{ \"facilities\": [\"\
-        sjc1\", \"ewr1\", \"any\"] ,  \"facility_diversity_level\" = 1, \"quantity\"\
-        \ = 10 }` will assign 10 devices into the same facility, trying first in \"\
-        sjc1\", and if there aren’t available, it will try in  \"ewr1\", otherwise\
-        \ any other.\n\nThe `ip_addresses` attribute will allow you to specify the\
-        \ addresses you want created with your device.\n\nTo maintain backwards compatibility,\
-        \ If the attribute is not sent in the request, it will be treated as if `{\
-        \ \"ip_addresses\": [{ \"address_family\": 4, \"public\": true }, { \"address_family\"\
-        : 4, \"public\": false }, { \"address_family\": 6, \"public\": true }] }`\
-        \ was sent.\n\nThe private IPv4 address is required and always need to be\
-        \ sent in the array. Not all operating systems support no public IPv4 address,\
-        \ so in those cases you will receive an error message.\n\nFor example, to\
-        \ only configure your server with a private IPv4 address, you can send `{\
-        \ \"ip_addresses\": [{ \"address_family\": 4, \"public\": false }] }`.\n\n\
-        Note: when specifying a subnet size larger than a /30, you will need to supply\
-        \ the UUID(s) of existing ip_reservations in your project to assign IPs from.\n\
-        \nFor example, `{ \"ip_addresses\": [..., {\"address_family\": 4, \"public\"\
-        : true, \"ip_reservations\": [\"uuid1\", \"uuid2\"]}] }`\n\nTo access a server\
-        \ without public IPs, you can use our Out-of-Band console access (SOS) or\
-        \ use another server with public IPs as a proxy."
+      description: |-
+        Creates new devices in batch and provisions them in our datacenter.
+
+        Type-specific options (such as operating_system for baremetal devices) should be included in the main data structure alongside hostname and plan.
+
+        The features attribute allows you to optionally specify what features your server should have.
+
+        For example, if you require a server with a TPM chip, you may specify `{ "features": { "tpm": "required" } }` (or `{ "features": ["tpm"] }` in shorthand).
+
+        The request will fail if there are no available servers matching your criteria. Alternatively, if you do not require a certain feature, but would prefer to be assigned a server with that feature if there are any available, you may specify that feature with a preferred value (see the example request below).
+
+        The request will not fail if we have no servers with that feature in our inventory.
+
+        The facilities attribute specifies in what datacenter you wish to create the device.
+
+        You can either specify a single facility `{ "facility": "f1" }` , or you can instruct to create the device in the best available datacenter `{ "facility": "any" }`. Additionally it is possible to set a prioritized location selection.
+
+        For example `{ "facility": ["f3", "f2", "any"] }` will try to assign to the facility f3, if there are no available f2, and so on. If "any" is not specified for "facility", the request will fail unless it can assign in the selected locations.
+
+        With `{ "facility": "any" }` you have the option to diversify to indicate how many facilities you are willing to be spread across. For this purpose use parameter: `facility_diversity_level = N`.
+
+        For example:
+
+        `{ "facilities": ["sjc1", "ewr1", "any"] ,  "facility_diversity_level" = 1, "quantity" = 10 }` will assign 10 devices into the same facility, trying first in "sjc1", and if there aren’t available, it will try in  "ewr1", otherwise any other.
+
+        The `ip_addresses` attribute will allow you to specify the addresses you want created with your device.
+
+        To maintain backwards compatibility, If the attribute is not sent in the request, it will be treated as if `{ "ip_addresses": [{ "address_family": 4, "public": true }, { "address_family": 4, "public": false }, { "address_family": 6, "public": true }] }` was sent.
+
+        The private IPv4 address is required and always need to be sent in the array. Not all operating systems support no public IPv4 address, so in those cases you will receive an error message.
+
+        For example, to only configure your server with a private IPv4 address, you can send `{ "ip_addresses": [{ "address_family": 4, "public": false }] }`.
+
+        Note: when specifying a subnet size larger than a /30, you will need to supply the UUID(s) of existing ip_reservations in your project to assign IPs from.
+
+        For example, `{ "ip_addresses": [..., {"address_family": 4, "public": true, "ip_reservations": ["uuid1", "uuid2"]}] }`
+
+        To access a server without public IPs, you can use our Out-of-Band console access (SOS) or use another server with public IPs as a proxy.
       operationId: createDeviceBatch
       parameters:
       - description: Project UUID
@@ -7972,18 +8016,16 @@ paths:
       - SpotMarket
       x-accepts: application/json
     post:
-      description: "Creates a new spot market request.\n\nType-specific options (such\
-        \ as operating_system for baremetal devices) should be included in the main\
-        \ data structure alongside hostname and plan.\n\nThe features attribute allows\
-        \ you to optionally specify what features your server should have. For example,\
-        \ if you require a server with a TPM chip, you may specify `{ \"features\"\
-        : { \"tpm\": \"required\" } }` (or `{ \"features\": [\"tpm\"] }` in shorthand).\n\
-        \nThe request will fail if there are no available servers matching your criteria.\
-        \ Alternatively, if you do not require a certain feature, but would prefer\
-        \ to be assigned a server with that feature if there are any available, you\
-        \ may specify that feature with a preferred value (see the example request\
-        \ below).\n\nThe request will not fail if we have no servers with that feature\
-        \ in our inventory."
+      description: |-
+        Creates a new spot market request.
+
+        Type-specific options (such as operating_system for baremetal devices) should be included in the main data structure alongside hostname and plan.
+
+        The features attribute allows you to optionally specify what features your server should have. For example, if you require a server with a TPM chip, you may specify `{ "features": { "tpm": "required" } }` (or `{ "features": ["tpm"] }` in shorthand).
+
+        The request will fail if there are no available servers matching your criteria. Alternatively, if you do not require a certain feature, but would prefer to be assigned a server with that feature if there are any available, you may specify that feature with a preferred value (see the example request below).
+
+        The request will not fail if we have no servers with that feature in our inventory.
       operationId: createSpotMarketRequest
       parameters:
       - description: Project UUID
@@ -8482,7 +8524,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createVrf_request'
+              $ref: '#/components/schemas/VrfCreateInput'
         description: VRF to create
         required: true
       responses:
@@ -11384,11 +11426,8 @@ components:
           format: date-time
           type: string
         deployment_type:
-          description: "In a Local BGP deployment, a customer uses an internal ASN\
-            \ to control routes within a single Equinix Metal datacenter. This means\
-            \ that the routes are never advertised to the global Internet. Global\
-            \ BGP, on the other hand, requires a customer to have a registered ASN\
-            \ and IP space.\n"
+          description: |
+            In a Local BGP deployment, a customer uses an internal ASN to control routes within a single Equinix Metal datacenter. This means that the routes are never advertised to the global Internet. Global BGP, on the other hand, requires a customer to have a registered ASN and IP space.
           enum:
           - global
           - local
@@ -12392,9 +12431,10 @@ components:
           description: Whether or not the device is a spot instance.
           type: boolean
         spot_price_max:
-          description: "The maximum price per hour you are willing to pay to keep\
-            \ this spot\ninstance.  If you are outbid, the termination will be set\
-            \ allowing two\nminutes before shutdown."
+          description: |-
+            The maximum price per hour you are willing to pay to keep this spot
+            instance.  If you are outbid, the termination will be set allowing two
+            minutes before shutdown.
           format: float
           type: number
         ssh_keys:
@@ -12410,21 +12450,23 @@ components:
           - reinstalling
           type: string
         switch_uuid:
-          description: "Switch short id. This can be used to determine if two devices\
-            \ are\nconnected to the same switch, for example."
+          description: |-
+            Switch short id. This can be used to determine if two devices are
+            connected to the same switch, for example.
           type: string
         tags:
           items:
             type: string
           type: array
         termination_time:
-          description: "When the device will be terminated. This is commonly set in\
-            \ advance for\nephemeral spot market instances but this field may also\
-            \ be set with\non-demand and reservation instances to automatically delete\
-            \ the resource\nat a given time. The termination time can also be used\
-            \ to release a\nhardware reservation instance at a given time, keeping\
-            \ the reservation\nopen for other uses.  On a spot market device, the\
-            \ termination time will\nbe set automatically when outbid."
+          description: |-
+            When the device will be terminated. This is commonly set in advance for
+            ephemeral spot market instances but this field may also be set with
+            on-demand and reservation instances to automatically delete the resource
+            at a given time. The termination time can also be used to release a
+            hardware reservation instance at a given time, keeping the reservation
+            open for other uses.  On a spot market device, the termination time will
+            be set automatically when outbid.
           format: date-time
           type: string
         updated_at:
@@ -12494,9 +12536,10 @@ components:
       properties:
         always_pxe:
           default: false
-          description: "When true, devices with a `custom_ipxe` OS will always boot\
-            \ to iPXE. The\ndefault setting of false ensures that iPXE will be used\
-            \ on only the\nfirst boot."
+          description: |-
+            When true, devices with a `custom_ipxe` OS will always boot to iPXE. The
+            default setting of false ensures that iPXE will be used on only the
+            first boot.
           type: boolean
         billing_cycle:
           description: The billing cycle of the device.
@@ -12516,42 +12559,45 @@ components:
             to inform other API consumers with project access.
           type: string
         facility:
-          description: "The datacenter where the device should be created.\n\nEither\
-            \ metro or facility must be provided.\n\nThe API will accept either a\
-            \ single facility `{ \"facility\": \"f1\" }`, or it can be instructed\
-            \ to create the device in the best available datacenter `{ \"facility\"\
-            : \"any\" }`.\n\nAdditionally it is possible to set a prioritized location\
-            \ selection. For example `{ \"facility\": [\"f3\", \"f2\", \"any\"] }`\
-            \ can be used to prioritize `f3` and then `f2` before accepting `any`\
-            \ facility. If none of the facilities provided have availability for the\
-            \ requested device the request will fail."
+          description: |-
+            The datacenter where the device should be created.
+
+            Either metro or facility must be provided.
+
+            The API will accept either a single facility `{ "facility": "f1" }`, or it can be instructed to create the device in the best available datacenter `{ "facility": "any" }`.
+
+            Additionally it is possible to set a prioritized location selection. For example `{ "facility": ["f3", "f2", "any"] }` can be used to prioritize `f3` and then `f2` before accepting `any` facility. If none of the facilities provided have availability for the requested device the request will fail.
           example:
           - sv15
           items:
             type: string
           type: array
         features:
-          description: "The features attribute allows you to optionally specify what\
-            \ features your server should have.\n\nIn the API shorthand syntax, all\
-            \ features listed are `required`:\n\n```\n{ \"features\": [\"tpm\"] }\n\
-            ```\n\nAlternatively, if you do not require a certain feature, but would\
-            \ prefer to be assigned a server with that feature if there are any available,\
-            \ you may specify that feature with a `preferred` value. The request will\
-            \ not fail if we have no servers with that feature in our inventory. The\
-            \ API offers an alternative syntax for mixing preferred and required features:\n\
-            \n```\n{ \"features\": { \"tpm\": \"required\", \"raid\": \"preferred\"\
-            \ } }\n```\n\nThe request will only fail if there are no available servers\
-            \ matching the required `tpm` criteria."
+          description: |-
+            The features attribute allows you to optionally specify what features your server should have.
+
+            In the API shorthand syntax, all features listed are `required`:
+
+            ```
+            { "features": ["tpm"] }
+            ```
+
+            Alternatively, if you do not require a certain feature, but would prefer to be assigned a server with that feature if there are any available, you may specify that feature with a `preferred` value. The request will not fail if we have no servers with that feature in our inventory. The API offers an alternative syntax for mixing preferred and required features:
+
+            ```
+            { "features": { "tpm": "required", "raid": "preferred" } }
+            ```
+
+            The request will only fail if there are no available servers matching the required `tpm` criteria.
           items:
             type: string
           type: array
         hardware_reservation_id:
           default: ""
-          description: "The Hardware Reservation UUID to provision. Alternatively,\
-            \ `next-available` can be specified to select from any of the available\
-            \ hardware reservations. An error will be returned if the requested reservation\
-            \ option is not available.\n\nSee [Reserved Hardware](https://metal.equinix.com/developers/docs/deploy/reserved/)\
-            \ for more details."
+          description: |-
+            The Hardware Reservation UUID to provision. Alternatively, `next-available` can be specified to select from any of the available hardware reservations. An error will be returned if the requested reservation option is not available.
+
+            See [Reserved Hardware](https://metal.equinix.com/developers/docs/deploy/reserved/) for more details.
           example: next-available
           type: string
         hostname:
@@ -12566,28 +12612,30 @@ components:
             public: false
           - address_family: 6
             public: true
-          description: "The `ip_addresses attribute will allow you to specify the\
-            \ addresses you want created with your device.\n\nThe default value configures\
-            \ public IPv4, public IPv6, and private IPv4.\n\nPrivate IPv4 address\
-            \ is required. When specifying `ip_addresses`, one of the array items\
-            \ must enable private IPv4.\n\nSome operating systems require public IPv4\
-            \ address. In those cases you will receive an error message if public\
-            \ IPv4 is not enabled.\n\nFor example, to only configure your server with\
-            \ a private IPv4 address, you can send `{ \"ip_addresses\": [{ \"address_family\"\
-            : 4, \"public\": false }] }`.\n\nIt is possible to request a subnet size\
-            \ larger than a `/30` by assigning addresses using the UUID(s) of ip_reservations\
-            \ in your project.\n\nFor example, `{ \"ip_addresses\": [..., {\"address_family\"\
-            : 4, \"public\": true, \"ip_reservations\": [\"uuid1\", \"uuid2\"]}] }`\n\
-            \nTo access a server without public IPs, you can use our Out-of-Band console\
-            \ access (SOS) or proxy through another server in the project with public\
-            \ IPs enabled."
+          description: |-
+            The `ip_addresses attribute will allow you to specify the addresses you want created with your device.
+
+            The default value configures public IPv4, public IPv6, and private IPv4.
+
+            Private IPv4 address is required. When specifying `ip_addresses`, one of the array items must enable private IPv4.
+
+            Some operating systems require public IPv4 address. In those cases you will receive an error message if public IPv4 is not enabled.
+
+            For example, to only configure your server with a private IPv4 address, you can send `{ "ip_addresses": [{ "address_family": 4, "public": false }] }`.
+
+            It is possible to request a subnet size larger than a `/30` by assigning addresses using the UUID(s) of ip_reservations in your project.
+
+            For example, `{ "ip_addresses": [..., {"address_family": 4, "public": true, "ip_reservations": ["uuid1", "uuid2"]}] }`
+
+            To access a server without public IPs, you can use our Out-of-Band console access (SOS) or proxy through another server in the project with public IPs enabled.
           items:
             $ref: '#/components/schemas/DeviceCreateInput_ip_addresses_inner'
           type: array
         ipxe_script_url:
-          description: "When set, the device will chainload an iPXE Script at boot\
-            \ fetched from the supplied URL.\n\nSee [Custom iPXE](https://metal.equinix.com/developers/docs/operating-systems/custom-ipxe/)\
-            \ for more details."
+          description: |-
+            When set, the device will chainload an iPXE Script at boot fetched from the supplied URL.
+
+            See [Custom iPXE](https://metal.equinix.com/developers/docs/operating-systems/custom-ipxe/) for more details.
           externalDocs:
             url: https://metal.equinix.com/developers/docs/operating-systems/custom-ipxe/
           type: string
@@ -12626,14 +12674,14 @@ components:
           type: number
           x-deprecated: true
         project_ssh_keys:
-          description: "A list of UUIDs identifying the device parent project\nthat\
-            \ should be authorized to access this device (typically\nvia /root/.ssh/authorized_keys).\
-            \ These keys will also appear in the device metadata.\n\nIf no SSH keys\
-            \ are specified (`user_ssh_keys`, `project_ssh_keys`, and `ssh_keys` are\
-            \ all empty lists or omitted),\nall parent project keys, parent project\
-            \ members keys and organization members keys will be included. This behaviour\
-            \ can\nbe changed with 'no_ssh_keys' option to omit any SSH key being\
-            \ added.\n"
+          description: |
+            A list of UUIDs identifying the device parent project
+            that should be authorized to access this device (typically
+            via /root/.ssh/authorized_keys). These keys will also appear in the device metadata.
+
+            If no SSH keys are specified (`user_ssh_keys`, `project_ssh_keys`, and `ssh_keys` are all empty lists or omitted),
+            all parent project keys, parent project members keys and organization members keys will be included. This behaviour can
+            be changed with 'no_ssh_keys' option to omit any SSH key being added.
           items:
             format: uuid
             type: string
@@ -12671,26 +12719,26 @@ components:
           format: date-time
           type: string
         user_ssh_keys:
-          description: "A list of UUIDs identifying the users\nthat should be authorized\
-            \ to access this device (typically\nvia /root/.ssh/authorized_keys). \
-            \ These keys will also\nappear in the device metadata.\n\nThe users must\
-            \ be members of the project or organization.\n\nIf no SSH keys are specified\
-            \ (`user_ssh_keys`, `project_ssh_keys`, and `ssh_keys` are all empty lists\
-            \ or omitted),\nall parent project keys, parent project members keys and\
-            \ organization members keys will be included. This behaviour can\nbe changed\
-            \ with 'no_ssh_keys' option to omit any SSH key being added.\n"
+          description: |
+            A list of UUIDs identifying the users
+            that should be authorized to access this device (typically
+            via /root/.ssh/authorized_keys).  These keys will also
+            appear in the device metadata.
+
+            The users must be members of the project or organization.
+
+            If no SSH keys are specified (`user_ssh_keys`, `project_ssh_keys`, and `ssh_keys` are all empty lists or omitted),
+            all parent project keys, parent project members keys and organization members keys will be included. This behaviour can
+            be changed with 'no_ssh_keys' option to omit any SSH key being added.
           items:
             format: uuid
             type: string
           type: array
         userdata:
-          description: "The userdata presented in the metadata service for this device.\
-            \  Userdata is fetched and interpreted by the operating system installed\
-            \ on the device. Acceptable formats are determined by the operating system,\
-            \ with the exception of a special iPXE enabling syntax which is handled\
-            \ before the operating system starts.\n\nSee [Server User Data](https://metal.equinix.com/developers/docs/servers/user-data/)\
-            \ and [Provisioning with Custom iPXE](https://metal.equinix.com/developers/docs/operating-systems/custom-ipxe/#provisioning-with-custom-ipxe)\
-            \ for more details."
+          description: |-
+            The userdata presented in the metadata service for this device.  Userdata is fetched and interpreted by the operating system installed on the device. Acceptable formats are determined by the operating system, with the exception of a special iPXE enabling syntax which is handled before the operating system starts.
+
+            See [Server User Data](https://metal.equinix.com/developers/docs/servers/user-data/) and [Provisioning with Custom iPXE](https://metal.equinix.com/developers/docs/operating-systems/custom-ipxe/#provisioning-with-custom-ipxe) for more details.
           externalDocs:
             url: https://metal.equinix.com/developers/docs/servers/user-data/
           type: string
@@ -14818,7 +14866,7 @@ components:
             $ref: '#/components/schemas/IPReservation'
           type: array
       type: object
-    IPReservationRequestInput:
+    DefaultIPReservationCreateInput:
       properties:
         comments:
           type: string
@@ -15008,12 +15056,10 @@ components:
         metro:
           $ref: '#/components/schemas/Interconnection_metro'
         mode:
-          description: "The mode of the connection (only relevant to dedicated connections).\
-            \ Shared connections won't have this field. Can be either 'standard' or\
-            \ 'tunnel'.\n  The default mode of a dedicated connection is 'standard'.\
-            \ The mode can only be changed when there are no associated virtual circuits\
-            \ on the connection.\n  In tunnel mode, an 802.1q tunnel is added to a\
-            \ port to send/receive double tagged packets from server instances."
+          description: |-
+            The mode of the connection (only relevant to dedicated connections). Shared connections won't have this field. Can be either 'standard' or 'tunnel'.
+              The default mode of a dedicated connection is 'standard'. The mode can only be changed when there are no associated virtual circuits on the connection.
+              In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.
           enum:
           - standard
           - tunnel
@@ -15072,12 +15118,10 @@ components:
           description: A Metro ID or code.
           type: string
         mode:
-          description: "The mode of the connection (only relevant to dedicated connections).\
-            \ Shared connections won't have this field. Can be either 'standard' or\
-            \ 'tunnel'.\n  The default mode of a dedicated connection is 'standard'.\
-            \ The mode can only be changed when there are no associated virtual circuits\
-            \ on the connection.\n  In tunnel mode, an 802.1q tunnel is added to a\
-            \ port to send/receive double tagged packets from server instances."
+          description: |-
+            The mode of the connection (only relevant to dedicated connections). Shared connections won't have this field. Can be either 'standard' or 'tunnel'.
+              The default mode of a dedicated connection is 'standard'. The mode can only be changed when there are no associated virtual circuits on the connection.
+              In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.
           enum:
           - standard
           - tunnel
@@ -15314,12 +15358,10 @@ components:
         description:
           type: string
         mode:
-          description: "The mode of the connection (only relevant to dedicated connections).\
-            \ Shared connections won't have this field. Can be either 'standard' or\
-            \ 'tunnel'.\n  The default mode of a dedicated connection is 'standard'.\
-            \ The mode can only be changed when there are no associated virtual circuits\
-            \ on the connection.\n  In tunnel mode, an 802.1q tunnel is added to a\
-            \ port to send/receive double tagged packets from server instances."
+          description: |-
+            The mode of the connection (only relevant to dedicated connections). Shared connections won't have this field. Can be either 'standard' or 'tunnel'.
+              The default mode of a dedicated connection is 'standard'. The mode can only be changed when there are no associated virtual circuits on the connection.
+              In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.
           enum:
           - standard
           - tunnel
@@ -15781,7 +15823,7 @@ components:
         vrf:
           $ref: '#/components/schemas/Vrf'
       type: object
-    MetalGatewayInput:
+    MetalGatewayCreateInput:
       properties:
         ip_reservation_id:
           description: The UUID of an IP reservation that belongs to the same project
@@ -15790,12 +15832,9 @@ components:
           format: uuid
           type: string
         private_ipv4_subnet_size:
-          description: "The subnet size (8, 16, 32, 64, or 128) of the private IPv4\
-            \ reservation that will be created for the metal gateway. This field is\
-            \ required unless a project IP reservation was specified.\n          Please\
-            \ keep in mind that the number of private metal gateway ranges are limited\
-            \ per project. If you would like to increase the limit per project, please\
-            \ contact support for assistance."
+          description: |-
+            The subnet size (8, 16, 32, 64, or 128) of the private IPv4 reservation that will be created for the metal gateway. This field is required unless a project IP reservation was specified.
+                      Please keep in mind that the number of private metal gateway ranges are limited per project. If you would like to increase the limit per project, please contact support for assistance.
           type: integer
         virtual_network_id:
           description: The UUID of a metro virtual network that belongs to the same
@@ -17635,8 +17674,8 @@ components:
         vnid: "1001"
       properties:
         vnid:
-          description: "Virtual Network ID. May be the UUID of the Virtual Network\
-            \ record, or the VLAN value itself.\n"
+          description: |
+            Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself.
           example: "1001"
           type: string
       type: object
@@ -18177,8 +18216,9 @@ components:
         key: key
       properties:
         instances_ids:
-          description: "List of instance UUIDs to associate SSH key with, when empty\
-            \ array is sent all instances belonging\n      to entity will be included"
+          description: |-
+            List of instance UUIDs to associate SSH key with, when empty array is sent all instances belonging
+                  to entity will be included
           items:
             format: uuid
             type: string
@@ -19753,7 +19793,6 @@ components:
     VirtualNetworkCreateInput:
       example:
         vxlan: 1099
-        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         metro: metro
         description: description
         facility: facility
@@ -19768,9 +19807,6 @@ components:
           description: The UUID (or metro code) for the Metro in which to create this
             Virtual Network.
           type: string
-        project_id:
-          format: uuid
-          type: string
         vxlan:
           description: "VLAN ID between 2-3999. Must be unique for the project within\
             \ the Metro in which this Virtual Network is being created. If no value\
@@ -19778,8 +19814,6 @@ components:
             \ be automatically selected."
           example: 1099
           type: integer
-      required:
-      - project_id
       type: object
     VirtualNetworkList:
       example:
@@ -19926,6 +19960,14 @@ components:
           type: string
       type: object
     VrfCreateInput:
+      example:
+        ip_ranges:
+        - ip_ranges
+        - ip_ranges
+        local_asn: 0
+        metro: metro
+        name: name
+        description: description
       properties:
         description:
           type: string
@@ -19947,13 +19989,9 @@ components:
           type: string
         name:
           type: string
-        project_id:
-          format: uuid
-          type: string
       required:
       - metro
       - name
-      - project_id
     VrfIPRangeCreateInput:
       description: "A list of CIDR network addresses. Like [\"10.0.0.0/16\", \"2001:d78::/56\"\
         ]. IPv4 blocks must be between /8 and /29 in size. IPv6 blocks must be between\
@@ -20390,40 +20428,11 @@ components:
       - $ref: '#/components/schemas/IPReservation'
     requestIPReservation_request:
       oneOf:
-      - $ref: '#/components/schemas/IPReservationRequestInput'
+      - $ref: '#/components/schemas/DefaultIPReservationCreateInput'
       - $ref: '#/components/schemas/VrfIPReservationCreateInput'
-    createVrf_request:
-      properties:
-        description:
-          type: string
-        ip_ranges:
-          description: "A list of CIDR network addresses. Like [\"10.0.0.0/16\", \"\
-            2001:d78::/56\"]. IPv4 blocks must be between /8 and /29 in size. IPv6\
-            \ blocks must be between /56 and /64. A VRF\\'s IP ranges must be defined\
-            \ in order to create VRF IP Reservations, which can then be used for Metal\
-            \ Gateways or Virtual Circuits."
-          items:
-            type: string
-          type: array
-        local_asn:
-          format: int32
-          type: integer
-        metro:
-          description: The UUID (or metro code) for the Metro in which to create this
-            VRF.
-          type: string
-        name:
-          type: string
-        project_id:
-          format: uuid
-          type: string
-      required:
-      - metro
-      - name
-      - project_id
     createMetalGateway_request:
       oneOf:
-      - $ref: '#/components/schemas/MetalGatewayInput'
+      - $ref: '#/components/schemas/MetalGatewayCreateInput'
       - $ref: '#/components/schemas/VrfMetalGatewayCreateInput'
     updateVirtualCircuit_request:
       oneOf:
@@ -20569,6 +20578,7 @@ components:
           $ref: '#/components/schemas/User'
         available:
           type: string
+      example: null
     InstancesBatchCreateInput_batches_inner_ip_addresses_inner:
       example:
         address_family: 4
@@ -20883,6 +20893,7 @@ components:
           $ref: '#/components/schemas/Vrf'
         created_by:
           $ref: '#/components/schemas/User'
+      example: null
   securitySchemes:
     x_auth_token:
       in: header

@@ -192,17 +192,19 @@ public class SSHKeyList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SSHKeyList is not found in the empty JSON string", SSHKeyList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraysshKeys = jsonObj.getAsJsonArray("ssh_keys");
-      if (jsonArraysshKeys != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("ssh_keys").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("ssh_keys").toString()));
-        }
+      if (jsonObj.get("ssh_keys") != null && !jsonObj.get("ssh_keys").isJsonNull()) {
+        JsonArray jsonArraysshKeys = jsonObj.getAsJsonArray("ssh_keys");
+        if (jsonArraysshKeys != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("ssh_keys").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("ssh_keys").toString()));
+          }
 
-        // validate the optional field `ssh_keys` (array)
-        for (int i = 0; i < jsonArraysshKeys.size(); i++) {
-          SSHKey.validateJsonObject(jsonArraysshKeys.get(i).getAsJsonObject());
-        };
+          // validate the optional field `ssh_keys` (array)
+          for (int i = 0; i < jsonArraysshKeys.size(); i++) {
+            SSHKey.validateJsonObject(jsonArraysshKeys.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

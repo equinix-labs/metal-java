@@ -227,17 +227,19 @@ public class OrganizationList {
       if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
         Meta.validateJsonObject(jsonObj.getAsJsonObject("meta"));
       }
-      JsonArray jsonArrayorganizations = jsonObj.getAsJsonArray("organizations");
-      if (jsonArrayorganizations != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("organizations").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `organizations` to be an array in the JSON string but got `%s`", jsonObj.get("organizations").toString()));
-        }
+      if (jsonObj.get("organizations") != null && !jsonObj.get("organizations").isJsonNull()) {
+        JsonArray jsonArrayorganizations = jsonObj.getAsJsonArray("organizations");
+        if (jsonArrayorganizations != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("organizations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `organizations` to be an array in the JSON string but got `%s`", jsonObj.get("organizations").toString()));
+          }
 
-        // validate the optional field `organizations` (array)
-        for (int i = 0; i < jsonArrayorganizations.size(); i++) {
-          Organization.validateJsonObject(jsonArrayorganizations.get(i).getAsJsonObject());
-        };
+          // validate the optional field `organizations` (array)
+          for (int i = 0; i < jsonArrayorganizations.size(); i++) {
+            Organization.validateJsonObject(jsonArrayorganizations.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

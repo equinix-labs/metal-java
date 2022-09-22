@@ -192,17 +192,19 @@ public class SpotMarketRequestList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SpotMarketRequestList is not found in the empty JSON string", SpotMarketRequestList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayspotMarketRequests = jsonObj.getAsJsonArray("spot_market_requests");
-      if (jsonArrayspotMarketRequests != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("spot_market_requests").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `spot_market_requests` to be an array in the JSON string but got `%s`", jsonObj.get("spot_market_requests").toString()));
-        }
+      if (jsonObj.get("spot_market_requests") != null && !jsonObj.get("spot_market_requests").isJsonNull()) {
+        JsonArray jsonArrayspotMarketRequests = jsonObj.getAsJsonArray("spot_market_requests");
+        if (jsonArrayspotMarketRequests != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("spot_market_requests").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `spot_market_requests` to be an array in the JSON string but got `%s`", jsonObj.get("spot_market_requests").toString()));
+          }
 
-        // validate the optional field `spot_market_requests` (array)
-        for (int i = 0; i < jsonArrayspotMarketRequests.size(); i++) {
-          SpotMarketRequest.validateJsonObject(jsonArrayspotMarketRequests.get(i).getAsJsonObject());
-        };
+          // validate the optional field `spot_market_requests` (array)
+          for (int i = 0; i < jsonArrayspotMarketRequests.size(); i++) {
+            SpotMarketRequest.validateJsonObject(jsonArrayspotMarketRequests.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

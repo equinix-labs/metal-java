@@ -412,17 +412,19 @@ public class Batch {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Batch is not found in the empty JSON string", Batch.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraydevices = jsonObj.getAsJsonArray("devices");
-      if (jsonArraydevices != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("devices").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `devices` to be an array in the JSON string but got `%s`", jsonObj.get("devices").toString()));
-        }
+      if (jsonObj.get("devices") != null && !jsonObj.get("devices").isJsonNull()) {
+        JsonArray jsonArraydevices = jsonObj.getAsJsonArray("devices");
+        if (jsonArraydevices != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("devices").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `devices` to be an array in the JSON string but got `%s`", jsonObj.get("devices").toString()));
+          }
 
-        // validate the optional field `devices` (array)
-        for (int i = 0; i < jsonArraydevices.size(); i++) {
-          Href.validateJsonObject(jsonArraydevices.get(i).getAsJsonObject());
-        };
+          // validate the optional field `devices` (array)
+          for (int i = 0; i < jsonArraydevices.size(); i++) {
+            Href.validateJsonObject(jsonArraydevices.get(i).getAsJsonObject());
+          };
+        }
       }
       // ensure the json data is an array
       if ((jsonObj.get("error_messages") != null && !jsonObj.get("error_messages").isJsonNull()) && !jsonObj.get("error_messages").isJsonArray()) {

@@ -192,17 +192,19 @@ public class PortVlanAssignmentList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortVlanAssignmentList is not found in the empty JSON string", PortVlanAssignmentList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayvlanAssignments = jsonObj.getAsJsonArray("vlan_assignments");
-      if (jsonArrayvlanAssignments != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("vlan_assignments").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `vlan_assignments` to be an array in the JSON string but got `%s`", jsonObj.get("vlan_assignments").toString()));
-        }
+      if (jsonObj.get("vlan_assignments") != null && !jsonObj.get("vlan_assignments").isJsonNull()) {
+        JsonArray jsonArrayvlanAssignments = jsonObj.getAsJsonArray("vlan_assignments");
+        if (jsonArrayvlanAssignments != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("vlan_assignments").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `vlan_assignments` to be an array in the JSON string but got `%s`", jsonObj.get("vlan_assignments").toString()));
+          }
 
-        // validate the optional field `vlan_assignments` (array)
-        for (int i = 0; i < jsonArrayvlanAssignments.size(); i++) {
-          PortVlanAssignment.validateJsonObject(jsonArrayvlanAssignments.get(i).getAsJsonObject());
-        };
+          // validate the optional field `vlan_assignments` (array)
+          for (int i = 0; i < jsonArrayvlanAssignments.size(); i++) {
+            PortVlanAssignment.validateJsonObject(jsonArrayvlanAssignments.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

@@ -706,32 +706,36 @@ public class Interconnection {
       if (jsonObj.get("organization") != null && !jsonObj.get("organization").isJsonNull()) {
         Href.validateJsonObject(jsonObj.getAsJsonObject("organization"));
       }
-      JsonArray jsonArrayports = jsonObj.getAsJsonArray("ports");
-      if (jsonArrayports != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("ports").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `ports` to be an array in the JSON string but got `%s`", jsonObj.get("ports").toString()));
-        }
+      if (jsonObj.get("ports") != null && !jsonObj.get("ports").isJsonNull()) {
+        JsonArray jsonArrayports = jsonObj.getAsJsonArray("ports");
+        if (jsonArrayports != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("ports").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `ports` to be an array in the JSON string but got `%s`", jsonObj.get("ports").toString()));
+          }
 
-        // validate the optional field `ports` (array)
-        for (int i = 0; i < jsonArrayports.size(); i++) {
-          InterconnectionPort.validateJsonObject(jsonArrayports.get(i).getAsJsonObject());
-        };
+          // validate the optional field `ports` (array)
+          for (int i = 0; i < jsonArrayports.size(); i++) {
+            InterconnectionPort.validateJsonObject(jsonArrayports.get(i).getAsJsonObject());
+          };
+        }
       }
       if ((jsonObj.get("redundancy") != null && !jsonObj.get("redundancy").isJsonNull()) && !jsonObj.get("redundancy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redundancy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redundancy").toString()));
       }
-      JsonArray jsonArrayserviceTokens = jsonObj.getAsJsonArray("service_tokens");
-      if (jsonArrayserviceTokens != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("service_tokens").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `service_tokens` to be an array in the JSON string but got `%s`", jsonObj.get("service_tokens").toString()));
-        }
+      if (jsonObj.get("service_tokens") != null && !jsonObj.get("service_tokens").isJsonNull()) {
+        JsonArray jsonArrayserviceTokens = jsonObj.getAsJsonArray("service_tokens");
+        if (jsonArrayserviceTokens != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("service_tokens").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `service_tokens` to be an array in the JSON string but got `%s`", jsonObj.get("service_tokens").toString()));
+          }
 
-        // validate the optional field `service_tokens` (array)
-        for (int i = 0; i < jsonArrayserviceTokens.size(); i++) {
-          FabricServiceToken.validateJsonObject(jsonArrayserviceTokens.get(i).getAsJsonObject());
-        };
+          // validate the optional field `service_tokens` (array)
+          for (int i = 0; i < jsonArrayserviceTokens.size(); i++) {
+            FabricServiceToken.validateJsonObject(jsonArrayserviceTokens.get(i).getAsJsonObject());
+          };
+        }
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

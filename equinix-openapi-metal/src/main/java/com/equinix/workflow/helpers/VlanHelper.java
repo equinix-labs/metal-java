@@ -42,7 +42,6 @@ public class VlanHelper {
     public VirtualNetwork createVlan(UUID projectId, String metro, Integer vxlan) throws ApiException {
         VirtualNetworkCreateInput vlanInput=new VirtualNetworkCreateInput()
                 .metro(metro)
-                .projectId(projectId)
                 .vxlan(vxlan);
         return vlansApi.createVirtualNetwork(projectId, vlanInput);
     }

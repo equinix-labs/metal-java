@@ -25,7 +25,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -71,10 +70,6 @@ public class VrfCreateInput {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
-
-  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
-  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
-  private UUID projectId;
 
   public VrfCreateInput() {
   }
@@ -201,29 +196,6 @@ public class VrfCreateInput {
     this.name = name;
   }
 
-
-  public VrfCreateInput projectId(UUID projectId) {
-    
-    this.projectId = projectId;
-    return this;
-  }
-
-   /**
-   * Get projectId
-   * @return projectId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public UUID getProjectId() {
-    return projectId;
-  }
-
-
-  public void setProjectId(UUID projectId) {
-    this.projectId = projectId;
-  }
-
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -274,14 +246,13 @@ public class VrfCreateInput {
         Objects.equals(this.ipRanges, vrfCreateInput.ipRanges) &&
         Objects.equals(this.localAsn, vrfCreateInput.localAsn) &&
         Objects.equals(this.metro, vrfCreateInput.metro) &&
-        Objects.equals(this.name, vrfCreateInput.name) &&
-        Objects.equals(this.projectId, vrfCreateInput.projectId)&&
+        Objects.equals(this.name, vrfCreateInput.name)&&
         Objects.equals(this.additionalProperties, vrfCreateInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, ipRanges, localAsn, metro, name, projectId, additionalProperties);
+    return Objects.hash(description, ipRanges, localAsn, metro, name, additionalProperties);
   }
 
   @Override
@@ -293,7 +264,6 @@ public class VrfCreateInput {
     sb.append("    localAsn: ").append(toIndentedString(localAsn)).append("\n");
     sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -322,13 +292,11 @@ public class VrfCreateInput {
     openapiFields.add("local_asn");
     openapiFields.add("metro");
     openapiFields.add("name");
-    openapiFields.add("project_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("metro");
     openapiRequiredFields.add("name");
-    openapiRequiredFields.add("project_id");
   }
 
  /**
@@ -364,9 +332,6 @@ public class VrfCreateInput {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("project_id") != null && !jsonObj.get("project_id").isJsonNull()) && !jsonObj.get("project_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `project_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project_id").toString()));
       }
   }
 

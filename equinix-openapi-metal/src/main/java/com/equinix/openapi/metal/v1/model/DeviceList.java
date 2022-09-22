@@ -223,17 +223,19 @@ public class DeviceList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in DeviceList is not found in the empty JSON string", DeviceList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraydevices = jsonObj.getAsJsonArray("devices");
-      if (jsonArraydevices != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("devices").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `devices` to be an array in the JSON string but got `%s`", jsonObj.get("devices").toString()));
-        }
+      if (jsonObj.get("devices") != null && !jsonObj.get("devices").isJsonNull()) {
+        JsonArray jsonArraydevices = jsonObj.getAsJsonArray("devices");
+        if (jsonArraydevices != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("devices").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `devices` to be an array in the JSON string but got `%s`", jsonObj.get("devices").toString()));
+          }
 
-        // validate the optional field `devices` (array)
-        for (int i = 0; i < jsonArraydevices.size(); i++) {
-          Device.validateJsonObject(jsonArraydevices.get(i).getAsJsonObject());
-        };
+          // validate the optional field `devices` (array)
+          for (int i = 0; i < jsonArraydevices.size(); i++) {
+            Device.validateJsonObject(jsonArraydevices.get(i).getAsJsonObject());
+          };
+        }
       }
       // validate the optional field `meta`
       if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {

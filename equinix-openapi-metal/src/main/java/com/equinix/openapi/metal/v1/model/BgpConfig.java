@@ -688,32 +688,36 @@ public class BgpConfig {
       if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
         Href.validateJsonObject(jsonObj.getAsJsonObject("project"));
       }
-      JsonArray jsonArrayranges = jsonObj.getAsJsonArray("ranges");
-      if (jsonArrayranges != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("ranges").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `ranges` to be an array in the JSON string but got `%s`", jsonObj.get("ranges").toString()));
-        }
+      if (jsonObj.get("ranges") != null && !jsonObj.get("ranges").isJsonNull()) {
+        JsonArray jsonArrayranges = jsonObj.getAsJsonArray("ranges");
+        if (jsonArrayranges != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("ranges").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `ranges` to be an array in the JSON string but got `%s`", jsonObj.get("ranges").toString()));
+          }
 
-        // validate the optional field `ranges` (array)
-        for (int i = 0; i < jsonArrayranges.size(); i++) {
-          GlobalBgpRange.validateJsonObject(jsonArrayranges.get(i).getAsJsonObject());
-        };
+          // validate the optional field `ranges` (array)
+          for (int i = 0; i < jsonArrayranges.size(); i++) {
+            GlobalBgpRange.validateJsonObject(jsonArrayranges.get(i).getAsJsonObject());
+          };
+        }
       }
       if ((jsonObj.get("route_object") != null && !jsonObj.get("route_object").isJsonNull()) && !jsonObj.get("route_object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `route_object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("route_object").toString()));
       }
-      JsonArray jsonArraysessions = jsonObj.getAsJsonArray("sessions");
-      if (jsonArraysessions != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("sessions").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `sessions` to be an array in the JSON string but got `%s`", jsonObj.get("sessions").toString()));
-        }
+      if (jsonObj.get("sessions") != null && !jsonObj.get("sessions").isJsonNull()) {
+        JsonArray jsonArraysessions = jsonObj.getAsJsonArray("sessions");
+        if (jsonArraysessions != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("sessions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `sessions` to be an array in the JSON string but got `%s`", jsonObj.get("sessions").toString()));
+          }
 
-        // validate the optional field `sessions` (array)
-        for (int i = 0; i < jsonArraysessions.size(); i++) {
-          BgpSession.validateJsonObject(jsonArraysessions.get(i).getAsJsonObject());
-        };
+          // validate the optional field `sessions` (array)
+          for (int i = 0; i < jsonArraysessions.size(); i++) {
+            BgpSession.validateJsonObject(jsonArraysessions.get(i).getAsJsonObject());
+          };
+        }
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

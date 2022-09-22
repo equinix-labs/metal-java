@@ -21,11 +21,9 @@ import com.equinix.workflow.helpers.VlanHelper;
 
 public class TestMetalGatewayOperator {
     private static final Logger logger = LoggerFactory.getLogger(TestMetalGatewayOperator.class);
-
     private final String propFilename = "src/test/resources/metalgateway-test.properties";
     private final String sysTokenKey = "FUNCTIONAL_TEST_TOKEN";
     private final String sysProjUuidKey = "FUNCTIONAL_TEST_PROJECT_UUID";
-
     private HashMap<String, String> props;
     private MetalGatewayOperator metalGatewayOperator;
     private VlanHelper vlanHelper;
@@ -58,7 +56,7 @@ public class TestMetalGatewayOperator {
         Duration wait = Duration.ofSeconds(5);
 
         logger.info("Provisioning metal gateway with the vlan attached to it...");
-        MetalGateway createdMetalGateway = metalGatewayOperator.createMetalGatewayWithPrivateIpBlockAndPoll(projectId, metro, vxlan, privateIpv4SubnetSize, retries, wait);
+        MetalGateway createdMetalGateway = metalGatewayOperator.createMetalGatewayWithPrivateIpBlock(projectId, metro, vxlan, privateIpv4SubnetSize);
 
         UUID metalGatewayId = createdMetalGateway.getId();
         Assert.assertNotNull(createdMetalGateway.getState());
@@ -75,7 +73,7 @@ public class TestMetalGatewayOperator {
         logger.info(String.format("Vxlan ID of associated VLAN: %s", vlanOfMetalGateway.getVxlan()));
 
         logger.info("Deleting vlan and metal gateway ...");
-        metalGatewayOperator.deleteVlanAndMetalGateway(metalGatewayId);
+        metalGatewayOperator.deleteVlanAndMetalGateway(metalGatewayId, retries, wait);
         Assert.assertNull(vlanHelper.getVlanByVxlanInProjectMetro(projectId, metro, vxlan));
         Assert.assertThrows(ApiException.class, () -> metalGatewayOperator.getMetalGateway(metalGatewayId, null, null));
     }

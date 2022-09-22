@@ -192,17 +192,19 @@ public class GlobalBgpRangeList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in GlobalBgpRangeList is not found in the empty JSON string", GlobalBgpRangeList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayglobalBgpRanges = jsonObj.getAsJsonArray("global_bgp_ranges");
-      if (jsonArrayglobalBgpRanges != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("global_bgp_ranges").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `global_bgp_ranges` to be an array in the JSON string but got `%s`", jsonObj.get("global_bgp_ranges").toString()));
-        }
+      if (jsonObj.get("global_bgp_ranges") != null && !jsonObj.get("global_bgp_ranges").isJsonNull()) {
+        JsonArray jsonArrayglobalBgpRanges = jsonObj.getAsJsonArray("global_bgp_ranges");
+        if (jsonArrayglobalBgpRanges != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("global_bgp_ranges").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `global_bgp_ranges` to be an array in the JSON string but got `%s`", jsonObj.get("global_bgp_ranges").toString()));
+          }
 
-        // validate the optional field `global_bgp_ranges` (array)
-        for (int i = 0; i < jsonArrayglobalBgpRanges.size(); i++) {
-          GlobalBgpRange.validateJsonObject(jsonArrayglobalBgpRanges.get(i).getAsJsonObject());
-        };
+          // validate the optional field `global_bgp_ranges` (array)
+          for (int i = 0; i < jsonArrayglobalBgpRanges.size(); i++) {
+            GlobalBgpRange.validateJsonObject(jsonArrayglobalBgpRanges.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

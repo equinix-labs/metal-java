@@ -14,10 +14,10 @@
 package com.equinix.openapi.metal.v1.api;
 
 import com.equinix.openapi.ApiException;
-import com.equinix.openapi.metal.v1.model.CreateVrfRequest;
 import com.equinix.openapi.metal.v1.model.Error;
 import java.util.UUID;
 import com.equinix.openapi.metal.v1.model.Vrf;
+import com.equinix.openapi.metal.v1.model.VrfCreateInput;
 import com.equinix.openapi.metal.v1.model.VrfIPReservationList;
 import com.equinix.openapi.metal.v1.model.VrfList;
 import com.equinix.openapi.metal.v1.model.VrfUpdateInput;
@@ -47,8 +47,8 @@ public class VrfsApiTest {
     @Test
     public void createVrfTest() throws ApiException {
         UUID id = null;
-        CreateVrfRequest createVrfRequest = null;
-        Vrf response = api.createVrf(id, createVrfRequest);
+        VrfCreateInput vrfCreateInput = null;
+        Vrf response = api.createVrf(id, vrfCreateInput);
         // TODO: test validations
     }
 

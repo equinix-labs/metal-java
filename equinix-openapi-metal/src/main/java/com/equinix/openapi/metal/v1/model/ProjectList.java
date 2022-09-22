@@ -227,17 +227,19 @@ public class ProjectList {
       if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
         Meta.validateJsonObject(jsonObj.getAsJsonObject("meta"));
       }
-      JsonArray jsonArrayprojects = jsonObj.getAsJsonArray("projects");
-      if (jsonArrayprojects != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("projects").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `projects` to be an array in the JSON string but got `%s`", jsonObj.get("projects").toString()));
-        }
+      if (jsonObj.get("projects") != null && !jsonObj.get("projects").isJsonNull()) {
+        JsonArray jsonArrayprojects = jsonObj.getAsJsonArray("projects");
+        if (jsonArrayprojects != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("projects").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `projects` to be an array in the JSON string but got `%s`", jsonObj.get("projects").toString()));
+          }
 
-        // validate the optional field `projects` (array)
-        for (int i = 0; i < jsonArrayprojects.size(); i++) {
-          Project.validateJsonObject(jsonArrayprojects.get(i).getAsJsonObject());
-        };
+          // validate the optional field `projects` (array)
+          for (int i = 0; i < jsonArrayprojects.size(); i++) {
+            Project.validateJsonObject(jsonArrayprojects.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

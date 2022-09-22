@@ -540,33 +540,37 @@ public class Plan {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Plan is not found in the empty JSON string", Plan.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayavailableIn = jsonObj.getAsJsonArray("available_in");
-      if (jsonArrayavailableIn != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("available_in").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `available_in` to be an array in the JSON string but got `%s`", jsonObj.get("available_in").toString()));
-        }
+      if (jsonObj.get("available_in") != null && !jsonObj.get("available_in").isJsonNull()) {
+        JsonArray jsonArrayavailableIn = jsonObj.getAsJsonArray("available_in");
+        if (jsonArrayavailableIn != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("available_in").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `available_in` to be an array in the JSON string but got `%s`", jsonObj.get("available_in").toString()));
+          }
 
-        // validate the optional field `available_in` (array)
-        for (int i = 0; i < jsonArrayavailableIn.size(); i++) {
-          Href.validateJsonObject(jsonArrayavailableIn.get(i).getAsJsonObject());
-        };
+          // validate the optional field `available_in` (array)
+          for (int i = 0; i < jsonArrayavailableIn.size(); i++) {
+            Href.validateJsonObject(jsonArrayavailableIn.get(i).getAsJsonObject());
+          };
+        }
       }
       // ensure the json data is an array
       if ((jsonObj.get("deployment_types") != null && !jsonObj.get("deployment_types").isJsonNull()) && !jsonObj.get("deployment_types").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `deployment_types` to be an array in the JSON string but got `%s`", jsonObj.get("deployment_types").toString()));
       }
-      JsonArray jsonArrayavailableInMetros = jsonObj.getAsJsonArray("available_in_metros");
-      if (jsonArrayavailableInMetros != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("available_in_metros").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `available_in_metros` to be an array in the JSON string but got `%s`", jsonObj.get("available_in_metros").toString()));
-        }
+      if (jsonObj.get("available_in_metros") != null && !jsonObj.get("available_in_metros").isJsonNull()) {
+        JsonArray jsonArrayavailableInMetros = jsonObj.getAsJsonArray("available_in_metros");
+        if (jsonArrayavailableInMetros != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("available_in_metros").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `available_in_metros` to be an array in the JSON string but got `%s`", jsonObj.get("available_in_metros").toString()));
+          }
 
-        // validate the optional field `available_in_metros` (array)
-        for (int i = 0; i < jsonArrayavailableInMetros.size(); i++) {
-          PlanAvailableInMetrosInner.validateJsonObject(jsonArrayavailableInMetros.get(i).getAsJsonObject());
-        };
+          // validate the optional field `available_in_metros` (array)
+          for (int i = 0; i < jsonArrayavailableInMetros.size(); i++) {
+            PlanAvailableInMetrosInner.validateJsonObject(jsonArrayavailableInMetros.get(i).getAsJsonObject());
+          };
+        }
       }
       if ((jsonObj.get("class") != null && !jsonObj.get("class").isJsonNull()) && !jsonObj.get("class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("class").toString()));

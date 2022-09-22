@@ -1,6 +1,6 @@
 
 
-# IPReservationRequestInput
+# DefaultIPReservationCreateInput
 
 
 ## Properties

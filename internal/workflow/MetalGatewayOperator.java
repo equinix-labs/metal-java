@@ -12,14 +12,16 @@ import com.equinix.openapi.metal.v1.api.MetalGatewaysApi;
 import com.equinix.openapi.metal.v1.model.CreateMetalGatewayRequest;
 import com.equinix.openapi.metal.v1.model.MetalGateway;
 import com.equinix.openapi.metal.v1.model.MetalGateway.StateEnum;
-import com.equinix.openapi.metal.v1.model.MetalGatewayInput;
+import com.equinix.openapi.metal.v1.model.MetalGatewayCreateInput;
 import com.equinix.openapi.metal.v1.model.VirtualNetwork;
 import com.equinix.workflow.helpers.VlanHelper;
 
 public class MetalGatewayOperator {
     private MetalGatewaysApi metalGatewaysApi;
     private VlanHelper vlanHelper;
-    private final List<StateEnum> targetState= Arrays.asList(StateEnum.ACTIVE, StateEnum.READY);
+    private static final Integer RESPONSE_PAGE = 1;
+    private static final Integer RESPONSE_ITEMS_PER_PAGE = 10;
+    private static final String VIRTUAL_NETWORK = "virtual_network";
 
     public MetalGatewayOperator(ApiClient apiClient) {
         this.metalGatewaysApi = new MetalGatewaysApi(apiClient);
@@ -38,48 +40,61 @@ public class MetalGatewayOperator {
     }
 
     // Creates a Metal Gateway with a private IPv4 block specified for the associated Virtual Network
-    public MetalGateway createMetalGatewayWithPrivateIpBlockAndPoll(UUID projectId, String metro, Integer vxlan, Integer privateIpv4SubnetSize, int retries, Duration wait)
+    public MetalGateway createMetalGatewayWithPrivateIpBlock(UUID projectId, String metro, Integer vxlan, Integer privateIpv4SubnetSize)
             throws ApiException, InterruptedException {
 
         VirtualNetwork vlan = vlanHelper.getVlanByVxlanInProjectMetro(projectId, metro, vxlan);
         if (vlan==null)
             vlan = vlanHelper.createVlan(projectId, metro, vxlan);
 
-        MetalGatewayInput metalGatewayInput = new MetalGatewayInput()
+        MetalGatewayCreateInput metalGatewayCreateInput = new MetalGatewayCreateInput()
                 .privateIpv4SubnetSize(privateIpv4SubnetSize)
                 .virtualNetworkId(vlan.getId());
 
-        CreateMetalGatewayRequest createMetalGatewayRequest = new CreateMetalGatewayRequest(metalGatewayInput);
-        MetalGateway metalGateway  = metalGatewaysApi.createMetalGateway(projectId, createMetalGatewayRequest,1, 10);
-        return metalGatewayCreatedAndPoll(metalGateway, retries, wait);
+        CreateMetalGatewayRequest createMetalGatewayRequest = new CreateMetalGatewayRequest(metalGatewayCreateInput);
+        return metalGatewaysApi.createMetalGateway(projectId, createMetalGatewayRequest, RESPONSE_PAGE, RESPONSE_ITEMS_PER_PAGE);
     }
 
-    // Poll until state of metal gateway becomes "active" or "ready"
-    private MetalGateway metalGatewayCreatedAndPoll(MetalGateway metalGateway, int retries, Duration wait)
-            throws ApiException, InterruptedException {
+    // Poll until metal gateway record is deleted when state is "deleting"
+    private void metalGatewayDeletedAndPoll(MetalGateway metalGateway, int retries, Duration wait)
+            throws InterruptedException, ApiException {
 
-        UUID metalGatewayId;
-        for (int i=0; i<retries && !targetState.contains(metalGateway.getState()); i++) {
+        UUID metalGatewayId = metalGateway.getId();
+        for (int i=0; i<retries; i++) {
+            try {
+                metalGateway = getMetalGateway(metalGatewayId, null, null);
+            }
+            catch (ApiException e) {
+                if (e.getCode()==404)
+                    return;
+                else
+                    throw e;
+            }
             metalGatewayId = metalGateway.getId();
             Thread.sleep(wait.toMillis());
-            metalGateway = getMetalGateway(metalGatewayId, null, null);
         }
-        return metalGateway;
+        throw new ApiException(500, "Polling timed out for metal gateway deletion, State: " + metalGateway.getState());
     }
 
     // Delete metal gateway by id
-    public void deleteMetalGateway(UUID metalGatewayId)
-            throws ApiException {
+    public void deleteMetalGatewayAndPoll(UUID metalGatewayId, int retries, Duration wait)
+            throws ApiException, InterruptedException {
+        MetalGateway metalGateway = getMetalGateway(metalGatewayId, null, null);
         metalGatewaysApi.deleteMetalGateway(metalGatewayId);
+        metalGatewayDeletedAndPoll(metalGateway, retries, wait);
     }
 
     // Delete the vlan and associated metal gateway
-    public void deleteVlanAndMetalGateway(UUID metalGatewayId) throws ApiException {
+    public void deleteVlanAndMetalGateway(UUID metalGatewayId, int retries, Duration wait)
+            throws ApiException, InterruptedException {
 
-        VirtualNetwork vlan = getVlanOfMetalGateway(metalGatewayId);
-        if (vlan!=null)
+        MetalGateway metalGateway = getMetalGateway(metalGatewayId, Collections.singletonList(VIRTUAL_NETWORK), null);
+        VirtualNetwork vlan = metalGateway.getVirtualNetwork();
+        if (vlan!=null) {
             vlanHelper.deleteVlan(vlan.getId());    // deleting vlan also deletes the associated metal gateways
+            metalGatewayDeletedAndPoll(metalGateway, retries, wait);
+        }
         else
-            deleteMetalGateway(metalGatewayId);
+            deleteMetalGatewayAndPoll(metalGatewayId, retries, wait);
     }
 }

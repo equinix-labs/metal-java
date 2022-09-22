@@ -658,56 +658,64 @@ public class Project {
       if (jsonObj.get("bgp_config") != null && !jsonObj.get("bgp_config").isJsonNull()) {
         Href.validateJsonObject(jsonObj.getAsJsonObject("bgp_config"));
       }
-      JsonArray jsonArraydevices = jsonObj.getAsJsonArray("devices");
-      if (jsonArraydevices != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("devices").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `devices` to be an array in the JSON string but got `%s`", jsonObj.get("devices").toString()));
-        }
+      if (jsonObj.get("devices") != null && !jsonObj.get("devices").isJsonNull()) {
+        JsonArray jsonArraydevices = jsonObj.getAsJsonArray("devices");
+        if (jsonArraydevices != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("devices").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `devices` to be an array in the JSON string but got `%s`", jsonObj.get("devices").toString()));
+          }
 
-        // validate the optional field `devices` (array)
-        for (int i = 0; i < jsonArraydevices.size(); i++) {
-          Href.validateJsonObject(jsonArraydevices.get(i).getAsJsonObject());
-        };
+          // validate the optional field `devices` (array)
+          for (int i = 0; i < jsonArraydevices.size(); i++) {
+            Href.validateJsonObject(jsonArraydevices.get(i).getAsJsonObject());
+          };
+        }
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      JsonArray jsonArrayinvitations = jsonObj.getAsJsonArray("invitations");
-      if (jsonArrayinvitations != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("invitations").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `invitations` to be an array in the JSON string but got `%s`", jsonObj.get("invitations").toString()));
-        }
+      if (jsonObj.get("invitations") != null && !jsonObj.get("invitations").isJsonNull()) {
+        JsonArray jsonArrayinvitations = jsonObj.getAsJsonArray("invitations");
+        if (jsonArrayinvitations != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("invitations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `invitations` to be an array in the JSON string but got `%s`", jsonObj.get("invitations").toString()));
+          }
 
-        // validate the optional field `invitations` (array)
-        for (int i = 0; i < jsonArrayinvitations.size(); i++) {
-          Href.validateJsonObject(jsonArrayinvitations.get(i).getAsJsonObject());
-        };
+          // validate the optional field `invitations` (array)
+          for (int i = 0; i < jsonArrayinvitations.size(); i++) {
+            Href.validateJsonObject(jsonArrayinvitations.get(i).getAsJsonObject());
+          };
+        }
       }
-      JsonArray jsonArraymembers = jsonObj.getAsJsonArray("members");
-      if (jsonArraymembers != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("members").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `members` to be an array in the JSON string but got `%s`", jsonObj.get("members").toString()));
-        }
+      if (jsonObj.get("members") != null && !jsonObj.get("members").isJsonNull()) {
+        JsonArray jsonArraymembers = jsonObj.getAsJsonArray("members");
+        if (jsonArraymembers != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("members").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `members` to be an array in the JSON string but got `%s`", jsonObj.get("members").toString()));
+          }
 
-        // validate the optional field `members` (array)
-        for (int i = 0; i < jsonArraymembers.size(); i++) {
-          Href.validateJsonObject(jsonArraymembers.get(i).getAsJsonObject());
-        };
+          // validate the optional field `members` (array)
+          for (int i = 0; i < jsonArraymembers.size(); i++) {
+            Href.validateJsonObject(jsonArraymembers.get(i).getAsJsonObject());
+          };
+        }
       }
-      JsonArray jsonArraymemberships = jsonObj.getAsJsonArray("memberships");
-      if (jsonArraymemberships != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("memberships").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `memberships` to be an array in the JSON string but got `%s`", jsonObj.get("memberships").toString()));
-        }
+      if (jsonObj.get("memberships") != null && !jsonObj.get("memberships").isJsonNull()) {
+        JsonArray jsonArraymemberships = jsonObj.getAsJsonArray("memberships");
+        if (jsonArraymemberships != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("memberships").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `memberships` to be an array in the JSON string but got `%s`", jsonObj.get("memberships").toString()));
+          }
 
-        // validate the optional field `memberships` (array)
-        for (int i = 0; i < jsonArraymemberships.size(); i++) {
-          Href.validateJsonObject(jsonArraymemberships.get(i).getAsJsonObject());
-        };
+          // validate the optional field `memberships` (array)
+          for (int i = 0; i < jsonArraymemberships.size(); i++) {
+            Href.validateJsonObject(jsonArraymemberships.get(i).getAsJsonObject());
+          };
+        }
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
@@ -716,29 +724,33 @@ public class Project {
       if (jsonObj.get("payment_method") != null && !jsonObj.get("payment_method").isJsonNull()) {
         Href.validateJsonObject(jsonObj.getAsJsonObject("payment_method"));
       }
-      JsonArray jsonArraysshKeys = jsonObj.getAsJsonArray("ssh_keys");
-      if (jsonArraysshKeys != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("ssh_keys").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("ssh_keys").toString()));
-        }
+      if (jsonObj.get("ssh_keys") != null && !jsonObj.get("ssh_keys").isJsonNull()) {
+        JsonArray jsonArraysshKeys = jsonObj.getAsJsonArray("ssh_keys");
+        if (jsonArraysshKeys != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("ssh_keys").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("ssh_keys").toString()));
+          }
 
-        // validate the optional field `ssh_keys` (array)
-        for (int i = 0; i < jsonArraysshKeys.size(); i++) {
-          Href.validateJsonObject(jsonArraysshKeys.get(i).getAsJsonObject());
-        };
+          // validate the optional field `ssh_keys` (array)
+          for (int i = 0; i < jsonArraysshKeys.size(); i++) {
+            Href.validateJsonObject(jsonArraysshKeys.get(i).getAsJsonObject());
+          };
+        }
       }
-      JsonArray jsonArrayvolumes = jsonObj.getAsJsonArray("volumes");
-      if (jsonArrayvolumes != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("volumes").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `volumes` to be an array in the JSON string but got `%s`", jsonObj.get("volumes").toString()));
-        }
+      if (jsonObj.get("volumes") != null && !jsonObj.get("volumes").isJsonNull()) {
+        JsonArray jsonArrayvolumes = jsonObj.getAsJsonArray("volumes");
+        if (jsonArrayvolumes != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("volumes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `volumes` to be an array in the JSON string but got `%s`", jsonObj.get("volumes").toString()));
+          }
 
-        // validate the optional field `volumes` (array)
-        for (int i = 0; i < jsonArrayvolumes.size(); i++) {
-          Href.validateJsonObject(jsonArrayvolumes.get(i).getAsJsonObject());
-        };
+          // validate the optional field `volumes` (array)
+          for (int i = 0; i < jsonArrayvolumes.size(); i++) {
+            Href.validateJsonObject(jsonArrayvolumes.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

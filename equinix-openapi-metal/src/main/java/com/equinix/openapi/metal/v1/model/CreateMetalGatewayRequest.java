@@ -15,7 +15,7 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.MetalGatewayInput;
+import com.equinix.openapi.metal.v1.model.MetalGatewayCreateInput;
 import com.equinix.openapi.metal.v1.model.VrfMetalGatewayCreateInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -72,7 +72,7 @@ public class CreateMetalGatewayRequest extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'CreateMetalGatewayRequest' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<MetalGatewayInput> adapterMetalGatewayInput = gson.getDelegateAdapter(this, TypeToken.get(MetalGatewayInput.class));
+            final TypeAdapter<MetalGatewayCreateInput> adapterMetalGatewayCreateInput = gson.getDelegateAdapter(this, TypeToken.get(MetalGatewayCreateInput.class));
             final TypeAdapter<VrfMetalGatewayCreateInput> adapterVrfMetalGatewayCreateInput = gson.getDelegateAdapter(this, TypeToken.get(VrfMetalGatewayCreateInput.class));
 
             return (TypeAdapter<T>) new TypeAdapter<CreateMetalGatewayRequest>() {
@@ -83,9 +83,9 @@ public class CreateMetalGatewayRequest extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `MetalGatewayInput`
-                    if (value.getActualInstance() instanceof MetalGatewayInput) {
-                        JsonObject obj = adapterMetalGatewayInput.toJsonTree((MetalGatewayInput)value.getActualInstance()).getAsJsonObject();
+                    // check if the actual instance is of the type `MetalGatewayCreateInput`
+                    if (value.getActualInstance() instanceof MetalGatewayCreateInput) {
+                        JsonObject obj = adapterMetalGatewayCreateInput.toJsonTree((MetalGatewayCreateInput)value.getActualInstance()).getAsJsonObject();
                         elementAdapter.write(out, obj);
                         return;
                     }
@@ -97,7 +97,7 @@ public class CreateMetalGatewayRequest extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: MetalGatewayInput, VrfMetalGatewayCreateInput");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: MetalGatewayCreateInput, VrfMetalGatewayCreateInput");
                 }
 
                 @Override
@@ -109,17 +109,17 @@ public class CreateMetalGatewayRequest extends AbstractOpenApiSchema {
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 
-                    // deserialize MetalGatewayInput
+                    // deserialize MetalGatewayCreateInput
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        MetalGatewayInput.validateJsonObject(jsonObject);
-                        actualAdapter = adapterMetalGatewayInput;
+                        MetalGatewayCreateInput.validateJsonObject(jsonObject);
+                        actualAdapter = adapterMetalGatewayCreateInput;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'MetalGatewayInput'");
+                        log.log(Level.FINER, "Input data matches schema 'MetalGatewayCreateInput'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MetalGatewayInput failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'MetalGatewayInput'", e);
+                        errorMessages.add(String.format("Deserialization for MetalGatewayCreateInput failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'MetalGatewayCreateInput'", e);
                     }
 
                     // deserialize VrfMetalGatewayCreateInput
@@ -154,7 +154,7 @@ public class CreateMetalGatewayRequest extends AbstractOpenApiSchema {
         super("oneOf", Boolean.FALSE);
     }
 
-    public CreateMetalGatewayRequest(MetalGatewayInput o) {
+    public CreateMetalGatewayRequest(MetalGatewayCreateInput o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -165,7 +165,7 @@ public class CreateMetalGatewayRequest extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("MetalGatewayInput", new GenericType<MetalGatewayInput>() {
+        schemas.put("MetalGatewayCreateInput", new GenericType<MetalGatewayCreateInput>() {
         });
         schemas.put("VrfMetalGatewayCreateInput", new GenericType<VrfMetalGatewayCreateInput>() {
         });
@@ -179,14 +179,14 @@ public class CreateMetalGatewayRequest extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * MetalGatewayInput, VrfMetalGatewayCreateInput
+     * MetalGatewayCreateInput, VrfMetalGatewayCreateInput
      *
      * It could be an instance of the 'oneOf' schemas.
      * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (instance instanceof MetalGatewayInput) {
+        if (instance instanceof MetalGatewayCreateInput) {
             super.setActualInstance(instance);
             return;
         }
@@ -196,14 +196,14 @@ public class CreateMetalGatewayRequest extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be MetalGatewayInput, VrfMetalGatewayCreateInput");
+        throw new RuntimeException("Invalid instance type. Must be MetalGatewayCreateInput, VrfMetalGatewayCreateInput");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * MetalGatewayInput, VrfMetalGatewayCreateInput
+     * MetalGatewayCreateInput, VrfMetalGatewayCreateInput
      *
-     * @return The actual instance (MetalGatewayInput, VrfMetalGatewayCreateInput)
+     * @return The actual instance (MetalGatewayCreateInput, VrfMetalGatewayCreateInput)
      */
     @Override
     public Object getActualInstance() {
@@ -211,14 +211,14 @@ public class CreateMetalGatewayRequest extends AbstractOpenApiSchema {
     }
 
     /**
-     * Get the actual instance of `MetalGatewayInput`. If the actual instance is not `MetalGatewayInput`,
+     * Get the actual instance of `MetalGatewayCreateInput`. If the actual instance is not `MetalGatewayCreateInput`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `MetalGatewayInput`
-     * @throws ClassCastException if the instance is not `MetalGatewayInput`
+     * @return The actual instance of `MetalGatewayCreateInput`
+     * @throws ClassCastException if the instance is not `MetalGatewayCreateInput`
      */
-    public MetalGatewayInput getMetalGatewayInput() throws ClassCastException {
-        return (MetalGatewayInput)super.getActualInstance();
+    public MetalGatewayCreateInput getMetalGatewayCreateInput() throws ClassCastException {
+        return (MetalGatewayCreateInput)super.getActualInstance();
     }
 
     /**
@@ -243,12 +243,12 @@ public class CreateMetalGatewayRequest extends AbstractOpenApiSchema {
     // validate oneOf schemas one by one
     int validCount = 0;
     ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with MetalGatewayInput
+    // validate the json string with MetalGatewayCreateInput
     try {
-      MetalGatewayInput.validateJsonObject(jsonObj);
+      MetalGatewayCreateInput.validateJsonObject(jsonObj);
       validCount++;
     } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for MetalGatewayInput failed with `%s`.", e.getMessage()));
+      errorMessages.add(String.format("Deserialization for MetalGatewayCreateInput failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
     // validate the json string with VrfMetalGatewayCreateInput
@@ -260,7 +260,7 @@ public class CreateMetalGatewayRequest extends AbstractOpenApiSchema {
       // continue to the next one
     }
     if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for CreateMetalGatewayRequest with oneOf schemas: MetalGatewayInput, VrfMetalGatewayCreateInput. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
+      throw new IOException(String.format("The JSON string is invalid for CreateMetalGatewayRequest with oneOf schemas: MetalGatewayCreateInput, VrfMetalGatewayCreateInput. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
     }
   }
 

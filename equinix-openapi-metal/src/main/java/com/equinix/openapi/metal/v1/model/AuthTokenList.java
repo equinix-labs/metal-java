@@ -192,17 +192,19 @@ public class AuthTokenList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AuthTokenList is not found in the empty JSON string", AuthTokenList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayapiKeys = jsonObj.getAsJsonArray("api_keys");
-      if (jsonArrayapiKeys != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("api_keys").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `api_keys` to be an array in the JSON string but got `%s`", jsonObj.get("api_keys").toString()));
-        }
+      if (jsonObj.get("api_keys") != null && !jsonObj.get("api_keys").isJsonNull()) {
+        JsonArray jsonArrayapiKeys = jsonObj.getAsJsonArray("api_keys");
+        if (jsonArrayapiKeys != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("api_keys").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `api_keys` to be an array in the JSON string but got `%s`", jsonObj.get("api_keys").toString()));
+          }
 
-        // validate the optional field `api_keys` (array)
-        for (int i = 0; i < jsonArrayapiKeys.size(); i++) {
-          AuthToken.validateJsonObject(jsonArrayapiKeys.get(i).getAsJsonObject());
-        };
+          // validate the optional field `api_keys` (array)
+          for (int i = 0; i < jsonArrayapiKeys.size(); i++) {
+            AuthToken.validateJsonObject(jsonArrayapiKeys.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

@@ -223,17 +223,19 @@ public class HardwareReservationList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in HardwareReservationList is not found in the empty JSON string", HardwareReservationList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayhardwareReservations = jsonObj.getAsJsonArray("hardware_reservations");
-      if (jsonArrayhardwareReservations != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("hardware_reservations").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `hardware_reservations` to be an array in the JSON string but got `%s`", jsonObj.get("hardware_reservations").toString()));
-        }
+      if (jsonObj.get("hardware_reservations") != null && !jsonObj.get("hardware_reservations").isJsonNull()) {
+        JsonArray jsonArrayhardwareReservations = jsonObj.getAsJsonArray("hardware_reservations");
+        if (jsonArrayhardwareReservations != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("hardware_reservations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `hardware_reservations` to be an array in the JSON string but got `%s`", jsonObj.get("hardware_reservations").toString()));
+          }
 
-        // validate the optional field `hardware_reservations` (array)
-        for (int i = 0; i < jsonArrayhardwareReservations.size(); i++) {
-          HardwareReservation.validateJsonObject(jsonArrayhardwareReservations.get(i).getAsJsonObject());
-        };
+          // validate the optional field `hardware_reservations` (array)
+          for (int i = 0; i < jsonArrayhardwareReservations.size(); i++) {
+            HardwareReservation.validateJsonObject(jsonArrayhardwareReservations.get(i).getAsJsonObject());
+          };
+        }
       }
       // validate the optional field `meta`
       if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {

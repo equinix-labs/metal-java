@@ -46,10 +46,10 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * MetalGatewayInput
+ * MetalGatewayCreateInput
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class MetalGatewayInput {
+public class MetalGatewayCreateInput {
   public static final String SERIALIZED_NAME_IP_RESERVATION_ID = "ip_reservation_id";
   @SerializedName(SERIALIZED_NAME_IP_RESERVATION_ID)
   private UUID ipReservationId;
@@ -62,10 +62,10 @@ public class MetalGatewayInput {
   @SerializedName(SERIALIZED_NAME_VIRTUAL_NETWORK_ID)
   private UUID virtualNetworkId;
 
-  public MetalGatewayInput() {
+  public MetalGatewayCreateInput() {
   }
 
-  public MetalGatewayInput ipReservationId(UUID ipReservationId) {
+  public MetalGatewayCreateInput ipReservationId(UUID ipReservationId) {
     
     this.ipReservationId = ipReservationId;
     return this;
@@ -88,7 +88,7 @@ public class MetalGatewayInput {
   }
 
 
-  public MetalGatewayInput privateIpv4SubnetSize(Integer privateIpv4SubnetSize) {
+  public MetalGatewayCreateInput privateIpv4SubnetSize(Integer privateIpv4SubnetSize) {
     
     this.privateIpv4SubnetSize = privateIpv4SubnetSize;
     return this;
@@ -111,7 +111,7 @@ public class MetalGatewayInput {
   }
 
 
-  public MetalGatewayInput virtualNetworkId(UUID virtualNetworkId) {
+  public MetalGatewayCreateInput virtualNetworkId(UUID virtualNetworkId) {
     
     this.virtualNetworkId = virtualNetworkId;
     return this;
@@ -144,7 +144,7 @@ public class MetalGatewayInput {
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
    */
-  public MetalGatewayInput putAdditionalProperty(String key, Object value) {
+  public MetalGatewayCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -178,11 +178,11 @@ public class MetalGatewayInput {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MetalGatewayInput metalGatewayInput = (MetalGatewayInput) o;
-    return Objects.equals(this.ipReservationId, metalGatewayInput.ipReservationId) &&
-        Objects.equals(this.privateIpv4SubnetSize, metalGatewayInput.privateIpv4SubnetSize) &&
-        Objects.equals(this.virtualNetworkId, metalGatewayInput.virtualNetworkId)&&
-        Objects.equals(this.additionalProperties, metalGatewayInput.additionalProperties);
+    MetalGatewayCreateInput metalGatewayCreateInput = (MetalGatewayCreateInput) o;
+    return Objects.equals(this.ipReservationId, metalGatewayCreateInput.ipReservationId) &&
+        Objects.equals(this.privateIpv4SubnetSize, metalGatewayCreateInput.privateIpv4SubnetSize) &&
+        Objects.equals(this.virtualNetworkId, metalGatewayCreateInput.virtualNetworkId)&&
+        Objects.equals(this.additionalProperties, metalGatewayCreateInput.additionalProperties);
   }
 
   @Override
@@ -193,7 +193,7 @@ public class MetalGatewayInput {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MetalGatewayInput {\n");
+    sb.append("class MetalGatewayCreateInput {\n");
     sb.append("    ipReservationId: ").append(toIndentedString(ipReservationId)).append("\n");
     sb.append("    privateIpv4SubnetSize: ").append(toIndentedString(privateIpv4SubnetSize)).append("\n");
     sb.append("    virtualNetworkId: ").append(toIndentedString(virtualNetworkId)).append("\n");
@@ -233,19 +233,19 @@ public class MetalGatewayInput {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to MetalGatewayInput
+  * @throws IOException if the JSON Object is invalid with respect to MetalGatewayCreateInput
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (MetalGatewayInput.openapiRequiredFields.isEmpty()) {
+        if (MetalGatewayCreateInput.openapiRequiredFields.isEmpty()) {
           return;
         } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MetalGatewayInput is not found in the empty JSON string", MetalGatewayInput.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format("The required field(s) %s in MetalGatewayCreateInput is not found in the empty JSON string", MetalGatewayCreateInput.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MetalGatewayInput.openapiRequiredFields) {
+      for (String requiredField : MetalGatewayCreateInput.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
@@ -262,16 +262,16 @@ public class MetalGatewayInput {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!MetalGatewayInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'MetalGatewayInput' and its subtypes
+       if (!MetalGatewayCreateInput.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'MetalGatewayCreateInput' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<MetalGatewayInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(MetalGatewayInput.class));
+       final TypeAdapter<MetalGatewayCreateInput> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(MetalGatewayCreateInput.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<MetalGatewayInput>() {
+       return (TypeAdapter<T>) new TypeAdapter<MetalGatewayCreateInput>() {
            @Override
-           public void write(JsonWriter out, MetalGatewayInput value) throws IOException {
+           public void write(JsonWriter out, MetalGatewayCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additonal properties
@@ -294,11 +294,11 @@ public class MetalGatewayInput {
            }
 
            @Override
-           public MetalGatewayInput read(JsonReader in) throws IOException {
+           public MetalGatewayCreateInput read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             MetalGatewayInput instance = thisAdapter.fromJsonTree(jsonObj);
+             MetalGatewayCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -323,18 +323,18 @@ public class MetalGatewayInput {
   }
 
  /**
-  * Create an instance of MetalGatewayInput given an JSON string
+  * Create an instance of MetalGatewayCreateInput given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of MetalGatewayInput
-  * @throws IOException if the JSON string is invalid with respect to MetalGatewayInput
+  * @return An instance of MetalGatewayCreateInput
+  * @throws IOException if the JSON string is invalid with respect to MetalGatewayCreateInput
   */
-  public static MetalGatewayInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, MetalGatewayInput.class);
+  public static MetalGatewayCreateInput fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, MetalGatewayCreateInput.class);
   }
 
  /**
-  * Convert an instance of MetalGatewayInput to an JSON string
+  * Convert an instance of MetalGatewayCreateInput to an JSON string
   *
   * @return JSON string
   */

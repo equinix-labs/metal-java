@@ -192,17 +192,19 @@ public class VrfList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in VrfList is not found in the empty JSON string", VrfList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayvrfs = jsonObj.getAsJsonArray("vrfs");
-      if (jsonArrayvrfs != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("vrfs").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `vrfs` to be an array in the JSON string but got `%s`", jsonObj.get("vrfs").toString()));
-        }
+      if (jsonObj.get("vrfs") != null && !jsonObj.get("vrfs").isJsonNull()) {
+        JsonArray jsonArrayvrfs = jsonObj.getAsJsonArray("vrfs");
+        if (jsonArrayvrfs != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("vrfs").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `vrfs` to be an array in the JSON string but got `%s`", jsonObj.get("vrfs").toString()));
+          }
 
-        // validate the optional field `vrfs` (array)
-        for (int i = 0; i < jsonArrayvrfs.size(); i++) {
-          Vrf.validateJsonObject(jsonArrayvrfs.get(i).getAsJsonObject());
-        };
+          // validate the optional field `vrfs` (array)
+          for (int i = 0; i < jsonArrayvrfs.size(); i++) {
+            Vrf.validateJsonObject(jsonArrayvrfs.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

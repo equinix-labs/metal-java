@@ -1056,17 +1056,19 @@ public class DeviceCreateInput {
       if ((jsonObj.get("hostname") != null && !jsonObj.get("hostname").isJsonNull()) && !jsonObj.get("hostname").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hostname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hostname").toString()));
       }
-      JsonArray jsonArrayipAddresses = jsonObj.getAsJsonArray("ip_addresses");
-      if (jsonArrayipAddresses != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("ip_addresses").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `ip_addresses` to be an array in the JSON string but got `%s`", jsonObj.get("ip_addresses").toString()));
-        }
+      if (jsonObj.get("ip_addresses") != null && !jsonObj.get("ip_addresses").isJsonNull()) {
+        JsonArray jsonArrayipAddresses = jsonObj.getAsJsonArray("ip_addresses");
+        if (jsonArrayipAddresses != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("ip_addresses").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `ip_addresses` to be an array in the JSON string but got `%s`", jsonObj.get("ip_addresses").toString()));
+          }
 
-        // validate the optional field `ip_addresses` (array)
-        for (int i = 0; i < jsonArrayipAddresses.size(); i++) {
-          DeviceCreateInputIpAddressesInner.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
-        };
+          // validate the optional field `ip_addresses` (array)
+          for (int i = 0; i < jsonArrayipAddresses.size(); i++) {
+            DeviceCreateInputIpAddressesInner.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
+          };
+        }
       }
       if ((jsonObj.get("ipxe_script_url") != null && !jsonObj.get("ipxe_script_url").isJsonNull()) && !jsonObj.get("ipxe_script_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ipxe_script_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ipxe_script_url").toString()));
@@ -1084,17 +1086,19 @@ public class DeviceCreateInput {
       if ((jsonObj.get("project_ssh_keys") != null && !jsonObj.get("project_ssh_keys").isJsonNull()) && !jsonObj.get("project_ssh_keys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `project_ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("project_ssh_keys").toString()));
       }
-      JsonArray jsonArraysshKeys = jsonObj.getAsJsonArray("ssh_keys");
-      if (jsonArraysshKeys != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("ssh_keys").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("ssh_keys").toString()));
-        }
+      if (jsonObj.get("ssh_keys") != null && !jsonObj.get("ssh_keys").isJsonNull()) {
+        JsonArray jsonArraysshKeys = jsonObj.getAsJsonArray("ssh_keys");
+        if (jsonArraysshKeys != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("ssh_keys").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("ssh_keys").toString()));
+          }
 
-        // validate the optional field `ssh_keys` (array)
-        for (int i = 0; i < jsonArraysshKeys.size(); i++) {
-          SSHKeyInput.validateJsonObject(jsonArraysshKeys.get(i).getAsJsonObject());
-        };
+          // validate the optional field `ssh_keys` (array)
+          for (int i = 0; i < jsonArraysshKeys.size(); i++) {
+            SSHKeyInput.validateJsonObject(jsonArraysshKeys.get(i).getAsJsonObject());
+          };
+        }
       }
       // ensure the json data is an array
       if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {

@@ -23,7 +23,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -61,10 +60,6 @@ public class VirtualNetworkCreateInput {
   public static final String SERIALIZED_NAME_METRO = "metro";
   @SerializedName(SERIALIZED_NAME_METRO)
   private String metro;
-
-  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
-  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
-  private UUID projectId;
 
   public static final String SERIALIZED_NAME_VXLAN = "vxlan";
   @SerializedName(SERIALIZED_NAME_VXLAN)
@@ -142,29 +137,6 @@ public class VirtualNetworkCreateInput {
   }
 
 
-  public VirtualNetworkCreateInput projectId(UUID projectId) {
-    
-    this.projectId = projectId;
-    return this;
-  }
-
-   /**
-   * Get projectId
-   * @return projectId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public UUID getProjectId() {
-    return projectId;
-  }
-
-
-  public void setProjectId(UUID projectId) {
-    this.projectId = projectId;
-  }
-
-
   public VirtualNetworkCreateInput vxlan(Integer vxlan) {
     
     this.vxlan = vxlan;
@@ -236,14 +208,13 @@ public class VirtualNetworkCreateInput {
     return Objects.equals(this.description, virtualNetworkCreateInput.description) &&
         Objects.equals(this.facility, virtualNetworkCreateInput.facility) &&
         Objects.equals(this.metro, virtualNetworkCreateInput.metro) &&
-        Objects.equals(this.projectId, virtualNetworkCreateInput.projectId) &&
         Objects.equals(this.vxlan, virtualNetworkCreateInput.vxlan)&&
         Objects.equals(this.additionalProperties, virtualNetworkCreateInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, facility, metro, projectId, vxlan, additionalProperties);
+    return Objects.hash(description, facility, metro, vxlan, additionalProperties);
   }
 
   @Override
@@ -253,7 +224,6 @@ public class VirtualNetworkCreateInput {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    facility: ").append(toIndentedString(facility)).append("\n");
     sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
-    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("    vxlan: ").append(toIndentedString(vxlan)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -281,12 +251,10 @@ public class VirtualNetworkCreateInput {
     openapiFields.add("description");
     openapiFields.add("facility");
     openapiFields.add("metro");
-    openapiFields.add("project_id");
     openapiFields.add("vxlan");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("project_id");
   }
 
  /**
@@ -303,13 +271,6 @@ public class VirtualNetworkCreateInput {
           throw new IllegalArgumentException(String.format("The required field(s) %s in VirtualNetworkCreateInput is not found in the empty JSON string", VirtualNetworkCreateInput.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VirtualNetworkCreateInput.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
@@ -318,9 +279,6 @@ public class VirtualNetworkCreateInput {
       }
       if ((jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) && !jsonObj.get("metro").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `metro` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metro").toString()));
-      }
-      if ((jsonObj.get("project_id") != null && !jsonObj.get("project_id").isJsonNull()) && !jsonObj.get("project_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `project_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project_id").toString()));
       }
   }
 

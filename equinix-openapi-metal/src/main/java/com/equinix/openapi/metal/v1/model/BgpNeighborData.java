@@ -490,29 +490,33 @@ public class BgpNeighborData {
       if ((jsonObj.get("peer_ips") != null && !jsonObj.get("peer_ips").isJsonNull()) && !jsonObj.get("peer_ips").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `peer_ips` to be an array in the JSON string but got `%s`", jsonObj.get("peer_ips").toString()));
       }
-      JsonArray jsonArrayroutesIn = jsonObj.getAsJsonArray("routes_in");
-      if (jsonArrayroutesIn != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("routes_in").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `routes_in` to be an array in the JSON string but got `%s`", jsonObj.get("routes_in").toString()));
-        }
+      if (jsonObj.get("routes_in") != null && !jsonObj.get("routes_in").isJsonNull()) {
+        JsonArray jsonArrayroutesIn = jsonObj.getAsJsonArray("routes_in");
+        if (jsonArrayroutesIn != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("routes_in").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `routes_in` to be an array in the JSON string but got `%s`", jsonObj.get("routes_in").toString()));
+          }
 
-        // validate the optional field `routes_in` (array)
-        for (int i = 0; i < jsonArrayroutesIn.size(); i++) {
-          BgpNeighborDataRoutesInInner.validateJsonObject(jsonArrayroutesIn.get(i).getAsJsonObject());
-        };
+          // validate the optional field `routes_in` (array)
+          for (int i = 0; i < jsonArrayroutesIn.size(); i++) {
+            BgpNeighborDataRoutesInInner.validateJsonObject(jsonArrayroutesIn.get(i).getAsJsonObject());
+          };
+        }
       }
-      JsonArray jsonArrayroutesOut = jsonObj.getAsJsonArray("routes_out");
-      if (jsonArrayroutesOut != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("routes_out").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `routes_out` to be an array in the JSON string but got `%s`", jsonObj.get("routes_out").toString()));
-        }
+      if (jsonObj.get("routes_out") != null && !jsonObj.get("routes_out").isJsonNull()) {
+        JsonArray jsonArrayroutesOut = jsonObj.getAsJsonArray("routes_out");
+        if (jsonArrayroutesOut != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("routes_out").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `routes_out` to be an array in the JSON string but got `%s`", jsonObj.get("routes_out").toString()));
+          }
 
-        // validate the optional field `routes_out` (array)
-        for (int i = 0; i < jsonArrayroutesOut.size(); i++) {
-          BgpNeighborDataRoutesOutInner.validateJsonObject(jsonArrayroutesOut.get(i).getAsJsonObject());
-        };
+          // validate the optional field `routes_out` (array)
+          for (int i = 0; i < jsonArrayroutesOut.size(); i++) {
+            BgpNeighborDataRoutesOutInner.validateJsonObject(jsonArrayroutesOut.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 
