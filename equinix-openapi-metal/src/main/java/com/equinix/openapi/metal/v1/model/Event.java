@@ -416,17 +416,19 @@ public class Event {
       if ((jsonObj.get("interpolated") != null && !jsonObj.get("interpolated").isJsonNull()) && !jsonObj.get("interpolated").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `interpolated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("interpolated").toString()));
       }
-      JsonArray jsonArrayrelationships = jsonObj.getAsJsonArray("relationships");
-      if (jsonArrayrelationships != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("relationships").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `relationships` to be an array in the JSON string but got `%s`", jsonObj.get("relationships").toString()));
-        }
+      if (jsonObj.get("relationships") != null && !jsonObj.get("relationships").isJsonNull()) {
+        JsonArray jsonArrayrelationships = jsonObj.getAsJsonArray("relationships");
+        if (jsonArrayrelationships != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("relationships").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `relationships` to be an array in the JSON string but got `%s`", jsonObj.get("relationships").toString()));
+          }
 
-        // validate the optional field `relationships` (array)
-        for (int i = 0; i < jsonArrayrelationships.size(); i++) {
-          Href.validateJsonObject(jsonArrayrelationships.get(i).getAsJsonObject());
-        };
+          // validate the optional field `relationships` (array)
+          for (int i = 0; i < jsonArrayrelationships.size(); i++) {
+            Href.validateJsonObject(jsonArrayrelationships.get(i).getAsJsonObject());
+          };
+        }
       }
       if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));

@@ -192,17 +192,19 @@ public class TransferRequestList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in TransferRequestList is not found in the empty JSON string", TransferRequestList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraytransfers = jsonObj.getAsJsonArray("transfers");
-      if (jsonArraytransfers != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("transfers").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `transfers` to be an array in the JSON string but got `%s`", jsonObj.get("transfers").toString()));
-        }
+      if (jsonObj.get("transfers") != null && !jsonObj.get("transfers").isJsonNull()) {
+        JsonArray jsonArraytransfers = jsonObj.getAsJsonArray("transfers");
+        if (jsonArraytransfers != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("transfers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `transfers` to be an array in the JSON string but got `%s`", jsonObj.get("transfers").toString()));
+          }
 
-        // validate the optional field `transfers` (array)
-        for (int i = 0; i < jsonArraytransfers.size(); i++) {
-          TransferRequest.validateJsonObject(jsonArraytransfers.get(i).getAsJsonObject());
-        };
+          // validate the optional field `transfers` (array)
+          for (int i = 0; i < jsonArraytransfers.size(); i++) {
+            TransferRequest.validateJsonObject(jsonArraytransfers.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

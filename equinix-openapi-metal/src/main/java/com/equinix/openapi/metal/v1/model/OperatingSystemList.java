@@ -192,17 +192,19 @@ public class OperatingSystemList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in OperatingSystemList is not found in the empty JSON string", OperatingSystemList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayoperatingSystems = jsonObj.getAsJsonArray("operating_systems");
-      if (jsonArrayoperatingSystems != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("operating_systems").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `operating_systems` to be an array in the JSON string but got `%s`", jsonObj.get("operating_systems").toString()));
-        }
+      if (jsonObj.get("operating_systems") != null && !jsonObj.get("operating_systems").isJsonNull()) {
+        JsonArray jsonArrayoperatingSystems = jsonObj.getAsJsonArray("operating_systems");
+        if (jsonArrayoperatingSystems != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("operating_systems").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `operating_systems` to be an array in the JSON string but got `%s`", jsonObj.get("operating_systems").toString()));
+          }
 
-        // validate the optional field `operating_systems` (array)
-        for (int i = 0; i < jsonArrayoperatingSystems.size(); i++) {
-          OperatingSystem.validateJsonObject(jsonArrayoperatingSystems.get(i).getAsJsonObject());
-        };
+          // validate the optional field `operating_systems` (array)
+          for (int i = 0; i < jsonArrayoperatingSystems.size(); i++) {
+            OperatingSystem.validateJsonObject(jsonArrayoperatingSystems.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

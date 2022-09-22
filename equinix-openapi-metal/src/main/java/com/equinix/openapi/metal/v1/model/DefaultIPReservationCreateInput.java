@@ -47,10 +47,10 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * IPReservationRequestInput
+ * DefaultIPReservationCreateInput
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class IPReservationRequestInput {
+public class DefaultIPReservationCreateInput {
   public static final String SERIALIZED_NAME_COMMENTS = "comments";
   @SerializedName(SERIALIZED_NAME_COMMENTS)
   private String comments;
@@ -87,10 +87,10 @@ public class IPReservationRequestInput {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public IPReservationRequestInput() {
+  public DefaultIPReservationCreateInput() {
   }
 
-  public IPReservationRequestInput comments(String comments) {
+  public DefaultIPReservationCreateInput comments(String comments) {
     
     this.comments = comments;
     return this;
@@ -113,7 +113,7 @@ public class IPReservationRequestInput {
   }
 
 
-  public IPReservationRequestInput customdata(Object customdata) {
+  public DefaultIPReservationCreateInput customdata(Object customdata) {
     
     this.customdata = customdata;
     return this;
@@ -136,7 +136,7 @@ public class IPReservationRequestInput {
   }
 
 
-  public IPReservationRequestInput details(String details) {
+  public DefaultIPReservationCreateInput details(String details) {
     
     this.details = details;
     return this;
@@ -159,7 +159,7 @@ public class IPReservationRequestInput {
   }
 
 
-  public IPReservationRequestInput facility(String facility) {
+  public DefaultIPReservationCreateInput facility(String facility) {
     
     this.facility = facility;
     return this;
@@ -182,7 +182,7 @@ public class IPReservationRequestInput {
   }
 
 
-  public IPReservationRequestInput failOnApprovalRequired(Boolean failOnApprovalRequired) {
+  public DefaultIPReservationCreateInput failOnApprovalRequired(Boolean failOnApprovalRequired) {
     
     this.failOnApprovalRequired = failOnApprovalRequired;
     return this;
@@ -205,7 +205,7 @@ public class IPReservationRequestInput {
   }
 
 
-  public IPReservationRequestInput metro(String metro) {
+  public DefaultIPReservationCreateInput metro(String metro) {
     
     this.metro = metro;
     return this;
@@ -228,7 +228,7 @@ public class IPReservationRequestInput {
   }
 
 
-  public IPReservationRequestInput quantity(Integer quantity) {
+  public DefaultIPReservationCreateInput quantity(Integer quantity) {
     
     this.quantity = quantity;
     return this;
@@ -251,13 +251,13 @@ public class IPReservationRequestInput {
   }
 
 
-  public IPReservationRequestInput tags(List<String> tags) {
+  public DefaultIPReservationCreateInput tags(List<String> tags) {
     
     this.tags = tags;
     return this;
   }
 
-  public IPReservationRequestInput addTagsItem(String tagsItem) {
+  public DefaultIPReservationCreateInput addTagsItem(String tagsItem) {
     if (this.tags == null) {
       this.tags = new ArrayList<>();
     }
@@ -282,7 +282,7 @@ public class IPReservationRequestInput {
   }
 
 
-  public IPReservationRequestInput type(String type) {
+  public DefaultIPReservationCreateInput type(String type) {
     
     this.type = type;
     return this;
@@ -315,7 +315,7 @@ public class IPReservationRequestInput {
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
    */
-  public IPReservationRequestInput putAdditionalProperty(String key, Object value) {
+  public DefaultIPReservationCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -349,17 +349,17 @@ public class IPReservationRequestInput {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IPReservationRequestInput ipReservationRequestInput = (IPReservationRequestInput) o;
-    return Objects.equals(this.comments, ipReservationRequestInput.comments) &&
-        Objects.equals(this.customdata, ipReservationRequestInput.customdata) &&
-        Objects.equals(this.details, ipReservationRequestInput.details) &&
-        Objects.equals(this.facility, ipReservationRequestInput.facility) &&
-        Objects.equals(this.failOnApprovalRequired, ipReservationRequestInput.failOnApprovalRequired) &&
-        Objects.equals(this.metro, ipReservationRequestInput.metro) &&
-        Objects.equals(this.quantity, ipReservationRequestInput.quantity) &&
-        Objects.equals(this.tags, ipReservationRequestInput.tags) &&
-        Objects.equals(this.type, ipReservationRequestInput.type)&&
-        Objects.equals(this.additionalProperties, ipReservationRequestInput.additionalProperties);
+    DefaultIPReservationCreateInput defaultIPReservationCreateInput = (DefaultIPReservationCreateInput) o;
+    return Objects.equals(this.comments, defaultIPReservationCreateInput.comments) &&
+        Objects.equals(this.customdata, defaultIPReservationCreateInput.customdata) &&
+        Objects.equals(this.details, defaultIPReservationCreateInput.details) &&
+        Objects.equals(this.facility, defaultIPReservationCreateInput.facility) &&
+        Objects.equals(this.failOnApprovalRequired, defaultIPReservationCreateInput.failOnApprovalRequired) &&
+        Objects.equals(this.metro, defaultIPReservationCreateInput.metro) &&
+        Objects.equals(this.quantity, defaultIPReservationCreateInput.quantity) &&
+        Objects.equals(this.tags, defaultIPReservationCreateInput.tags) &&
+        Objects.equals(this.type, defaultIPReservationCreateInput.type)&&
+        Objects.equals(this.additionalProperties, defaultIPReservationCreateInput.additionalProperties);
   }
 
   @Override
@@ -370,7 +370,7 @@ public class IPReservationRequestInput {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IPReservationRequestInput {\n");
+    sb.append("class DefaultIPReservationCreateInput {\n");
     sb.append("    comments: ").append(toIndentedString(comments)).append("\n");
     sb.append("    customdata: ").append(toIndentedString(customdata)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
@@ -423,19 +423,19 @@ public class IPReservationRequestInput {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to IPReservationRequestInput
+  * @throws IOException if the JSON Object is invalid with respect to DefaultIPReservationCreateInput
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (IPReservationRequestInput.openapiRequiredFields.isEmpty()) {
+        if (DefaultIPReservationCreateInput.openapiRequiredFields.isEmpty()) {
           return;
         } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in IPReservationRequestInput is not found in the empty JSON string", IPReservationRequestInput.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DefaultIPReservationCreateInput is not found in the empty JSON string", DefaultIPReservationCreateInput.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : IPReservationRequestInput.openapiRequiredFields) {
+      for (String requiredField : DefaultIPReservationCreateInput.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
@@ -465,16 +465,16 @@ public class IPReservationRequestInput {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IPReservationRequestInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IPReservationRequestInput' and its subtypes
+       if (!DefaultIPReservationCreateInput.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DefaultIPReservationCreateInput' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IPReservationRequestInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IPReservationRequestInput.class));
+       final TypeAdapter<DefaultIPReservationCreateInput> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DefaultIPReservationCreateInput.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<IPReservationRequestInput>() {
+       return (TypeAdapter<T>) new TypeAdapter<DefaultIPReservationCreateInput>() {
            @Override
-           public void write(JsonWriter out, IPReservationRequestInput value) throws IOException {
+           public void write(JsonWriter out, DefaultIPReservationCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additonal properties
@@ -497,11 +497,11 @@ public class IPReservationRequestInput {
            }
 
            @Override
-           public IPReservationRequestInput read(JsonReader in) throws IOException {
+           public DefaultIPReservationCreateInput read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             IPReservationRequestInput instance = thisAdapter.fromJsonTree(jsonObj);
+             DefaultIPReservationCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -526,18 +526,18 @@ public class IPReservationRequestInput {
   }
 
  /**
-  * Create an instance of IPReservationRequestInput given an JSON string
+  * Create an instance of DefaultIPReservationCreateInput given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of IPReservationRequestInput
-  * @throws IOException if the JSON string is invalid with respect to IPReservationRequestInput
+  * @return An instance of DefaultIPReservationCreateInput
+  * @throws IOException if the JSON string is invalid with respect to DefaultIPReservationCreateInput
   */
-  public static IPReservationRequestInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, IPReservationRequestInput.class);
+  public static DefaultIPReservationCreateInput fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DefaultIPReservationCreateInput.class);
   }
 
  /**
-  * Convert an instance of IPReservationRequestInput to an JSON string
+  * Convert an instance of DefaultIPReservationCreateInput to an JSON string
   *
   * @return JSON string
   */

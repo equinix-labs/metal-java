@@ -12,7 +12,6 @@
 |**localAsn** | **Integer** |  |  [optional] |
 |**metro** | **String** | The UUID (or metro code) for the Metro in which to create this VRF. |  |
 |**name** | **String** |  |  |
-|**projectId** | **UUID** |  |  |
 
 
 

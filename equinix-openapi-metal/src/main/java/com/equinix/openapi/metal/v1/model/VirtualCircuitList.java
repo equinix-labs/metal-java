@@ -192,17 +192,19 @@ public class VirtualCircuitList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in VirtualCircuitList is not found in the empty JSON string", VirtualCircuitList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayvirtualCircuits = jsonObj.getAsJsonArray("virtual_circuits");
-      if (jsonArrayvirtualCircuits != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("virtual_circuits").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `virtual_circuits` to be an array in the JSON string but got `%s`", jsonObj.get("virtual_circuits").toString()));
-        }
+      if (jsonObj.get("virtual_circuits") != null && !jsonObj.get("virtual_circuits").isJsonNull()) {
+        JsonArray jsonArrayvirtualCircuits = jsonObj.getAsJsonArray("virtual_circuits");
+        if (jsonArrayvirtualCircuits != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("virtual_circuits").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `virtual_circuits` to be an array in the JSON string but got `%s`", jsonObj.get("virtual_circuits").toString()));
+          }
 
-        // validate the optional field `virtual_circuits` (array)
-        for (int i = 0; i < jsonArrayvirtualCircuits.size(); i++) {
-          VirtualCircuitListVirtualCircuitsInner.validateJsonObject(jsonArrayvirtualCircuits.get(i).getAsJsonObject());
-        };
+          // validate the optional field `virtual_circuits` (array)
+          for (int i = 0; i < jsonArrayvirtualCircuits.size(); i++) {
+            VirtualCircuitListVirtualCircuitsInner.validateJsonObject(jsonArrayvirtualCircuits.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

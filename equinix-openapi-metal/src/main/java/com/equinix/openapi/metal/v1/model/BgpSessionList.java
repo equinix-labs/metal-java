@@ -192,17 +192,19 @@ public class BgpSessionList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in BgpSessionList is not found in the empty JSON string", BgpSessionList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraybgpSessions = jsonObj.getAsJsonArray("bgp_sessions");
-      if (jsonArraybgpSessions != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("bgp_sessions").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `bgp_sessions` to be an array in the JSON string but got `%s`", jsonObj.get("bgp_sessions").toString()));
-        }
+      if (jsonObj.get("bgp_sessions") != null && !jsonObj.get("bgp_sessions").isJsonNull()) {
+        JsonArray jsonArraybgpSessions = jsonObj.getAsJsonArray("bgp_sessions");
+        if (jsonArraybgpSessions != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("bgp_sessions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `bgp_sessions` to be an array in the JSON string but got `%s`", jsonObj.get("bgp_sessions").toString()));
+          }
 
-        // validate the optional field `bgp_sessions` (array)
-        for (int i = 0; i < jsonArraybgpSessions.size(); i++) {
-          BgpSession.validateJsonObject(jsonArraybgpSessions.get(i).getAsJsonObject());
-        };
+          // validate the optional field `bgp_sessions` (array)
+          for (int i = 0; i < jsonArraybgpSessions.size(); i++) {
+            BgpSession.validateJsonObject(jsonArraybgpSessions.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

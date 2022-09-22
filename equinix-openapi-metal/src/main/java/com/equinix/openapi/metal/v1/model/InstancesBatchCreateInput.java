@@ -192,17 +192,19 @@ public class InstancesBatchCreateInput {
           throw new IllegalArgumentException(String.format("The required field(s) %s in InstancesBatchCreateInput is not found in the empty JSON string", InstancesBatchCreateInput.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraybatches = jsonObj.getAsJsonArray("batches");
-      if (jsonArraybatches != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("batches").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `batches` to be an array in the JSON string but got `%s`", jsonObj.get("batches").toString()));
-        }
+      if (jsonObj.get("batches") != null && !jsonObj.get("batches").isJsonNull()) {
+        JsonArray jsonArraybatches = jsonObj.getAsJsonArray("batches");
+        if (jsonArraybatches != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("batches").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `batches` to be an array in the JSON string but got `%s`", jsonObj.get("batches").toString()));
+          }
 
-        // validate the optional field `batches` (array)
-        for (int i = 0; i < jsonArraybatches.size(); i++) {
-          InstancesBatchCreateInputBatchesInner.validateJsonObject(jsonArraybatches.get(i).getAsJsonObject());
-        };
+          // validate the optional field `batches` (array)
+          for (int i = 0; i < jsonArraybatches.size(); i++) {
+            InstancesBatchCreateInputBatchesInner.validateJsonObject(jsonArraybatches.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

@@ -21,73 +21,47 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for CreateVrfRequest
+ * Model tests for MetalGatewayCreateInput
  */
-public class CreateVrfRequestTest {
-    private final CreateVrfRequest model = new CreateVrfRequest();
+public class MetalGatewayCreateInputTest {
+    private final MetalGatewayCreateInput model = new MetalGatewayCreateInput();
 
     /**
-     * Model tests for CreateVrfRequest
+     * Model tests for MetalGatewayCreateInput
      */
     @Test
-    public void testCreateVrfRequest() {
-        // TODO: test CreateVrfRequest
+    public void testMetalGatewayCreateInput() {
+        // TODO: test MetalGatewayCreateInput
     }
 
     /**
-     * Test the property 'description'
+     * Test the property 'ipReservationId'
      */
     @Test
-    public void descriptionTest() {
-        // TODO: test description
+    public void ipReservationIdTest() {
+        // TODO: test ipReservationId
     }
 
     /**
-     * Test the property 'ipRanges'
+     * Test the property 'privateIpv4SubnetSize'
      */
     @Test
-    public void ipRangesTest() {
-        // TODO: test ipRanges
+    public void privateIpv4SubnetSizeTest() {
+        // TODO: test privateIpv4SubnetSize
     }
 
     /**
-     * Test the property 'localAsn'
+     * Test the property 'virtualNetworkId'
      */
     @Test
-    public void localAsnTest() {
-        // TODO: test localAsn
-    }
-
-    /**
-     * Test the property 'metro'
-     */
-    @Test
-    public void metroTest() {
-        // TODO: test metro
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'projectId'
-     */
-    @Test
-    public void projectIdTest() {
-        // TODO: test projectId
+    public void virtualNetworkIdTest() {
+        // TODO: test virtualNetworkId
     }
 
 }

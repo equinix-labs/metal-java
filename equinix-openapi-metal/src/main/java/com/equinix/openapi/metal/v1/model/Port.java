@@ -385,17 +385,19 @@ public class Port {
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      JsonArray jsonArrayvirtualNetworks = jsonObj.getAsJsonArray("virtual_networks");
-      if (jsonArrayvirtualNetworks != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("virtual_networks").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `virtual_networks` to be an array in the JSON string but got `%s`", jsonObj.get("virtual_networks").toString()));
-        }
+      if (jsonObj.get("virtual_networks") != null && !jsonObj.get("virtual_networks").isJsonNull()) {
+        JsonArray jsonArrayvirtualNetworks = jsonObj.getAsJsonArray("virtual_networks");
+        if (jsonArrayvirtualNetworks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("virtual_networks").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `virtual_networks` to be an array in the JSON string but got `%s`", jsonObj.get("virtual_networks").toString()));
+          }
 
-        // validate the optional field `virtual_networks` (array)
-        for (int i = 0; i < jsonArrayvirtualNetworks.size(); i++) {
-          Href.validateJsonObject(jsonArrayvirtualNetworks.get(i).getAsJsonObject());
-        };
+          // validate the optional field `virtual_networks` (array)
+          for (int i = 0; i < jsonArrayvirtualNetworks.size(); i++) {
+            Href.validateJsonObject(jsonArrayvirtualNetworks.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

@@ -192,17 +192,19 @@ public class MembershipList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in MembershipList is not found in the empty JSON string", MembershipList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraymemberships = jsonObj.getAsJsonArray("memberships");
-      if (jsonArraymemberships != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("memberships").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `memberships` to be an array in the JSON string but got `%s`", jsonObj.get("memberships").toString()));
-        }
+      if (jsonObj.get("memberships") != null && !jsonObj.get("memberships").isJsonNull()) {
+        JsonArray jsonArraymemberships = jsonObj.getAsJsonArray("memberships");
+        if (jsonArraymemberships != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("memberships").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `memberships` to be an array in the JSON string but got `%s`", jsonObj.get("memberships").toString()));
+          }
 
-        // validate the optional field `memberships` (array)
-        for (int i = 0; i < jsonArraymemberships.size(); i++) {
-          Membership.validateJsonObject(jsonArraymemberships.get(i).getAsJsonObject());
-        };
+          // validate the optional field `memberships` (array)
+          for (int i = 0; i < jsonArraymemberships.size(); i++) {
+            Membership.validateJsonObject(jsonArraymemberships.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

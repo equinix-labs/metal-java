@@ -192,17 +192,19 @@ public class MetroList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in MetroList is not found in the empty JSON string", MetroList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraymetros = jsonObj.getAsJsonArray("metros");
-      if (jsonArraymetros != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("metros").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `metros` to be an array in the JSON string but got `%s`", jsonObj.get("metros").toString()));
-        }
+      if (jsonObj.get("metros") != null && !jsonObj.get("metros").isJsonNull()) {
+        JsonArray jsonArraymetros = jsonObj.getAsJsonArray("metros");
+        if (jsonArraymetros != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("metros").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `metros` to be an array in the JSON string but got `%s`", jsonObj.get("metros").toString()));
+          }
 
-        // validate the optional field `metros` (array)
-        for (int i = 0; i < jsonArraymetros.size(); i++) {
-          Metro.validateJsonObject(jsonArraymetros.get(i).getAsJsonObject());
-        };
+          // validate the optional field `metros` (array)
+          for (int i = 0; i < jsonArraymetros.size(); i++) {
+            Metro.validateJsonObject(jsonArraymetros.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

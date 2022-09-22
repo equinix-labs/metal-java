@@ -13,7 +13,7 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.IPReservationRequestInput;
+import com.equinix.openapi.metal.v1.model.DefaultIPReservationCreateInput;
 import com.equinix.openapi.metal.v1.model.VrfIPReservationCreateInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;

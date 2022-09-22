@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -62,14 +61,6 @@ public class VirtualNetworkCreateInputTest {
     @Test
     public void metroTest() {
         // TODO: test metro
-    }
-
-    /**
-     * Test the property 'projectId'
-     */
-    @Test
-    public void projectIdTest() {
-        // TODO: test projectId
     }
 
     /**

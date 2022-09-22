@@ -192,17 +192,19 @@ public class PortConvertLayer3Input {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortConvertLayer3Input is not found in the empty JSON string", PortConvertLayer3Input.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayrequestIps = jsonObj.getAsJsonArray("request_ips");
-      if (jsonArrayrequestIps != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("request_ips").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `request_ips` to be an array in the JSON string but got `%s`", jsonObj.get("request_ips").toString()));
-        }
+      if (jsonObj.get("request_ips") != null && !jsonObj.get("request_ips").isJsonNull()) {
+        JsonArray jsonArrayrequestIps = jsonObj.getAsJsonArray("request_ips");
+        if (jsonArrayrequestIps != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("request_ips").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `request_ips` to be an array in the JSON string but got `%s`", jsonObj.get("request_ips").toString()));
+          }
 
-        // validate the optional field `request_ips` (array)
-        for (int i = 0; i < jsonArrayrequestIps.size(); i++) {
-          PortConvertLayer3InputRequestIpsInner.validateJsonObject(jsonArrayrequestIps.get(i).getAsJsonObject());
-        };
+          // validate the optional field `request_ips` (array)
+          for (int i = 0; i < jsonArrayrequestIps.size(); i++) {
+            PortConvertLayer3InputRequestIpsInner.validateJsonObject(jsonArrayrequestIps.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

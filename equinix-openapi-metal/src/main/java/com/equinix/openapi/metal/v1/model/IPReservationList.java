@@ -192,17 +192,19 @@ public class IPReservationList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in IPReservationList is not found in the empty JSON string", IPReservationList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayipAddresses = jsonObj.getAsJsonArray("ip_addresses");
-      if (jsonArrayipAddresses != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("ip_addresses").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `ip_addresses` to be an array in the JSON string but got `%s`", jsonObj.get("ip_addresses").toString()));
-        }
+      if (jsonObj.get("ip_addresses") != null && !jsonObj.get("ip_addresses").isJsonNull()) {
+        JsonArray jsonArrayipAddresses = jsonObj.getAsJsonArray("ip_addresses");
+        if (jsonArrayipAddresses != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("ip_addresses").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `ip_addresses` to be an array in the JSON string but got `%s`", jsonObj.get("ip_addresses").toString()));
+          }
 
-        // validate the optional field `ip_addresses` (array)
-        for (int i = 0; i < jsonArrayipAddresses.size(); i++) {
-          IPReservation.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
-        };
+          // validate the optional field `ip_addresses` (array)
+          for (int i = 0; i < jsonArrayipAddresses.size(); i++) {
+            IPReservation.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

@@ -192,17 +192,19 @@ public class PlanList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PlanList is not found in the empty JSON string", PlanList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayplans = jsonObj.getAsJsonArray("plans");
-      if (jsonArrayplans != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("plans").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `plans` to be an array in the JSON string but got `%s`", jsonObj.get("plans").toString()));
-        }
+      if (jsonObj.get("plans") != null && !jsonObj.get("plans").isJsonNull()) {
+        JsonArray jsonArrayplans = jsonObj.getAsJsonArray("plans");
+        if (jsonArrayplans != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("plans").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `plans` to be an array in the JSON string but got `%s`", jsonObj.get("plans").toString()));
+          }
 
-        // validate the optional field `plans` (array)
-        for (int i = 0; i < jsonArrayplans.size(); i++) {
-          Plan.validateJsonObject(jsonArrayplans.get(i).getAsJsonObject());
-        };
+          // validate the optional field `plans` (array)
+          for (int i = 0; i < jsonArrayplans.size(); i++) {
+            Plan.validateJsonObject(jsonArrayplans.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

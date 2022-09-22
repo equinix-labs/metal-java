@@ -13,7 +13,7 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.MetalGatewayInput;
+import com.equinix.openapi.metal.v1.model.MetalGatewayCreateInput;
 import com.equinix.openapi.metal.v1.model.VrfMetalGatewayCreateInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;

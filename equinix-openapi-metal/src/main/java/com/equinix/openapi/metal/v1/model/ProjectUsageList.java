@@ -192,17 +192,19 @@ public class ProjectUsageList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ProjectUsageList is not found in the empty JSON string", ProjectUsageList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayusages = jsonObj.getAsJsonArray("usages");
-      if (jsonArrayusages != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("usages").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `usages` to be an array in the JSON string but got `%s`", jsonObj.get("usages").toString()));
-        }
+      if (jsonObj.get("usages") != null && !jsonObj.get("usages").isJsonNull()) {
+        JsonArray jsonArrayusages = jsonObj.getAsJsonArray("usages");
+        if (jsonArrayusages != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("usages").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `usages` to be an array in the JSON string but got `%s`", jsonObj.get("usages").toString()));
+          }
 
-        // validate the optional field `usages` (array)
-        for (int i = 0; i < jsonArrayusages.size(); i++) {
-          ProjectUsage.validateJsonObject(jsonArrayusages.get(i).getAsJsonObject());
-        };
+          // validate the optional field `usages` (array)
+          for (int i = 0; i < jsonArrayusages.size(); i++) {
+            ProjectUsage.validateJsonObject(jsonArrayusages.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

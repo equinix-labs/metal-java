@@ -23,7 +23,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -80,14 +79,6 @@ public class VrfCreateInputTest {
     @Test
     public void nameTest() {
         // TODO: test name
-    }
-
-    /**
-     * Test the property 'projectId'
-     */
-    @Test
-    public void projectIdTest() {
-        // TODO: test projectId
     }
 
 }

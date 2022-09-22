@@ -192,17 +192,19 @@ public class LicenseList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LicenseList is not found in the empty JSON string", LicenseList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraylicenses = jsonObj.getAsJsonArray("licenses");
-      if (jsonArraylicenses != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("licenses").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `licenses` to be an array in the JSON string but got `%s`", jsonObj.get("licenses").toString()));
-        }
+      if (jsonObj.get("licenses") != null && !jsonObj.get("licenses").isJsonNull()) {
+        JsonArray jsonArraylicenses = jsonObj.getAsJsonArray("licenses");
+        if (jsonArraylicenses != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("licenses").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `licenses` to be an array in the JSON string but got `%s`", jsonObj.get("licenses").toString()));
+          }
 
-        // validate the optional field `licenses` (array)
-        for (int i = 0; i < jsonArraylicenses.size(); i++) {
-          License.validateJsonObject(jsonArraylicenses.get(i).getAsJsonObject());
-        };
+          // validate the optional field `licenses` (array)
+          for (int i = 0; i < jsonArraylicenses.size(); i++) {
+            License.validateJsonObject(jsonArraylicenses.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

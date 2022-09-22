@@ -192,17 +192,19 @@ public class InvitationList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in InvitationList is not found in the empty JSON string", InvitationList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayinvitations = jsonObj.getAsJsonArray("invitations");
-      if (jsonArrayinvitations != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("invitations").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `invitations` to be an array in the JSON string but got `%s`", jsonObj.get("invitations").toString()));
-        }
+      if (jsonObj.get("invitations") != null && !jsonObj.get("invitations").isJsonNull()) {
+        JsonArray jsonArrayinvitations = jsonObj.getAsJsonArray("invitations");
+        if (jsonArrayinvitations != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("invitations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `invitations` to be an array in the JSON string but got `%s`", jsonObj.get("invitations").toString()));
+          }
 
-        // validate the optional field `invitations` (array)
-        for (int i = 0; i < jsonArrayinvitations.size(); i++) {
-          Membership.validateJsonObject(jsonArrayinvitations.get(i).getAsJsonObject());
-        };
+          // validate the optional field `invitations` (array)
+          for (int i = 0; i < jsonArrayinvitations.size(); i++) {
+            Membership.validateJsonObject(jsonArrayinvitations.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 

@@ -657,17 +657,19 @@ public class UserCreateInput {
       if ((jsonObj.get("company_url") != null && !jsonObj.get("company_url").isJsonNull()) && !jsonObj.get("company_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `company_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company_url").toString()));
       }
-      JsonArray jsonArrayemails = jsonObj.getAsJsonArray("emails");
-      if (jsonArrayemails != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("emails").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `emails` to be an array in the JSON string but got `%s`", jsonObj.get("emails").toString()));
-        }
+      if (jsonObj.get("emails") != null && !jsonObj.get("emails").isJsonNull()) {
+        JsonArray jsonArrayemails = jsonObj.getAsJsonArray("emails");
+        if (jsonArrayemails != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("emails").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `emails` to be an array in the JSON string but got `%s`", jsonObj.get("emails").toString()));
+          }
 
-        // validate the optional field `emails` (array)
-        for (int i = 0; i < jsonArrayemails.size(); i++) {
-          EmailInput.validateJsonObject(jsonArrayemails.get(i).getAsJsonObject());
-        };
+          // validate the optional field `emails` (array)
+          for (int i = 0; i < jsonArrayemails.size(); i++) {
+            EmailInput.validateJsonObject(jsonArrayemails.get(i).getAsJsonObject());
+          };
+        }
       }
       if ((jsonObj.get("first_name") != null && !jsonObj.get("first_name").isJsonNull()) && !jsonObj.get("first_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `first_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("first_name").toString()));

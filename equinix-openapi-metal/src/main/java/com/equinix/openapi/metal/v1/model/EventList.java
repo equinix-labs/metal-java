@@ -223,17 +223,19 @@ public class EventList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in EventList is not found in the empty JSON string", EventList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArrayevents = jsonObj.getAsJsonArray("events");
-      if (jsonArrayevents != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("events").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `events` to be an array in the JSON string but got `%s`", jsonObj.get("events").toString()));
-        }
+      if (jsonObj.get("events") != null && !jsonObj.get("events").isJsonNull()) {
+        JsonArray jsonArrayevents = jsonObj.getAsJsonArray("events");
+        if (jsonArrayevents != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("events").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `events` to be an array in the JSON string but got `%s`", jsonObj.get("events").toString()));
+          }
 
-        // validate the optional field `events` (array)
-        for (int i = 0; i < jsonArrayevents.size(); i++) {
-          Event.validateJsonObject(jsonArrayevents.get(i).getAsJsonObject());
-        };
+          // validate the optional field `events` (array)
+          for (int i = 0; i < jsonArrayevents.size(); i++) {
+            Event.validateJsonObject(jsonArrayevents.get(i).getAsJsonObject());
+          };
+        }
       }
       // validate the optional field `meta`
       if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {

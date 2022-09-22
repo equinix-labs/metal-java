@@ -518,29 +518,33 @@ public class VirtualNetwork {
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      JsonArray jsonArrayinstances = jsonObj.getAsJsonArray("instances");
-      if (jsonArrayinstances != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("instances").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `instances` to be an array in the JSON string but got `%s`", jsonObj.get("instances").toString()));
-        }
+      if (jsonObj.get("instances") != null && !jsonObj.get("instances").isJsonNull()) {
+        JsonArray jsonArrayinstances = jsonObj.getAsJsonArray("instances");
+        if (jsonArrayinstances != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("instances").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `instances` to be an array in the JSON string but got `%s`", jsonObj.get("instances").toString()));
+          }
 
-        // validate the optional field `instances` (array)
-        for (int i = 0; i < jsonArrayinstances.size(); i++) {
-          Href.validateJsonObject(jsonArrayinstances.get(i).getAsJsonObject());
-        };
+          // validate the optional field `instances` (array)
+          for (int i = 0; i < jsonArrayinstances.size(); i++) {
+            Href.validateJsonObject(jsonArrayinstances.get(i).getAsJsonObject());
+          };
+        }
       }
-      JsonArray jsonArraymetalGateways = jsonObj.getAsJsonArray("metal_gateways");
-      if (jsonArraymetalGateways != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("metal_gateways").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `metal_gateways` to be an array in the JSON string but got `%s`", jsonObj.get("metal_gateways").toString()));
-        }
+      if (jsonObj.get("metal_gateways") != null && !jsonObj.get("metal_gateways").isJsonNull()) {
+        JsonArray jsonArraymetalGateways = jsonObj.getAsJsonArray("metal_gateways");
+        if (jsonArraymetalGateways != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("metal_gateways").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `metal_gateways` to be an array in the JSON string but got `%s`", jsonObj.get("metal_gateways").toString()));
+          }
 
-        // validate the optional field `metal_gateways` (array)
-        for (int i = 0; i < jsonArraymetalGateways.size(); i++) {
-          Href.validateJsonObject(jsonArraymetalGateways.get(i).getAsJsonObject());
-        };
+          // validate the optional field `metal_gateways` (array)
+          for (int i = 0; i < jsonArraymetalGateways.size(); i++) {
+            Href.validateJsonObject(jsonArraymetalGateways.get(i).getAsJsonObject());
+          };
+        }
       }
       // validate the optional field `metro`
       if (jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) {

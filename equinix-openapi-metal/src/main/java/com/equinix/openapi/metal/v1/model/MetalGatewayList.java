@@ -192,17 +192,19 @@ public class MetalGatewayList {
           throw new IllegalArgumentException(String.format("The required field(s) %s in MetalGatewayList is not found in the empty JSON string", MetalGatewayList.openapiRequiredFields.toString()));
         }
       }
-      JsonArray jsonArraymetalGateways = jsonObj.getAsJsonArray("metal_gateways");
-      if (jsonArraymetalGateways != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("metal_gateways").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `metal_gateways` to be an array in the JSON string but got `%s`", jsonObj.get("metal_gateways").toString()));
-        }
+      if (jsonObj.get("metal_gateways") != null && !jsonObj.get("metal_gateways").isJsonNull()) {
+        JsonArray jsonArraymetalGateways = jsonObj.getAsJsonArray("metal_gateways");
+        if (jsonArraymetalGateways != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("metal_gateways").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `metal_gateways` to be an array in the JSON string but got `%s`", jsonObj.get("metal_gateways").toString()));
+          }
 
-        // validate the optional field `metal_gateways` (array)
-        for (int i = 0; i < jsonArraymetalGateways.size(); i++) {
-          MetalGateway.validateJsonObject(jsonArraymetalGateways.get(i).getAsJsonObject());
-        };
+          // validate the optional field `metal_gateways` (array)
+          for (int i = 0; i < jsonArraymetalGateways.size(); i++) {
+            MetalGateway.validateJsonObject(jsonArraymetalGateways.get(i).getAsJsonObject());
+          };
+        }
       }
   }
 
