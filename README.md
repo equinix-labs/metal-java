@@ -53,7 +53,7 @@ Note : Both docker and git pulls latest version of openapi generator.
 2. Create a patch file in metal-java:
    ```
    cd spec
-   git diff oas3.patched.json > ../patches/spec.fetched.json/<patchfilename>
+   git diff -U10 oas3.patched.json > ../patches/spec.fetched.json/<patchfilename>
    cd ..
    ```
 3. ``patchfilename`` should be in format: ``<patch_index>-<short_patch_decription_or_identifier>.patch``
