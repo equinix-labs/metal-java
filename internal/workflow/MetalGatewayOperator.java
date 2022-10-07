@@ -35,7 +35,7 @@ public class MetalGatewayOperator {
 
     // Returns the vlan associated with the metal gateway queried by its id
     public VirtualNetwork getVlanOfMetalGateway(UUID metalGatewayId) throws ApiException {
-        MetalGateway metalGateway = getMetalGateway(metalGatewayId, Collections.singletonList("virtual_network"), null);
+        MetalGateway metalGateway = getMetalGateway(metalGatewayId, Collections.singletonList(VIRTUAL_NETWORK), null);
         return metalGateway.getVirtualNetwork();
     }
 
@@ -52,7 +52,17 @@ public class MetalGatewayOperator {
                 .virtualNetworkId(vlan.getId());
 
         CreateMetalGatewayRequest createMetalGatewayRequest = new CreateMetalGatewayRequest(metalGatewayCreateInput);
-        return metalGatewaysApi.createMetalGateway(projectId, createMetalGatewayRequest, RESPONSE_PAGE, RESPONSE_ITEMS_PER_PAGE);
+        return createMetalGateway(projectId, createMetalGatewayRequest);
+    }
+
+    /**
+     * General wrapper to create metal gateway. Types of inputs supported in the request:
+     * 1. MetalGatewayCreateInput: for a regular metal gateway with reserved or private ip block
+     * 2. VrfMetalGatewayCreateInput: for a vrf metal gateway with a reserved ip block
+     */
+    public MetalGateway createMetalGateway(UUID projectId, CreateMetalGatewayRequest metalGatewayRequest)
+            throws ApiException {
+        return metalGatewaysApi.createMetalGateway(projectId, metalGatewayRequest, RESPONSE_PAGE, RESPONSE_ITEMS_PER_PAGE);
     }
 
     // Poll until metal gateway record is deleted when state is "deleting"
