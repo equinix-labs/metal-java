@@ -216,9 +216,7 @@ public class Error {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Error.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Error.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Error is not found in the empty JSON string", Error.openapiRequiredFields.toString()));
         }
       }
@@ -226,7 +224,7 @@ public class Error {
         throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) && !jsonObj.get("errors").isJsonArray()) {
+      if (!jsonObj.get("errors").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
       }
   }

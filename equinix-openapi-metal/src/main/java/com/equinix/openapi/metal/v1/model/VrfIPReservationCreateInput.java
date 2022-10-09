@@ -370,9 +370,7 @@ public class VrfIPReservationCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VrfIPReservationCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VrfIPReservationCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIPReservationCreateInput is not found in the empty JSON string", VrfIPReservationCreateInput.openapiRequiredFields.toString()));
         }
       }
@@ -386,17 +384,17 @@ public class VrfIPReservationCreateInput {
       if ((jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) && !jsonObj.get("details").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `details` to be a primitive type in the JSON string but got `%s`", jsonObj.get("details").toString()));
       }
-      if ((jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) && !jsonObj.get("network").isJsonPrimitive()) {
+      if (!jsonObj.get("network").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `network` to be a primitive type in the JSON string but got `%s`", jsonObj.get("network").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
+      if (!jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+      if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      if ((jsonObj.get("vrf_id") != null && !jsonObj.get("vrf_id").isJsonNull()) && !jsonObj.get("vrf_id").isJsonPrimitive()) {
+      if (!jsonObj.get("vrf_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `vrf_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vrf_id").toString()));
       }
   }

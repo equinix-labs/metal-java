@@ -305,9 +305,7 @@ public class VirtualCircuitUpdateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VirtualCircuitUpdateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VirtualCircuitUpdateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VirtualCircuitUpdateInput is not found in the empty JSON string", VirtualCircuitUpdateInput.openapiRequiredFields.toString()));
         }
       }
@@ -321,7 +319,7 @@ public class VirtualCircuitUpdateInput {
         throw new IllegalArgumentException(String.format("Expected the field `speed` to be a primitive type in the JSON string but got `%s`", jsonObj.get("speed").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
+      if (!jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       if ((jsonObj.get("vnid") != null && !jsonObj.get("vnid").isJsonNull()) && !jsonObj.get("vnid").isJsonPrimitive()) {

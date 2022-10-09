@@ -489,9 +489,7 @@ public class SelfServiceReservationResponse {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (SelfServiceReservationResponse.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!SelfServiceReservationResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SelfServiceReservationResponse is not found in the empty JSON string", SelfServiceReservationResponse.openapiRequiredFields.toString()));
         }
       }

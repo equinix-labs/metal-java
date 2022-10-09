@@ -368,9 +368,7 @@ public class Membership {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Membership.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Membership.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Membership is not found in the empty JSON string", Membership.openapiRequiredFields.toString()));
         }
       }
@@ -385,7 +383,7 @@ public class Membership {
         Href.validateJsonObject(jsonObj.getAsJsonObject("project"));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonNull()) && !jsonObj.get("roles").isJsonArray()) {
+      if (!jsonObj.get("roles").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `roles` to be an array in the JSON string but got `%s`", jsonObj.get("roles").toString()));
       }
       // validate the optional field `user`

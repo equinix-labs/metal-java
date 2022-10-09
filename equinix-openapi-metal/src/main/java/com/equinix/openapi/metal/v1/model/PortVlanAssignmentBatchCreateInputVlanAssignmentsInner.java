@@ -282,9 +282,7 @@ public class PortVlanAssignmentBatchCreateInputVlanAssignmentsInner {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PortVlanAssignmentBatchCreateInputVlanAssignmentsInner.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PortVlanAssignmentBatchCreateInputVlanAssignmentsInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortVlanAssignmentBatchCreateInputVlanAssignmentsInner is not found in the empty JSON string", PortVlanAssignmentBatchCreateInputVlanAssignmentsInner.openapiRequiredFields.toString()));
         }
       }

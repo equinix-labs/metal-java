@@ -186,9 +186,7 @@ public class ProjectUsageList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (ProjectUsageList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!ProjectUsageList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ProjectUsageList is not found in the empty JSON string", ProjectUsageList.openapiRequiredFields.toString()));
         }
       }

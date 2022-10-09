@@ -416,9 +416,7 @@ public class CapacityPerFacility {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CapacityPerFacility.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!CapacityPerFacility.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CapacityPerFacility is not found in the empty JSON string", CapacityPerFacility.openapiRequiredFields.toString()));
         }
       }

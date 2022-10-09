@@ -746,9 +746,7 @@ public class MetroCapacityReport {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (MetroCapacityReport.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!MetroCapacityReport.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MetroCapacityReport is not found in the empty JSON string", MetroCapacityReport.openapiRequiredFields.toString()));
         }
       }

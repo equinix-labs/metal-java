@@ -207,9 +207,7 @@ public class VrfIPReservationAllOf {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VrfIPReservationAllOf.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VrfIPReservationAllOf.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIPReservationAllOf is not found in the empty JSON string", VrfIPReservationAllOf.openapiRequiredFields.toString()));
         }
       }

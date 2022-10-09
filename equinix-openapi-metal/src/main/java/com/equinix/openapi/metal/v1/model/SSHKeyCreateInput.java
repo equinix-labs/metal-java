@@ -246,14 +246,12 @@ public class SSHKeyCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (SSHKeyCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!SSHKeyCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SSHKeyCreateInput is not found in the empty JSON string", SSHKeyCreateInput.openapiRequiredFields.toString()));
         }
       }
       // ensure the json data is an array
-      if ((jsonObj.get("instances_ids") != null && !jsonObj.get("instances_ids").isJsonNull()) && !jsonObj.get("instances_ids").isJsonArray()) {
+      if (!jsonObj.get("instances_ids").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `instances_ids` to be an array in the JSON string but got `%s`", jsonObj.get("instances_ids").toString()));
       }
       if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {

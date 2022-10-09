@@ -356,9 +356,7 @@ public class SpotMarketPricesPerMetroReport {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (SpotMarketPricesPerMetroReport.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!SpotMarketPricesPerMetroReport.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SpotMarketPricesPerMetroReport is not found in the empty JSON string", SpotMarketPricesPerMetroReport.openapiRequiredFields.toString()));
         }
       }

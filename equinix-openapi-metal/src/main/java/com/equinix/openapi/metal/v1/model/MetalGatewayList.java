@@ -186,9 +186,7 @@ public class MetalGatewayList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (MetalGatewayList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!MetalGatewayList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MetalGatewayList is not found in the empty JSON string", MetalGatewayList.openapiRequiredFields.toString()));
         }
       }

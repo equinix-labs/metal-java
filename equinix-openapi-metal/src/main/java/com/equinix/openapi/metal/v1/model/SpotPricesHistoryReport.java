@@ -176,9 +176,7 @@ public class SpotPricesHistoryReport {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (SpotPricesHistoryReport.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!SpotPricesHistoryReport.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SpotPricesHistoryReport is not found in the empty JSON string", SpotPricesHistoryReport.openapiRequiredFields.toString()));
         }
       }

@@ -495,9 +495,7 @@ public class VirtualNetwork {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VirtualNetwork.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VirtualNetwork.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VirtualNetwork is not found in the empty JSON string", VirtualNetwork.openapiRequiredFields.toString()));
         }
       }

@@ -297,9 +297,7 @@ public class GlobalBgpRange {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (GlobalBgpRange.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!GlobalBgpRange.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in GlobalBgpRange is not found in the empty JSON string", GlobalBgpRange.openapiRequiredFields.toString()));
         }
       }

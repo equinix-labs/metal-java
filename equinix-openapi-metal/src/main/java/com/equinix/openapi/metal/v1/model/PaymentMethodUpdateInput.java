@@ -325,9 +325,7 @@ public class PaymentMethodUpdateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PaymentMethodUpdateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PaymentMethodUpdateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PaymentMethodUpdateInput is not found in the empty JSON string", PaymentMethodUpdateInput.openapiRequiredFields.toString()));
         }
       }

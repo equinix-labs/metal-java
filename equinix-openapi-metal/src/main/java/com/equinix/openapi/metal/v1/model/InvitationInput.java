@@ -284,9 +284,7 @@ public class InvitationInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (InvitationInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!InvitationInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InvitationInput is not found in the empty JSON string", InvitationInput.openapiRequiredFields.toString()));
         }
       }
@@ -297,18 +295,18 @@ public class InvitationInput {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("invitee") != null && !jsonObj.get("invitee").isJsonNull()) && !jsonObj.get("invitee").isJsonPrimitive()) {
+      if (!jsonObj.get("invitee").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `invitee` to be a primitive type in the JSON string but got `%s`", jsonObj.get("invitee").toString()));
       }
       if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("projects_ids") != null && !jsonObj.get("projects_ids").isJsonNull()) && !jsonObj.get("projects_ids").isJsonArray()) {
+      if (!jsonObj.get("projects_ids").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `projects_ids` to be an array in the JSON string but got `%s`", jsonObj.get("projects_ids").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonNull()) && !jsonObj.get("roles").isJsonArray()) {
+      if (!jsonObj.get("roles").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `roles` to be an array in the JSON string but got `%s`", jsonObj.get("roles").toString()));
       }
   }

@@ -776,9 +776,7 @@ public class InstancesBatchCreateInputBatchesInner {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (InstancesBatchCreateInputBatchesInner.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!InstancesBatchCreateInputBatchesInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InstancesBatchCreateInputBatchesInner is not found in the empty JSON string", InstancesBatchCreateInputBatchesInner.openapiRequiredFields.toString()));
         }
       }
@@ -789,18 +787,18 @@ public class InstancesBatchCreateInputBatchesInner {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonNull()) && !jsonObj.get("facility").isJsonArray()) {
+      if (!jsonObj.get("facility").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `facility` to be an array in the JSON string but got `%s`", jsonObj.get("facility").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("features") != null && !jsonObj.get("features").isJsonNull()) && !jsonObj.get("features").isJsonArray()) {
+      if (!jsonObj.get("features").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `features` to be an array in the JSON string but got `%s`", jsonObj.get("features").toString()));
       }
       if ((jsonObj.get("hostname") != null && !jsonObj.get("hostname").isJsonNull()) && !jsonObj.get("hostname").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hostname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hostname").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("hostnames") != null && !jsonObj.get("hostnames").isJsonNull()) && !jsonObj.get("hostnames").isJsonArray()) {
+      if (!jsonObj.get("hostnames").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `hostnames` to be an array in the JSON string but got `%s`", jsonObj.get("hostnames").toString()));
       }
       if (jsonObj.get("ip_addresses") != null && !jsonObj.get("ip_addresses").isJsonNull()) {
@@ -827,15 +825,15 @@ public class InstancesBatchCreateInputBatchesInner {
         throw new IllegalArgumentException(String.format("Expected the field `plan` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("project_ssh_keys") != null && !jsonObj.get("project_ssh_keys").isJsonNull()) && !jsonObj.get("project_ssh_keys").isJsonArray()) {
+      if (!jsonObj.get("project_ssh_keys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `project_ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("project_ssh_keys").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
+      if (!jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("user_ssh_keys") != null && !jsonObj.get("user_ssh_keys").isJsonNull()) && !jsonObj.get("user_ssh_keys").isJsonArray()) {
+      if (!jsonObj.get("user_ssh_keys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `user_ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("user_ssh_keys").toString()));
       }
       if ((jsonObj.get("userdata") != null && !jsonObj.get("userdata").isJsonNull()) && !jsonObj.get("userdata").isJsonPrimitive()) {

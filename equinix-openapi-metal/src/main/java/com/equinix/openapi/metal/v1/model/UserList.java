@@ -217,9 +217,7 @@ public class UserList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (UserList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!UserList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in UserList is not found in the empty JSON string", UserList.openapiRequiredFields.toString()));
         }
       }

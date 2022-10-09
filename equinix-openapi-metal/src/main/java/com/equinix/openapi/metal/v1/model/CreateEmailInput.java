@@ -176,9 +176,7 @@ public class CreateEmailInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CreateEmailInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!CreateEmailInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateEmailInput is not found in the empty JSON string", CreateEmailInput.openapiRequiredFields.toString()));
         }
       }
@@ -189,7 +187,7 @@ public class CreateEmailInput {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) && !jsonObj.get("address").isJsonPrimitive()) {
+      if (!jsonObj.get("address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
       }
   }

@@ -208,9 +208,7 @@ public class Timeframe {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Timeframe.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Timeframe.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Timeframe is not found in the empty JSON string", Timeframe.openapiRequiredFields.toString()));
         }
       }

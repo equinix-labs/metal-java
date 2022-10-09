@@ -435,9 +435,7 @@ public class PortVlanAssignment {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PortVlanAssignment.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PortVlanAssignment.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortVlanAssignment is not found in the empty JSON string", PortVlanAssignment.openapiRequiredFields.toString()));
         }
       }

@@ -534,9 +534,7 @@ public class Plan {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Plan.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Plan.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Plan is not found in the empty JSON string", Plan.openapiRequiredFields.toString()));
         }
       }
@@ -555,7 +553,7 @@ public class Plan {
         }
       }
       // ensure the json data is an array
-      if ((jsonObj.get("deployment_types") != null && !jsonObj.get("deployment_types").isJsonNull()) && !jsonObj.get("deployment_types").isJsonArray()) {
+      if (!jsonObj.get("deployment_types").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `deployment_types` to be an array in the JSON string but got `%s`", jsonObj.get("deployment_types").toString()));
       }
       if (jsonObj.get("available_in_metros") != null && !jsonObj.get("available_in_metros").isJsonNull()) {

@@ -567,9 +567,7 @@ public class CapacityReport {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CapacityReport.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!CapacityReport.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CapacityReport is not found in the empty JSON string", CapacityReport.openapiRequiredFields.toString()));
         }
       }

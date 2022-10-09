@@ -186,14 +186,12 @@ public class SpotPricesDatapoints {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (SpotPricesDatapoints.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!SpotPricesDatapoints.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SpotPricesDatapoints is not found in the empty JSON string", SpotPricesDatapoints.openapiRequiredFields.toString()));
         }
       }
       // ensure the json data is an array
-      if ((jsonObj.get("datapoints") != null && !jsonObj.get("datapoints").isJsonNull()) && !jsonObj.get("datapoints").isJsonArray()) {
+      if (!jsonObj.get("datapoints").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `datapoints` to be an array in the JSON string but got `%s`", jsonObj.get("datapoints").toString()));
       }
   }

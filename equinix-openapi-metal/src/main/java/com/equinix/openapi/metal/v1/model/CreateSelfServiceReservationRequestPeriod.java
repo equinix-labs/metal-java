@@ -298,9 +298,7 @@ public class CreateSelfServiceReservationRequestPeriod {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CreateSelfServiceReservationRequestPeriod.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!CreateSelfServiceReservationRequestPeriod.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateSelfServiceReservationRequestPeriod is not found in the empty JSON string", CreateSelfServiceReservationRequestPeriod.openapiRequiredFields.toString()));
         }
       }

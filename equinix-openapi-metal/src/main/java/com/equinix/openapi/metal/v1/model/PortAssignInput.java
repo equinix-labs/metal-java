@@ -175,9 +175,7 @@ public class PortAssignInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PortAssignInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PortAssignInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortAssignInput is not found in the empty JSON string", PortAssignInput.openapiRequiredFields.toString()));
         }
       }

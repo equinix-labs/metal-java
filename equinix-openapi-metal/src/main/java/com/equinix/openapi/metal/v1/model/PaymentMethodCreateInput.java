@@ -237,9 +237,7 @@ public class PaymentMethodCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PaymentMethodCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PaymentMethodCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PaymentMethodCreateInput is not found in the empty JSON string", PaymentMethodCreateInput.openapiRequiredFields.toString()));
         }
       }
@@ -250,10 +248,10 @@ public class PaymentMethodCreateInput {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("nonce") != null && !jsonObj.get("nonce").isJsonNull()) && !jsonObj.get("nonce").isJsonPrimitive()) {
+      if (!jsonObj.get("nonce").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `nonce` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nonce").toString()));
       }
   }

@@ -525,9 +525,7 @@ public class BgpSession {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (BgpSession.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!BgpSession.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in BgpSession is not found in the empty JSON string", BgpSession.openapiRequiredFields.toString()));
         }
       }
@@ -538,7 +536,7 @@ public class BgpSession {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("address_family") != null && !jsonObj.get("address_family").isJsonNull()) && !jsonObj.get("address_family").isJsonPrimitive()) {
+      if (!jsonObj.get("address_family").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address_family` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address_family").toString()));
       }
       // validate the optional field `device`
@@ -552,7 +550,7 @@ public class BgpSession {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("learned_routes") != null && !jsonObj.get("learned_routes").isJsonNull()) && !jsonObj.get("learned_routes").isJsonArray()) {
+      if (!jsonObj.get("learned_routes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `learned_routes` to be an array in the JSON string but got `%s`", jsonObj.get("learned_routes").toString()));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {

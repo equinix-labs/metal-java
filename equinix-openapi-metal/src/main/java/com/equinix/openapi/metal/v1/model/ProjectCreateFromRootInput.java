@@ -267,9 +267,7 @@ public class ProjectCreateFromRootInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (ProjectCreateFromRootInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!ProjectCreateFromRootInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ProjectCreateFromRootInput is not found in the empty JSON string", ProjectCreateFromRootInput.openapiRequiredFields.toString()));
         }
       }
@@ -280,7 +278,7 @@ public class ProjectCreateFromRootInput {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("organization_id") != null && !jsonObj.get("organization_id").isJsonNull()) && !jsonObj.get("organization_id").isJsonPrimitive()) {

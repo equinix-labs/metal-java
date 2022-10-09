@@ -328,9 +328,7 @@ public class License {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (License.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!License.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in License is not found in the empty JSON string", License.openapiRequiredFields.toString()));
         }
       }

@@ -175,9 +175,7 @@ public class PlanAvailableInMetrosInnerPrice {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PlanAvailableInMetrosInnerPrice.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PlanAvailableInMetrosInnerPrice.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PlanAvailableInMetrosInnerPrice is not found in the empty JSON string", PlanAvailableInMetrosInnerPrice.openapiRequiredFields.toString()));
         }
       }

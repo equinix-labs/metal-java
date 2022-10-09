@@ -265,9 +265,7 @@ public class VirtualNetworkCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VirtualNetworkCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VirtualNetworkCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VirtualNetworkCreateInput is not found in the empty JSON string", VirtualNetworkCreateInput.openapiRequiredFields.toString()));
         }
       }

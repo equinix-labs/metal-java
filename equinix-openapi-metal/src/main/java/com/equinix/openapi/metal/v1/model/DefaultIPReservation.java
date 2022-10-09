@@ -363,9 +363,7 @@ public class DefaultIPReservation extends IPReservation {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (DefaultIPReservation.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!DefaultIPReservation.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in DefaultIPReservation is not found in the empty JSON string", DefaultIPReservation.openapiRequiredFields.toString()));
         }
       }

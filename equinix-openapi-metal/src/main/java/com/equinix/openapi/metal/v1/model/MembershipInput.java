@@ -185,14 +185,12 @@ public class MembershipInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (MembershipInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!MembershipInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MembershipInput is not found in the empty JSON string", MembershipInput.openapiRequiredFields.toString()));
         }
       }
       // ensure the json data is an array
-      if ((jsonObj.get("role") != null && !jsonObj.get("role").isJsonNull()) && !jsonObj.get("role").isJsonArray()) {
+      if (!jsonObj.get("role").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `role` to be an array in the JSON string but got `%s`", jsonObj.get("role").toString()));
       }
   }

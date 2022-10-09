@@ -479,9 +479,7 @@ public class SpotMarketRequest {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (SpotMarketRequest.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!SpotMarketRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SpotMarketRequest is not found in the empty JSON string", SpotMarketRequest.openapiRequiredFields.toString()));
         }
       }

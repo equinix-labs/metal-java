@@ -186,9 +186,7 @@ public class PlanList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PlanList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PlanList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PlanList is not found in the empty JSON string", PlanList.openapiRequiredFields.toString()));
         }
       }

@@ -426,9 +426,7 @@ public class OperatingSystem {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (OperatingSystem.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!OperatingSystem.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in OperatingSystem is not found in the empty JSON string", OperatingSystem.openapiRequiredFields.toString()));
         }
       }
@@ -442,7 +440,7 @@ public class OperatingSystem {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("provisionable_on") != null && !jsonObj.get("provisionable_on").isJsonNull()) && !jsonObj.get("provisionable_on").isJsonArray()) {
+      if (!jsonObj.get("provisionable_on").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `provisionable_on` to be an array in the JSON string but got `%s`", jsonObj.get("provisionable_on").toString()));
       }
       if ((jsonObj.get("slug") != null && !jsonObj.get("slug").isJsonNull()) && !jsonObj.get("slug").isJsonPrimitive()) {

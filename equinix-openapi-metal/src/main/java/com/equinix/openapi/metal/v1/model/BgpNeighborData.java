@@ -474,9 +474,7 @@ public class BgpNeighborData {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (BgpNeighborData.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!BgpNeighborData.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in BgpNeighborData is not found in the empty JSON string", BgpNeighborData.openapiRequiredFields.toString()));
         }
       }
@@ -487,7 +485,7 @@ public class BgpNeighborData {
         throw new IllegalArgumentException(String.format("Expected the field `md5_password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("md5_password").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("peer_ips") != null && !jsonObj.get("peer_ips").isJsonNull()) && !jsonObj.get("peer_ips").isJsonArray()) {
+      if (!jsonObj.get("peer_ips").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `peer_ips` to be an array in the JSON string but got `%s`", jsonObj.get("peer_ips").toString()));
       }
       if (jsonObj.get("routes_in") != null && !jsonObj.get("routes_in").isJsonNull()) {

@@ -307,9 +307,7 @@ public class VrfCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VrfCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VrfCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VrfCreateInput is not found in the empty JSON string", VrfCreateInput.openapiRequiredFields.toString()));
         }
       }
@@ -324,13 +322,13 @@ public class VrfCreateInput {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("ip_ranges") != null && !jsonObj.get("ip_ranges").isJsonNull()) && !jsonObj.get("ip_ranges").isJsonArray()) {
+      if (!jsonObj.get("ip_ranges").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ip_ranges` to be an array in the JSON string but got `%s`", jsonObj.get("ip_ranges").toString()));
       }
-      if ((jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) && !jsonObj.get("metro").isJsonPrimitive()) {
+      if (!jsonObj.get("metro").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `metro` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metro").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
   }

@@ -1440,9 +1440,7 @@ public class Device {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Device.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Device.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Device is not found in the empty JSON string", Device.openapiRequiredFields.toString()));
         }
       }
@@ -1585,7 +1583,7 @@ public class Device {
         throw new IllegalArgumentException(String.format("Expected the field `switch_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("switch_uuid").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
+      if (!jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       if ((jsonObj.get("user") != null && !jsonObj.get("user").isJsonNull()) && !jsonObj.get("user").isJsonPrimitive()) {

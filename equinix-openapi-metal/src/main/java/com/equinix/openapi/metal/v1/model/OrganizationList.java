@@ -217,9 +217,7 @@ public class OrganizationList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (OrganizationList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!OrganizationList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in OrganizationList is not found in the empty JSON string", OrganizationList.openapiRequiredFields.toString()));
         }
       }

@@ -176,9 +176,7 @@ public class DeviceProjectLite {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (DeviceProjectLite.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!DeviceProjectLite.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in DeviceProjectLite is not found in the empty JSON string", DeviceProjectLite.openapiRequiredFields.toString()));
         }
       }
@@ -189,7 +187,7 @@ public class DeviceProjectLite {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
+      if (!jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
   }

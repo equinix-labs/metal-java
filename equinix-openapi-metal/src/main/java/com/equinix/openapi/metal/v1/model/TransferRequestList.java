@@ -186,9 +186,7 @@ public class TransferRequestList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (TransferRequestList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!TransferRequestList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in TransferRequestList is not found in the empty JSON string", TransferRequestList.openapiRequiredFields.toString()));
         }
       }

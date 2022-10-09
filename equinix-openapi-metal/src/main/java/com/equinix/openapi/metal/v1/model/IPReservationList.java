@@ -186,9 +186,7 @@ public class IPReservationList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (IPReservationList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!IPReservationList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in IPReservationList is not found in the empty JSON string", IPReservationList.openapiRequiredFields.toString()));
         }
       }

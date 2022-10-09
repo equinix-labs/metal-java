@@ -186,9 +186,7 @@ public class BgpSessionList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (BgpSessionList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!BgpSessionList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in BgpSessionList is not found in the empty JSON string", BgpSessionList.openapiRequiredFields.toString()));
         }
       }

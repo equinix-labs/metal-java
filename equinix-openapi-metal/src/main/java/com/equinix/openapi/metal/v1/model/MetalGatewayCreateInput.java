@@ -237,9 +237,7 @@ public class MetalGatewayCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (MetalGatewayCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!MetalGatewayCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MetalGatewayCreateInput is not found in the empty JSON string", MetalGatewayCreateInput.openapiRequiredFields.toString()));
         }
       }
@@ -253,7 +251,7 @@ public class MetalGatewayCreateInput {
       if ((jsonObj.get("ip_reservation_id") != null && !jsonObj.get("ip_reservation_id").isJsonNull()) && !jsonObj.get("ip_reservation_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ip_reservation_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ip_reservation_id").toString()));
       }
-      if ((jsonObj.get("virtual_network_id") != null && !jsonObj.get("virtual_network_id").isJsonNull()) && !jsonObj.get("virtual_network_id").isJsonPrimitive()) {
+      if (!jsonObj.get("virtual_network_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `virtual_network_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("virtual_network_id").toString()));
       }
   }

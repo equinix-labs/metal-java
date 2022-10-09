@@ -252,9 +252,7 @@ public class BGPSessionInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (BGPSessionInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!BGPSessionInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in BGPSessionInput is not found in the empty JSON string", BGPSessionInput.openapiRequiredFields.toString()));
         }
       }

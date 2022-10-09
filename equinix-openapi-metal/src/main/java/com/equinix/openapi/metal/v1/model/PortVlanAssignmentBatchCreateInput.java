@@ -186,9 +186,7 @@ public class PortVlanAssignmentBatchCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PortVlanAssignmentBatchCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PortVlanAssignmentBatchCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortVlanAssignmentBatchCreateInput is not found in the empty JSON string", PortVlanAssignmentBatchCreateInput.openapiRequiredFields.toString()));
         }
       }

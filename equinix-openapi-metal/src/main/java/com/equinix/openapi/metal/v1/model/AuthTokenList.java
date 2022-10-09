@@ -186,9 +186,7 @@ public class AuthTokenList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (AuthTokenList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!AuthTokenList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in AuthTokenList is not found in the empty JSON string", AuthTokenList.openapiRequiredFields.toString()));
         }
       }

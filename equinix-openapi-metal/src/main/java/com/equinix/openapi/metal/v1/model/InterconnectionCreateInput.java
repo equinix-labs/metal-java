@@ -619,9 +619,7 @@ public class InterconnectionCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (InterconnectionCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!InterconnectionCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InterconnectionCreateInput is not found in the empty JSON string", InterconnectionCreateInput.openapiRequiredFields.toString()));
         }
       }
@@ -638,19 +636,19 @@ public class InterconnectionCreateInput {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) && !jsonObj.get("metro").isJsonPrimitive()) {
+      if (!jsonObj.get("metro").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `metro` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metro").toString()));
       }
       if ((jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) && !jsonObj.get("mode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) && !jsonObj.get("project").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `project` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project").toString()));
       }
-      if ((jsonObj.get("redundancy") != null && !jsonObj.get("redundancy").isJsonNull()) && !jsonObj.get("redundancy").isJsonPrimitive()) {
+      if (!jsonObj.get("redundancy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redundancy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redundancy").toString()));
       }
       if ((jsonObj.get("service_token_type") != null && !jsonObj.get("service_token_type").isJsonNull()) && !jsonObj.get("service_token_type").isJsonPrimitive()) {
@@ -660,14 +658,14 @@ public class InterconnectionCreateInput {
         throw new IllegalArgumentException(String.format("Expected the field `speed` to be a primitive type in the JSON string but got `%s`", jsonObj.get("speed").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
+      if (!jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+      if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("vlans") != null && !jsonObj.get("vlans").isJsonNull()) && !jsonObj.get("vlans").isJsonArray()) {
+      if (!jsonObj.get("vlans").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `vlans` to be an array in the JSON string but got `%s`", jsonObj.get("vlans").toString()));
       }
   }

@@ -235,9 +235,7 @@ public class MetroServerInfo {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (MetroServerInfo.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!MetroServerInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MetroServerInfo is not found in the empty JSON string", MetroServerInfo.openapiRequiredFields.toString()));
         }
       }

@@ -638,9 +638,7 @@ public class UserCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (UserCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!UserCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in UserCreateInput is not found in the empty JSON string", UserCreateInput.openapiRequiredFields.toString()));
         }
       }
@@ -657,24 +655,20 @@ public class UserCreateInput {
       if ((jsonObj.get("company_url") != null && !jsonObj.get("company_url").isJsonNull()) && !jsonObj.get("company_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `company_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company_url").toString()));
       }
-      if (jsonObj.get("emails") != null && !jsonObj.get("emails").isJsonNull()) {
-        JsonArray jsonArrayemails = jsonObj.getAsJsonArray("emails");
-        if (jsonArrayemails != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("emails").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `emails` to be an array in the JSON string but got `%s`", jsonObj.get("emails").toString()));
-          }
-
-          // validate the optional field `emails` (array)
-          for (int i = 0; i < jsonArrayemails.size(); i++) {
-            EmailInput.validateJsonObject(jsonArrayemails.get(i).getAsJsonObject());
-          };
-        }
+      // ensure the json data is an array
+      if (!jsonObj.get("emails").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `emails` to be an array in the JSON string but got `%s`", jsonObj.get("emails").toString()));
       }
-      if ((jsonObj.get("first_name") != null && !jsonObj.get("first_name").isJsonNull()) && !jsonObj.get("first_name").isJsonPrimitive()) {
+
+      JsonArray jsonArrayemails = jsonObj.getAsJsonArray("emails");
+      // validate the required field `emails` (array)
+      for (int i = 0; i < jsonArrayemails.size(); i++) {
+        EmailInput.validateJsonObject(jsonArrayemails.get(i).getAsJsonObject());
+      };
+      if (!jsonObj.get("first_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `first_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("first_name").toString()));
       }
-      if ((jsonObj.get("last_name") != null && !jsonObj.get("last_name").isJsonNull()) && !jsonObj.get("last_name").isJsonPrimitive()) {
+      if (!jsonObj.get("last_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `last_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("last_name").toString()));
       }
       if ((jsonObj.get("level") != null && !jsonObj.get("level").isJsonNull()) && !jsonObj.get("level").isJsonPrimitive()) {

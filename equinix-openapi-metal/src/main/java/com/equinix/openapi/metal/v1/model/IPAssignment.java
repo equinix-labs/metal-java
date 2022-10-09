@@ -660,9 +660,7 @@ public class IPAssignment {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (IPAssignment.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!IPAssignment.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in IPAssignment is not found in the empty JSON string", IPAssignment.openapiRequiredFields.toString()));
         }
       }

@@ -458,14 +458,12 @@ public class PortVlanAssignmentBatch {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PortVlanAssignmentBatch.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PortVlanAssignmentBatch.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortVlanAssignmentBatch is not found in the empty JSON string", PortVlanAssignmentBatch.openapiRequiredFields.toString()));
         }
       }
       // ensure the json data is an array
-      if ((jsonObj.get("error_messages") != null && !jsonObj.get("error_messages").isJsonNull()) && !jsonObj.get("error_messages").isJsonArray()) {
+      if (!jsonObj.get("error_messages").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `error_messages` to be an array in the JSON string but got `%s`", jsonObj.get("error_messages").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {

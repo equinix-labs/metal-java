@@ -175,9 +175,7 @@ public class CapacityLevelPerBaremetal {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CapacityLevelPerBaremetal.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!CapacityLevelPerBaremetal.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CapacityLevelPerBaremetal is not found in the empty JSON string", CapacityLevelPerBaremetal.openapiRequiredFields.toString()));
         }
       }

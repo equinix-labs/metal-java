@@ -485,9 +485,7 @@ public class DeviceUpdateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (DeviceUpdateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!DeviceUpdateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in DeviceUpdateInput is not found in the empty JSON string", DeviceUpdateInput.openapiRequiredFields.toString()));
         }
       }
@@ -504,7 +502,7 @@ public class DeviceUpdateInput {
         throw new IllegalArgumentException(String.format("Expected the field `ipxe_script_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ipxe_script_url").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
+      if (!jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       if ((jsonObj.get("userdata") != null && !jsonObj.get("userdata").isJsonNull()) && !jsonObj.get("userdata").isJsonPrimitive()) {

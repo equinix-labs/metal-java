@@ -406,9 +406,7 @@ public class Batch {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Batch.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Batch.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Batch is not found in the empty JSON string", Batch.openapiRequiredFields.toString()));
         }
       }
@@ -427,7 +425,7 @@ public class Batch {
         }
       }
       // ensure the json data is an array
-      if ((jsonObj.get("error_messages") != null && !jsonObj.get("error_messages").isJsonNull()) && !jsonObj.get("error_messages").isJsonArray()) {
+      if (!jsonObj.get("error_messages").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `error_messages` to be an array in the JSON string but got `%s`", jsonObj.get("error_messages").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {

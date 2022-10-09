@@ -186,9 +186,7 @@ public class CapacityCheckPerFacilityList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CapacityCheckPerFacilityList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!CapacityCheckPerFacilityList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CapacityCheckPerFacilityList is not found in the empty JSON string", CapacityCheckPerFacilityList.openapiRequiredFields.toString()));
         }
       }

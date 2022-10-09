@@ -468,9 +468,7 @@ public class FabricServiceToken {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (FabricServiceToken.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!FabricServiceToken.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in FabricServiceToken is not found in the empty JSON string", FabricServiceToken.openapiRequiredFields.toString()));
         }
       }

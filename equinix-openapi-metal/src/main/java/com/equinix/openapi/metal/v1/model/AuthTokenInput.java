@@ -205,9 +205,7 @@ public class AuthTokenInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (AuthTokenInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!AuthTokenInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in AuthTokenInput is not found in the empty JSON string", AuthTokenInput.openapiRequiredFields.toString()));
         }
       }

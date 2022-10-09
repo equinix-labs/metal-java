@@ -686,9 +686,7 @@ public class Organization {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Organization.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Organization.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Organization is not found in the empty JSON string", Organization.openapiRequiredFields.toString()));
         }
       }

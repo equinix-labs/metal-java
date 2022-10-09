@@ -186,9 +186,7 @@ public class PortConvertLayer3Input {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PortConvertLayer3Input.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PortConvertLayer3Input.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortConvertLayer3Input is not found in the empty JSON string", PortConvertLayer3Input.openapiRequiredFields.toString()));
         }
       }

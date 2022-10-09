@@ -535,9 +535,7 @@ public class VrfVirtualCircuitCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VrfVirtualCircuitCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VrfVirtualCircuitCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VrfVirtualCircuitCreateInput is not found in the empty JSON string", VrfVirtualCircuitCreateInput.openapiRequiredFields.toString()));
         }
       }
@@ -563,17 +561,17 @@ public class VrfVirtualCircuitCreateInput {
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) && !jsonObj.get("project").isJsonPrimitive()) {
+      if (!jsonObj.get("project").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `project` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project").toString()));
       }
-      if ((jsonObj.get("subnet") != null && !jsonObj.get("subnet").isJsonNull()) && !jsonObj.get("subnet").isJsonPrimitive()) {
+      if (!jsonObj.get("subnet").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `subnet` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subnet").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
+      if (!jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
-      if ((jsonObj.get("vrf") != null && !jsonObj.get("vrf").isJsonNull()) && !jsonObj.get("vrf").isJsonPrimitive()) {
+      if (!jsonObj.get("vrf").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `vrf` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vrf").toString()));
       }
   }

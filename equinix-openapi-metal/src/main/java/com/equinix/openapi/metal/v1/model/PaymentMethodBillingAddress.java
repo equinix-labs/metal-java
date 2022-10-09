@@ -235,9 +235,7 @@ public class PaymentMethodBillingAddress {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PaymentMethodBillingAddress.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PaymentMethodBillingAddress.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PaymentMethodBillingAddress is not found in the empty JSON string", PaymentMethodBillingAddress.openapiRequiredFields.toString()));
         }
       }

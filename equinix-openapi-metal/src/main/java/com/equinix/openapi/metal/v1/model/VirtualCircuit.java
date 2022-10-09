@@ -525,9 +525,7 @@ public class VirtualCircuit {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VirtualCircuit.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VirtualCircuit.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VirtualCircuit is not found in the empty JSON string", VirtualCircuit.openapiRequiredFields.toString()));
         }
       }
@@ -538,34 +536,28 @@ public class VirtualCircuit {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+      if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+      if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // validate the optional field `port`
-      if (jsonObj.get("port") != null && !jsonObj.get("port").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("port"));
-      }
-      // validate the optional field `project`
-      if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("project"));
-      }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+      // validate the required field `port`
+      Href.validateJsonObject(jsonObj.getAsJsonObject("port"));
+      // validate the required field `project`
+      Href.validateJsonObject(jsonObj.getAsJsonObject("project"));
+      if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       // ensure the json data is an array
       if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
-      // validate the optional field `virtual_network`
-      if (jsonObj.get("virtual_network") != null && !jsonObj.get("virtual_network").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("virtual_network"));
-      }
+      // validate the required field `virtual_network`
+      Href.validateJsonObject(jsonObj.getAsJsonObject("virtual_network"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

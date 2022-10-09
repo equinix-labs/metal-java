@@ -368,14 +368,12 @@ public class SpotMarketRequestCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (SpotMarketRequestCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!SpotMarketRequestCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SpotMarketRequestCreateInput is not found in the empty JSON string", SpotMarketRequestCreateInput.openapiRequiredFields.toString()));
         }
       }
       // ensure the json data is an array
-      if ((jsonObj.get("facilities") != null && !jsonObj.get("facilities").isJsonNull()) && !jsonObj.get("facilities").isJsonArray()) {
+      if (!jsonObj.get("facilities").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `facilities` to be an array in the JSON string but got `%s`", jsonObj.get("facilities").toString()));
       }
       // validate the optional field `instance_attributes`

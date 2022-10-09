@@ -275,9 +275,7 @@ public class VrfUpdateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VrfUpdateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VrfUpdateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VrfUpdateInput is not found in the empty JSON string", VrfUpdateInput.openapiRequiredFields.toString()));
         }
       }
@@ -285,7 +283,7 @@ public class VrfUpdateInput {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("ip_ranges") != null && !jsonObj.get("ip_ranges").isJsonNull()) && !jsonObj.get("ip_ranges").isJsonArray()) {
+      if (!jsonObj.get("ip_ranges").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ip_ranges` to be an array in the JSON string but got `%s`", jsonObj.get("ip_ranges").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {

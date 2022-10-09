@@ -185,14 +185,12 @@ public class RecoveryCodeList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (RecoveryCodeList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!RecoveryCodeList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in RecoveryCodeList is not found in the empty JSON string", RecoveryCodeList.openapiRequiredFields.toString()));
         }
       }
       // ensure the json data is an array
-      if ((jsonObj.get("recovery_codes") != null && !jsonObj.get("recovery_codes").isJsonNull()) && !jsonObj.get("recovery_codes").isJsonArray()) {
+      if (!jsonObj.get("recovery_codes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `recovery_codes` to be an array in the JSON string but got `%s`", jsonObj.get("recovery_codes").toString()));
       }
   }

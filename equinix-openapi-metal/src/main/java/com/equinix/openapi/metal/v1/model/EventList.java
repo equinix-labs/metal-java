@@ -217,9 +217,7 @@ public class EventList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (EventList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!EventList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in EventList is not found in the empty JSON string", EventList.openapiRequiredFields.toString()));
         }
       }

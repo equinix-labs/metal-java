@@ -323,14 +323,12 @@ public class InstancesBatchCreateInputBatchesInnerIpAddressesInner {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (InstancesBatchCreateInputBatchesInnerIpAddressesInner.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!InstancesBatchCreateInputBatchesInnerIpAddressesInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InstancesBatchCreateInputBatchesInnerIpAddressesInner is not found in the empty JSON string", InstancesBatchCreateInputBatchesInnerIpAddressesInner.openapiRequiredFields.toString()));
         }
       }
       // ensure the json data is an array
-      if ((jsonObj.get("ip_reservations") != null && !jsonObj.get("ip_reservations").isJsonNull()) && !jsonObj.get("ip_reservations").isJsonArray()) {
+      if (!jsonObj.get("ip_reservations").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ip_reservations` to be an array in the JSON string but got `%s`", jsonObj.get("ip_reservations").toString()));
       }
   }

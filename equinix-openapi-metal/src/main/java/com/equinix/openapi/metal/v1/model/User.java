@@ -796,9 +796,7 @@ public class User {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (User.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!User.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in User is not found in the empty JSON string", User.openapiRequiredFields.toString()));
         }
       }
@@ -856,7 +854,7 @@ public class User {
         throw new IllegalArgumentException(String.format("Expected the field `two_factor_auth` to be a primitive type in the JSON string but got `%s`", jsonObj.get("two_factor_auth").toString()));
       }
       // ensure the json data is an array
-      if ((jsonObj.get("features") != null && !jsonObj.get("features").isJsonNull()) && !jsonObj.get("features").isJsonArray()) {
+      if (!jsonObj.get("features").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `features` to be an array in the JSON string but got `%s`", jsonObj.get("features").toString()));
       }
   }

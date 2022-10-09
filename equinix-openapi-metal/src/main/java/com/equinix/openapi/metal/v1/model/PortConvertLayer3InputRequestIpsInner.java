@@ -205,9 +205,7 @@ public class PortConvertLayer3InputRequestIpsInner {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PortConvertLayer3InputRequestIpsInner.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PortConvertLayer3InputRequestIpsInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortConvertLayer3InputRequestIpsInner is not found in the empty JSON string", PortConvertLayer3InputRequestIpsInner.openapiRequiredFields.toString()));
         }
       }

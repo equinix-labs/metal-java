@@ -186,9 +186,7 @@ public class InterconnectionPortList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (InterconnectionPortList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!InterconnectionPortList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InterconnectionPortList is not found in the empty JSON string", InterconnectionPortList.openapiRequiredFields.toString()));
         }
       }

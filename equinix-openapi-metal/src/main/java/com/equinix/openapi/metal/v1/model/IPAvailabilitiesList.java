@@ -185,14 +185,12 @@ public class IPAvailabilitiesList {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (IPAvailabilitiesList.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!IPAvailabilitiesList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in IPAvailabilitiesList is not found in the empty JSON string", IPAvailabilitiesList.openapiRequiredFields.toString()));
         }
       }
       // ensure the json data is an array
-      if ((jsonObj.get("available") != null && !jsonObj.get("available").isJsonNull()) && !jsonObj.get("available").isJsonArray()) {
+      if (!jsonObj.get("available").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `available` to be an array in the JSON string but got `%s`", jsonObj.get("available").toString()));
       }
   }

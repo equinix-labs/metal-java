@@ -205,9 +205,7 @@ public class VrfIPReservation extends IPReservation {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VrfIPReservation.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VrfIPReservation.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIPReservation is not found in the empty JSON string", VrfIPReservation.openapiRequiredFields.toString()));
         }
       }
@@ -226,10 +224,8 @@ public class VrfIPReservation extends IPReservation {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      // validate the optional field `vrf`
-      if (jsonObj.get("vrf") != null && !jsonObj.get("vrf").isJsonNull()) {
-        Vrf.validateJsonObject(jsonObj.getAsJsonObject("vrf"));
-      }
+      // validate the required field `vrf`
+      Vrf.validateJsonObject(jsonObj.getAsJsonObject("vrf"));
       // validate the optional field `created_by`
       if (jsonObj.get("created_by") != null && !jsonObj.get("created_by").isJsonNull()) {
         User.validateJsonObject(jsonObj.getAsJsonObject("created_by"));
