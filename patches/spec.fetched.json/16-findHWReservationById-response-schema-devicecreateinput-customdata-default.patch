@@ -1,0 +1,50 @@
+diff --git a/spec/oas3.patched.json b/spec/oas3.patched.json
+index aff92d5..8ed228d 100644
+--- a/spec/oas3.patched.json
++++ b/spec/oas3.patched.json
+@@ -1001,21 +1001,21 @@
+               "enum": [
+                 "hourly",
+                 "daily",
+                 "monthly",
+                 "yearly"
+               ],
+               "type": "string"
+             },
+             "customdata": {
+               "description": "Customdata is an arbitrary JSON value that can be accessed via the\nmetadata service.",
+-              "default": {}
++              "default": null
+             },
+             "description": {
+               "description": "Any description of the device or how it will be used. This may be used\nto inform other API consumers with project access.",
+               "type": "string"
+             },
+             "facility": {
+               "description": "The datacenter where the device should be created.\n\nEither metro or facility must be provided.\n\nThe API will accept either a single facility `{ \"facility\": \"f1\" }`, or it can be instructed to create the device in the best available datacenter `{ \"facility\": \"any\" }`.\n\nAdditionally it is possible to set a prioritized location selection. For example `{ \"facility\": [\"f3\", \"f2\", \"any\"] }` can be used to prioritize `f3` and then `f2` before accepting `any` facility. If none of the facilities provided have availability for the requested device the request will fail.",
+               "type": "array",
+               "items": {
+                 "type": "string"
+@@ -7734,21 +7734,21 @@
+            },
+            {
+              "$ref": "#/components/parameters/Exclude"
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+-                   "$ref": "#/components/schemas/Device"
++                   "$ref": "#/components/schemas/HardwareReservation"
+                  }
+                }
+              },
+              "description": "ok"
+            },
+            "401": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
