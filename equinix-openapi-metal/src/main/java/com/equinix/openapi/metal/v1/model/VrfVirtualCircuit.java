@@ -22,8 +22,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -128,7 +127,6 @@ public class VrfVirtualCircuit {
    * @return customerIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "12.0.0.2", value = "An IP address from the subnet that will be used on the Customer side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Metal IP. By default, the last usable IP address in the subnet will be used.")
 
   public String getCustomerIp() {
     return customerIp;
@@ -151,7 +149,6 @@ public class VrfVirtualCircuit {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDescription() {
     return description;
@@ -174,7 +171,6 @@ public class VrfVirtualCircuit {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -197,7 +193,6 @@ public class VrfVirtualCircuit {
    * @return md5
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The MD5 password for the BGP peering in plaintext (not a checksum).")
 
   public String getMd5() {
     return md5;
@@ -220,7 +215,6 @@ public class VrfVirtualCircuit {
    * @return metalIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "12.0.0.1", value = "An IP address from the subnet that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Customer IP. By default, the first usable IP address in the subnet will be used.")
 
   public String getMetalIp() {
     return metalIp;
@@ -243,7 +237,6 @@ public class VrfVirtualCircuit {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getName() {
     return name;
@@ -266,7 +259,6 @@ public class VrfVirtualCircuit {
    * @return port
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getPort() {
     return port;
@@ -289,7 +281,6 @@ public class VrfVirtualCircuit {
    * @return nniVlan
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getNniVlan() {
     return nniVlan;
@@ -312,7 +303,6 @@ public class VrfVirtualCircuit {
    * @return peerAsn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The peer ASN that will be used with the VRF on the Virtual Circuit.")
 
   public Integer getPeerAsn() {
     return peerAsn;
@@ -335,7 +325,6 @@ public class VrfVirtualCircuit {
    * @return project
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getProject() {
     return project;
@@ -358,7 +347,6 @@ public class VrfVirtualCircuit {
    * @return speed
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "integer representing bps speed")
 
   public Integer getSpeed() {
     return speed;
@@ -381,7 +369,6 @@ public class VrfVirtualCircuit {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getStatus() {
     return status;
@@ -404,7 +391,6 @@ public class VrfVirtualCircuit {
    * @return subnet
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "12.0.0.0/30", value = "The /30 or /31 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IP and Customer IP must be IPs from this subnet. For /30 subnets, the network and broadcast IPs cannot be used as the Metal or Customer IP.")
 
   public String getSubnet() {
     return subnet;
@@ -435,7 +421,6 @@ public class VrfVirtualCircuit {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getTags() {
     return tags;
@@ -458,7 +443,6 @@ public class VrfVirtualCircuit {
    * @return vrf
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Vrf getVrf() {
     return vrf;
@@ -479,6 +463,10 @@ public class VrfVirtualCircuit {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the VrfVirtualCircuit instance itself
    */
   public VrfVirtualCircuit putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -490,6 +478,8 @@ public class VrfVirtualCircuit {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -497,6 +487,9 @@ public class VrfVirtualCircuit {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -644,8 +637,8 @@ public class VrfVirtualCircuit {
       if ((jsonObj.get("subnet") != null && !jsonObj.get("subnet").isJsonNull()) && !jsonObj.get("subnet").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `subnet` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subnet").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("tags").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       // validate the optional field `vrf`
@@ -670,7 +663,7 @@ public class VrfVirtualCircuit {
            public void write(JsonWriter out, VrfVirtualCircuit value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -706,8 +699,10 @@ public class VrfVirtualCircuit {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

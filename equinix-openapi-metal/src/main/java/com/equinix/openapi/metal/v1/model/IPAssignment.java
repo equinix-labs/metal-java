@@ -23,8 +23,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -136,7 +135,6 @@ public class IPAssignment {
    * @return address
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getAddress() {
     return address;
@@ -159,7 +157,6 @@ public class IPAssignment {
    * @return addressFamily
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getAddressFamily() {
     return addressFamily;
@@ -182,7 +179,6 @@ public class IPAssignment {
    * @return assignedTo
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getAssignedTo() {
     return assignedTo;
@@ -205,7 +201,6 @@ public class IPAssignment {
    * @return cidr
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getCidr() {
     return cidr;
@@ -228,7 +223,6 @@ public class IPAssignment {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -251,7 +245,6 @@ public class IPAssignment {
    * @return enabled
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getEnabled() {
     return enabled;
@@ -274,7 +267,6 @@ public class IPAssignment {
    * @return gateway
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getGateway() {
     return gateway;
@@ -297,7 +289,6 @@ public class IPAssignment {
    * @return globalIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getGlobalIp() {
     return globalIp;
@@ -320,7 +311,6 @@ public class IPAssignment {
    * @return href
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getHref() {
     return href;
@@ -343,7 +333,6 @@ public class IPAssignment {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -366,7 +355,6 @@ public class IPAssignment {
    * @return manageable
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getManageable() {
     return manageable;
@@ -389,7 +377,6 @@ public class IPAssignment {
    * @return management
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getManagement() {
     return management;
@@ -412,7 +399,6 @@ public class IPAssignment {
    * @return metro
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public IPAssignmentMetro getMetro() {
     return metro;
@@ -435,7 +421,6 @@ public class IPAssignment {
    * @return netmask
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getNetmask() {
     return netmask;
@@ -458,7 +443,6 @@ public class IPAssignment {
    * @return network
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getNetwork() {
     return network;
@@ -481,7 +465,6 @@ public class IPAssignment {
    * @return parentBlock
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ParentBlock getParentBlock() {
     return parentBlock;
@@ -504,7 +487,6 @@ public class IPAssignment {
    * @return _public
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getPublic() {
     return _public;
@@ -525,6 +507,10 @@ public class IPAssignment {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the IPAssignment instance itself
    */
   public IPAssignment putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -536,6 +522,8 @@ public class IPAssignment {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -543,6 +531,9 @@ public class IPAssignment {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -712,7 +703,7 @@ public class IPAssignment {
            public void write(JsonWriter out, IPAssignment value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -748,8 +739,10 @@ public class IPAssignment {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

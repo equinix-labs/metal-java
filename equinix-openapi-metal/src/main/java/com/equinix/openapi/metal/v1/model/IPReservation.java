@@ -24,8 +24,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -46,6 +44,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -55,7 +54,6 @@ import com.equinix.openapi.JSON;
 /**
  * Base class for all IP Reservations
  */
-@ApiModel(description = "Base class for all IP Reservations")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IPReservation {
   public static final String SERIALIZED_NAME_ADDRESS_FAMILY = "address_family";
@@ -161,7 +159,6 @@ public class IPReservation {
    * @return addressFamily
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getAddressFamily() {
     return addressFamily;
@@ -184,7 +181,6 @@ public class IPReservation {
    * @return bill
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getBill() {
     return bill;
@@ -207,7 +203,6 @@ public class IPReservation {
    * @return cidr
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getCidr() {
     return cidr;
@@ -230,7 +225,6 @@ public class IPReservation {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -253,7 +247,6 @@ public class IPReservation {
    * @return href
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getHref() {
     return href;
@@ -276,7 +269,6 @@ public class IPReservation {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -299,7 +291,6 @@ public class IPReservation {
    * @return manageable
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getManageable() {
     return manageable;
@@ -322,7 +313,6 @@ public class IPReservation {
    * @return management
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getManagement() {
     return management;
@@ -345,7 +335,6 @@ public class IPReservation {
    * @return metalGateway
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public MetalGatewayLite getMetalGateway() {
     return metalGateway;
@@ -368,7 +357,6 @@ public class IPReservation {
    * @return metro
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public IPReservationMetro getMetro() {
     return metro;
@@ -391,7 +379,6 @@ public class IPReservation {
    * @return netmask
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getNetmask() {
     return netmask;
@@ -414,7 +401,6 @@ public class IPReservation {
    * @return network
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getNetwork() {
     return network;
@@ -437,7 +423,6 @@ public class IPReservation {
    * @return _public
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getPublic() {
     return _public;
@@ -460,7 +445,6 @@ public class IPReservation {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getState() {
     return state;
@@ -491,7 +475,6 @@ public class IPReservation {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getTags() {
     return tags;
@@ -514,7 +497,6 @@ public class IPReservation {
    * @return details
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDetails() {
     return details;
@@ -537,7 +519,6 @@ public class IPReservation {
    * @return customdata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getCustomdata() {
     return customdata;
@@ -560,7 +541,6 @@ public class IPReservation {
    * @return project
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Project getProject() {
     return project;
@@ -583,7 +563,6 @@ public class IPReservation {
    * @return projectLite
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getProjectLite() {
     return projectLite;
@@ -606,7 +585,6 @@ public class IPReservation {
    * @return address
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getAddress() {
     return address;
@@ -629,7 +607,6 @@ public class IPReservation {
    * @return gateway
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getGateway() {
     return gateway;
@@ -652,7 +629,6 @@ public class IPReservation {
    * @return type
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public String getType() {
     return type;
@@ -673,6 +649,10 @@ public class IPReservation {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the IPReservation instance itself
    */
   public IPReservation putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -684,6 +664,8 @@ public class IPReservation {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -691,6 +673,9 @@ public class IPReservation {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {

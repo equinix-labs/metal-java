@@ -140,15 +140,12 @@ public class UsersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createUserValidateBeforeCall(UserCreateInput userCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'userCreateInput' is set
         if (userCreateInput == null) {
             throw new ApiException("Missing the required parameter 'userCreateInput' when calling createUser(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createUserCall(userCreateInput, _callback);
-        return localVarCall;
+        return createUserCall(userCreateInput, _callback);
 
     }
 
@@ -269,7 +266,6 @@ public class UsersApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -282,10 +278,7 @@ public class UsersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findCurrentUserValidateBeforeCall(List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findCurrentUserCall(include, exclude, _callback);
-        return localVarCall;
+        return findCurrentUserCall(include, exclude, _callback);
 
     }
 
@@ -418,7 +411,6 @@ public class UsersApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -431,10 +423,7 @@ public class UsersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findInvitationsValidateBeforeCall(List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findInvitationsCall(include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findInvitationsCall(include, exclude, page, perPage, _callback);
 
     }
 
@@ -546,7 +535,7 @@ public class UsersApi {
 
         // create path and map variables
         String localVarPath = "/users/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -571,7 +560,6 @@ public class UsersApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -584,15 +572,12 @@ public class UsersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findUserByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findUserById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findUserByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findUserByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -699,7 +684,7 @@ public class UsersApi {
 
         // create path and map variables
         String localVarPath = "/users/{id}/customdata"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -716,7 +701,6 @@ public class UsersApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -729,15 +713,12 @@ public class UsersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findUserCustomdataValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findUserCustomdata(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findUserCustomdataCall(id, _callback);
-        return localVarCall;
+        return findUserCustomdataCall(id, _callback);
 
     }
 
@@ -867,7 +848,6 @@ public class UsersApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -880,10 +860,7 @@ public class UsersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findUsersValidateBeforeCall(List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findUsersCall(include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findUsersCall(include, exclude, page, perPage, _callback);
 
     }
 
@@ -1015,15 +992,12 @@ public class UsersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateCurrentUserValidateBeforeCall(UserUpdateInput userUpdateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'userUpdateInput' is set
         if (userUpdateInput == null) {
             throw new ApiException("Missing the required parameter 'userUpdateInput' when calling updateCurrentUser(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateCurrentUserCall(userUpdateInput, _callback);
-        return localVarCall;
+        return updateCurrentUserCall(userUpdateInput, _callback);
 
     }
 

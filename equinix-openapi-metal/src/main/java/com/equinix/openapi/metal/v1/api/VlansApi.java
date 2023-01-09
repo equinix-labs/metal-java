@@ -112,7 +112,7 @@ public class VlansApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/virtual-networks"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -142,20 +142,17 @@ public class VlansApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createVirtualNetworkValidateBeforeCall(UUID id, VirtualNetworkCreateInput virtualNetworkCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createVirtualNetwork(Async)");
         }
-        
+
         // verify the required parameter 'virtualNetworkCreateInput' is set
         if (virtualNetworkCreateInput == null) {
             throw new ApiException("Missing the required parameter 'virtualNetworkCreateInput' when calling createVirtualNetwork(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createVirtualNetworkCall(id, virtualNetworkCreateInput, _callback);
-        return localVarCall;
+        return createVirtualNetworkCall(id, virtualNetworkCreateInput, _callback);
 
     }
 
@@ -263,7 +260,7 @@ public class VlansApi {
 
         // create path and map variables
         String localVarPath = "/virtual-networks/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -280,7 +277,6 @@ public class VlansApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -293,15 +289,12 @@ public class VlansApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteVirtualNetworkValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteVirtualNetwork(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteVirtualNetworkCall(id, _callback);
-        return localVarCall;
+        return deleteVirtualNetworkCall(id, _callback);
 
     }
 
@@ -409,7 +402,7 @@ public class VlansApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/virtual-networks"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -442,7 +435,6 @@ public class VlansApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -455,15 +447,12 @@ public class VlansApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findVirtualNetworksValidateBeforeCall(UUID id, List<String> include, List<String> exclude, String facility, String metro, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findVirtualNetworks(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findVirtualNetworksCall(id, include, exclude, facility, metro, _callback);
-        return localVarCall;
+        return findVirtualNetworksCall(id, include, exclude, facility, metro, _callback);
 
     }
 
@@ -577,7 +566,7 @@ public class VlansApi {
 
         // create path and map variables
         String localVarPath = "/virtual-networks/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -594,7 +583,6 @@ public class VlansApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -607,15 +595,12 @@ public class VlansApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getVirtualNetworkValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getVirtualNetwork(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getVirtualNetworkCall(id, _callback);
-        return localVarCall;
+        return getVirtualNetworkCall(id, _callback);
 
     }
 

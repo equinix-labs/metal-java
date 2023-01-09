@@ -138,15 +138,12 @@ public class EmailsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createEmailValidateBeforeCall(CreateEmailInput createEmailInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'createEmailInput' is set
         if (createEmailInput == null) {
             throw new ApiException("Missing the required parameter 'createEmailInput' when calling createEmail(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createEmailCall(createEmailInput, _callback);
-        return localVarCall;
+        return createEmailCall(createEmailInput, _callback);
 
     }
 
@@ -244,7 +241,7 @@ public class EmailsApi {
 
         // create path and map variables
         String localVarPath = "/emails/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -261,7 +258,6 @@ public class EmailsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -274,15 +270,12 @@ public class EmailsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteEmailValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteEmail(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteEmailCall(id, _callback);
-        return localVarCall;
+        return deleteEmailCall(id, _callback);
 
     }
 
@@ -381,7 +374,7 @@ public class EmailsApi {
 
         // create path and map variables
         String localVarPath = "/emails/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -406,7 +399,6 @@ public class EmailsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -419,15 +411,12 @@ public class EmailsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findEmailByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findEmailById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findEmailByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findEmailByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -536,7 +525,7 @@ public class EmailsApi {
 
         // create path and map variables
         String localVarPath = "/emails/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -566,20 +555,17 @@ public class EmailsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateEmailValidateBeforeCall(UUID id, UpdateEmailInput updateEmailInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateEmail(Async)");
         }
-        
+
         // verify the required parameter 'updateEmailInput' is set
         if (updateEmailInput == null) {
             throw new ApiException("Missing the required parameter 'updateEmailInput' when calling updateEmail(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateEmailCall(id, updateEmailInput, _callback);
-        return localVarCall;
+        return updateEmailCall(id, updateEmailInput, _callback);
 
     }
 

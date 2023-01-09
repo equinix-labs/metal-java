@@ -28,8 +28,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -50,6 +48,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -103,7 +102,6 @@ public class DefaultIPReservation extends IPReservation {
    * @return addon
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getAddon() {
     return addon;
@@ -134,7 +132,6 @@ public class DefaultIPReservation extends IPReservation {
    * @return assignments
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<IPAssignment> getAssignments() {
     return assignments;
@@ -157,7 +154,6 @@ public class DefaultIPReservation extends IPReservation {
    * @return enabled
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getEnabled() {
     return enabled;
@@ -180,7 +176,6 @@ public class DefaultIPReservation extends IPReservation {
    * @return facility
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Facility getFacility() {
     return facility;
@@ -203,7 +198,6 @@ public class DefaultIPReservation extends IPReservation {
    * @return globalIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getGlobalIp() {
     return globalIp;
@@ -226,7 +220,6 @@ public class DefaultIPReservation extends IPReservation {
    * @return requestedBy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public User getRequestedBy() {
     return requestedBy;
@@ -249,7 +242,6 @@ public class DefaultIPReservation extends IPReservation {
    * @return available
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getAvailable() {
     return available;

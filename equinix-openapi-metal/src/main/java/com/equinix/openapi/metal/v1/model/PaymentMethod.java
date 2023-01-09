@@ -22,8 +22,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -44,6 +42,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -129,7 +128,6 @@ public class PaymentMethod {
    * @return billingAddress
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public PaymentMethodBillingAddress getBillingAddress() {
     return billingAddress;
@@ -152,7 +150,6 @@ public class PaymentMethod {
    * @return cardType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getCardType() {
     return cardType;
@@ -175,7 +172,6 @@ public class PaymentMethod {
    * @return cardholderName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getCardholderName() {
     return cardholderName;
@@ -198,7 +194,6 @@ public class PaymentMethod {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -221,7 +216,6 @@ public class PaymentMethod {
    * @return createdByUser
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getCreatedByUser() {
     return createdByUser;
@@ -244,7 +238,6 @@ public class PaymentMethod {
    * @return _default
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getDefault() {
     return _default;
@@ -267,7 +260,6 @@ public class PaymentMethod {
    * @return email
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getEmail() {
     return email;
@@ -290,7 +282,6 @@ public class PaymentMethod {
    * @return expirationMonth
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getExpirationMonth() {
     return expirationMonth;
@@ -313,7 +304,6 @@ public class PaymentMethod {
    * @return expirationYear
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getExpirationYear() {
     return expirationYear;
@@ -336,7 +326,6 @@ public class PaymentMethod {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -359,7 +348,6 @@ public class PaymentMethod {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getName() {
     return name;
@@ -382,7 +370,6 @@ public class PaymentMethod {
    * @return organization
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getOrganization() {
     return organization;
@@ -413,7 +400,6 @@ public class PaymentMethod {
    * @return projects
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getProjects() {
     return projects;
@@ -436,7 +422,6 @@ public class PaymentMethod {
    * @return type
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getType() {
     return type;
@@ -459,7 +444,6 @@ public class PaymentMethod {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -480,6 +464,10 @@ public class PaymentMethod {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the PaymentMethod instance itself
    */
   public PaymentMethod putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -491,6 +479,8 @@ public class PaymentMethod {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -498,6 +488,9 @@ public class PaymentMethod {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -681,7 +674,7 @@ public class PaymentMethod {
            public void write(JsonWriter out, PaymentMethod value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -717,8 +710,10 @@ public class PaymentMethod {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

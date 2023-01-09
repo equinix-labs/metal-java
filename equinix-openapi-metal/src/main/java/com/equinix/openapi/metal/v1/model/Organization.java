@@ -22,8 +22,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.File;
 import java.io.IOException;
 import java.time.OffsetDateTime;
@@ -45,6 +43,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -138,7 +137,6 @@ public class Organization {
    * @return address
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Address getAddress() {
     return address;
@@ -161,7 +159,6 @@ public class Organization {
    * @return billingAddress
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Address getBillingAddress() {
     return billingAddress;
@@ -184,7 +181,6 @@ public class Organization {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -207,7 +203,6 @@ public class Organization {
    * @return creditAmount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Float getCreditAmount() {
     return creditAmount;
@@ -230,7 +225,6 @@ public class Organization {
    * @return customdata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getCustomdata() {
     return customdata;
@@ -253,7 +247,6 @@ public class Organization {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDescription() {
     return description;
@@ -276,7 +269,6 @@ public class Organization {
    * @return enforce2faAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Force to all members to have enabled the two factor authentication after that date, unless the value is null")
 
   public OffsetDateTime getEnforce2faAt() {
     return enforce2faAt;
@@ -299,7 +291,6 @@ public class Organization {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -322,7 +313,6 @@ public class Organization {
    * @return logo
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public File getLogo() {
     return logo;
@@ -353,7 +343,6 @@ public class Organization {
    * @return members
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getMembers() {
     return members;
@@ -384,7 +373,6 @@ public class Organization {
    * @return memberships
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getMemberships() {
     return memberships;
@@ -407,7 +395,6 @@ public class Organization {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getName() {
     return name;
@@ -438,7 +425,6 @@ public class Organization {
    * @return projects
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getProjects() {
     return projects;
@@ -461,7 +447,6 @@ public class Organization {
    * @return terms
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getTerms() {
     return terms;
@@ -484,7 +469,6 @@ public class Organization {
    * @return twitter
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getTwitter() {
     return twitter;
@@ -507,7 +491,6 @@ public class Organization {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -530,7 +513,6 @@ public class Organization {
    * @return website
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getWebsite() {
     return website;
@@ -551,6 +533,10 @@ public class Organization {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the Organization instance itself
    */
   public Organization putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -562,6 +548,8 @@ public class Organization {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -569,6 +557,9 @@ public class Organization {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -773,7 +764,7 @@ public class Organization {
            public void write(JsonWriter out, Organization value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -809,8 +800,10 @@ public class Organization {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

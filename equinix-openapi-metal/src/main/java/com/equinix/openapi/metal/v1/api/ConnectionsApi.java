@@ -118,8 +118,8 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/connections/{connection_id}/ports/{port_id}/virtual-circuits"
-            .replaceAll("\\{" + "connection_id" + "\\}", localVarApiClient.escapeString(connectionId.toString()))
-            .replaceAll("\\{" + "port_id" + "\\}", localVarApiClient.escapeString(portId.toString()));
+            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()))
+            .replace("{" + "port_id" + "}", localVarApiClient.escapeString(portId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -149,25 +149,22 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createConnectionPortVirtualCircuitValidateBeforeCall(UUID connectionId, UUID portId, CreateConnectionPortVirtualCircuitRequest createConnectionPortVirtualCircuitRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling createConnectionPortVirtualCircuit(Async)");
         }
-        
+
         // verify the required parameter 'portId' is set
         if (portId == null) {
             throw new ApiException("Missing the required parameter 'portId' when calling createConnectionPortVirtualCircuit(Async)");
         }
-        
+
         // verify the required parameter 'createConnectionPortVirtualCircuitRequest' is set
         if (createConnectionPortVirtualCircuitRequest == null) {
             throw new ApiException("Missing the required parameter 'createConnectionPortVirtualCircuitRequest' when calling createConnectionPortVirtualCircuit(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createConnectionPortVirtualCircuitCall(connectionId, portId, createConnectionPortVirtualCircuitRequest, _callback);
-        return localVarCall;
+        return createConnectionPortVirtualCircuitCall(connectionId, portId, createConnectionPortVirtualCircuitRequest, _callback);
 
     }
 
@@ -272,7 +269,7 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{organization_id}/connections"
-            .replaceAll("\\{" + "organization_id" + "\\}", localVarApiClient.escapeString(organizationId.toString()));
+            .replace("{" + "organization_id" + "}", localVarApiClient.escapeString(organizationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -302,20 +299,17 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createOrganizationInterconnectionValidateBeforeCall(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'organizationId' is set
         if (organizationId == null) {
             throw new ApiException("Missing the required parameter 'organizationId' when calling createOrganizationInterconnection(Async)");
         }
-        
+
         // verify the required parameter 'interconnectionCreateInput' is set
         if (interconnectionCreateInput == null) {
             throw new ApiException("Missing the required parameter 'interconnectionCreateInput' when calling createOrganizationInterconnection(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createOrganizationInterconnectionCall(organizationId, interconnectionCreateInput, _callback);
-        return localVarCall;
+        return createOrganizationInterconnectionCall(organizationId, interconnectionCreateInput, _callback);
 
     }
 
@@ -419,7 +413,7 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/projects/{project_id}/connections"
-            .replaceAll("\\{" + "project_id" + "\\}", localVarApiClient.escapeString(projectId.toString()));
+            .replace("{" + "project_id" + "}", localVarApiClient.escapeString(projectId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -449,20 +443,17 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createProjectInterconnectionValidateBeforeCall(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling createProjectInterconnection(Async)");
         }
-        
+
         // verify the required parameter 'interconnectionCreateInput' is set
         if (interconnectionCreateInput == null) {
             throw new ApiException("Missing the required parameter 'interconnectionCreateInput' when calling createProjectInterconnection(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createProjectInterconnectionCall(projectId, interconnectionCreateInput, _callback);
-        return localVarCall;
+        return createProjectInterconnectionCall(projectId, interconnectionCreateInput, _callback);
 
     }
 
@@ -562,7 +553,7 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/connections/{connection_id}"
-            .replaceAll("\\{" + "connection_id" + "\\}", localVarApiClient.escapeString(connectionId.toString()));
+            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -579,7 +570,6 @@ public class ConnectionsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -592,15 +582,12 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteInterconnectionValidateBeforeCall(UUID connectionId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling deleteInterconnection(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteInterconnectionCall(connectionId, _callback);
-        return localVarCall;
+        return deleteInterconnectionCall(connectionId, _callback);
 
     }
 
@@ -697,7 +684,7 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/virtual-circuits/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -714,7 +701,6 @@ public class ConnectionsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -727,15 +713,12 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteVirtualCircuitValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteVirtualCircuit(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteVirtualCircuitCall(id, _callback);
-        return localVarCall;
+        return deleteVirtualCircuitCall(id, _callback);
 
     }
 
@@ -833,8 +816,8 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/connections/{connection_id}/ports/{id}"
-            .replaceAll("\\{" + "connection_id" + "\\}", localVarApiClient.escapeString(connectionId.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -851,7 +834,6 @@ public class ConnectionsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -864,20 +846,17 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getConnectionPortValidateBeforeCall(UUID connectionId, UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling getConnectionPort(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getConnectionPort(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getConnectionPortCall(connectionId, id, _callback);
-        return localVarCall;
+        return getConnectionPortCall(connectionId, id, _callback);
 
     }
 
@@ -977,7 +956,7 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/connections/{connection_id}"
-            .replaceAll("\\{" + "connection_id" + "\\}", localVarApiClient.escapeString(connectionId.toString()));
+            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -994,7 +973,6 @@ public class ConnectionsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1007,15 +985,12 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getInterconnectionValidateBeforeCall(UUID connectionId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling getInterconnection(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getInterconnectionCall(connectionId, _callback);
-        return localVarCall;
+        return getInterconnectionCall(connectionId, _callback);
 
     }
 
@@ -1112,7 +1087,7 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/virtual-circuits/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1129,7 +1104,6 @@ public class ConnectionsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1142,15 +1116,12 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getVirtualCircuitValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getVirtualCircuit(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getVirtualCircuitCall(id, _callback);
-        return localVarCall;
+        return getVirtualCircuitCall(id, _callback);
 
     }
 
@@ -1248,8 +1219,8 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/connections/{connection_id}/ports/{port_id}/virtual-circuits"
-            .replaceAll("\\{" + "connection_id" + "\\}", localVarApiClient.escapeString(connectionId.toString()))
-            .replaceAll("\\{" + "port_id" + "\\}", localVarApiClient.escapeString(portId.toString()));
+            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()))
+            .replace("{" + "port_id" + "}", localVarApiClient.escapeString(portId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1266,7 +1237,6 @@ public class ConnectionsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1279,20 +1249,17 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listConnectionPortVirtualCircuitsValidateBeforeCall(UUID connectionId, UUID portId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling listConnectionPortVirtualCircuits(Async)");
         }
-        
+
         // verify the required parameter 'portId' is set
         if (portId == null) {
             throw new ApiException("Missing the required parameter 'portId' when calling listConnectionPortVirtualCircuits(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = listConnectionPortVirtualCircuitsCall(connectionId, portId, _callback);
-        return localVarCall;
+        return listConnectionPortVirtualCircuitsCall(connectionId, portId, _callback);
 
     }
 
@@ -1392,7 +1359,7 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/connections/{connection_id}/ports"
-            .replaceAll("\\{" + "connection_id" + "\\}", localVarApiClient.escapeString(connectionId.toString()));
+            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1409,7 +1376,6 @@ public class ConnectionsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1422,15 +1388,12 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listConnectionPortsValidateBeforeCall(UUID connectionId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling listConnectionPorts(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = listConnectionPortsCall(connectionId, _callback);
-        return localVarCall;
+        return listConnectionPortsCall(connectionId, _callback);
 
     }
 
@@ -1527,7 +1490,7 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{organization_id}/connections"
-            .replaceAll("\\{" + "organization_id" + "\\}", localVarApiClient.escapeString(organizationId.toString()));
+            .replace("{" + "organization_id" + "}", localVarApiClient.escapeString(organizationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1544,7 +1507,6 @@ public class ConnectionsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1557,15 +1519,12 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call organizationListInterconnectionsValidateBeforeCall(UUID organizationId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'organizationId' is set
         if (organizationId == null) {
             throw new ApiException("Missing the required parameter 'organizationId' when calling organizationListInterconnections(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = organizationListInterconnectionsCall(organizationId, _callback);
-        return localVarCall;
+        return organizationListInterconnectionsCall(organizationId, _callback);
 
     }
 
@@ -1662,7 +1621,7 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/projects/{project_id}/connections"
-            .replaceAll("\\{" + "project_id" + "\\}", localVarApiClient.escapeString(projectId.toString()));
+            .replace("{" + "project_id" + "}", localVarApiClient.escapeString(projectId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1679,7 +1638,6 @@ public class ConnectionsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1692,15 +1650,12 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call projectListInterconnectionsValidateBeforeCall(UUID projectId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling projectListInterconnections(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = projectListInterconnectionsCall(projectId, _callback);
-        return localVarCall;
+        return projectListInterconnectionsCall(projectId, _callback);
 
     }
 
@@ -1798,7 +1753,7 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/connections/{connection_id}"
-            .replaceAll("\\{" + "connection_id" + "\\}", localVarApiClient.escapeString(connectionId.toString()));
+            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1828,20 +1783,17 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateInterconnectionValidateBeforeCall(UUID connectionId, InterconnectionUpdateInput interconnectionUpdateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling updateInterconnection(Async)");
         }
-        
+
         // verify the required parameter 'interconnectionUpdateInput' is set
         if (interconnectionUpdateInput == null) {
             throw new ApiException("Missing the required parameter 'interconnectionUpdateInput' when calling updateInterconnection(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateInterconnectionCall(connectionId, interconnectionUpdateInput, _callback);
-        return localVarCall;
+        return updateInterconnectionCall(connectionId, interconnectionUpdateInput, _callback);
 
     }
 
@@ -1943,7 +1895,7 @@ public class ConnectionsApi {
 
         // create path and map variables
         String localVarPath = "/virtual-circuits/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1973,20 +1925,17 @@ public class ConnectionsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateVirtualCircuitValidateBeforeCall(UUID id, UpdateVirtualCircuitRequest updateVirtualCircuitRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateVirtualCircuit(Async)");
         }
-        
+
         // verify the required parameter 'updateVirtualCircuitRequest' is set
         if (updateVirtualCircuitRequest == null) {
             throw new ApiException("Missing the required parameter 'updateVirtualCircuitRequest' when calling updateVirtualCircuit(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateVirtualCircuitCall(id, updateVirtualCircuitRequest, _callback);
-        return localVarCall;
+        return updateVirtualCircuitCall(id, updateVirtualCircuitRequest, _callback);
 
     }
 

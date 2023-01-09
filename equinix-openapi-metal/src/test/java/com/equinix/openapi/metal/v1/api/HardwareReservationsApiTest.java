@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.api;
 
 import com.equinix.openapi.ApiException;
-import com.equinix.openapi.metal.v1.model.Device;
 import com.equinix.openapi.metal.v1.model.Error;
 import com.equinix.openapi.metal.v1.model.HardwareReservation;
 import com.equinix.openapi.metal.v1.model.HardwareReservationList;
@@ -47,7 +46,7 @@ public class HardwareReservationsApiTest {
         UUID id = null;
         List<String> include = null;
         List<String> exclude = null;
-        Device response = api.findHardwareReservationById(id, include, exclude);
+        HardwareReservation response = api.findHardwareReservationById(id, include, exclude);
         // TODO: test validations
     }
 

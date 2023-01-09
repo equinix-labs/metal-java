@@ -131,7 +131,6 @@ public class PlansApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -144,10 +143,7 @@ public class PlansApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findPlansValidateBeforeCall(List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findPlansCall(include, exclude, _callback);
-        return localVarCall;
+        return findPlansCall(include, exclude, _callback);
 
     }
 
@@ -247,7 +243,7 @@ public class PlansApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/plans"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -272,7 +268,6 @@ public class PlansApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -285,15 +280,12 @@ public class PlansApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findPlansByProjectValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findPlansByProject(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findPlansByProjectCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findPlansByProjectCall(id, include, exclude, _callback);
 
     }
 

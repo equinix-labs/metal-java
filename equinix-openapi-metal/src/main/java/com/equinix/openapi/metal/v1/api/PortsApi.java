@@ -116,7 +116,7 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/native-vlan"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -137,7 +137,6 @@ public class PortsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -150,20 +149,17 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call assignNativeVlanValidateBeforeCall(UUID id, String vnid, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling assignNativeVlan(Async)");
         }
-        
+
         // verify the required parameter 'vnid' is set
         if (vnid == null) {
             throw new ApiException("Missing the required parameter 'vnid' when calling assignNativeVlan(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = assignNativeVlanCall(id, vnid, _callback);
-        return localVarCall;
+        return assignNativeVlanCall(id, vnid, _callback);
 
     }
 
@@ -269,7 +265,7 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/assign"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -299,20 +295,17 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call assignPortValidateBeforeCall(UUID id, PortAssignInput portAssignInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling assignPort(Async)");
         }
-        
+
         // verify the required parameter 'portAssignInput' is set
         if (portAssignInput == null) {
             throw new ApiException("Missing the required parameter 'portAssignInput' when calling assignPort(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = assignPortCall(id, portAssignInput, _callback);
-        return localVarCall;
+        return assignPortCall(id, portAssignInput, _callback);
 
     }
 
@@ -421,7 +414,7 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/bond"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -442,7 +435,6 @@ public class PortsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -455,15 +447,12 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call bondPortValidateBeforeCall(UUID id, Boolean bulkEnable, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling bondPort(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = bondPortCall(id, bulkEnable, _callback);
-        return localVarCall;
+        return bondPortCall(id, bulkEnable, _callback);
 
     }
 
@@ -572,7 +561,7 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/convert/layer-2"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -602,15 +591,12 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call convertLayer2ValidateBeforeCall(UUID id, PortAssignInput portAssignInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling convertLayer2(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = convertLayer2Call(id, portAssignInput, _callback);
-        return localVarCall;
+        return convertLayer2Call(id, portAssignInput, _callback);
 
     }
 
@@ -719,7 +705,7 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/convert/layer-3"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -749,15 +735,12 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call convertLayer3ValidateBeforeCall(UUID id, PortConvertLayer3Input portConvertLayer3Input, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling convertLayer3(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = convertLayer3Call(id, portConvertLayer3Input, _callback);
-        return localVarCall;
+        return convertLayer3Call(id, portConvertLayer3Input, _callback);
 
     }
 
@@ -866,7 +849,7 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/vlan-assignments/batches"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -896,20 +879,17 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createPortVlanAssignmentBatchValidateBeforeCall(UUID id, PortVlanAssignmentBatchCreateInput portVlanAssignmentBatchCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createPortVlanAssignmentBatch(Async)");
         }
-        
+
         // verify the required parameter 'portVlanAssignmentBatchCreateInput' is set
         if (portVlanAssignmentBatchCreateInput == null) {
             throw new ApiException("Missing the required parameter 'portVlanAssignmentBatchCreateInput' when calling createPortVlanAssignmentBatch(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createPortVlanAssignmentBatchCall(id, portVlanAssignmentBatchCreateInput, _callback);
-        return localVarCall;
+        return createPortVlanAssignmentBatchCall(id, portVlanAssignmentBatchCreateInput, _callback);
 
     }
 
@@ -1016,7 +996,7 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/native-vlan"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1033,7 +1013,6 @@ public class PortsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1046,15 +1025,12 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteNativeVlanValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteNativeVlan(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteNativeVlanCall(id, _callback);
-        return localVarCall;
+        return deleteNativeVlanCall(id, _callback);
 
     }
 
@@ -1157,7 +1133,7 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/disbond"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1178,7 +1154,6 @@ public class PortsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1191,15 +1166,12 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call disbondPortValidateBeforeCall(UUID id, Boolean bulkDisable, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling disbondPort(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = disbondPortCall(id, bulkDisable, _callback);
-        return localVarCall;
+        return disbondPortCall(id, bulkDisable, _callback);
 
     }
 
@@ -1307,7 +1279,7 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1332,7 +1304,6 @@ public class PortsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1345,15 +1316,12 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findPortByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findPortById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findPortByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findPortByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -1458,8 +1426,8 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/vlan-assignments/batches/{batch_id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()))
-            .replaceAll("\\{" + "batch_id" + "\\}", localVarApiClient.escapeString(batchId.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "batch_id" + "}", localVarApiClient.escapeString(batchId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1476,7 +1444,6 @@ public class PortsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1489,20 +1456,17 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findPortVlanAssignmentBatchByPortIdAndBatchIdValidateBeforeCall(UUID id, UUID batchId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findPortVlanAssignmentBatchByPortIdAndBatchId(Async)");
         }
-        
+
         // verify the required parameter 'batchId' is set
         if (batchId == null) {
             throw new ApiException("Missing the required parameter 'batchId' when calling findPortVlanAssignmentBatchByPortIdAndBatchId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findPortVlanAssignmentBatchByPortIdAndBatchIdCall(id, batchId, _callback);
-        return localVarCall;
+        return findPortVlanAssignmentBatchByPortIdAndBatchIdCall(id, batchId, _callback);
 
     }
 
@@ -1606,7 +1570,7 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/vlan-assignments/batches"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1623,7 +1587,6 @@ public class PortsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1636,15 +1599,12 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findPortVlanAssignmentBatchesValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findPortVlanAssignmentBatches(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findPortVlanAssignmentBatchesCall(id, _callback);
-        return localVarCall;
+        return findPortVlanAssignmentBatchesCall(id, _callback);
 
     }
 
@@ -1748,8 +1708,8 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/vlan-assignments/{assignment_id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()))
-            .replaceAll("\\{" + "assignment_id" + "\\}", localVarApiClient.escapeString(assignmentId.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "assignment_id" + "}", localVarApiClient.escapeString(assignmentId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1774,7 +1734,6 @@ public class PortsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1787,20 +1746,17 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findPortVlanAssignmentByPortIdAndAssignmentIdValidateBeforeCall(UUID id, UUID assignmentId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findPortVlanAssignmentByPortIdAndAssignmentId(Async)");
         }
-        
+
         // verify the required parameter 'assignmentId' is set
         if (assignmentId == null) {
             throw new ApiException("Missing the required parameter 'assignmentId' when calling findPortVlanAssignmentByPortIdAndAssignmentId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findPortVlanAssignmentByPortIdAndAssignmentIdCall(id, assignmentId, include, exclude, _callback);
-        return localVarCall;
+        return findPortVlanAssignmentByPortIdAndAssignmentIdCall(id, assignmentId, include, exclude, _callback);
 
     }
 
@@ -1912,7 +1868,7 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/vlan-assignments"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1937,7 +1893,6 @@ public class PortsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1950,15 +1905,12 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findPortVlanAssignmentsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findPortVlanAssignments(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findPortVlanAssignmentsCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findPortVlanAssignmentsCall(id, include, exclude, _callback);
 
     }
 
@@ -2067,7 +2019,7 @@ public class PortsApi {
 
         // create path and map variables
         String localVarPath = "/ports/{id}/unassign"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2097,20 +2049,17 @@ public class PortsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call unassignPortValidateBeforeCall(UUID id, PortAssignInput portAssignInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling unassignPort(Async)");
         }
-        
+
         // verify the required parameter 'portAssignInput' is set
         if (portAssignInput == null) {
             throw new ApiException("Missing the required parameter 'portAssignInput' when calling unassignPort(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = unassignPortCall(id, portAssignInput, _callback);
-        return localVarCall;
+        return unassignPortCall(id, portAssignInput, _callback);
 
     }
 

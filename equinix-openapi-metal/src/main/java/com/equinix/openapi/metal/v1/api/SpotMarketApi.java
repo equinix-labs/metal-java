@@ -114,7 +114,7 @@ public class SpotMarketApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/spot-market-requests"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -144,20 +144,17 @@ public class SpotMarketApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createSpotMarketRequestValidateBeforeCall(UUID id, SpotMarketRequestCreateInput spotMarketRequestCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createSpotMarketRequest(Async)");
         }
-        
+
         // verify the required parameter 'spotMarketRequestCreateInput' is set
         if (spotMarketRequestCreateInput == null) {
             throw new ApiException("Missing the required parameter 'spotMarketRequestCreateInput' when calling createSpotMarketRequest(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createSpotMarketRequestCall(id, spotMarketRequestCreateInput, _callback);
-        return localVarCall;
+        return createSpotMarketRequestCall(id, spotMarketRequestCreateInput, _callback);
 
     }
 
@@ -262,7 +259,7 @@ public class SpotMarketApi {
 
         // create path and map variables
         String localVarPath = "/spot-market-requests/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -283,7 +280,6 @@ public class SpotMarketApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -296,15 +292,12 @@ public class SpotMarketApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteSpotMarketRequestValidateBeforeCall(UUID id, Boolean forceTermination, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteSpotMarketRequest(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteSpotMarketRequestCall(id, forceTermination, _callback);
-        return localVarCall;
+        return deleteSpotMarketRequestCall(id, forceTermination, _callback);
 
     }
 
@@ -428,7 +421,6 @@ public class SpotMarketApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -441,10 +433,7 @@ public class SpotMarketApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findMetroSpotMarketPricesValidateBeforeCall(String metro, String plan, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findMetroSpotMarketPricesCall(metro, plan, _callback);
-        return localVarCall;
+        return findMetroSpotMarketPricesCall(metro, plan, _callback);
 
     }
 
@@ -569,7 +558,6 @@ public class SpotMarketApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -582,10 +570,7 @@ public class SpotMarketApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findSpotMarketPricesValidateBeforeCall(String facility, String plan, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findSpotMarketPricesCall(facility, plan, _callback);
-        return localVarCall;
+        return findSpotMarketPricesCall(facility, plan, _callback);
 
     }
 
@@ -725,7 +710,6 @@ public class SpotMarketApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -738,30 +722,27 @@ public class SpotMarketApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findSpotMarketPricesHistoryValidateBeforeCall(String facility, String plan, String from, String until, String metro, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'facility' is set
         if (facility == null) {
             throw new ApiException("Missing the required parameter 'facility' when calling findSpotMarketPricesHistory(Async)");
         }
-        
+
         // verify the required parameter 'plan' is set
         if (plan == null) {
             throw new ApiException("Missing the required parameter 'plan' when calling findSpotMarketPricesHistory(Async)");
         }
-        
+
         // verify the required parameter 'from' is set
         if (from == null) {
             throw new ApiException("Missing the required parameter 'from' when calling findSpotMarketPricesHistory(Async)");
         }
-        
+
         // verify the required parameter 'until' is set
         if (until == null) {
             throw new ApiException("Missing the required parameter 'until' when calling findSpotMarketPricesHistory(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findSpotMarketPricesHistoryCall(facility, plan, from, until, metro, _callback);
-        return localVarCall;
+        return findSpotMarketPricesHistoryCall(facility, plan, from, until, metro, _callback);
 
     }
 
@@ -873,7 +854,7 @@ public class SpotMarketApi {
 
         // create path and map variables
         String localVarPath = "/spot-market-requests/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -898,7 +879,6 @@ public class SpotMarketApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -911,15 +891,12 @@ public class SpotMarketApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findSpotMarketRequestByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findSpotMarketRequestById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findSpotMarketRequestByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findSpotMarketRequestByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -1025,7 +1002,7 @@ public class SpotMarketApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/spot-market-requests"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1042,7 +1019,6 @@ public class SpotMarketApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1055,15 +1031,12 @@ public class SpotMarketApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listSpotMarketRequestsValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling listSpotMarketRequests(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = listSpotMarketRequestsCall(id, _callback);
-        return localVarCall;
+        return listSpotMarketRequestsCall(id, _callback);
 
     }
 

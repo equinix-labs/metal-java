@@ -113,7 +113,7 @@ public class EventsApi {
 
         // create path and map variables
         String localVarPath = "/connections/{connection_id}/events"
-            .replaceAll("\\{" + "connection_id" + "\\}", localVarApiClient.escapeString(connectionId.toString()));
+            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -146,7 +146,6 @@ public class EventsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -159,15 +158,12 @@ public class EventsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findConnectionEventsValidateBeforeCall(UUID connectionId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling findConnectionEvents(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findConnectionEventsCall(connectionId, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findConnectionEventsCall(connectionId, include, exclude, page, perPage, _callback);
 
     }
 
@@ -285,8 +281,8 @@ public class EventsApi {
 
         // create path and map variables
         String localVarPath = "/connections/{connection_id}/ports/{id}/events"
-            .replaceAll("\\{" + "connection_id" + "\\}", localVarApiClient.escapeString(connectionId.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -319,7 +315,6 @@ public class EventsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -332,20 +327,17 @@ public class EventsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findConnectionPortEventsValidateBeforeCall(UUID connectionId, UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling findConnectionPortEvents(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findConnectionPortEvents(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findConnectionPortEventsCall(connectionId, id, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findConnectionPortEventsCall(connectionId, id, include, exclude, page, perPage, _callback);
 
     }
 
@@ -465,7 +457,7 @@ public class EventsApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}/events"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -498,7 +490,6 @@ public class EventsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -511,15 +502,12 @@ public class EventsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findDeviceEventsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findDeviceEvents(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findDeviceEventsCall(id, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findDeviceEventsCall(id, include, exclude, page, perPage, _callback);
 
     }
 
@@ -634,7 +622,7 @@ public class EventsApi {
 
         // create path and map variables
         String localVarPath = "/events/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -659,7 +647,6 @@ public class EventsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -672,15 +659,12 @@ public class EventsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findEventByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findEventById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findEventByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findEventByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -820,7 +804,6 @@ public class EventsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -833,10 +816,7 @@ public class EventsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findEventsValidateBeforeCall(List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findEventsCall(include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findEventsCall(include, exclude, page, perPage, _callback);
 
     }
 
@@ -944,7 +924,7 @@ public class EventsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/events"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -977,7 +957,6 @@ public class EventsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -990,15 +969,12 @@ public class EventsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOrganizationEventsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOrganizationEvents(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findOrganizationEventsCall(id, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findOrganizationEventsCall(id, include, exclude, page, perPage, _callback);
 
     }
 
@@ -1115,7 +1091,7 @@ public class EventsApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/events"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1148,7 +1124,6 @@ public class EventsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1161,15 +1136,12 @@ public class EventsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findProjectEventsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findProjectEvents(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findProjectEventsCall(id, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findProjectEventsCall(id, include, exclude, page, perPage, _callback);
 
     }
 
@@ -1286,7 +1258,7 @@ public class EventsApi {
 
         // create path and map variables
         String localVarPath = "/virtual-circuit/{id}/events"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1319,7 +1291,6 @@ public class EventsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1332,15 +1303,12 @@ public class EventsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findVirtualCircuitEventsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findVirtualCircuitEvents(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findVirtualCircuitEventsCall(id, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findVirtualCircuitEventsCall(id, include, exclude, page, perPage, _callback);
 
     }
 

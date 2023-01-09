@@ -126,7 +126,6 @@ public class PasswordResetTokensApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -139,15 +138,12 @@ public class PasswordResetTokensApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createPasswordResetTokenValidateBeforeCall(String email, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'email' is set
         if (email == null) {
             throw new ApiException("Missing the required parameter 'email' when calling createPasswordResetToken(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createPasswordResetTokenCall(email, _callback);
-        return localVarCall;
+        return createPasswordResetTokenCall(email, _callback);
 
     }
 
@@ -255,7 +251,6 @@ public class PasswordResetTokensApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -268,10 +263,7 @@ public class PasswordResetTokensApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call resetPasswordValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = resetPasswordCall(_callback);
-        return localVarCall;
+        return resetPasswordCall(_callback);
 
     }
 

@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -38,6 +36,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -79,7 +78,6 @@ public class VirtualNetworkCreateInput {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDescription() {
     return description;
@@ -102,7 +100,6 @@ public class VirtualNetworkCreateInput {
    * @return facility
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The UUID (or facility code) for the Facility in which to create this Virtual network.")
 
   public String getFacility() {
     return facility;
@@ -125,7 +122,6 @@ public class VirtualNetworkCreateInput {
    * @return metro
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The UUID (or metro code) for the Metro in which to create this Virtual Network.")
 
   public String getMetro() {
     return metro;
@@ -148,7 +144,6 @@ public class VirtualNetworkCreateInput {
    * @return vxlan
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1099", value = "VLAN ID between 2-3999. Must be unique for the project within the Metro in which this Virtual Network is being created. If no value is specified, the next-available VLAN ID in the range 1000-1999 will be automatically selected.")
 
   public Integer getVxlan() {
     return vxlan;
@@ -169,6 +164,10 @@ public class VirtualNetworkCreateInput {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the VirtualNetworkCreateInput instance itself
    */
   public VirtualNetworkCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -180,6 +179,8 @@ public class VirtualNetworkCreateInput {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -187,6 +188,9 @@ public class VirtualNetworkCreateInput {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -296,7 +300,7 @@ public class VirtualNetworkCreateInput {
            public void write(JsonWriter out, VirtualNetworkCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -332,8 +336,10 @@ public class VirtualNetworkCreateInput {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

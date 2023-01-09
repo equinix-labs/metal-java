@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -40,6 +38,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -105,7 +104,6 @@ public class DeviceCreatedBy {
    * @return avatarThumbUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Avatar thumbnail URL of the User")
 
   public String getAvatarThumbUrl() {
     return avatarThumbUrl;
@@ -128,7 +126,6 @@ public class DeviceCreatedBy {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "When the user was created")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -151,7 +148,6 @@ public class DeviceCreatedBy {
    * @return email
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Primary email address of the User")
 
   public String getEmail() {
     return email;
@@ -174,7 +170,6 @@ public class DeviceCreatedBy {
    * @return firstName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "First name of the User")
 
   public String getFirstName() {
     return firstName;
@@ -197,7 +192,6 @@ public class DeviceCreatedBy {
    * @return fullName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Full name of the User")
 
   public String getFullName() {
     return fullName;
@@ -220,7 +214,6 @@ public class DeviceCreatedBy {
    * @return href
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "API URL uniquely representing the User")
 
   public String getHref() {
     return href;
@@ -243,7 +236,6 @@ public class DeviceCreatedBy {
    * @return id
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "ID of the User")
 
   public UUID getId() {
     return id;
@@ -266,7 +258,6 @@ public class DeviceCreatedBy {
    * @return lastName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Last name of the User")
 
   public String getLastName() {
     return lastName;
@@ -289,7 +280,6 @@ public class DeviceCreatedBy {
    * @return shortId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Short ID of the User")
 
   public String getShortId() {
     return shortId;
@@ -312,7 +302,6 @@ public class DeviceCreatedBy {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "When the user details were last updated")
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -333,6 +322,10 @@ public class DeviceCreatedBy {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the DeviceCreatedBy instance itself
    */
   public DeviceCreatedBy putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -344,6 +337,8 @@ public class DeviceCreatedBy {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -351,6 +346,9 @@ public class DeviceCreatedBy {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -502,7 +500,7 @@ public class DeviceCreatedBy {
            public void write(JsonWriter out, DeviceCreatedBy value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -538,8 +536,10 @@ public class DeviceCreatedBy {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

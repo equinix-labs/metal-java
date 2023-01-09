@@ -139,15 +139,12 @@ public class AuthenticationApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createAPIKeyValidateBeforeCall(AuthTokenInput authTokenInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'authTokenInput' is set
         if (authTokenInput == null) {
             throw new ApiException("Missing the required parameter 'authTokenInput' when calling createAPIKey(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createAPIKeyCall(authTokenInput, _callback);
-        return localVarCall;
+        return createAPIKeyCall(authTokenInput, _callback);
 
     }
 
@@ -249,7 +246,7 @@ public class AuthenticationApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/api-keys"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -279,20 +276,17 @@ public class AuthenticationApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createProjectAPIKeyValidateBeforeCall(UUID id, AuthTokenInput authTokenInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createProjectAPIKey(Async)");
         }
-        
+
         // verify the required parameter 'authTokenInput' is set
         if (authTokenInput == null) {
             throw new ApiException("Missing the required parameter 'authTokenInput' when calling createProjectAPIKey(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createProjectAPIKeyCall(id, authTokenInput, _callback);
-        return localVarCall;
+        return createProjectAPIKeyCall(id, authTokenInput, _callback);
 
     }
 
@@ -395,7 +389,7 @@ public class AuthenticationApi {
 
         // create path and map variables
         String localVarPath = "/api-keys/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -412,7 +406,6 @@ public class AuthenticationApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -425,15 +418,12 @@ public class AuthenticationApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteAPIKeyValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteAPIKey(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteAPIKeyCall(id, _callback);
-        return localVarCall;
+        return deleteAPIKeyCall(id, _callback);
 
     }
 
@@ -526,7 +516,7 @@ public class AuthenticationApi {
 
         // create path and map variables
         String localVarPath = "/user/api-keys/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -543,7 +533,6 @@ public class AuthenticationApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -556,15 +545,12 @@ public class AuthenticationApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteUserAPIKeyValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteUserAPIKey(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteUserAPIKeyCall(id, _callback);
-        return localVarCall;
+        return deleteUserAPIKeyCall(id, _callback);
 
     }
 
@@ -682,7 +668,6 @@ public class AuthenticationApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -695,10 +680,7 @@ public class AuthenticationApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findAPIKeysValidateBeforeCall(List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findAPIKeysCall(include, exclude, _callback);
-        return localVarCall;
+        return findAPIKeysCall(include, exclude, _callback);
 
     }
 
@@ -800,7 +782,7 @@ public class AuthenticationApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/api-keys"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -825,7 +807,6 @@ public class AuthenticationApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -838,15 +819,12 @@ public class AuthenticationApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findProjectAPIKeysValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findProjectAPIKeys(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findProjectAPIKeysCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findProjectAPIKeysCall(id, include, exclude, _callback);
 
     }
 

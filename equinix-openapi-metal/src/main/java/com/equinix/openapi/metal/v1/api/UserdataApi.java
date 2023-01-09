@@ -125,7 +125,6 @@ public class UserdataApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -138,10 +137,7 @@ public class UserdataApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call validateUserdataValidateBeforeCall(String userdata, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = validateUserdataCall(userdata, _callback);
-        return localVarCall;
+        return validateUserdataCall(userdata, _callback);
 
     }
 

@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -39,6 +37,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -76,7 +75,6 @@ public class MetalGatewayCreateInput {
    * @return ipReservationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The UUID of an IP reservation that belongs to the same project as where the metal gateway will be created in. This field is required unless the private IPv4 subnet size is specified.")
 
   public UUID getIpReservationId() {
     return ipReservationId;
@@ -99,7 +97,6 @@ public class MetalGatewayCreateInput {
    * @return privateIpv4SubnetSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The subnet size (8, 16, 32, 64, or 128) of the private IPv4 reservation that will be created for the metal gateway. This field is required unless a project IP reservation was specified.           Please keep in mind that the number of private metal gateway ranges are limited per project. If you would like to increase the limit per project, please contact support for assistance.")
 
   public Integer getPrivateIpv4SubnetSize() {
     return privateIpv4SubnetSize;
@@ -122,7 +119,6 @@ public class MetalGatewayCreateInput {
    * @return virtualNetworkId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The UUID of a metro virtual network that belongs to the same project as where the metal gateway will be created in.")
 
   public UUID getVirtualNetworkId() {
     return virtualNetworkId;
@@ -143,6 +139,10 @@ public class MetalGatewayCreateInput {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the MetalGatewayCreateInput instance itself
    */
   public MetalGatewayCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -154,6 +154,8 @@ public class MetalGatewayCreateInput {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -161,6 +163,9 @@ public class MetalGatewayCreateInput {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -272,7 +277,7 @@ public class MetalGatewayCreateInput {
            public void write(JsonWriter out, MetalGatewayCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -308,8 +313,10 @@ public class MetalGatewayCreateInput {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

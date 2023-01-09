@@ -110,7 +110,7 @@ public class UsagesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}/usages"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -135,7 +135,6 @@ public class UsagesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -148,15 +147,12 @@ public class UsagesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findDeviceUsagesValidateBeforeCall(UUID id, String createdAfter, String createdBefore, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findDeviceUsages(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findDeviceUsagesCall(id, createdAfter, createdBefore, _callback);
-        return localVarCall;
+        return findDeviceUsagesCall(id, createdAfter, createdBefore, _callback);
 
     }
 
@@ -261,7 +257,7 @@ public class UsagesApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/usages"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -286,7 +282,6 @@ public class UsagesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -299,15 +294,12 @@ public class UsagesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findProjectUsageValidateBeforeCall(UUID id, String createdAfter, String createdBefore, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findProjectUsage(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findProjectUsageCall(id, createdAfter, createdBefore, _callback);
-        return localVarCall;
+        return findProjectUsageCall(id, createdAfter, createdBefore, _callback);
 
     }
 

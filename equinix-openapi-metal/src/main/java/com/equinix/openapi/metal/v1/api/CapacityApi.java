@@ -141,15 +141,12 @@ public class CapacityApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call checkCapacityForFacilityValidateBeforeCall(CapacityInput capacityInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'capacityInput' is set
         if (capacityInput == null) {
             throw new ApiException("Missing the required parameter 'capacityInput' when calling checkCapacityForFacility(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = checkCapacityForFacilityCall(capacityInput, _callback);
-        return localVarCall;
+        return checkCapacityForFacilityCall(capacityInput, _callback);
 
     }
 
@@ -275,15 +272,12 @@ public class CapacityApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call checkCapacityForMetroValidateBeforeCall(CapacityPerMetroInput capacityPerMetroInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'capacityPerMetroInput' is set
         if (capacityPerMetroInput == null) {
             throw new ApiException("Missing the required parameter 'capacityPerMetroInput' when calling checkCapacityForMetro(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = checkCapacityForMetroCall(capacityPerMetroInput, _callback);
-        return localVarCall;
+        return checkCapacityForMetroCall(capacityPerMetroInput, _callback);
 
     }
 
@@ -394,7 +388,6 @@ public class CapacityApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -407,10 +400,7 @@ public class CapacityApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findCapacityForFacilityValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findCapacityForFacilityCall(_callback);
-        return localVarCall;
+        return findCapacityForFacilityCall(_callback);
 
     }
 
@@ -515,7 +505,6 @@ public class CapacityApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -528,10 +517,7 @@ public class CapacityApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findCapacityForMetroValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findCapacityForMetroCall(_callback);
-        return localVarCall;
+        return findCapacityForMetroCall(_callback);
 
     }
 
@@ -622,7 +608,7 @@ public class CapacityApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/capacity"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -639,7 +625,6 @@ public class CapacityApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -652,15 +637,12 @@ public class CapacityApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOrganizationCapacityPerFacilityValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOrganizationCapacityPerFacility(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findOrganizationCapacityPerFacilityCall(id, _callback);
-        return localVarCall;
+        return findOrganizationCapacityPerFacilityCall(id, _callback);
 
     }
 
@@ -757,7 +739,7 @@ public class CapacityApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/capacity/metros"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -774,7 +756,6 @@ public class CapacityApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -787,15 +768,12 @@ public class CapacityApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOrganizationCapacityPerMetroValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOrganizationCapacityPerMetro(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findOrganizationCapacityPerMetroCall(id, _callback);
-        return localVarCall;
+        return findOrganizationCapacityPerMetroCall(id, _callback);
 
     }
 

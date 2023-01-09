@@ -21,8 +21,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -200,7 +199,6 @@ public class BgpSession {
    * @return addressFamily
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public AddressFamilyEnum getAddressFamily() {
     return addressFamily;
@@ -223,7 +221,6 @@ public class BgpSession {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -246,7 +243,6 @@ public class BgpSession {
    * @return defaultRoute
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getDefaultRoute() {
     return defaultRoute;
@@ -269,7 +265,6 @@ public class BgpSession {
    * @return device
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getDevice() {
     return device;
@@ -292,7 +287,6 @@ public class BgpSession {
    * @return href
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getHref() {
     return href;
@@ -315,7 +309,6 @@ public class BgpSession {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -346,7 +339,6 @@ public class BgpSession {
    * @return learnedRoutes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getLearnedRoutes() {
     return learnedRoutes;
@@ -369,7 +361,6 @@ public class BgpSession {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = " The status of the BGP Session. Multiple status values may be reported when the device is connected to multiple switches, one value per switch. Each status will start with \"unknown\" and progress to \"up\" or \"down\" depending on the connected device. Subsequent \"unknown\" values indicate a problem acquiring status from the switch. ")
 
   public StatusEnum getStatus() {
     return status;
@@ -392,7 +383,6 @@ public class BgpSession {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -413,6 +403,10 @@ public class BgpSession {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the BgpSession instance itself
    */
   public BgpSession putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -424,6 +418,8 @@ public class BgpSession {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -431,6 +427,9 @@ public class BgpSession {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -549,8 +548,8 @@ public class BgpSession {
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("learned_routes").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("learned_routes") != null && !jsonObj.get("learned_routes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `learned_routes` to be an array in the JSON string but got `%s`", jsonObj.get("learned_routes").toString()));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
@@ -574,7 +573,7 @@ public class BgpSession {
            public void write(JsonWriter out, BgpSession value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -610,8 +609,10 @@ public class BgpSession {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

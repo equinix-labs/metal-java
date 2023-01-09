@@ -113,7 +113,7 @@ public class LicensesApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/licenses"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -143,20 +143,17 @@ public class LicensesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createLicenseValidateBeforeCall(UUID id, LicenseCreateInput licenseCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createLicense(Async)");
         }
-        
+
         // verify the required parameter 'licenseCreateInput' is set
         if (licenseCreateInput == null) {
             throw new ApiException("Missing the required parameter 'licenseCreateInput' when calling createLicense(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createLicenseCall(id, licenseCreateInput, _callback);
-        return localVarCall;
+        return createLicenseCall(id, licenseCreateInput, _callback);
 
     }
 
@@ -263,7 +260,7 @@ public class LicensesApi {
 
         // create path and map variables
         String localVarPath = "/licenses/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -280,7 +277,6 @@ public class LicensesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -293,15 +289,12 @@ public class LicensesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteLicenseValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteLicense(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteLicenseCall(id, _callback);
-        return localVarCall;
+        return deleteLicenseCall(id, _callback);
 
     }
 
@@ -400,7 +393,7 @@ public class LicensesApi {
 
         // create path and map variables
         String localVarPath = "/licenses/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -425,7 +418,6 @@ public class LicensesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -438,15 +430,12 @@ public class LicensesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findLicenseByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findLicenseById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findLicenseByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findLicenseByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -557,7 +546,7 @@ public class LicensesApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/licenses"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -590,7 +579,6 @@ public class LicensesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -603,15 +591,12 @@ public class LicensesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findProjectLicensesValidateBeforeCall(UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findProjectLicenses(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findProjectLicensesCall(id, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findProjectLicensesCall(id, include, exclude, page, perPage, _callback);
 
     }
 
@@ -726,7 +711,7 @@ public class LicensesApi {
 
         // create path and map variables
         String localVarPath = "/licenses/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -756,20 +741,17 @@ public class LicensesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateLicenseValidateBeforeCall(UUID id, LicenseUpdateInput licenseUpdateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateLicense(Async)");
         }
-        
+
         // verify the required parameter 'licenseUpdateInput' is set
         if (licenseUpdateInput == null) {
             throw new ApiException("Missing the required parameter 'licenseUpdateInput' when calling updateLicense(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateLicenseCall(id, licenseUpdateInput, _callback);
-        return localVarCall;
+        return updateLicenseCall(id, licenseUpdateInput, _callback);
 
     }
 

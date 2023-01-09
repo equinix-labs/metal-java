@@ -112,7 +112,7 @@ public class IpAddressesApi {
 
         // create path and map variables
         String localVarPath = "/ips/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -129,7 +129,6 @@ public class IpAddressesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -142,15 +141,12 @@ public class IpAddressesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteIPAddressValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteIPAddress(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteIPAddressCall(id, _callback);
-        return localVarCall;
+        return deleteIPAddressCall(id, _callback);
 
     }
 
@@ -249,7 +245,7 @@ public class IpAddressesApi {
 
         // create path and map variables
         String localVarPath = "/ips/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -274,7 +270,6 @@ public class IpAddressesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -287,15 +282,12 @@ public class IpAddressesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findIPAddressByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findIPAddressById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findIPAddressByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findIPAddressByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -402,7 +394,7 @@ public class IpAddressesApi {
 
         // create path and map variables
         String localVarPath = "/ips/{id}/customdata"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -419,7 +411,6 @@ public class IpAddressesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -432,15 +423,12 @@ public class IpAddressesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findIPAddressCustomdataValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findIPAddressCustomdata(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findIPAddressCustomdataCall(id, _callback);
-        return localVarCall;
+        return findIPAddressCustomdataCall(id, _callback);
 
     }
 
@@ -538,7 +526,7 @@ public class IpAddressesApi {
 
         // create path and map variables
         String localVarPath = "/ips/{id}/available"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -559,7 +547,6 @@ public class IpAddressesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -572,20 +559,17 @@ public class IpAddressesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findIPAvailabilitiesValidateBeforeCall(UUID id, String cidr, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findIPAvailabilities(Async)");
         }
-        
+
         // verify the required parameter 'cidr' is set
         if (cidr == null) {
             throw new ApiException("Missing the required parameter 'cidr' when calling findIPAvailabilities(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findIPAvailabilitiesCall(id, cidr, _callback);
-        return localVarCall;
+        return findIPAvailabilitiesCall(id, cidr, _callback);
 
     }
 
@@ -692,7 +676,7 @@ public class IpAddressesApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/ips"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -721,7 +705,6 @@ public class IpAddressesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -734,15 +717,12 @@ public class IpAddressesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findIPReservationsValidateBeforeCall(UUID id, List<String> types, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findIPReservations(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findIPReservationsCall(id, types, include, exclude, _callback);
-        return localVarCall;
+        return findIPReservationsCall(id, types, include, exclude, _callback);
 
     }
 
@@ -854,7 +834,7 @@ public class IpAddressesApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/ips"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -884,20 +864,17 @@ public class IpAddressesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call requestIPReservationValidateBeforeCall(UUID id, RequestIPReservationRequest requestIPReservationRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling requestIPReservation(Async)");
         }
-        
+
         // verify the required parameter 'requestIPReservationRequest' is set
         if (requestIPReservationRequest == null) {
             throw new ApiException("Missing the required parameter 'requestIPReservationRequest' when calling requestIPReservation(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = requestIPReservationCall(id, requestIPReservationRequest, _callback);
-        return localVarCall;
+        return requestIPReservationCall(id, requestIPReservationRequest, _callback);
 
     }
 
@@ -1006,7 +983,7 @@ public class IpAddressesApi {
 
         // create path and map variables
         String localVarPath = "/ips/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1031,7 +1008,6 @@ public class IpAddressesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1044,25 +1020,22 @@ public class IpAddressesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateIPAddressValidateBeforeCall(UUID id, String details, String customdata, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateIPAddress(Async)");
         }
-        
+
         // verify the required parameter 'details' is set
         if (details == null) {
             throw new ApiException("Missing the required parameter 'details' when calling updateIPAddress(Async)");
         }
-        
+
         // verify the required parameter 'customdata' is set
         if (customdata == null) {
             throw new ApiException("Missing the required parameter 'customdata' when calling updateIPAddress(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateIPAddressCall(id, details, customdata, _callback);
-        return localVarCall;
+        return updateIPAddressCall(id, details, customdata, _callback);
 
     }
 

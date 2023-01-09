@@ -120,7 +120,6 @@ public class TwoFactorAuthApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -133,10 +132,7 @@ public class TwoFactorAuthApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call disableTfaAppValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = disableTfaAppCall(_callback);
-        return localVarCall;
+        return disableTfaAppCall(_callback);
 
     }
 
@@ -241,7 +237,6 @@ public class TwoFactorAuthApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -254,10 +249,7 @@ public class TwoFactorAuthApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call disableTfaSmsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = disableTfaSmsCall(_callback);
-        return localVarCall;
+        return disableTfaSmsCall(_callback);
 
     }
 
@@ -361,7 +353,6 @@ public class TwoFactorAuthApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -374,10 +365,7 @@ public class TwoFactorAuthApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call enableTfaAppValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = enableTfaAppCall(_callback);
-        return localVarCall;
+        return enableTfaAppCall(_callback);
 
     }
 
@@ -478,7 +466,6 @@ public class TwoFactorAuthApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -491,10 +478,7 @@ public class TwoFactorAuthApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call enableTfaSmsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = enableTfaSmsCall(_callback);
-        return localVarCall;
+        return enableTfaSmsCall(_callback);
 
     }
 

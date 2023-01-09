@@ -2560,7 +2560,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Device'
+                $ref: '#/components/schemas/HardwareReservation'
           description: ok
         "401":
           content:
@@ -12550,6 +12550,7 @@ components:
           - yearly
           type: string
         customdata:
+          default: null
           description: |-
             Customdata is an arbitrary JSON value that can be accessed via the
             metadata service.

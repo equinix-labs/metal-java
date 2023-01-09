@@ -151,15 +151,12 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createOrganizationValidateBeforeCall(OrganizationInput organizationInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'organizationInput' is set
         if (organizationInput == null) {
             throw new ApiException("Missing the required parameter 'organizationInput' when calling createOrganization(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createOrganizationCall(organizationInput, _callback);
-        return localVarCall;
+        return createOrganizationCall(organizationInput, _callback);
 
     }
 
@@ -262,7 +259,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/invitations"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -292,20 +289,17 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createOrganizationInvitationValidateBeforeCall(UUID id, InvitationInput invitationInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createOrganizationInvitation(Async)");
         }
-        
+
         // verify the required parameter 'invitationInput' is set
         if (invitationInput == null) {
             throw new ApiException("Missing the required parameter 'invitationInput' when calling createOrganizationInvitation(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createOrganizationInvitationCall(id, invitationInput, _callback);
-        return localVarCall;
+        return createOrganizationInvitationCall(id, invitationInput, _callback);
 
     }
 
@@ -412,7 +406,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/projects"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -442,20 +436,17 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createOrganizationProjectValidateBeforeCall(UUID id, ProjectCreateInput projectCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createOrganizationProject(Async)");
         }
-        
+
         // verify the required parameter 'projectCreateInput' is set
         if (projectCreateInput == null) {
             throw new ApiException("Missing the required parameter 'projectCreateInput' when calling createOrganizationProject(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createOrganizationProjectCall(id, projectCreateInput, _callback);
-        return localVarCall;
+        return createOrganizationProjectCall(id, projectCreateInput, _callback);
 
     }
 
@@ -557,7 +548,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/payment-methods"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -587,20 +578,17 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createPaymentMethodValidateBeforeCall(UUID id, PaymentMethodCreateInput paymentMethodCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createPaymentMethod(Async)");
         }
-        
+
         // verify the required parameter 'paymentMethodCreateInput' is set
         if (paymentMethodCreateInput == null) {
             throw new ApiException("Missing the required parameter 'paymentMethodCreateInput' when calling createPaymentMethod(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createPaymentMethodCall(id, paymentMethodCreateInput, _callback);
-        return localVarCall;
+        return createPaymentMethodCall(id, paymentMethodCreateInput, _callback);
 
     }
 
@@ -703,7 +691,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -720,7 +708,6 @@ public class OrganizationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -733,15 +720,12 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteOrganizationValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteOrganization(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteOrganizationCall(id, _callback);
-        return localVarCall;
+        return deleteOrganizationCall(id, _callback);
 
     }
 
@@ -837,7 +821,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/operating-systems"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -862,7 +846,6 @@ public class OrganizationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -875,15 +858,12 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOperatingSystemsByOrganizationValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOperatingSystemsByOrganization(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findOperatingSystemsByOrganizationCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findOperatingSystemsByOrganizationCall(id, include, exclude, _callback);
 
     }
 
@@ -992,7 +972,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1017,7 +997,6 @@ public class OrganizationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1030,15 +1009,12 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOrganizationByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOrganizationById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findOrganizationByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findOrganizationByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -1145,7 +1121,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/customdata"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1162,7 +1138,6 @@ public class OrganizationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1175,15 +1150,12 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOrganizationCustomdataValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOrganizationCustomdata(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findOrganizationCustomdataCall(id, _callback);
-        return localVarCall;
+        return findOrganizationCustomdataCall(id, _callback);
 
     }
 
@@ -1284,7 +1256,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/invitations"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1317,7 +1289,6 @@ public class OrganizationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1330,15 +1301,12 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOrganizationInvitationsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOrganizationInvitations(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findOrganizationInvitationsCall(id, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findOrganizationInvitationsCall(id, include, exclude, page, perPage, _callback);
 
     }
 
@@ -1454,7 +1422,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/payment-methods"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1487,7 +1455,6 @@ public class OrganizationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1500,15 +1467,12 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOrganizationPaymentMethodsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOrganizationPaymentMethods(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findOrganizationPaymentMethodsCall(id, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findOrganizationPaymentMethodsCall(id, include, exclude, page, perPage, _callback);
 
     }
 
@@ -1620,7 +1584,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/projects"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1653,7 +1617,6 @@ public class OrganizationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1666,15 +1629,12 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOrganizationProjectsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOrganizationProjects(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findOrganizationProjectsCall(id, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findOrganizationProjectsCall(id, include, exclude, page, perPage, _callback);
 
     }
 
@@ -1782,7 +1742,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/transfers"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1807,7 +1767,6 @@ public class OrganizationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1820,15 +1779,12 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOrganizationTransfersValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOrganizationTransfers(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findOrganizationTransfersCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findOrganizationTransfersCall(id, include, exclude, _callback);
 
     }
 
@@ -1975,7 +1931,6 @@ public class OrganizationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1988,10 +1943,7 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOrganizationsValidateBeforeCall(String personal, String withoutProjects, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findOrganizationsCall(personal, withoutProjects, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findOrganizationsCall(personal, withoutProjects, include, exclude, page, perPage, _callback);
 
     }
 
@@ -2103,7 +2055,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/plans"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2128,7 +2080,6 @@ public class OrganizationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2141,15 +2092,12 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findPlansByOrganizationValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findPlansByOrganization(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findPlansByOrganizationCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findPlansByOrganizationCall(id, include, exclude, _callback);
 
     }
 
@@ -2258,7 +2206,7 @@ public class OrganizationsApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2288,20 +2236,17 @@ public class OrganizationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateOrganizationValidateBeforeCall(UUID id, OrganizationInput organizationInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateOrganization(Async)");
         }
-        
+
         // verify the required parameter 'organizationInput' is set
         if (organizationInput == null) {
             throw new ApiException("Missing the required parameter 'organizationInput' when calling updateOrganization(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateOrganizationCall(id, organizationInput, _callback);
-        return localVarCall;
+        return updateOrganizationCall(id, organizationInput, _callback);
 
     }
 

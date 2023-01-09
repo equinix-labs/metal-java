@@ -110,7 +110,7 @@ public class SelfServiceReservationsApi {
 
         // create path and map variables
         String localVarPath = "/projects/{project_id}/self-service/reservations"
-            .replaceAll("\\{" + "project_id" + "\\}", localVarApiClient.escapeString(projectId.toString()));
+            .replace("{" + "project_id" + "}", localVarApiClient.escapeString(projectId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -140,20 +140,17 @@ public class SelfServiceReservationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createSelfServiceReservationValidateBeforeCall(UUID projectId, CreateSelfServiceReservationRequest createSelfServiceReservationRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling createSelfServiceReservation(Async)");
         }
-        
+
         // verify the required parameter 'createSelfServiceReservationRequest' is set
         if (createSelfServiceReservationRequest == null) {
             throw new ApiException("Missing the required parameter 'createSelfServiceReservationRequest' when calling createSelfServiceReservation(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createSelfServiceReservationCall(projectId, createSelfServiceReservationRequest, _callback);
-        return localVarCall;
+        return createSelfServiceReservationCall(projectId, createSelfServiceReservationRequest, _callback);
 
     }
 
@@ -254,8 +251,8 @@ public class SelfServiceReservationsApi {
 
         // create path and map variables
         String localVarPath = "/projects/{project_id}/self-service/reservations/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()))
-            .replaceAll("\\{" + "project_id" + "\\}", localVarApiClient.escapeString(projectId.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "project_id" + "}", localVarApiClient.escapeString(projectId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -272,7 +269,6 @@ public class SelfServiceReservationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -285,20 +281,17 @@ public class SelfServiceReservationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findSelfServiceReservationValidateBeforeCall(UUID id, UUID projectId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findSelfServiceReservation(Async)");
         }
-        
+
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling findSelfServiceReservation(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findSelfServiceReservationCall(id, projectId, _callback);
-        return localVarCall;
+        return findSelfServiceReservationCall(id, projectId, _callback);
 
     }
 
@@ -399,7 +392,7 @@ public class SelfServiceReservationsApi {
 
         // create path and map variables
         String localVarPath = "/projects/{project_id}/self-service/reservations"
-            .replaceAll("\\{" + "project_id" + "\\}", localVarApiClient.escapeString(projectId.toString()));
+            .replace("{" + "project_id" + "}", localVarApiClient.escapeString(projectId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -424,7 +417,6 @@ public class SelfServiceReservationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -437,15 +429,12 @@ public class SelfServiceReservationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findSelfServiceReservationsValidateBeforeCall(UUID projectId, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling findSelfServiceReservations(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findSelfServiceReservationsCall(projectId, page, perPage, _callback);
-        return localVarCall;
+        return findSelfServiceReservationsCall(projectId, page, perPage, _callback);
 
     }
 

@@ -22,8 +22,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -124,7 +123,6 @@ public class Plan {
    * @return availableIn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Shows which facilities the plan is available in, and the facility-based price if it is different from the default price.")
 
   public List<Href> getAvailableIn() {
     return availableIn;
@@ -155,7 +153,6 @@ public class Plan {
    * @return deploymentTypes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getDeploymentTypes() {
     return deploymentTypes;
@@ -186,7 +183,6 @@ public class Plan {
    * @return availableInMetros
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Shows which metros the plan is available in, and the metro-based price if it is different from the default price.")
 
   public List<PlanAvailableInMetrosInner> getAvailableInMetros() {
     return availableInMetros;
@@ -209,7 +205,6 @@ public class Plan {
    * @return propertyClass
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getPropertyClass() {
     return propertyClass;
@@ -232,7 +227,6 @@ public class Plan {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDescription() {
     return description;
@@ -255,7 +249,6 @@ public class Plan {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -278,7 +271,6 @@ public class Plan {
    * @return legacy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getLegacy() {
     return legacy;
@@ -301,7 +293,6 @@ public class Plan {
    * @return line
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getLine() {
     return line;
@@ -324,7 +315,6 @@ public class Plan {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getName() {
     return name;
@@ -347,7 +337,6 @@ public class Plan {
    * @return pricing
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getPricing() {
     return pricing;
@@ -370,7 +359,6 @@ public class Plan {
    * @return slug
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getSlug() {
     return slug;
@@ -393,7 +381,6 @@ public class Plan {
    * @return specs
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getSpecs() {
     return specs;
@@ -414,6 +401,10 @@ public class Plan {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the Plan instance itself
    */
   public Plan putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -425,6 +416,8 @@ public class Plan {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -432,6 +425,9 @@ public class Plan {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -552,8 +548,8 @@ public class Plan {
           };
         }
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("deployment_types").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("deployment_types") != null && !jsonObj.get("deployment_types").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `deployment_types` to be an array in the JSON string but got `%s`", jsonObj.get("deployment_types").toString()));
       }
       if (jsonObj.get("available_in_metros") != null && !jsonObj.get("available_in_metros").isJsonNull()) {
@@ -606,7 +602,7 @@ public class Plan {
            public void write(JsonWriter out, Plan value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -642,8 +638,10 @@ public class Plan {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

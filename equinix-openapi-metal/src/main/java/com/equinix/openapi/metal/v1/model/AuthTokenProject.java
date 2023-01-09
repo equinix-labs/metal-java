@@ -21,8 +21,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -128,7 +127,6 @@ public class AuthTokenProject {
    * @return bgpConfig
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getBgpConfig() {
     return bgpConfig;
@@ -151,7 +149,6 @@ public class AuthTokenProject {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -174,7 +171,6 @@ public class AuthTokenProject {
    * @return customdata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getCustomdata() {
     return customdata;
@@ -205,7 +201,6 @@ public class AuthTokenProject {
    * @return devices
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getDevices() {
     return devices;
@@ -228,7 +223,6 @@ public class AuthTokenProject {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -259,7 +253,6 @@ public class AuthTokenProject {
    * @return invitations
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getInvitations() {
     return invitations;
@@ -282,7 +275,6 @@ public class AuthTokenProject {
    * @return maxDevices
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getMaxDevices() {
     return maxDevices;
@@ -313,7 +305,6 @@ public class AuthTokenProject {
    * @return members
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getMembers() {
     return members;
@@ -344,7 +335,6 @@ public class AuthTokenProject {
    * @return memberships
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getMemberships() {
     return memberships;
@@ -367,7 +357,6 @@ public class AuthTokenProject {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getName() {
     return name;
@@ -390,7 +379,6 @@ public class AuthTokenProject {
    * @return networkStatus
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getNetworkStatus() {
     return networkStatus;
@@ -413,7 +401,6 @@ public class AuthTokenProject {
    * @return paymentMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getPaymentMethod() {
     return paymentMethod;
@@ -444,7 +431,6 @@ public class AuthTokenProject {
    * @return sshKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getSshKeys() {
     return sshKeys;
@@ -467,7 +453,6 @@ public class AuthTokenProject {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -498,7 +483,6 @@ public class AuthTokenProject {
    * @return volumes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getVolumes() {
     return volumes;
@@ -519,6 +503,10 @@ public class AuthTokenProject {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the AuthTokenProject instance itself
    */
   public AuthTokenProject putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -530,6 +518,8 @@ public class AuthTokenProject {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -537,6 +527,9 @@ public class AuthTokenProject {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -768,7 +761,7 @@ public class AuthTokenProject {
            public void write(JsonWriter out, AuthTokenProject value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -804,8 +797,10 @@ public class AuthTokenProject {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

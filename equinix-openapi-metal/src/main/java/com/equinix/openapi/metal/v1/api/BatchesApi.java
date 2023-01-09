@@ -112,7 +112,7 @@ public class BatchesApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/devices/batch"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -142,20 +142,17 @@ public class BatchesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createDeviceBatchValidateBeforeCall(UUID id, InstancesBatchCreateInput instancesBatchCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createDeviceBatch(Async)");
         }
-        
+
         // verify the required parameter 'instancesBatchCreateInput' is set
         if (instancesBatchCreateInput == null) {
             throw new ApiException("Missing the required parameter 'instancesBatchCreateInput' when calling createDeviceBatch(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createDeviceBatchCall(id, instancesBatchCreateInput, _callback);
-        return localVarCall;
+        return createDeviceBatchCall(id, instancesBatchCreateInput, _callback);
 
     }
 
@@ -262,7 +259,7 @@ public class BatchesApi {
 
         // create path and map variables
         String localVarPath = "/batches/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -283,7 +280,6 @@ public class BatchesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -296,15 +292,12 @@ public class BatchesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteBatchValidateBeforeCall(UUID id, Boolean removeAssociatedInstances, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteBatch(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteBatchCall(id, removeAssociatedInstances, _callback);
-        return localVarCall;
+        return deleteBatchCall(id, removeAssociatedInstances, _callback);
 
     }
 
@@ -402,7 +395,7 @@ public class BatchesApi {
 
         // create path and map variables
         String localVarPath = "/batches/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -427,7 +420,6 @@ public class BatchesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -440,15 +432,12 @@ public class BatchesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findBatchByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findBatchById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findBatchByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findBatchByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -554,7 +543,7 @@ public class BatchesApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/batches"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -579,7 +568,6 @@ public class BatchesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -592,15 +580,12 @@ public class BatchesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findBatchesByProjectValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findBatchesByProject(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findBatchesByProjectCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findBatchesByProjectCall(id, include, exclude, _callback);
 
     }
 

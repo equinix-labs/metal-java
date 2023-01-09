@@ -22,8 +22,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -108,7 +107,6 @@ public class BgpNeighborData {
    * @return addressFamily
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "4", value = "Address Family for IP Address. Accepted values are 4 or 6")
 
   public BigDecimal getAddressFamily() {
     return addressFamily;
@@ -131,7 +129,6 @@ public class BgpNeighborData {
    * @return customerAs
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "65000", value = "The customer's ASN. In a local BGP deployment, this will be an internal ASN used to route within the data center. For a global BGP deployment, this will be the your own ASN, configured when you set up BGP for your project.")
 
   public BigDecimal getCustomerAs() {
     return customerAs;
@@ -154,7 +151,6 @@ public class BgpNeighborData {
    * @return customerIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "10.32.16.1 (IPv4) or 2604:1380:4111:2700::1 (IPv6)", value = "The device's IP address. For an IPv4 BGP session, this is typically the private bond0 address for the device.")
 
   public String getCustomerIp() {
     return customerIp;
@@ -177,7 +173,6 @@ public class BgpNeighborData {
    * @return md5Enabled
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "True if an MD5 password is configured for the project.")
 
   public Boolean getMd5Enabled() {
     return md5Enabled;
@@ -200,7 +195,6 @@ public class BgpNeighborData {
    * @return md5Password
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The MD5 password configured for the project, if set.")
 
   public String getMd5Password() {
     return md5Password;
@@ -223,7 +217,6 @@ public class BgpNeighborData {
    * @return multihop
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "True when the BGP session should be configured as multihop.")
 
   public Boolean getMultihop() {
     return multihop;
@@ -246,7 +239,6 @@ public class BgpNeighborData {
    * @return peerAs
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "65530", value = "The Peer ASN to use when configuring BGP on your device.")
 
   public BigDecimal getPeerAs() {
     return peerAs;
@@ -277,7 +269,6 @@ public class BgpNeighborData {
    * @return peerIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[\"169.254.255.1\",\"169.254.255.2\"]", value = "A list of one or more IP addresses to use for the Peer IP section of your BGP configuration. For non-multihop sessions, this will typically be a single gateway address for the device. For multihop sessions, it will be a list of IPs.")
 
   public List<String> getPeerIps() {
     return peerIps;
@@ -308,7 +299,6 @@ public class BgpNeighborData {
    * @return routesIn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of project subnets")
 
   public List<BgpNeighborDataRoutesInInner> getRoutesIn() {
     return routesIn;
@@ -339,7 +329,6 @@ public class BgpNeighborData {
    * @return routesOut
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of outgoing routes. Only populated if the BGP session has default route enabled.")
 
   public List<BgpNeighborDataRoutesOutInner> getRoutesOut() {
     return routesOut;
@@ -360,6 +349,10 @@ public class BgpNeighborData {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the BgpNeighborData instance itself
    */
   public BgpNeighborData putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -371,6 +364,8 @@ public class BgpNeighborData {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -378,6 +373,9 @@ public class BgpNeighborData {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -484,8 +482,8 @@ public class BgpNeighborData {
       if ((jsonObj.get("md5_password") != null && !jsonObj.get("md5_password").isJsonNull()) && !jsonObj.get("md5_password").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `md5_password` to be a primitive type in the JSON string but got `%s`", jsonObj.get("md5_password").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("peer_ips").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("peer_ips") != null && !jsonObj.get("peer_ips").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `peer_ips` to be an array in the JSON string but got `%s`", jsonObj.get("peer_ips").toString()));
       }
       if (jsonObj.get("routes_in") != null && !jsonObj.get("routes_in").isJsonNull()) {
@@ -534,7 +532,7 @@ public class BgpNeighborData {
            public void write(JsonWriter out, BgpNeighborData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -570,8 +568,10 @@ public class BgpNeighborData {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

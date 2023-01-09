@@ -120,7 +120,6 @@ public class OperatingSystemsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -133,10 +132,7 @@ public class OperatingSystemsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOperatingSystemVersionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findOperatingSystemVersionCall(_callback);
-        return localVarCall;
+        return findOperatingSystemVersionCall(_callback);
 
     }
 
@@ -241,7 +237,6 @@ public class OperatingSystemsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -254,10 +249,7 @@ public class OperatingSystemsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOperatingSystemsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findOperatingSystemsCall(_callback);
-        return localVarCall;
+        return findOperatingSystemsCall(_callback);
 
     }
 

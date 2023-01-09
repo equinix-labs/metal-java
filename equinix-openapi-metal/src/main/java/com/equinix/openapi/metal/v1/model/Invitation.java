@@ -21,8 +21,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -108,7 +107,6 @@ public class Invitation {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -131,7 +129,6 @@ public class Invitation {
    * @return href
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getHref() {
     return href;
@@ -154,7 +151,6 @@ public class Invitation {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -177,7 +173,6 @@ public class Invitation {
    * @return invitation
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getInvitation() {
     return invitation;
@@ -200,7 +195,6 @@ public class Invitation {
    * @return invitedBy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getInvitedBy() {
     return invitedBy;
@@ -223,7 +217,6 @@ public class Invitation {
    * @return invitee
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getInvitee() {
     return invitee;
@@ -246,7 +239,6 @@ public class Invitation {
    * @return organization
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getOrganization() {
     return organization;
@@ -277,7 +269,6 @@ public class Invitation {
    * @return projectsIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getProjectsIds() {
     return projectsIds;
@@ -308,7 +299,6 @@ public class Invitation {
    * @return roles
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getRoles() {
     return roles;
@@ -331,7 +321,6 @@ public class Invitation {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -352,6 +341,10 @@ public class Invitation {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the Invitation instance itself
    */
   public Invitation putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -363,6 +356,8 @@ public class Invitation {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -370,6 +365,9 @@ public class Invitation {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -491,12 +489,12 @@ public class Invitation {
       if (jsonObj.get("organization") != null && !jsonObj.get("organization").isJsonNull()) {
         Href.validateJsonObject(jsonObj.getAsJsonObject("organization"));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("projects_ids").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("projects_ids") != null && !jsonObj.get("projects_ids").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `projects_ids` to be an array in the JSON string but got `%s`", jsonObj.get("projects_ids").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("roles").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `roles` to be an array in the JSON string but got `%s`", jsonObj.get("roles").toString()));
       }
   }
@@ -517,7 +515,7 @@ public class Invitation {
            public void write(JsonWriter out, Invitation value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -553,8 +551,10 @@ public class Invitation {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

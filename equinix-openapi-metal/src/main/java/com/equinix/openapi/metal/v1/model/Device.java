@@ -32,8 +32,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -54,6 +52,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -288,7 +287,6 @@ public class Device {
    * @return alwaysPxe
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getAlwaysPxe() {
     return alwaysPxe;
@@ -311,7 +309,6 @@ public class Device {
    * @return billingCycle
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getBillingCycle() {
     return billingCycle;
@@ -334,7 +331,6 @@ public class Device {
    * @return bondingMode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getBondingMode() {
     return bondingMode;
@@ -357,7 +353,6 @@ public class Device {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -380,7 +375,6 @@ public class Device {
    * @return createdBy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public DeviceCreatedBy getCreatedBy() {
     return createdBy;
@@ -403,7 +397,6 @@ public class Device {
    * @return customdata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getCustomdata() {
     return customdata;
@@ -426,7 +419,6 @@ public class Device {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDescription() {
     return description;
@@ -449,7 +441,6 @@ public class Device {
    * @return facility
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Facility getFacility() {
     return facility;
@@ -472,7 +463,6 @@ public class Device {
    * @return hardwareReservation
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getHardwareReservation() {
     return hardwareReservation;
@@ -495,7 +485,6 @@ public class Device {
    * @return hostname
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getHostname() {
     return hostname;
@@ -518,7 +507,6 @@ public class Device {
    * @return href
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getHref() {
     return href;
@@ -541,7 +529,6 @@ public class Device {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -564,7 +551,6 @@ public class Device {
    * @return imageUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getImageUrl() {
     return imageUrl;
@@ -595,7 +581,6 @@ public class Device {
    * @return ipAddresses
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<IPAssignment> getIpAddresses() {
     return ipAddresses;
@@ -618,7 +603,6 @@ public class Device {
    * @return ipxeScriptUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getIpxeScriptUrl() {
     return ipxeScriptUrl;
@@ -641,7 +625,6 @@ public class Device {
    * @return iqn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getIqn() {
     return iqn;
@@ -664,7 +647,6 @@ public class Device {
    * @return locked
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getLocked() {
     return locked;
@@ -687,7 +669,6 @@ public class Device {
    * @return metro
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public DeviceMetro getMetro() {
     return metro;
@@ -718,7 +699,6 @@ public class Device {
    * @return networkPorts
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Port> getNetworkPorts() {
     return networkPorts;
@@ -741,7 +721,6 @@ public class Device {
    * @return operatingSystem
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OperatingSystem getOperatingSystem() {
     return operatingSystem;
@@ -772,7 +751,6 @@ public class Device {
    * @return actions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<DeviceActionsInner> getActions() {
     return actions;
@@ -795,7 +773,6 @@ public class Device {
    * @return plan
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Plan getPlan() {
     return plan;
@@ -818,7 +795,6 @@ public class Device {
    * @return project
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public DeviceProject getProject() {
     return project;
@@ -841,7 +817,6 @@ public class Device {
    * @return projectLite
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public DeviceProjectLite getProjectLite() {
     return projectLite;
@@ -872,7 +847,6 @@ public class Device {
    * @return provisioningEvents
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Event> getProvisioningEvents() {
     return provisioningEvents;
@@ -895,7 +869,6 @@ public class Device {
    * @return provisioningPercentage
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Only visible while device provisioning")
 
   public Float getProvisioningPercentage() {
     return provisioningPercentage;
@@ -918,7 +891,6 @@ public class Device {
    * @return rootPassword
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Root password is automatically generated when server is provisioned and it is removed after 24 hours")
 
   public String getRootPassword() {
     return rootPassword;
@@ -941,7 +913,6 @@ public class Device {
    * @return shortId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getShortId() {
     return shortId;
@@ -964,7 +935,6 @@ public class Device {
    * @return spotInstance
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether or not the device is a spot instance.")
 
   public Boolean getSpotInstance() {
     return spotInstance;
@@ -987,7 +957,6 @@ public class Device {
    * @return spotPriceMax
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The maximum price per hour you are willing to pay to keep this spot instance.  If you are outbid, the termination will be set allowing two minutes before shutdown.")
 
   public Float getSpotPriceMax() {
     return spotPriceMax;
@@ -1018,7 +987,6 @@ public class Device {
    * @return sshKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getSshKeys() {
     return sshKeys;
@@ -1041,7 +1009,6 @@ public class Device {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public StateEnum getState() {
     return state;
@@ -1064,7 +1031,6 @@ public class Device {
    * @return switchUuid
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Switch short id. This can be used to determine if two devices are connected to the same switch, for example.")
 
   public String getSwitchUuid() {
     return switchUuid;
@@ -1095,7 +1061,6 @@ public class Device {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getTags() {
     return tags;
@@ -1118,7 +1083,6 @@ public class Device {
    * @return terminationTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "When the device will be terminated. This is commonly set in advance for ephemeral spot market instances but this field may also be set with on-demand and reservation instances to automatically delete the resource at a given time. The termination time can also be used to release a hardware reservation instance at a given time, keeping the reservation open for other uses.  On a spot market device, the termination time will be set automatically when outbid.")
 
   public OffsetDateTime getTerminationTime() {
     return terminationTime;
@@ -1141,7 +1105,6 @@ public class Device {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -1164,7 +1127,6 @@ public class Device {
    * @return user
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getUser() {
     return user;
@@ -1187,7 +1149,6 @@ public class Device {
    * @return userdata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getUserdata() {
     return userdata;
@@ -1218,7 +1179,6 @@ public class Device {
    * @return volumes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getVolumes() {
     return volumes;
@@ -1239,6 +1199,10 @@ public class Device {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the Device instance itself
    */
   public Device putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -1250,6 +1214,8 @@ public class Device {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -1257,6 +1223,9 @@ public class Device {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -1582,8 +1551,8 @@ public class Device {
       if ((jsonObj.get("switch_uuid") != null && !jsonObj.get("switch_uuid").isJsonNull()) && !jsonObj.get("switch_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `switch_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("switch_uuid").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("tags").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       if ((jsonObj.get("user") != null && !jsonObj.get("user").isJsonNull()) && !jsonObj.get("user").isJsonPrimitive()) {
@@ -1624,7 +1593,7 @@ public class Device {
            public void write(JsonWriter out, Device value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -1660,8 +1629,10 @@ public class Device {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

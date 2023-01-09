@@ -22,8 +22,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -44,6 +42,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -113,7 +112,6 @@ public class SelfServiceReservationResponse {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -144,7 +142,6 @@ public class SelfServiceReservationResponse {
    * @return item
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<SelfServiceReservationItemResponse> getItem() {
     return item;
@@ -167,7 +164,6 @@ public class SelfServiceReservationResponse {
    * @return notes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getNotes() {
     return notes;
@@ -190,7 +186,6 @@ public class SelfServiceReservationResponse {
    * @return organization
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getOrganization() {
     return organization;
@@ -213,7 +208,6 @@ public class SelfServiceReservationResponse {
    * @return organizationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getOrganizationId() {
     return organizationId;
@@ -236,7 +230,6 @@ public class SelfServiceReservationResponse {
    * @return period
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CreateSelfServiceReservationRequestPeriod getPeriod() {
     return period;
@@ -259,7 +252,6 @@ public class SelfServiceReservationResponse {
    * @return project
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getProject() {
     return project;
@@ -282,7 +274,6 @@ public class SelfServiceReservationResponse {
    * @return projectId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getProjectId() {
     return projectId;
@@ -305,7 +296,6 @@ public class SelfServiceReservationResponse {
    * @return startDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getStartDate() {
     return startDate;
@@ -328,7 +318,6 @@ public class SelfServiceReservationResponse {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getStatus() {
     return status;
@@ -351,7 +340,6 @@ public class SelfServiceReservationResponse {
    * @return totalCost
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getTotalCost() {
     return totalCost;
@@ -372,6 +360,10 @@ public class SelfServiceReservationResponse {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the SelfServiceReservationResponse instance itself
    */
   public SelfServiceReservationResponse putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -383,6 +375,8 @@ public class SelfServiceReservationResponse {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -390,6 +384,9 @@ public class SelfServiceReservationResponse {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -547,7 +544,7 @@ public class SelfServiceReservationResponse {
            public void write(JsonWriter out, SelfServiceReservationResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -583,8 +580,10 @@ public class SelfServiceReservationResponse {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
