@@ -26,9 +26,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -117,7 +118,7 @@ public class DeviceCreateInput {
 
   public static final String SERIALIZED_NAME_CUSTOMDATA = "customdata";
   @SerializedName(SERIALIZED_NAME_CUSTOMDATA)
-  private Object customdata = null;
+  private Map<String, Object> customdata = null;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -254,9 +255,17 @@ public class DeviceCreateInput {
   }
 
 
-  public DeviceCreateInput customdata(Object customdata) {
+  public DeviceCreateInput customdata(Map<String, Object> customdata) {
     
     this.customdata = customdata;
+    return this;
+  }
+
+  public DeviceCreateInput putCustomdataItem(String key, Object customdataItem) {
+    if (this.customdata == null) {
+      this.customdata = new HashMap<>();
+    }
+    this.customdata.put(key, customdataItem);
     return this;
   }
 
@@ -266,12 +275,12 @@ public class DeviceCreateInput {
   **/
   @javax.annotation.Nullable
 
-  public Object getCustomdata() {
+  public Map<String, Object> getCustomdata() {
     return customdata;
   }
 
 
-  public void setCustomdata(Object customdata) {
+  public void setCustomdata(Map<String, Object> customdata) {
     this.customdata = customdata;
   }
 
@@ -898,20 +907,9 @@ public class DeviceCreateInput {
         Objects.equals(this.additionalProperties, deviceCreateInput.additionalProperties);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(alwaysPxe, billingCycle, customdata, description, facility, features, hardwareReservationId, hostname, ipAddresses, ipxeScriptUrl, locked, metro, noSshKeys, operatingSystem, plan, privateIpv4SubnetSize, projectSshKeys, publicIpv4SubnetSize, spotInstance, spotPriceMax, sshKeys, tags, terminationTime, userSshKeys, userdata, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
