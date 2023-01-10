@@ -1,8 +1,8 @@
 diff --git a/spec/oas3.patched.json b/spec/oas3.patched.json
-index aff92d5..8ed228d 100644
+index aff92d5..3e998a7 100644
 --- a/spec/oas3.patched.json
 +++ b/spec/oas3.patched.json
-@@ -1001,21 +1001,21 @@
+@@ -1001,21 +1001,23 @@
                "enum": [
                  "hourly",
                  "daily",
@@ -14,7 +14,9 @@ index aff92d5..8ed228d 100644
              "customdata": {
                "description": "Customdata is an arbitrary JSON value that can be accessed via the\nmetadata service.",
 -              "default": {}
-+              "default": null
++              "default": {},
++              "type": "object",
++              "additionalProperties": true
              },
              "description": {
                "description": "Any description of the device or how it will be used. This may be used\nto inform other API consumers with project access.",
@@ -25,7 +27,7 @@ index aff92d5..8ed228d 100644
                "type": "array",
                "items": {
                  "type": "string"
-@@ -7734,21 +7734,21 @@
+@@ -7734,21 +7736,21 @@
             },
             {
               "$ref": "#/components/parameters/Exclude"
