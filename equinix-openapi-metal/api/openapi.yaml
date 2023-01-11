@@ -2560,7 +2560,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Device'
+                $ref: '#/components/schemas/HardwareReservation'
           description: ok
         "401":
           content:
@@ -12509,7 +12509,8 @@ components:
         public_ipv4_subnet_size: 6.027456183070403
         operating_system: operating_system
         billing_cycle: hourly
-        customdata: ""
+        customdata:
+          key: ""
         locked: false
         spot_price_max: 1.4658129
         plan: c3.large.x86
@@ -12550,9 +12551,12 @@ components:
           - yearly
           type: string
         customdata:
+          additionalProperties: true
+          default: {}
           description: |-
             Customdata is an arbitrary JSON value that can be accessed via the
             metadata service.
+          type: object
         description:
           description: |-
             Any description of the device or how it will be used. This may be used

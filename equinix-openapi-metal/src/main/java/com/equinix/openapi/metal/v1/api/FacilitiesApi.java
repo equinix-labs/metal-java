@@ -131,7 +131,6 @@ public class FacilitiesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -144,10 +143,7 @@ public class FacilitiesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findFacilitiesValidateBeforeCall(List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findFacilitiesCall(include, exclude, _callback);
-        return localVarCall;
+        return findFacilitiesCall(include, exclude, _callback);
 
     }
 
@@ -247,7 +243,7 @@ public class FacilitiesApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/facilities"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -272,7 +268,6 @@ public class FacilitiesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -285,15 +280,12 @@ public class FacilitiesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findFacilitiesByOrganizationValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findFacilitiesByOrganization(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findFacilitiesByOrganizationCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findFacilitiesByOrganizationCall(id, include, exclude, _callback);
 
     }
 
@@ -402,7 +394,7 @@ public class FacilitiesApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/facilities"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -427,7 +419,6 @@ public class FacilitiesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -440,15 +431,12 @@ public class FacilitiesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findFacilitiesByProjectValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findFacilitiesByProject(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findFacilitiesByProjectCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findFacilitiesByProjectCall(id, include, exclude, _callback);
 
     }
 

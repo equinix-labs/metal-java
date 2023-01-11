@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -39,6 +37,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -112,7 +111,6 @@ public class Entitlement {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDescription() {
     return description;
@@ -135,7 +133,6 @@ public class Entitlement {
    * @return featureAccess
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getFeatureAccess() {
     return featureAccess;
@@ -158,7 +155,6 @@ public class Entitlement {
    * @return href
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getHref() {
     return href;
@@ -181,7 +177,6 @@ public class Entitlement {
    * @return id
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public UUID getId() {
     return id;
@@ -204,7 +199,6 @@ public class Entitlement {
    * @return instanceQuota
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getInstanceQuota() {
     return instanceQuota;
@@ -227,7 +221,6 @@ public class Entitlement {
    * @return ipQuota
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getIpQuota() {
     return ipQuota;
@@ -250,7 +243,6 @@ public class Entitlement {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getName() {
     return name;
@@ -273,7 +265,6 @@ public class Entitlement {
    * @return projectQuota
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getProjectQuota() {
     return projectQuota;
@@ -296,7 +287,6 @@ public class Entitlement {
    * @return slug
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public String getSlug() {
     return slug;
@@ -319,7 +309,6 @@ public class Entitlement {
    * @return volumeLimits
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getVolumeLimits() {
     return volumeLimits;
@@ -342,7 +331,6 @@ public class Entitlement {
    * @return volumeQuota
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getVolumeQuota() {
     return volumeQuota;
@@ -365,7 +353,6 @@ public class Entitlement {
    * @return weight
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public Integer getWeight() {
     return weight;
@@ -386,6 +373,10 @@ public class Entitlement {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the Entitlement instance itself
    */
   public Entitlement putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -397,6 +388,8 @@ public class Entitlement {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -404,6 +397,9 @@ public class Entitlement {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -509,9 +505,7 @@ public class Entitlement {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Entitlement.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Entitlement.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Entitlement is not found in the empty JSON string", Entitlement.openapiRequiredFields.toString()));
         }
       }
@@ -528,13 +522,13 @@ public class Entitlement {
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+      if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("slug") != null && !jsonObj.get("slug").isJsonNull()) && !jsonObj.get("slug").isJsonPrimitive()) {
+      if (!jsonObj.get("slug").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `slug` to be a primitive type in the JSON string but got `%s`", jsonObj.get("slug").toString()));
       }
   }
@@ -555,7 +549,7 @@ public class Entitlement {
            public void write(JsonWriter out, Entitlement value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -591,8 +585,10 @@ public class Entitlement {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

@@ -106,7 +106,7 @@ public class OtpsApi {
 
         // create path and map variables
         String localVarPath = "/user/otp/verify/{otp}"
-            .replaceAll("\\{" + "otp" + "\\}", localVarApiClient.escapeString(otp.toString()));
+            .replace("{" + "otp" + "}", localVarApiClient.escapeString(otp.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -123,7 +123,6 @@ public class OtpsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -136,15 +135,12 @@ public class OtpsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findEnsureOtpValidateBeforeCall(String otp, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'otp' is set
         if (otp == null) {
             throw new ApiException("Missing the required parameter 'otp' when calling findEnsureOtp(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findEnsureOtpCall(otp, _callback);
-        return localVarCall;
+        return findEnsureOtpCall(otp, _callback);
 
     }
 
@@ -253,7 +249,6 @@ public class OtpsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -266,10 +261,7 @@ public class OtpsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findRecoveryCodesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findRecoveryCodesCall(_callback);
-        return localVarCall;
+        return findRecoveryCodesCall(_callback);
 
     }
 
@@ -383,7 +375,6 @@ public class OtpsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -396,10 +387,7 @@ public class OtpsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call receiveCodesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = receiveCodesCall(_callback);
-        return localVarCall;
+        return receiveCodesCall(_callback);
 
     }
 
@@ -511,7 +499,6 @@ public class OtpsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -524,10 +511,7 @@ public class OtpsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call regenerateCodesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = regenerateCodesCall(_callback);
-        return localVarCall;
+        return regenerateCodesCall(_callback);
 
     }
 

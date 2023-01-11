@@ -27,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.equinix.openapi.metal.v1.model.Device;
 import com.equinix.openapi.metal.v1.model.Error;
 import com.equinix.openapi.metal.v1.model.HardwareReservation;
 import com.equinix.openapi.metal.v1.model.HardwareReservationList;
@@ -112,7 +111,7 @@ public class HardwareReservationsApi {
 
         // create path and map variables
         String localVarPath = "/hardware-reservations/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -137,7 +136,6 @@ public class HardwareReservationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -150,15 +148,12 @@ public class HardwareReservationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findHardwareReservationByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findHardwareReservationById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findHardwareReservationByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findHardwareReservationByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -168,7 +163,7 @@ public class HardwareReservationsApi {
      * @param id HardwareReservation UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @return Device
+     * @return HardwareReservation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -179,8 +174,8 @@ public class HardwareReservationsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public Device findHardwareReservationById(UUID id, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<Device> localVarResp = findHardwareReservationByIdWithHttpInfo(id, include, exclude);
+    public HardwareReservation findHardwareReservationById(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<HardwareReservation> localVarResp = findHardwareReservationByIdWithHttpInfo(id, include, exclude);
         return localVarResp.getData();
     }
 
@@ -190,7 +185,7 @@ public class HardwareReservationsApi {
      * @param id HardwareReservation UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @return ApiResponse&lt;Device&gt;
+     * @return ApiResponse&lt;HardwareReservation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -201,9 +196,9 @@ public class HardwareReservationsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Device> findHardwareReservationByIdWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
+    public ApiResponse<HardwareReservation> findHardwareReservationByIdWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
         okhttp3.Call localVarCall = findHardwareReservationByIdValidateBeforeCall(id, include, exclude, null);
-        Type localVarReturnType = new TypeToken<Device>(){}.getType();
+        Type localVarReturnType = new TypeToken<HardwareReservation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -225,10 +220,10 @@ public class HardwareReservationsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findHardwareReservationByIdAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<Device> _callback) throws ApiException {
+    public okhttp3.Call findHardwareReservationByIdAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<HardwareReservation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = findHardwareReservationByIdValidateBeforeCall(id, include, exclude, _callback);
-        Type localVarReturnType = new TypeToken<Device>(){}.getType();
+        Type localVarReturnType = new TypeToken<HardwareReservation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -269,7 +264,7 @@ public class HardwareReservationsApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/hardware-reservations"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -302,7 +297,6 @@ public class HardwareReservationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -315,15 +309,12 @@ public class HardwareReservationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findProjectHardwareReservationsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findProjectHardwareReservations(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findProjectHardwareReservationsCall(id, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findProjectHardwareReservationsCall(id, include, exclude, page, perPage, _callback);
 
     }
 
@@ -437,7 +428,7 @@ public class HardwareReservationsApi {
 
         // create path and map variables
         String localVarPath = "/hardware-reservations/{id}/move"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -467,20 +458,17 @@ public class HardwareReservationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call moveHardwareReservationValidateBeforeCall(UUID id, UUID body, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling moveHardwareReservation(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling moveHardwareReservation(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = moveHardwareReservationCall(id, body, _callback);
-        return localVarCall;
+        return moveHardwareReservationCall(id, body, _callback);
 
     }
 

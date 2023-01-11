@@ -129,7 +129,6 @@ public class IncidentsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -142,10 +141,7 @@ public class IncidentsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findIncidentsValidateBeforeCall(List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findIncidentsCall(include, exclude, _callback);
-        return localVarCall;
+        return findIncidentsCall(include, exclude, _callback);
 
     }
 

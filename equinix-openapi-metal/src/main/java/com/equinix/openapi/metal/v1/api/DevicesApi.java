@@ -120,7 +120,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}/bgp/sessions"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -150,20 +150,17 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createBgpSessionValidateBeforeCall(UUID id, BGPSessionInput bgPSessionInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createBgpSession(Async)");
         }
-        
+
         // verify the required parameter 'bgPSessionInput' is set
         if (bgPSessionInput == null) {
             throw new ApiException("Missing the required parameter 'bgPSessionInput' when calling createBgpSession(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createBgpSessionCall(id, bgPSessionInput, _callback);
-        return localVarCall;
+        return createBgpSessionCall(id, bgPSessionInput, _callback);
 
     }
 
@@ -269,7 +266,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/devices"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -299,20 +296,17 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createDeviceValidateBeforeCall(UUID id, DeviceCreateInput deviceCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createDevice(Async)");
         }
-        
+
         // verify the required parameter 'deviceCreateInput' is set
         if (deviceCreateInput == null) {
             throw new ApiException("Missing the required parameter 'deviceCreateInput' when calling createDevice(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createDeviceCall(id, deviceCreateInput, _callback);
-        return localVarCall;
+        return createDeviceCall(id, deviceCreateInput, _callback);
 
     }
 
@@ -420,7 +414,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}/ips"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -450,20 +444,17 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createIPAssignmentValidateBeforeCall(UUID id, IPAssignmentInput ipAssignmentInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createIPAssignment(Async)");
         }
-        
+
         // verify the required parameter 'ipAssignmentInput' is set
         if (ipAssignmentInput == null) {
             throw new ApiException("Missing the required parameter 'ipAssignmentInput' when calling createIPAssignment(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createIPAssignmentCall(id, ipAssignmentInput, _callback);
-        return localVarCall;
+        return createIPAssignmentCall(id, ipAssignmentInput, _callback);
 
     }
 
@@ -569,7 +560,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -590,7 +581,6 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -603,15 +593,12 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteDeviceValidateBeforeCall(UUID id, Boolean forceDelete, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteDevice(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteDeviceCall(id, forceDelete, _callback);
-        return localVarCall;
+        return deleteDeviceCall(id, forceDelete, _callback);
 
     }
 
@@ -713,7 +700,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}/bgp/sessions"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -730,7 +717,6 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -743,15 +729,12 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findBgpSessionsValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findBgpSessions(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findBgpSessionsCall(id, _callback);
-        return localVarCall;
+        return findBgpSessionsCall(id, _callback);
 
     }
 
@@ -851,7 +834,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -876,7 +859,6 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -889,15 +871,12 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findDeviceByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findDeviceById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findDeviceByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findDeviceByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -1004,7 +983,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}/customdata"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1021,7 +1000,6 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1034,15 +1012,12 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findDeviceCustomdataValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findDeviceCustomdata(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findDeviceCustomdataCall(id, _callback);
-        return localVarCall;
+        return findDeviceCustomdataCall(id, _callback);
 
     }
 
@@ -1140,8 +1115,8 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{instance_id}/ips/{id}/customdata"
-            .replaceAll("\\{" + "instance_id" + "\\}", localVarApiClient.escapeString(instanceId.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "instance_id" + "}", localVarApiClient.escapeString(instanceId.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1158,7 +1133,6 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1171,20 +1145,17 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findIPAssignmentCustomdataValidateBeforeCall(UUID instanceId, UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'instanceId' is set
         if (instanceId == null) {
             throw new ApiException("Missing the required parameter 'instanceId' when calling findIPAssignmentCustomdata(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findIPAssignmentCustomdata(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findIPAssignmentCustomdataCall(instanceId, id, _callback);
-        return localVarCall;
+        return findIPAssignmentCustomdataCall(instanceId, id, _callback);
 
     }
 
@@ -1285,7 +1256,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}/ips"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1310,7 +1281,6 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1323,15 +1293,12 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findIPAssignmentsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findIPAssignments(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findIPAssignmentsCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findIPAssignmentsCall(id, include, exclude, _callback);
 
     }
 
@@ -1436,7 +1403,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}/bandwidth"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1461,7 +1428,6 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1474,25 +1440,22 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findInstanceBandwidthValidateBeforeCall(UUID id, String from, String until, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findInstanceBandwidth(Async)");
         }
-        
+
         // verify the required parameter 'from' is set
         if (from == null) {
             throw new ApiException("Missing the required parameter 'from' when calling findInstanceBandwidth(Async)");
         }
-        
+
         // verify the required parameter 'until' is set
         if (until == null) {
             throw new ApiException("Missing the required parameter 'until' when calling findInstanceBandwidth(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findInstanceBandwidthCall(id, from, until, _callback);
-        return localVarCall;
+        return findInstanceBandwidthCall(id, from, until, _callback);
 
     }
 
@@ -1601,7 +1564,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/organizations/{id}/devices"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1654,7 +1617,6 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1667,15 +1629,12 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findOrganizationDevicesValidateBeforeCall(UUID id, String facility, String hostname, Boolean reserved, String tag, String type, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOrganizationDevices(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findOrganizationDevicesCall(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findOrganizationDevicesCall(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage, _callback);
 
     }
 
@@ -1812,7 +1771,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/devices"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1865,7 +1824,6 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1878,15 +1836,12 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findProjectDevicesValidateBeforeCall(UUID id, String facility, String hostname, Boolean reserved, String tag, String type, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findProjectDevices(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findProjectDevicesCall(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage, _callback);
-        return localVarCall;
+        return findProjectDevicesCall(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage, _callback);
 
     }
 
@@ -2018,7 +1973,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}/traffic"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2060,25 +2015,22 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findTrafficValidateBeforeCall(UUID id, String direction, Timeframe timeframe, String interval, String bucket, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findTraffic(Async)");
         }
-        
+
         // verify the required parameter 'direction' is set
         if (direction == null) {
             throw new ApiException("Missing the required parameter 'direction' when calling findTraffic(Async)");
         }
-        
+
         // verify the required parameter 'timeframe' is set
         if (timeframe == null) {
             throw new ApiException("Missing the required parameter 'timeframe' when calling findTraffic(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findTrafficCall(id, direction, timeframe, interval, bucket, _callback);
-        return localVarCall;
+        return findTrafficCall(id, direction, timeframe, interval, bucket, _callback);
 
     }
 
@@ -2187,7 +2139,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}/bgp/neighbors"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2204,7 +2156,6 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2217,15 +2168,12 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getBgpNeighborDataValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getBgpNeighborData(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getBgpNeighborDataCall(id, _callback);
-        return localVarCall;
+        return getBgpNeighborDataCall(id, _callback);
 
     }
 
@@ -2327,7 +2275,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}/actions"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2348,7 +2296,6 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2361,20 +2308,17 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call performActionValidateBeforeCall(UUID id, String type, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling performAction(Async)");
         }
-        
+
         // verify the required parameter 'type' is set
         if (type == null) {
             throw new ApiException("Missing the required parameter 'type' when calling performAction(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = performActionCall(id, type, _callback);
-        return localVarCall;
+        return performActionCall(id, type, _callback);
 
     }
 
@@ -2476,7 +2420,7 @@ public class DevicesApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2506,20 +2450,17 @@ public class DevicesApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateDeviceValidateBeforeCall(UUID id, DeviceUpdateInput deviceUpdateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateDevice(Async)");
         }
-        
+
         // verify the required parameter 'deviceUpdateInput' is set
         if (deviceUpdateInput == null) {
             throw new ApiException("Missing the required parameter 'deviceUpdateInput' when calling updateDevice(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateDeviceCall(id, deviceUpdateInput, _callback);
-        return localVarCall;
+        return updateDeviceCall(id, deviceUpdateInput, _callback);
 
     }
 

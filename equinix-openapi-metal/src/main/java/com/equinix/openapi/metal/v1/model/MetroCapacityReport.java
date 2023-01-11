@@ -21,8 +21,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -39,6 +37,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -144,7 +143,6 @@ public class MetroCapacityReport {
    * @return am
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getAm() {
     return am;
@@ -167,7 +165,6 @@ public class MetroCapacityReport {
    * @return at
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getAt() {
     return at;
@@ -190,7 +187,6 @@ public class MetroCapacityReport {
    * @return ch
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getCh() {
     return ch;
@@ -213,7 +209,6 @@ public class MetroCapacityReport {
    * @return da
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getDa() {
     return da;
@@ -236,7 +231,6 @@ public class MetroCapacityReport {
    * @return dc
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getDc() {
     return dc;
@@ -259,7 +253,6 @@ public class MetroCapacityReport {
    * @return fr
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getFr() {
     return fr;
@@ -282,7 +275,6 @@ public class MetroCapacityReport {
    * @return hk
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getHk() {
     return hk;
@@ -305,7 +297,6 @@ public class MetroCapacityReport {
    * @return la
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getLa() {
     return la;
@@ -328,7 +319,6 @@ public class MetroCapacityReport {
    * @return ld
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getLd() {
     return ld;
@@ -351,7 +341,6 @@ public class MetroCapacityReport {
    * @return md
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getMd() {
     return md;
@@ -374,7 +363,6 @@ public class MetroCapacityReport {
    * @return ny
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getNy() {
     return ny;
@@ -397,7 +385,6 @@ public class MetroCapacityReport {
    * @return pa
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getPa() {
     return pa;
@@ -420,7 +407,6 @@ public class MetroCapacityReport {
    * @return se
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getSe() {
     return se;
@@ -443,7 +429,6 @@ public class MetroCapacityReport {
    * @return sg
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getSg() {
     return sg;
@@ -466,7 +451,6 @@ public class MetroCapacityReport {
    * @return sl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getSl() {
     return sl;
@@ -489,7 +473,6 @@ public class MetroCapacityReport {
    * @return sp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getSp() {
     return sp;
@@ -512,7 +495,6 @@ public class MetroCapacityReport {
    * @return sv
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getSv() {
     return sv;
@@ -535,7 +517,6 @@ public class MetroCapacityReport {
    * @return sy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getSy() {
     return sy;
@@ -558,7 +539,6 @@ public class MetroCapacityReport {
    * @return tr
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getTr() {
     return tr;
@@ -581,7 +561,6 @@ public class MetroCapacityReport {
    * @return ty
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CapacityPerFacility getTy() {
     return ty;
@@ -602,6 +581,10 @@ public class MetroCapacityReport {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the MetroCapacityReport instance itself
    */
   public MetroCapacityReport putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -613,6 +596,8 @@ public class MetroCapacityReport {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -620,6 +605,9 @@ public class MetroCapacityReport {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -746,9 +734,7 @@ public class MetroCapacityReport {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (MetroCapacityReport.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!MetroCapacityReport.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MetroCapacityReport is not found in the empty JSON string", MetroCapacityReport.openapiRequiredFields.toString()));
         }
       }
@@ -850,7 +836,7 @@ public class MetroCapacityReport {
            public void write(JsonWriter out, MetroCapacityReport value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -886,8 +872,10 @@ public class MetroCapacityReport {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

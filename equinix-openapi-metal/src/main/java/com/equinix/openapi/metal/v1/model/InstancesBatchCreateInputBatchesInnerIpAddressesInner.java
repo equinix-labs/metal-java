@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -41,6 +39,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -129,7 +128,6 @@ public class InstancesBatchCreateInputBatchesInnerIpAddressesInner {
    * @return addressFamily
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "4", value = "Address Family for IP Address")
 
   public AddressFamilyEnum getAddressFamily() {
     return addressFamily;
@@ -152,7 +150,6 @@ public class InstancesBatchCreateInputBatchesInnerIpAddressesInner {
    * @return cidr
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "28", value = "Cidr Size for the IP Block created. Valid values depends on the operating system been provisioned (28..32 for IPv4 addresses, 124..127 for IPv6 addresses).")
 
   public BigDecimal getCidr() {
     return cidr;
@@ -183,7 +180,6 @@ public class InstancesBatchCreateInputBatchesInnerIpAddressesInner {
    * @return ipReservations
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "UUIDs of any IP reservations to use when assigning IPs")
 
   public List<String> getIpReservations() {
     return ipReservations;
@@ -206,7 +202,6 @@ public class InstancesBatchCreateInputBatchesInnerIpAddressesInner {
    * @return _public
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Address Type for IP Address")
 
   public Boolean getPublic() {
     return _public;
@@ -227,6 +222,10 @@ public class InstancesBatchCreateInputBatchesInnerIpAddressesInner {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the InstancesBatchCreateInputBatchesInnerIpAddressesInner instance itself
    */
   public InstancesBatchCreateInputBatchesInnerIpAddressesInner putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -238,6 +237,8 @@ public class InstancesBatchCreateInputBatchesInnerIpAddressesInner {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -245,6 +246,9 @@ public class InstancesBatchCreateInputBatchesInnerIpAddressesInner {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -323,14 +327,12 @@ public class InstancesBatchCreateInputBatchesInnerIpAddressesInner {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (InstancesBatchCreateInputBatchesInnerIpAddressesInner.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!InstancesBatchCreateInputBatchesInnerIpAddressesInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InstancesBatchCreateInputBatchesInnerIpAddressesInner is not found in the empty JSON string", InstancesBatchCreateInputBatchesInnerIpAddressesInner.openapiRequiredFields.toString()));
         }
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("ip_reservations") != null && !jsonObj.get("ip_reservations").isJsonNull()) && !jsonObj.get("ip_reservations").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ip_reservations") != null && !jsonObj.get("ip_reservations").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ip_reservations` to be an array in the JSON string but got `%s`", jsonObj.get("ip_reservations").toString()));
       }
   }
@@ -351,7 +353,7 @@ public class InstancesBatchCreateInputBatchesInnerIpAddressesInner {
            public void write(JsonWriter out, InstancesBatchCreateInputBatchesInnerIpAddressesInner value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -387,8 +389,10 @@ public class InstancesBatchCreateInputBatchesInnerIpAddressesInner {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

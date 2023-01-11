@@ -23,8 +23,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -96,7 +95,6 @@ public class DefaultIPReservationAllOf {
    * @return addon
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getAddon() {
     return addon;
@@ -127,7 +125,6 @@ public class DefaultIPReservationAllOf {
    * @return assignments
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<IPAssignment> getAssignments() {
     return assignments;
@@ -150,7 +147,6 @@ public class DefaultIPReservationAllOf {
    * @return enabled
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getEnabled() {
     return enabled;
@@ -173,7 +169,6 @@ public class DefaultIPReservationAllOf {
    * @return facility
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Facility getFacility() {
     return facility;
@@ -196,7 +191,6 @@ public class DefaultIPReservationAllOf {
    * @return globalIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getGlobalIp() {
     return globalIp;
@@ -219,7 +213,6 @@ public class DefaultIPReservationAllOf {
    * @return requestedBy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public User getRequestedBy() {
     return requestedBy;
@@ -242,7 +235,6 @@ public class DefaultIPReservationAllOf {
    * @return available
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getAvailable() {
     return available;
@@ -263,6 +255,10 @@ public class DefaultIPReservationAllOf {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the DefaultIPReservationAllOf instance itself
    */
   public DefaultIPReservationAllOf putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -274,6 +270,8 @@ public class DefaultIPReservationAllOf {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -281,6 +279,9 @@ public class DefaultIPReservationAllOf {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -368,9 +369,7 @@ public class DefaultIPReservationAllOf {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (DefaultIPReservationAllOf.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!DefaultIPReservationAllOf.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in DefaultIPReservationAllOf is not found in the empty JSON string", DefaultIPReservationAllOf.openapiRequiredFields.toString()));
         }
       }
@@ -417,7 +416,7 @@ public class DefaultIPReservationAllOf {
            public void write(JsonWriter out, DefaultIPReservationAllOf value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -453,8 +452,10 @@ public class DefaultIPReservationAllOf {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

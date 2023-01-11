@@ -108,7 +108,7 @@ public class PaymentMethodsApi {
 
         // create path and map variables
         String localVarPath = "/payment-methods/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -125,7 +125,6 @@ public class PaymentMethodsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -138,15 +137,12 @@ public class PaymentMethodsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deletePaymentMethodValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deletePaymentMethod(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deletePaymentMethodCall(id, _callback);
-        return localVarCall;
+        return deletePaymentMethodCall(id, _callback);
 
     }
 
@@ -241,7 +237,7 @@ public class PaymentMethodsApi {
 
         // create path and map variables
         String localVarPath = "/payment-methods/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -266,7 +262,6 @@ public class PaymentMethodsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -279,15 +274,12 @@ public class PaymentMethodsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findPaymentMethodByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findPaymentMethodById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findPaymentMethodByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findPaymentMethodByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -392,7 +384,7 @@ public class PaymentMethodsApi {
 
         // create path and map variables
         String localVarPath = "/payment-methods/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -422,20 +414,17 @@ public class PaymentMethodsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updatePaymentMethodValidateBeforeCall(UUID id, PaymentMethodUpdateInput paymentMethodUpdateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updatePaymentMethod(Async)");
         }
-        
+
         // verify the required parameter 'paymentMethodUpdateInput' is set
         if (paymentMethodUpdateInput == null) {
             throw new ApiException("Missing the required parameter 'paymentMethodUpdateInput' when calling updatePaymentMethod(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updatePaymentMethodCall(id, paymentMethodUpdateInput, _callback);
-        return localVarCall;
+        return updatePaymentMethodCall(id, paymentMethodUpdateInput, _callback);
 
     }
 

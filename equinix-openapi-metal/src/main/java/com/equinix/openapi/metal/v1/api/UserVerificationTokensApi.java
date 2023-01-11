@@ -125,7 +125,6 @@ public class UserVerificationTokensApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -138,15 +137,12 @@ public class UserVerificationTokensApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call consumeVerificationRequestValidateBeforeCall(String token, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'token' is set
         if (token == null) {
             throw new ApiException("Missing the required parameter 'token' when calling consumeVerificationRequest(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = consumeVerificationRequestCall(token, _callback);
-        return localVarCall;
+        return consumeVerificationRequestCall(token, _callback);
 
     }
 
@@ -259,7 +255,6 @@ public class UserVerificationTokensApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -272,15 +267,12 @@ public class UserVerificationTokensApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createValidationRequestValidateBeforeCall(String login, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'login' is set
         if (login == null) {
             throw new ApiException("Missing the required parameter 'login' when calling createValidationRequest(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createValidationRequestCall(login, _callback);
-        return localVarCall;
+        return createValidationRequestCall(login, _callback);
 
     }
 

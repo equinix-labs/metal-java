@@ -22,8 +22,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -44,6 +42,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -152,7 +151,6 @@ public class PortVlanAssignmentBatch {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -183,7 +181,6 @@ public class PortVlanAssignmentBatch {
    * @return errorMessages
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getErrorMessages() {
     return errorMessages;
@@ -206,7 +203,6 @@ public class PortVlanAssignmentBatch {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -229,7 +225,6 @@ public class PortVlanAssignmentBatch {
    * @return port
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Port getPort() {
     return port;
@@ -252,7 +247,6 @@ public class PortVlanAssignmentBatch {
    * @return quantity
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getQuantity() {
     return quantity;
@@ -275,7 +269,6 @@ public class PortVlanAssignmentBatch {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public StateEnum getState() {
     return state;
@@ -298,7 +291,6 @@ public class PortVlanAssignmentBatch {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -329,7 +321,6 @@ public class PortVlanAssignmentBatch {
    * @return vlanAssignments
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<PortVlanAssignmentBatchVlanAssignmentsInner> getVlanAssignments() {
     return vlanAssignments;
@@ -350,6 +341,10 @@ public class PortVlanAssignmentBatch {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the PortVlanAssignmentBatch instance itself
    */
   public PortVlanAssignmentBatch putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -361,6 +356,8 @@ public class PortVlanAssignmentBatch {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -368,6 +365,9 @@ public class PortVlanAssignmentBatch {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -458,14 +458,12 @@ public class PortVlanAssignmentBatch {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (PortVlanAssignmentBatch.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!PortVlanAssignmentBatch.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortVlanAssignmentBatch is not found in the empty JSON string", PortVlanAssignmentBatch.openapiRequiredFields.toString()));
         }
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("error_messages") != null && !jsonObj.get("error_messages").isJsonNull()) && !jsonObj.get("error_messages").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("error_messages") != null && !jsonObj.get("error_messages").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `error_messages` to be an array in the JSON string but got `%s`", jsonObj.get("error_messages").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
@@ -510,7 +508,7 @@ public class PortVlanAssignmentBatch {
            public void write(JsonWriter out, PortVlanAssignmentBatch value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -546,8 +544,10 @@ public class PortVlanAssignmentBatch {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

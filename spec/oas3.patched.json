@@ -1008,7 +1008,9 @@
             },
             "customdata": {
               "description": "Customdata is an arbitrary JSON value that can be accessed via the\nmetadata service.",
-              "default": {}
+              "default": {},
+              "type": "object",
+              "additionalProperties": true
             },
             "description": {
               "description": "Any description of the device or how it will be used. This may be used\nto inform other API consumers with project access.",
@@ -7741,7 +7743,7 @@
              "content": {
                "application/json": {
                  "schema": {
-                   "$ref": "#/components/schemas/Device"
+                   "$ref": "#/components/schemas/HardwareReservation"
                  }
                }
              },

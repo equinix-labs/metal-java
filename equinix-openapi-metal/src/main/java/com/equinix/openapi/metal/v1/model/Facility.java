@@ -22,8 +22,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -149,7 +148,6 @@ public class Facility {
    * @return address
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Address getAddress() {
     return address;
@@ -172,7 +170,6 @@ public class Facility {
    * @return code
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getCode() {
     return code;
@@ -203,7 +200,6 @@ public class Facility {
    * @return features
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[\"baremetal\",\"backend_transfer\",\"global_ipv4\"]", value = "")
 
   public List<FeaturesEnum> getFeatures() {
     return features;
@@ -226,7 +222,6 @@ public class Facility {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -257,7 +252,6 @@ public class Facility {
    * @return ipRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[\"2604:1380::/36\",\"147.75.192.0/21\"]", value = "IP ranges registered in facility. Can be used for GeoIP location")
 
   public List<String> getIpRanges() {
     return ipRanges;
@@ -280,7 +274,6 @@ public class Facility {
    * @return metro
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public DeviceMetro getMetro() {
     return metro;
@@ -303,7 +296,6 @@ public class Facility {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getName() {
     return name;
@@ -324,6 +316,10 @@ public class Facility {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the Facility instance itself
    */
   public Facility putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -335,6 +331,8 @@ public class Facility {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -342,6 +340,9 @@ public class Facility {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -429,9 +430,7 @@ public class Facility {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Facility.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Facility.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Facility is not found in the empty JSON string", Facility.openapiRequiredFields.toString()));
         }
       }
@@ -442,15 +441,15 @@ public class Facility {
       if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("features") != null && !jsonObj.get("features").isJsonNull()) && !jsonObj.get("features").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("features") != null && !jsonObj.get("features").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `features` to be an array in the JSON string but got `%s`", jsonObj.get("features").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("ip_ranges") != null && !jsonObj.get("ip_ranges").isJsonNull()) && !jsonObj.get("ip_ranges").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ip_ranges") != null && !jsonObj.get("ip_ranges").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ip_ranges` to be an array in the JSON string but got `%s`", jsonObj.get("ip_ranges").toString()));
       }
       // validate the optional field `metro`
@@ -478,7 +477,7 @@ public class Facility {
            public void write(JsonWriter out, Facility value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -514,8 +513,10 @@ public class Facility {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

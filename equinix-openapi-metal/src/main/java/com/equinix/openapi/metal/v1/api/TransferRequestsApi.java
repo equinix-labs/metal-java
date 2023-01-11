@@ -108,7 +108,7 @@ public class TransferRequestsApi {
 
         // create path and map variables
         String localVarPath = "/transfers/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -125,7 +125,6 @@ public class TransferRequestsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -138,15 +137,12 @@ public class TransferRequestsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call acceptTransferRequestValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling acceptTransferRequest(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = acceptTransferRequestCall(id, _callback);
-        return localVarCall;
+        return acceptTransferRequestCall(id, _callback);
 
     }
 
@@ -243,7 +239,7 @@ public class TransferRequestsApi {
 
         // create path and map variables
         String localVarPath = "/transfers/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -260,7 +256,6 @@ public class TransferRequestsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -273,15 +268,12 @@ public class TransferRequestsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call declineTransferRequestValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling declineTransferRequest(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = declineTransferRequestCall(id, _callback);
-        return localVarCall;
+        return declineTransferRequestCall(id, _callback);
 
     }
 
@@ -380,7 +372,7 @@ public class TransferRequestsApi {
 
         // create path and map variables
         String localVarPath = "/transfers/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -405,7 +397,6 @@ public class TransferRequestsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -418,15 +409,12 @@ public class TransferRequestsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findTransferRequestByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findTransferRequestById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findTransferRequestByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findTransferRequestByIdCall(id, include, exclude, _callback);
 
     }
 

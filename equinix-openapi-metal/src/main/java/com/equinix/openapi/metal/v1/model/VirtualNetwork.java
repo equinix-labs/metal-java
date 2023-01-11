@@ -21,8 +21,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +40,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -111,7 +110,6 @@ public class VirtualNetwork {
    * @return assignedTo
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getAssignedTo() {
     return assignedTo;
@@ -134,7 +132,6 @@ public class VirtualNetwork {
    * @return assignedToVirtualCircuit
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "True if the virtual network is attached to a virtual circuit. False if not.")
 
   public Boolean getAssignedToVirtualCircuit() {
     return assignedToVirtualCircuit;
@@ -157,7 +154,6 @@ public class VirtualNetwork {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDescription() {
     return description;
@@ -180,7 +176,6 @@ public class VirtualNetwork {
    * @return facility
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getFacility() {
     return facility;
@@ -203,7 +198,6 @@ public class VirtualNetwork {
    * @return href
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getHref() {
     return href;
@@ -226,7 +220,6 @@ public class VirtualNetwork {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -257,7 +250,6 @@ public class VirtualNetwork {
    * @return instances
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of instances with ports currently associated to this Virtual Network.")
 
   public List<Href> getInstances() {
     return instances;
@@ -288,7 +280,6 @@ public class VirtualNetwork {
    * @return metalGateways
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of metal gateways currently associated to this Virtual Network.")
 
   public List<Href> getMetalGateways() {
     return metalGateways;
@@ -311,7 +302,6 @@ public class VirtualNetwork {
    * @return metro
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getMetro() {
     return metro;
@@ -334,7 +324,6 @@ public class VirtualNetwork {
    * @return metroCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Metro code of the metro in which this Virtual Network is defined.")
 
   public String getMetroCode() {
     return metroCode;
@@ -357,7 +346,6 @@ public class VirtualNetwork {
    * @return vxlan
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getVxlan() {
     return vxlan;
@@ -378,6 +366,10 @@ public class VirtualNetwork {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the VirtualNetwork instance itself
    */
   public VirtualNetwork putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -389,6 +381,8 @@ public class VirtualNetwork {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -396,6 +390,9 @@ public class VirtualNetwork {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -495,9 +492,7 @@ public class VirtualNetwork {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VirtualNetwork.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VirtualNetwork.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VirtualNetwork is not found in the empty JSON string", VirtualNetwork.openapiRequiredFields.toString()));
         }
       }
@@ -571,7 +566,7 @@ public class VirtualNetwork {
            public void write(JsonWriter out, VirtualNetwork value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -607,8 +602,10 @@ public class VirtualNetwork {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

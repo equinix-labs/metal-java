@@ -112,7 +112,7 @@ public class BgpApi {
 
         // create path and map variables
         String localVarPath = "/bgp/sessions/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -129,7 +129,6 @@ public class BgpApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -142,15 +141,12 @@ public class BgpApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteBgpSessionValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteBgpSession(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteBgpSessionCall(id, _callback);
-        return localVarCall;
+        return deleteBgpSessionCall(id, _callback);
 
     }
 
@@ -249,7 +245,7 @@ public class BgpApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/bgp-config"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -274,7 +270,6 @@ public class BgpApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -287,15 +282,12 @@ public class BgpApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findBgpConfigByProjectValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findBgpConfigByProject(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findBgpConfigByProjectCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findBgpConfigByProjectCall(id, include, exclude, _callback);
 
     }
 
@@ -404,7 +396,7 @@ public class BgpApi {
 
         // create path and map variables
         String localVarPath = "/bgp/sessions/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -429,7 +421,6 @@ public class BgpApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -442,15 +433,12 @@ public class BgpApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findBgpSessionByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findBgpSessionById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findBgpSessionByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findBgpSessionByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -557,7 +545,7 @@ public class BgpApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/global-bgp-ranges"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -574,7 +562,6 @@ public class BgpApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -587,15 +574,12 @@ public class BgpApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findGlobalBgpRangesValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findGlobalBgpRanges(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findGlobalBgpRangesCall(id, _callback);
-        return localVarCall;
+        return findGlobalBgpRangesCall(id, _callback);
 
     }
 
@@ -695,7 +679,7 @@ public class BgpApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/bgp/sessions"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -712,7 +696,6 @@ public class BgpApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -725,15 +708,12 @@ public class BgpApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findProjectBgpSessionsValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findProjectBgpSessions(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findProjectBgpSessionsCall(id, _callback);
-        return localVarCall;
+        return findProjectBgpSessionsCall(id, _callback);
 
     }
 
@@ -833,7 +813,7 @@ public class BgpApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/bgp-configs"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -863,20 +843,17 @@ public class BgpApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call requestBgpConfigValidateBeforeCall(UUID id, BgpConfigRequestInput bgpConfigRequestInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling requestBgpConfig(Async)");
         }
-        
+
         // verify the required parameter 'bgpConfigRequestInput' is set
         if (bgpConfigRequestInput == null) {
             throw new ApiException("Missing the required parameter 'bgpConfigRequestInput' when calling requestBgpConfig(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = requestBgpConfigCall(id, bgpConfigRequestInput, _callback);
-        return localVarCall;
+        return requestBgpConfigCall(id, bgpConfigRequestInput, _callback);
 
     }
 
@@ -981,7 +958,7 @@ public class BgpApi {
 
         // create path and map variables
         String localVarPath = "/bgp/sessions/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1011,20 +988,17 @@ public class BgpApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateBgpSessionValidateBeforeCall(UUID id, Boolean body, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateBgpSession(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling updateBgpSession(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateBgpSessionCall(id, body, _callback);
-        return localVarCall;
+        return updateBgpSessionCall(id, body, _callback);
 
     }
 

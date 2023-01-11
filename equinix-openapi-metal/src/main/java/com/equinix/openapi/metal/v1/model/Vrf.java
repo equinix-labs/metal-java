@@ -23,8 +23,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +42,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -105,7 +104,6 @@ public class Vrf {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -128,7 +126,6 @@ public class Vrf {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getName() {
     return name;
@@ -151,7 +148,6 @@ public class Vrf {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Optional field that can be set to describe the VRF")
 
   public String getDescription() {
     return description;
@@ -174,7 +170,6 @@ public class Vrf {
    * @return localAsn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A 4-byte ASN associated with the VRF.")
 
   public Integer getLocalAsn() {
     return localAsn;
@@ -205,7 +200,6 @@ public class Vrf {
    * @return ipRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of CIDR network addresses. Like [\"10.0.0.0/16\", \"2001:d78::/56\"].")
 
   public List<String> getIpRanges() {
     return ipRanges;
@@ -228,7 +222,6 @@ public class Vrf {
    * @return project
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Project getProject() {
     return project;
@@ -251,7 +244,6 @@ public class Vrf {
    * @return metro
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Metro getMetro() {
     return metro;
@@ -274,7 +266,6 @@ public class Vrf {
    * @return createdBy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public User getCreatedBy() {
     return createdBy;
@@ -297,7 +288,6 @@ public class Vrf {
    * @return href
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getHref() {
     return href;
@@ -318,6 +308,10 @@ public class Vrf {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the Vrf instance itself
    */
   public Vrf putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -329,6 +323,8 @@ public class Vrf {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -336,6 +332,9 @@ public class Vrf {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -429,9 +428,7 @@ public class Vrf {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (Vrf.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!Vrf.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Vrf is not found in the empty JSON string", Vrf.openapiRequiredFields.toString()));
         }
       }
@@ -444,8 +441,8 @@ public class Vrf {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("ip_ranges") != null && !jsonObj.get("ip_ranges").isJsonNull()) && !jsonObj.get("ip_ranges").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ip_ranges") != null && !jsonObj.get("ip_ranges").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ip_ranges` to be an array in the JSON string but got `%s`", jsonObj.get("ip_ranges").toString()));
       }
       // validate the optional field `project`
@@ -481,7 +478,7 @@ public class Vrf {
            public void write(JsonWriter out, Vrf value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -517,8 +514,10 @@ public class Vrf {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

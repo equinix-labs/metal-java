@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +39,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -94,7 +93,6 @@ public class VirtualCircuitCreateInput {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDescription() {
     return description;
@@ -117,7 +115,6 @@ public class VirtualCircuitCreateInput {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getName() {
     return name;
@@ -142,7 +139,6 @@ public class VirtualCircuitCreateInput {
    * @return nniVlan
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getNniVlan() {
     return nniVlan;
@@ -165,7 +161,6 @@ public class VirtualCircuitCreateInput {
    * @return project
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getProject() {
     return project;
@@ -188,7 +183,6 @@ public class VirtualCircuitCreateInput {
    * @return speed
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "speed can be passed as integer number representing bps speed or string (e.g. '52m' or '100g' or '4 gbps')")
 
   public Integer getSpeed() {
     return speed;
@@ -219,7 +213,6 @@ public class VirtualCircuitCreateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getTags() {
     return tags;
@@ -242,7 +235,6 @@ public class VirtualCircuitCreateInput {
    * @return vnid
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A Virtual Network record UUID or the VNID of a Virtual Network in your project (sent as integer).")
 
   public UUID getVnid() {
     return vnid;
@@ -263,6 +255,10 @@ public class VirtualCircuitCreateInput {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the VirtualCircuitCreateInput instance itself
    */
   public VirtualCircuitCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -274,6 +270,8 @@ public class VirtualCircuitCreateInput {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -281,6 +279,9 @@ public class VirtualCircuitCreateInput {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -368,9 +369,7 @@ public class VirtualCircuitCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VirtualCircuitCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VirtualCircuitCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VirtualCircuitCreateInput is not found in the empty JSON string", VirtualCircuitCreateInput.openapiRequiredFields.toString()));
         }
       }
@@ -383,8 +382,8 @@ public class VirtualCircuitCreateInput {
       if ((jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) && !jsonObj.get("project").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `project` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       if ((jsonObj.get("vnid") != null && !jsonObj.get("vnid").isJsonNull()) && !jsonObj.get("vnid").isJsonPrimitive()) {
@@ -408,7 +407,7 @@ public class VirtualCircuitCreateInput {
            public void write(JsonWriter out, VirtualCircuitCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -444,8 +443,10 @@ public class VirtualCircuitCreateInput {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

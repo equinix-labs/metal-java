@@ -137,15 +137,12 @@ public class SupportRequestApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call requestSuppertValidateBeforeCall(SupportRequestInput supportRequestInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'supportRequestInput' is set
         if (supportRequestInput == null) {
             throw new ApiException("Missing the required parameter 'supportRequestInput' when calling requestSuppert(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = requestSuppertCall(supportRequestInput, _callback);
-        return localVarCall;
+        return requestSuppertCall(supportRequestInput, _callback);
 
     }
 

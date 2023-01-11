@@ -109,7 +109,7 @@ public class MembershipsApi {
 
         // create path and map variables
         String localVarPath = "/memberships/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -126,7 +126,6 @@ public class MembershipsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -139,15 +138,12 @@ public class MembershipsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteMembershipValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteMembership(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteMembershipCall(id, _callback);
-        return localVarCall;
+        return deleteMembershipCall(id, _callback);
 
     }
 
@@ -246,7 +242,7 @@ public class MembershipsApi {
 
         // create path and map variables
         String localVarPath = "/memberships/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -271,7 +267,6 @@ public class MembershipsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -284,15 +279,12 @@ public class MembershipsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findMembershipByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findMembershipById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findMembershipByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findMembershipByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -401,7 +393,7 @@ public class MembershipsApi {
 
         // create path and map variables
         String localVarPath = "/memberships/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -431,20 +423,17 @@ public class MembershipsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateMembershipValidateBeforeCall(UUID id, MembershipInput membershipInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateMembership(Async)");
         }
-        
+
         // verify the required parameter 'membershipInput' is set
         if (membershipInput == null) {
             throw new ApiException("Missing the required parameter 'membershipInput' when calling updateMembership(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateMembershipCall(id, membershipInput, _callback);
-        return localVarCall;
+        return updateMembershipCall(id, membershipInput, _callback);
 
     }
 

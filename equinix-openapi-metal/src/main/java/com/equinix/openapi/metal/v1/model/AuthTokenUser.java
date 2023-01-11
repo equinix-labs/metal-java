@@ -21,8 +21,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -152,7 +151,6 @@ public class AuthTokenUser {
    * @return avatarThumbUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getAvatarThumbUrl() {
     return avatarThumbUrl;
@@ -175,7 +173,6 @@ public class AuthTokenUser {
    * @return avatarUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getAvatarUrl() {
     return avatarUrl;
@@ -198,7 +195,6 @@ public class AuthTokenUser {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -221,7 +217,6 @@ public class AuthTokenUser {
    * @return customdata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getCustomdata() {
     return customdata;
@@ -244,7 +239,6 @@ public class AuthTokenUser {
    * @return email
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getEmail() {
     return email;
@@ -275,7 +269,6 @@ public class AuthTokenUser {
    * @return emails
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<Href> getEmails() {
     return emails;
@@ -298,7 +291,6 @@ public class AuthTokenUser {
    * @return firstName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getFirstName() {
     return firstName;
@@ -321,7 +313,6 @@ public class AuthTokenUser {
    * @return fraudScore
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getFraudScore() {
     return fraudScore;
@@ -344,7 +335,6 @@ public class AuthTokenUser {
    * @return fullName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getFullName() {
     return fullName;
@@ -367,7 +357,6 @@ public class AuthTokenUser {
    * @return href
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getHref() {
     return href;
@@ -390,7 +379,6 @@ public class AuthTokenUser {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -413,7 +401,6 @@ public class AuthTokenUser {
    * @return lastLoginAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getLastLoginAt() {
     return lastLoginAt;
@@ -436,7 +423,6 @@ public class AuthTokenUser {
    * @return lastName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getLastName() {
     return lastName;
@@ -459,7 +445,6 @@ public class AuthTokenUser {
    * @return maxOrganizations
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getMaxOrganizations() {
     return maxOrganizations;
@@ -482,7 +467,6 @@ public class AuthTokenUser {
    * @return maxProjects
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getMaxProjects() {
     return maxProjects;
@@ -505,7 +489,6 @@ public class AuthTokenUser {
    * @return phoneNumber
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getPhoneNumber() {
     return phoneNumber;
@@ -528,7 +511,6 @@ public class AuthTokenUser {
    * @return shortId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getShortId() {
     return shortId;
@@ -551,7 +533,6 @@ public class AuthTokenUser {
    * @return timezone
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getTimezone() {
     return timezone;
@@ -574,7 +555,6 @@ public class AuthTokenUser {
    * @return twoFactorAuth
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getTwoFactorAuth() {
     return twoFactorAuth;
@@ -597,7 +577,6 @@ public class AuthTokenUser {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -628,7 +607,6 @@ public class AuthTokenUser {
    * @return features
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getFeatures() {
     return features;
@@ -649,6 +627,10 @@ public class AuthTokenUser {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the AuthTokenUser instance itself
    */
   public AuthTokenUser putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -660,6 +642,8 @@ public class AuthTokenUser {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -667,6 +651,9 @@ public class AuthTokenUser {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -796,9 +783,7 @@ public class AuthTokenUser {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (AuthTokenUser.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!AuthTokenUser.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in AuthTokenUser is not found in the empty JSON string", AuthTokenUser.openapiRequiredFields.toString()));
         }
       }
@@ -855,8 +840,8 @@ public class AuthTokenUser {
       if ((jsonObj.get("two_factor_auth") != null && !jsonObj.get("two_factor_auth").isJsonNull()) && !jsonObj.get("two_factor_auth").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `two_factor_auth` to be a primitive type in the JSON string but got `%s`", jsonObj.get("two_factor_auth").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("features") != null && !jsonObj.get("features").isJsonNull()) && !jsonObj.get("features").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("features") != null && !jsonObj.get("features").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `features` to be an array in the JSON string but got `%s`", jsonObj.get("features").toString()));
       }
   }
@@ -877,7 +862,7 @@ public class AuthTokenUser {
            public void write(JsonWriter out, AuthTokenUser value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -913,8 +898,10 @@ public class AuthTokenUser {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

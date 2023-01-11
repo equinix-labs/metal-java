@@ -11,7 +11,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="findHardwareReservationById"></a>
 # **findHardwareReservationById**
-> Device findHardwareReservationById(id, include, exclude)
+> HardwareReservation findHardwareReservationById(id, include, exclude)
 
 Retrieve a hardware reservation
 
@@ -43,7 +43,7 @@ public class Example {
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Device result = apiInstance.findHardwareReservationById(id, include, exclude);
+      HardwareReservation result = apiInstance.findHardwareReservationById(id, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling HardwareReservationsApi#findHardwareReservationById");
@@ -66,7 +66,7 @@ public class Example {
 
 ### Return type
 
-[**Device**](Device.md)
+[**HardwareReservation**](HardwareReservation.md)
 
 ### Authorization
 

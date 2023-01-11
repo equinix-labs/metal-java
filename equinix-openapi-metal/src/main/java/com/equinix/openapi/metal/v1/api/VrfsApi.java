@@ -113,7 +113,7 @@ public class VrfsApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/vrfs"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -143,20 +143,17 @@ public class VrfsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createVrfValidateBeforeCall(UUID id, VrfCreateInput vrfCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createVrf(Async)");
         }
-        
+
         // verify the required parameter 'vrfCreateInput' is set
         if (vrfCreateInput == null) {
             throw new ApiException("Missing the required parameter 'vrfCreateInput' when calling createVrf(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createVrfCall(id, vrfCreateInput, _callback);
-        return localVarCall;
+        return createVrfCall(id, vrfCreateInput, _callback);
 
     }
 
@@ -260,7 +257,7 @@ public class VrfsApi {
 
         // create path and map variables
         String localVarPath = "/vrfs/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -277,7 +274,6 @@ public class VrfsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -290,15 +286,12 @@ public class VrfsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteVrfValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteVrf(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteVrfCall(id, _callback);
-        return localVarCall;
+        return deleteVrfCall(id, _callback);
 
     }
 
@@ -397,7 +390,7 @@ public class VrfsApi {
 
         // create path and map variables
         String localVarPath = "/vrfs/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -422,7 +415,6 @@ public class VrfsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -435,15 +427,12 @@ public class VrfsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findVrfByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findVrfById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findVrfByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findVrfByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -551,7 +540,7 @@ public class VrfsApi {
 
         // create path and map variables
         String localVarPath = "/vrfs/{id}/ips"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -576,7 +565,6 @@ public class VrfsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -589,15 +577,12 @@ public class VrfsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findVrfIPReservationsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findVrfIPReservations(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findVrfIPReservationsCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findVrfIPReservationsCall(id, include, exclude, _callback);
 
     }
 
@@ -703,7 +688,7 @@ public class VrfsApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/vrfs"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -732,7 +717,6 @@ public class VrfsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -745,15 +729,12 @@ public class VrfsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findVrfsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, String metro, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findVrfs(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findVrfsCall(id, include, exclude, metro, _callback);
-        return localVarCall;
+        return findVrfsCall(id, include, exclude, metro, _callback);
 
     }
 
@@ -862,7 +843,7 @@ public class VrfsApi {
 
         // create path and map variables
         String localVarPath = "/vrfs/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -892,20 +873,17 @@ public class VrfsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateVrfValidateBeforeCall(UUID id, VrfUpdateInput vrfUpdateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateVrf(Async)");
         }
-        
+
         // verify the required parameter 'vrfUpdateInput' is set
         if (vrfUpdateInput == null) {
             throw new ApiException("Missing the required parameter 'vrfUpdateInput' when calling updateVrf(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateVrfCall(id, vrfUpdateInput, _callback);
-        return localVarCall;
+        return updateVrfCall(id, vrfUpdateInput, _callback);
 
     }
 

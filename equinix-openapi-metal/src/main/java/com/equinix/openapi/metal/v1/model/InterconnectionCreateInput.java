@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +38,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -205,7 +204,6 @@ public class InterconnectionCreateInput {
    * @return contactEmail
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getContactEmail() {
     return contactEmail;
@@ -228,7 +226,6 @@ public class InterconnectionCreateInput {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDescription() {
     return description;
@@ -251,7 +248,6 @@ public class InterconnectionCreateInput {
    * @return metro
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "A Metro ID or code.")
 
   public String getMetro() {
     return metro;
@@ -274,7 +270,6 @@ public class InterconnectionCreateInput {
    * @return mode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "standard", value = "The mode of the connection (only relevant to dedicated connections). Shared connections won't have this field. Can be either 'standard' or 'tunnel'.   The default mode of a dedicated connection is 'standard'. The mode can only be changed when there are no associated virtual circuits on the connection.   In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.")
 
   public ModeEnum getMode() {
     return mode;
@@ -297,7 +292,6 @@ public class InterconnectionCreateInput {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public String getName() {
     return name;
@@ -320,7 +314,6 @@ public class InterconnectionCreateInput {
    * @return project
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getProject() {
     return project;
@@ -343,7 +336,6 @@ public class InterconnectionCreateInput {
    * @return redundancy
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Either 'primary' or 'redundant'.")
 
   public String getRedundancy() {
     return redundancy;
@@ -366,7 +358,6 @@ public class InterconnectionCreateInput {
    * @return serviceTokenType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "a_side", value = "Can only be set to 'a_side' to create a shared connection with an A-side Fabric service token. This parameter is included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.")
 
   public ServiceTokenTypeEnum getServiceTokenType() {
     return serviceTokenType;
@@ -389,7 +380,6 @@ public class InterconnectionCreateInput {
    * @return speed
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A connection speed, in bps, mbps, or gbps. Ex: '100000000' or '100 mbps'.")
 
   public String getSpeed() {
     return speed;
@@ -420,7 +410,6 @@ public class InterconnectionCreateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getTags() {
     return tags;
@@ -443,7 +432,6 @@ public class InterconnectionCreateInput {
    * @return type
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Either 'shared' or 'dedicated'.")
 
   public String getType() {
     return type;
@@ -474,7 +462,6 @@ public class InterconnectionCreateInput {
    * @return vlans
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[1000,1001]", value = "A list of one or two metro-based VLANs that will be set on the primary and/or secondary (if redundant) virtual circuits respectively when creating a shared connection. VLANs can also be set after the connection is created, but are required to activate the connection. This parameter is included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.")
 
   public List<Integer> getVlans() {
     return vlans;
@@ -495,6 +482,10 @@ public class InterconnectionCreateInput {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the InterconnectionCreateInput instance itself
    */
   public InterconnectionCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -506,6 +497,8 @@ public class InterconnectionCreateInput {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -513,6 +506,9 @@ public class InterconnectionCreateInput {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -619,9 +615,7 @@ public class InterconnectionCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (InterconnectionCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!InterconnectionCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InterconnectionCreateInput is not found in the empty JSON string", InterconnectionCreateInput.openapiRequiredFields.toString()));
         }
       }
@@ -638,19 +632,19 @@ public class InterconnectionCreateInput {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) && !jsonObj.get("metro").isJsonPrimitive()) {
+      if (!jsonObj.get("metro").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `metro` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metro").toString()));
       }
       if ((jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) && !jsonObj.get("mode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) && !jsonObj.get("project").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `project` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project").toString()));
       }
-      if ((jsonObj.get("redundancy") != null && !jsonObj.get("redundancy").isJsonNull()) && !jsonObj.get("redundancy").isJsonPrimitive()) {
+      if (!jsonObj.get("redundancy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redundancy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redundancy").toString()));
       }
       if ((jsonObj.get("service_token_type") != null && !jsonObj.get("service_token_type").isJsonNull()) && !jsonObj.get("service_token_type").isJsonPrimitive()) {
@@ -659,15 +653,15 @@ public class InterconnectionCreateInput {
       if ((jsonObj.get("speed") != null && !jsonObj.get("speed").isJsonNull()) && !jsonObj.get("speed").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `speed` to be a primitive type in the JSON string but got `%s`", jsonObj.get("speed").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+      if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("vlans") != null && !jsonObj.get("vlans").isJsonNull()) && !jsonObj.get("vlans").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("vlans") != null && !jsonObj.get("vlans").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `vlans` to be an array in the JSON string but got `%s`", jsonObj.get("vlans").toString()));
       }
   }
@@ -688,7 +682,7 @@ public class InterconnectionCreateInput {
            public void write(JsonWriter out, InterconnectionCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -724,8 +718,10 @@ public class InterconnectionCreateInput {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

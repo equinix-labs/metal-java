@@ -109,7 +109,7 @@ public class InvitationsApi {
 
         // create path and map variables
         String localVarPath = "/invitations/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -126,7 +126,6 @@ public class InvitationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -139,15 +138,12 @@ public class InvitationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call acceptInvitationValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling acceptInvitation(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = acceptInvitationCall(id, _callback);
-        return localVarCall;
+        return acceptInvitationCall(id, _callback);
 
     }
 
@@ -248,7 +244,7 @@ public class InvitationsApi {
 
         // create path and map variables
         String localVarPath = "/invitations/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -265,7 +261,6 @@ public class InvitationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -278,15 +273,12 @@ public class InvitationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call declineInvitationValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling declineInvitation(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = declineInvitationCall(id, _callback);
-        return localVarCall;
+        return declineInvitationCall(id, _callback);
 
     }
 
@@ -385,7 +377,7 @@ public class InvitationsApi {
 
         // create path and map variables
         String localVarPath = "/invitations/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -410,7 +402,6 @@ public class InvitationsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -423,15 +414,12 @@ public class InvitationsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findInvitationByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findInvitationById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findInvitationByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findInvitationByIdCall(id, include, exclude, _callback);
 
     }
 

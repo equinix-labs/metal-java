@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +39,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -94,7 +93,6 @@ public class VrfIPReservationCreateInput {
    * @return cidr
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "16", required = true, value = "The size of the VRF IP Reservation's subnet")
 
   public Integer getCidr() {
     return cidr;
@@ -117,7 +115,6 @@ public class VrfIPReservationCreateInput {
    * @return customdata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getCustomdata() {
     return customdata;
@@ -140,7 +137,6 @@ public class VrfIPReservationCreateInput {
    * @return details
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDetails() {
     return details;
@@ -163,7 +159,6 @@ public class VrfIPReservationCreateInput {
    * @return network
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "10.1.2.0", required = true, value = "The starting address for this VRF IP Reservation's subnet")
 
   public String getNetwork() {
     return network;
@@ -194,7 +189,6 @@ public class VrfIPReservationCreateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getTags() {
     return tags;
@@ -217,7 +211,6 @@ public class VrfIPReservationCreateInput {
    * @return type
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "vrf", required = true, value = "Must be set to 'vrf'")
 
   public String getType() {
     return type;
@@ -240,7 +233,6 @@ public class VrfIPReservationCreateInput {
    * @return vrfId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The ID of the VRF in which this VRF IP Reservation is created. The VRF must have an existing IP Range that contains the requested subnet. This field may be aliased as just 'vrf'.")
 
   public UUID getVrfId() {
     return vrfId;
@@ -261,6 +253,10 @@ public class VrfIPReservationCreateInput {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the VrfIPReservationCreateInput instance itself
    */
   public VrfIPReservationCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -272,6 +268,8 @@ public class VrfIPReservationCreateInput {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -279,6 +277,9 @@ public class VrfIPReservationCreateInput {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -370,9 +371,7 @@ public class VrfIPReservationCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (VrfIPReservationCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!VrfIPReservationCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIPReservationCreateInput is not found in the empty JSON string", VrfIPReservationCreateInput.openapiRequiredFields.toString()));
         }
       }
@@ -386,17 +385,17 @@ public class VrfIPReservationCreateInput {
       if ((jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) && !jsonObj.get("details").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `details` to be a primitive type in the JSON string but got `%s`", jsonObj.get("details").toString()));
       }
-      if ((jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) && !jsonObj.get("network").isJsonPrimitive()) {
+      if (!jsonObj.get("network").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `network` to be a primitive type in the JSON string but got `%s`", jsonObj.get("network").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+      if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      if ((jsonObj.get("vrf_id") != null && !jsonObj.get("vrf_id").isJsonNull()) && !jsonObj.get("vrf_id").isJsonPrimitive()) {
+      if (!jsonObj.get("vrf_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `vrf_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vrf_id").toString()));
       }
   }
@@ -417,7 +416,7 @@ public class VrfIPReservationCreateInput {
            public void write(JsonWriter out, VrfIPReservationCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -453,8 +452,10 @@ public class VrfIPReservationCreateInput {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

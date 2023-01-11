@@ -22,15 +22,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,6 +45,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -118,7 +118,7 @@ public class DeviceCreateInput {
 
   public static final String SERIALIZED_NAME_CUSTOMDATA = "customdata";
   @SerializedName(SERIALIZED_NAME_CUSTOMDATA)
-  private Object customdata = null;
+  private Map<String, Object> customdata = null;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -222,7 +222,6 @@ public class DeviceCreateInput {
    * @return alwaysPxe
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "When true, devices with a `custom_ipxe` OS will always boot to iPXE. The default setting of false ensures that iPXE will be used on only the first boot.")
 
   public Boolean getAlwaysPxe() {
     return alwaysPxe;
@@ -245,7 +244,6 @@ public class DeviceCreateInput {
    * @return billingCycle
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The billing cycle of the device.")
 
   public BillingCycleEnum getBillingCycle() {
     return billingCycle;
@@ -257,9 +255,17 @@ public class DeviceCreateInput {
   }
 
 
-  public DeviceCreateInput customdata(Object customdata) {
+  public DeviceCreateInput customdata(Map<String, Object> customdata) {
     
     this.customdata = customdata;
+    return this;
+  }
+
+  public DeviceCreateInput putCustomdataItem(String key, Object customdataItem) {
+    if (this.customdata == null) {
+      this.customdata = new HashMap<>();
+    }
+    this.customdata.put(key, customdataItem);
     return this;
   }
 
@@ -268,14 +274,13 @@ public class DeviceCreateInput {
    * @return customdata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Customdata is an arbitrary JSON value that can be accessed via the metadata service.")
 
-  public Object getCustomdata() {
+  public Map<String, Object> getCustomdata() {
     return customdata;
   }
 
 
-  public void setCustomdata(Object customdata) {
+  public void setCustomdata(Map<String, Object> customdata) {
     this.customdata = customdata;
   }
 
@@ -291,7 +296,6 @@ public class DeviceCreateInput {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Any description of the device or how it will be used. This may be used to inform other API consumers with project access.")
 
   public String getDescription() {
     return description;
@@ -322,7 +326,6 @@ public class DeviceCreateInput {
    * @return facility
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[\"sv15\"]", value = "The datacenter where the device should be created.  Either metro or facility must be provided.  The API will accept either a single facility `{ \"facility\": \"f1\" }`, or it can be instructed to create the device in the best available datacenter `{ \"facility\": \"any\" }`.  Additionally it is possible to set a prioritized location selection. For example `{ \"facility\": [\"f3\", \"f2\", \"any\"] }` can be used to prioritize `f3` and then `f2` before accepting `any` facility. If none of the facilities provided have availability for the requested device the request will fail.")
 
   public List<String> getFacility() {
     return facility;
@@ -353,7 +356,6 @@ public class DeviceCreateInput {
    * @return features
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The features attribute allows you to optionally specify what features your server should have.  In the API shorthand syntax, all features listed are `required`:  ``` { \"features\": [\"tpm\"] } ```  Alternatively, if you do not require a certain feature, but would prefer to be assigned a server with that feature if there are any available, you may specify that feature with a `preferred` value. The request will not fail if we have no servers with that feature in our inventory. The API offers an alternative syntax for mixing preferred and required features:  ``` { \"features\": { \"tpm\": \"required\", \"raid\": \"preferred\" } } ```  The request will only fail if there are no available servers matching the required `tpm` criteria.")
 
   public List<String> getFeatures() {
     return features;
@@ -376,7 +378,6 @@ public class DeviceCreateInput {
    * @return hardwareReservationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "next-available", value = "The Hardware Reservation UUID to provision. Alternatively, `next-available` can be specified to select from any of the available hardware reservations. An error will be returned if the requested reservation option is not available.  See [Reserved Hardware](https://metal.equinix.com/developers/docs/deploy/reserved/) for more details.")
 
   public String getHardwareReservationId() {
     return hardwareReservationId;
@@ -399,7 +400,6 @@ public class DeviceCreateInput {
    * @return hostname
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The hostname to use within the operating system. The same hostname may be used on multiple devices within a project.")
 
   public String getHostname() {
     return hostname;
@@ -430,7 +430,6 @@ public class DeviceCreateInput {
    * @return ipAddresses
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The `ip_addresses attribute will allow you to specify the addresses you want created with your device.  The default value configures public IPv4, public IPv6, and private IPv4.  Private IPv4 address is required. When specifying `ip_addresses`, one of the array items must enable private IPv4.  Some operating systems require public IPv4 address. In those cases you will receive an error message if public IPv4 is not enabled.  For example, to only configure your server with a private IPv4 address, you can send `{ \"ip_addresses\": [{ \"address_family\": 4, \"public\": false }] }`.  It is possible to request a subnet size larger than a `/30` by assigning addresses using the UUID(s) of ip_reservations in your project.  For example, `{ \"ip_addresses\": [..., {\"address_family\": 4, \"public\": true, \"ip_reservations\": [\"uuid1\", \"uuid2\"]}] }`  To access a server without public IPs, you can use our Out-of-Band console access (SOS) or proxy through another server in the project with public IPs enabled.")
 
   public List<DeviceCreateInputIpAddressesInner> getIpAddresses() {
     return ipAddresses;
@@ -453,7 +452,6 @@ public class DeviceCreateInput {
    * @return ipxeScriptUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "When set, the device will chainload an iPXE Script at boot fetched from the supplied URL.  See [Custom iPXE](https://metal.equinix.com/developers/docs/operating-systems/custom-ipxe/) for more details.")
 
   public String getIpxeScriptUrl() {
     return ipxeScriptUrl;
@@ -476,7 +474,6 @@ public class DeviceCreateInput {
    * @return locked
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether the device should be locked, preventing accidental deletion.")
 
   public Boolean getLocked() {
     return locked;
@@ -499,7 +496,6 @@ public class DeviceCreateInput {
    * @return metro
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "sv", value = "Metro code or ID of where the instance should be provisioned in.  Either metro or facility must be provided.")
 
   public String getMetro() {
     return metro;
@@ -522,7 +518,6 @@ public class DeviceCreateInput {
    * @return noSshKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Overrides default behaviour of attaching all of the organization members ssh keys and project ssh keys to device if no specific keys specified")
 
   public Boolean getNoSshKeys() {
     return noSshKeys;
@@ -545,7 +540,6 @@ public class DeviceCreateInput {
    * @return operatingSystem
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The slug of the operating system to provision. Check the Equinix Metal operating system documentation for rules that may be imposed per operating system, including restrictions on IP address options and device plans.")
 
   public String getOperatingSystem() {
     return operatingSystem;
@@ -568,7 +562,6 @@ public class DeviceCreateInput {
    * @return plan
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "c3.large.x86", required = true, value = "The slug of the device plan to provision.")
 
   public String getPlan() {
     return plan;
@@ -591,7 +584,6 @@ public class DeviceCreateInput {
    * @return privateIpv4SubnetSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Deprecated. Use ip_addresses. Subnet range for addresses allocated to this device.")
 
   public BigDecimal getPrivateIpv4SubnetSize() {
     return privateIpv4SubnetSize;
@@ -622,7 +614,6 @@ public class DeviceCreateInput {
    * @return projectSshKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of UUIDs identifying the device parent project that should be authorized to access this device (typically via /root/.ssh/authorized_keys). These keys will also appear in the device metadata.  If no SSH keys are specified (`user_ssh_keys`, `project_ssh_keys`, and `ssh_keys` are all empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. This behaviour can be changed with 'no_ssh_keys' option to omit any SSH key being added. ")
 
   public List<UUID> getProjectSshKeys() {
     return projectSshKeys;
@@ -645,7 +636,6 @@ public class DeviceCreateInput {
    * @return publicIpv4SubnetSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Deprecated. Use ip_addresses. Subnet range for addresses allocated to this device. Your project must have addresses available for a non-default request.")
 
   public BigDecimal getPublicIpv4SubnetSize() {
     return publicIpv4SubnetSize;
@@ -668,7 +658,6 @@ public class DeviceCreateInput {
    * @return spotInstance
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getSpotInstance() {
     return spotInstance;
@@ -691,7 +680,6 @@ public class DeviceCreateInput {
    * @return spotPriceMax
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Float getSpotPriceMax() {
     return spotPriceMax;
@@ -722,7 +710,6 @@ public class DeviceCreateInput {
    * @return sshKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of new or existing project ssh_keys that should be authorized to access this device (typically via /root/.ssh/authorized_keys). These keys will also appear in the device metadata.  These keys are added in addition to any keys defined by   `project_ssh_keys` and `user_ssh_keys`. ")
 
   public List<SSHKeyInput> getSshKeys() {
     return sshKeys;
@@ -753,7 +740,6 @@ public class DeviceCreateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getTags() {
     return tags;
@@ -776,7 +762,6 @@ public class DeviceCreateInput {
    * @return terminationTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getTerminationTime() {
     return terminationTime;
@@ -807,7 +792,6 @@ public class DeviceCreateInput {
    * @return userSshKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of UUIDs identifying the users that should be authorized to access this device (typically via /root/.ssh/authorized_keys).  These keys will also appear in the device metadata.  The users must be members of the project or organization.  If no SSH keys are specified (`user_ssh_keys`, `project_ssh_keys`, and `ssh_keys` are all empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. This behaviour can be changed with 'no_ssh_keys' option to omit any SSH key being added. ")
 
   public List<UUID> getUserSshKeys() {
     return userSshKeys;
@@ -830,7 +814,6 @@ public class DeviceCreateInput {
    * @return userdata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The userdata presented in the metadata service for this device.  Userdata is fetched and interpreted by the operating system installed on the device. Acceptable formats are determined by the operating system, with the exception of a special iPXE enabling syntax which is handled before the operating system starts.  See [Server User Data](https://metal.equinix.com/developers/docs/servers/user-data/) and [Provisioning with Custom iPXE](https://metal.equinix.com/developers/docs/operating-systems/custom-ipxe/#provisioning-with-custom-ipxe) for more details.")
 
   public String getUserdata() {
     return userdata;
@@ -851,6 +834,10 @@ public class DeviceCreateInput {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the DeviceCreateInput instance itself
    */
   public DeviceCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -862,6 +849,8 @@ public class DeviceCreateInput {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -869,6 +858,9 @@ public class DeviceCreateInput {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -915,20 +907,9 @@ public class DeviceCreateInput {
         Objects.equals(this.additionalProperties, deviceCreateInput.additionalProperties);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(alwaysPxe, billingCycle, customdata, description, facility, features, hardwareReservationId, hostname, ipAddresses, ipxeScriptUrl, locked, metro, noSshKeys, operatingSystem, plan, privateIpv4SubnetSize, projectSshKeys, publicIpv4SubnetSize, spotInstance, spotPriceMax, sshKeys, tags, terminationTime, userSshKeys, userdata, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -1023,9 +1004,7 @@ public class DeviceCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (DeviceCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!DeviceCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in DeviceCreateInput is not found in the empty JSON string", DeviceCreateInput.openapiRequiredFields.toString()));
         }
       }
@@ -1042,12 +1021,12 @@ public class DeviceCreateInput {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonNull()) && !jsonObj.get("facility").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `facility` to be an array in the JSON string but got `%s`", jsonObj.get("facility").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("features") != null && !jsonObj.get("features").isJsonNull()) && !jsonObj.get("features").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("features") != null && !jsonObj.get("features").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `features` to be an array in the JSON string but got `%s`", jsonObj.get("features").toString()));
       }
       if ((jsonObj.get("hardware_reservation_id") != null && !jsonObj.get("hardware_reservation_id").isJsonNull()) && !jsonObj.get("hardware_reservation_id").isJsonPrimitive()) {
@@ -1076,14 +1055,14 @@ public class DeviceCreateInput {
       if ((jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) && !jsonObj.get("metro").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `metro` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metro").toString()));
       }
-      if ((jsonObj.get("operating_system") != null && !jsonObj.get("operating_system").isJsonNull()) && !jsonObj.get("operating_system").isJsonPrimitive()) {
+      if (!jsonObj.get("operating_system").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `operating_system` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operating_system").toString()));
       }
-      if ((jsonObj.get("plan") != null && !jsonObj.get("plan").isJsonNull()) && !jsonObj.get("plan").isJsonPrimitive()) {
+      if (!jsonObj.get("plan").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `plan` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("project_ssh_keys") != null && !jsonObj.get("project_ssh_keys").isJsonNull()) && !jsonObj.get("project_ssh_keys").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("project_ssh_keys") != null && !jsonObj.get("project_ssh_keys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `project_ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("project_ssh_keys").toString()));
       }
       if (jsonObj.get("ssh_keys") != null && !jsonObj.get("ssh_keys").isJsonNull()) {
@@ -1100,12 +1079,12 @@ public class DeviceCreateInput {
           };
         }
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
-      // ensure the json data is an array
-      if ((jsonObj.get("user_ssh_keys") != null && !jsonObj.get("user_ssh_keys").isJsonNull()) && !jsonObj.get("user_ssh_keys").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("user_ssh_keys") != null && !jsonObj.get("user_ssh_keys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `user_ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("user_ssh_keys").toString()));
       }
       if ((jsonObj.get("userdata") != null && !jsonObj.get("userdata").isJsonNull()) && !jsonObj.get("userdata").isJsonPrimitive()) {
@@ -1129,7 +1108,7 @@ public class DeviceCreateInput {
            public void write(JsonWriter out, DeviceCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -1165,8 +1144,10 @@ public class DeviceCreateInput {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

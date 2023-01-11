@@ -113,7 +113,7 @@ public class MetalGatewaysApi {
 
         // create path and map variables
         String localVarPath = "/projects/{project_id}/metal-gateways"
-            .replaceAll("\\{" + "project_id" + "\\}", localVarApiClient.escapeString(projectId.toString()));
+            .replace("{" + "project_id" + "}", localVarApiClient.escapeString(projectId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -151,20 +151,17 @@ public class MetalGatewaysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createMetalGatewayValidateBeforeCall(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling createMetalGateway(Async)");
         }
-        
+
         // verify the required parameter 'createMetalGatewayRequest' is set
         if (createMetalGatewayRequest == null) {
             throw new ApiException("Missing the required parameter 'createMetalGatewayRequest' when calling createMetalGateway(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createMetalGatewayCall(projectId, createMetalGatewayRequest, page, perPage, _callback);
-        return localVarCall;
+        return createMetalGatewayCall(projectId, createMetalGatewayRequest, page, perPage, _callback);
 
     }
 
@@ -273,7 +270,7 @@ public class MetalGatewaysApi {
 
         // create path and map variables
         String localVarPath = "/metal-gateways/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -290,7 +287,6 @@ public class MetalGatewaysApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -303,15 +299,12 @@ public class MetalGatewaysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteMetalGatewayValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteMetalGateway(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteMetalGatewayCall(id, _callback);
-        return localVarCall;
+        return deleteMetalGatewayCall(id, _callback);
 
     }
 
@@ -406,7 +399,7 @@ public class MetalGatewaysApi {
 
         // create path and map variables
         String localVarPath = "/metal-gateways/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -431,7 +424,6 @@ public class MetalGatewaysApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -444,15 +436,12 @@ public class MetalGatewaysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findMetalGatewayByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findMetalGatewayById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findMetalGatewayByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findMetalGatewayByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -557,7 +546,7 @@ public class MetalGatewaysApi {
 
         // create path and map variables
         String localVarPath = "/projects/{project_id}/metal-gateways"
-            .replaceAll("\\{" + "project_id" + "\\}", localVarApiClient.escapeString(projectId.toString()));
+            .replace("{" + "project_id" + "}", localVarApiClient.escapeString(projectId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -582,7 +571,6 @@ public class MetalGatewaysApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -595,15 +583,12 @@ public class MetalGatewaysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findMetalGatewaysByProjectValidateBeforeCall(UUID projectId, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling findMetalGatewaysByProject(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findMetalGatewaysByProjectCall(projectId, page, perPage, _callback);
-        return localVarCall;
+        return findMetalGatewaysByProjectCall(projectId, page, perPage, _callback);
 
     }
 

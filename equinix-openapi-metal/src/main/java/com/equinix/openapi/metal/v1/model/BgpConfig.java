@@ -23,8 +23,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -46,6 +44,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -219,7 +218,6 @@ public class BgpConfig {
    * @return asn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "65000", value = "Autonomous System Number. ASN is required with Global BGP. With Local BGP the private ASN, 65000, is assigned.")
 
   public Integer getAsn() {
     return asn;
@@ -242,7 +240,6 @@ public class BgpConfig {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -265,7 +262,6 @@ public class BgpConfig {
    * @return deploymentType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "local", value = "In a Local BGP deployment, a customer uses an internal ASN to control routes within a single Equinix Metal datacenter. This means that the routes are never advertised to the global Internet. Global BGP, on the other hand, requires a customer to have a registered ASN and IP space. ")
 
   public DeploymentTypeEnum getDeploymentType() {
     return deploymentType;
@@ -288,7 +284,6 @@ public class BgpConfig {
    * @return href
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getHref() {
     return href;
@@ -311,7 +306,6 @@ public class BgpConfig {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public UUID getId() {
     return id;
@@ -334,7 +328,6 @@ public class BgpConfig {
    * @return maxPrefix
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The maximum number of route filters allowed per server")
 
   public Integer getMaxPrefix() {
     return maxPrefix;
@@ -357,7 +350,6 @@ public class BgpConfig {
    * @return md5
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(Optional) Password for BGP session in plaintext (not a checksum)")
 
   public String getMd5() {
     return md5;
@@ -380,7 +372,6 @@ public class BgpConfig {
    * @return project
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Href getProject() {
     return project;
@@ -411,7 +402,6 @@ public class BgpConfig {
    * @return ranges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP block ranges associated to the ASN (Populated in Global BGP only)")
 
   public List<GlobalBgpRange> getRanges() {
     return ranges;
@@ -434,7 +424,6 @@ public class BgpConfig {
    * @return requestedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getRequestedAt() {
     return requestedAt;
@@ -457,7 +446,6 @@ public class BgpConfig {
    * @return routeObject
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Specifies AS-MACRO (aka AS-SET) to use when building client route filters")
 
   public String getRouteObject() {
     return routeObject;
@@ -488,7 +476,6 @@ public class BgpConfig {
    * @return sessions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The direct connections between neighboring routers that want to exchange routing information.")
 
   public List<BgpSession> getSessions() {
     return sessions;
@@ -511,7 +498,6 @@ public class BgpConfig {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Status of the BGP Config. Status \"requested\" is valid only with the \"global\" deployment_type.")
 
   public StatusEnum getStatus() {
     return status;
@@ -532,6 +518,10 @@ public class BgpConfig {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the BgpConfig instance itself
    */
   public BgpConfig putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -543,6 +533,8 @@ public class BgpConfig {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -550,6 +542,9 @@ public class BgpConfig {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -666,9 +661,7 @@ public class BgpConfig {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (BgpConfig.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!BgpConfig.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in BgpConfig is not found in the empty JSON string", BgpConfig.openapiRequiredFields.toString()));
         }
       }
@@ -740,7 +733,7 @@ public class BgpConfig {
            public void write(JsonWriter out, BgpConfig value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -776,8 +769,10 @@ public class BgpConfig {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

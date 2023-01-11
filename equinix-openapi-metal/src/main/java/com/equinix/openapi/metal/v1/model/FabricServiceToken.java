@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -40,6 +38,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -230,7 +229,6 @@ public class FabricServiceToken {
    * @return expiresAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The expiration date and time of the Fabric service token. Once a service token is expired, it is no longer redeemable.")
 
   public OffsetDateTime getExpiresAt() {
     return expiresAt;
@@ -253,7 +251,6 @@ public class FabricServiceToken {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The service token UUID that can be used on the Fabric Portal to create an connection from Metal to another Fabric service provider.")
 
   public UUID getId() {
     return id;
@@ -276,7 +273,6 @@ public class FabricServiceToken {
    * @return maxAllowedSpeed
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "'200000000' or '200mbps'", value = "The maximum speed that can be selected on the Fabric Portal when configuring a connection with the service token. The speed is recorded in bps, but can be set by using any of the following units: 'bps', 'mbps', or 'gbps'. This speed is automatically capped depending on the tier of the organization. If you would like to upgrade to another tier, please contact our Support team.")
 
   public String getMaxAllowedSpeed() {
     return maxAllowedSpeed;
@@ -299,7 +295,6 @@ public class FabricServiceToken {
    * @return role
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Either primary or redundant, depending on the role of the connection port the token is associated with.")
 
   public RoleEnum getRole() {
     return role;
@@ -322,7 +317,6 @@ public class FabricServiceToken {
    * @return serviceTokenType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of service token that has been created. Currently, only A-side service tokens are available.")
 
   public ServiceTokenTypeEnum getServiceTokenType() {
     return serviceTokenType;
@@ -345,7 +339,6 @@ public class FabricServiceToken {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the service token that corresponds with the service token state on Fabric. An inactive state refers to a token that has not been redeemed yet on the Fabric side, an active state refers to a token that has already been redeemed, and an expired state refers to a token that has reached its expiry time.")
 
   public StateEnum getState() {
     return state;
@@ -366,6 +359,10 @@ public class FabricServiceToken {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the FabricServiceToken instance itself
    */
   public FabricServiceToken putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -377,6 +374,8 @@ public class FabricServiceToken {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -384,6 +383,9 @@ public class FabricServiceToken {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -468,9 +470,7 @@ public class FabricServiceToken {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (FabricServiceToken.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!FabricServiceToken.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in FabricServiceToken is not found in the empty JSON string", FabricServiceToken.openapiRequiredFields.toString()));
         }
       }
@@ -507,7 +507,7 @@ public class FabricServiceToken {
            public void write(JsonWriter out, FabricServiceToken value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -543,8 +543,10 @@ public class FabricServiceToken {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

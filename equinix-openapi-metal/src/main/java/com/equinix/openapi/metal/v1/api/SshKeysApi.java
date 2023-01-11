@@ -111,7 +111,7 @@ public class SshKeysApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/ssh-keys"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -141,20 +141,17 @@ public class SshKeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createProjectSSHKeyValidateBeforeCall(UUID id, SSHKeyCreateInput ssHKeyCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createProjectSSHKey(Async)");
         }
-        
+
         // verify the required parameter 'ssHKeyCreateInput' is set
         if (ssHKeyCreateInput == null) {
             throw new ApiException("Missing the required parameter 'ssHKeyCreateInput' when calling createProjectSSHKey(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createProjectSSHKeyCall(id, ssHKeyCreateInput, _callback);
-        return localVarCall;
+        return createProjectSSHKeyCall(id, ssHKeyCreateInput, _callback);
 
     }
 
@@ -283,15 +280,12 @@ public class SshKeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createSSHKeyValidateBeforeCall(SSHKeyCreateInput ssHKeyCreateInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'ssHKeyCreateInput' is set
         if (ssHKeyCreateInput == null) {
             throw new ApiException("Missing the required parameter 'ssHKeyCreateInput' when calling createSSHKey(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createSSHKeyCall(ssHKeyCreateInput, _callback);
-        return localVarCall;
+        return createSSHKeyCall(ssHKeyCreateInput, _callback);
 
     }
 
@@ -389,7 +383,7 @@ public class SshKeysApi {
 
         // create path and map variables
         String localVarPath = "/ssh-keys/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -406,7 +400,6 @@ public class SshKeysApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -419,15 +412,12 @@ public class SshKeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteSSHKeyValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteSSHKey(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteSSHKeyCall(id, _callback);
-        return localVarCall;
+        return deleteSSHKeyCall(id, _callback);
 
     }
 
@@ -525,7 +515,7 @@ public class SshKeysApi {
 
         // create path and map variables
         String localVarPath = "/devices/{id}/ssh-keys"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -554,7 +544,6 @@ public class SshKeysApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -567,15 +556,12 @@ public class SshKeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findDeviceSSHKeysValidateBeforeCall(UUID id, String searchString, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findDeviceSSHKeys(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findDeviceSSHKeysCall(id, searchString, include, exclude, _callback);
-        return localVarCall;
+        return findDeviceSSHKeysCall(id, searchString, include, exclude, _callback);
 
     }
 
@@ -680,7 +666,7 @@ public class SshKeysApi {
 
         // create path and map variables
         String localVarPath = "/projects/{id}/ssh-keys"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -709,7 +695,6 @@ public class SshKeysApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -722,15 +707,12 @@ public class SshKeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findProjectSSHKeysValidateBeforeCall(UUID id, String searchString, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findProjectSSHKeys(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findProjectSSHKeysCall(id, searchString, include, exclude, _callback);
-        return localVarCall;
+        return findProjectSSHKeysCall(id, searchString, include, exclude, _callback);
 
     }
 
@@ -836,7 +818,7 @@ public class SshKeysApi {
 
         // create path and map variables
         String localVarPath = "/ssh-keys/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -861,7 +843,6 @@ public class SshKeysApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -874,15 +855,12 @@ public class SshKeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findSSHKeyByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findSSHKeyById(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = findSSHKeyByIdCall(id, include, exclude, _callback);
-        return localVarCall;
+        return findSSHKeyByIdCall(id, include, exclude, _callback);
 
     }
 
@@ -1017,7 +995,6 @@ public class SshKeysApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1030,10 +1007,7 @@ public class SshKeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findSSHKeysValidateBeforeCall(String searchString, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = findSSHKeysCall(searchString, include, exclude, _callback);
-        return localVarCall;
+        return findSSHKeysCall(searchString, include, exclude, _callback);
 
     }
 
@@ -1136,7 +1110,7 @@ public class SshKeysApi {
 
         // create path and map variables
         String localVarPath = "/ssh-keys/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1166,20 +1140,17 @@ public class SshKeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateSSHKeyValidateBeforeCall(UUID id, SSHKeyInput ssHKeyInput, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateSSHKey(Async)");
         }
-        
+
         // verify the required parameter 'ssHKeyInput' is set
         if (ssHKeyInput == null) {
             throw new ApiException("Missing the required parameter 'ssHKeyInput' when calling updateSSHKey(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = updateSSHKeyCall(id, ssHKeyInput, _callback);
-        return localVarCall;
+        return updateSSHKeyCall(id, ssHKeyInput, _callback);
 
     }
 

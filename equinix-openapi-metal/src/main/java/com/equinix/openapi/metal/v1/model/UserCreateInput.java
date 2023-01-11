@@ -21,8 +21,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.File;
 import java.io.IOException;
 import java.time.OffsetDateTime;
@@ -43,6 +41,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -132,7 +131,6 @@ public class UserCreateInput {
    * @return avatar
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public File getAvatar() {
     return avatar;
@@ -155,7 +153,6 @@ public class UserCreateInput {
    * @return companyName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getCompanyName() {
     return companyName;
@@ -178,7 +175,6 @@ public class UserCreateInput {
    * @return companyUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getCompanyUrl() {
     return companyUrl;
@@ -201,7 +197,6 @@ public class UserCreateInput {
    * @return customdata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getCustomdata() {
     return customdata;
@@ -229,7 +224,6 @@ public class UserCreateInput {
    * @return emails
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public List<EmailInput> getEmails() {
     return emails;
@@ -252,7 +246,6 @@ public class UserCreateInput {
    * @return firstName
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public String getFirstName() {
     return firstName;
@@ -275,7 +268,6 @@ public class UserCreateInput {
    * @return lastName
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public String getLastName() {
     return lastName;
@@ -298,7 +290,6 @@ public class UserCreateInput {
    * @return level
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getLevel() {
     return level;
@@ -321,7 +312,6 @@ public class UserCreateInput {
    * @return locked
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getLocked() {
     return locked;
@@ -344,7 +334,6 @@ public class UserCreateInput {
    * @return password
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getPassword() {
     return password;
@@ -367,7 +356,6 @@ public class UserCreateInput {
    * @return phoneNumber
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getPhoneNumber() {
     return phoneNumber;
@@ -390,7 +378,6 @@ public class UserCreateInput {
    * @return socialAccounts
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Object getSocialAccounts() {
     return socialAccounts;
@@ -413,7 +400,6 @@ public class UserCreateInput {
    * @return timezone
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getTimezone() {
     return timezone;
@@ -436,7 +422,6 @@ public class UserCreateInput {
    * @return title
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getTitle() {
     return title;
@@ -459,7 +444,6 @@ public class UserCreateInput {
    * @return twoFactorAuth
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getTwoFactorAuth() {
     return twoFactorAuth;
@@ -482,7 +466,6 @@ public class UserCreateInput {
    * @return verifiedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getVerifiedAt() {
     return verifiedAt;
@@ -503,6 +486,10 @@ public class UserCreateInput {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the UserCreateInput instance itself
    */
   public UserCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -514,6 +501,8 @@ public class UserCreateInput {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -521,6 +510,9 @@ public class UserCreateInput {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -638,9 +630,7 @@ public class UserCreateInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (UserCreateInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!UserCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in UserCreateInput is not found in the empty JSON string", UserCreateInput.openapiRequiredFields.toString()));
         }
       }
@@ -657,24 +647,20 @@ public class UserCreateInput {
       if ((jsonObj.get("company_url") != null && !jsonObj.get("company_url").isJsonNull()) && !jsonObj.get("company_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `company_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company_url").toString()));
       }
-      if (jsonObj.get("emails") != null && !jsonObj.get("emails").isJsonNull()) {
-        JsonArray jsonArrayemails = jsonObj.getAsJsonArray("emails");
-        if (jsonArrayemails != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("emails").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `emails` to be an array in the JSON string but got `%s`", jsonObj.get("emails").toString()));
-          }
-
-          // validate the optional field `emails` (array)
-          for (int i = 0; i < jsonArrayemails.size(); i++) {
-            EmailInput.validateJsonObject(jsonArrayemails.get(i).getAsJsonObject());
-          };
-        }
+      // ensure the json data is an array
+      if (!jsonObj.get("emails").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `emails` to be an array in the JSON string but got `%s`", jsonObj.get("emails").toString()));
       }
-      if ((jsonObj.get("first_name") != null && !jsonObj.get("first_name").isJsonNull()) && !jsonObj.get("first_name").isJsonPrimitive()) {
+
+      JsonArray jsonArrayemails = jsonObj.getAsJsonArray("emails");
+      // validate the required field `emails` (array)
+      for (int i = 0; i < jsonArrayemails.size(); i++) {
+        EmailInput.validateJsonObject(jsonArrayemails.get(i).getAsJsonObject());
+      };
+      if (!jsonObj.get("first_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `first_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("first_name").toString()));
       }
-      if ((jsonObj.get("last_name") != null && !jsonObj.get("last_name").isJsonNull()) && !jsonObj.get("last_name").isJsonPrimitive()) {
+      if (!jsonObj.get("last_name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `last_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("last_name").toString()));
       }
       if ((jsonObj.get("level") != null && !jsonObj.get("level").isJsonNull()) && !jsonObj.get("level").isJsonPrimitive()) {
@@ -713,7 +699,7 @@ public class UserCreateInput {
            public void write(JsonWriter out, UserCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -749,8 +735,10 @@ public class UserCreateInput {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }

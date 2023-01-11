@@ -20,8 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -38,6 +36,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -79,7 +78,6 @@ public class BgpConfigRequestInput {
    * @return asn
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public Integer getAsn() {
     return asn;
@@ -102,7 +100,6 @@ public class BgpConfigRequestInput {
    * @return deploymentType
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public String getDeploymentType() {
     return deploymentType;
@@ -125,7 +122,6 @@ public class BgpConfigRequestInput {
    * @return md5
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getMd5() {
     return md5;
@@ -148,7 +144,6 @@ public class BgpConfigRequestInput {
    * @return useCase
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getUseCase() {
     return useCase;
@@ -169,6 +164,10 @@ public class BgpConfigRequestInput {
   /**
    * Set the additional (undeclared) property with the specified name and value.
    * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the BgpConfigRequestInput instance itself
    */
   public BgpConfigRequestInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
@@ -180,6 +179,8 @@ public class BgpConfigRequestInput {
 
   /**
    * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
    */
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;
@@ -187,6 +188,9 @@ public class BgpConfigRequestInput {
 
   /**
    * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
    */
   public Object getAdditionalProperty(String key) {
     if (this.additionalProperties == null) {
@@ -267,9 +271,7 @@ public class BgpConfigRequestInput {
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (BgpConfigRequestInput.openapiRequiredFields.isEmpty()) {
-          return;
-        } else { // has required fields
+        if (!BgpConfigRequestInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in BgpConfigRequestInput is not found in the empty JSON string", BgpConfigRequestInput.openapiRequiredFields.toString()));
         }
       }
@@ -280,7 +282,7 @@ public class BgpConfigRequestInput {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("deployment_type") != null && !jsonObj.get("deployment_type").isJsonNull()) && !jsonObj.get("deployment_type").isJsonPrimitive()) {
+      if (!jsonObj.get("deployment_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `deployment_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deployment_type").toString()));
       }
       if ((jsonObj.get("md5") != null && !jsonObj.get("md5").isJsonNull()) && !jsonObj.get("md5").isJsonPrimitive()) {
@@ -307,7 +309,7 @@ public class BgpConfigRequestInput {
            public void write(JsonWriter out, BgpConfigRequestInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
@@ -343,8 +345,10 @@ public class BgpConfigRequestInput {
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
                      throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else { // non-primitive type
-                   instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
                  }
                }
              }
