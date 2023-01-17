@@ -1,0 +1,31 @@
+diff --git a/spec/oas3.patched.json b/spec/oas3.patched.json
+index aff92d5..6ff2331 100644
+--- a/spec/oas3.patched.json
++++ b/spec/oas3.patched.json
+@@ -15193,20 +15193,26 @@
+            {
+              "description": "Project UUID",
+              "in": "path",
+              "name": "project_id",
+              "required": true,
+              "schema": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
++           {
++             "$ref": "#/components/parameters/Include"
++           },
++           {
++             "$ref": "#/components/parameters/Exclude"
++           },
+            {
+              "$ref": "#/components/parameters/Page"
+            },
+            {
+              "$ref": "#/components/parameters/PerPage"
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
