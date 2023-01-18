@@ -92,9 +92,11 @@ public class MetalGatewaysApiTest {
     @Test
     public void findMetalGatewaysByProjectTest() throws ApiException {
         UUID projectId = null;
+        List<String> include = null;
+        List<String> exclude = null;
         Integer page = null;
         Integer perPage = null;
-        MetalGatewayList response = api.findMetalGatewaysByProject(projectId, page, perPage);
+        MetalGatewayList response = api.findMetalGatewaysByProject(projectId, include, exclude, page, perPage);
         // TODO: test validations
     }
 

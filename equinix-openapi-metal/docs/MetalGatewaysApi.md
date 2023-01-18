@@ -235,7 +235,7 @@ public class Example {
 
 <a name="findMetalGatewaysByProject"></a>
 # **findMetalGatewaysByProject**
-> MetalGatewayList findMetalGatewaysByProject(projectId, page, perPage)
+> MetalGatewayList findMetalGatewaysByProject(projectId, include, exclude, page, perPage)
 
 Returns all metal gateways for a project
 
@@ -264,10 +264,12 @@ public class Example {
 
     MetalGatewaysApi apiInstance = new MetalGatewaysApi(defaultClient);
     UUID projectId = UUID.randomUUID(); // UUID | Project UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      MetalGatewayList result = apiInstance.findMetalGatewaysByProject(projectId, page, perPage);
+      MetalGatewayList result = apiInstance.findMetalGatewaysByProject(projectId, include, exclude, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetalGatewaysApi#findMetalGatewaysByProject");
@@ -285,6 +287,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | **UUID**| Project UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 | **page** | **Integer**| Page to return | [optional] [default to 1] |
 | **perPage** | **Integer**| Items returned per page | [optional] [default to 10] |
 
