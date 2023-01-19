@@ -1,0 +1,19 @@
+diff --git a/spec/oas3.fetched/openapi/public/paths/user/otp/recovery-codes.yaml b/spec/oas3.fetched/openapi/public/paths/user/otp/recovery-codes.yaml
+index b0f88de..02dfd23 100644
+--- a/spec/oas3.fetched/openapi/public/paths/user/otp/recovery-codes.yaml
++++ b/spec/oas3.fetched/openapi/public/paths/user/otp/recovery-codes.yaml
+@@ -28,7 +28,7 @@ get:
+       description: unprocessable entity
+   summary: Retrieve my recovery codes
+   tags:
+-  - OTPs
++  - Otps
+ post:
+   description: Generate a new set of recovery codes.
+   operationId: regenerateCodes
+@@ -59,4 +59,4 @@ post:
+       description: unprocessable entity
+   summary: Generate new recovery codes
+   tags:
+-  - OTPs
++  - Otps

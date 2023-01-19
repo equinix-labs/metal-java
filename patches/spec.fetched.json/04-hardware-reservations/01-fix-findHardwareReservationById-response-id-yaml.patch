@@ -1,0 +1,13 @@
+diff --git a/spec/oas3.fetched/openapi/public/paths/hardware-reservations/id.yaml b/spec/oas3.fetched/openapi/public/paths/hardware-reservations/id.yaml
+index ae4d540..f060e73 100644
+--- a/spec/oas3.fetched/openapi/public/paths/hardware-reservations/id.yaml
++++ b/spec/oas3.fetched/openapi/public/paths/hardware-reservations/id.yaml
+@@ -16,7 +16,7 @@ get:
+       content:
+         application/json:
+           schema:
+-            $ref: '../../components/schemas/Device.yaml'
++            $ref: '../../components/schemas/HardwareReservation.yaml'
+       description: ok
+     "401":
+       content:

@@ -10,7 +10,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="consumeVerificationRequest"></a>
 # **consumeVerificationRequest**
-> consumeVerificationRequest(token)
+> consumeVerificationRequest(verifyEmail)
 
 Verify a user using an email verification token
 
@@ -38,9 +38,9 @@ public class Example {
     //x_auth_token.setApiKeyPrefix("Token");
 
     UserVerificationTokensApi apiInstance = new UserVerificationTokensApi(defaultClient);
-    String token = "token_example"; // String | User verification token
+    VerifyEmail verifyEmail = new VerifyEmail(); // VerifyEmail | Email to create
     try {
-      apiInstance.consumeVerificationRequest(token);
+      apiInstance.consumeVerificationRequest(verifyEmail);
     } catch (ApiException e) {
       System.err.println("Exception when calling UserVerificationTokensApi#consumeVerificationRequest");
       System.err.println("Status code: " + e.getCode());
@@ -56,7 +56,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **token** | **String**| User verification token | |
+| **verifyEmail** | [**VerifyEmail**](VerifyEmail.md)| Email to create | |
 
 ### Return type
 
@@ -68,7 +68,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

@@ -1,6 +1,6 @@
 /*
  * Metal API
- * This is the API for Equinix Metal. The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account.  The official API docs are hosted at <https://metal.equinix.com/developers/api>. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:    ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -15,7 +15,7 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.VrfIPReservation;
+import com.equinix.openapi.metal.v1.model.VrfIpReservation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -47,24 +47,24 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * VrfIPReservationList
+ * VrfIpReservationList
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VrfIPReservationList {
+public class VrfIpReservationList {
   public static final String SERIALIZED_NAME_IP_ADDRESSES = "ip_addresses";
   @SerializedName(SERIALIZED_NAME_IP_ADDRESSES)
-  private List<VrfIPReservation> ipAddresses = null;
+  private List<VrfIpReservation> ipAddresses = null;
 
-  public VrfIPReservationList() {
+  public VrfIpReservationList() {
   }
 
-  public VrfIPReservationList ipAddresses(List<VrfIPReservation> ipAddresses) {
+  public VrfIpReservationList ipAddresses(List<VrfIpReservation> ipAddresses) {
     
     this.ipAddresses = ipAddresses;
     return this;
   }
 
-  public VrfIPReservationList addIpAddressesItem(VrfIPReservation ipAddressesItem) {
+  public VrfIpReservationList addIpAddressesItem(VrfIpReservation ipAddressesItem) {
     if (this.ipAddresses == null) {
       this.ipAddresses = new ArrayList<>();
     }
@@ -78,12 +78,12 @@ public class VrfIPReservationList {
   **/
   @javax.annotation.Nullable
 
-  public List<VrfIPReservation> getIpAddresses() {
+  public List<VrfIpReservation> getIpAddresses() {
     return ipAddresses;
   }
 
 
-  public void setIpAddresses(List<VrfIPReservation> ipAddresses) {
+  public void setIpAddresses(List<VrfIpReservation> ipAddresses) {
     this.ipAddresses = ipAddresses;
   }
 
@@ -100,9 +100,9 @@ public class VrfIPReservationList {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the VrfIPReservationList instance itself
+   * @return the VrfIpReservationList instance itself
    */
-  public VrfIPReservationList putAdditionalProperty(String key, Object value) {
+  public VrfIpReservationList putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -141,9 +141,9 @@ public class VrfIPReservationList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VrfIPReservationList vrfIPReservationList = (VrfIPReservationList) o;
-    return Objects.equals(this.ipAddresses, vrfIPReservationList.ipAddresses)&&
-        Objects.equals(this.additionalProperties, vrfIPReservationList.additionalProperties);
+    VrfIpReservationList vrfIpReservationList = (VrfIpReservationList) o;
+    return Objects.equals(this.ipAddresses, vrfIpReservationList.ipAddresses)&&
+        Objects.equals(this.additionalProperties, vrfIpReservationList.additionalProperties);
   }
 
   @Override
@@ -154,7 +154,7 @@ public class VrfIPReservationList {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VrfIPReservationList {\n");
+    sb.append("class VrfIpReservationList {\n");
     sb.append("    ipAddresses: ").append(toIndentedString(ipAddresses)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -189,12 +189,12 @@ public class VrfIPReservationList {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VrfIPReservationList
+  * @throws IOException if the JSON Object is invalid with respect to VrfIpReservationList
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!VrfIPReservationList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIPReservationList is not found in the empty JSON string", VrfIPReservationList.openapiRequiredFields.toString()));
+        if (!VrfIpReservationList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIpReservationList is not found in the empty JSON string", VrfIpReservationList.openapiRequiredFields.toString()));
         }
       }
       if (jsonObj.get("ip_addresses") != null && !jsonObj.get("ip_addresses").isJsonNull()) {
@@ -207,7 +207,7 @@ public class VrfIPReservationList {
 
           // validate the optional field `ip_addresses` (array)
           for (int i = 0; i < jsonArrayipAddresses.size(); i++) {
-            VrfIPReservation.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
+            VrfIpReservation.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
           };
         }
       }
@@ -217,16 +217,16 @@ public class VrfIPReservationList {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VrfIPReservationList.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VrfIPReservationList' and its subtypes
+       if (!VrfIpReservationList.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'VrfIpReservationList' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VrfIPReservationList> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VrfIPReservationList.class));
+       final TypeAdapter<VrfIpReservationList> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(VrfIpReservationList.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<VrfIPReservationList>() {
+       return (TypeAdapter<T>) new TypeAdapter<VrfIpReservationList>() {
            @Override
-           public void write(JsonWriter out, VrfIPReservationList value) throws IOException {
+           public void write(JsonWriter out, VrfIpReservationList value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -249,11 +249,11 @@ public class VrfIPReservationList {
            }
 
            @Override
-           public VrfIPReservationList read(JsonReader in) throws IOException {
+           public VrfIpReservationList read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             VrfIPReservationList instance = thisAdapter.fromJsonTree(jsonObj);
+             VrfIpReservationList instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -280,18 +280,18 @@ public class VrfIPReservationList {
   }
 
  /**
-  * Create an instance of VrfIPReservationList given an JSON string
+  * Create an instance of VrfIpReservationList given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of VrfIPReservationList
-  * @throws IOException if the JSON string is invalid with respect to VrfIPReservationList
+  * @return An instance of VrfIpReservationList
+  * @throws IOException if the JSON string is invalid with respect to VrfIpReservationList
   */
-  public static VrfIPReservationList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VrfIPReservationList.class);
+  public static VrfIpReservationList fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VrfIpReservationList.class);
   }
 
  /**
-  * Convert an instance of VrfIPReservationList to an JSON string
+  * Convert an instance of VrfIpReservationList to an JSON string
   *
   * @return JSON string
   */

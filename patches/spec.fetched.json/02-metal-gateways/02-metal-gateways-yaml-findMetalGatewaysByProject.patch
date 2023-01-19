@@ -1,0 +1,13 @@
+diff --git a/spec/oas3.fetched/openapi/public/paths/projects/project_id/metal-gateways.yaml b/spec/oas3.fetched/openapi/public/paths/projects/project_id/metal-gateways.yaml
+index 6797721..f0976d6 100644
+--- a/spec/oas3.fetched/openapi/public/paths/projects/project_id/metal-gateways.yaml
++++ b/spec/oas3.fetched/openapi/public/paths/projects/project_id/metal-gateways.yaml
+@@ -9,6 +9,8 @@ get:
+     schema:
+       format: uuid
+       type: string
++  - $ref: '../../../components/parameters/Include.yaml'
++  - $ref: '../../../components/parameters/Exclude.yaml'
+   - $ref: '../../../components/parameters/Page.yaml'
+   - $ref: '../../../components/parameters/PerPage.yaml'
+   responses:

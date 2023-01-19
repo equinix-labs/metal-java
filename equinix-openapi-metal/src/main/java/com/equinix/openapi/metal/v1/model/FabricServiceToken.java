@@ -1,6 +1,6 @@
 /*
  * Metal API
- * This is the API for Equinix Metal. The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account.  The official API docs are hosted at <https://metal.equinix.com/developers/api>. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:    ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -60,16 +60,16 @@ public class FabricServiceToken {
 
   public static final String SERIALIZED_NAME_MAX_ALLOWED_SPEED = "max_allowed_speed";
   @SerializedName(SERIALIZED_NAME_MAX_ALLOWED_SPEED)
-  private String maxAllowedSpeed;
+  private Integer maxAllowedSpeed;
 
   /**
-   * Either primary or redundant, depending on the role of the connection port the token is associated with.
+   * Either primary or secondary, depending on which interconnection the service token is associated to.
    */
   @JsonAdapter(RoleEnum.Adapter.class)
   public enum RoleEnum {
     PRIMARY("primary"),
     
-    REDUNDANT("redundant");
+    SECONDARY("secondary");
 
     private String value;
 
@@ -114,11 +114,13 @@ public class FabricServiceToken {
   private RoleEnum role;
 
   /**
-   * The type of service token that has been created. Currently, only A-side service tokens are available.
+   * Either &#39;a_side&#39; or &#39;z_side&#39;, depending on which type of Fabric VC was requested.
    */
   @JsonAdapter(ServiceTokenTypeEnum.Adapter.class)
   public enum ServiceTokenTypeEnum {
-    A_SIDE("a_side");
+    A_SIDE("a_side"),
+    
+    Z_SIDE("z_side");
 
     private String value;
 
@@ -163,7 +165,7 @@ public class FabricServiceToken {
   private ServiceTokenTypeEnum serviceTokenType;
 
   /**
-   * The state of the service token that corresponds with the service token state on Fabric. An inactive state refers to a token that has not been redeemed yet on the Fabric side, an active state refers to a token that has already been redeemed, and an expired state refers to a token that has reached its expiry time.
+   * The state of the service token that corresponds with the service token state on Fabric. An &#39;inactive&#39; state refers to a token that has not been redeemed yet on the Fabric side, an &#39;active&#39; state refers to a token that has already been redeemed, and an &#39;expired&#39; state refers to a token that has reached its expiry time.
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
@@ -247,7 +249,7 @@ public class FabricServiceToken {
   }
 
    /**
-   * The service token UUID that can be used on the Fabric Portal to create an connection from Metal to another Fabric service provider.
+   * The UUID that can be used on the Fabric Portal to redeem either an A-Side or Z-Side Service Token. For Fabric VCs (Metal Billed), this UUID will represent an A-Side Service Token, which will allow interconnections to be made from Equinix Metal to other Service Providers on Fabric. For Fabric VCs (Fabric Billed), this UUID will represent a Z-Side Service Token, which will allow interconnections to be made to connect an owned Fabric Port or  Virtual Device to Equinix Metal.
    * @return id
   **/
   @javax.annotation.Nullable
@@ -262,24 +264,24 @@ public class FabricServiceToken {
   }
 
 
-  public FabricServiceToken maxAllowedSpeed(String maxAllowedSpeed) {
+  public FabricServiceToken maxAllowedSpeed(Integer maxAllowedSpeed) {
     
     this.maxAllowedSpeed = maxAllowedSpeed;
     return this;
   }
 
    /**
-   * The maximum speed that can be selected on the Fabric Portal when configuring a connection with the service token. The speed is recorded in bps, but can be set by using any of the following units: &#39;bps&#39;, &#39;mbps&#39;, or &#39;gbps&#39;. This speed is automatically capped depending on the tier of the organization. If you would like to upgrade to another tier, please contact our Support team.
+   * The maximum speed that can be selected on the Fabric Portal when configuring a interconnection with either  an A-Side or Z-Side Service Token. For Fabric VCs (Metal Billed), this is what the billing is based off of, and can be one of the following options, &#39;50mbps&#39;, &#39;200mbps&#39;, &#39;500mbps&#39;, &#39;1gbps&#39;, &#39;2gbps&#39;, &#39;5gbps&#39; or &#39;10gbps&#39;. For Fabric VCs (Fabric Billed), this will default to 10Gbps.
    * @return maxAllowedSpeed
   **/
   @javax.annotation.Nullable
 
-  public String getMaxAllowedSpeed() {
+  public Integer getMaxAllowedSpeed() {
     return maxAllowedSpeed;
   }
 
 
-  public void setMaxAllowedSpeed(String maxAllowedSpeed) {
+  public void setMaxAllowedSpeed(Integer maxAllowedSpeed) {
     this.maxAllowedSpeed = maxAllowedSpeed;
   }
 
@@ -291,7 +293,7 @@ public class FabricServiceToken {
   }
 
    /**
-   * Either primary or redundant, depending on the role of the connection port the token is associated with.
+   * Either primary or secondary, depending on which interconnection the service token is associated to.
    * @return role
   **/
   @javax.annotation.Nullable
@@ -313,7 +315,7 @@ public class FabricServiceToken {
   }
 
    /**
-   * The type of service token that has been created. Currently, only A-side service tokens are available.
+   * Either &#39;a_side&#39; or &#39;z_side&#39;, depending on which type of Fabric VC was requested.
    * @return serviceTokenType
   **/
   @javax.annotation.Nullable
@@ -335,7 +337,7 @@ public class FabricServiceToken {
   }
 
    /**
-   * The state of the service token that corresponds with the service token state on Fabric. An inactive state refers to a token that has not been redeemed yet on the Fabric side, an active state refers to a token that has already been redeemed, and an expired state refers to a token that has reached its expiry time.
+   * The state of the service token that corresponds with the service token state on Fabric. An &#39;inactive&#39; state refers to a token that has not been redeemed yet on the Fabric side, an &#39;active&#39; state refers to a token that has already been redeemed, and an &#39;expired&#39; state refers to a token that has reached its expiry time.
    * @return state
   **/
   @javax.annotation.Nullable
@@ -476,9 +478,6 @@ public class FabricServiceToken {
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if ((jsonObj.get("max_allowed_speed") != null && !jsonObj.get("max_allowed_speed").isJsonNull()) && !jsonObj.get("max_allowed_speed").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `max_allowed_speed` to be a primitive type in the JSON string but got `%s`", jsonObj.get("max_allowed_speed").toString()));
       }
       if ((jsonObj.get("role") != null && !jsonObj.get("role").isJsonNull()) && !jsonObj.get("role").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `role` to be a primitive type in the JSON string but got `%s`", jsonObj.get("role").toString()));

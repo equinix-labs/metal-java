@@ -1,6 +1,6 @@
 /*
  * Metal API
- * This is the API for Equinix Metal. The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account.  The official API docs are hosted at <https://metal.equinix.com/developers/api>. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:    ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -15,8 +15,9 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.Href;
+import com.equinix.openapi.metal.v1.model.PlanAvailableInInner;
 import com.equinix.openapi.metal.v1.model.PlanAvailableInMetrosInner;
+import com.equinix.openapi.metal.v1.model.PlanSpecs;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,7 +25,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import com.google.gson.Gson;
@@ -55,11 +58,7 @@ import com.equinix.openapi.JSON;
 public class Plan {
   public static final String SERIALIZED_NAME_AVAILABLE_IN = "available_in";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_IN)
-  private List<Href> availableIn = null;
-
-  public static final String SERIALIZED_NAME_DEPLOYMENT_TYPES = "deployment_types";
-  @SerializedName(SERIALIZED_NAME_DEPLOYMENT_TYPES)
-  private List<String> deploymentTypes = null;
+  private List<PlanAvailableInInner> availableIn = null;
 
   public static final String SERIALIZED_NAME_AVAILABLE_IN_METROS = "available_in_metros";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_IN_METROS)
@@ -73,6 +72,57 @@ public class Plan {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  /**
+   * Gets or Sets deploymentTypes
+   */
+  @JsonAdapter(DeploymentTypesEnum.Adapter.class)
+  public enum DeploymentTypesEnum {
+    ON_DEMAND("on_demand"),
+    
+    SPOT_MARKET("spot_market");
+
+    private String value;
+
+    DeploymentTypesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DeploymentTypesEnum fromValue(String value) {
+      for (DeploymentTypesEnum b : DeploymentTypesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<DeploymentTypesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DeploymentTypesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DeploymentTypesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DeploymentTypesEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DEPLOYMENT_TYPES = "deployment_types";
+  @SerializedName(SERIALIZED_NAME_DEPLOYMENT_TYPES)
+  private Set<DeploymentTypesEnum> deploymentTypes = null;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private UUID id;
@@ -81,9 +131,54 @@ public class Plan {
   @SerializedName(SERIALIZED_NAME_LEGACY)
   private Boolean legacy;
 
+  /**
+   * Gets or Sets line
+   */
+  @JsonAdapter(LineEnum.Adapter.class)
+  public enum LineEnum {
+    BAREMETAL("baremetal");
+
+    private String value;
+
+    LineEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static LineEnum fromValue(String value) {
+      for (LineEnum b : LineEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<LineEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final LineEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public LineEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return LineEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_LINE = "line";
   @SerializedName(SERIALIZED_NAME_LINE)
-  private String line;
+  private LineEnum line;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -99,18 +194,71 @@ public class Plan {
 
   public static final String SERIALIZED_NAME_SPECS = "specs";
   @SerializedName(SERIALIZED_NAME_SPECS)
-  private Object specs;
+  private PlanSpecs specs;
+
+  /**
+   * The plan type
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    STANDARD("standard"),
+    
+    WORKLOAD_OPTIMIZED("workload_optimized"),
+    
+    CUSTOM("custom");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
 
   public Plan() {
   }
 
-  public Plan availableIn(List<Href> availableIn) {
+  public Plan availableIn(List<PlanAvailableInInner> availableIn) {
     
     this.availableIn = availableIn;
     return this;
   }
 
-  public Plan addAvailableInItem(Href availableInItem) {
+  public Plan addAvailableInItem(PlanAvailableInInner availableInItem) {
     if (this.availableIn == null) {
       this.availableIn = new ArrayList<>();
     }
@@ -124,43 +272,13 @@ public class Plan {
   **/
   @javax.annotation.Nullable
 
-  public List<Href> getAvailableIn() {
+  public List<PlanAvailableInInner> getAvailableIn() {
     return availableIn;
   }
 
 
-  public void setAvailableIn(List<Href> availableIn) {
+  public void setAvailableIn(List<PlanAvailableInInner> availableIn) {
     this.availableIn = availableIn;
-  }
-
-
-  public Plan deploymentTypes(List<String> deploymentTypes) {
-    
-    this.deploymentTypes = deploymentTypes;
-    return this;
-  }
-
-  public Plan addDeploymentTypesItem(String deploymentTypesItem) {
-    if (this.deploymentTypes == null) {
-      this.deploymentTypes = new ArrayList<>();
-    }
-    this.deploymentTypes.add(deploymentTypesItem);
-    return this;
-  }
-
-   /**
-   * Get deploymentTypes
-   * @return deploymentTypes
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getDeploymentTypes() {
-    return deploymentTypes;
-  }
-
-
-  public void setDeploymentTypes(List<String> deploymentTypes) {
-    this.deploymentTypes = deploymentTypes;
   }
 
 
@@ -238,6 +356,36 @@ public class Plan {
   }
 
 
+  public Plan deploymentTypes(Set<DeploymentTypesEnum> deploymentTypes) {
+    
+    this.deploymentTypes = deploymentTypes;
+    return this;
+  }
+
+  public Plan addDeploymentTypesItem(DeploymentTypesEnum deploymentTypesItem) {
+    if (this.deploymentTypes == null) {
+      this.deploymentTypes = new LinkedHashSet<>();
+    }
+    this.deploymentTypes.add(deploymentTypesItem);
+    return this;
+  }
+
+   /**
+   * Get deploymentTypes
+   * @return deploymentTypes
+  **/
+  @javax.annotation.Nullable
+
+  public Set<DeploymentTypesEnum> getDeploymentTypes() {
+    return deploymentTypes;
+  }
+
+
+  public void setDeploymentTypes(Set<DeploymentTypesEnum> deploymentTypes) {
+    this.deploymentTypes = deploymentTypes;
+  }
+
+
   public Plan id(UUID id) {
     
     this.id = id;
@@ -282,7 +430,7 @@ public class Plan {
   }
 
 
-  public Plan line(String line) {
+  public Plan line(LineEnum line) {
     
     this.line = line;
     return this;
@@ -294,12 +442,12 @@ public class Plan {
   **/
   @javax.annotation.Nullable
 
-  public String getLine() {
+  public LineEnum getLine() {
     return line;
   }
 
 
-  public void setLine(String line) {
+  public void setLine(LineEnum line) {
     this.line = line;
   }
 
@@ -370,7 +518,7 @@ public class Plan {
   }
 
 
-  public Plan specs(Object specs) {
+  public Plan specs(PlanSpecs specs) {
     
     this.specs = specs;
     return this;
@@ -382,13 +530,35 @@ public class Plan {
   **/
   @javax.annotation.Nullable
 
-  public Object getSpecs() {
+  public PlanSpecs getSpecs() {
     return specs;
   }
 
 
-  public void setSpecs(Object specs) {
+  public void setSpecs(PlanSpecs specs) {
     this.specs = specs;
+  }
+
+
+  public Plan type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The plan type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
   /**
@@ -447,23 +617,24 @@ public class Plan {
     }
     Plan plan = (Plan) o;
     return Objects.equals(this.availableIn, plan.availableIn) &&
-        Objects.equals(this.deploymentTypes, plan.deploymentTypes) &&
         Objects.equals(this.availableInMetros, plan.availableInMetros) &&
         Objects.equals(this.propertyClass, plan.propertyClass) &&
         Objects.equals(this.description, plan.description) &&
+        Objects.equals(this.deploymentTypes, plan.deploymentTypes) &&
         Objects.equals(this.id, plan.id) &&
         Objects.equals(this.legacy, plan.legacy) &&
         Objects.equals(this.line, plan.line) &&
         Objects.equals(this.name, plan.name) &&
         Objects.equals(this.pricing, plan.pricing) &&
         Objects.equals(this.slug, plan.slug) &&
-        Objects.equals(this.specs, plan.specs)&&
+        Objects.equals(this.specs, plan.specs) &&
+        Objects.equals(this.type, plan.type)&&
         Objects.equals(this.additionalProperties, plan.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(availableIn, deploymentTypes, availableInMetros, propertyClass, description, id, legacy, line, name, pricing, slug, specs, additionalProperties);
+    return Objects.hash(availableIn, availableInMetros, propertyClass, description, deploymentTypes, id, legacy, line, name, pricing, slug, specs, type, additionalProperties);
   }
 
   @Override
@@ -471,10 +642,10 @@ public class Plan {
     StringBuilder sb = new StringBuilder();
     sb.append("class Plan {\n");
     sb.append("    availableIn: ").append(toIndentedString(availableIn)).append("\n");
-    sb.append("    deploymentTypes: ").append(toIndentedString(deploymentTypes)).append("\n");
     sb.append("    availableInMetros: ").append(toIndentedString(availableInMetros)).append("\n");
     sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    deploymentTypes: ").append(toIndentedString(deploymentTypes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    legacy: ").append(toIndentedString(legacy)).append("\n");
     sb.append("    line: ").append(toIndentedString(line)).append("\n");
@@ -482,6 +653,7 @@ public class Plan {
     sb.append("    pricing: ").append(toIndentedString(pricing)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    specs: ").append(toIndentedString(specs)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -506,10 +678,10 @@ public class Plan {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("available_in");
-    openapiFields.add("deployment_types");
     openapiFields.add("available_in_metros");
     openapiFields.add("class");
     openapiFields.add("description");
+    openapiFields.add("deployment_types");
     openapiFields.add("id");
     openapiFields.add("legacy");
     openapiFields.add("line");
@@ -517,6 +689,7 @@ public class Plan {
     openapiFields.add("pricing");
     openapiFields.add("slug");
     openapiFields.add("specs");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -544,13 +717,9 @@ public class Plan {
 
           // validate the optional field `available_in` (array)
           for (int i = 0; i < jsonArrayavailableIn.size(); i++) {
-            Href.validateJsonObject(jsonArrayavailableIn.get(i).getAsJsonObject());
+            PlanAvailableInInner.validateJsonObject(jsonArrayavailableIn.get(i).getAsJsonObject());
           };
         }
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("deployment_types") != null && !jsonObj.get("deployment_types").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `deployment_types` to be an array in the JSON string but got `%s`", jsonObj.get("deployment_types").toString()));
       }
       if (jsonObj.get("available_in_metros") != null && !jsonObj.get("available_in_metros").isJsonNull()) {
         JsonArray jsonArrayavailableInMetros = jsonObj.getAsJsonArray("available_in_metros");
@@ -572,6 +741,10 @@ public class Plan {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("deployment_types") != null && !jsonObj.get("deployment_types").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `deployment_types` to be an array in the JSON string but got `%s`", jsonObj.get("deployment_types").toString()));
+      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
@@ -583,6 +756,13 @@ public class Plan {
       }
       if ((jsonObj.get("slug") != null && !jsonObj.get("slug").isJsonNull()) && !jsonObj.get("slug").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `slug` to be a primitive type in the JSON string but got `%s`", jsonObj.get("slug").toString()));
+      }
+      // validate the optional field `specs`
+      if (jsonObj.get("specs") != null && !jsonObj.get("specs").isJsonNull()) {
+        PlanSpecs.validateJsonObject(jsonObj.getAsJsonObject("specs"));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

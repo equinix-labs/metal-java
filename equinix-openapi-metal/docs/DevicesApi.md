@@ -11,6 +11,8 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findBgpSessions**](DevicesApi.md#findBgpSessions) | **GET** /devices/{id}/bgp/sessions | Retrieve all BGP sessions |
 | [**findDeviceById**](DevicesApi.md#findDeviceById) | **GET** /devices/{id} | Retrieve a device |
 | [**findDeviceCustomdata**](DevicesApi.md#findDeviceCustomdata) | **GET** /devices/{id}/customdata | Retrieve the custom metadata of an instance |
+| [**findDeviceMetadataByID**](DevicesApi.md#findDeviceMetadataByID) | **GET** /devices/{id}/metadata | Retrieve metadata |
+| [**findDeviceUserdataByID**](DevicesApi.md#findDeviceUserdataByID) | **GET** /devices/{id}/userdata | Retrieve userdata |
 | [**findIPAssignmentCustomdata**](DevicesApi.md#findIPAssignmentCustomdata) | **GET** /devices/{instance_id}/ips/{id}/customdata | Retrieve the custom metadata of an IP Assignment |
 | [**findIPAssignments**](DevicesApi.md#findIPAssignments) | **GET** /devices/{id}/ips | Retrieve all ip assignments |
 | [**findInstanceBandwidth**](DevicesApi.md#findInstanceBandwidth) | **GET** /devices/{id}/bandwidth | Retrieve an instance bandwidth |
@@ -98,7 +100,7 @@ public class Example {
 
 <a name="createDevice"></a>
 # **createDevice**
-> Device createDevice(id, deviceCreateInput)
+> Device createDevice(id, createDeviceRequest)
 
 Create a device
 
@@ -127,9 +129,9 @@ public class Example {
 
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
-    DeviceCreateInput deviceCreateInput = new DeviceCreateInput(); // DeviceCreateInput | Device to create
+    CreateDeviceRequest createDeviceRequest = new CreateDeviceRequest(); // CreateDeviceRequest | Device to create
     try {
-      Device result = apiInstance.createDevice(id, deviceCreateInput);
+      Device result = apiInstance.createDevice(id, createDeviceRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#createDevice");
@@ -147,7 +149,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
-| **deviceCreateInput** | [**DeviceCreateInput**](DeviceCreateInput.md)| Device to create | |
+| **createDeviceRequest** | [**CreateDeviceRequest**](CreateDeviceRequest.md)| Device to create | |
 
 ### Return type
 
@@ -536,6 +538,150 @@ null (empty response body)
 | **401** | unauthorized |  -  |
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
+
+<a name="findDeviceMetadataByID"></a>
+# **findDeviceMetadataByID**
+> Metadata findDeviceMetadataByID(id)
+
+Retrieve metadata
+
+Retrieve device metadata
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.DevicesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    DevicesApi apiInstance = new DevicesApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | Device UUID
+    try {
+      Metadata result = apiInstance.findDeviceMetadataByID(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DevicesApi#findDeviceMetadataByID");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| Device UUID | |
+
+### Return type
+
+[**Metadata**](Metadata.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | ok |  -  |
+| **401** | unauthorized |  -  |
+| **404** | not found |  -  |
+| **422** | unprocessable entity |  -  |
+
+<a name="findDeviceUserdataByID"></a>
+# **findDeviceUserdataByID**
+> Userdata findDeviceUserdataByID(id)
+
+Retrieve userdata
+
+Retrieve device userdata
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.DevicesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    DevicesApi apiInstance = new DevicesApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | Device UUID
+    try {
+      Userdata result = apiInstance.findDeviceUserdataByID(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DevicesApi#findDeviceUserdataByID");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| Device UUID | |
+
+### Return type
+
+[**Userdata**](Userdata.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | ok |  -  |
+| **401** | unauthorized |  -  |
+| **404** | not found |  -  |
+| **422** | unprocessable entity |  -  |
 
 <a name="findIPAssignmentCustomdata"></a>
 # **findIPAssignmentCustomdata**
@@ -941,7 +1087,7 @@ public class Example {
 
 <a name="findTraffic"></a>
 # **findTraffic**
-> findTraffic(id, direction, timeframe, interval, bucket)
+> findTraffic(id, direction, interval, bucket, timeframe)
 
 Retrieve device traffic
 
@@ -971,11 +1117,11 @@ public class Example {
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Device UUID
     String direction = "inbound"; // String | Traffic direction
-    Timeframe timeframe = new Timeframe(); // Timeframe | Traffic timeframe
     String interval = "minute"; // String | Traffic interval
     String bucket = "internal"; // String | Traffic bucket
+    FindTrafficTimeframeParameter timeframe = new HashMap(); // FindTrafficTimeframeParameter | 
     try {
-      apiInstance.findTraffic(id, direction, timeframe, interval, bucket);
+      apiInstance.findTraffic(id, direction, interval, bucket, timeframe);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#findTraffic");
       System.err.println("Status code: " + e.getCode());
@@ -993,9 +1139,9 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Device UUID | |
 | **direction** | **String**| Traffic direction | [enum: inbound, outbound] |
-| **timeframe** | [**Timeframe**](Timeframe.md)| Traffic timeframe | |
 | **interval** | **String**| Traffic interval | [optional] [enum: minute, hour, day, week, month, year, hour_of_day, day_of_week, day_of_month, month_of_year] |
 | **bucket** | **String**| Traffic bucket | [optional] [enum: internal, external] |
+| **timeframe** | [**FindTrafficTimeframeParameter**](.md)|  | [optional] |
 
 ### Return type
 
@@ -1007,7 +1153,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -1092,7 +1238,7 @@ public class Example {
 
 <a name="performAction"></a>
 # **performAction**
-> performAction(id, type)
+> performAction(id, deviceActionInput)
 
 Perform an action
 
@@ -1121,9 +1267,9 @@ public class Example {
 
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Device UUID
-    String type = "power_on"; // String | Action to perform
+    DeviceActionInput deviceActionInput = new DeviceActionInput(); // DeviceActionInput | Action to perform
     try {
-      apiInstance.performAction(id, type);
+      apiInstance.performAction(id, deviceActionInput);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#performAction");
       System.err.println("Status code: " + e.getCode());
@@ -1140,7 +1286,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Device UUID | |
-| **type** | **String**| Action to perform | [enum: power_on, power_off, reboot, rescue, reinstall] |
+| **deviceActionInput** | [**DeviceActionInput**](DeviceActionInput.md)| Action to perform | |
 
 ### Return type
 
@@ -1152,7 +1298,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

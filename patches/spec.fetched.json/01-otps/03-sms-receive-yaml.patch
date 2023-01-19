@@ -1,0 +1,10 @@
+diff --git a/spec/oas3.fetched/openapi/public/paths/user/otp/sms/receive.yaml b/spec/oas3.fetched/openapi/public/paths/user/otp/sms/receive.yaml
+index c2bea8d..367bb02 100644
+--- a/spec/oas3.fetched/openapi/public/paths/user/otp/sms/receive.yaml
++++ b/spec/oas3.fetched/openapi/public/paths/user/otp/sms/receive.yaml
+@@ -30,4 +30,4 @@ post:
+       description: internal server error
+   summary: Receive an OTP per sms
+   tags:
+-  - OTPs
++  - Otps

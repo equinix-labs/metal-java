@@ -1,0 +1,22 @@
+diff --git a/spec/oas3.fetched/openapi/public/openapi3.yaml b/spec/oas3.fetched/openapi/public/openapi3.yaml
+index 6ae109f..dc2792f 100644
+--- a/spec/oas3.fetched/openapi/public/openapi3.yaml
++++ b/spec/oas3.fetched/openapi/public/openapi3.yaml
+@@ -896,7 +896,7 @@ tags:
+       OTP Management. Check out the product docs to learn more about [OTP](https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/).
+     externalDocs:
+       url: https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/
+-    name: OTPs
++    name: Otps
+   - description: >
+       Password Reset Token Management
+     name: PasswordResetTokens
+@@ -1002,7 +1002,7 @@ x-tagGroups:
+       - Invitations
+       - Memberships
+       - Organizations
+-      - OTPs
++      - Otps
+       - PasswordResetTokens
+       - PaymentMethods
+       - Projects

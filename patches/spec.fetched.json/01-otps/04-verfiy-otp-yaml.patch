@@ -1,0 +1,10 @@
+diff --git a/spec/oas3.fetched/openapi/public/paths/user/otp/verify/otp.yaml b/spec/oas3.fetched/openapi/public/paths/user/otp/verify/otp.yaml
+index 750dc15..5c7d71d 100644
+--- a/spec/oas3.fetched/openapi/public/paths/user/otp/verify/otp.yaml
++++ b/spec/oas3.fetched/openapi/public/paths/user/otp/verify/otp.yaml
+@@ -26,4 +26,4 @@ post:
+       description: unauthorized
+   summary: Verify user by providing an OTP
+   tags:
+-  - OTPs
++  - Otps

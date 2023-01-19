@@ -1,6 +1,6 @@
 /*
  * Metal API
- * This is the API for Equinix Metal. The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account.  The official API docs are hosted at <https://metal.equinix.com/developers/api>. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:    ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -16,10 +16,9 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.MetalGatewayIpReservation;
+import com.equinix.openapi.metal.v1.model.IPReservation;
 import com.equinix.openapi.metal.v1.model.Project;
 import com.equinix.openapi.metal.v1.model.VirtualNetwork;
-import com.equinix.openapi.metal.v1.model.Vrf;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -73,7 +72,7 @@ public class MetalGateway {
 
   public static final String SERIALIZED_NAME_IP_RESERVATION = "ip_reservation";
   @SerializedName(SERIALIZED_NAME_IP_RESERVATION)
-  private MetalGatewayIpReservation ipReservation;
+  private IPReservation ipReservation;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -139,10 +138,6 @@ public class MetalGateway {
   public static final String SERIALIZED_NAME_VIRTUAL_NETWORK = "virtual_network";
   @SerializedName(SERIALIZED_NAME_VIRTUAL_NETWORK)
   private VirtualNetwork virtualNetwork;
-
-  public static final String SERIALIZED_NAME_VRF = "vrf";
-  @SerializedName(SERIALIZED_NAME_VRF)
-  private Vrf vrf;
 
   public MetalGateway() {
   }
@@ -235,7 +230,7 @@ public class MetalGateway {
   }
 
 
-  public MetalGateway ipReservation(MetalGatewayIpReservation ipReservation) {
+  public MetalGateway ipReservation(IPReservation ipReservation) {
     
     this.ipReservation = ipReservation;
     return this;
@@ -247,12 +242,12 @@ public class MetalGateway {
   **/
   @javax.annotation.Nullable
 
-  public MetalGatewayIpReservation getIpReservation() {
+  public IPReservation getIpReservation() {
     return ipReservation;
   }
 
 
-  public void setIpReservation(MetalGatewayIpReservation ipReservation) {
+  public void setIpReservation(IPReservation ipReservation) {
     this.ipReservation = ipReservation;
   }
 
@@ -344,28 +339,6 @@ public class MetalGateway {
     this.virtualNetwork = virtualNetwork;
   }
 
-
-  public MetalGateway vrf(Vrf vrf) {
-    
-    this.vrf = vrf;
-    return this;
-  }
-
-   /**
-   * Get vrf
-   * @return vrf
-  **/
-  @javax.annotation.Nullable
-
-  public Vrf getVrf() {
-    return vrf;
-  }
-
-
-  public void setVrf(Vrf vrf) {
-    this.vrf = vrf;
-  }
-
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -429,14 +402,13 @@ public class MetalGateway {
         Objects.equals(this.project, metalGateway.project) &&
         Objects.equals(this.state, metalGateway.state) &&
         Objects.equals(this.updatedAt, metalGateway.updatedAt) &&
-        Objects.equals(this.virtualNetwork, metalGateway.virtualNetwork) &&
-        Objects.equals(this.vrf, metalGateway.vrf)&&
+        Objects.equals(this.virtualNetwork, metalGateway.virtualNetwork)&&
         Objects.equals(this.additionalProperties, metalGateway.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, createdBy, href, id, ipReservation, project, state, updatedAt, virtualNetwork, vrf, additionalProperties);
+    return Objects.hash(createdAt, createdBy, href, id, ipReservation, project, state, updatedAt, virtualNetwork, additionalProperties);
   }
 
   @Override
@@ -452,7 +424,6 @@ public class MetalGateway {
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    virtualNetwork: ").append(toIndentedString(virtualNetwork)).append("\n");
-    sb.append("    vrf: ").append(toIndentedString(vrf)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -485,7 +456,6 @@ public class MetalGateway {
     openapiFields.add("state");
     openapiFields.add("updated_at");
     openapiFields.add("virtual_network");
-    openapiFields.add("vrf");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -515,7 +485,7 @@ public class MetalGateway {
       }
       // validate the optional field `ip_reservation`
       if (jsonObj.get("ip_reservation") != null && !jsonObj.get("ip_reservation").isJsonNull()) {
-        MetalGatewayIpReservation.validateJsonObject(jsonObj.getAsJsonObject("ip_reservation"));
+        IPReservation.validateJsonObject(jsonObj.getAsJsonObject("ip_reservation"));
       }
       // validate the optional field `project`
       if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
@@ -527,10 +497,6 @@ public class MetalGateway {
       // validate the optional field `virtual_network`
       if (jsonObj.get("virtual_network") != null && !jsonObj.get("virtual_network").isJsonNull()) {
         VirtualNetwork.validateJsonObject(jsonObj.getAsJsonObject("virtual_network"));
-      }
-      // validate the optional field `vrf`
-      if (jsonObj.get("vrf") != null && !jsonObj.get("vrf").isJsonNull()) {
-        Vrf.validateJsonObject(jsonObj.getAsJsonObject("vrf"));
       }
   }
 

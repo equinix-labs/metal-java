@@ -1,8 +1,9 @@
 package com.equinix.workflow;
 
-import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,7 +31,7 @@ public class MetalGatewayOperator {
 
     // Returns the metal gateway queried by its id
     public MetalGateway getMetalGateway(UUID metalGatewayId, List<String> include, List<String> exclude) throws ApiException {
-        return metalGatewaysApi.findMetalGatewayById(metalGatewayId, include, exclude);
+        return metalGatewaysApi.findMetalGatewayById(metalGatewayId, include, exclude).getMetalGateway();
     }
 
     // Returns the vlan associated with the metal gateway queried by its id
@@ -62,7 +63,7 @@ public class MetalGatewayOperator {
      */
     public MetalGateway createMetalGateway(UUID projectId, CreateMetalGatewayRequest metalGatewayRequest)
             throws ApiException {
-        return metalGatewaysApi.createMetalGateway(projectId, metalGatewayRequest, RESPONSE_PAGE, RESPONSE_ITEMS_PER_PAGE);
+        return metalGatewaysApi.createMetalGateway(projectId, metalGatewayRequest, RESPONSE_PAGE, RESPONSE_ITEMS_PER_PAGE).getMetalGateway();
     }
 
     // Poll until metal gateway record is deleted when state is "deleting"
@@ -87,10 +88,10 @@ public class MetalGatewayOperator {
     }
 
     // Delete metal gateway by id
-    public void deleteMetalGatewayAndPoll(UUID metalGatewayId, int retries, Duration wait)
+    public void deleteMetalGatewayAndPoll(UUID metalGatewayId, List<String> include, List<String> exclude, int retries, Duration wait)
             throws ApiException, InterruptedException {
         MetalGateway metalGateway = getMetalGateway(metalGatewayId, null, null);
-        metalGatewaysApi.deleteMetalGateway(metalGatewayId);
+        metalGatewaysApi.deleteMetalGateway(metalGatewayId, include, exclude);
         metalGatewayDeletedAndPoll(metalGateway, retries, wait);
     }
 
@@ -105,6 +106,6 @@ public class MetalGatewayOperator {
             metalGatewayDeletedAndPoll(metalGateway, retries, wait);
         }
         else
-            deleteMetalGatewayAndPoll(metalGatewayId, retries, wait);
+            deleteMetalGatewayAndPoll(metalGatewayId, new ArrayList<String>(), new ArrayList<String>(), retries, wait);
     }
 }

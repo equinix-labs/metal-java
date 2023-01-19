@@ -1,6 +1,6 @@
 /*
  * Metal API
- * This is the API for Equinix Metal. The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account.  The official API docs are hosted at <https://metal.equinix.com/developers/api>. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:    ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -47,10 +47,10 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * VrfIPReservationCreateInput
+ * VrfIpReservationCreateInput
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VrfIPReservationCreateInput {
+public class VrfIpReservationCreateInput {
   public static final String SERIALIZED_NAME_CIDR = "cidr";
   @SerializedName(SERIALIZED_NAME_CIDR)
   private Integer cidr;
@@ -79,10 +79,10 @@ public class VrfIPReservationCreateInput {
   @SerializedName(SERIALIZED_NAME_VRF_ID)
   private UUID vrfId;
 
-  public VrfIPReservationCreateInput() {
+  public VrfIpReservationCreateInput() {
   }
 
-  public VrfIPReservationCreateInput cidr(Integer cidr) {
+  public VrfIpReservationCreateInput cidr(Integer cidr) {
     
     this.cidr = cidr;
     return this;
@@ -104,7 +104,7 @@ public class VrfIPReservationCreateInput {
   }
 
 
-  public VrfIPReservationCreateInput customdata(Object customdata) {
+  public VrfIpReservationCreateInput customdata(Object customdata) {
     
     this.customdata = customdata;
     return this;
@@ -126,7 +126,7 @@ public class VrfIPReservationCreateInput {
   }
 
 
-  public VrfIPReservationCreateInput details(String details) {
+  public VrfIpReservationCreateInput details(String details) {
     
     this.details = details;
     return this;
@@ -148,7 +148,7 @@ public class VrfIPReservationCreateInput {
   }
 
 
-  public VrfIPReservationCreateInput network(String network) {
+  public VrfIpReservationCreateInput network(String network) {
     
     this.network = network;
     return this;
@@ -170,13 +170,13 @@ public class VrfIPReservationCreateInput {
   }
 
 
-  public VrfIPReservationCreateInput tags(List<String> tags) {
+  public VrfIpReservationCreateInput tags(List<String> tags) {
     
     this.tags = tags;
     return this;
   }
 
-  public VrfIPReservationCreateInput addTagsItem(String tagsItem) {
+  public VrfIpReservationCreateInput addTagsItem(String tagsItem) {
     if (this.tags == null) {
       this.tags = new ArrayList<>();
     }
@@ -200,7 +200,7 @@ public class VrfIPReservationCreateInput {
   }
 
 
-  public VrfIPReservationCreateInput type(String type) {
+  public VrfIpReservationCreateInput type(String type) {
     
     this.type = type;
     return this;
@@ -222,7 +222,7 @@ public class VrfIPReservationCreateInput {
   }
 
 
-  public VrfIPReservationCreateInput vrfId(UUID vrfId) {
+  public VrfIpReservationCreateInput vrfId(UUID vrfId) {
     
     this.vrfId = vrfId;
     return this;
@@ -256,9 +256,9 @@ public class VrfIPReservationCreateInput {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the VrfIPReservationCreateInput instance itself
+   * @return the VrfIpReservationCreateInput instance itself
    */
-  public VrfIPReservationCreateInput putAdditionalProperty(String key, Object value) {
+  public VrfIpReservationCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -297,15 +297,15 @@ public class VrfIPReservationCreateInput {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VrfIPReservationCreateInput vrfIPReservationCreateInput = (VrfIPReservationCreateInput) o;
-    return Objects.equals(this.cidr, vrfIPReservationCreateInput.cidr) &&
-        Objects.equals(this.customdata, vrfIPReservationCreateInput.customdata) &&
-        Objects.equals(this.details, vrfIPReservationCreateInput.details) &&
-        Objects.equals(this.network, vrfIPReservationCreateInput.network) &&
-        Objects.equals(this.tags, vrfIPReservationCreateInput.tags) &&
-        Objects.equals(this.type, vrfIPReservationCreateInput.type) &&
-        Objects.equals(this.vrfId, vrfIPReservationCreateInput.vrfId)&&
-        Objects.equals(this.additionalProperties, vrfIPReservationCreateInput.additionalProperties);
+    VrfIpReservationCreateInput vrfIpReservationCreateInput = (VrfIpReservationCreateInput) o;
+    return Objects.equals(this.cidr, vrfIpReservationCreateInput.cidr) &&
+        Objects.equals(this.customdata, vrfIpReservationCreateInput.customdata) &&
+        Objects.equals(this.details, vrfIpReservationCreateInput.details) &&
+        Objects.equals(this.network, vrfIpReservationCreateInput.network) &&
+        Objects.equals(this.tags, vrfIpReservationCreateInput.tags) &&
+        Objects.equals(this.type, vrfIpReservationCreateInput.type) &&
+        Objects.equals(this.vrfId, vrfIpReservationCreateInput.vrfId)&&
+        Objects.equals(this.additionalProperties, vrfIpReservationCreateInput.additionalProperties);
   }
 
   @Override
@@ -316,7 +316,7 @@ public class VrfIPReservationCreateInput {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VrfIPReservationCreateInput {\n");
+    sb.append("class VrfIpReservationCreateInput {\n");
     sb.append("    cidr: ").append(toIndentedString(cidr)).append("\n");
     sb.append("    customdata: ").append(toIndentedString(customdata)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
@@ -367,17 +367,17 @@ public class VrfIPReservationCreateInput {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VrfIPReservationCreateInput
+  * @throws IOException if the JSON Object is invalid with respect to VrfIpReservationCreateInput
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!VrfIPReservationCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIPReservationCreateInput is not found in the empty JSON string", VrfIPReservationCreateInput.openapiRequiredFields.toString()));
+        if (!VrfIpReservationCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfIpReservationCreateInput is not found in the empty JSON string", VrfIpReservationCreateInput.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VrfIPReservationCreateInput.openapiRequiredFields) {
+      for (String requiredField : VrfIpReservationCreateInput.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
@@ -404,16 +404,16 @@ public class VrfIPReservationCreateInput {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VrfIPReservationCreateInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VrfIPReservationCreateInput' and its subtypes
+       if (!VrfIpReservationCreateInput.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'VrfIpReservationCreateInput' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VrfIPReservationCreateInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VrfIPReservationCreateInput.class));
+       final TypeAdapter<VrfIpReservationCreateInput> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(VrfIpReservationCreateInput.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<VrfIPReservationCreateInput>() {
+       return (TypeAdapter<T>) new TypeAdapter<VrfIpReservationCreateInput>() {
            @Override
-           public void write(JsonWriter out, VrfIPReservationCreateInput value) throws IOException {
+           public void write(JsonWriter out, VrfIpReservationCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -436,11 +436,11 @@ public class VrfIPReservationCreateInput {
            }
 
            @Override
-           public VrfIPReservationCreateInput read(JsonReader in) throws IOException {
+           public VrfIpReservationCreateInput read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             VrfIPReservationCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
+             VrfIpReservationCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -467,18 +467,18 @@ public class VrfIPReservationCreateInput {
   }
 
  /**
-  * Create an instance of VrfIPReservationCreateInput given an JSON string
+  * Create an instance of VrfIpReservationCreateInput given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of VrfIPReservationCreateInput
-  * @throws IOException if the JSON string is invalid with respect to VrfIPReservationCreateInput
+  * @return An instance of VrfIpReservationCreateInput
+  * @throws IOException if the JSON string is invalid with respect to VrfIpReservationCreateInput
   */
-  public static VrfIPReservationCreateInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VrfIPReservationCreateInput.class);
+  public static VrfIpReservationCreateInput fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VrfIpReservationCreateInput.class);
   }
 
  /**
-  * Convert an instance of VrfIPReservationCreateInput to an JSON string
+  * Convert an instance of VrfIpReservationCreateInput to an JSON string
   *
   * @return JSON string
   */

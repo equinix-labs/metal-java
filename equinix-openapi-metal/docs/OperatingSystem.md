@@ -8,6 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**distro** | **String** |  |  [optional] |
+|**distroLabel** | **String** |  |  [optional] |
 |**id** | **UUID** |  |  [optional] |
 |**licensed** | **Boolean** | Licenced OS is priced according to pricing property |  [optional] |
 |**name** | **String** |  |  [optional] |

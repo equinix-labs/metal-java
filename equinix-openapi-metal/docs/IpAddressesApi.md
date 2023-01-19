@@ -307,7 +307,7 @@ public class Example {
 
 <a name="findIPReservations"></a>
 # **findIPReservations**
-> IPReservationList findIPReservations(id, types, include, exclude)
+> IPReservationList findIPReservations(id, types, include, exclude, perPage)
 
 Retrieve all ip reservations
 
@@ -339,8 +339,9 @@ public class Example {
     List<String> types = Arrays.asList(); // List<String> | Filter project IP reservations by reservation type
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
+    Integer perPage = 250; // Integer | Items returned per page
     try {
-      IPReservationList result = apiInstance.findIPReservations(id, types, include, exclude);
+      IPReservationList result = apiInstance.findIPReservations(id, types, include, exclude, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IpAddressesApi#findIPReservations");
@@ -361,6 +362,7 @@ public class Example {
 | **types** | [**List&lt;String&gt;**](String.md)| Filter project IP reservations by reservation type | [optional] [enum: global_ipv4, private_ipv4, public_ipv4, public_ipv6, vrf] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 | **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
+| **perPage** | **Integer**| Items returned per page | [optional] [default to 250] |
 
 ### Return type
 
@@ -385,7 +387,7 @@ public class Example {
 
 <a name="requestIPReservation"></a>
 # **requestIPReservation**
-> IPReservation requestIPReservation(id, requestIPReservationRequest)
+> RequestIPReservation201Response requestIPReservation(id, requestIPReservationRequest)
 
 Requesting IP reservations
 
@@ -416,7 +418,7 @@ public class Example {
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     RequestIPReservationRequest requestIPReservationRequest = new RequestIPReservationRequest(); // RequestIPReservationRequest | IP Reservation Request to create
     try {
-      IPReservation result = apiInstance.requestIPReservation(id, requestIPReservationRequest);
+      RequestIPReservation201Response result = apiInstance.requestIPReservation(id, requestIPReservationRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IpAddressesApi#requestIPReservation");
@@ -438,7 +440,7 @@ public class Example {
 
 ### Return type
 
-[**IPReservation**](IPReservation.md)
+[**RequestIPReservation201Response**](RequestIPReservation201Response.md)
 
 ### Authorization
 

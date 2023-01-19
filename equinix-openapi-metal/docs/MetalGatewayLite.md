@@ -13,7 +13,7 @@
 |**id** | **UUID** |  |  [optional] |
 |**state** | [**StateEnum**](#StateEnum) | The current state of the Metal Gateway. &#39;Ready&#39; indicates the gateway record has been configured, but is currently not active on the network. &#39;Active&#39; indicates the gateway has been configured on the network. &#39;Deleting&#39; is a temporary state used to indicate that the gateway is in the process of being un-configured from the network, after which the gateway record will be deleted. |  [optional] |
 |**updatedAt** | **OffsetDateTime** |  |  [optional] |
-|**vlan** | **BigDecimal** | The VLAN id of the Virtual Network record associated to this Metal Gateway. Example: 1001. |  [optional] |
+|**vlan** | **Integer** | The VLAN id of the Virtual Network record associated to this Metal Gateway. |  [optional] |
 
 
 
