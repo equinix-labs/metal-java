@@ -40,12 +40,7 @@ Using openapi generator v3 docker image :
 make docker_run
 ```
 
-Using openapi generator v3 git repo :
-```
-make git_run
-```
-
-Note : Both docker and git pulls latest version of openapi generator.
+Note : docker pulls latest version of openapi generator.
 
 ## Contribution guidelines
 ### Patching oas3.0 spec
