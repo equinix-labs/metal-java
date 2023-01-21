@@ -1,7 +1,7 @@
-diff --git a/spec/oas3.fetched/openapi/public/components/schemas/DeviceCreateInput.yaml b/spec/oas3.fetched/openapi/public/components/schemas/DeviceCreateInput.yaml
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/DeviceCreateInput.yaml b/spec/oas3.patched/openapi/public/components/schemas/DeviceCreateInput.yaml
 index 21ad54d..e357919 100644
---- a/spec/oas3.fetched/openapi/public/components/schemas/DeviceCreateInput.yaml
-+++ b/spec/oas3.fetched/openapi/public/components/schemas/DeviceCreateInput.yaml
+--- a/spec/oas3.patched/openapi/public/components/schemas/DeviceCreateInput.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/DeviceCreateInput.yaml
 @@ -19,6 +19,8 @@ properties:
        Customdata is an arbitrary JSON value that can be accessed via the
        metadata service.

@@ -18,17 +18,22 @@ GIT_REPO=metal-java
 OPENAPI_CONFIG:=spec/oas3.config.json
 OPENAPI_GENERATED_CLIENT=equinix-openapi-metal/
 
-OPENAPI_CODEGEN_TAG=latest
-OPENAPI_CODEGEN_BRANCH=master
-
 PATCHED_SPEC_ENTRY_POINT=spec/oas3.patched/openapi/public/openapi3.yaml
 PATCHED_SPEC_OUTPUT_DIR=spec/oas3.stitched/
 
 SPEC_PATCHED_FILE=oas3.stitched.metal.yaml
 
+SPEC_DIR_FETCHED_FILE=spec/oas3.fetched/
+SPEC_DIR_PATCHED_FILE=spec/oas3.patched/
+
+# Patches
+SPEC_FETCHED_PATCHES=patches/spec.fetched.json
+
 ##
 # openapi-generator-cli - docker
 ##
+OPENAPI_CODEGEN_TAG=latest
+
 OPENAPI_CODEGEN_IMAGE=openapitools/openapi-generator-cli:${OPENAPI_CODEGEN_TAG}
 DOCKER_OPENAPI=docker run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/local ${OPENAPI_CODEGEN_IMAGE}
 
@@ -65,8 +70,13 @@ clean:
 
 # executing patch apply shell script
 pre-spec-patch-dir:
-	chmod +x spec/apply_patches.sh
-	cd spec; ./apply_patches.sh > makefile_patching.log
+	rm -rf ${SPEC_DIR_PATCHED_FILE}
+	cp -r ${SPEC_DIR_FETCHED_FILE} ${SPEC_DIR_PATCHED_FILE}
+
+	for diff in $(shell find ${SPEC_FETCHED_PATCHES} -name \*.patch | sort -n); do \
+		patch -p1 < $$diff; \
+	done
+
 
 move-workflow:
 	cp -r internal/workflow equinix-openapi-metal/src/main/java/com/equinix/
