@@ -1,3 +1,4 @@
 openapi-generator*
 .DS_Store
 .idea
+makefile_patching.log

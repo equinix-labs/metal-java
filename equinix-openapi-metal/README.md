@@ -3,11 +3,87 @@
 Metal API
 - API version: 1.0.0
 
-This is the API for Equinix Metal. The API allows you to programmatically interact with all
-of your Equinix Metal resources, including devices, networks, addresses, organizations,
-projects, and your user account.
+# Introduction
+Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.
 
-The official API docs are hosted at <https://metal.equinix.com/developers/api>.
+The API allows you to programmatically interact with all
+of your Equinix Metal resources, including devices, networks, addresses, organizations,
+projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.
+
+The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.
+
+# Common Parameters
+
+The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.
+
+## Pagination
+
+Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.
+
+The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.
+
+## Sorting
+
+Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).
+
+## Filtering
+
+Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.
+
+For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:
+
+```sh
+curl -H 'X-Auth-Token: my_authentication_token' \\
+  https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4
+```
+
+Only IP addresses with the `type` field set to `public_ipv4` will be returned.
+
+## Searching
+
+Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.
+
+To search resources you can use the `search` query parameter.
+
+## Include and Exclude
+
+For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.
+
+```json
+{
+  ...
+  \"project\": {
+    \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"
+  }
+}
+```
+
+If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.
+
+For example:
+  
+```sh
+curl -H 'X-Auth-Token: my_authentication_token' \\
+  https://api.equinix.com/metal/v1/user?include=projects
+```
+
+The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.
+
+To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).
+
+```sh
+curl -H 'X-Auth-Token: my_authentication_token' \\
+  https://api.equinix.com/metal/v1/user?include=emails,projects,memberships
+```
+
+You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):
+
+```sh
+curl -H 'X-Auth-Token: my_authentication_token' \\
+  https://api.equinix.com/metal/v1/user?include=memberships.projects
+```
+
+To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field.
 
 
 
@@ -125,7 +201,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AuthenticationApi* | [**createAPIKey**](docs/AuthenticationApi.md#createAPIKey) | **POST** /user/api-keys | Create a API key
+*AuthenticationApi* | [**createAPIKey**](docs/AuthenticationApi.md#createAPIKey) | **POST** /user/api-keys | Create an API key
 *AuthenticationApi* | [**createProjectAPIKey**](docs/AuthenticationApi.md#createProjectAPIKey) | **POST** /projects/{id}/api-keys | Create an API key for a project.
 *AuthenticationApi* | [**deleteAPIKey**](docs/AuthenticationApi.md#deleteAPIKey) | **DELETE** /api-keys/{id} | Delete the API key
 *AuthenticationApi* | [**deleteUserAPIKey**](docs/AuthenticationApi.md#deleteUserAPIKey) | **DELETE** /user/api-keys/{id} | Delete the API key
@@ -148,20 +224,6 @@ Class | Method | HTTP request | Description
 *CapacityApi* | [**findCapacityForMetro**](docs/CapacityApi.md#findCapacityForMetro) | **GET** /capacity/metros | View capacity for metros
 *CapacityApi* | [**findOrganizationCapacityPerFacility**](docs/CapacityApi.md#findOrganizationCapacityPerFacility) | **GET** /organizations/{id}/capacity | View available hardware plans per Facility for given organization
 *CapacityApi* | [**findOrganizationCapacityPerMetro**](docs/CapacityApi.md#findOrganizationCapacityPerMetro) | **GET** /organizations/{id}/capacity/metros | View available hardware plans per Metro for given organization
-*ConnectionsApi* | [**createConnectionPortVirtualCircuit**](docs/ConnectionsApi.md#createConnectionPortVirtualCircuit) | **POST** /connections/{connection_id}/ports/{port_id}/virtual-circuits | Create a new Virtual Circuit
-*ConnectionsApi* | [**createOrganizationInterconnection**](docs/ConnectionsApi.md#createOrganizationInterconnection) | **POST** /organizations/{organization_id}/connections | Request a new connection for the organization
-*ConnectionsApi* | [**createProjectInterconnection**](docs/ConnectionsApi.md#createProjectInterconnection) | **POST** /projects/{project_id}/connections | Request a new connection for the project&#39;s organization
-*ConnectionsApi* | [**deleteInterconnection**](docs/ConnectionsApi.md#deleteInterconnection) | **DELETE** /connections/{connection_id} | Delete connection
-*ConnectionsApi* | [**deleteVirtualCircuit**](docs/ConnectionsApi.md#deleteVirtualCircuit) | **DELETE** /virtual-circuits/{id} | Delete a virtual circuit
-*ConnectionsApi* | [**getConnectionPort**](docs/ConnectionsApi.md#getConnectionPort) | **GET** /connections/{connection_id}/ports/{id} | Get a connection port
-*ConnectionsApi* | [**getInterconnection**](docs/ConnectionsApi.md#getInterconnection) | **GET** /connections/{connection_id} | Get connection
-*ConnectionsApi* | [**getVirtualCircuit**](docs/ConnectionsApi.md#getVirtualCircuit) | **GET** /virtual-circuits/{id} | Get a virtual circuit
-*ConnectionsApi* | [**listConnectionPortVirtualCircuits**](docs/ConnectionsApi.md#listConnectionPortVirtualCircuits) | **GET** /connections/{connection_id}/ports/{port_id}/virtual-circuits | List a connection port&#39;s virtual circuits
-*ConnectionsApi* | [**listConnectionPorts**](docs/ConnectionsApi.md#listConnectionPorts) | **GET** /connections/{connection_id}/ports | List a connection&#39;s ports
-*ConnectionsApi* | [**organizationListInterconnections**](docs/ConnectionsApi.md#organizationListInterconnections) | **GET** /organizations/{organization_id}/connections | List organization connections
-*ConnectionsApi* | [**projectListInterconnections**](docs/ConnectionsApi.md#projectListInterconnections) | **GET** /projects/{project_id}/connections | List project connections
-*ConnectionsApi* | [**updateInterconnection**](docs/ConnectionsApi.md#updateInterconnection) | **PUT** /connections/{connection_id} | Update connection
-*ConnectionsApi* | [**updateVirtualCircuit**](docs/ConnectionsApi.md#updateVirtualCircuit) | **PUT** /virtual-circuits/{id} | Update a virtual circuit
 *DevicesApi* | [**createBgpSession**](docs/DevicesApi.md#createBgpSession) | **POST** /devices/{id}/bgp/sessions | Create a BGP session
 *DevicesApi* | [**createDevice**](docs/DevicesApi.md#createDevice) | **POST** /projects/{id}/devices | Create a device
 *DevicesApi* | [**createIPAssignment**](docs/DevicesApi.md#createIPAssignment) | **POST** /devices/{id}/ips | Create an ip assignment
@@ -169,6 +231,8 @@ Class | Method | HTTP request | Description
 *DevicesApi* | [**findBgpSessions**](docs/DevicesApi.md#findBgpSessions) | **GET** /devices/{id}/bgp/sessions | Retrieve all BGP sessions
 *DevicesApi* | [**findDeviceById**](docs/DevicesApi.md#findDeviceById) | **GET** /devices/{id} | Retrieve a device
 *DevicesApi* | [**findDeviceCustomdata**](docs/DevicesApi.md#findDeviceCustomdata) | **GET** /devices/{id}/customdata | Retrieve the custom metadata of an instance
+*DevicesApi* | [**findDeviceMetadataByID**](docs/DevicesApi.md#findDeviceMetadataByID) | **GET** /devices/{id}/metadata | Retrieve metadata
+*DevicesApi* | [**findDeviceUserdataByID**](docs/DevicesApi.md#findDeviceUserdataByID) | **GET** /devices/{id}/userdata | Retrieve userdata
 *DevicesApi* | [**findIPAssignmentCustomdata**](docs/DevicesApi.md#findIPAssignmentCustomdata) | **GET** /devices/{instance_id}/ips/{id}/customdata | Retrieve the custom metadata of an IP Assignment
 *DevicesApi* | [**findIPAssignments**](docs/DevicesApi.md#findIPAssignments) | **GET** /devices/{id}/ips | Retrieve all ip assignments
 *DevicesApi* | [**findInstanceBandwidth**](docs/DevicesApi.md#findInstanceBandwidth) | **GET** /devices/{id}/bandwidth | Retrieve an instance bandwidth
@@ -182,14 +246,14 @@ Class | Method | HTTP request | Description
 *EmailsApi* | [**deleteEmail**](docs/EmailsApi.md#deleteEmail) | **DELETE** /emails/{id} | Delete the email
 *EmailsApi* | [**findEmailById**](docs/EmailsApi.md#findEmailById) | **GET** /emails/{id} | Retrieve an email
 *EmailsApi* | [**updateEmail**](docs/EmailsApi.md#updateEmail) | **PUT** /emails/{id} | Update the email
-*EventsApi* | [**findConnectionEvents**](docs/EventsApi.md#findConnectionEvents) | **GET** /connections/{connection_id}/events | Retrieve connection events
-*EventsApi* | [**findConnectionPortEvents**](docs/EventsApi.md#findConnectionPortEvents) | **GET** /connections/{connection_id}/ports/{id}/events | Retrieve connection port events
 *EventsApi* | [**findDeviceEvents**](docs/EventsApi.md#findDeviceEvents) | **GET** /devices/{id}/events | Retrieve device&#39;s events
 *EventsApi* | [**findEventById**](docs/EventsApi.md#findEventById) | **GET** /events/{id} | Retrieve an event
 *EventsApi* | [**findEvents**](docs/EventsApi.md#findEvents) | **GET** /events | Retrieve current user&#39;s events
+*EventsApi* | [**findInterconnectionEvents**](docs/EventsApi.md#findInterconnectionEvents) | **GET** /connections/{connection_id}/events | Retrieve interconnection events
+*EventsApi* | [**findInterconnectionPortEvents**](docs/EventsApi.md#findInterconnectionPortEvents) | **GET** /connections/{connection_id}/ports/{id}/events | Retrieve interconnection port events
 *EventsApi* | [**findOrganizationEvents**](docs/EventsApi.md#findOrganizationEvents) | **GET** /organizations/{id}/events | Retrieve organization&#39;s events
 *EventsApi* | [**findProjectEvents**](docs/EventsApi.md#findProjectEvents) | **GET** /projects/{id}/events | Retrieve project&#39;s events
-*EventsApi* | [**findVirtualCircuitEvents**](docs/EventsApi.md#findVirtualCircuitEvents) | **GET** /virtual-circuit/{id}/events | Retrieve connection events
+*EventsApi* | [**findVirtualCircuitEvents**](docs/EventsApi.md#findVirtualCircuitEvents) | **GET** /virtual-circuit/{id}/events | Retrieve interconnection events
 *FacilitiesApi* | [**findFacilities**](docs/FacilitiesApi.md#findFacilities) | **GET** /facilities | Retrieve all facilities
 *FacilitiesApi* | [**findFacilitiesByOrganization**](docs/FacilitiesApi.md#findFacilitiesByOrganization) | **GET** /organizations/{id}/facilities | Retrieve all facilities visible by the organization
 *FacilitiesApi* | [**findFacilitiesByProject**](docs/FacilitiesApi.md#findFacilitiesByProject) | **GET** /projects/{id}/facilities | Retrieve all facilities visible by the project
@@ -197,6 +261,20 @@ Class | Method | HTTP request | Description
 *HardwareReservationsApi* | [**findProjectHardwareReservations**](docs/HardwareReservationsApi.md#findProjectHardwareReservations) | **GET** /projects/{id}/hardware-reservations | Retrieve all hardware reservations for a given project
 *HardwareReservationsApi* | [**moveHardwareReservation**](docs/HardwareReservationsApi.md#moveHardwareReservation) | **POST** /hardware-reservations/{id}/move | Move a hardware reservation
 *IncidentsApi* | [**findIncidents**](docs/IncidentsApi.md#findIncidents) | **GET** /incidents | Retrieve the number of incidents
+*InterconnectionsApi* | [**createInterconnectionPortVirtualCircuit**](docs/InterconnectionsApi.md#createInterconnectionPortVirtualCircuit) | **POST** /connections/{connection_id}/ports/{port_id}/virtual-circuits | Create a new Virtual Circuit
+*InterconnectionsApi* | [**createOrganizationInterconnection**](docs/InterconnectionsApi.md#createOrganizationInterconnection) | **POST** /organizations/{organization_id}/connections | Request a new interconnection for the organization
+*InterconnectionsApi* | [**createProjectInterconnection**](docs/InterconnectionsApi.md#createProjectInterconnection) | **POST** /projects/{project_id}/connections | Request a new interconnection for the project&#39;s organization
+*InterconnectionsApi* | [**deleteInterconnection**](docs/InterconnectionsApi.md#deleteInterconnection) | **DELETE** /connections/{connection_id} | Delete interconnection
+*InterconnectionsApi* | [**deleteVirtualCircuit**](docs/InterconnectionsApi.md#deleteVirtualCircuit) | **DELETE** /virtual-circuits/{id} | Delete a virtual circuit
+*InterconnectionsApi* | [**getInterconnection**](docs/InterconnectionsApi.md#getInterconnection) | **GET** /connections/{connection_id} | Get interconnection
+*InterconnectionsApi* | [**getInterconnectionPort**](docs/InterconnectionsApi.md#getInterconnectionPort) | **GET** /connections/{connection_id}/ports/{id} | Get a interconnection port
+*InterconnectionsApi* | [**getVirtualCircuit**](docs/InterconnectionsApi.md#getVirtualCircuit) | **GET** /virtual-circuits/{id} | Get a virtual circuit
+*InterconnectionsApi* | [**listInterconnectionPortVirtualCircuits**](docs/InterconnectionsApi.md#listInterconnectionPortVirtualCircuits) | **GET** /connections/{connection_id}/ports/{port_id}/virtual-circuits | List a interconnection port&#39;s virtual circuits
+*InterconnectionsApi* | [**listInterconnectionPorts**](docs/InterconnectionsApi.md#listInterconnectionPorts) | **GET** /connections/{connection_id}/ports | List a interconnection&#39;s ports
+*InterconnectionsApi* | [**organizationListInterconnections**](docs/InterconnectionsApi.md#organizationListInterconnections) | **GET** /organizations/{organization_id}/connections | List organization connections
+*InterconnectionsApi* | [**projectListInterconnections**](docs/InterconnectionsApi.md#projectListInterconnections) | **GET** /projects/{project_id}/connections | List project connections
+*InterconnectionsApi* | [**updateInterconnection**](docs/InterconnectionsApi.md#updateInterconnection) | **PUT** /connections/{connection_id} | Update interconnection
+*InterconnectionsApi* | [**updateVirtualCircuit**](docs/InterconnectionsApi.md#updateVirtualCircuit) | **PUT** /virtual-circuits/{id} | Update a virtual circuit
 *InvitationsApi* | [**acceptInvitation**](docs/InvitationsApi.md#acceptInvitation) | **PUT** /invitations/{id} | Accept an invitation
 *InvitationsApi* | [**declineInvitation**](docs/InvitationsApi.md#declineInvitation) | **DELETE** /invitations/{id} | Decline an invitation
 *InvitationsApi* | [**findInvitationById**](docs/InvitationsApi.md#findInvitationById) | **GET** /invitations/{id} | View an invitation
@@ -319,7 +397,7 @@ Class | Method | HTTP request | Description
 *VrfsApi* | [**createVrf**](docs/VrfsApi.md#createVrf) | **POST** /projects/{id}/vrfs | Create a new VRF in the specified project
 *VrfsApi* | [**deleteVrf**](docs/VrfsApi.md#deleteVrf) | **DELETE** /vrfs/{id} | Delete the VRF
 *VrfsApi* | [**findVrfById**](docs/VrfsApi.md#findVrfById) | **GET** /vrfs/{id} | Retrieve a VRF
-*VrfsApi* | [**findVrfIPReservations**](docs/VrfsApi.md#findVrfIPReservations) | **GET** /vrfs/{id}/ips | Retrieve all VRF IP Reservations in the VRF
+*VrfsApi* | [**findVrfIpReservations**](docs/VrfsApi.md#findVrfIpReservations) | **GET** /vrfs/{id}/ips | Retrieve all VRF IP Reservations in the VRF
 *VrfsApi* | [**findVrfs**](docs/VrfsApi.md#findVrfs) | **GET** /projects/{id}/vrfs | Retrieve all VRFs in the project
 *VrfsApi* | [**updateVrf**](docs/VrfsApi.md#updateVrf) | **PUT** /vrfs/{id} | Update the VRF
 
@@ -343,6 +421,7 @@ Class | Method | HTTP request | Description
  - [BgpSession](docs/BgpSession.md)
  - [BgpSessionList](docs/BgpSessionList.md)
  - [BgpSessionNeighbors](docs/BgpSessionNeighbors.md)
+ - [BondPortData](docs/BondPortData.md)
  - [CapacityCheckPerFacilityInfo](docs/CapacityCheckPerFacilityInfo.md)
  - [CapacityCheckPerFacilityList](docs/CapacityCheckPerFacilityList.md)
  - [CapacityCheckPerMetroInfo](docs/CapacityCheckPerMetroInfo.md)
@@ -355,17 +434,18 @@ Class | Method | HTTP request | Description
  - [CapacityPerNewFacility](docs/CapacityPerNewFacility.md)
  - [CapacityReport](docs/CapacityReport.md)
  - [Coordinates](docs/Coordinates.md)
- - [CreateConnectionPortVirtualCircuit201Response](docs/CreateConnectionPortVirtualCircuit201Response.md)
- - [CreateConnectionPortVirtualCircuitRequest](docs/CreateConnectionPortVirtualCircuitRequest.md)
+ - [CreateDeviceRequest](docs/CreateDeviceRequest.md)
  - [CreateEmailInput](docs/CreateEmailInput.md)
+ - [CreateInterconnectionPortVirtualCircuit201Response](docs/CreateInterconnectionPortVirtualCircuit201Response.md)
+ - [CreateInterconnectionPortVirtualCircuitRequest](docs/CreateInterconnectionPortVirtualCircuitRequest.md)
  - [CreateMetalGatewayRequest](docs/CreateMetalGatewayRequest.md)
  - [CreateSelfServiceReservationRequest](docs/CreateSelfServiceReservationRequest.md)
  - [CreateSelfServiceReservationRequestPeriod](docs/CreateSelfServiceReservationRequestPeriod.md)
- - [DefaultIPReservation](docs/DefaultIPReservation.md)
- - [DefaultIPReservationAllOf](docs/DefaultIPReservationAllOf.md)
- - [DefaultIPReservationCreateInput](docs/DefaultIPReservationCreateInput.md)
  - [Device](docs/Device.md)
+ - [DeviceActionInput](docs/DeviceActionInput.md)
  - [DeviceActionsInner](docs/DeviceActionsInner.md)
+ - [DeviceCreateInFacilityInput](docs/DeviceCreateInFacilityInput.md)
+ - [DeviceCreateInMetroInput](docs/DeviceCreateInMetroInput.md)
  - [DeviceCreateInput](docs/DeviceCreateInput.md)
  - [DeviceCreateInputIpAddressesInner](docs/DeviceCreateInputIpAddressesInner.md)
  - [DeviceCreatedBy](docs/DeviceCreatedBy.md)
@@ -384,25 +464,30 @@ Class | Method | HTTP request | Description
  - [EventList](docs/EventList.md)
  - [FabricServiceToken](docs/FabricServiceToken.md)
  - [Facility](docs/Facility.md)
+ - [FacilityInput](docs/FacilityInput.md)
  - [FacilityList](docs/FacilityList.md)
  - [FindIPAddressById200Response](docs/FindIPAddressById200Response.md)
+ - [FindMetalGatewayById200Response](docs/FindMetalGatewayById200Response.md)
+ - [FindTrafficTimeframeParameter](docs/FindTrafficTimeframeParameter.md)
  - [GlobalBgpRange](docs/GlobalBgpRange.md)
  - [GlobalBgpRangeList](docs/GlobalBgpRangeList.md)
  - [HardwareReservation](docs/HardwareReservation.md)
  - [HardwareReservationList](docs/HardwareReservationList.md)
  - [Href](docs/Href.md)
- - [HrefOnly](docs/HrefOnly.md)
  - [IPAssignment](docs/IPAssignment.md)
  - [IPAssignmentInput](docs/IPAssignmentInput.md)
  - [IPAssignmentList](docs/IPAssignmentList.md)
  - [IPAssignmentMetro](docs/IPAssignmentMetro.md)
  - [IPAvailabilitiesList](docs/IPAvailabilitiesList.md)
  - [IPReservation](docs/IPReservation.md)
+ - [IPReservationFacility](docs/IPReservationFacility.md)
  - [IPReservationList](docs/IPReservationList.md)
+ - [IPReservationListIpAddressesInner](docs/IPReservationListIpAddressesInner.md)
  - [IPReservationMetro](docs/IPReservationMetro.md)
+ - [IPReservationRequestInput](docs/IPReservationRequestInput.md)
  - [InstancesBatchCreateInput](docs/InstancesBatchCreateInput.md)
  - [InstancesBatchCreateInputBatchesInner](docs/InstancesBatchCreateInputBatchesInner.md)
- - [InstancesBatchCreateInputBatchesInnerIpAddressesInner](docs/InstancesBatchCreateInputBatchesInnerIpAddressesInner.md)
+ - [InstancesBatchCreateInputBatchesInnerAllOf](docs/InstancesBatchCreateInputBatchesInnerAllOf.md)
  - [Interconnection](docs/Interconnection.md)
  - [InterconnectionCreateInput](docs/InterconnectionCreateInput.md)
  - [InterconnectionList](docs/InterconnectionList.md)
@@ -421,14 +506,19 @@ Class | Method | HTTP request | Description
  - [MembershipInput](docs/MembershipInput.md)
  - [MembershipList](docs/MembershipList.md)
  - [Meta](docs/Meta.md)
+ - [Metadata](docs/Metadata.md)
+ - [MetadataNetwork](docs/MetadataNetwork.md)
+ - [MetadataNetworkNetwork](docs/MetadataNetworkNetwork.md)
+ - [MetadataNetworkNetworkBonding](docs/MetadataNetworkNetworkBonding.md)
  - [MetalGateway](docs/MetalGateway.md)
  - [MetalGatewayCreateInput](docs/MetalGatewayCreateInput.md)
- - [MetalGatewayIpReservation](docs/MetalGatewayIpReservation.md)
  - [MetalGatewayList](docs/MetalGatewayList.md)
+ - [MetalGatewayListMetalGatewaysInner](docs/MetalGatewayListMetalGatewaysInner.md)
  - [MetalGatewayLite](docs/MetalGatewayLite.md)
  - [Metro](docs/Metro.md)
  - [MetroCapacityList](docs/MetroCapacityList.md)
  - [MetroCapacityReport](docs/MetroCapacityReport.md)
+ - [MetroInput](docs/MetroInput.md)
  - [MetroList](docs/MetroList.md)
  - [MetroServerInfo](docs/MetroServerInfo.md)
  - [NewPassword](docs/NewPassword.md)
@@ -444,13 +534,20 @@ Class | Method | HTTP request | Description
  - [PaymentMethodList](docs/PaymentMethodList.md)
  - [PaymentMethodUpdateInput](docs/PaymentMethodUpdateInput.md)
  - [Plan](docs/Plan.md)
+ - [PlanAvailableInInner](docs/PlanAvailableInInner.md)
+ - [PlanAvailableInInnerPrice](docs/PlanAvailableInInnerPrice.md)
  - [PlanAvailableInMetrosInner](docs/PlanAvailableInMetrosInner.md)
- - [PlanAvailableInMetrosInnerPrice](docs/PlanAvailableInMetrosInnerPrice.md)
  - [PlanList](docs/PlanList.md)
+ - [PlanSpecs](docs/PlanSpecs.md)
+ - [PlanSpecsCpusInner](docs/PlanSpecsCpusInner.md)
+ - [PlanSpecsDrivesInner](docs/PlanSpecsDrivesInner.md)
+ - [PlanSpecsFeatures](docs/PlanSpecsFeatures.md)
+ - [PlanSpecsNicsInner](docs/PlanSpecsNicsInner.md)
  - [Port](docs/Port.md)
  - [PortAssignInput](docs/PortAssignInput.md)
  - [PortConvertLayer3Input](docs/PortConvertLayer3Input.md)
  - [PortConvertLayer3InputRequestIpsInner](docs/PortConvertLayer3InputRequestIpsInner.md)
+ - [PortData](docs/PortData.md)
  - [PortVlanAssignment](docs/PortVlanAssignment.md)
  - [PortVlanAssignmentBatch](docs/PortVlanAssignmentBatch.md)
  - [PortVlanAssignmentBatchCreateInput](docs/PortVlanAssignmentBatchCreateInput.md)
@@ -466,6 +563,7 @@ Class | Method | HTTP request | Description
  - [ProjectUsage](docs/ProjectUsage.md)
  - [ProjectUsageList](docs/ProjectUsageList.md)
  - [RecoveryCodeList](docs/RecoveryCodeList.md)
+ - [RequestIPReservation201Response](docs/RequestIPReservation201Response.md)
  - [RequestIPReservationRequest](docs/RequestIPReservationRequest.md)
  - [SSHKey](docs/SSHKey.md)
  - [SSHKeyCreateInput](docs/SSHKeyCreateInput.md)
@@ -491,7 +589,6 @@ Class | Method | HTTP request | Description
  - [SpotPricesPerNewFacility](docs/SpotPricesPerNewFacility.md)
  - [SpotPricesReport](docs/SpotPricesReport.md)
  - [SupportRequestInput](docs/SupportRequestInput.md)
- - [Timeframe](docs/Timeframe.md)
  - [TransferRequest](docs/TransferRequest.md)
  - [TransferRequestInput](docs/TransferRequestInput.md)
  - [TransferRequestList](docs/TransferRequestList.md)
@@ -502,6 +599,8 @@ Class | Method | HTTP request | Description
  - [UserList](docs/UserList.md)
  - [UserLite](docs/UserLite.md)
  - [UserUpdateInput](docs/UserUpdateInput.md)
+ - [Userdata](docs/Userdata.md)
+ - [VerifyEmail](docs/VerifyEmail.md)
  - [VirtualCircuit](docs/VirtualCircuit.md)
  - [VirtualCircuitCreateInput](docs/VirtualCircuitCreateInput.md)
  - [VirtualCircuitList](docs/VirtualCircuitList.md)
@@ -512,11 +611,11 @@ Class | Method | HTTP request | Description
  - [VirtualNetworkList](docs/VirtualNetworkList.md)
  - [Vrf](docs/Vrf.md)
  - [VrfCreateInput](docs/VrfCreateInput.md)
- - [VrfIPReservation](docs/VrfIPReservation.md)
- - [VrfIPReservationAllOf](docs/VrfIPReservationAllOf.md)
- - [VrfIPReservationCreateInput](docs/VrfIPReservationCreateInput.md)
- - [VrfIPReservationList](docs/VrfIPReservationList.md)
+ - [VrfIpReservation](docs/VrfIpReservation.md)
+ - [VrfIpReservationCreateInput](docs/VrfIpReservationCreateInput.md)
+ - [VrfIpReservationList](docs/VrfIpReservationList.md)
  - [VrfList](docs/VrfList.md)
+ - [VrfMetalGateway](docs/VrfMetalGateway.md)
  - [VrfMetalGatewayCreateInput](docs/VrfMetalGatewayCreateInput.md)
  - [VrfUpdateInput](docs/VrfUpdateInput.md)
  - [VrfVirtualCircuit](docs/VrfVirtualCircuit.md)

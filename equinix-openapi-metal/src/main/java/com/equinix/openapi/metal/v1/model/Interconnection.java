@@ -1,6 +1,6 @@
 /*
  * Metal API
- * This is the API for Equinix Metal. The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account.  The official API docs are hosted at <https://metal.equinix.com/developers/api>. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:    ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -76,7 +76,7 @@ public class Interconnection {
   private InterconnectionMetro metro;
 
   /**
-   * The mode of the connection (only relevant to dedicated connections). Shared connections won&#39;t have this field. Can be either &#39;standard&#39; or &#39;tunnel&#39;.   The default mode of a dedicated connection is &#39;standard&#39;. The mode can only be changed when there are no associated virtual circuits on the connection.   In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.
+   * The mode of the interconnection (only relevant to Dedicated Ports). Shared connections won&#39;t have this field. Can be either &#39;standard&#39; or &#39;tunnel&#39;.   The default mode of an interconnection on a Dedicated Port is &#39;standard&#39;. The mode can only be changed when there are no associated virtual circuits on the interconnection.   In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.
    */
   @JsonAdapter(ModeEnum.Adapter.class)
   public enum ModeEnum {
@@ -138,9 +138,56 @@ public class Interconnection {
   @SerializedName(SERIALIZED_NAME_PORTS)
   private List<InterconnectionPort> ports = null;
 
+  /**
+   * Either &#39;primary&#39;, meaning a single interconnection, or &#39;redundant&#39;, meaning a redundant interconnection.
+   */
+  @JsonAdapter(RedundancyEnum.Adapter.class)
+  public enum RedundancyEnum {
+    PRIMARY("primary"),
+    
+    REDUNDANT("redundant");
+
+    private String value;
+
+    RedundancyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static RedundancyEnum fromValue(String value) {
+      for (RedundancyEnum b : RedundancyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<RedundancyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final RedundancyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public RedundancyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return RedundancyEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_REDUNDANCY = "redundancy";
   @SerializedName(SERIALIZED_NAME_REDUNDANCY)
-  private String redundancy;
+  private RedundancyEnum redundancy;
 
   public static final String SERIALIZED_NAME_SERVICE_TOKENS = "service_tokens";
   @SerializedName(SERIALIZED_NAME_SERVICE_TOKENS)
@@ -158,9 +205,60 @@ public class Interconnection {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  public static final String SERIALIZED_NAME_TOKEN = "token";
+  @SerializedName(SERIALIZED_NAME_TOKEN)
+  private UUID token;
+
+  /**
+   * The &#39;shared&#39; type of interconnection refers to shared connections, or later also known as Fabric Virtual Connections (or Fabric VCs). The &#39;dedicated&#39; type of interconnection refers to interconnections created with Dedicated Ports.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    SHARED("shared"),
+    
+    DEDICATED("dedicated");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+  private TypeEnum type;
 
   public Interconnection() {
   }
@@ -282,7 +380,7 @@ public class Interconnection {
   }
 
    /**
-   * The mode of the connection (only relevant to dedicated connections). Shared connections won&#39;t have this field. Can be either &#39;standard&#39; or &#39;tunnel&#39;.   The default mode of a dedicated connection is &#39;standard&#39;. The mode can only be changed when there are no associated virtual circuits on the connection.   In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.
+   * The mode of the interconnection (only relevant to Dedicated Ports). Shared connections won&#39;t have this field. Can be either &#39;standard&#39; or &#39;tunnel&#39;.   The default mode of an interconnection on a Dedicated Port is &#39;standard&#39;. The mode can only be changed when there are no associated virtual circuits on the interconnection.   In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.
    * @return mode
   **/
   @javax.annotation.Nullable
@@ -356,7 +454,7 @@ public class Interconnection {
   }
 
    /**
-   * Get ports
+   * For Fabric VCs, these represent Virtual Port(s) created for the interconnection. For dedicated interconnections, these represent the Dedicated Port(s).
    * @return ports
   **/
   @javax.annotation.Nullable
@@ -371,24 +469,24 @@ public class Interconnection {
   }
 
 
-  public Interconnection redundancy(String redundancy) {
+  public Interconnection redundancy(RedundancyEnum redundancy) {
     
     this.redundancy = redundancy;
     return this;
   }
 
    /**
-   * Get redundancy
+   * Either &#39;primary&#39;, meaning a single interconnection, or &#39;redundant&#39;, meaning a redundant interconnection.
    * @return redundancy
   **/
   @javax.annotation.Nullable
 
-  public String getRedundancy() {
+  public RedundancyEnum getRedundancy() {
     return redundancy;
   }
 
 
-  public void setRedundancy(String redundancy) {
+  public void setRedundancy(RedundancyEnum redundancy) {
     this.redundancy = redundancy;
   }
 
@@ -408,7 +506,7 @@ public class Interconnection {
   }
 
    /**
-   * Get serviceTokens
+   * For Fabric VCs (Metal Billed), this will show details of the A-Side service tokens issued for the interconnection. For Fabric VCs (Fabric Billed), this will show the details of the Z-Side service tokens issued for the interconnection. Dedicated interconnections will not have any service tokens issued. There will be one per interconnection, so for redundant interconnections, there should be two service tokens issued.
    * @return serviceTokens
   **/
   @javax.annotation.Nullable
@@ -430,7 +528,7 @@ public class Interconnection {
   }
 
    /**
-   * The connection&#39;s speed in bps.
+   * For interconnections on Dedicated Ports and shared connections, this represents the interconnection&#39;s speed in bps. For Fabric VCs, this field refers to the maximum speed of the interconnection in bps. This value will default to 10Gbps for Fabric VCs (Fabric Billed).
    * @return speed
   **/
   @javax.annotation.Nullable
@@ -497,24 +595,46 @@ public class Interconnection {
   }
 
 
-  public Interconnection type(String type) {
+  public Interconnection token(UUID token) {
+    
+    this.token = token;
+    return this;
+  }
+
+   /**
+   * This token is used for shared interconnections to be used as the Fabric Token. This field is entirely deprecated.
+   * @return token
+  **/
+  @javax.annotation.Nullable
+
+  public UUID getToken() {
+    return token;
+  }
+
+
+  public void setToken(UUID token) {
+    this.token = token;
+  }
+
+
+  public Interconnection type(TypeEnum type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Get type
+   * The &#39;shared&#39; type of interconnection refers to shared connections, or later also known as Fabric Virtual Connections (or Fabric VCs). The &#39;dedicated&#39; type of interconnection refers to interconnections created with Dedicated Ports.
    * @return type
   **/
   @javax.annotation.Nullable
 
-  public String getType() {
+  public TypeEnum getType() {
     return type;
   }
 
 
-  public void setType(String type) {
+  public void setType(TypeEnum type) {
     this.type = type;
   }
 
@@ -587,13 +707,14 @@ public class Interconnection {
         Objects.equals(this.speed, interconnection.speed) &&
         Objects.equals(this.status, interconnection.status) &&
         Objects.equals(this.tags, interconnection.tags) &&
+        Objects.equals(this.token, interconnection.token) &&
         Objects.equals(this.type, interconnection.type)&&
         Objects.equals(this.additionalProperties, interconnection.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactEmail, description, facility, id, metro, mode, name, organization, ports, redundancy, serviceTokens, speed, status, tags, type, additionalProperties);
+    return Objects.hash(contactEmail, description, facility, id, metro, mode, name, organization, ports, redundancy, serviceTokens, speed, status, tags, token, type, additionalProperties);
   }
 
   @Override
@@ -614,6 +735,7 @@ public class Interconnection {
     sb.append("    speed: ").append(toIndentedString(speed)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -652,6 +774,7 @@ public class Interconnection {
     openapiFields.add("speed");
     openapiFields.add("status");
     openapiFields.add("tags");
+    openapiFields.add("token");
     openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
@@ -734,6 +857,9 @@ public class Interconnection {
       // ensure the optional json data is an array if present
       if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
+      }
+      if ((jsonObj.get("token") != null && !jsonObj.get("token").isJsonNull()) && !jsonObj.get("token").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

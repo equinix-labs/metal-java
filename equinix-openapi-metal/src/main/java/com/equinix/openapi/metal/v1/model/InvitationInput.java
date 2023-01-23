@@ -1,6 +1,6 @@
 /*
  * Metal API
- * This is the API for Equinix Metal. The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account.  The official API docs are hosted at <https://metal.equinix.com/developers/api>. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:    ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,13 +59,68 @@ public class InvitationInput {
   @SerializedName(SERIALIZED_NAME_MESSAGE)
   private String message;
 
+  public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organization_id";
+  @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
+  private UUID organizationId;
+
   public static final String SERIALIZED_NAME_PROJECTS_IDS = "projects_ids";
   @SerializedName(SERIALIZED_NAME_PROJECTS_IDS)
-  private List<String> projectsIds = null;
+  private List<UUID> projectsIds = null;
+
+  /**
+   * Gets or Sets roles
+   */
+  @JsonAdapter(RolesEnum.Adapter.class)
+  public enum RolesEnum {
+    ADMIN("admin"),
+    
+    BILLING("billing"),
+    
+    COLLABORATOR("collaborator"),
+    
+    LIMITED_COLLABORATOR("limited_collaborator");
+
+    private String value;
+
+    RolesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static RolesEnum fromValue(String value) {
+      for (RolesEnum b : RolesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<RolesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final RolesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public RolesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return RolesEnum.fromValue(value);
+      }
+    }
+  }
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
-  private List<String> roles = null;
+  private List<RolesEnum> roles = null;
 
   public InvitationInput() {
   }
@@ -113,13 +169,35 @@ public class InvitationInput {
   }
 
 
-  public InvitationInput projectsIds(List<String> projectsIds) {
+  public InvitationInput organizationId(UUID organizationId) {
+    
+    this.organizationId = organizationId;
+    return this;
+  }
+
+   /**
+   * Get organizationId
+   * @return organizationId
+  **/
+  @javax.annotation.Nullable
+
+  public UUID getOrganizationId() {
+    return organizationId;
+  }
+
+
+  public void setOrganizationId(UUID organizationId) {
+    this.organizationId = organizationId;
+  }
+
+
+  public InvitationInput projectsIds(List<UUID> projectsIds) {
     
     this.projectsIds = projectsIds;
     return this;
   }
 
-  public InvitationInput addProjectsIdsItem(String projectsIdsItem) {
+  public InvitationInput addProjectsIdsItem(UUID projectsIdsItem) {
     if (this.projectsIds == null) {
       this.projectsIds = new ArrayList<>();
     }
@@ -133,23 +211,23 @@ public class InvitationInput {
   **/
   @javax.annotation.Nullable
 
-  public List<String> getProjectsIds() {
+  public List<UUID> getProjectsIds() {
     return projectsIds;
   }
 
 
-  public void setProjectsIds(List<String> projectsIds) {
+  public void setProjectsIds(List<UUID> projectsIds) {
     this.projectsIds = projectsIds;
   }
 
 
-  public InvitationInput roles(List<String> roles) {
+  public InvitationInput roles(List<RolesEnum> roles) {
     
     this.roles = roles;
     return this;
   }
 
-  public InvitationInput addRolesItem(String rolesItem) {
+  public InvitationInput addRolesItem(RolesEnum rolesItem) {
     if (this.roles == null) {
       this.roles = new ArrayList<>();
     }
@@ -163,12 +241,12 @@ public class InvitationInput {
   **/
   @javax.annotation.Nullable
 
-  public List<String> getRoles() {
+  public List<RolesEnum> getRoles() {
     return roles;
   }
 
 
-  public void setRoles(List<String> roles) {
+  public void setRoles(List<RolesEnum> roles) {
     this.roles = roles;
   }
 
@@ -229,6 +307,7 @@ public class InvitationInput {
     InvitationInput invitationInput = (InvitationInput) o;
     return Objects.equals(this.invitee, invitationInput.invitee) &&
         Objects.equals(this.message, invitationInput.message) &&
+        Objects.equals(this.organizationId, invitationInput.organizationId) &&
         Objects.equals(this.projectsIds, invitationInput.projectsIds) &&
         Objects.equals(this.roles, invitationInput.roles)&&
         Objects.equals(this.additionalProperties, invitationInput.additionalProperties);
@@ -236,7 +315,7 @@ public class InvitationInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(invitee, message, projectsIds, roles, additionalProperties);
+    return Objects.hash(invitee, message, organizationId, projectsIds, roles, additionalProperties);
   }
 
   @Override
@@ -245,6 +324,7 @@ public class InvitationInput {
     sb.append("class InvitationInput {\n");
     sb.append("    invitee: ").append(toIndentedString(invitee)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    projectsIds: ").append(toIndentedString(projectsIds)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -272,6 +352,7 @@ public class InvitationInput {
     openapiFields = new HashSet<String>();
     openapiFields.add("invitee");
     openapiFields.add("message");
+    openapiFields.add("organization_id");
     openapiFields.add("projects_ids");
     openapiFields.add("roles");
 
@@ -304,6 +385,9 @@ public class InvitationInput {
       }
       if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      }
+      if ((jsonObj.get("organization_id") != null && !jsonObj.get("organization_id").isJsonNull()) && !jsonObj.get("organization_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `organization_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organization_id").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("projects_ids") != null && !jsonObj.get("projects_ids").isJsonArray()) {

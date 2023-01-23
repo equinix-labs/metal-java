@@ -125,7 +125,7 @@ public class Example {
 
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
-    PortAssignInput portAssignInput = new PortAssignInput(); // PortAssignInput | 
+    PortAssignInput portAssignInput = new PortAssignInput(); // PortAssignInput | Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: '1001').
     try {
       Port result = apiInstance.assignPort(id, portAssignInput);
       System.out.println(result);
@@ -145,7 +145,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
-| **portAssignInput** | [**PortAssignInput**](PortAssignInput.md)|  | |
+| **portAssignInput** | [**PortAssignInput**](PortAssignInput.md)| Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). | |
 
 ### Return type
 
@@ -275,7 +275,7 @@ public class Example {
 
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
-    PortAssignInput portAssignInput = new PortAssignInput(); // PortAssignInput | Virtual Network ID
+    PortAssignInput portAssignInput = new PortAssignInput(); // PortAssignInput | Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: '1001').
     try {
       Port result = apiInstance.convertLayer2(id, portAssignInput);
       System.out.println(result);
@@ -295,7 +295,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
-| **portAssignInput** | [**PortAssignInput**](PortAssignInput.md)| Virtual Network ID | [optional] |
+| **portAssignInput** | [**PortAssignInput**](PortAssignInput.md)| Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). | |
 
 ### Return type
 

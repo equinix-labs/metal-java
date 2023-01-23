@@ -23,6 +23,8 @@
 |**title** | **String** |  |  [optional] |
 |**twoFactorAuth** | **String** |  |  [optional] |
 |**verifiedAt** | **OffsetDateTime** |  |  [optional] |
+|**invitationId** | **UUID** |  |  [optional] |
+|**nonce** | **String** |  |  [optional] |
 
 
 

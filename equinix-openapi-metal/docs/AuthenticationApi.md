@@ -4,7 +4,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createAPIKey**](AuthenticationApi.md#createAPIKey) | **POST** /user/api-keys | Create a API key |
+| [**createAPIKey**](AuthenticationApi.md#createAPIKey) | **POST** /user/api-keys | Create an API key |
 | [**createProjectAPIKey**](AuthenticationApi.md#createProjectAPIKey) | **POST** /projects/{id}/api-keys | Create an API key for a project. |
 | [**deleteAPIKey**](AuthenticationApi.md#deleteAPIKey) | **DELETE** /api-keys/{id} | Delete the API key |
 | [**deleteUserAPIKey**](AuthenticationApi.md#deleteUserAPIKey) | **DELETE** /user/api-keys/{id} | Delete the API key |
@@ -16,7 +16,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 # **createAPIKey**
 > AuthToken createAPIKey(authTokenInput)
 
-Create a API key
+Create an API key
 
 Creates a API key for the current user.
 

@@ -4,7 +4,7 @@ import com.equinix.openapi.ApiClient;
 import com.equinix.openapi.ApiException;
 import com.equinix.openapi.metal.v1.api.DevicesApi;
 import com.equinix.openapi.metal.v1.model.Device;
-import com.equinix.openapi.metal.v1.model.DeviceCreateInput;
+import com.equinix.openapi.metal.v1.model.CreateDeviceRequest;
 import com.equinix.openapi.metal.v1.model.Device.StateEnum;
 
 import java.time.Duration;
@@ -31,8 +31,8 @@ public class DeviceOperator {
       this.deviceApiInstance = new DevicesApi(client);
    }
 
-   public Device createDeviceAndPoll(DeviceCreateInput deviceCreateInput, UUID project, int retries, Duration wait) throws ApiException, InterruptedException {
-      Device device = deviceApiInstance.createDevice(project, deviceCreateInput);
+   public Device createDeviceAndPoll(CreateDeviceRequest createDeviceRequest, UUID project, int retries, Duration wait) throws ApiException, InterruptedException {
+      Device device = deviceApiInstance.createDevice(project, createDeviceRequest);
 
       return deviceAndPoll(device, retries, wait);
    }

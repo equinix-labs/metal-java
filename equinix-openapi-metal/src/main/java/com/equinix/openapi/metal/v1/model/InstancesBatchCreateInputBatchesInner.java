@@ -1,6 +1,6 @@
 /*
  * Metal API
- * This is the API for Equinix Metal. The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account.  The official API docs are hosted at <https://metal.equinix.com/developers/api>. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:    ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -15,16 +15,20 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.InstancesBatchCreateInputBatchesInnerIpAddressesInner;
+import com.equinix.openapi.metal.v1.model.DeviceCreateInputIpAddressesInner;
+import com.equinix.openapi.metal.v1.model.SSHKeyInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import com.google.gson.Gson;
@@ -53,53 +57,112 @@ import com.equinix.openapi.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InstancesBatchCreateInputBatchesInner {
-  public static final String SERIALIZED_NAME_ALWAYS_PXE = "always_pxe";
-  @SerializedName(SERIALIZED_NAME_ALWAYS_PXE)
-  private Boolean alwaysPxe;
-
-  public static final String SERIALIZED_NAME_BILLING_CYCLE = "billing_cycle";
-  @SerializedName(SERIALIZED_NAME_BILLING_CYCLE)
-  private String billingCycle;
-
-  public static final String SERIALIZED_NAME_CUSTOMDATA = "customdata";
-  @SerializedName(SERIALIZED_NAME_CUSTOMDATA)
-  private Object customdata;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
-  public static final String SERIALIZED_NAME_FACILITY = "facility";
-  @SerializedName(SERIALIZED_NAME_FACILITY)
-  private List<String> facility = null;
-
-  public static final String SERIALIZED_NAME_FEATURES = "features";
-  @SerializedName(SERIALIZED_NAME_FEATURES)
-  private List<String> features = null;
-
-  public static final String SERIALIZED_NAME_HOSTNAME = "hostname";
-  @SerializedName(SERIALIZED_NAME_HOSTNAME)
-  private String hostname;
-
   public static final String SERIALIZED_NAME_HOSTNAMES = "hostnames";
   @SerializedName(SERIALIZED_NAME_HOSTNAMES)
   private List<String> hostnames = null;
 
-  public static final String SERIALIZED_NAME_IP_ADDRESSES = "ip_addresses";
-  @SerializedName(SERIALIZED_NAME_IP_ADDRESSES)
-  private List<InstancesBatchCreateInputBatchesInnerIpAddressesInner> ipAddresses = null;
-
-  public static final String SERIALIZED_NAME_LOCKED = "locked";
-  @SerializedName(SERIALIZED_NAME_LOCKED)
-  private Boolean locked;
+  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+  @SerializedName(SERIALIZED_NAME_QUANTITY)
+  private Integer quantity;
 
   public static final String SERIALIZED_NAME_METRO = "metro";
   @SerializedName(SERIALIZED_NAME_METRO)
   private String metro;
 
+  public static final String SERIALIZED_NAME_ALWAYS_PXE = "always_pxe";
+  @SerializedName(SERIALIZED_NAME_ALWAYS_PXE)
+  private Boolean alwaysPxe = false;
+
+  /**
+   * The billing cycle of the device.
+   */
+  @JsonAdapter(BillingCycleEnum.Adapter.class)
+  public enum BillingCycleEnum {
+    HOURLY("hourly"),
+    
+    DAILY("daily"),
+    
+    MONTHLY("monthly"),
+    
+    YEARLY("yearly");
+
+    private String value;
+
+    BillingCycleEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static BillingCycleEnum fromValue(String value) {
+      for (BillingCycleEnum b : BillingCycleEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<BillingCycleEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BillingCycleEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BillingCycleEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BillingCycleEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BILLING_CYCLE = "billing_cycle";
+  @SerializedName(SERIALIZED_NAME_BILLING_CYCLE)
+  private BillingCycleEnum billingCycle;
+
+  public static final String SERIALIZED_NAME_CUSTOMDATA = "customdata";
+  @SerializedName(SERIALIZED_NAME_CUSTOMDATA)
+  private Map<String, Object> customdata = null;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_FEATURES = "features";
+  @SerializedName(SERIALIZED_NAME_FEATURES)
+  private List<String> features = null;
+
+  public static final String SERIALIZED_NAME_HARDWARE_RESERVATION_ID = "hardware_reservation_id";
+  @SerializedName(SERIALIZED_NAME_HARDWARE_RESERVATION_ID)
+  private String hardwareReservationId = "";
+
+  public static final String SERIALIZED_NAME_HOSTNAME = "hostname";
+  @SerializedName(SERIALIZED_NAME_HOSTNAME)
+  private String hostname;
+
+  public static final String SERIALIZED_NAME_IP_ADDRESSES = "ip_addresses";
+  @SerializedName(SERIALIZED_NAME_IP_ADDRESSES)
+  private List<DeviceCreateInputIpAddressesInner> ipAddresses = null;
+
+  public static final String SERIALIZED_NAME_IPXE_SCRIPT_URL = "ipxe_script_url";
+  @SerializedName(SERIALIZED_NAME_IPXE_SCRIPT_URL)
+  private String ipxeScriptUrl;
+
+  public static final String SERIALIZED_NAME_LOCKED = "locked";
+  @SerializedName(SERIALIZED_NAME_LOCKED)
+  private Boolean locked = false;
+
   public static final String SERIALIZED_NAME_NO_SSH_KEYS = "no_ssh_keys";
   @SerializedName(SERIALIZED_NAME_NO_SSH_KEYS)
-  private Boolean noSshKeys;
+  private Boolean noSshKeys = false;
 
   public static final String SERIALIZED_NAME_OPERATING_SYSTEM = "operating_system";
   @SerializedName(SERIALIZED_NAME_OPERATING_SYSTEM)
@@ -109,9 +172,29 @@ public class InstancesBatchCreateInputBatchesInner {
   @SerializedName(SERIALIZED_NAME_PLAN)
   private String plan;
 
+  public static final String SERIALIZED_NAME_PRIVATE_IPV4_SUBNET_SIZE = "private_ipv4_subnet_size";
+  @SerializedName(SERIALIZED_NAME_PRIVATE_IPV4_SUBNET_SIZE)
+  private BigDecimal privateIpv4SubnetSize = new BigDecimal("28");
+
   public static final String SERIALIZED_NAME_PROJECT_SSH_KEYS = "project_ssh_keys";
   @SerializedName(SERIALIZED_NAME_PROJECT_SSH_KEYS)
   private List<UUID> projectSshKeys = null;
+
+  public static final String SERIALIZED_NAME_PUBLIC_IPV4_SUBNET_SIZE = "public_ipv4_subnet_size";
+  @SerializedName(SERIALIZED_NAME_PUBLIC_IPV4_SUBNET_SIZE)
+  private BigDecimal publicIpv4SubnetSize = new BigDecimal("31");
+
+  public static final String SERIALIZED_NAME_SPOT_INSTANCE = "spot_instance";
+  @SerializedName(SERIALIZED_NAME_SPOT_INSTANCE)
+  private Boolean spotInstance;
+
+  public static final String SERIALIZED_NAME_SPOT_PRICE_MAX = "spot_price_max";
+  @SerializedName(SERIALIZED_NAME_SPOT_PRICE_MAX)
+  private Float spotPriceMax;
+
+  public static final String SERIALIZED_NAME_SSH_KEYS = "ssh_keys";
+  @SerializedName(SERIALIZED_NAME_SSH_KEYS)
+  private List<SSHKeyInput> sshKeys = null;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -129,178 +212,12 @@ public class InstancesBatchCreateInputBatchesInner {
   @SerializedName(SERIALIZED_NAME_USERDATA)
   private String userdata;
 
+  public static final String SERIALIZED_NAME_FACILITY = "facility";
+  @SerializedName(SERIALIZED_NAME_FACILITY)
+  private List<String> facility = new ArrayList<>();
+
   public InstancesBatchCreateInputBatchesInner() {
   }
-
-  public InstancesBatchCreateInputBatchesInner alwaysPxe(Boolean alwaysPxe) {
-    
-    this.alwaysPxe = alwaysPxe;
-    return this;
-  }
-
-   /**
-   * Get alwaysPxe
-   * @return alwaysPxe
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getAlwaysPxe() {
-    return alwaysPxe;
-  }
-
-
-  public void setAlwaysPxe(Boolean alwaysPxe) {
-    this.alwaysPxe = alwaysPxe;
-  }
-
-
-  public InstancesBatchCreateInputBatchesInner billingCycle(String billingCycle) {
-    
-    this.billingCycle = billingCycle;
-    return this;
-  }
-
-   /**
-   * Get billingCycle
-   * @return billingCycle
-  **/
-  @javax.annotation.Nullable
-
-  public String getBillingCycle() {
-    return billingCycle;
-  }
-
-
-  public void setBillingCycle(String billingCycle) {
-    this.billingCycle = billingCycle;
-  }
-
-
-  public InstancesBatchCreateInputBatchesInner customdata(Object customdata) {
-    
-    this.customdata = customdata;
-    return this;
-  }
-
-   /**
-   * Get customdata
-   * @return customdata
-  **/
-  @javax.annotation.Nullable
-
-  public Object getCustomdata() {
-    return customdata;
-  }
-
-
-  public void setCustomdata(Object customdata) {
-    this.customdata = customdata;
-  }
-
-
-  public InstancesBatchCreateInputBatchesInner description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Get description
-   * @return description
-  **/
-  @javax.annotation.Nullable
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public InstancesBatchCreateInputBatchesInner facility(List<String> facility) {
-    
-    this.facility = facility;
-    return this;
-  }
-
-  public InstancesBatchCreateInputBatchesInner addFacilityItem(String facilityItem) {
-    if (this.facility == null) {
-      this.facility = new ArrayList<>();
-    }
-    this.facility.add(facilityItem);
-    return this;
-  }
-
-   /**
-   * Array of facility codes the batch can use for provisioning. This param also takes a string if you want the batch to be fulfilled in only one facility. Cannot be set if the metro is already set.
-   * @return facility
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getFacility() {
-    return facility;
-  }
-
-
-  public void setFacility(List<String> facility) {
-    this.facility = facility;
-  }
-
-
-  public InstancesBatchCreateInputBatchesInner features(List<String> features) {
-    
-    this.features = features;
-    return this;
-  }
-
-  public InstancesBatchCreateInputBatchesInner addFeaturesItem(String featuresItem) {
-    if (this.features == null) {
-      this.features = new ArrayList<>();
-    }
-    this.features.add(featuresItem);
-    return this;
-  }
-
-   /**
-   * Get features
-   * @return features
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getFeatures() {
-    return features;
-  }
-
-
-  public void setFeatures(List<String> features) {
-    this.features = features;
-  }
-
-
-  public InstancesBatchCreateInputBatchesInner hostname(String hostname) {
-    
-    this.hostname = hostname;
-    return this;
-  }
-
-   /**
-   * Get hostname
-   * @return hostname
-  **/
-  @javax.annotation.Nullable
-
-  public String getHostname() {
-    return hostname;
-  }
-
-
-  public void setHostname(String hostname) {
-    this.hostname = hostname;
-  }
-
 
   public InstancesBatchCreateInputBatchesInner hostnames(List<String> hostnames) {
     
@@ -332,13 +249,227 @@ public class InstancesBatchCreateInputBatchesInner {
   }
 
 
-  public InstancesBatchCreateInputBatchesInner ipAddresses(List<InstancesBatchCreateInputBatchesInnerIpAddressesInner> ipAddresses) {
+  public InstancesBatchCreateInputBatchesInner quantity(Integer quantity) {
+    
+    this.quantity = quantity;
+    return this;
+  }
+
+   /**
+   * The number of devices to create in this batch. The hostname may contain an &#x60;{{index}}&#x60; placeholder, which will be replaced with the index of the device in the batch. For example, if the hostname is &#x60;device-{{index}}&#x60;, the first device in the batch will have the hostname &#x60;device-01&#x60;, the second device will have the hostname &#x60;device-02&#x60;, and so on.
+   * @return quantity
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getQuantity() {
+    return quantity;
+  }
+
+
+  public void setQuantity(Integer quantity) {
+    this.quantity = quantity;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner metro(String metro) {
+    
+    this.metro = metro;
+    return this;
+  }
+
+   /**
+   * Metro code or ID of where the instance should be provisioned in. Either metro or facility must be provided.
+   * @return metro
+  **/
+  @javax.annotation.Nonnull
+
+  public String getMetro() {
+    return metro;
+  }
+
+
+  public void setMetro(String metro) {
+    this.metro = metro;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner alwaysPxe(Boolean alwaysPxe) {
+    
+    this.alwaysPxe = alwaysPxe;
+    return this;
+  }
+
+   /**
+   * When true, devices with a &#x60;custom_ipxe&#x60; OS will always boot to iPXE. The default setting of false ensures that iPXE will be used on only the first boot.
+   * @return alwaysPxe
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getAlwaysPxe() {
+    return alwaysPxe;
+  }
+
+
+  public void setAlwaysPxe(Boolean alwaysPxe) {
+    this.alwaysPxe = alwaysPxe;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner billingCycle(BillingCycleEnum billingCycle) {
+    
+    this.billingCycle = billingCycle;
+    return this;
+  }
+
+   /**
+   * The billing cycle of the device.
+   * @return billingCycle
+  **/
+  @javax.annotation.Nullable
+
+  public BillingCycleEnum getBillingCycle() {
+    return billingCycle;
+  }
+
+
+  public void setBillingCycle(BillingCycleEnum billingCycle) {
+    this.billingCycle = billingCycle;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner customdata(Map<String, Object> customdata) {
+    
+    this.customdata = customdata;
+    return this;
+  }
+
+  public InstancesBatchCreateInputBatchesInner putCustomdataItem(String key, Object customdataItem) {
+    if (this.customdata == null) {
+      this.customdata = new HashMap<>();
+    }
+    this.customdata.put(key, customdataItem);
+    return this;
+  }
+
+   /**
+   * Customdata is an arbitrary JSON value that can be accessed via the metadata service.
+   * @return customdata
+  **/
+  @javax.annotation.Nullable
+
+  public Map<String, Object> getCustomdata() {
+    return customdata;
+  }
+
+
+  public void setCustomdata(Map<String, Object> customdata) {
+    this.customdata = customdata;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Any description of the device or how it will be used. This may be used to inform other API consumers with project access.
+   * @return description
+  **/
+  @javax.annotation.Nullable
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner features(List<String> features) {
+    
+    this.features = features;
+    return this;
+  }
+
+  public InstancesBatchCreateInputBatchesInner addFeaturesItem(String featuresItem) {
+    if (this.features == null) {
+      this.features = new ArrayList<>();
+    }
+    this.features.add(featuresItem);
+    return this;
+  }
+
+   /**
+   * The features attribute allows you to optionally specify what features your server should have.  In the API shorthand syntax, all features listed are &#x60;required&#x60;:  &#x60;&#x60;&#x60; { \&quot;features\&quot;: [\&quot;tpm\&quot;] } &#x60;&#x60;&#x60;  Alternatively, if you do not require a certain feature, but would prefer to be assigned a server with that feature if there are any available, you may specify that feature with a &#x60;preferred&#x60; value. The request will not fail if we have no servers with that feature in our inventory. The API offers an alternative syntax for mixing preferred and required features:  &#x60;&#x60;&#x60; { \&quot;features\&quot;: { \&quot;tpm\&quot;: \&quot;required\&quot;, \&quot;raid\&quot;: \&quot;preferred\&quot; } } &#x60;&#x60;&#x60;  The request will only fail if there are no available servers matching the required &#x60;tpm&#x60; criteria.
+   * @return features
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getFeatures() {
+    return features;
+  }
+
+
+  public void setFeatures(List<String> features) {
+    this.features = features;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner hardwareReservationId(String hardwareReservationId) {
+    
+    this.hardwareReservationId = hardwareReservationId;
+    return this;
+  }
+
+   /**
+   * The Hardware Reservation UUID to provision. Alternatively, &#x60;next-available&#x60; can be specified to select from any of the available hardware reservations. An error will be returned if the requested reservation option is not available.  See [Reserved Hardware](https://metal.equinix.com/developers/docs/deploy/reserved/) for more details.
+   * @return hardwareReservationId
+  **/
+  @javax.annotation.Nullable
+
+  public String getHardwareReservationId() {
+    return hardwareReservationId;
+  }
+
+
+  public void setHardwareReservationId(String hardwareReservationId) {
+    this.hardwareReservationId = hardwareReservationId;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner hostname(String hostname) {
+    
+    this.hostname = hostname;
+    return this;
+  }
+
+   /**
+   * The hostname to use within the operating system. The same hostname may be used on multiple devices within a project.
+   * @return hostname
+  **/
+  @javax.annotation.Nullable
+
+  public String getHostname() {
+    return hostname;
+  }
+
+
+  public void setHostname(String hostname) {
+    this.hostname = hostname;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner ipAddresses(List<DeviceCreateInputIpAddressesInner> ipAddresses) {
     
     this.ipAddresses = ipAddresses;
     return this;
   }
 
-  public InstancesBatchCreateInputBatchesInner addIpAddressesItem(InstancesBatchCreateInputBatchesInnerIpAddressesInner ipAddressesItem) {
+  public InstancesBatchCreateInputBatchesInner addIpAddressesItem(DeviceCreateInputIpAddressesInner ipAddressesItem) {
     if (this.ipAddresses == null) {
       this.ipAddresses = new ArrayList<>();
     }
@@ -347,18 +478,40 @@ public class InstancesBatchCreateInputBatchesInner {
   }
 
    /**
-   * Get ipAddresses
+   * The &#x60;ip_addresses attribute will allow you to specify the addresses you want created with your device.  The default value configures public IPv4, public IPv6, and private IPv4.  Private IPv4 address is required. When specifying &#x60;ip_addresses&#x60;, one of the array items must enable private IPv4.  Some operating systems require public IPv4 address. In those cases you will receive an error message if public IPv4 is not enabled.  For example, to only configure your server with a private IPv4 address, you can send &#x60;{ \&quot;ip_addresses\&quot;: [{ \&quot;address_family\&quot;: 4, \&quot;public\&quot;: false }] }&#x60;.  It is possible to request a subnet size larger than a &#x60;/30&#x60; by assigning addresses using the UUID(s) of ip_reservations in your project.  For example, &#x60;{ \&quot;ip_addresses\&quot;: [..., {\&quot;address_family\&quot;: 4, \&quot;public\&quot;: true, \&quot;ip_reservations\&quot;: [\&quot;uuid1\&quot;, \&quot;uuid2\&quot;]}] }&#x60;  To access a server without public IPs, you can use our Out-of-Band console access (SOS) or proxy through another server in the project with public IPs enabled.
    * @return ipAddresses
   **/
   @javax.annotation.Nullable
 
-  public List<InstancesBatchCreateInputBatchesInnerIpAddressesInner> getIpAddresses() {
+  public List<DeviceCreateInputIpAddressesInner> getIpAddresses() {
     return ipAddresses;
   }
 
 
-  public void setIpAddresses(List<InstancesBatchCreateInputBatchesInnerIpAddressesInner> ipAddresses) {
+  public void setIpAddresses(List<DeviceCreateInputIpAddressesInner> ipAddresses) {
     this.ipAddresses = ipAddresses;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner ipxeScriptUrl(String ipxeScriptUrl) {
+    
+    this.ipxeScriptUrl = ipxeScriptUrl;
+    return this;
+  }
+
+   /**
+   * When set, the device will chainload an iPXE Script at boot fetched from the supplied URL.  See [Custom iPXE](https://metal.equinix.com/developers/docs/operating-systems/custom-ipxe/) for more details.
+   * @return ipxeScriptUrl
+  **/
+  @javax.annotation.Nullable
+
+  public String getIpxeScriptUrl() {
+    return ipxeScriptUrl;
+  }
+
+
+  public void setIpxeScriptUrl(String ipxeScriptUrl) {
+    this.ipxeScriptUrl = ipxeScriptUrl;
   }
 
 
@@ -369,7 +522,7 @@ public class InstancesBatchCreateInputBatchesInner {
   }
 
    /**
-   * Get locked
+   * Whether the device should be locked, preventing accidental deletion.
    * @return locked
   **/
   @javax.annotation.Nullable
@@ -384,28 +537,6 @@ public class InstancesBatchCreateInputBatchesInner {
   }
 
 
-  public InstancesBatchCreateInputBatchesInner metro(String metro) {
-    
-    this.metro = metro;
-    return this;
-  }
-
-   /**
-   * The metro ID or code the batch can use for provisioning. Cannot be set if the facility is already set.
-   * @return metro
-  **/
-  @javax.annotation.Nullable
-
-  public String getMetro() {
-    return metro;
-  }
-
-
-  public void setMetro(String metro) {
-    this.metro = metro;
-  }
-
-
   public InstancesBatchCreateInputBatchesInner noSshKeys(Boolean noSshKeys) {
     
     this.noSshKeys = noSshKeys;
@@ -413,7 +544,7 @@ public class InstancesBatchCreateInputBatchesInner {
   }
 
    /**
-   * Get noSshKeys
+   * Overrides default behaviour of attaching all of the organization members ssh keys and project ssh keys to device if no specific keys specified
    * @return noSshKeys
   **/
   @javax.annotation.Nullable
@@ -435,10 +566,10 @@ public class InstancesBatchCreateInputBatchesInner {
   }
 
    /**
-   * Get operatingSystem
+   * The slug of the operating system to provision. Check the Equinix Metal operating system documentation for rules that may be imposed per operating system, including restrictions on IP address options and device plans.
    * @return operatingSystem
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getOperatingSystem() {
     return operatingSystem;
@@ -457,10 +588,10 @@ public class InstancesBatchCreateInputBatchesInner {
   }
 
    /**
-   * Get plan
+   * The slug of the device plan to provision.
    * @return plan
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getPlan() {
     return plan;
@@ -469,6 +600,28 @@ public class InstancesBatchCreateInputBatchesInner {
 
   public void setPlan(String plan) {
     this.plan = plan;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner privateIpv4SubnetSize(BigDecimal privateIpv4SubnetSize) {
+    
+    this.privateIpv4SubnetSize = privateIpv4SubnetSize;
+    return this;
+  }
+
+   /**
+   * Deprecated. Use ip_addresses. Subnet range for addresses allocated to this device.
+   * @return privateIpv4SubnetSize
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getPrivateIpv4SubnetSize() {
+    return privateIpv4SubnetSize;
+  }
+
+
+  public void setPrivateIpv4SubnetSize(BigDecimal privateIpv4SubnetSize) {
+    this.privateIpv4SubnetSize = privateIpv4SubnetSize;
   }
 
 
@@ -487,7 +640,7 @@ public class InstancesBatchCreateInputBatchesInner {
   }
 
    /**
-   * Get projectSshKeys
+   * A list of UUIDs identifying the device parent project that should be authorized to access this device (typically via /root/.ssh/authorized_keys). These keys will also appear in the device metadata.  If no SSH keys are specified (&#x60;user_ssh_keys&#x60;, &#x60;project_ssh_keys&#x60;, and &#x60;ssh_keys&#x60; are all empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. This behaviour can be changed with &#39;no_ssh_keys&#39; option to omit any SSH key being added. 
    * @return projectSshKeys
   **/
   @javax.annotation.Nullable
@@ -499,6 +652,102 @@ public class InstancesBatchCreateInputBatchesInner {
 
   public void setProjectSshKeys(List<UUID> projectSshKeys) {
     this.projectSshKeys = projectSshKeys;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner publicIpv4SubnetSize(BigDecimal publicIpv4SubnetSize) {
+    
+    this.publicIpv4SubnetSize = publicIpv4SubnetSize;
+    return this;
+  }
+
+   /**
+   * Deprecated. Use ip_addresses. Subnet range for addresses allocated to this device. Your project must have addresses available for a non-default request.
+   * @return publicIpv4SubnetSize
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getPublicIpv4SubnetSize() {
+    return publicIpv4SubnetSize;
+  }
+
+
+  public void setPublicIpv4SubnetSize(BigDecimal publicIpv4SubnetSize) {
+    this.publicIpv4SubnetSize = publicIpv4SubnetSize;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner spotInstance(Boolean spotInstance) {
+    
+    this.spotInstance = spotInstance;
+    return this;
+  }
+
+   /**
+   * Create a spot instance. Spot instances are created with a maximum bid price. If the bid price is not met, the spot instance will be terminated as indicated by the &#x60;termination_time&#x60; field.
+   * @return spotInstance
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getSpotInstance() {
+    return spotInstance;
+  }
+
+
+  public void setSpotInstance(Boolean spotInstance) {
+    this.spotInstance = spotInstance;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner spotPriceMax(Float spotPriceMax) {
+    
+    this.spotPriceMax = spotPriceMax;
+    return this;
+  }
+
+   /**
+   * The maximum amount to bid for a spot instance.
+   * @return spotPriceMax
+  **/
+  @javax.annotation.Nullable
+
+  public Float getSpotPriceMax() {
+    return spotPriceMax;
+  }
+
+
+  public void setSpotPriceMax(Float spotPriceMax) {
+    this.spotPriceMax = spotPriceMax;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner sshKeys(List<SSHKeyInput> sshKeys) {
+    
+    this.sshKeys = sshKeys;
+    return this;
+  }
+
+  public InstancesBatchCreateInputBatchesInner addSshKeysItem(SSHKeyInput sshKeysItem) {
+    if (this.sshKeys == null) {
+      this.sshKeys = new ArrayList<>();
+    }
+    this.sshKeys.add(sshKeysItem);
+    return this;
+  }
+
+   /**
+   * A list of new or existing project ssh_keys that should be authorized to access this device (typically via /root/.ssh/authorized_keys). These keys will also appear in the device metadata.  These keys are added in addition to any keys defined by   &#x60;project_ssh_keys&#x60; and &#x60;user_ssh_keys&#x60;. 
+   * @return sshKeys
+  **/
+  @javax.annotation.Nullable
+
+  public List<SSHKeyInput> getSshKeys() {
+    return sshKeys;
+  }
+
+
+  public void setSshKeys(List<SSHKeyInput> sshKeys) {
+    this.sshKeys = sshKeys;
   }
 
 
@@ -569,7 +818,7 @@ public class InstancesBatchCreateInputBatchesInner {
   }
 
    /**
-   * The UUIDs of users whose SSH keys should be included on the provisioned device.
+   * A list of UUIDs identifying the users that should be authorized to access this device (typically via /root/.ssh/authorized_keys).  These keys will also appear in the device metadata.  The users must be members of the project or organization.  If no SSH keys are specified (&#x60;user_ssh_keys&#x60;, &#x60;project_ssh_keys&#x60;, and &#x60;ssh_keys&#x60; are all empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. This behaviour can be changed with &#39;no_ssh_keys&#39; option to omit any SSH key being added. 
    * @return userSshKeys
   **/
   @javax.annotation.Nullable
@@ -591,7 +840,7 @@ public class InstancesBatchCreateInputBatchesInner {
   }
 
    /**
-   * Get userdata
+   * The userdata presented in the metadata service for this device.  Userdata is fetched and interpreted by the operating system installed on the device. Acceptable formats are determined by the operating system, with the exception of a special iPXE enabling syntax which is handled before the operating system starts.  See [Server User Data](https://metal.equinix.com/developers/docs/servers/user-data/) and [Provisioning with Custom iPXE](https://metal.equinix.com/developers/docs/operating-systems/custom-ipxe/#provisioning-with-custom-ipxe) for more details.
    * @return userdata
   **/
   @javax.annotation.Nullable
@@ -603,6 +852,33 @@ public class InstancesBatchCreateInputBatchesInner {
 
   public void setUserdata(String userdata) {
     this.userdata = userdata;
+  }
+
+
+  public InstancesBatchCreateInputBatchesInner facility(List<String> facility) {
+    
+    this.facility = facility;
+    return this;
+  }
+
+  public InstancesBatchCreateInputBatchesInner addFacilityItem(String facilityItem) {
+    this.facility.add(facilityItem);
+    return this;
+  }
+
+   /**
+   * The datacenter where the device should be created.  Either metro or facility must be provided.  The API will accept either a single facility &#x60;{ \&quot;facility\&quot;: \&quot;f1\&quot; }&#x60;, or it can be instructed to create the device in the best available datacenter &#x60;{ \&quot;facility\&quot;: \&quot;any\&quot; }&#x60;.  Additionally it is possible to set a prioritized location selection. For example &#x60;{ \&quot;facility\&quot;: [\&quot;f3\&quot;, \&quot;f2\&quot;, \&quot;any\&quot;] }&#x60; can be used to prioritize &#x60;f3&#x60; and then &#x60;f2&#x60; before accepting &#x60;any&#x60; facility. If none of the facilities provided have availability for the requested device the request will fail.
+   * @return facility
+  **/
+  @javax.annotation.Nonnull
+
+  public List<String> getFacility() {
+    return facility;
+  }
+
+
+  public void setFacility(List<String> facility) {
+    this.facility = facility;
   }
 
   /**
@@ -660,56 +936,72 @@ public class InstancesBatchCreateInputBatchesInner {
       return false;
     }
     InstancesBatchCreateInputBatchesInner instancesBatchCreateInputBatchesInner = (InstancesBatchCreateInputBatchesInner) o;
-    return Objects.equals(this.alwaysPxe, instancesBatchCreateInputBatchesInner.alwaysPxe) &&
+    return Objects.equals(this.hostnames, instancesBatchCreateInputBatchesInner.hostnames) &&
+        Objects.equals(this.quantity, instancesBatchCreateInputBatchesInner.quantity) &&
+        Objects.equals(this.metro, instancesBatchCreateInputBatchesInner.metro) &&
+        Objects.equals(this.alwaysPxe, instancesBatchCreateInputBatchesInner.alwaysPxe) &&
         Objects.equals(this.billingCycle, instancesBatchCreateInputBatchesInner.billingCycle) &&
         Objects.equals(this.customdata, instancesBatchCreateInputBatchesInner.customdata) &&
         Objects.equals(this.description, instancesBatchCreateInputBatchesInner.description) &&
-        Objects.equals(this.facility, instancesBatchCreateInputBatchesInner.facility) &&
         Objects.equals(this.features, instancesBatchCreateInputBatchesInner.features) &&
+        Objects.equals(this.hardwareReservationId, instancesBatchCreateInputBatchesInner.hardwareReservationId) &&
         Objects.equals(this.hostname, instancesBatchCreateInputBatchesInner.hostname) &&
-        Objects.equals(this.hostnames, instancesBatchCreateInputBatchesInner.hostnames) &&
         Objects.equals(this.ipAddresses, instancesBatchCreateInputBatchesInner.ipAddresses) &&
+        Objects.equals(this.ipxeScriptUrl, instancesBatchCreateInputBatchesInner.ipxeScriptUrl) &&
         Objects.equals(this.locked, instancesBatchCreateInputBatchesInner.locked) &&
-        Objects.equals(this.metro, instancesBatchCreateInputBatchesInner.metro) &&
         Objects.equals(this.noSshKeys, instancesBatchCreateInputBatchesInner.noSshKeys) &&
         Objects.equals(this.operatingSystem, instancesBatchCreateInputBatchesInner.operatingSystem) &&
         Objects.equals(this.plan, instancesBatchCreateInputBatchesInner.plan) &&
+        Objects.equals(this.privateIpv4SubnetSize, instancesBatchCreateInputBatchesInner.privateIpv4SubnetSize) &&
         Objects.equals(this.projectSshKeys, instancesBatchCreateInputBatchesInner.projectSshKeys) &&
+        Objects.equals(this.publicIpv4SubnetSize, instancesBatchCreateInputBatchesInner.publicIpv4SubnetSize) &&
+        Objects.equals(this.spotInstance, instancesBatchCreateInputBatchesInner.spotInstance) &&
+        Objects.equals(this.spotPriceMax, instancesBatchCreateInputBatchesInner.spotPriceMax) &&
+        Objects.equals(this.sshKeys, instancesBatchCreateInputBatchesInner.sshKeys) &&
         Objects.equals(this.tags, instancesBatchCreateInputBatchesInner.tags) &&
         Objects.equals(this.terminationTime, instancesBatchCreateInputBatchesInner.terminationTime) &&
         Objects.equals(this.userSshKeys, instancesBatchCreateInputBatchesInner.userSshKeys) &&
-        Objects.equals(this.userdata, instancesBatchCreateInputBatchesInner.userdata)&&
+        Objects.equals(this.userdata, instancesBatchCreateInputBatchesInner.userdata) &&
+        Objects.equals(this.facility, instancesBatchCreateInputBatchesInner.facility)&&
         Objects.equals(this.additionalProperties, instancesBatchCreateInputBatchesInner.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(alwaysPxe, billingCycle, customdata, description, facility, features, hostname, hostnames, ipAddresses, locked, metro, noSshKeys, operatingSystem, plan, projectSshKeys, tags, terminationTime, userSshKeys, userdata, additionalProperties);
+    return Objects.hash(hostnames, quantity, metro, alwaysPxe, billingCycle, customdata, description, features, hardwareReservationId, hostname, ipAddresses, ipxeScriptUrl, locked, noSshKeys, operatingSystem, plan, privateIpv4SubnetSize, projectSshKeys, publicIpv4SubnetSize, spotInstance, spotPriceMax, sshKeys, tags, terminationTime, userSshKeys, userdata, facility, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstancesBatchCreateInputBatchesInner {\n");
+    sb.append("    hostnames: ").append(toIndentedString(hostnames)).append("\n");
+    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
     sb.append("    alwaysPxe: ").append(toIndentedString(alwaysPxe)).append("\n");
     sb.append("    billingCycle: ").append(toIndentedString(billingCycle)).append("\n");
     sb.append("    customdata: ").append(toIndentedString(customdata)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    facility: ").append(toIndentedString(facility)).append("\n");
     sb.append("    features: ").append(toIndentedString(features)).append("\n");
+    sb.append("    hardwareReservationId: ").append(toIndentedString(hardwareReservationId)).append("\n");
     sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
-    sb.append("    hostnames: ").append(toIndentedString(hostnames)).append("\n");
     sb.append("    ipAddresses: ").append(toIndentedString(ipAddresses)).append("\n");
+    sb.append("    ipxeScriptUrl: ").append(toIndentedString(ipxeScriptUrl)).append("\n");
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
-    sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
     sb.append("    noSshKeys: ").append(toIndentedString(noSshKeys)).append("\n");
     sb.append("    operatingSystem: ").append(toIndentedString(operatingSystem)).append("\n");
     sb.append("    plan: ").append(toIndentedString(plan)).append("\n");
+    sb.append("    privateIpv4SubnetSize: ").append(toIndentedString(privateIpv4SubnetSize)).append("\n");
     sb.append("    projectSshKeys: ").append(toIndentedString(projectSshKeys)).append("\n");
+    sb.append("    publicIpv4SubnetSize: ").append(toIndentedString(publicIpv4SubnetSize)).append("\n");
+    sb.append("    spotInstance: ").append(toIndentedString(spotInstance)).append("\n");
+    sb.append("    spotPriceMax: ").append(toIndentedString(spotPriceMax)).append("\n");
+    sb.append("    sshKeys: ").append(toIndentedString(sshKeys)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    terminationTime: ").append(toIndentedString(terminationTime)).append("\n");
     sb.append("    userSshKeys: ").append(toIndentedString(userSshKeys)).append("\n");
     sb.append("    userdata: ").append(toIndentedString(userdata)).append("\n");
+    sb.append("    facility: ").append(toIndentedString(facility)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -733,28 +1025,40 @@ public class InstancesBatchCreateInputBatchesInner {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("hostnames");
+    openapiFields.add("quantity");
+    openapiFields.add("metro");
     openapiFields.add("always_pxe");
     openapiFields.add("billing_cycle");
     openapiFields.add("customdata");
     openapiFields.add("description");
-    openapiFields.add("facility");
     openapiFields.add("features");
+    openapiFields.add("hardware_reservation_id");
     openapiFields.add("hostname");
-    openapiFields.add("hostnames");
     openapiFields.add("ip_addresses");
+    openapiFields.add("ipxe_script_url");
     openapiFields.add("locked");
-    openapiFields.add("metro");
     openapiFields.add("no_ssh_keys");
     openapiFields.add("operating_system");
     openapiFields.add("plan");
+    openapiFields.add("private_ipv4_subnet_size");
     openapiFields.add("project_ssh_keys");
+    openapiFields.add("public_ipv4_subnet_size");
+    openapiFields.add("spot_instance");
+    openapiFields.add("spot_price_max");
+    openapiFields.add("ssh_keys");
     openapiFields.add("tags");
     openapiFields.add("termination_time");
     openapiFields.add("user_ssh_keys");
     openapiFields.add("userdata");
+    openapiFields.add("facility");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("metro");
+    openapiRequiredFields.add("operating_system");
+    openapiRequiredFields.add("plan");
+    openapiRequiredFields.add("facility");
   }
 
  /**
@@ -769,6 +1073,20 @@ public class InstancesBatchCreateInputBatchesInner {
           throw new IllegalArgumentException(String.format("The required field(s) %s in InstancesBatchCreateInputBatchesInner is not found in the empty JSON string", InstancesBatchCreateInputBatchesInner.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : InstancesBatchCreateInputBatchesInner.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("hostnames") != null && !jsonObj.get("hostnames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `hostnames` to be an array in the JSON string but got `%s`", jsonObj.get("hostnames").toString()));
+      }
+      if (!jsonObj.get("metro").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `metro` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metro").toString()));
+      }
       if ((jsonObj.get("billing_cycle") != null && !jsonObj.get("billing_cycle").isJsonNull()) && !jsonObj.get("billing_cycle").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `billing_cycle` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billing_cycle").toString()));
       }
@@ -776,19 +1094,14 @@ public class InstancesBatchCreateInputBatchesInner {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `facility` to be an array in the JSON string but got `%s`", jsonObj.get("facility").toString()));
-      }
-      // ensure the optional json data is an array if present
       if (jsonObj.get("features") != null && !jsonObj.get("features").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `features` to be an array in the JSON string but got `%s`", jsonObj.get("features").toString()));
       }
+      if ((jsonObj.get("hardware_reservation_id") != null && !jsonObj.get("hardware_reservation_id").isJsonNull()) && !jsonObj.get("hardware_reservation_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `hardware_reservation_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hardware_reservation_id").toString()));
+      }
       if ((jsonObj.get("hostname") != null && !jsonObj.get("hostname").isJsonNull()) && !jsonObj.get("hostname").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hostname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hostname").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("hostnames") != null && !jsonObj.get("hostnames").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `hostnames` to be an array in the JSON string but got `%s`", jsonObj.get("hostnames").toString()));
       }
       if (jsonObj.get("ip_addresses") != null && !jsonObj.get("ip_addresses").isJsonNull()) {
         JsonArray jsonArrayipAddresses = jsonObj.getAsJsonArray("ip_addresses");
@@ -800,22 +1113,36 @@ public class InstancesBatchCreateInputBatchesInner {
 
           // validate the optional field `ip_addresses` (array)
           for (int i = 0; i < jsonArrayipAddresses.size(); i++) {
-            InstancesBatchCreateInputBatchesInnerIpAddressesInner.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
+            DeviceCreateInputIpAddressesInner.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
           };
         }
       }
-      if ((jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) && !jsonObj.get("metro").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `metro` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metro").toString()));
+      if ((jsonObj.get("ipxe_script_url") != null && !jsonObj.get("ipxe_script_url").isJsonNull()) && !jsonObj.get("ipxe_script_url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ipxe_script_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ipxe_script_url").toString()));
       }
-      if ((jsonObj.get("operating_system") != null && !jsonObj.get("operating_system").isJsonNull()) && !jsonObj.get("operating_system").isJsonPrimitive()) {
+      if (!jsonObj.get("operating_system").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `operating_system` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operating_system").toString()));
       }
-      if ((jsonObj.get("plan") != null && !jsonObj.get("plan").isJsonNull()) && !jsonObj.get("plan").isJsonPrimitive()) {
+      if (!jsonObj.get("plan").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `plan` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("project_ssh_keys") != null && !jsonObj.get("project_ssh_keys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `project_ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("project_ssh_keys").toString()));
+      }
+      if (jsonObj.get("ssh_keys") != null && !jsonObj.get("ssh_keys").isJsonNull()) {
+        JsonArray jsonArraysshKeys = jsonObj.getAsJsonArray("ssh_keys");
+        if (jsonArraysshKeys != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("ssh_keys").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("ssh_keys").toString()));
+          }
+
+          // validate the optional field `ssh_keys` (array)
+          for (int i = 0; i < jsonArraysshKeys.size(); i++) {
+            SSHKeyInput.validateJsonObject(jsonArraysshKeys.get(i).getAsJsonObject());
+          };
+        }
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
@@ -827,6 +1154,12 @@ public class InstancesBatchCreateInputBatchesInner {
       }
       if ((jsonObj.get("userdata") != null && !jsonObj.get("userdata").isJsonNull()) && !jsonObj.get("userdata").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `userdata` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userdata").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("facility") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("facility").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `facility` to be an array in the JSON string but got `%s`", jsonObj.get("facility").toString()));
       }
   }
 

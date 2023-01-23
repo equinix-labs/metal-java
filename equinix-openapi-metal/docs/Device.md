@@ -25,9 +25,9 @@
 |**iqn** | **String** |  |  [optional] |
 |**locked** | **Boolean** |  |  [optional] |
 |**metro** | [**DeviceMetro**](DeviceMetro.md) |  |  [optional] |
-|**networkPorts** | [**List&lt;Port&gt;**](Port.md) |  |  [optional] |
+|**networkPorts** | [**List&lt;Port&gt;**](Port.md) | By default, servers at Equinix Metal are configured in a “bonded” mode using LACP (Link Aggregation Control Protocol). Each 2-NIC server is configured with a single bond (namely bond0) with both interfaces eth0 and eth1 as members of the bond in a default Layer 3 mode. Some device plans may have a different number of ports and bonds available. |  [optional] |
 |**operatingSystem** | [**OperatingSystem**](OperatingSystem.md) |  |  [optional] |
-|**actions** | [**List&lt;DeviceActionsInner&gt;**](DeviceActionsInner.md) |  |  [optional] |
+|**actions** | [**List&lt;DeviceActionsInner&gt;**](DeviceActionsInner.md) | Actions supported by the device instance. |  [optional] |
 |**plan** | [**Plan**](Plan.md) |  |  [optional] |
 |**project** | [**DeviceProject**](DeviceProject.md) |  |  [optional] |
 |**projectLite** | [**DeviceProjectLite**](DeviceProjectLite.md) |  |  [optional] |
@@ -54,10 +54,16 @@
 | Name | Value |
 |---- | -----|
 | ACTIVE | &quot;active&quot; |
+| DELETED | &quot;deleted&quot; |
+| DEPROVISIONING | &quot;deprovisioning&quot; |
 | FAILED | &quot;failed&quot; |
+| INACTIVE | &quot;inactive&quot; |
 | QUEUED | &quot;queued&quot; |
-| PROVISIONING | &quot;provisioning&quot; |
 | REINSTALLING | &quot;reinstalling&quot; |
+| POST_PROVISIONING | &quot;post_provisioning&quot; |
+| POWERING_ON | &quot;powering_on&quot; |
+| POWERING_OFF | &quot;powering_off&quot; |
+| PROVISIONING | &quot;provisioning&quot; |
 
 
 

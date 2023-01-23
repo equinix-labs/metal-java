@@ -12,7 +12,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="createMetalGateway"></a>
 # **createMetalGateway**
-> MetalGateway createMetalGateway(projectId, createMetalGatewayRequest, page, perPage)
+> FindMetalGatewayById200Response createMetalGateway(projectId, createMetalGatewayRequest, page, perPage)
 
 Create a metal gateway
 
@@ -45,7 +45,7 @@ public class Example {
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      MetalGateway result = apiInstance.createMetalGateway(projectId, createMetalGatewayRequest, page, perPage);
+      FindMetalGatewayById200Response result = apiInstance.createMetalGateway(projectId, createMetalGatewayRequest, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetalGatewaysApi#createMetalGateway");
@@ -69,7 +69,7 @@ public class Example {
 
 ### Return type
 
-[**MetalGateway**](MetalGateway.md)
+[**FindMetalGatewayById200Response**](FindMetalGatewayById200Response.md)
 
 ### Authorization
 
@@ -90,7 +90,7 @@ public class Example {
 
 <a name="deleteMetalGateway"></a>
 # **deleteMetalGateway**
-> deleteMetalGateway(id)
+> deleteMetalGateway(id, include, exclude)
 
 Deletes the metal gateway
 
@@ -119,8 +119,10 @@ public class Example {
 
     MetalGatewaysApi apiInstance = new MetalGatewaysApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Metal Gateway UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      apiInstance.deleteMetalGateway(id);
+      apiInstance.deleteMetalGateway(id, include, exclude);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetalGatewaysApi#deleteMetalGateway");
       System.err.println("Status code: " + e.getCode());
@@ -137,6 +139,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Metal Gateway UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -160,7 +164,7 @@ null (empty response body)
 
 <a name="findMetalGatewayById"></a>
 # **findMetalGatewayById**
-> MetalGateway findMetalGatewayById(id, include, exclude)
+> FindMetalGatewayById200Response findMetalGatewayById(id, include, exclude)
 
 Returns the metal gateway
 
@@ -192,7 +196,7 @@ public class Example {
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      MetalGateway result = apiInstance.findMetalGatewayById(id, include, exclude);
+      FindMetalGatewayById200Response result = apiInstance.findMetalGatewayById(id, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetalGatewaysApi#findMetalGatewayById");
@@ -215,7 +219,7 @@ public class Example {
 
 ### Return type
 
-[**MetalGateway**](MetalGateway.md)
+[**FindMetalGatewayById200Response**](FindMetalGatewayById200Response.md)
 
 ### Authorization
 

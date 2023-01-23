@@ -1,6 +1,6 @@
 /*
  * Metal API
- * This is the API for Equinix Metal. The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account.  The official API docs are hosted at <https://metal.equinix.com/developers/api>. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:    ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -76,350 +76,6 @@ public class EventsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for findConnectionEvents
-     * @param connectionId Connection UUID (required)
-     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @param page Page to return (optional, default to 1)
-     * @param perPage Items returned per page (optional, default to 10)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call findConnectionEventsCall(UUID connectionId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/connections/{connection_id}/events"
-            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (include != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
-        }
-
-        if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
-        }
-
-        if (page != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (perPage != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "x_auth_token" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call findConnectionEventsValidateBeforeCall(UUID connectionId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'connectionId' is set
-        if (connectionId == null) {
-            throw new ApiException("Missing the required parameter 'connectionId' when calling findConnectionEvents(Async)");
-        }
-
-        return findConnectionEventsCall(connectionId, include, exclude, page, perPage, _callback);
-
-    }
-
-    /**
-     * Retrieve connection events
-     * Returns a list of the connection events
-     * @param connectionId Connection UUID (required)
-     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @param page Page to return (optional, default to 1)
-     * @param perPage Items returned per page (optional, default to 10)
-     * @return Event
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public Event findConnectionEvents(UUID connectionId, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<Event> localVarResp = findConnectionEventsWithHttpInfo(connectionId, include, exclude, page, perPage);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Retrieve connection events
-     * Returns a list of the connection events
-     * @param connectionId Connection UUID (required)
-     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @param page Page to return (optional, default to 1)
-     * @param perPage Items returned per page (optional, default to 10)
-     * @return ApiResponse&lt;Event&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Event> findConnectionEventsWithHttpInfo(UUID connectionId, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = findConnectionEventsValidateBeforeCall(connectionId, include, exclude, page, perPage, null);
-        Type localVarReturnType = new TypeToken<Event>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Retrieve connection events (asynchronously)
-     * Returns a list of the connection events
-     * @param connectionId Connection UUID (required)
-     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @param page Page to return (optional, default to 1)
-     * @param perPage Items returned per page (optional, default to 10)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call findConnectionEventsAsync(UUID connectionId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<Event> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = findConnectionEventsValidateBeforeCall(connectionId, include, exclude, page, perPage, _callback);
-        Type localVarReturnType = new TypeToken<Event>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for findConnectionPortEvents
-     * @param connectionId Connection UUID (required)
-     * @param id Connection Port UUID (required)
-     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @param page Page to return (optional, default to 1)
-     * @param perPage Items returned per page (optional, default to 10)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call findConnectionPortEventsCall(UUID connectionId, UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/connections/{connection_id}/ports/{id}/events"
-            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()))
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (include != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
-        }
-
-        if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
-        }
-
-        if (page != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (perPage != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "x_auth_token" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call findConnectionPortEventsValidateBeforeCall(UUID connectionId, UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'connectionId' is set
-        if (connectionId == null) {
-            throw new ApiException("Missing the required parameter 'connectionId' when calling findConnectionPortEvents(Async)");
-        }
-
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling findConnectionPortEvents(Async)");
-        }
-
-        return findConnectionPortEventsCall(connectionId, id, include, exclude, page, perPage, _callback);
-
-    }
-
-    /**
-     * Retrieve connection port events
-     * Returns a list of the connection port events
-     * @param connectionId Connection UUID (required)
-     * @param id Connection Port UUID (required)
-     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @param page Page to return (optional, default to 1)
-     * @param perPage Items returned per page (optional, default to 10)
-     * @return Event
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public Event findConnectionPortEvents(UUID connectionId, UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<Event> localVarResp = findConnectionPortEventsWithHttpInfo(connectionId, id, include, exclude, page, perPage);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Retrieve connection port events
-     * Returns a list of the connection port events
-     * @param connectionId Connection UUID (required)
-     * @param id Connection Port UUID (required)
-     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @param page Page to return (optional, default to 1)
-     * @param perPage Items returned per page (optional, default to 10)
-     * @return ApiResponse&lt;Event&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Event> findConnectionPortEventsWithHttpInfo(UUID connectionId, UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = findConnectionPortEventsValidateBeforeCall(connectionId, id, include, exclude, page, perPage, null);
-        Type localVarReturnType = new TypeToken<Event>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Retrieve connection port events (asynchronously)
-     * Returns a list of the connection port events
-     * @param connectionId Connection UUID (required)
-     * @param id Connection Port UUID (required)
-     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
-     * @param page Page to return (optional, default to 1)
-     * @param perPage Items returned per page (optional, default to 10)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call findConnectionPortEventsAsync(UUID connectionId, UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<Event> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = findConnectionPortEventsValidateBeforeCall(connectionId, id, include, exclude, page, perPage, _callback);
-        Type localVarReturnType = new TypeToken<Event>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
     /**
      * Build call for findDeviceEvents
      * @param id Device UUID (required)
@@ -888,6 +544,350 @@ public class EventsApi {
         return localVarCall;
     }
     /**
+     * Build call for findInterconnectionEvents
+     * @param connectionId Interconnection UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param page Page to return (optional, default to 1)
+     * @param perPage Items returned per page (optional, default to 10)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call findInterconnectionEventsCall(UUID connectionId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/connections/{connection_id}/events"
+            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (perPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "x_auth_token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call findInterconnectionEventsValidateBeforeCall(UUID connectionId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'connectionId' is set
+        if (connectionId == null) {
+            throw new ApiException("Missing the required parameter 'connectionId' when calling findInterconnectionEvents(Async)");
+        }
+
+        return findInterconnectionEventsCall(connectionId, include, exclude, page, perPage, _callback);
+
+    }
+
+    /**
+     * Retrieve interconnection events
+     * Returns a list of the interconnection events
+     * @param connectionId Interconnection UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param page Page to return (optional, default to 1)
+     * @param perPage Items returned per page (optional, default to 10)
+     * @return Event
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public Event findInterconnectionEvents(UUID connectionId, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<Event> localVarResp = findInterconnectionEventsWithHttpInfo(connectionId, include, exclude, page, perPage);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Retrieve interconnection events
+     * Returns a list of the interconnection events
+     * @param connectionId Interconnection UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param page Page to return (optional, default to 1)
+     * @param perPage Items returned per page (optional, default to 10)
+     * @return ApiResponse&lt;Event&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Event> findInterconnectionEventsWithHttpInfo(UUID connectionId, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = findInterconnectionEventsValidateBeforeCall(connectionId, include, exclude, page, perPage, null);
+        Type localVarReturnType = new TypeToken<Event>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retrieve interconnection events (asynchronously)
+     * Returns a list of the interconnection events
+     * @param connectionId Interconnection UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param page Page to return (optional, default to 1)
+     * @param perPage Items returned per page (optional, default to 10)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call findInterconnectionEventsAsync(UUID connectionId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<Event> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = findInterconnectionEventsValidateBeforeCall(connectionId, include, exclude, page, perPage, _callback);
+        Type localVarReturnType = new TypeToken<Event>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for findInterconnectionPortEvents
+     * @param connectionId Interconnection UUID (required)
+     * @param id Interconnection Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param page Page to return (optional, default to 1)
+     * @param perPage Items returned per page (optional, default to 10)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call findInterconnectionPortEventsCall(UUID connectionId, UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/connections/{connection_id}/ports/{id}/events"
+            .replace("{" + "connection_id" + "}", localVarApiClient.escapeString(connectionId.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (perPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "x_auth_token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call findInterconnectionPortEventsValidateBeforeCall(UUID connectionId, UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'connectionId' is set
+        if (connectionId == null) {
+            throw new ApiException("Missing the required parameter 'connectionId' when calling findInterconnectionPortEvents(Async)");
+        }
+
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling findInterconnectionPortEvents(Async)");
+        }
+
+        return findInterconnectionPortEventsCall(connectionId, id, include, exclude, page, perPage, _callback);
+
+    }
+
+    /**
+     * Retrieve interconnection port events
+     * Returns a list of the interconnection port events
+     * @param connectionId Interconnection UUID (required)
+     * @param id Interconnection Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param page Page to return (optional, default to 1)
+     * @param perPage Items returned per page (optional, default to 10)
+     * @return Event
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public Event findInterconnectionPortEvents(UUID connectionId, UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<Event> localVarResp = findInterconnectionPortEventsWithHttpInfo(connectionId, id, include, exclude, page, perPage);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Retrieve interconnection port events
+     * Returns a list of the interconnection port events
+     * @param connectionId Interconnection UUID (required)
+     * @param id Interconnection Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param page Page to return (optional, default to 1)
+     * @param perPage Items returned per page (optional, default to 10)
+     * @return ApiResponse&lt;Event&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Event> findInterconnectionPortEventsWithHttpInfo(UUID connectionId, UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = findInterconnectionPortEventsValidateBeforeCall(connectionId, id, include, exclude, page, perPage, null);
+        Type localVarReturnType = new TypeToken<Event>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retrieve interconnection port events (asynchronously)
+     * Returns a list of the interconnection port events
+     * @param connectionId Interconnection UUID (required)
+     * @param id Interconnection Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param page Page to return (optional, default to 1)
+     * @param perPage Items returned per page (optional, default to 10)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call findInterconnectionPortEventsAsync(UUID connectionId, UUID id, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<Event> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = findInterconnectionPortEventsValidateBeforeCall(connectionId, id, include, exclude, page, perPage, _callback);
+        Type localVarReturnType = new TypeToken<Event>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for findOrganizationEvents
      * @param id Organization UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
@@ -1313,7 +1313,7 @@ public class EventsApi {
     }
 
     /**
-     * Retrieve connection events
+     * Retrieve interconnection events
      * Returns a list of the virtual circuit events
      * @param id Virtual Circuit UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
@@ -1337,7 +1337,7 @@ public class EventsApi {
     }
 
     /**
-     * Retrieve connection events
+     * Retrieve interconnection events
      * Returns a list of the virtual circuit events
      * @param id Virtual Circuit UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
@@ -1362,7 +1362,7 @@ public class EventsApi {
     }
 
     /**
-     * Retrieve connection events (asynchronously)
+     * Retrieve interconnection events (asynchronously)
      * Returns a list of the virtual circuit events
      * @param id Virtual Circuit UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)

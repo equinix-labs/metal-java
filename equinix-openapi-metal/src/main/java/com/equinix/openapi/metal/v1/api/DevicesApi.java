@@ -1,6 +1,6 @@
 /*
  * Metal API
- * This is the API for Equinix Metal. The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account.  The official API docs are hosted at <https://metal.equinix.com/developers/api>. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:    ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -31,16 +31,19 @@ import com.equinix.openapi.metal.v1.model.BGPSessionInput;
 import com.equinix.openapi.metal.v1.model.BgpSession;
 import com.equinix.openapi.metal.v1.model.BgpSessionList;
 import com.equinix.openapi.metal.v1.model.BgpSessionNeighbors;
+import com.equinix.openapi.metal.v1.model.CreateDeviceRequest;
 import com.equinix.openapi.metal.v1.model.Device;
-import com.equinix.openapi.metal.v1.model.DeviceCreateInput;
+import com.equinix.openapi.metal.v1.model.DeviceActionInput;
 import com.equinix.openapi.metal.v1.model.DeviceList;
 import com.equinix.openapi.metal.v1.model.DeviceUpdateInput;
 import com.equinix.openapi.metal.v1.model.Error;
+import com.equinix.openapi.metal.v1.model.FindTrafficTimeframeParameter;
 import com.equinix.openapi.metal.v1.model.IPAssignment;
 import com.equinix.openapi.metal.v1.model.IPAssignmentInput;
 import com.equinix.openapi.metal.v1.model.IPAssignmentList;
-import com.equinix.openapi.metal.v1.model.Timeframe;
+import com.equinix.openapi.metal.v1.model.Metadata;
 import java.util.UUID;
+import com.equinix.openapi.metal.v1.model.Userdata;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -234,7 +237,7 @@ public class DevicesApi {
     /**
      * Build call for createDevice
      * @param id Project UUID (required)
-     * @param deviceCreateInput Device to create (required)
+     * @param createDeviceRequest Device to create (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -248,7 +251,7 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createDeviceCall(UUID id, DeviceCreateInput deviceCreateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createDeviceCall(UUID id, CreateDeviceRequest createDeviceRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -262,7 +265,7 @@ public class DevicesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = deviceCreateInput;
+        Object localVarPostBody = createDeviceRequest;
 
         // create path and map variables
         String localVarPath = "/projects/{id}/devices"
@@ -295,18 +298,18 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDeviceValidateBeforeCall(UUID id, DeviceCreateInput deviceCreateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDeviceValidateBeforeCall(UUID id, CreateDeviceRequest createDeviceRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createDevice(Async)");
         }
 
-        // verify the required parameter 'deviceCreateInput' is set
-        if (deviceCreateInput == null) {
-            throw new ApiException("Missing the required parameter 'deviceCreateInput' when calling createDevice(Async)");
+        // verify the required parameter 'createDeviceRequest' is set
+        if (createDeviceRequest == null) {
+            throw new ApiException("Missing the required parameter 'createDeviceRequest' when calling createDevice(Async)");
         }
 
-        return createDeviceCall(id, deviceCreateInput, _callback);
+        return createDeviceCall(id, createDeviceRequest, _callback);
 
     }
 
@@ -314,7 +317,7 @@ public class DevicesApi {
      * Create a device
      * Creates a new device and provisions it in the specified location.  Device type-specific options are accepted.  For example, &#x60;baremetal&#x60; devices accept &#x60;operating_system&#x60;, &#x60;hostname&#x60;, and &#x60;plan&#x60;. These parameters may not be accepted for other device types. The default device type is &#x60;baremetal&#x60;.
      * @param id Project UUID (required)
-     * @param deviceCreateInput Device to create (required)
+     * @param createDeviceRequest Device to create (required)
      * @return Device
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -327,8 +330,8 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Device createDevice(UUID id, DeviceCreateInput deviceCreateInput) throws ApiException {
-        ApiResponse<Device> localVarResp = createDeviceWithHttpInfo(id, deviceCreateInput);
+    public Device createDevice(UUID id, CreateDeviceRequest createDeviceRequest) throws ApiException {
+        ApiResponse<Device> localVarResp = createDeviceWithHttpInfo(id, createDeviceRequest);
         return localVarResp.getData();
     }
 
@@ -336,7 +339,7 @@ public class DevicesApi {
      * Create a device
      * Creates a new device and provisions it in the specified location.  Device type-specific options are accepted.  For example, &#x60;baremetal&#x60; devices accept &#x60;operating_system&#x60;, &#x60;hostname&#x60;, and &#x60;plan&#x60;. These parameters may not be accepted for other device types. The default device type is &#x60;baremetal&#x60;.
      * @param id Project UUID (required)
-     * @param deviceCreateInput Device to create (required)
+     * @param createDeviceRequest Device to create (required)
      * @return ApiResponse&lt;Device&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -349,8 +352,8 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Device> createDeviceWithHttpInfo(UUID id, DeviceCreateInput deviceCreateInput) throws ApiException {
-        okhttp3.Call localVarCall = createDeviceValidateBeforeCall(id, deviceCreateInput, null);
+    public ApiResponse<Device> createDeviceWithHttpInfo(UUID id, CreateDeviceRequest createDeviceRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDeviceValidateBeforeCall(id, createDeviceRequest, null);
         Type localVarReturnType = new TypeToken<Device>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -359,7 +362,7 @@ public class DevicesApi {
      * Create a device (asynchronously)
      * Creates a new device and provisions it in the specified location.  Device type-specific options are accepted.  For example, &#x60;baremetal&#x60; devices accept &#x60;operating_system&#x60;, &#x60;hostname&#x60;, and &#x60;plan&#x60;. These parameters may not be accepted for other device types. The default device type is &#x60;baremetal&#x60;.
      * @param id Project UUID (required)
-     * @param deviceCreateInput Device to create (required)
+     * @param createDeviceRequest Device to create (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -373,9 +376,9 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createDeviceAsync(UUID id, DeviceCreateInput deviceCreateInput, final ApiCallback<Device> _callback) throws ApiException {
+    public okhttp3.Call createDeviceAsync(UUID id, CreateDeviceRequest createDeviceRequest, final ApiCallback<Device> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createDeviceValidateBeforeCall(id, deviceCreateInput, _callback);
+        okhttp3.Call localVarCall = createDeviceValidateBeforeCall(id, createDeviceRequest, _callback);
         Type localVarReturnType = new TypeToken<Device>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1079,6 +1082,276 @@ public class DevicesApi {
 
         okhttp3.Call localVarCall = findDeviceCustomdataValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for findDeviceMetadataByID
+     * @param id Device UUID (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call findDeviceMetadataByIDCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/devices/{id}/metadata"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "x_auth_token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call findDeviceMetadataByIDValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling findDeviceMetadataByID(Async)");
+        }
+
+        return findDeviceMetadataByIDCall(id, _callback);
+
+    }
+
+    /**
+     * Retrieve metadata
+     * Retrieve device metadata
+     * @param id Device UUID (required)
+     * @return Metadata
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public Metadata findDeviceMetadataByID(UUID id) throws ApiException {
+        ApiResponse<Metadata> localVarResp = findDeviceMetadataByIDWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Retrieve metadata
+     * Retrieve device metadata
+     * @param id Device UUID (required)
+     * @return ApiResponse&lt;Metadata&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Metadata> findDeviceMetadataByIDWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = findDeviceMetadataByIDValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<Metadata>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retrieve metadata (asynchronously)
+     * Retrieve device metadata
+     * @param id Device UUID (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call findDeviceMetadataByIDAsync(UUID id, final ApiCallback<Metadata> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = findDeviceMetadataByIDValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<Metadata>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for findDeviceUserdataByID
+     * @param id Device UUID (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call findDeviceUserdataByIDCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/devices/{id}/userdata"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "x_auth_token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call findDeviceUserdataByIDValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling findDeviceUserdataByID(Async)");
+        }
+
+        return findDeviceUserdataByIDCall(id, _callback);
+
+    }
+
+    /**
+     * Retrieve userdata
+     * Retrieve device userdata
+     * @param id Device UUID (required)
+     * @return Userdata
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public Userdata findDeviceUserdataByID(UUID id) throws ApiException {
+        ApiResponse<Userdata> localVarResp = findDeviceUserdataByIDWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Retrieve userdata
+     * Retrieve device userdata
+     * @param id Device UUID (required)
+     * @return ApiResponse&lt;Userdata&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Userdata> findDeviceUserdataByIDWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = findDeviceUserdataByIDValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<Userdata>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retrieve userdata (asynchronously)
+     * Retrieve device userdata
+     * @param id Device UUID (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call findDeviceUserdataByIDAsync(UUID id, final ApiCallback<Userdata> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = findDeviceUserdataByIDValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<Userdata>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1940,9 +2213,9 @@ public class DevicesApi {
      * Build call for findTraffic
      * @param id Device UUID (required)
      * @param direction Traffic direction (required)
-     * @param timeframe Traffic timeframe (required)
      * @param interval Traffic interval (optional)
      * @param bucket Traffic bucket (optional)
+     * @param timeframe  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1955,7 +2228,7 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findTrafficCall(UUID id, String direction, Timeframe timeframe, String interval, String bucket, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findTrafficCall(UUID id, String direction, String interval, String bucket, FindTrafficTimeframeParameter timeframe, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1969,7 +2242,7 @@ public class DevicesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = timeframe;
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/devices/{id}/traffic"
@@ -1993,6 +2266,10 @@ public class DevicesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("bucket", bucket));
         }
 
+        if (timeframe != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timeframe", timeframe));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -2002,7 +2279,6 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2014,7 +2290,7 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findTrafficValidateBeforeCall(UUID id, String direction, Timeframe timeframe, String interval, String bucket, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findTrafficValidateBeforeCall(UUID id, String direction, String interval, String bucket, FindTrafficTimeframeParameter timeframe, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findTraffic(Async)");
@@ -2025,12 +2301,7 @@ public class DevicesApi {
             throw new ApiException("Missing the required parameter 'direction' when calling findTraffic(Async)");
         }
 
-        // verify the required parameter 'timeframe' is set
-        if (timeframe == null) {
-            throw new ApiException("Missing the required parameter 'timeframe' when calling findTraffic(Async)");
-        }
-
-        return findTrafficCall(id, direction, timeframe, interval, bucket, _callback);
+        return findTrafficCall(id, direction, interval, bucket, timeframe, _callback);
 
     }
 
@@ -2039,9 +2310,9 @@ public class DevicesApi {
      * Returns traffic for a specific device.
      * @param id Device UUID (required)
      * @param direction Traffic direction (required)
-     * @param timeframe Traffic timeframe (required)
      * @param interval Traffic interval (optional)
      * @param bucket Traffic bucket (optional)
+     * @param timeframe  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2052,8 +2323,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public void findTraffic(UUID id, String direction, Timeframe timeframe, String interval, String bucket) throws ApiException {
-        findTrafficWithHttpInfo(id, direction, timeframe, interval, bucket);
+    public void findTraffic(UUID id, String direction, String interval, String bucket, FindTrafficTimeframeParameter timeframe) throws ApiException {
+        findTrafficWithHttpInfo(id, direction, interval, bucket, timeframe);
     }
 
     /**
@@ -2061,9 +2332,9 @@ public class DevicesApi {
      * Returns traffic for a specific device.
      * @param id Device UUID (required)
      * @param direction Traffic direction (required)
-     * @param timeframe Traffic timeframe (required)
      * @param interval Traffic interval (optional)
      * @param bucket Traffic bucket (optional)
+     * @param timeframe  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2075,8 +2346,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> findTrafficWithHttpInfo(UUID id, String direction, Timeframe timeframe, String interval, String bucket) throws ApiException {
-        okhttp3.Call localVarCall = findTrafficValidateBeforeCall(id, direction, timeframe, interval, bucket, null);
+    public ApiResponse<Void> findTrafficWithHttpInfo(UUID id, String direction, String interval, String bucket, FindTrafficTimeframeParameter timeframe) throws ApiException {
+        okhttp3.Call localVarCall = findTrafficValidateBeforeCall(id, direction, interval, bucket, timeframe, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2085,9 +2356,9 @@ public class DevicesApi {
      * Returns traffic for a specific device.
      * @param id Device UUID (required)
      * @param direction Traffic direction (required)
-     * @param timeframe Traffic timeframe (required)
      * @param interval Traffic interval (optional)
      * @param bucket Traffic bucket (optional)
+     * @param timeframe  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2100,9 +2371,9 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findTrafficAsync(UUID id, String direction, Timeframe timeframe, String interval, String bucket, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call findTrafficAsync(UUID id, String direction, String interval, String bucket, FindTrafficTimeframeParameter timeframe, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findTrafficValidateBeforeCall(id, direction, timeframe, interval, bucket, _callback);
+        okhttp3.Call localVarCall = findTrafficValidateBeforeCall(id, direction, interval, bucket, timeframe, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -2244,7 +2515,7 @@ public class DevicesApi {
     /**
      * Build call for performAction
      * @param id Device UUID (required)
-     * @param type Action to perform (required)
+     * @param deviceActionInput Action to perform (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2257,7 +2528,7 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call performActionCall(UUID id, String type, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call performActionCall(UUID id, DeviceActionInput deviceActionInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2271,7 +2542,7 @@ public class DevicesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = deviceActionInput;
 
         // create path and map variables
         String localVarPath = "/devices/{id}/actions"
@@ -2283,10 +2554,6 @@ public class DevicesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (type != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -2296,6 +2563,7 @@ public class DevicesApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2307,18 +2575,18 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call performActionValidateBeforeCall(UUID id, String type, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call performActionValidateBeforeCall(UUID id, DeviceActionInput deviceActionInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling performAction(Async)");
         }
 
-        // verify the required parameter 'type' is set
-        if (type == null) {
-            throw new ApiException("Missing the required parameter 'type' when calling performAction(Async)");
+        // verify the required parameter 'deviceActionInput' is set
+        if (deviceActionInput == null) {
+            throw new ApiException("Missing the required parameter 'deviceActionInput' when calling performAction(Async)");
         }
 
-        return performActionCall(id, type, _callback);
+        return performActionCall(id, deviceActionInput, _callback);
 
     }
 
@@ -2326,7 +2594,7 @@ public class DevicesApi {
      * Perform an action
      * Performs an action for the given device.  Possible actions include: power_on, power_off, reboot, reinstall, and rescue (reboot the device into rescue OS.)
      * @param id Device UUID (required)
-     * @param type Action to perform (required)
+     * @param deviceActionInput Action to perform (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2337,15 +2605,15 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public void performAction(UUID id, String type) throws ApiException {
-        performActionWithHttpInfo(id, type);
+    public void performAction(UUID id, DeviceActionInput deviceActionInput) throws ApiException {
+        performActionWithHttpInfo(id, deviceActionInput);
     }
 
     /**
      * Perform an action
      * Performs an action for the given device.  Possible actions include: power_on, power_off, reboot, reinstall, and rescue (reboot the device into rescue OS.)
      * @param id Device UUID (required)
-     * @param type Action to perform (required)
+     * @param deviceActionInput Action to perform (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2357,8 +2625,8 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> performActionWithHttpInfo(UUID id, String type) throws ApiException {
-        okhttp3.Call localVarCall = performActionValidateBeforeCall(id, type, null);
+    public ApiResponse<Void> performActionWithHttpInfo(UUID id, DeviceActionInput deviceActionInput) throws ApiException {
+        okhttp3.Call localVarCall = performActionValidateBeforeCall(id, deviceActionInput, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2366,7 +2634,7 @@ public class DevicesApi {
      * Perform an action (asynchronously)
      * Performs an action for the given device.  Possible actions include: power_on, power_off, reboot, reinstall, and rescue (reboot the device into rescue OS.)
      * @param id Device UUID (required)
-     * @param type Action to perform (required)
+     * @param deviceActionInput Action to perform (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2379,9 +2647,9 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call performActionAsync(UUID id, String type, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call performActionAsync(UUID id, DeviceActionInput deviceActionInput, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = performActionValidateBeforeCall(id, type, _callback);
+        okhttp3.Call localVarCall = performActionValidateBeforeCall(id, deviceActionInput, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

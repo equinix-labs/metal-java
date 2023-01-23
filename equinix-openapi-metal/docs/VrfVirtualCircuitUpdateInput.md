@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**description** | **String** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
-|**speed** | **String** | Speed can be changed only if it is a dedicated connection |  [optional] |
+|**speed** | **String** | Speed can be changed only if it is an interconnection on a Dedicated Port |  [optional] |
 |**tags** | **List&lt;String&gt;** |  |  [optional] |
 
 

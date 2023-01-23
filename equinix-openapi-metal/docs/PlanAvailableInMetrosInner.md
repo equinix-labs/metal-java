@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**href** | **String** |  |  [optional] |
-|**price** | [**PlanAvailableInMetrosInnerPrice**](PlanAvailableInMetrosInnerPrice.md) |  |  [optional] |
+|**href** | **String** | href to the Metro |  [optional] |
+|**price** | [**PlanAvailableInInnerPrice**](PlanAvailableInInnerPrice.md) |  |  [optional] |
 
 
 
