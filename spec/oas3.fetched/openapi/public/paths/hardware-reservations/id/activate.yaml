@@ -1,24 +1,29 @@
-get:
-  description: Returns a list of the interconnection events
-  operationId: findInterconnectionEvents
+post:
+  description: Activate a spare hardware reservation
+  operationId: activateHardwareReservation
   parameters:
-  - description: Interconnection UUID
+  - description: Hardware Reservation UUID
     in: path
-    name: connection_id
+    name: id
     required: true
     schema:
       format: uuid
       type: string
-  - $ref: '../../../components/parameters/Include.yaml'
-  - $ref: '../../../components/parameters/Exclude.yaml'
-  - $ref: '../../../components/parameters/Page.yaml'
-  - $ref: '../../../components/parameters/PerPage.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            description:
+              type: string
+    description: Note to attach to the reservation
+    required: false
   responses:
-    "200":
+    "201":
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/EventList.yaml'
+            $ref: '../../../components/schemas/HardwareReservation.yaml'
       description: ok
     "401":
       content:
@@ -38,6 +43,6 @@ get:
           schema:
             $ref: '../../../components/schemas/Error.yaml'
       description: not found
-  summary: Retrieve interconnection events
+  summary: Activate a spare hardware reservation
   tags:
-  - Events
+  - HardwareReservations

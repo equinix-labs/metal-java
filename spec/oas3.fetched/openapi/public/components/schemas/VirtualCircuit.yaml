@@ -62,4 +62,10 @@ properties:
     $ref: './Href.yaml'
   vnid:
     type: integer
+  created_at:
+    format: date-time
+    type: string
+  updated_at:
+    format: date-time
+    type: string
 type: object

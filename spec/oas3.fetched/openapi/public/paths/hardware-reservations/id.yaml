@@ -16,7 +16,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas/Device.yaml'
+            $ref: '../../components/schemas/HardwareReservation.yaml'
       description: ok
     "401":
       content:

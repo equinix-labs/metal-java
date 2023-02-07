@@ -62,6 +62,15 @@ properties:
     items:
       type: integer
     type: array
+  vrfs:
+    description: Can only be set when creating Fabric VCs in VRF(s). This field holds a list of VRF UUIDs that will be set automatically on the virtual circuits on
+      creation, and can hold up to two UUIDs. Two UUIDs are required when requesting redundant Fabric VCs. The first UUID will be set on the primary virtual circuit,
+      while the second UUID will be set on the secondary. The two UUIDs can be the same if both the primary and secondary virtual circuits will be in the same VRF.
+      This parameter is included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
+    items:
+      format: uuid
+      type: string
+    type: array
 required:
 - name
 - metro

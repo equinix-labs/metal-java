@@ -13,9 +13,11 @@ post:
     content:
       application/json:
         schema:
-          format: uuid
-          type: string
-    description: Project UUID
+          properties:
+            project_id:
+              format: uuid
+              type: string
+    description: Destination Project UUID
     required: true
   responses:
     "201":
