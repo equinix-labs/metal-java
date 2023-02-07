@@ -61,7 +61,7 @@ For resources that contain references to other resources, sucha as a Device that
 If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.
 
 For example:
-  
+
 ```sh
 curl -H 'X-Auth-Token: my_authentication_token' \\
   https://api.equinix.com/metal/v1/user?include=projects
@@ -253,10 +253,11 @@ Class | Method | HTTP request | Description
 *EventsApi* | [**findInterconnectionPortEvents**](docs/EventsApi.md#findInterconnectionPortEvents) | **GET** /connections/{connection_id}/ports/{id}/events | Retrieve interconnection port events
 *EventsApi* | [**findOrganizationEvents**](docs/EventsApi.md#findOrganizationEvents) | **GET** /organizations/{id}/events | Retrieve organization&#39;s events
 *EventsApi* | [**findProjectEvents**](docs/EventsApi.md#findProjectEvents) | **GET** /projects/{id}/events | Retrieve project&#39;s events
-*EventsApi* | [**findVirtualCircuitEvents**](docs/EventsApi.md#findVirtualCircuitEvents) | **GET** /virtual-circuit/{id}/events | Retrieve interconnection events
+*EventsApi* | [**findVirtualCircuitEvents**](docs/EventsApi.md#findVirtualCircuitEvents) | **GET** /virtual-circuits/{id}/events | Retrieve interconnection events
 *FacilitiesApi* | [**findFacilities**](docs/FacilitiesApi.md#findFacilities) | **GET** /facilities | Retrieve all facilities
 *FacilitiesApi* | [**findFacilitiesByOrganization**](docs/FacilitiesApi.md#findFacilitiesByOrganization) | **GET** /organizations/{id}/facilities | Retrieve all facilities visible by the organization
 *FacilitiesApi* | [**findFacilitiesByProject**](docs/FacilitiesApi.md#findFacilitiesByProject) | **GET** /projects/{id}/facilities | Retrieve all facilities visible by the project
+*HardwareReservationsApi* | [**activateHardwareReservation**](docs/HardwareReservationsApi.md#activateHardwareReservation) | **POST** /hardware-reservations/{id}/activate | Activate a spare hardware reservation
 *HardwareReservationsApi* | [**findHardwareReservationById**](docs/HardwareReservationsApi.md#findHardwareReservationById) | **GET** /hardware-reservations/{id} | Retrieve a hardware reservation
 *HardwareReservationsApi* | [**findProjectHardwareReservations**](docs/HardwareReservationsApi.md#findProjectHardwareReservations) | **GET** /projects/{id}/hardware-reservations | Retrieve all hardware reservations for a given project
 *HardwareReservationsApi* | [**moveHardwareReservation**](docs/HardwareReservationsApi.md#moveHardwareReservation) | **POST** /hardware-reservations/{id}/move | Move a hardware reservation
@@ -271,6 +272,7 @@ Class | Method | HTTP request | Description
 *InterconnectionsApi* | [**getVirtualCircuit**](docs/InterconnectionsApi.md#getVirtualCircuit) | **GET** /virtual-circuits/{id} | Get a virtual circuit
 *InterconnectionsApi* | [**listInterconnectionPortVirtualCircuits**](docs/InterconnectionsApi.md#listInterconnectionPortVirtualCircuits) | **GET** /connections/{connection_id}/ports/{port_id}/virtual-circuits | List a interconnection port&#39;s virtual circuits
 *InterconnectionsApi* | [**listInterconnectionPorts**](docs/InterconnectionsApi.md#listInterconnectionPorts) | **GET** /connections/{connection_id}/ports | List a interconnection&#39;s ports
+*InterconnectionsApi* | [**listInterconnectionVirtualCircuits**](docs/InterconnectionsApi.md#listInterconnectionVirtualCircuits) | **GET** /connections/{connection_id}/virtual-circuits | List a interconnection&#39;s virtual circuits
 *InterconnectionsApi* | [**organizationListInterconnections**](docs/InterconnectionsApi.md#organizationListInterconnections) | **GET** /organizations/{organization_id}/connections | List organization connections
 *InterconnectionsApi* | [**projectListInterconnections**](docs/InterconnectionsApi.md#projectListInterconnections) | **GET** /projects/{project_id}/connections | List project connections
 *InterconnectionsApi* | [**updateInterconnection**](docs/InterconnectionsApi.md#updateInterconnection) | **PUT** /connections/{connection_id} | Update interconnection
@@ -395,15 +397,22 @@ Class | Method | HTTP request | Description
 *VlansApi* | [**findVirtualNetworks**](docs/VlansApi.md#findVirtualNetworks) | **GET** /projects/{id}/virtual-networks | Retrieve all virtual networks
 *VlansApi* | [**getVirtualNetwork**](docs/VlansApi.md#getVirtualNetwork) | **GET** /virtual-networks/{id} | Get a virtual network
 *VrfsApi* | [**createVrf**](docs/VrfsApi.md#createVrf) | **POST** /projects/{id}/vrfs | Create a new VRF in the specified project
+*VrfsApi* | [**createVrfRoute**](docs/VrfsApi.md#createVrfRoute) | **POST** /vrfs/{id}/routes | Create a VRF route
 *VrfsApi* | [**deleteVrf**](docs/VrfsApi.md#deleteVrf) | **DELETE** /vrfs/{id} | Delete the VRF
+*VrfsApi* | [**deleteVrfRouteById**](docs/VrfsApi.md#deleteVrfRouteById) | **DELETE** /routes/{id} | Delete a VRF Route
 *VrfsApi* | [**findVrfById**](docs/VrfsApi.md#findVrfById) | **GET** /vrfs/{id} | Retrieve a VRF
+*VrfsApi* | [**findVrfIpReservation**](docs/VrfsApi.md#findVrfIpReservation) | **GET** /vrfs/{vrf_id}/ips/{id} | Retrieve all VRF IP Reservations in the VRF
 *VrfsApi* | [**findVrfIpReservations**](docs/VrfsApi.md#findVrfIpReservations) | **GET** /vrfs/{id}/ips | Retrieve all VRF IP Reservations in the VRF
+*VrfsApi* | [**findVrfRouteById**](docs/VrfsApi.md#findVrfRouteById) | **GET** /routes/{id} | Retrieve a VRF Route
 *VrfsApi* | [**findVrfs**](docs/VrfsApi.md#findVrfs) | **GET** /projects/{id}/vrfs | Retrieve all VRFs in the project
+*VrfsApi* | [**getVrfRoutes**](docs/VrfsApi.md#getVrfRoutes) | **GET** /vrfs/{id}/routes | Retrieve all routes in the VRF
 *VrfsApi* | [**updateVrf**](docs/VrfsApi.md#updateVrf) | **PUT** /vrfs/{id} | Update the VRF
+*VrfsApi* | [**updateVrfRouteById**](docs/VrfsApi.md#updateVrfRouteById) | **PUT** /routes/{id} | Update a VRF Route
 
 
 ## Documentation for Models
 
+ - [ActivateHardwareReservationRequest](docs/ActivateHardwareReservationRequest.md)
  - [Address](docs/Address.md)
  - [AuthToken](docs/AuthToken.md)
  - [AuthTokenInput](docs/AuthTokenInput.md)
@@ -416,8 +425,7 @@ Class | Method | HTTP request | Description
  - [BgpConfig](docs/BgpConfig.md)
  - [BgpConfigRequestInput](docs/BgpConfigRequestInput.md)
  - [BgpNeighborData](docs/BgpNeighborData.md)
- - [BgpNeighborDataRoutesInInner](docs/BgpNeighborDataRoutesInInner.md)
- - [BgpNeighborDataRoutesOutInner](docs/BgpNeighborDataRoutesOutInner.md)
+ - [BgpRoute](docs/BgpRoute.md)
  - [BgpSession](docs/BgpSession.md)
  - [BgpSessionList](docs/BgpSessionList.md)
  - [BgpSessionNeighbors](docs/BgpSessionNeighbors.md)
@@ -478,6 +486,7 @@ Class | Method | HTTP request | Description
  - [IPAssignmentInput](docs/IPAssignmentInput.md)
  - [IPAssignmentList](docs/IPAssignmentList.md)
  - [IPAssignmentMetro](docs/IPAssignmentMetro.md)
+ - [IPAssignmentUpdateInput](docs/IPAssignmentUpdateInput.md)
  - [IPAvailabilitiesList](docs/IPAvailabilitiesList.md)
  - [IPReservation](docs/IPReservation.md)
  - [IPReservationFacility](docs/IPReservationFacility.md)
@@ -521,6 +530,7 @@ Class | Method | HTTP request | Description
  - [MetroInput](docs/MetroInput.md)
  - [MetroList](docs/MetroList.md)
  - [MetroServerInfo](docs/MetroServerInfo.md)
+ - [MoveHardwareReservationRequest](docs/MoveHardwareReservationRequest.md)
  - [NewPassword](docs/NewPassword.md)
  - [OperatingSystem](docs/OperatingSystem.md)
  - [OperatingSystemList](docs/OperatingSystemList.md)
@@ -617,6 +627,12 @@ Class | Method | HTTP request | Description
  - [VrfList](docs/VrfList.md)
  - [VrfMetalGateway](docs/VrfMetalGateway.md)
  - [VrfMetalGatewayCreateInput](docs/VrfMetalGatewayCreateInput.md)
+ - [VrfRoute](docs/VrfRoute.md)
+ - [VrfRouteCreateInput](docs/VrfRouteCreateInput.md)
+ - [VrfRouteList](docs/VrfRouteList.md)
+ - [VrfRouteMetalGateway](docs/VrfRouteMetalGateway.md)
+ - [VrfRouteVirtualNetwork](docs/VrfRouteVirtualNetwork.md)
+ - [VrfRouteVrf](docs/VrfRouteVrf.md)
  - [VrfUpdateInput](docs/VrfUpdateInput.md)
  - [VrfVirtualCircuit](docs/VrfVirtualCircuit.md)
  - [VrfVirtualCircuitCreateInput](docs/VrfVirtualCircuitCreateInput.md)

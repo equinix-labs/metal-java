@@ -307,7 +307,7 @@ public class Example {
 
 <a name="findProjectSSHKeys"></a>
 # **findProjectSSHKeys**
-> SSHKeyList findProjectSSHKeys(id, searchString, include, exclude)
+> SSHKeyList findProjectSSHKeys(id, query, include, exclude)
 
 Retrieve a project&#39;s ssh keys
 
@@ -336,11 +336,11 @@ public class Example {
 
     SshKeysApi apiInstance = new SshKeysApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
-    String searchString = "searchString_example"; // String | Search by key, label, or fingerprint
+    String query = "query_example"; // String | Search by key, label, or fingerprint
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      SSHKeyList result = apiInstance.findProjectSSHKeys(id, searchString, include, exclude);
+      SSHKeyList result = apiInstance.findProjectSSHKeys(id, query, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SshKeysApi#findProjectSSHKeys");
@@ -358,7 +358,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
-| **searchString** | **String**| Search by key, label, or fingerprint | [optional] |
+| **query** | **String**| Search by key, label, or fingerprint | [optional] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 | **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 

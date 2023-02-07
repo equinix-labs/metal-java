@@ -5,11 +5,17 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createVrf**](VrfsApi.md#createVrf) | **POST** /projects/{id}/vrfs | Create a new VRF in the specified project |
+| [**createVrfRoute**](VrfsApi.md#createVrfRoute) | **POST** /vrfs/{id}/routes | Create a VRF route |
 | [**deleteVrf**](VrfsApi.md#deleteVrf) | **DELETE** /vrfs/{id} | Delete the VRF |
+| [**deleteVrfRouteById**](VrfsApi.md#deleteVrfRouteById) | **DELETE** /routes/{id} | Delete a VRF Route |
 | [**findVrfById**](VrfsApi.md#findVrfById) | **GET** /vrfs/{id} | Retrieve a VRF |
+| [**findVrfIpReservation**](VrfsApi.md#findVrfIpReservation) | **GET** /vrfs/{vrf_id}/ips/{id} | Retrieve all VRF IP Reservations in the VRF |
 | [**findVrfIpReservations**](VrfsApi.md#findVrfIpReservations) | **GET** /vrfs/{id}/ips | Retrieve all VRF IP Reservations in the VRF |
+| [**findVrfRouteById**](VrfsApi.md#findVrfRouteById) | **GET** /routes/{id} | Retrieve a VRF Route |
 | [**findVrfs**](VrfsApi.md#findVrfs) | **GET** /projects/{id}/vrfs | Retrieve all VRFs in the project |
+| [**getVrfRoutes**](VrfsApi.md#getVrfRoutes) | **GET** /vrfs/{id}/routes | Retrieve all routes in the VRF |
 | [**updateVrf**](VrfsApi.md#updateVrf) | **PUT** /vrfs/{id} | Update the VRF |
+| [**updateVrfRouteById**](VrfsApi.md#updateVrfRouteById) | **PUT** /routes/{id} | Update a VRF Route |
 
 
 <a name="createVrf"></a>
@@ -86,6 +92,81 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
+<a name="createVrfRoute"></a>
+# **createVrfRoute**
+> VrfRoute createVrfRoute(id, vrfRouteCreateInput)
+
+Create a VRF route
+
+Create a route in a VRF. Currently only static default routes are supported.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.VrfsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    VrfsApi apiInstance = new VrfsApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | VRF UUID
+    VrfRouteCreateInput vrfRouteCreateInput = new VrfRouteCreateInput(); // VrfRouteCreateInput | 
+    try {
+      VrfRoute result = apiInstance.createVrfRoute(id, vrfRouteCreateInput);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VrfsApi#createVrfRoute");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| VRF UUID | |
+| **vrfRouteCreateInput** | [**VrfRouteCreateInput**](VrfRouteCreateInput.md)|  | |
+
+### Return type
+
+[**VrfRoute**](VrfRoute.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **422** | Unprocessable entity |  -  |
+
 <a name="deleteVrf"></a>
 # **deleteVrf**
 > deleteVrf(id)
@@ -156,6 +237,82 @@ null (empty response body)
 | **401** | unauthorized |  -  |
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
+
+<a name="deleteVrfRouteById"></a>
+# **deleteVrfRouteById**
+> VrfRoute deleteVrfRouteById(id, include, exclude)
+
+Delete a VRF Route
+
+Trigger the deletion of a VRF Route resource. The status of the route will update to &#39;deleting&#39;, and the route resource will remain accessible while background operations remove the route from the network. Once the route has been removed from the network, the resource will be fully deleted.
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.VrfsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    VrfsApi apiInstance = new VrfsApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | VRF Route UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
+    try {
+      VrfRoute result = apiInstance.deleteVrfRouteById(id, include, exclude);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VrfsApi#deleteVrfRouteById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| VRF Route UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
+
+### Return type
+
+[**VrfRoute**](VrfRoute.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **202** | Accepted |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
 
 <a name="findVrfById"></a>
 # **findVrfById**
@@ -230,6 +387,83 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
+| **403** | forbidden |  -  |
+| **404** | not found |  -  |
+
+<a name="findVrfIpReservation"></a>
+# **findVrfIpReservation**
+> VrfIpReservation findVrfIpReservation(vrfId, id, include, exclude)
+
+Retrieve all VRF IP Reservations in the VRF
+
+Returns the IP Reservation for the VRF.
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.VrfsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    VrfsApi apiInstance = new VrfsApi(defaultClient);
+    UUID vrfId = UUID.randomUUID(); // UUID | VRF UUID
+    UUID id = UUID.randomUUID(); // UUID | IP UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
+    try {
+      VrfIpReservation result = apiInstance.findVrfIpReservation(vrfId, id, include, exclude);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VrfsApi#findVrfIpReservation");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **vrfId** | **UUID**| VRF UUID | |
+| **id** | **UUID**| IP UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
+
+### Return type
+
+[**VrfIpReservation**](VrfIpReservation.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | ok |  -  |
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
@@ -308,6 +542,81 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
+<a name="findVrfRouteById"></a>
+# **findVrfRouteById**
+> VrfRoute findVrfRouteById(id, include, exclude)
+
+Retrieve a VRF Route
+
+Returns a single VRF Route resource
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.VrfsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    VrfsApi apiInstance = new VrfsApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | VRF Route UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
+    try {
+      VrfRoute result = apiInstance.findVrfRouteById(id, include, exclude);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VrfsApi#findVrfRouteById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| VRF Route UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
+
+### Return type
+
+[**VrfRoute**](VrfRoute.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+
 <a name="findVrfs"></a>
 # **findVrfs**
 > VrfList findVrfs(id, include, exclude, metro)
@@ -385,6 +694,81 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
+<a name="getVrfRoutes"></a>
+# **getVrfRoutes**
+> VrfRouteList getVrfRoutes(id, include, exclude)
+
+Retrieve all routes in the VRF
+
+Returns the list of routes for the VRF
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.VrfsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    VrfsApi apiInstance = new VrfsApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | VRF UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
+    try {
+      VrfRouteList result = apiInstance.getVrfRoutes(id, include, exclude);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VrfsApi#getVrfRoutes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| VRF UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
+
+### Return type
+
+[**VrfRouteList**](VrfRouteList.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+
 <a name="updateVrf"></a>
 # **updateVrf**
 > Vrf updateVrf(id, vrfUpdateInput)
@@ -459,4 +843,82 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
+
+<a name="updateVrfRouteById"></a>
+# **updateVrfRouteById**
+> VrfRoute updateVrfRouteById(id, include, exclude)
+
+Update a VRF Route
+
+Requests a VRF Route be redeployed across the network. Updating the prefix or next-hop address on a route is not currently supported.
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.VrfsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    VrfsApi apiInstance = new VrfsApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | VRF Route UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
+    try {
+      VrfRoute result = apiInstance.updateVrfRouteById(id, include, exclude);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VrfsApi#updateVrfRouteById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| VRF Route UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
+
+### Return type
+
+[**VrfRoute**](VrfRoute.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **202** | Accepted |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **422** | Unprocessable Entity |  -  |
+| **429** | Too Many Requests |  -  |
 

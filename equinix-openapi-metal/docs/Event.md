@@ -15,6 +15,8 @@
 |**relationships** | [**List&lt;Href&gt;**](Href.md) |  |  [optional] |
 |**state** | **String** |  |  [optional] |
 |**type** | **String** |  |  [optional] |
+|**modifiedBy** | **Object** |  |  [optional] |
+|**ip** | **String** |  |  [optional] |
 
 
 

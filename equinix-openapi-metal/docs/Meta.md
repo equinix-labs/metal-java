@@ -13,6 +13,8 @@
 |**previous** | [**Href**](Href.md) |  |  [optional] |
 |**self** | [**Href**](Href.md) |  |  [optional] |
 |**total** | **Integer** |  |  [optional] |
+|**currentPage** | **Integer** |  |  [optional] |
+|**lastPage** | **Integer** |  |  [optional] |
 
 
 

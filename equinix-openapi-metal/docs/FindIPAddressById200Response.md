@@ -19,7 +19,7 @@
 |**id** | **UUID** |  |  [optional] |
 |**manageable** | **Boolean** |  |  [optional] |
 |**management** | **Boolean** |  |  [optional] |
-|**metro** | [**IPReservationMetro**](IPReservationMetro.md) |  |  [optional] |
+|**metro** | [**Metro**](Metro.md) |  |  [optional] |
 |**netmask** | **String** |  |  [optional] |
 |**network** | **String** |  |  [optional] |
 |**parentBlock** | [**ParentBlock**](ParentBlock.md) |  |  [optional] |
@@ -33,7 +33,7 @@
 |**facility** | [**IPReservationFacility**](IPReservationFacility.md) |  |  [optional] |
 |**metalGateway** | [**MetalGatewayLite**](MetalGatewayLite.md) |  |  [optional] |
 |**project** | [**Project**](Project.md) |  |  [optional] |
-|**projectLite** | [**Href**](Href.md) |  |  [optional] |
+|**projectLite** | [**Project**](Project.md) |  |  [optional] |
 |**requestedBy** | [**Href**](Href.md) |  |  [optional] |
 |**state** | **String** |  |  [optional] |
 |**tags** | **List&lt;String&gt;** |  |  [optional] |

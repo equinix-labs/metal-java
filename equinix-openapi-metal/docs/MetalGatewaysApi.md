@@ -90,7 +90,7 @@ public class Example {
 
 <a name="deleteMetalGateway"></a>
 # **deleteMetalGateway**
-> deleteMetalGateway(id, include, exclude)
+> FindMetalGatewayById200Response deleteMetalGateway(id, include, exclude)
 
 Deletes the metal gateway
 
@@ -122,7 +122,8 @@ public class Example {
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      apiInstance.deleteMetalGateway(id, include, exclude);
+      FindMetalGatewayById200Response result = apiInstance.deleteMetalGateway(id, include, exclude);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetalGatewaysApi#deleteMetalGateway");
       System.err.println("Status code: " + e.getCode());
@@ -144,7 +145,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**FindMetalGatewayById200Response**](FindMetalGatewayById200Response.md)
 
 ### Authorization
 
@@ -158,7 +159,7 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | no content |  -  |
+| **202** | accepted |  -  |
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
