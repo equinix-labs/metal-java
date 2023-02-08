@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**alwaysPxe** | **Boolean** |  |  [optional] |
 |**billingCycle** | **String** |  |  [optional] |
-|**customdata** | **Object** |  |  [optional] |
+|**customdata** | **Map&lt;String, Object&gt;** |  |  [optional] |
 |**description** | **String** |  |  [optional] |
 |**hostname** | **String** |  |  [optional] |
 |**ipxeScriptUrl** | **String** |  |  [optional] |

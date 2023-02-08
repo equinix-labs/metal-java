@@ -14,6 +14,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**getVirtualCircuit**](InterconnectionsApi.md#getVirtualCircuit) | **GET** /virtual-circuits/{id} | Get a virtual circuit |
 | [**listInterconnectionPortVirtualCircuits**](InterconnectionsApi.md#listInterconnectionPortVirtualCircuits) | **GET** /connections/{connection_id}/ports/{port_id}/virtual-circuits | List a interconnection port&#39;s virtual circuits |
 | [**listInterconnectionPorts**](InterconnectionsApi.md#listInterconnectionPorts) | **GET** /connections/{connection_id}/ports | List a interconnection&#39;s ports |
+| [**listInterconnectionVirtualCircuits**](InterconnectionsApi.md#listInterconnectionVirtualCircuits) | **GET** /connections/{connection_id}/virtual-circuits | List a interconnection&#39;s virtual circuits |
 | [**organizationListInterconnections**](InterconnectionsApi.md#organizationListInterconnections) | **GET** /organizations/{organization_id}/connections | List organization connections |
 | [**projectListInterconnections**](InterconnectionsApi.md#projectListInterconnections) | **GET** /projects/{project_id}/connections | List project connections |
 | [**updateInterconnection**](InterconnectionsApi.md#updateInterconnection) | **PUT** /connections/{connection_id} | Update interconnection |
@@ -726,6 +727,77 @@ public class Example {
 ### Return type
 
 [**InterconnectionPortList**](InterconnectionPortList.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | ok |  -  |
+| **403** | forbidden |  -  |
+| **404** | not found |  -  |
+
+<a name="listInterconnectionVirtualCircuits"></a>
+# **listInterconnectionVirtualCircuits**
+> VirtualCircuitList listInterconnectionVirtualCircuits(connectionId)
+
+List a interconnection&#39;s virtual circuits
+
+List the virtual circuit record(s) associated with a particular interconnection id.
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.InterconnectionsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
+    UUID connectionId = UUID.randomUUID(); // UUID | UUID of the interconnection
+    try {
+      VirtualCircuitList result = apiInstance.listInterconnectionVirtualCircuits(connectionId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InterconnectionsApi#listInterconnectionVirtualCircuits");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **connectionId** | **UUID**| UUID of the interconnection | |
+
+### Return type
+
+[**VirtualCircuitList**](VirtualCircuitList.md)
 
 ### Authorization
 

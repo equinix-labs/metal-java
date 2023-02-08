@@ -1,14 +1,13 @@
 
 
-# BgpNeighborDataRoutesOutInner
+# ActivateHardwareReservationRequest
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**exact** | **Boolean** |  |  [optional] |
-|**route** | **String** |  |  [optional] |
+|**description** | **String** |  |  [optional] |
 
 
 

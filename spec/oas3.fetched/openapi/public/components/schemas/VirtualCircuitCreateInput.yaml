@@ -7,7 +7,7 @@ properties:
     maximum: 4094
     minimum: 2
     type: integer
-  project:
+  project_id:
     format: uuid
     type: string
   speed:
@@ -24,3 +24,5 @@ properties:
     format: uuid
     type: string
 type: object
+required:
+  - project_id

@@ -462,7 +462,7 @@ public class Example {
 
 <a name="updateIPAddress"></a>
 # **updateIPAddress**
-> FindIPAddressById200Response updateIPAddress(id, details, customdata)
+> FindIPAddressById200Response updateIPAddress(id, ipAssignmentUpdateInput)
 
 Update an ip address
 
@@ -491,10 +491,9 @@ public class Example {
 
     IpAddressesApi apiInstance = new IpAddressesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | IP Address UUID
-    String details = "details_example"; // String | Notes for this IP Assignment
-    String customdata = "customdata_example"; // String | Provides the custom metadata stored for this IP Assignment in json format
+    IPAssignmentUpdateInput ipAssignmentUpdateInput = new IPAssignmentUpdateInput(); // IPAssignmentUpdateInput | 
     try {
-      FindIPAddressById200Response result = apiInstance.updateIPAddress(id, details, customdata);
+      FindIPAddressById200Response result = apiInstance.updateIPAddress(id, ipAssignmentUpdateInput);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IpAddressesApi#updateIPAddress");
@@ -512,8 +511,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| IP Address UUID | |
-| **details** | **String**| Notes for this IP Assignment | |
-| **customdata** | **String**| Provides the custom metadata stored for this IP Assignment in json format | |
+| **ipAssignmentUpdateInput** | [**IPAssignmentUpdateInput**](IPAssignmentUpdateInput.md)|  | [optional] |
 
 ### Return type
 
@@ -525,7 +523,7 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

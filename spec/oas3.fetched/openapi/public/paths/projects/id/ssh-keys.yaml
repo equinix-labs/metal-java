@@ -11,7 +11,7 @@ get:
       type: string
   - description: Search by key, label, or fingerprint
     in: query
-    name: Search string
+    name: query
     schema:
       type: string
   - $ref: '../../../components/parameters/Include.yaml'

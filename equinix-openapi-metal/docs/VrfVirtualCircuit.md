@@ -22,6 +22,8 @@
 |**subnet** | **String** | The /30 or /31 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IP and Customer IP must be IPs from this subnet. For /30 subnets, the network and broadcast IPs cannot be used as the Metal or Customer IP. |  [optional] |
 |**tags** | **List&lt;String&gt;** |  |  [optional] |
 |**vrf** | [**Vrf**](Vrf.md) |  |  [optional] |
+|**createdAt** | **OffsetDateTime** |  |  [optional] |
+|**updatedAt** | **OffsetDateTime** |  |  [optional] |
 
 
 

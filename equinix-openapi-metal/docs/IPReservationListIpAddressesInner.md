@@ -26,11 +26,11 @@
 |**manageable** | **Boolean** |  |  [optional] |
 |**management** | **Boolean** |  |  [optional] |
 |**metalGateway** | [**MetalGatewayLite**](MetalGatewayLite.md) |  |  [optional] |
-|**metro** | [**IPReservationMetro**](IPReservationMetro.md) |  |  [optional] |
+|**metro** | [**Metro**](Metro.md) |  |  [optional] |
 |**netmask** | **String** |  |  [optional] |
 |**network** | **String** |  |  [optional] |
 |**project** | [**Project**](Project.md) |  |  [optional] |
-|**projectLite** | [**Href**](Href.md) |  |  [optional] |
+|**projectLite** | [**Project**](Project.md) |  |  [optional] |
 |**requestedBy** | [**Href**](Href.md) |  |  [optional] |
 |**_public** | **Boolean** |  |  [optional] |
 |**state** | **String** |  |  [optional] |
