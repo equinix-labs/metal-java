@@ -53,4 +53,10 @@ properties:
     type: array
   vrf:
     $ref: './Vrf.yaml'
+  created_at:
+    format: date-time
+    type: string
+  updated_at:
+    format: date-time
+    type: string
 type: object

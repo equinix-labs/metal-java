@@ -1,6 +1,6 @@
 /*
  * Metal API
- * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:    ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -50,17 +50,37 @@ import com.equinix.openapi.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class VrfVirtualCircuitUpdateInput {
+  public static final String SERIALIZED_NAME_CUSTOMER_IP = "customer_ip";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER_IP)
+  private String customerIp;
+
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_MD5 = "md5";
+  @SerializedName(SERIALIZED_NAME_MD5)
+  private String md5;
+
+  public static final String SERIALIZED_NAME_METAL_IP = "metal_ip";
+  @SerializedName(SERIALIZED_NAME_METAL_IP)
+  private String metalIp;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_PEER_ASN = "peer_asn";
+  @SerializedName(SERIALIZED_NAME_PEER_ASN)
+  private Integer peerAsn;
+
   public static final String SERIALIZED_NAME_SPEED = "speed";
   @SerializedName(SERIALIZED_NAME_SPEED)
   private String speed;
+
+  public static final String SERIALIZED_NAME_SUBNET = "subnet";
+  @SerializedName(SERIALIZED_NAME_SUBNET)
+  private String subnet;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -68,6 +88,28 @@ public class VrfVirtualCircuitUpdateInput {
 
   public VrfVirtualCircuitUpdateInput() {
   }
+
+  public VrfVirtualCircuitUpdateInput customerIp(String customerIp) {
+    
+    this.customerIp = customerIp;
+    return this;
+  }
+
+   /**
+   * An IP address from the subnet that will be used on the Customer side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Metal IP. By default, the last usable IP address in the subnet will be used.
+   * @return customerIp
+  **/
+  @javax.annotation.Nullable
+
+  public String getCustomerIp() {
+    return customerIp;
+  }
+
+
+  public void setCustomerIp(String customerIp) {
+    this.customerIp = customerIp;
+  }
+
 
   public VrfVirtualCircuitUpdateInput description(String description) {
     
@@ -88,6 +130,50 @@ public class VrfVirtualCircuitUpdateInput {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public VrfVirtualCircuitUpdateInput md5(String md5) {
+    
+    this.md5 = md5;
+    return this;
+  }
+
+   /**
+   * The MD5 password for the BGP peering in plaintext (not a checksum).
+   * @return md5
+  **/
+  @javax.annotation.Nullable
+
+  public String getMd5() {
+    return md5;
+  }
+
+
+  public void setMd5(String md5) {
+    this.md5 = md5;
+  }
+
+
+  public VrfVirtualCircuitUpdateInput metalIp(String metalIp) {
+    
+    this.metalIp = metalIp;
+    return this;
+  }
+
+   /**
+   * An IP address from the subnet that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Customer IP. By default, the first usable IP address in the subnet will be used.
+   * @return metalIp
+  **/
+  @javax.annotation.Nullable
+
+  public String getMetalIp() {
+    return metalIp;
+  }
+
+
+  public void setMetalIp(String metalIp) {
+    this.metalIp = metalIp;
   }
 
 
@@ -113,6 +199,28 @@ public class VrfVirtualCircuitUpdateInput {
   }
 
 
+  public VrfVirtualCircuitUpdateInput peerAsn(Integer peerAsn) {
+    
+    this.peerAsn = peerAsn;
+    return this;
+  }
+
+   /**
+   * The peer ASN that will be used with the VRF on the Virtual Circuit.
+   * @return peerAsn
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getPeerAsn() {
+    return peerAsn;
+  }
+
+
+  public void setPeerAsn(Integer peerAsn) {
+    this.peerAsn = peerAsn;
+  }
+
+
   public VrfVirtualCircuitUpdateInput speed(String speed) {
     
     this.speed = speed;
@@ -132,6 +240,28 @@ public class VrfVirtualCircuitUpdateInput {
 
   public void setSpeed(String speed) {
     this.speed = speed;
+  }
+
+
+  public VrfVirtualCircuitUpdateInput subnet(String subnet) {
+    
+    this.subnet = subnet;
+    return this;
+  }
+
+   /**
+   * The /30 or /31 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IP and Customer IP must be IPs from this subnet. For /30 subnets, the network and broadcast IPs cannot be used as the Metal or Customer IP.
+   * @return subnet
+  **/
+  @javax.annotation.Nullable
+
+  public String getSubnet() {
+    return subnet;
+  }
+
+
+  public void setSubnet(String subnet) {
+    this.subnet = subnet;
   }
 
 
@@ -219,25 +349,35 @@ public class VrfVirtualCircuitUpdateInput {
       return false;
     }
     VrfVirtualCircuitUpdateInput vrfVirtualCircuitUpdateInput = (VrfVirtualCircuitUpdateInput) o;
-    return Objects.equals(this.description, vrfVirtualCircuitUpdateInput.description) &&
+    return Objects.equals(this.customerIp, vrfVirtualCircuitUpdateInput.customerIp) &&
+        Objects.equals(this.description, vrfVirtualCircuitUpdateInput.description) &&
+        Objects.equals(this.md5, vrfVirtualCircuitUpdateInput.md5) &&
+        Objects.equals(this.metalIp, vrfVirtualCircuitUpdateInput.metalIp) &&
         Objects.equals(this.name, vrfVirtualCircuitUpdateInput.name) &&
+        Objects.equals(this.peerAsn, vrfVirtualCircuitUpdateInput.peerAsn) &&
         Objects.equals(this.speed, vrfVirtualCircuitUpdateInput.speed) &&
+        Objects.equals(this.subnet, vrfVirtualCircuitUpdateInput.subnet) &&
         Objects.equals(this.tags, vrfVirtualCircuitUpdateInput.tags)&&
         Objects.equals(this.additionalProperties, vrfVirtualCircuitUpdateInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, name, speed, tags, additionalProperties);
+    return Objects.hash(customerIp, description, md5, metalIp, name, peerAsn, speed, subnet, tags, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class VrfVirtualCircuitUpdateInput {\n");
+    sb.append("    customerIp: ").append(toIndentedString(customerIp)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    md5: ").append(toIndentedString(md5)).append("\n");
+    sb.append("    metalIp: ").append(toIndentedString(metalIp)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    peerAsn: ").append(toIndentedString(peerAsn)).append("\n");
     sb.append("    speed: ").append(toIndentedString(speed)).append("\n");
+    sb.append("    subnet: ").append(toIndentedString(subnet)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -262,9 +402,14 @@ public class VrfVirtualCircuitUpdateInput {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("customer_ip");
     openapiFields.add("description");
+    openapiFields.add("md5");
+    openapiFields.add("metal_ip");
     openapiFields.add("name");
+    openapiFields.add("peer_asn");
     openapiFields.add("speed");
+    openapiFields.add("subnet");
     openapiFields.add("tags");
 
     // a set of required properties/fields (JSON key names)
@@ -283,14 +428,26 @@ public class VrfVirtualCircuitUpdateInput {
           throw new IllegalArgumentException(String.format("The required field(s) %s in VrfVirtualCircuitUpdateInput is not found in the empty JSON string", VrfVirtualCircuitUpdateInput.openapiRequiredFields.toString()));
         }
       }
+      if ((jsonObj.get("customer_ip") != null && !jsonObj.get("customer_ip").isJsonNull()) && !jsonObj.get("customer_ip").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customer_ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_ip").toString()));
+      }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("md5") != null && !jsonObj.get("md5").isJsonNull()) && !jsonObj.get("md5").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `md5` to be a primitive type in the JSON string but got `%s`", jsonObj.get("md5").toString()));
+      }
+      if ((jsonObj.get("metal_ip") != null && !jsonObj.get("metal_ip").isJsonNull()) && !jsonObj.get("metal_ip").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `metal_ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metal_ip").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("speed") != null && !jsonObj.get("speed").isJsonNull()) && !jsonObj.get("speed").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `speed` to be a primitive type in the JSON string but got `%s`", jsonObj.get("speed").toString()));
+      }
+      if ((jsonObj.get("subnet") != null && !jsonObj.get("subnet").isJsonNull()) && !jsonObj.get("subnet").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `subnet` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subnet").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {

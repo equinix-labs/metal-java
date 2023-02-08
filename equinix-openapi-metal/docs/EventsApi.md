@@ -11,7 +11,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findInterconnectionPortEvents**](EventsApi.md#findInterconnectionPortEvents) | **GET** /connections/{connection_id}/ports/{id}/events | Retrieve interconnection port events |
 | [**findOrganizationEvents**](EventsApi.md#findOrganizationEvents) | **GET** /organizations/{id}/events | Retrieve organization&#39;s events |
 | [**findProjectEvents**](EventsApi.md#findProjectEvents) | **GET** /projects/{id}/events | Retrieve project&#39;s events |
-| [**findVirtualCircuitEvents**](EventsApi.md#findVirtualCircuitEvents) | **GET** /virtual-circuit/{id}/events | Retrieve interconnection events |
+| [**findVirtualCircuitEvents**](EventsApi.md#findVirtualCircuitEvents) | **GET** /virtual-circuits/{id}/events | Retrieve interconnection events |
 
 
 <a name="findDeviceEvents"></a>
@@ -248,7 +248,7 @@ public class Example {
 
 <a name="findInterconnectionEvents"></a>
 # **findInterconnectionEvents**
-> Event findInterconnectionEvents(connectionId, include, exclude, page, perPage)
+> EventList findInterconnectionEvents(connectionId, include, exclude, page, perPage)
 
 Retrieve interconnection events
 
@@ -282,7 +282,7 @@ public class Example {
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      Event result = apiInstance.findInterconnectionEvents(connectionId, include, exclude, page, perPage);
+      EventList result = apiInstance.findInterconnectionEvents(connectionId, include, exclude, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling EventsApi#findInterconnectionEvents");
@@ -307,7 +307,7 @@ public class Example {
 
 ### Return type
 
-[**Event**](Event.md)
+[**EventList**](EventList.md)
 
 ### Authorization
 

@@ -32,9 +32,9 @@ SPEC_FETCHED_PATCHES=patches/spec.fetched.json
 ##
 # openapi-generator-cli - docker
 ##
-OPENAPI_CODEGEN_TAG=latest
+OPENAPI_CODEGEN_SHA=sha256:be8c2ef6be22f695410c2cc13d0ec7fdf2533fc88a7f17288ad758b7679de8df
 
-OPENAPI_CODEGEN_IMAGE=openapitools/openapi-generator-cli:${OPENAPI_CODEGEN_TAG}
+OPENAPI_CODEGEN_IMAGE=openapitools/openapi-generator-cli@${OPENAPI_CODEGEN_SHA}
 DOCKER_OPENAPI=docker run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/local ${OPENAPI_CODEGEN_IMAGE}
 
 docker_run: clean pre-spec-patch-dir pull docker_generate_spec docker_generate move-workflow build_client

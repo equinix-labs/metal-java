@@ -40,4 +40,6 @@ properties:
           type: integer
       type: object
     type: array
+  project:
+    $ref: './Href.yaml'
 type: object

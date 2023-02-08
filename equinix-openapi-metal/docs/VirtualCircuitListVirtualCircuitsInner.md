@@ -19,6 +19,8 @@
 |**tags** | **List&lt;String&gt;** |  |  |
 |**virtualNetwork** | [**Href**](Href.md) |  |  |
 |**vnid** | **Integer** |  |  |
+|**createdAt** | **OffsetDateTime** |  |  [optional] |
+|**updatedAt** | **OffsetDateTime** |  |  [optional] |
 |**customerIp** | **String** | An IP address from the subnet that will be used on the Customer side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Metal IP. By default, the last usable IP address in the subnet will be used. |  [optional] |
 |**md5** | **String** | The MD5 password for the BGP peering in plaintext (not a checksum). |  [optional] |
 |**metalIp** | **String** | An IP address from the subnet that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Customer IP. By default, the first usable IP address in the subnet will be used. |  [optional] |

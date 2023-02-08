@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**propertyClass** | **String** |  |  [optional] |
-|**customdata** | **Object** |  |  [optional] |
+|**customdata** | **Map&lt;String, Object&gt;** |  |  [optional] |
 |**facility** | **String** | The facility code of the instance |  [optional] |
 |**hostname** | **String** |  |  [optional] |
 |**id** | **UUID** |  |  [optional] |

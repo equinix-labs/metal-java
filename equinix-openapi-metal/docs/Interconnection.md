@@ -23,6 +23,9 @@
 |**tags** | **List&lt;String&gt;** |  |  [optional] |
 |**token** | **UUID** | This token is used for shared interconnections to be used as the Fabric Token. This field is entirely deprecated. |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | The &#39;shared&#39; type of interconnection refers to shared connections, or later also known as Fabric Virtual Connections (or Fabric VCs). The &#39;dedicated&#39; type of interconnection refers to interconnections created with Dedicated Ports. |  [optional] |
+|**createdAt** | **OffsetDateTime** |  |  [optional] |
+|**updatedAt** | **OffsetDateTime** |  |  [optional] |
+|**requestedBy** | [**Href**](Href.md) |  |  [optional] |
 
 
 

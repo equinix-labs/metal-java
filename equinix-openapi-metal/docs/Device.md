@@ -12,7 +12,7 @@
 |**bondingMode** | **Integer** |  |  [optional] |
 |**createdAt** | **OffsetDateTime** |  |  [optional] |
 |**createdBy** | [**DeviceCreatedBy**](DeviceCreatedBy.md) |  |  [optional] |
-|**customdata** | **Object** |  |  [optional] |
+|**customdata** | **Map&lt;String, Object&gt;** |  |  [optional] |
 |**description** | **String** |  |  [optional] |
 |**facility** | [**Facility**](Facility.md) |  |  [optional] |
 |**hardwareReservation** | [**Href**](Href.md) |  |  [optional] |

@@ -67,4 +67,12 @@ properties:
     - shared
     - dedicated
     description: The 'shared' type of interconnection refers to shared connections, or later also known as Fabric Virtual Connections (or Fabric VCs). The 'dedicated' type of interconnection refers to interconnections created with Dedicated Ports.
+  created_at:
+    format: date-time
+    type: string
+  updated_at:
+    format: date-time
+    type: string
+  requested_by:
+    $ref: './Href.yaml'
 type: object

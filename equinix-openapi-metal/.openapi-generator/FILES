@@ -6,6 +6,7 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
+docs/ActivateHardwareReservationRequest.md
 docs/Address.md
 docs/AuthToken.md
 docs/AuthTokenInput.md
@@ -21,8 +22,7 @@ docs/BgpApi.md
 docs/BgpConfig.md
 docs/BgpConfigRequestInput.md
 docs/BgpNeighborData.md
-docs/BgpNeighborDataRoutesInInner.md
-docs/BgpNeighborDataRoutesOutInner.md
+docs/BgpRoute.md
 docs/BgpSession.md
 docs/BgpSessionList.md
 docs/BgpSessionNeighbors.md
@@ -89,6 +89,7 @@ docs/IPAssignment.md
 docs/IPAssignmentInput.md
 docs/IPAssignmentList.md
 docs/IPAssignmentMetro.md
+docs/IPAssignmentUpdateInput.md
 docs/IPAvailabilitiesList.md
 docs/IPReservation.md
 docs/IPReservationFacility.md
@@ -140,6 +141,7 @@ docs/MetroInput.md
 docs/MetroList.md
 docs/MetroServerInfo.md
 docs/MetrosApi.md
+docs/MoveHardwareReservationRequest.md
 docs/NewPassword.md
 docs/OperatingSystem.md
 docs/OperatingSystemList.md
@@ -256,6 +258,12 @@ docs/VrfIpReservationList.md
 docs/VrfList.md
 docs/VrfMetalGateway.md
 docs/VrfMetalGatewayCreateInput.md
+docs/VrfRoute.md
+docs/VrfRouteCreateInput.md
+docs/VrfRouteList.md
+docs/VrfRouteMetalGateway.md
+docs/VrfRouteVirtualNetwork.md
+docs/VrfRouteVrf.md
 docs/VrfUpdateInput.md
 docs/VrfVirtualCircuit.md
 docs/VrfVirtualCircuitCreateInput.md
@@ -325,6 +333,7 @@ src/main/java/com/equinix/openapi/metal/v1/api/UsersApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/VlansApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/VrfsApi.java
 src/main/java/com/equinix/openapi/metal/v1/model/AbstractOpenApiSchema.java
+src/main/java/com/equinix/openapi/metal/v1/model/ActivateHardwareReservationRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/Address.java
 src/main/java/com/equinix/openapi/metal/v1/model/AuthToken.java
 src/main/java/com/equinix/openapi/metal/v1/model/AuthTokenInput.java
@@ -337,8 +346,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/BatchesList.java
 src/main/java/com/equinix/openapi/metal/v1/model/BgpConfig.java
 src/main/java/com/equinix/openapi/metal/v1/model/BgpConfigRequestInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/BgpNeighborData.java
-src/main/java/com/equinix/openapi/metal/v1/model/BgpNeighborDataRoutesInInner.java
-src/main/java/com/equinix/openapi/metal/v1/model/BgpNeighborDataRoutesOutInner.java
+src/main/java/com/equinix/openapi/metal/v1/model/BgpRoute.java
 src/main/java/com/equinix/openapi/metal/v1/model/BgpSession.java
 src/main/java/com/equinix/openapi/metal/v1/model/BgpSessionList.java
 src/main/java/com/equinix/openapi/metal/v1/model/BgpSessionNeighbors.java
@@ -399,6 +407,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/IPAssignment.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPAssignmentInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPAssignmentList.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPAssignmentMetro.java
+src/main/java/com/equinix/openapi/metal/v1/model/IPAssignmentUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPAvailabilitiesList.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPReservation.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPReservationFacility.java
@@ -442,6 +451,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/MetroCapacityReport.java
 src/main/java/com/equinix/openapi/metal/v1/model/MetroInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/MetroList.java
 src/main/java/com/equinix/openapi/metal/v1/model/MetroServerInfo.java
+src/main/java/com/equinix/openapi/metal/v1/model/MoveHardwareReservationRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/NewPassword.java
 src/main/java/com/equinix/openapi/metal/v1/model/OperatingSystem.java
 src/main/java/com/equinix/openapi/metal/v1/model/OperatingSystemList.java
@@ -539,6 +549,12 @@ src/main/java/com/equinix/openapi/metal/v1/model/VrfIpReservationList.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfList.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfMetalGateway.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfMetalGatewayCreateInput.java
+src/main/java/com/equinix/openapi/metal/v1/model/VrfRoute.java
+src/main/java/com/equinix/openapi/metal/v1/model/VrfRouteCreateInput.java
+src/main/java/com/equinix/openapi/metal/v1/model/VrfRouteList.java
+src/main/java/com/equinix/openapi/metal/v1/model/VrfRouteMetalGateway.java
+src/main/java/com/equinix/openapi/metal/v1/model/VrfRouteVirtualNetwork.java
+src/main/java/com/equinix/openapi/metal/v1/model/VrfRouteVrf.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuit.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitCreateInput.java
@@ -580,6 +596,7 @@ src/test/java/com/equinix/openapi/metal/v1/api/UserdataApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/UsersApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/VlansApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/VrfsApiTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/ActivateHardwareReservationRequestTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/AddressTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/AuthTokenInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/AuthTokenListTest.java
@@ -591,9 +608,8 @@ src/test/java/com/equinix/openapi/metal/v1/model/BatchTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BatchesListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BgpConfigRequestInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BgpConfigTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/BgpNeighborDataRoutesInInnerTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/BgpNeighborDataRoutesOutInnerTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BgpNeighborDataTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/BgpRouteTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BgpSessionListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BgpSessionNeighborsTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BgpSessionTest.java
@@ -654,6 +670,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/IPAssignmentInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPAssignmentListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPAssignmentMetroTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPAssignmentTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/IPAssignmentUpdateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPAvailabilitiesListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPReservationFacilityTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPReservationListIpAddressesInnerTest.java
@@ -697,6 +714,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/MetroInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MetroListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MetroServerInfoTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MetroTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/MoveHardwareReservationRequestTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/NewPasswordTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/OperatingSystemListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/OperatingSystemTest.java
@@ -793,6 +811,12 @@ src/test/java/com/equinix/openapi/metal/v1/model/VrfIpReservationTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfMetalGatewayCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfMetalGatewayTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteCreateInputTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteListTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteMetalGatewayTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteVirtualNetworkTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteVrfTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfUpdateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitCreateInputTest.java

@@ -26,7 +26,7 @@ info:
     The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.
 
     ## Sorting
-    
+
     Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).
 
     ## Filtering
@@ -62,16 +62,16 @@ info:
     ```
 
     If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.
-    
+
     For example:
-      
+
     ```sh
     curl -H 'X-Auth-Token: my_authentication_token' \
       https://api.equinix.com/metal/v1/user?include=projects
     ```
 
     The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.
-    
+
     To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).
 
     ```sh
@@ -451,6 +451,12 @@ components:
       $ref: './components/schemas/VrfMetalGateway.yaml'
     VrfMetalGatewayCreateInput:
       $ref: './components/schemas/VrfMetalGatewayCreateInput.yaml'
+    VrfRoute:
+      $ref: './components/schemas/VrfRoute.yaml'
+    VrfRouteCreateInput:
+      $ref: './components/schemas/VrfRouteCreateInput.yaml'
+    VrfRouteList:
+      $ref: './components/schemas/VrfRouteList.yaml'
     VrfUpdateInput:
       $ref: './components/schemas/VrfUpdateInput.yaml'
     VrfVirtualCircuit:
@@ -484,6 +490,8 @@ paths:
     $ref: ./paths/connections/connection_id/events.yaml
   /connections/{connection_id}/ports:
     $ref: ./paths/connections/connection_id/ports.yaml
+  /connections/{connection_id}/virtual-circuits:
+    $ref: ./paths/connections/connection_id/virtual-circuits.yaml
   /connections/{connection_id}/ports/{id}:
     $ref: ./paths/connections/connection_id/ports/id.yaml
   /connections/{connection_id}/ports/{id}/events:
@@ -530,6 +538,8 @@ paths:
     $ref: ./paths/facilities.yaml
   /hardware-reservations/{id}:
     $ref: ./paths/hardware-reservations/id.yaml
+  /hardware-reservations/{id}/activate:
+    $ref: ./paths/hardware-reservations/id/activate.yaml
   /hardware-reservations/{id}/move:
     $ref: ./paths/hardware-reservations/id/move.yaml
   /incidents:
@@ -684,6 +694,8 @@ paths:
     $ref: ./paths/projects/project_id/self-service/reservations/id.yaml
   /reset-password:
     $ref: ./paths/reset-password.yaml
+  /routes/{id}:
+    $ref: ./paths/routes/id.yaml
   /spot-market-requests/{id}:
     $ref: ./paths/spot-market-requests/id.yaml
   /ssh-keys:
@@ -720,8 +732,8 @@ paths:
     $ref: ./paths/users/id/customdata.yaml
   /verify-email:
     $ref: ./paths/verify-email.yaml
-  /virtual-circuit/{id}/events:
-    $ref: ./paths/virtual-circuit/id/events.yaml
+  /virtual-circuits/{id}/events:
+    $ref: ./paths/virtual-circuits/id/events.yaml
   /virtual-circuits/{id}:
     $ref: ./paths/virtual-circuits/id.yaml
   /virtual-networks/{id}:
@@ -730,6 +742,10 @@ paths:
     $ref: ./paths/vrfs/id.yaml
   /vrfs/{id}/ips:
     $ref: ./paths/vrfs/id/ips.yaml
+  /vrfs/{vrf_id}/ips/{id}:
+    $ref: ./paths/vrfs/vrf_id/ips/id.yaml
+  /vrfs/{id}/routes:
+    $ref: ./paths/vrfs/id/routes.yaml
 tags:
   - description: |+
       Nearly all of the endpoints in the API require authentication. Authentication is performed by providing an authentication token (interchangeably referred to as an API key) in the `X-Auth-Token` HTTP request header.

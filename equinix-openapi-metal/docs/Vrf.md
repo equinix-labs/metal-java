@@ -16,6 +16,8 @@
 |**metro** | [**Metro**](Metro.md) |  |  [optional] |
 |**createdBy** | [**User**](User.md) |  |  [optional] |
 |**href** | **String** |  |  [optional] |
+|**createdAt** | **OffsetDateTime** |  |  [optional] |
+|**updatedAt** | **OffsetDateTime** |  |  [optional] |
 
 
 

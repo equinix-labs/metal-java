@@ -4,10 +4,85 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**activateHardwareReservation**](HardwareReservationsApi.md#activateHardwareReservation) | **POST** /hardware-reservations/{id}/activate | Activate a spare hardware reservation |
 | [**findHardwareReservationById**](HardwareReservationsApi.md#findHardwareReservationById) | **GET** /hardware-reservations/{id} | Retrieve a hardware reservation |
 | [**findProjectHardwareReservations**](HardwareReservationsApi.md#findProjectHardwareReservations) | **GET** /projects/{id}/hardware-reservations | Retrieve all hardware reservations for a given project |
 | [**moveHardwareReservation**](HardwareReservationsApi.md#moveHardwareReservation) | **POST** /hardware-reservations/{id}/move | Move a hardware reservation |
 
+
+<a name="activateHardwareReservation"></a>
+# **activateHardwareReservation**
+> HardwareReservation activateHardwareReservation(id, activateHardwareReservationRequest)
+
+Activate a spare hardware reservation
+
+Activate a spare hardware reservation
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.HardwareReservationsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    HardwareReservationsApi apiInstance = new HardwareReservationsApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | Hardware Reservation UUID
+    ActivateHardwareReservationRequest activateHardwareReservationRequest = new ActivateHardwareReservationRequest(); // ActivateHardwareReservationRequest | Note to attach to the reservation
+    try {
+      HardwareReservation result = apiInstance.activateHardwareReservation(id, activateHardwareReservationRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling HardwareReservationsApi#activateHardwareReservation");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| Hardware Reservation UUID | |
+| **activateHardwareReservationRequest** | [**ActivateHardwareReservationRequest**](ActivateHardwareReservationRequest.md)| Note to attach to the reservation | [optional] |
+
+### Return type
+
+[**HardwareReservation**](HardwareReservation.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | ok |  -  |
+| **401** | unauthorized |  -  |
+| **403** | forbidden |  -  |
+| **404** | not found |  -  |
 
 <a name="findHardwareReservationById"></a>
 # **findHardwareReservationById**
@@ -87,7 +162,7 @@ public class Example {
 
 <a name="findProjectHardwareReservations"></a>
 # **findProjectHardwareReservations**
-> HardwareReservationList findProjectHardwareReservations(id, include, exclude, page, perPage)
+> HardwareReservationList findProjectHardwareReservations(id, query, state, provisionable, include, exclude, page, perPage)
 
 Retrieve all hardware reservations for a given project
 
@@ -116,12 +191,15 @@ public class Example {
 
     HardwareReservationsApi apiInstance = new HardwareReservationsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
+    String query = "query_example"; // String | Search by facility code, plan name, project name, reservation short ID or device hostname
+    String state = "active"; // String | Filter by hardware reservation state
+    String provisionable = "only"; // String | Filter hardware reservation that is provisionable
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      HardwareReservationList result = apiInstance.findProjectHardwareReservations(id, include, exclude, page, perPage);
+      HardwareReservationList result = apiInstance.findProjectHardwareReservations(id, query, state, provisionable, include, exclude, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling HardwareReservationsApi#findProjectHardwareReservations");
@@ -139,6 +217,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
+| **query** | **String**| Search by facility code, plan name, project name, reservation short ID or device hostname | [optional] |
+| **state** | **String**| Filter by hardware reservation state | [optional] [enum: active, spare, need_of_service] |
+| **provisionable** | **String**| Filter hardware reservation that is provisionable | [optional] [enum: only] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 | **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 | **page** | **Integer**| Page to return | [optional] [default to 1] |
@@ -167,7 +248,7 @@ public class Example {
 
 <a name="moveHardwareReservation"></a>
 # **moveHardwareReservation**
-> HardwareReservation moveHardwareReservation(id, body)
+> HardwareReservation moveHardwareReservation(id, moveHardwareReservationRequest)
 
 Move a hardware reservation
 
@@ -196,9 +277,9 @@ public class Example {
 
     HardwareReservationsApi apiInstance = new HardwareReservationsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Hardware Reservation UUID
-    UUID body = UUID.randomUUID(); // UUID | Project UUID
+    MoveHardwareReservationRequest moveHardwareReservationRequest = new MoveHardwareReservationRequest(); // MoveHardwareReservationRequest | Destination Project UUID
     try {
-      HardwareReservation result = apiInstance.moveHardwareReservation(id, body);
+      HardwareReservation result = apiInstance.moveHardwareReservation(id, moveHardwareReservationRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling HardwareReservationsApi#moveHardwareReservation");
@@ -216,7 +297,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Hardware Reservation UUID | |
-| **body** | **UUID**| Project UUID | |
+| **moveHardwareReservationRequest** | [**MoveHardwareReservationRequest**](MoveHardwareReservationRequest.md)| Destination Project UUID | |
 
 ### Return type
 

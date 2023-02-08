@@ -19,6 +19,8 @@
 |**tags** | **List&lt;String&gt;** |  |  |
 |**virtualNetwork** | [**Href**](Href.md) |  |  |
 |**vnid** | **Integer** |  |  |
+|**createdAt** | **OffsetDateTime** |  |  [optional] |
+|**updatedAt** | **OffsetDateTime** |  |  [optional] |
 
 
 

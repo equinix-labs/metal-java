@@ -15,6 +15,7 @@
 |**state** | [**StateEnum**](#StateEnum) |  |  [optional] |
 |**updatedAt** | **OffsetDateTime** |  |  [optional] |
 |**vlanAssignments** | [**List&lt;PortVlanAssignmentBatchVlanAssignmentsInner&gt;**](PortVlanAssignmentBatchVlanAssignmentsInner.md) |  |  [optional] |
+|**project** | [**Href**](Href.md) |  |  [optional] |
 
 
 
