@@ -21512,6 +21512,13 @@ components:
           members:
           - href: href
           - href: href
+          organization:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href:
+              href: href
           name: name
           network_status: "{}"
           customdata: "{}"
@@ -21786,6 +21793,13 @@ components:
             members:
             - href: href
             - href: href
+            organization:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              href:
+                href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -21964,6 +21978,13 @@ components:
             members:
             - href: href
             - href: href
+            organization:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              href:
+                href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -22754,6 +22775,7 @@ components:
           type: string
         href:
           $ref: '#/components/schemas/Href'
+      type: object
     BgpRoute:
       properties:
         exact:
