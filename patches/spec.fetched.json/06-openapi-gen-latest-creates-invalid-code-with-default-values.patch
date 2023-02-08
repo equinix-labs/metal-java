@@ -1,0 +1,18 @@
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/DeviceCreateInput.yaml b/spec/oas3.patched/openapi/public/components/schemas/DeviceCreateInput.yaml
+index 21ad54d..8e160ee 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/DeviceCreateInput.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/DeviceCreateInput.yaml
+@@ -57,13 +57,6 @@ properties:
+       may be used on multiple devices within a project.
+     type: string
+   ip_addresses:
+-    default:
+-    - address_family: 4
+-      public: true
+-    - address_family: 4
+-      public: false
+-    - address_family: 6
+-      public: true
+     description: |-
+       The `ip_addresses attribute will allow you to specify the addresses you want created with your device.
+ 

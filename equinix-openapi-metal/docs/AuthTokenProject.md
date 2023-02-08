@@ -22,6 +22,7 @@
 |**sshKeys** | [**List&lt;Href&gt;**](Href.md) |  |  [optional] |
 |**updatedAt** | **OffsetDateTime** |  |  [optional] |
 |**volumes** | [**List&lt;Href&gt;**](Href.md) |  |  [optional] |
+|**organization** | [**ProjectOrganization**](ProjectOrganization.md) |  |  [optional] |
 
 
 

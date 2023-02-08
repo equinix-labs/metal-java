@@ -1,0 +1,32 @@
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/Project.yaml b/spec/oas3.patched/openapi/public/components/schemas/Project.yaml
+index d61b8f6..bc40e25 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/Project.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/Project.yaml
+@@ -44,4 +44,6 @@ properties:
+     items:
+       $ref: './Href.yaml'
+     type: array
++  organization:
++    $ref: './ProjectOrganization.yaml'
+ type: object
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/ProjectOrganization.yaml b/spec/oas3.patched/openapi/public/components/schemas/ProjectOrganization.yaml
+new file mode 100644
+index 0000000..8142324
+--- /dev/null
++++ b/spec/oas3.patched/openapi/public/components/schemas/ProjectOrganization.yaml
+@@ -0,0 +1,15 @@
++properties:
++  id:
++    format: uuid
++    type: string
++  name:
++    type: string
++  created_at:
++    format: date-time
++    type: string
++  updated_at:
++    format: date-time
++    type: string
++  href:
++    $ref: './Href.yaml'
++type: object

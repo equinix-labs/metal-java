@@ -16,6 +16,7 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
+import com.equinix.openapi.metal.v1.model.ProjectOrganization;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -112,6 +113,10 @@ public class AuthTokenProject {
   public static final String SERIALIZED_NAME_VOLUMES = "volumes";
   @SerializedName(SERIALIZED_NAME_VOLUMES)
   private List<Href> volumes = null;
+
+  public static final String SERIALIZED_NAME_ORGANIZATION = "organization";
+  @SerializedName(SERIALIZED_NAME_ORGANIZATION)
+  private ProjectOrganization organization;
 
   public AuthTokenProject() {
   }
@@ -493,6 +498,28 @@ public class AuthTokenProject {
     this.volumes = volumes;
   }
 
+
+  public AuthTokenProject organization(ProjectOrganization organization) {
+    
+    this.organization = organization;
+    return this;
+  }
+
+   /**
+   * Get organization
+   * @return organization
+  **/
+  @javax.annotation.Nullable
+
+  public ProjectOrganization getOrganization() {
+    return organization;
+  }
+
+
+  public void setOrganization(ProjectOrganization organization) {
+    this.organization = organization;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -562,13 +589,14 @@ public class AuthTokenProject {
         Objects.equals(this.paymentMethod, authTokenProject.paymentMethod) &&
         Objects.equals(this.sshKeys, authTokenProject.sshKeys) &&
         Objects.equals(this.updatedAt, authTokenProject.updatedAt) &&
-        Objects.equals(this.volumes, authTokenProject.volumes)&&
+        Objects.equals(this.volumes, authTokenProject.volumes) &&
+        Objects.equals(this.organization, authTokenProject.organization)&&
         Objects.equals(this.additionalProperties, authTokenProject.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bgpConfig, createdAt, customdata, devices, id, invitations, maxDevices, members, memberships, name, networkStatus, paymentMethod, sshKeys, updatedAt, volumes, additionalProperties);
+    return Objects.hash(bgpConfig, createdAt, customdata, devices, id, invitations, maxDevices, members, memberships, name, networkStatus, paymentMethod, sshKeys, updatedAt, volumes, organization, additionalProperties);
   }
 
   @Override
@@ -590,6 +618,7 @@ public class AuthTokenProject {
     sb.append("    sshKeys: ").append(toIndentedString(sshKeys)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    volumes: ").append(toIndentedString(volumes)).append("\n");
+    sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -628,6 +657,7 @@ public class AuthTokenProject {
     openapiFields.add("ssh_keys");
     openapiFields.add("updated_at");
     openapiFields.add("volumes");
+    openapiFields.add("organization");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -742,6 +772,10 @@ public class AuthTokenProject {
             Href.validateJsonObject(jsonArrayvolumes.get(i).getAsJsonObject());
           };
         }
+      }
+      // validate the optional field `organization`
+      if (jsonObj.get("organization") != null && !jsonObj.get("organization").isJsonNull()) {
+        ProjectOrganization.validateJsonObject(jsonObj.getAsJsonObject("organization"));
       }
   }
 
