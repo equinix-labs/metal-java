@@ -1,0 +1,10 @@
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/VrfMetalGateway.yaml b/spec/oas3.patched/openapi/public/components/schemas/VrfMetalGateway.yaml
+index 5864d01..1beecfc 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/VrfMetalGateway.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/VrfMetalGateway.yaml
+@@ -32,3 +32,5 @@ properties:
+   vrf:
+     $ref: './Vrf.yaml'
+ type: object
++required:
++- vrf
