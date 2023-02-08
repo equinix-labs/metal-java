@@ -559,6 +559,7 @@ Class | Method | HTTP request | Description
  - [ProjectCreateFromRootInput](docs/ProjectCreateFromRootInput.md)
  - [ProjectCreateInput](docs/ProjectCreateInput.md)
  - [ProjectList](docs/ProjectList.md)
+ - [ProjectOrganization](docs/ProjectOrganization.md)
  - [ProjectUpdateInput](docs/ProjectUpdateInput.md)
  - [ProjectUsage](docs/ProjectUsage.md)
  - [ProjectUsageList](docs/ProjectUsageList.md)

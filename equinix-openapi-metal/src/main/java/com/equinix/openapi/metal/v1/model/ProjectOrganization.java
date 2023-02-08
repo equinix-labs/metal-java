@@ -16,10 +16,6 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.Project;
-import com.equinix.openapi.metal.v1.model.VirtualNetwork;
-import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfIpReservation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,169 +47,34 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * VrfMetalGateway
+ * ProjectOrganization
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VrfMetalGateway {
-  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
-  public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Href createdBy;
-
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private String href;
-
+public class ProjectOrganization {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private UUID id;
 
-  public static final String SERIALIZED_NAME_IP_RESERVATION = "ip_reservation";
-  @SerializedName(SERIALIZED_NAME_IP_RESERVATION)
-  private VrfIpReservation ipReservation;
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
-  public static final String SERIALIZED_NAME_PROJECT = "project";
-  @SerializedName(SERIALIZED_NAME_PROJECT)
-  private Project project;
-
-  /**
-   * The current state of the Metal Gateway. &#39;Ready&#39; indicates the gateway record has been configured, but is currently not active on the network. &#39;Active&#39; indicates the gateway has been configured on the network. &#39;Deleting&#39; is a temporary state used to indicate that the gateway is in the process of being un-configured from the network, after which the gateway record will be deleted.
-   */
-  @JsonAdapter(StateEnum.Adapter.class)
-  public enum StateEnum {
-    READY("ready"),
-    
-    ACTIVE("active"),
-    
-    DELETING("deleting");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StateEnum fromValue(String value) {
-      for (StateEnum b : StateEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<StateEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StateEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
-  private StateEnum state;
+  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
-  public static final String SERIALIZED_NAME_VIRTUAL_NETWORK = "virtual_network";
-  @SerializedName(SERIALIZED_NAME_VIRTUAL_NETWORK)
-  private VirtualNetwork virtualNetwork;
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  private Href href;
 
-  public static final String SERIALIZED_NAME_VRF = "vrf";
-  @SerializedName(SERIALIZED_NAME_VRF)
-  private Vrf vrf;
-
-  public VrfMetalGateway() {
+  public ProjectOrganization() {
   }
 
-  public VrfMetalGateway createdAt(OffsetDateTime createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public VrfMetalGateway createdBy(Href createdBy) {
-    
-    this.createdBy = createdBy;
-    return this;
-  }
-
-   /**
-   * Get createdBy
-   * @return createdBy
-  **/
-  @javax.annotation.Nullable
-
-  public Href getCreatedBy() {
-    return createdBy;
-  }
-
-
-  public void setCreatedBy(Href createdBy) {
-    this.createdBy = createdBy;
-  }
-
-
-  public VrfMetalGateway href(String href) {
-    
-    this.href = href;
-    return this;
-  }
-
-   /**
-   * Get href
-   * @return href
-  **/
-  @javax.annotation.Nullable
-
-  public String getHref() {
-    return href;
-  }
-
-
-  public void setHref(String href) {
-    this.href = href;
-  }
-
-
-  public VrfMetalGateway id(UUID id) {
+  public ProjectOrganization id(UUID id) {
     
     this.id = id;
     return this;
@@ -235,73 +96,51 @@ public class VrfMetalGateway {
   }
 
 
-  public VrfMetalGateway ipReservation(VrfIpReservation ipReservation) {
+  public ProjectOrganization name(String name) {
     
-    this.ipReservation = ipReservation;
+    this.name = name;
     return this;
   }
 
    /**
-   * Get ipReservation
-   * @return ipReservation
+   * Get name
+   * @return name
   **/
   @javax.annotation.Nullable
 
-  public VrfIpReservation getIpReservation() {
-    return ipReservation;
+  public String getName() {
+    return name;
   }
 
 
-  public void setIpReservation(VrfIpReservation ipReservation) {
-    this.ipReservation = ipReservation;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
-  public VrfMetalGateway project(Project project) {
+  public ProjectOrganization createdAt(OffsetDateTime createdAt) {
     
-    this.project = project;
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * Get project
-   * @return project
+   * Get createdAt
+   * @return createdAt
   **/
   @javax.annotation.Nullable
 
-  public Project getProject() {
-    return project;
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
   }
 
 
-  public void setProject(Project project) {
-    this.project = project;
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
 
-  public VrfMetalGateway state(StateEnum state) {
-    
-    this.state = state;
-    return this;
-  }
-
-   /**
-   * The current state of the Metal Gateway. &#39;Ready&#39; indicates the gateway record has been configured, but is currently not active on the network. &#39;Active&#39; indicates the gateway has been configured on the network. &#39;Deleting&#39; is a temporary state used to indicate that the gateway is in the process of being un-configured from the network, after which the gateway record will be deleted.
-   * @return state
-  **/
-  @javax.annotation.Nullable
-
-  public StateEnum getState() {
-    return state;
-  }
-
-
-  public void setState(StateEnum state) {
-    this.state = state;
-  }
-
-
-  public VrfMetalGateway updatedAt(OffsetDateTime updatedAt) {
+  public ProjectOrganization updatedAt(OffsetDateTime updatedAt) {
     
     this.updatedAt = updatedAt;
     return this;
@@ -323,47 +162,25 @@ public class VrfMetalGateway {
   }
 
 
-  public VrfMetalGateway virtualNetwork(VirtualNetwork virtualNetwork) {
+  public ProjectOrganization href(Href href) {
     
-    this.virtualNetwork = virtualNetwork;
+    this.href = href;
     return this;
   }
 
    /**
-   * Get virtualNetwork
-   * @return virtualNetwork
+   * Get href
+   * @return href
   **/
   @javax.annotation.Nullable
 
-  public VirtualNetwork getVirtualNetwork() {
-    return virtualNetwork;
+  public Href getHref() {
+    return href;
   }
 
 
-  public void setVirtualNetwork(VirtualNetwork virtualNetwork) {
-    this.virtualNetwork = virtualNetwork;
-  }
-
-
-  public VrfMetalGateway vrf(Vrf vrf) {
-    
-    this.vrf = vrf;
-    return this;
-  }
-
-   /**
-   * Get vrf
-   * @return vrf
-  **/
-  @javax.annotation.Nonnull
-
-  public Vrf getVrf() {
-    return vrf;
-  }
-
-
-  public void setVrf(Vrf vrf) {
-    this.vrf = vrf;
+  public void setHref(Href href) {
+    this.href = href;
   }
 
   /**
@@ -379,9 +196,9 @@ public class VrfMetalGateway {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the VrfMetalGateway instance itself
+   * @return the ProjectOrganization instance itself
    */
-  public VrfMetalGateway putAdditionalProperty(String key, Object value) {
+  public ProjectOrganization putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -420,39 +237,29 @@ public class VrfMetalGateway {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VrfMetalGateway vrfMetalGateway = (VrfMetalGateway) o;
-    return Objects.equals(this.createdAt, vrfMetalGateway.createdAt) &&
-        Objects.equals(this.createdBy, vrfMetalGateway.createdBy) &&
-        Objects.equals(this.href, vrfMetalGateway.href) &&
-        Objects.equals(this.id, vrfMetalGateway.id) &&
-        Objects.equals(this.ipReservation, vrfMetalGateway.ipReservation) &&
-        Objects.equals(this.project, vrfMetalGateway.project) &&
-        Objects.equals(this.state, vrfMetalGateway.state) &&
-        Objects.equals(this.updatedAt, vrfMetalGateway.updatedAt) &&
-        Objects.equals(this.virtualNetwork, vrfMetalGateway.virtualNetwork) &&
-        Objects.equals(this.vrf, vrfMetalGateway.vrf)&&
-        Objects.equals(this.additionalProperties, vrfMetalGateway.additionalProperties);
+    ProjectOrganization projectOrganization = (ProjectOrganization) o;
+    return Objects.equals(this.id, projectOrganization.id) &&
+        Objects.equals(this.name, projectOrganization.name) &&
+        Objects.equals(this.createdAt, projectOrganization.createdAt) &&
+        Objects.equals(this.updatedAt, projectOrganization.updatedAt) &&
+        Objects.equals(this.href, projectOrganization.href)&&
+        Objects.equals(this.additionalProperties, projectOrganization.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, createdBy, href, id, ipReservation, project, state, updatedAt, virtualNetwork, vrf, additionalProperties);
+    return Objects.hash(id, name, createdAt, updatedAt, href, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VrfMetalGateway {\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("class ProjectOrganization {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    ipReservation: ").append(toIndentedString(ipReservation)).append("\n");
-    sb.append("    project: ").append(toIndentedString(project)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    virtualNetwork: ").append(toIndentedString(virtualNetwork)).append("\n");
-    sb.append("    vrf: ").append(toIndentedString(vrf)).append("\n");
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -476,84 +283,54 @@ public class VrfMetalGateway {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("created_at");
-    openapiFields.add("created_by");
-    openapiFields.add("href");
     openapiFields.add("id");
-    openapiFields.add("ip_reservation");
-    openapiFields.add("project");
-    openapiFields.add("state");
+    openapiFields.add("name");
+    openapiFields.add("created_at");
     openapiFields.add("updated_at");
-    openapiFields.add("virtual_network");
-    openapiFields.add("vrf");
+    openapiFields.add("href");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("vrf");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VrfMetalGateway
+  * @throws IOException if the JSON Object is invalid with respect to ProjectOrganization
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!VrfMetalGateway.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfMetalGateway is not found in the empty JSON string", VrfMetalGateway.openapiRequiredFields.toString()));
+        if (!ProjectOrganization.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ProjectOrganization is not found in the empty JSON string", ProjectOrganization.openapiRequiredFields.toString()));
         }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VrfMetalGateway.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      // validate the optional field `created_by`
-      if (jsonObj.get("created_by") != null && !jsonObj.get("created_by").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("created_by"));
-      }
-      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      // validate the optional field `ip_reservation`
-      if (jsonObj.get("ip_reservation") != null && !jsonObj.get("ip_reservation").isJsonNull()) {
-        VrfIpReservation.validateJsonObject(jsonObj.getAsJsonObject("ip_reservation"));
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // validate the optional field `project`
-      if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
-        Project.validateJsonObject(jsonObj.getAsJsonObject("project"));
+      // validate the optional field `href`
+      if (jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) {
+        Href.validateJsonObject(jsonObj.getAsJsonObject("href"));
       }
-      if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
-      }
-      // validate the optional field `virtual_network`
-      if (jsonObj.get("virtual_network") != null && !jsonObj.get("virtual_network").isJsonNull()) {
-        VirtualNetwork.validateJsonObject(jsonObj.getAsJsonObject("virtual_network"));
-      }
-      // validate the required field `vrf`
-      Vrf.validateJsonObject(jsonObj.getAsJsonObject("vrf"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VrfMetalGateway.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VrfMetalGateway' and its subtypes
+       if (!ProjectOrganization.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ProjectOrganization' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VrfMetalGateway> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VrfMetalGateway.class));
+       final TypeAdapter<ProjectOrganization> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ProjectOrganization.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<VrfMetalGateway>() {
+       return (TypeAdapter<T>) new TypeAdapter<ProjectOrganization>() {
            @Override
-           public void write(JsonWriter out, VrfMetalGateway value) throws IOException {
+           public void write(JsonWriter out, ProjectOrganization value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -576,11 +353,11 @@ public class VrfMetalGateway {
            }
 
            @Override
-           public VrfMetalGateway read(JsonReader in) throws IOException {
+           public ProjectOrganization read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             VrfMetalGateway instance = thisAdapter.fromJsonTree(jsonObj);
+             ProjectOrganization instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -607,18 +384,18 @@ public class VrfMetalGateway {
   }
 
  /**
-  * Create an instance of VrfMetalGateway given an JSON string
+  * Create an instance of ProjectOrganization given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of VrfMetalGateway
-  * @throws IOException if the JSON string is invalid with respect to VrfMetalGateway
+  * @return An instance of ProjectOrganization
+  * @throws IOException if the JSON string is invalid with respect to ProjectOrganization
   */
-  public static VrfMetalGateway fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VrfMetalGateway.class);
+  public static ProjectOrganization fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ProjectOrganization.class);
   }
 
  /**
-  * Convert an instance of VrfMetalGateway to an JSON string
+  * Convert an instance of ProjectOrganization to an JSON string
   *
   * @return JSON string
   */

@@ -185,6 +185,7 @@ docs/Project.md
 docs/ProjectCreateFromRootInput.md
 docs/ProjectCreateInput.md
 docs/ProjectList.md
+docs/ProjectOrganization.md
 docs/ProjectUpdateInput.md
 docs/ProjectUsage.md
 docs/ProjectUsageList.md
@@ -479,6 +480,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/Project.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectCreateFromRootInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectList.java
+src/main/java/com/equinix/openapi/metal/v1/model/ProjectOrganization.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectUsage.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectUsageList.java
@@ -732,6 +734,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/PortVlanAssignmentTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectCreateFromRootInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectListTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/ProjectOrganizationTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectUpdateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectUsageListTest.java

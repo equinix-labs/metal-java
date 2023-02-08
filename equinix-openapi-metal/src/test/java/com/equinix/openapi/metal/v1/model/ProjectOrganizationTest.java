@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.ProjectOrganization;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,57 +21,23 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for Project
+ * Model tests for ProjectOrganization
  */
-public class ProjectTest {
-    private final Project model = new Project();
+public class ProjectOrganizationTest {
+    private final ProjectOrganization model = new ProjectOrganization();
 
     /**
-     * Model tests for Project
+     * Model tests for ProjectOrganization
      */
     @Test
-    public void testProject() {
-        // TODO: test Project
-    }
-
-    /**
-     * Test the property 'bgpConfig'
-     */
-    @Test
-    public void bgpConfigTest() {
-        // TODO: test bgpConfig
-    }
-
-    /**
-     * Test the property 'createdAt'
-     */
-    @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
-    }
-
-    /**
-     * Test the property 'customdata'
-     */
-    @Test
-    public void customdataTest() {
-        // TODO: test customdata
-    }
-
-    /**
-     * Test the property 'devices'
-     */
-    @Test
-    public void devicesTest() {
-        // TODO: test devices
+    public void testProjectOrganization() {
+        // TODO: test ProjectOrganization
     }
 
     /**
@@ -84,38 +49,6 @@ public class ProjectTest {
     }
 
     /**
-     * Test the property 'invitations'
-     */
-    @Test
-    public void invitationsTest() {
-        // TODO: test invitations
-    }
-
-    /**
-     * Test the property 'maxDevices'
-     */
-    @Test
-    public void maxDevicesTest() {
-        // TODO: test maxDevices
-    }
-
-    /**
-     * Test the property 'members'
-     */
-    @Test
-    public void membersTest() {
-        // TODO: test members
-    }
-
-    /**
-     * Test the property 'memberships'
-     */
-    @Test
-    public void membershipsTest() {
-        // TODO: test memberships
-    }
-
-    /**
      * Test the property 'name'
      */
     @Test
@@ -124,27 +57,11 @@ public class ProjectTest {
     }
 
     /**
-     * Test the property 'networkStatus'
+     * Test the property 'createdAt'
      */
     @Test
-    public void networkStatusTest() {
-        // TODO: test networkStatus
-    }
-
-    /**
-     * Test the property 'paymentMethod'
-     */
-    @Test
-    public void paymentMethodTest() {
-        // TODO: test paymentMethod
-    }
-
-    /**
-     * Test the property 'sshKeys'
-     */
-    @Test
-    public void sshKeysTest() {
-        // TODO: test sshKeys
+    public void createdAtTest() {
+        // TODO: test createdAt
     }
 
     /**
@@ -156,19 +73,11 @@ public class ProjectTest {
     }
 
     /**
-     * Test the property 'volumes'
+     * Test the property 'href'
      */
     @Test
-    public void volumesTest() {
-        // TODO: test volumes
-    }
-
-    /**
-     * Test the property 'organization'
-     */
-    @Test
-    public void organizationTest() {
-        // TODO: test organization
+    public void hrefTest() {
+        // TODO: test href
     }
 
 }

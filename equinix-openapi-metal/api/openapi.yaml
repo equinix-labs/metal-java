@@ -12740,13 +12740,6 @@ components:
             may be used on multiple devices within a project.
           type: string
         ip_addresses:
-          default:
-          - address_family: 4
-            public: true
-          - address_family: 4
-            public: false
-          - address_family: 6
-            public: true
           description: |-
             The `ip_addresses attribute will allow you to specify the addresses you want created with your device.
 
@@ -13976,6 +13969,13 @@ components:
           members:
           - href: href
           - href: href
+          organization:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href:
+              href: href
           name: name
           network_status: "{}"
           customdata: "{}"
@@ -14436,6 +14436,13 @@ components:
             members:
             - href: href
             - href: href
+            organization:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              href:
+                href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -14838,6 +14845,13 @@ components:
             members:
             - href: href
             - href: href
+            organization:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              href:
+                href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -18512,6 +18526,13 @@ components:
         members:
         - href: href
         - href: href
+        organization:
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          href:
+            href: href
         name: name
         network_status: "{}"
         customdata: "{}"
@@ -18564,6 +18585,8 @@ components:
           items:
             $ref: '#/components/schemas/Href'
           type: array
+        organization:
+          $ref: '#/components/schemas/ProjectOrganization'
       type: object
     ProjectCreateFromRootInput:
       example:
@@ -18627,6 +18650,13 @@ components:
           members:
           - href: href
           - href: href
+          organization:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href:
+              href: href
           name: name
           network_status: "{}"
           customdata: "{}"
@@ -18656,6 +18686,13 @@ components:
           members:
           - href: href
           - href: href
+          organization:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href:
+              href: href
           name: name
           network_status: "{}"
           customdata: "{}"
@@ -20565,6 +20602,13 @@ components:
           members:
           - href: href
           - href: href
+          organization:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href:
+              href: href
           name: name
           network_status: "{}"
           customdata: "{}"
@@ -20716,6 +20760,13 @@ components:
           members:
           - href: href
           - href: href
+          organization:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href:
+              href: href
           name: name
           network_status: "{}"
           customdata: "{}"
@@ -20758,6 +20809,13 @@ components:
             members:
             - href: href
             - href: href
+            organization:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              href:
+                href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -20914,6 +20972,13 @@ components:
             members:
             - href: href
             - href: href
+            organization:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              href:
+                href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -20956,6 +21021,13 @@ components:
               members:
               - href: href
               - href: href
+              organization:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                href:
+                  href: href
               name: name
               network_status: "{}"
               customdata: "{}"
@@ -21034,6 +21106,13 @@ components:
             members:
             - href: href
             - href: href
+            organization:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              href:
+                href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -21076,6 +21155,13 @@ components:
               members:
               - href: href
               - href: href
+              organization:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                href:
+                  href: href
               name: name
               network_status: "{}"
               customdata: "{}"
@@ -21173,6 +21259,13 @@ components:
             members:
             - href: href
             - href: href
+            organization:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              href:
+                href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -21239,6 +21332,13 @@ components:
             members:
             - href: href
             - href: href
+            organization:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              href:
+                href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -21311,6 +21411,8 @@ components:
           $ref: '#/components/schemas/VirtualNetwork'
         vrf:
           $ref: '#/components/schemas/Vrf'
+      required:
+      - vrf
       type: object
     VrfMetalGatewayCreateInput:
       properties:
@@ -21573,6 +21675,29 @@ components:
           description: Bonded is true for NetworkPort ports in a bond and NetworkBondPort
             ports that are active
           type: boolean
+      type: object
+    ProjectOrganization:
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        href:
+          href: href
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        href:
+          $ref: '#/components/schemas/Href'
       type: object
     createInterconnectionPortVirtualCircuit_request:
       oneOf:
