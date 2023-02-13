@@ -2,7 +2,9 @@ properties:
   class:
     type: string
   customdata:
+    default: {}
     type: object
+    additionalProperties: true
   facility:
     description: The facility code of the instance
     type: string

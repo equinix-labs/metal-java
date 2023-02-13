@@ -19,4 +19,8 @@ properties:
     type: string
   type:
     type: string
+  modified_by:
+    type: object
+  ip:
+    type: string
 type: object

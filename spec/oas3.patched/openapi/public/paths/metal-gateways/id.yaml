@@ -12,8 +12,14 @@ delete:
   - $ref: '../../components/parameters/Include.yaml'
   - $ref: '../../components/parameters/Exclude.yaml'
   responses:
-    "204":
-      description: no content
+    "202":
+      description: accepted
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '../../components/schemas/MetalGateway.yaml'
+              - $ref: '../../components/schemas/VrfMetalGateway.yaml'
     "401":
       content:
         application/json:

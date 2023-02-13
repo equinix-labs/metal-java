@@ -58,9 +58,9 @@ get:
         application/json:
           schema:
             oneOf:
-            - $ref: '../../components/schemas/IPAssignment.yaml'
-            - $ref: '../../components/schemas/IPReservation.yaml'
-            - $ref: '../../components/schemas/VrfIpReservation.yaml'
+              - $ref: '../../components/schemas/IPAssignment.yaml'
+              - $ref: '../../components/schemas/IPReservation.yaml'
+              - $ref: '../../components/schemas/VrfIpReservation.yaml'
       description: ok
     "401":
       content:
@@ -94,19 +94,11 @@ patch:
     schema:
       format: uuid
       type: string
-  - description: Notes for this IP Assignment
-    in: query
-    name: details
-    required: true
-    schema:
-      type: string
-  - description: Provides the custom metadata stored for this IP Assignment in json
-      format
-    in: query
-    name: customdata
-    required: true
-    schema:
-      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/IPAssignmentUpdateInput.yaml'
   responses:
     "200":
       content:

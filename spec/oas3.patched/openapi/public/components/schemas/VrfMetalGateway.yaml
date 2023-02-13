@@ -10,7 +10,7 @@ properties:
     format: uuid
     type: string
   ip_reservation:
-    $ref: './VrfIpReservation.yaml'
+    $ref: './VrfIpReservationOrHref.yaml'
   project:
     $ref: './Project.yaml'
   state:
@@ -32,3 +32,5 @@ properties:
   vrf:
     $ref: './Vrf.yaml'
 type: object
+required:
+- vrf

@@ -14,7 +14,7 @@
 package com.equinix.openapi.metal.v1.model;
 
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.IPReservation;
+import com.equinix.openapi.metal.v1.model.IPReservationOrHref;
 import com.equinix.openapi.metal.v1.model.Project;
 import com.equinix.openapi.metal.v1.model.VirtualNetwork;
 import com.google.gson.TypeAdapter;

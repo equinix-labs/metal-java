@@ -13,7 +13,9 @@ properties:
     - $ref: './UserLite.yaml'
     - description: The user that created the device.
   customdata:
+    default: {}
     type: object
+    additionalProperties: true
   description:
     type: string
   facility:

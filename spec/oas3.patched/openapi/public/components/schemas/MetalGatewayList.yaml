@@ -2,7 +2,7 @@ properties:
   metal_gateways:
     items:
       anyOf:
-      - $ref: './MetalGateway.yaml'
       - $ref: './VrfMetalGateway.yaml'
+      - $ref: './MetalGateway.yaml'
     type: array
 type: object

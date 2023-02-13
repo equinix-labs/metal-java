@@ -2,7 +2,7 @@ diff --git a/spec/oas3.patched/openapi/public/components/schemas/DeviceCreateInp
 index 21ad54d..8e160ee 100644
 --- a/spec/oas3.patched/openapi/public/components/schemas/DeviceCreateInput.yaml
 +++ b/spec/oas3.patched/openapi/public/components/schemas/DeviceCreateInput.yaml
-@@ -57,13 +57,6 @@ properties:
+@@ -59,13 +59,6 @@ properties:
        may be used on multiple devices within a project.
      type: string
    ip_addresses:

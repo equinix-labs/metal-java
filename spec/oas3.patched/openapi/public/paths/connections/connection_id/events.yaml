@@ -18,7 +18,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/Event.yaml'
+            $ref: '../../../components/schemas/EventList.yaml'
       description: ok
     "401":
       content:

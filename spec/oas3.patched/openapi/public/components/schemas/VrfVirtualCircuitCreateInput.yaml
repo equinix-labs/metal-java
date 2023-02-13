@@ -26,7 +26,7 @@ properties:
   peer_asn:
     description: The peer ASN that will be used with the VRF on the Virtual Circuit.
     type: integer
-  project:
+  project_id:
     format: uuid
     type: string
   speed:
@@ -54,6 +54,6 @@ type: object
 required:
 - nni_vlan
 - peer_asn
-- project
+- project_id
 - subnet
 - vrf

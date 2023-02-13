@@ -17045,6 +17045,7 @@ components:
           type: array
       type: object
     MetalGateway:
+      additionalProperties: false
       properties:
         created_at:
           format: date-time
@@ -17057,7 +17058,7 @@ components:
           format: uuid
           type: string
         ip_reservation:
-          $ref: '#/components/schemas/IPReservation'
+          $ref: '#/components/schemas/IPReservationOrHref'
         project:
           $ref: '#/components/schemas/Project'
         state:
@@ -22277,7 +22278,7 @@ components:
           format: uuid
           type: string
         ip_reservation:
-          $ref: '#/components/schemas/VrfIpReservation'
+          $ref: '#/components/schemas/VrfIpReservationOrHref'
         project:
           $ref: '#/components/schemas/Project'
         state:
@@ -22727,6 +22728,10 @@ components:
             type: string
           type: array
       type: object
+    IPReservationOrHref:
+      anyOf:
+      - $ref: '#/components/schemas/IPReservation'
+      - $ref: '#/components/schemas/Href'
     BondPortData:
       example:
         name: name
@@ -22776,6 +22781,10 @@ components:
         href:
           $ref: '#/components/schemas/Href'
       type: object
+    VrfIpReservationOrHref:
+      anyOf:
+      - $ref: '#/components/schemas/VrfIpReservation'
+      - $ref: '#/components/schemas/Href'
     BgpRoute:
       properties:
         exact:
@@ -23033,8 +23042,8 @@ components:
       type: object
     MetalGatewayList_metal_gateways_inner:
       anyOf:
-      - $ref: '#/components/schemas/MetalGateway'
       - $ref: '#/components/schemas/VrfMetalGateway'
+      - $ref: '#/components/schemas/MetalGateway'
     Plan_available_in_inner_price:
       example:
         hour: 1.23

@@ -11,4 +11,8 @@ properties:
     $ref: './Href.yaml'
   total:
     type: integer
+  current_page:
+    type: integer
+  last_page:
+    type: integer
 type: object

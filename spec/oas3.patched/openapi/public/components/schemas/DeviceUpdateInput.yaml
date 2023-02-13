@@ -4,7 +4,9 @@ properties:
   billing_cycle:
     type: string
   customdata:
+    default: {}
     type: object
+    additionalProperties: true
   description:
     type: string
   hostname:
