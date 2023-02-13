@@ -3,58 +3,88 @@ info:
   contact:
     email: support@equinixmetal.com
     name: Equinix Metal API Team
-  description: "# Introduction\nEquinix Metal provides a RESTful HTTP API which can\
-    \ be reached at <https://api.equinix.com/metal/v1>. This document describes the\
-    \ API and how to use it.\n\nThe API allows you to programmatically interact with\
-    \ all\nof your Equinix Metal resources, including devices, networks, addresses,\
-    \ organizations,\nprojects, and your user account. Every feature of the Equinix\
-    \ Metal web interface is accessible through the API.\n\nThe API docs are generated\
-    \ from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.\n\
-    \n# Common Parameters\n\nThe Equinix Metal API uses a few methods to minimize\
-    \ network traffic and improve throughput. These parameters are not used in all\
-    \ API calls, but are used often enough to warrant their own section. Look for\
-    \ these parameters in the documentation for the API calls that support them.\n\
-    \n## Pagination\n\nPagination is used to limit the number of results returned\
-    \ in a single request. The API will return a maximum of 100 results per page.\
-    \ To retrieve additional results, you can use the `page` and `per_page` query\
-    \ parameters.\n\nThe `page` parameter is used to specify the page number. The\
-    \ first page is `1`. The `per_page` parameter is used to specify the number of\
-    \ results per page. The maximum number of results differs by resource type.\n\n\
-    ## Sorting\n\nWhere offered, the API allows you to sort results by a specific\
-    \ field. To sort results use the `sort_by` query parameter with the root level\
-    \ field name as the value. The `sort_direction` parameter is used to specify the\
-    \ sort direction, either either `asc` (ascending) or `desc` (descending).\n\n\
-    ## Filtering\n\nFiltering is used to limit the results returned in a single request.\
-    \ The API supports filtering by certain fields in the response. To filter results,\
-    \ you can use the field as a query parameter.\n\nFor example, to filter the IP\
-    \ list to only return public IPv4 addresses, you can filter by the `type` field,\
-    \ as in the following request:\n\n```sh\ncurl -H 'X-Auth-Token: my_authentication_token'\
-    \ \\\n  https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4\n```\n\
-    \nOnly IP addresses with the `type` field set to `public_ipv4` will be returned.\n\
-    \n## Searching\n\nSearching is used to find matching resources using multiple\
-    \ field comparissons. The API supports searching in resources that define this\
-    \ behavior. The fields available for search differ by resource, as does the search\
-    \ strategy.\n\nTo search resources you can use the `search` query parameter.\n\
-    \n## Include and Exclude\n\nFor resources that contain references to other resources,\
-    \ sucha as a Device that refers to the Project it resides in, the Equinix Metal\
-    \ API will returns `href` values (API links) to the associated resource.\n\n```json\n\
-    {\n  ...\n  \"project\": {\n    \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"\
-    \n  }\n}\n```\n\nIf you're going need the project details, you can avoid a second\
-    \ API request.  Specify the contained `href` resources and collections that you'd\
-    \ like to have included in the response using the `include` query parameter.\n\
-    \nFor example:\n  \n```sh\ncurl -H 'X-Auth-Token: my_authentication_token' \\\n\
-    \  https://api.equinix.com/metal/v1/user?include=projects\n```\n\nThe `include`\
-    \ parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests\
-    \ where `href` resources are presented.\n\nTo have multiple resources include,\
-    \ use a comma-separated list (e.g. `?include=emails,projects,memberships`).\n\n\
-    ```sh\ncurl -H 'X-Auth-Token: my_authentication_token' \\\n  https://api.equinix.com/metal/v1/user?include=emails,projects,memberships\n\
-    ```\n\nYou may also include nested associations up to three levels deep using\
-    \ dot notation (`?include=memberships.projects`):\n\n```sh\ncurl -H 'X-Auth-Token:\
-    \ my_authentication_token' \\\n  https://api.equinix.com/metal/v1/user?include=memberships.projects\n\
-    ```\n\nTo exclude resources, and optimize response delivery, use the `exclude`\
-    \ query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`,\
-    \ `PUT`, and `PATCH` requests for fields with nested object responses. When excluded,\
-    \ these fields will be replaced with an object that contains only an `href` field.\n"
+  description: |
+    # Introduction
+    Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.
+
+    The API allows you to programmatically interact with all
+    of your Equinix Metal resources, including devices, networks, addresses, organizations,
+    projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.
+
+    The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.
+
+    # Common Parameters
+
+    The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.
+
+    ## Pagination
+
+    Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.
+
+    The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.
+
+    ## Sorting
+
+    Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).
+
+    ## Filtering
+
+    Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.
+
+    For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:
+
+    ```sh
+    curl -H 'X-Auth-Token: my_authentication_token' \
+      https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4
+    ```
+
+    Only IP addresses with the `type` field set to `public_ipv4` will be returned.
+
+    ## Searching
+
+    Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.
+
+    To search resources you can use the `search` query parameter.
+
+    ## Include and Exclude
+
+    For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.
+
+    ```json
+    {
+      ...
+      "project": {
+        "href": "/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd"
+      }
+    }
+    ```
+
+    If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.
+
+    For example:
+
+    ```sh
+    curl -H 'X-Auth-Token: my_authentication_token' \
+      https://api.equinix.com/metal/v1/user?include=projects
+    ```
+
+    The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.
+
+    To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).
+
+    ```sh
+    curl -H 'X-Auth-Token: my_authentication_token' \
+      https://api.equinix.com/metal/v1/user?include=emails,projects,memberships
+    ```
+
+    You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):
+
+    ```sh
+    curl -H 'X-Auth-Token: my_authentication_token' \
+      https://api.equinix.com/metal/v1/user?include=memberships.projects
+    ```
+
+    To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field.
   license:
     name: Equinix Metal
     url: https://metal.equinix.com/legal/
@@ -835,7 +865,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Event'
+                $ref: '#/components/schemas/EventList'
           description: ok
         "401":
           content:
@@ -890,6 +920,41 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: not found
       summary: List a interconnection's ports
+      tags:
+      - Interconnections
+  /connections/{connection_id}/virtual-circuits:
+    get:
+      description: List the virtual circuit record(s) associated with a particular
+        interconnection id.
+      operationId: listInterconnectionVirtualCircuits
+      parameters:
+      - description: UUID of the interconnection
+        in: path
+        name: connection_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualCircuitList'
+          description: ok
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: not found
+      summary: List a interconnection's virtual circuits
       tags:
       - Interconnections
   /connections/{connection_id}/ports/{id}:
@@ -2436,6 +2501,53 @@ paths:
       summary: Retrieve a hardware reservation
       tags:
       - HardwareReservations
+  /hardware-reservations/{id}/activate:
+    post:
+      description: Activate a spare hardware reservation
+      operationId: activateHardwareReservation
+      parameters:
+      - description: Hardware Reservation UUID
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/activateHardwareReservation_request'
+        description: Note to attach to the reservation
+        required: false
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HardwareReservation'
+          description: ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: not found
+      summary: Activate a spare hardware reservation
+      tags:
+      - HardwareReservations
   /hardware-reservations/{id}/move:
     post:
       description: Move a hardware reservation to another project
@@ -2452,9 +2564,8 @@ paths:
         content:
           application/json:
             schema:
-              format: uuid
-              type: string
-        description: Project UUID
+              $ref: '#/components/schemas/moveHardwareReservation_request'
+        description: Destination Project UUID
         required: true
       responses:
         "201":
@@ -2855,19 +2966,11 @@ paths:
         schema:
           format: uuid
           type: string
-      - description: Notes for this IP Assignment
-        in: query
-        name: details
-        required: true
-        schema:
-          type: string
-      - description: Provides the custom metadata stored for this IP Assignment in
-          json format
-        in: query
-        name: customdata
-        required: true
-        schema:
-          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IPAssignmentUpdateInput'
       responses:
         "200":
           content:
@@ -3609,8 +3712,12 @@ paths:
           type: array
         style: form
       responses:
-        "204":
-          description: no content
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/findMetalGatewayById_200_response'
+          description: accepted
         "401":
           content:
             application/json:
@@ -6907,6 +7014,28 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: "Search by facility code, plan name, project name, reservation\
+          \ short ID or device hostname"
+        in: query
+        name: query
+        schema:
+          type: string
+      - description: Filter by hardware reservation state
+        in: query
+        name: state
+        schema:
+          enum:
+          - active
+          - spare
+          - need_of_service
+          type: string
+      - description: Filter hardware reservation that is provisionable
+        in: query
+        name: provisionable
+        schema:
+          enum:
+          - only
+          type: string
       - description: |-
           Nested attributes to include. Included objects will return their full
           attributes. Attribute names can be dotted (up to 3 levels) to included deeply
@@ -7423,7 +7552,7 @@ paths:
           type: string
       - description: "Search by key, label, or fingerprint"
         in: query
-        name: Search string
+        name: query
         schema:
           type: string
       - description: |-
@@ -8485,6 +8614,206 @@ paths:
       summary: Create a password reset token
       tags:
       - PasswordResetTokens
+  /routes/{id}:
+    delete:
+      description: "Trigger the deletion of a VRF Route resource. The status of the\
+        \ route will update to 'deleting', and the route resource will remain accessible\
+        \ while background operations remove the route from the network. Once the\
+        \ route has been removed from the network, the resource will be fully deleted."
+      operationId: deleteVrfRouteById
+      parameters:
+      - description: VRF Route UUID
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VrfRoute'
+          description: Accepted
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+      summary: Delete a VRF Route
+      tags:
+      - VRFs
+    get:
+      description: Returns a single VRF Route resource
+      operationId: findVrfRouteById
+      parameters:
+      - description: VRF Route UUID
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VrfRoute'
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+      summary: Retrieve a VRF Route
+      tags:
+      - VRFs
+    put:
+      description: Requests a VRF Route be redeployed across the network. Updating
+        the prefix or next-hop address on a route is not currently supported.
+      operationId: updateVrfRouteById
+      parameters:
+      - description: VRF Route UUID
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VrfRoute'
+          description: Accepted
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Too Many Requests
+      summary: Update a VRF Route
+      tags:
+      - VRFs
   /spot-market-requests/{id}:
     delete:
       description: Deletes the spot market request.
@@ -9674,7 +10003,7 @@ paths:
       summary: Verify a user using an email verification token
       tags:
       - UserVerificationTokens
-  /virtual-circuit/{id}/events:
+  /virtual-circuits/{id}/events:
     get:
       description: Returns a list of the virtual circuit events
       operationId: findVirtualCircuitEvents
@@ -10165,6 +10494,179 @@ paths:
       summary: Retrieve all VRF IP Reservations in the VRF
       tags:
       - VRFs
+  /vrfs/{vrf_id}/ips/{id}:
+    get:
+      description: Returns the IP Reservation for the VRF.
+      operationId: findVrfIpReservation
+      parameters:
+      - description: VRF UUID
+        in: path
+        name: vrf_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: IP UUID
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Nested attributes to include. Included objects will return their
+          full attributes. Attribute names can be dotted (up to 3 levels) to included
+          deeply nested objects.
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Nested attributes to exclude. Excluded objects will return only
+          the href attribute. Attribute names can be dotted (up to 3 levels) to exclude
+          deeply nested objects.
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VrfIpReservation'
+          description: ok
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: not found
+      summary: Retrieve all VRF IP Reservations in the VRF
+      tags:
+      - VRFs
+  /vrfs/{id}/routes:
+    get:
+      description: Returns the list of routes for the VRF
+      operationId: getVrfRoutes
+      parameters:
+      - description: VRF UUID
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VrfRouteList'
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+      summary: Retrieve all routes in the VRF
+      tags:
+      - VRFs
+    post:
+      description: |
+        Create a route in a VRF. Currently only static default routes are supported.
+
+        Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information.
+      operationId: createVrfRoute
+      parameters:
+      - description: VRF UUID
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VrfRouteCreateInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VrfRoute'
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable entity
+      summary: Create a VRF route
+      tags:
+      - VRFs
 components:
   parameters:
     Page:
@@ -10472,14 +10974,20 @@ components:
           type: array
         routes_in:
           description: A list of project subnets
+          example:
+          - exact: true
+            route: 10.32.16.0/31
           items:
-            $ref: '#/components/schemas/BgpNeighborData_routes_in_inner'
+            $ref: '#/components/schemas/BgpRoute'
           type: array
         routes_out:
           description: A list of outgoing routes. Only populated if the BGP session
             has default route enabled.
+          example:
+          - exact: true
+            route: 0.0.0.0/0
           items:
-            $ref: '#/components/schemas/BgpNeighborData_routes_out_inner'
+            $ref: '#/components/schemas/BgpRoute'
           type: array
       type: object
     BgpSession:
@@ -10703,6 +11211,8 @@ components:
         created_by:
           $ref: '#/components/schemas/Device_created_by'
         customdata:
+          additionalProperties: true
+          default: {}
           type: object
         description:
           type: string
@@ -10889,13 +11399,6 @@ components:
             may be used on multiple devices within a project.
           type: string
         ip_addresses:
-          default:
-          - address_family: 4
-            public: true
-          - address_family: 4
-            public: false
-          - address_family: 6
-            public: true
           description: |-
             The `ip_addresses attribute will allow you to specify the addresses you want created with your device.
 
@@ -11052,6 +11555,8 @@ components:
         billing_cycle:
           type: string
         customdata:
+          additionalProperties: true
+          default: {}
           type: object
         description:
           type: string
@@ -11184,6 +11689,10 @@ components:
         state:
           type: string
         type:
+          type: string
+        modified_by:
+          type: object
+        ip:
           type: string
       type: object
     EventList:
@@ -11351,7 +11860,7 @@ components:
           format: uuid
           type: string
         need_of_service:
-          description: Whether this Device requires assistance from Metal Equinix.
+          description: Whether this Device requires assistance from Equinix Metal.
           type: boolean
         plan:
           $ref: '#/components/schemas/Plan'
@@ -11368,7 +11877,7 @@ components:
         spare:
           description: Whether the Hardware Reservation is a spare. Spare Hardware
             Reservations are used when a Hardware Reservations requires service from
-            Metal Equinix
+            Equinix Metal
           type: boolean
         switch_uuid:
           description: "Switch short id. This can be used to determine if two devices\
@@ -11652,6 +12161,14 @@ components:
           - shared
           - dedicated
           type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        requested_by:
+          $ref: '#/components/schemas/Href'
       type: object
     InterconnectionCreateInput:
       properties:
@@ -11736,6 +12253,20 @@ components:
           items:
             type: integer
           type: array
+        vrfs:
+          description: "Can only be set when creating Fabric VCs in VRF(s). This field\
+            \ holds a list of VRF UUIDs that will be set automatically on the virtual\
+            \ circuits on creation, and can hold up to two UUIDs. Two UUIDs are required\
+            \ when requesting redundant Fabric VCs. The first UUID will be set on\
+            \ the primary virtual circuit, while the second UUID will be set on the\
+            \ secondary. The two UUIDs can be the same if both the primary and secondary\
+            \ virtual circuits will be in the same VRF. This parameter is included\
+            \ in the specification as a developer preview and is generally unavailable.\
+            \ Please contact our Support team for more details."
+          items:
+            format: uuid
+            type: string
+          type: array
       required:
       - metro
       - name
@@ -11780,6 +12311,14 @@ components:
           type: string
         virtual_circuits:
           $ref: '#/components/schemas/VirtualCircuitList'
+        name:
+          type: string
+        speed:
+          type: integer
+        link_status:
+          type: string
+        href:
+          type: string
       type: object
     InterconnectionPortList:
       properties:
@@ -11976,12 +12515,18 @@ components:
           $ref: '#/components/schemas/Href'
         total:
           type: integer
+        current_page:
+          type: integer
+        last_page:
+          type: integer
       type: object
     Metadata:
       properties:
         class:
           type: string
         customdata:
+          additionalProperties: true
+          default: {}
           type: object
         facility:
           description: The facility code of the instance
@@ -12029,6 +12574,7 @@ components:
           type: array
       type: object
     MetalGateway:
+      additionalProperties: false
       properties:
         created_at:
           format: date-time
@@ -12041,7 +12587,7 @@ components:
           format: uuid
           type: string
         ip_reservation:
-          $ref: '#/components/schemas/IPReservation'
+          $ref: '#/components/schemas/IPReservationOrHref'
         project:
           $ref: '#/components/schemas/Project'
         state:
@@ -12612,6 +13158,8 @@ components:
           items:
             $ref: '#/components/schemas/PortVlanAssignmentBatch_vlan_assignments_inner'
           type: array
+        project:
+          $ref: '#/components/schemas/Href'
       type: object
     PortVlanAssignmentBatchCreateInput:
       properties:
@@ -12681,6 +13229,8 @@ components:
           items:
             $ref: '#/components/schemas/Href'
           type: array
+        organization:
+          $ref: '#/components/schemas/ProjectOrganization'
       type: object
     ProjectCreateFromRootInput:
       properties:
@@ -13378,6 +13928,12 @@ components:
           $ref: '#/components/schemas/Href'
         vnid:
           type: integer
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
       required:
       - bill
       - description
@@ -13401,7 +13957,7 @@ components:
           maximum: 4094
           minimum: 2
           type: integer
-        project:
+        project_id:
           format: uuid
           type: string
         speed:
@@ -13417,6 +13973,8 @@ components:
             Network in your project (sent as integer).
           format: uuid
           type: string
+      required:
+      - project_id
       type: object
     VirtualCircuitList:
       properties:
@@ -13537,6 +14095,12 @@ components:
           $ref: '#/components/schemas/User'
         href:
           type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
       type: object
     VrfCreateInput:
       properties:
@@ -13633,6 +14197,24 @@ components:
           type: string
         vrf:
           $ref: '#/components/schemas/Vrf'
+        public:
+          type: boolean
+        management:
+          type: boolean
+        manageable:
+          type: boolean
+        customdata:
+          type: object
+        bill:
+          type: boolean
+        project_lite:
+          $ref: '#/components/schemas/Project'
+        address:
+          type: string
+        gateway:
+          type: string
+        metro:
+          $ref: '#/components/schemas/Metro'
       required:
       - type
       - vrf
@@ -13698,7 +14280,7 @@ components:
           format: uuid
           type: string
         ip_reservation:
-          $ref: '#/components/schemas/VrfIpReservation'
+          $ref: '#/components/schemas/VrfIpReservationOrHref'
         project:
           $ref: '#/components/schemas/Project'
         state:
@@ -13720,6 +14302,8 @@ components:
           $ref: '#/components/schemas/VirtualNetwork'
         vrf:
           $ref: '#/components/schemas/Vrf'
+      required:
+      - vrf
       type: object
     VrfMetalGatewayCreateInput:
       properties:
@@ -13740,6 +14324,89 @@ components:
       required:
       - ip_reservation_id
       - virtual_network_id
+      type: object
+    VrfRoute:
+      properties:
+        id:
+          description: The unique identifier for the newly-created resource
+          example: e1ff9c2b-051a-4688-965f-153e274f77e0
+          format: uuid
+          readOnly: true
+          type: string
+        status:
+          description: "The status of the route. Potential values are \"pending\"\
+            , \"active\", \"deleting\", and \"error\", representing various lifecycle\
+            \ states of the route and whether or not it has been successfully configured\
+            \ on the network"
+          enum:
+          - pending
+          - active
+          - deleting
+          - error
+          example: active
+          readOnly: true
+          type: string
+        prefix:
+          description: "The IPv4 prefix for the route, in CIDR-style notation"
+          example: 0.0.0.0/0
+          type: string
+        next_hop:
+          description: The next-hop IPv4 address for the route
+          example: 192.168.1.254
+          format: ipv4
+          type: string
+        type:
+          description: "VRF route type, like 'bgp', 'connected', and 'static'. Currently,\
+            \ only static routes are supported"
+          enum:
+          - static
+          example: static
+          readOnly: true
+          type: string
+        created_at:
+          format: date-time
+          readOnly: true
+          type: string
+        updated_at:
+          format: date-time
+          readOnly: true
+          type: string
+        metal_gateway:
+          $ref: '#/components/schemas/VrfRoute_metal_gateway'
+        virtual_network:
+          $ref: '#/components/schemas/VrfRoute_virtual_network'
+        vrf:
+          $ref: '#/components/schemas/VrfRoute_vrf'
+        href:
+          example: /routes/e1ff9c2b-051a-4688-965f-153e274f77e0
+          readOnly: true
+          type: string
+      type: object
+    VrfRouteCreateInput:
+      properties:
+        prefix:
+          description: "The IPv4 prefix for the route, in CIDR-style notation. For\
+            \ a static default route, this will always be \"0.0.0.0/0\""
+          example: 0.0.0.0/0
+          type: string
+        next_hop:
+          description: The IPv4 address within the VRF of the host that will handle
+            this route
+          example: 192.168.1.254
+          format: ipv4
+          type: string
+      required:
+      - next_hop
+      - prefix
+      type: object
+    VrfRouteList:
+      properties:
+        routes:
+          items:
+            $ref: '#/components/schemas/VrfRoute'
+          type: array
+        meta:
+          $ref: '#/components/schemas/Meta'
       type: object
     VrfUpdateInput:
       properties:
@@ -13828,6 +14495,12 @@ components:
           type: array
         vrf:
           $ref: '#/components/schemas/Vrf'
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
       type: object
     VrfVirtualCircuitCreateInput:
       properties:
@@ -13861,7 +14534,7 @@ components:
           description: The peer ASN that will be used with the VRF on the Virtual
             Circuit.
           type: integer
-        project:
+        project_id:
           format: uuid
           type: string
         speed:
@@ -13890,19 +14563,49 @@ components:
       required:
       - nni_vlan
       - peer_asn
-      - project
+      - project_id
       - subnet
       - vrf
       type: object
     VrfVirtualCircuitUpdateInput:
       properties:
+        customer_ip:
+          description: "An IP address from the subnet that will be used on the Customer\
+            \ side. This parameter is optional, but if supplied, we will use the other\
+            \ usable IP address in the subnet as the Metal IP. By default, the last\
+            \ usable IP address in the subnet will be used."
+          example: 12.0.0.2
+          type: string
         description:
+          type: string
+        md5:
+          description: The MD5 password for the BGP peering in plaintext (not a checksum).
+          type: string
+        metal_ip:
+          description: "An IP address from the subnet that will be used on the Metal\
+            \ side. This parameter is optional, but if supplied, we will use the other\
+            \ usable IP address in the subnet as the Customer IP. By default, the\
+            \ first usable IP address in the subnet will be used."
+          example: 12.0.0.1
           type: string
         name:
           type: string
+        peer_asn:
+          description: The peer ASN that will be used with the VRF on the Virtual
+            Circuit.
+          type: integer
         speed:
           description: Speed can be changed only if it is an interconnection on a
             Dedicated Port
+          type: string
+        subnet:
+          description: "The /30 or /31 subnet of one of the VRF IP Blocks that will\
+            \ be used with the VRF for the Virtual Circuit. This subnet does not have\
+            \ to be an existing VRF IP reservation, as we will create the VRF IP reservation\
+            \ on creation if it does not exist. The Metal IP and Customer IP must\
+            \ be IPs from this subnet. For /30 subnets, the network and broadcast\
+            \ IPs cannot be used as the Metal or Customer IP."
+          example: 12.0.0.0/30
           type: string
         tags:
           items:
@@ -13943,6 +14646,21 @@ components:
       required:
       - type
       type: object
+    IPAssignmentUpdateInput:
+      properties:
+        details:
+          type: string
+        customdata:
+          type: object
+        tags:
+          items:
+            type: string
+          type: array
+      type: object
+    IPReservationOrHref:
+      anyOf:
+      - $ref: '#/components/schemas/IPReservation'
+      - $ref: '#/components/schemas/Href'
     BondPortData:
       properties:
         id:
@@ -13963,6 +14681,34 @@ components:
             ports that are active
           type: boolean
       type: object
+    ProjectOrganization:
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        href:
+          $ref: '#/components/schemas/Href'
+      type: object
+    VrfIpReservationOrHref:
+      anyOf:
+      - $ref: '#/components/schemas/VrfIpReservation'
+      - $ref: '#/components/schemas/Href'
+    BgpRoute:
+      properties:
+        exact:
+          type: boolean
+        route:
+          example: 10.32.16.0/31
+          type: string
+      type: object
     createInterconnectionPortVirtualCircuit_request:
       oneOf:
       - $ref: '#/components/schemas/VirtualCircuitCreateInput'
@@ -13982,6 +14728,17 @@ components:
       required:
       - ended_at
       - started_at
+      type: object
+    activateHardwareReservation_request:
+      properties:
+        description:
+          type: string
+      type: object
+    moveHardwareReservation_request:
+      properties:
+        project_id:
+          format: uuid
+          type: string
       type: object
     findIPAddressById_200_response:
       oneOf:
@@ -14022,23 +14779,6 @@ components:
       - $ref: '#/components/schemas/User'
       - description: Available only for user tokens
         type: object
-    BgpNeighborData_routes_in_inner:
-      properties:
-        exact:
-          type: boolean
-        route:
-          description: A project network
-          example: 10.32.16.0/31
-          type: string
-      type: object
-    BgpNeighborData_routes_out_inner:
-      properties:
-        exact:
-          type: boolean
-        route:
-          example: 0.0.0.0/0
-          type: string
-      type: object
     CreateSelfServiceReservationRequest_period:
       properties:
         count:
@@ -14191,8 +14931,8 @@ components:
       type: object
     MetalGatewayList_metal_gateways_inner:
       anyOf:
-      - $ref: '#/components/schemas/MetalGateway'
       - $ref: '#/components/schemas/VrfMetalGateway'
+      - $ref: '#/components/schemas/MetalGateway'
     Plan_available_in_inner_price:
       properties:
         hour:
@@ -14378,6 +15118,25 @@ components:
       anyOf:
       - $ref: '#/components/schemas/VirtualCircuit'
       - $ref: '#/components/schemas/VrfVirtualCircuit'
+    VrfRoute_metal_gateway:
+      description: A link to the Metal Gateway to which this VRF Route is associated
+      oneOf:
+      - $ref: '#/components/schemas/Href'
+      - $ref: '#/components/schemas/MetalGateway'
+      readOnly: true
+    VrfRoute_virtual_network:
+      description: "A link to the Virtual Network to which this VRF Route is associated,\
+        \ through the Metal Gateway"
+      oneOf:
+      - $ref: '#/components/schemas/Href'
+      - $ref: '#/components/schemas/VirtualNetwork'
+      readOnly: true
+    VrfRoute_vrf:
+      description: A link to the VRF within which this route exists
+      oneOf:
+      - $ref: '#/components/schemas/Href'
+      - $ref: '#/components/schemas/Vrf'
+      readOnly: true
   securitySchemes:
     x_auth_token:
       description: |

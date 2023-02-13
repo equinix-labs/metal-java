@@ -21,4 +21,10 @@ properties:
     $ref: './User.yaml'
   href:
     type: string
+  created_at:
+    format: date-time
+    type: string
+  updated_at:
+    format: date-time
+    type: string
 type: object

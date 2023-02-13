@@ -1,34 +1,13 @@
 get:
-  description: Provides a collection of hardware reservations for a given project.
-  operationId: findProjectHardwareReservations
+  description: Returns a list of the virtual circuit events
+  operationId: findVirtualCircuitEvents
   parameters:
-  - description: Project UUID
+  - description: Virtual Circuit UUID
     in: path
     name: id
     required: true
     schema:
       format: uuid
-      type: string
-  - description: Search by facility code, plan name, project name, reservation short ID or device hostname
-    in: query
-    name: query
-    schema:
-      type: string
-  - description: Filter by hardware reservation state
-    in: query
-    name: state
-    schema:
-      enum:
-      - active
-      - spare
-      - need_of_service
-      type: string
-  - description: Filter hardware reservation that is provisionable
-    in: query
-    name: provisionable
-    schema:
-      enum:
-      - only
       type: string
   - $ref: '../../../components/parameters/Include.yaml'
   - $ref: '../../../components/parameters/Exclude.yaml'
@@ -39,7 +18,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/HardwareReservationList.yaml'
+            $ref: '../../../components/schemas/Event.yaml'
       description: ok
     "401":
       content:
@@ -59,6 +38,6 @@ get:
           schema:
             $ref: '../../../components/schemas/Error.yaml'
       description: not found
-  summary: Retrieve all hardware reservations for a given project
+  summary: Retrieve interconnection events
   tags:
-  - HardwareReservations
+  - Events

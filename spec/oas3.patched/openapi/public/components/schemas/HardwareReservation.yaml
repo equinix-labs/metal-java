@@ -17,7 +17,7 @@ properties:
     format: uuid
     type: string
   need_of_service:
-    description: Whether this Device requires assistance from Metal Equinix.
+    description: Whether this Device requires assistance from Equinix Metal.
     type: boolean
   plan:
     $ref: './Plan.yaml'
@@ -33,7 +33,7 @@ properties:
     type: string
   spare:
     description: Whether the Hardware Reservation is a spare. Spare Hardware Reservations
-      are used when a Hardware Reservations requires service from Metal Equinix
+      are used when a Hardware Reservations requires service from Equinix Metal
     type: boolean
   switch_uuid:
     description: Switch short id. This can be used to determine if two devices are

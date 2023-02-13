@@ -25,4 +25,12 @@ properties:
     type: string
   virtual_circuits:
     $ref: './VirtualCircuitList.yaml'
+  name:
+    type: string
+  speed:
+    type: integer
+  link_status:
+    type: string
+  href:
+    type: string
 type: object
