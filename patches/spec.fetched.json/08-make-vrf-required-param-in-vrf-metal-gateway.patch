@@ -1,10 +1,69 @@
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/IPReservationOrHref.yaml b/spec/oas3.patched/openapi/public/components/schemas/IPReservationOrHref.yaml
+new file mode 100644
+index 0000000..42bb973
+--- /dev/null
++++ b/spec/oas3.patched/openapi/public/components/schemas/IPReservationOrHref.yaml
+@@ -0,0 +1,3 @@
++anyOf:
++- $ref: './IPReservation.yaml'
++- $ref: './Href.yaml'
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/MetalGateway.yaml b/spec/oas3.patched/openapi/public/components/schemas/MetalGateway.yaml
+index ed0eb30..64aa9a5 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/MetalGateway.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/MetalGateway.yaml
+@@ -10,7 +10,7 @@ properties:
+     format: uuid
+     type: string
+   ip_reservation:
+-    $ref: './IPReservation.yaml'
++    $ref: './IPReservationOrHref.yaml'
+   project:
+     $ref: './Project.yaml'
+   state:
+@@ -30,3 +30,4 @@ properties:
+   virtual_network:
+     $ref: './VirtualNetwork.yaml'
+ type: object
++additionalProperties: false
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/MetalGatewayList.yaml b/spec/oas3.patched/openapi/public/components/schemas/MetalGatewayList.yaml
+index 8acb7f4..2a9bd42 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/MetalGatewayList.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/MetalGatewayList.yaml
+@@ -2,7 +2,7 @@ properties:
+   metal_gateways:
+     items:
+       anyOf:
+-      - $ref: './MetalGateway.yaml'
+       - $ref: './VrfMetalGateway.yaml'
++      - $ref: './MetalGateway.yaml'
+     type: array
+ type: object
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/VrfIpReservationOrHref.yaml b/spec/oas3.patched/openapi/public/components/schemas/VrfIpReservationOrHref.yaml
+new file mode 100644
+index 0000000..a8df3ed
+--- /dev/null
++++ b/spec/oas3.patched/openapi/public/components/schemas/VrfIpReservationOrHref.yaml
+@@ -0,0 +1,3 @@
++anyOf:
++- $ref: './VrfIpReservation.yaml'
++- $ref: './Href.yaml'
 diff --git a/spec/oas3.patched/openapi/public/components/schemas/VrfMetalGateway.yaml b/spec/oas3.patched/openapi/public/components/schemas/VrfMetalGateway.yaml
-index 5864d01..1beecfc 100644
+index 5864d01..94c8729 100644
 --- a/spec/oas3.patched/openapi/public/components/schemas/VrfMetalGateway.yaml
 +++ b/spec/oas3.patched/openapi/public/components/schemas/VrfMetalGateway.yaml
+@@ -10,7 +10,7 @@ properties:
+     format: uuid
+     type: string
+   ip_reservation:
+-    $ref: './VrfIpReservation.yaml'
++    $ref: './VrfIpReservationOrHref.yaml'
+   project:
+     $ref: './Project.yaml'
+   state:
 @@ -32,3 +32,5 @@ properties:
    vrf:
      $ref: './Vrf.yaml'
  type: object
 +required:
 +- vrf
+\ No newline at end of file

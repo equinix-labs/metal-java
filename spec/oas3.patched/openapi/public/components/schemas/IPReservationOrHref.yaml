@@ -1,0 +1,3 @@
+anyOf:
+- $ref: './IPReservation.yaml'
+- $ref: './Href.yaml'
