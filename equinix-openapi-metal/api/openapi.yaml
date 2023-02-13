@@ -14560,6 +14560,7 @@ components:
             href: href
         switch_uuid: switch_uuid
         short_id: short_id
+        termination_time: 2000-01-23T04:56:07.000+00:00
         provisionable: true
         need_of_service: true
         href: href
@@ -14975,6 +14976,10 @@ components:
           description: "Switch short id. This can be used to determine if two devices\
             \ are connected to the same switch, for example."
           type: string
+        termination_time:
+          description: Expiration date for the reservation.
+          format: date-time
+          type: string
       type: object
     HardwareReservationList:
       example:
@@ -15034,6 +15039,7 @@ components:
               href: href
           switch_uuid: switch_uuid
           short_id: short_id
+          termination_time: 2000-01-23T04:56:07.000+00:00
           provisionable: true
           need_of_service: true
           href: href
@@ -15448,6 +15454,7 @@ components:
               href: href
           switch_uuid: switch_uuid
           short_id: short_id
+          termination_time: 2000-01-23T04:56:07.000+00:00
           provisionable: true
           need_of_service: true
           href: href
