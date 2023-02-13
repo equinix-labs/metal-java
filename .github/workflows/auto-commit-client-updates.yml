@@ -32,6 +32,7 @@ jobs:
         git checkout ${GITHUB_REF##*/}
         make docker_run
         echo -e "Make execution completed."
+        git add spec/oas3.patched/.
         git add equinix-openapi-metal/.
         echo -e "\nGit status:"
         echo `git status`

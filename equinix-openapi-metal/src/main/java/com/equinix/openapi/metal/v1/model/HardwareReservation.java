@@ -106,6 +106,10 @@ public class HardwareReservation {
   @SerializedName(SERIALIZED_NAME_SWITCH_UUID)
   private String switchUuid;
 
+  public static final String SERIALIZED_NAME_TERMINATION_TIME = "termination_time";
+  @SerializedName(SERIALIZED_NAME_TERMINATION_TIME)
+  private OffsetDateTime terminationTime;
+
   public HardwareReservation() {
   }
 
@@ -394,6 +398,28 @@ public class HardwareReservation {
     this.switchUuid = switchUuid;
   }
 
+
+  public HardwareReservation terminationTime(OffsetDateTime terminationTime) {
+    
+    this.terminationTime = terminationTime;
+    return this;
+  }
+
+   /**
+   * Expiration date for the reservation.
+   * @return terminationTime
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getTerminationTime() {
+    return terminationTime;
+  }
+
+
+  public void setTerminationTime(OffsetDateTime terminationTime) {
+    this.terminationTime = terminationTime;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -461,13 +487,14 @@ public class HardwareReservation {
         Objects.equals(this.provisionable, hardwareReservation.provisionable) &&
         Objects.equals(this.shortId, hardwareReservation.shortId) &&
         Objects.equals(this.spare, hardwareReservation.spare) &&
-        Objects.equals(this.switchUuid, hardwareReservation.switchUuid)&&
+        Objects.equals(this.switchUuid, hardwareReservation.switchUuid) &&
+        Objects.equals(this.terminationTime, hardwareReservation.terminationTime)&&
         Objects.equals(this.additionalProperties, hardwareReservation.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, customRate, device, facility, href, id, needOfService, plan, project, provisionable, shortId, spare, switchUuid, additionalProperties);
+    return Objects.hash(createdAt, customRate, device, facility, href, id, needOfService, plan, project, provisionable, shortId, spare, switchUuid, terminationTime, additionalProperties);
   }
 
   @Override
@@ -487,6 +514,7 @@ public class HardwareReservation {
     sb.append("    shortId: ").append(toIndentedString(shortId)).append("\n");
     sb.append("    spare: ").append(toIndentedString(spare)).append("\n");
     sb.append("    switchUuid: ").append(toIndentedString(switchUuid)).append("\n");
+    sb.append("    terminationTime: ").append(toIndentedString(terminationTime)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -523,6 +551,7 @@ public class HardwareReservation {
     openapiFields.add("short_id");
     openapiFields.add("spare");
     openapiFields.add("switch_uuid");
+    openapiFields.add("termination_time");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

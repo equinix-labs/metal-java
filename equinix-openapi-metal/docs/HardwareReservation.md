@@ -20,6 +20,7 @@
 |**shortId** | **String** | Short version of the ID. |  [optional] |
 |**spare** | **Boolean** | Whether the Hardware Reservation is a spare. Spare Hardware Reservations are used when a Hardware Reservations requires service from Equinix Metal |  [optional] |
 |**switchUuid** | **String** | Switch short id. This can be used to determine if two devices are connected to the same switch, for example. |  [optional] |
+|**terminationTime** | **OffsetDateTime** | Expiration date for the reservation. |  [optional] |
 
 
 

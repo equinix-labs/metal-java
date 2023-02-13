@@ -147,4 +147,12 @@ public class HardwareReservationTest {
         // TODO: test switchUuid
     }
 
+    /**
+     * Test the property 'terminationTime'
+     */
+    @Test
+    public void terminationTimeTest() {
+        // TODO: test terminationTime
+    }
+
 }
