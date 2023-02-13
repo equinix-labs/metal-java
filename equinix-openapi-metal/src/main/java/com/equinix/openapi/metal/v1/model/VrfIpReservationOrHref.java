@@ -16,10 +16,11 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.IPReservationOrHref;
-import com.equinix.openapi.metal.v1.model.MetalGateway;
+import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
+import com.equinix.openapi.metal.v1.model.Metro;
 import com.equinix.openapi.metal.v1.model.Project;
-import com.equinix.openapi.metal.v1.model.VirtualNetwork;
+import com.equinix.openapi.metal.v1.model.Vrf;
+import com.equinix.openapi.metal.v1.model.VrfIpReservation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -27,6 +28,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.ws.rs.core.GenericType;
@@ -63,23 +66,23 @@ import com.google.gson.JsonParseException;
 import com.equinix.openapi.JSON;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VrfRouteMetalGateway extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(VrfRouteMetalGateway.class.getName());
+public class VrfIpReservationOrHref extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(VrfIpReservationOrHref.class.getName());
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!VrfRouteMetalGateway.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'VrfRouteMetalGateway' and its subtypes
+            if (!VrfIpReservationOrHref.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'VrfIpReservationOrHref' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<Href> adapterHref = gson.getDelegateAdapter(this, TypeToken.get(Href.class));
-            final TypeAdapter<MetalGateway> adapterMetalGateway = gson.getDelegateAdapter(this, TypeToken.get(MetalGateway.class));
+            final TypeAdapter<VrfIpReservation> adapterVrfIpReservation = gson.getDelegateAdapter(this, TypeToken.get(VrfIpReservation.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<VrfRouteMetalGateway>() {
+            return (TypeAdapter<T>) new TypeAdapter<VrfIpReservationOrHref>() {
                 @Override
-                public void write(JsonWriter out, VrfRouteMetalGateway value) throws IOException {
+                public void write(JsonWriter out, VrfIpReservationOrHref value) throws IOException {
                     if (value == null || value.getActualInstance() == null) {
                         elementAdapter.write(out, null);
                         return;
@@ -92,99 +95,90 @@ public class VrfRouteMetalGateway extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `MetalGateway`
-                    if (value.getActualInstance() instanceof MetalGateway) {
-                        JsonObject obj = adapterMetalGateway.toJsonTree((MetalGateway)value.getActualInstance()).getAsJsonObject();
+                    // check if the actual instance is of the type `VrfIpReservation`
+                    if (value.getActualInstance() instanceof VrfIpReservation) {
+                        JsonObject obj = adapterVrfIpReservation.toJsonTree((VrfIpReservation)value.getActualInstance()).getAsJsonObject();
                         elementAdapter.write(out, obj);
                         return;
                     }
 
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: Href, MetalGateway");
+                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: Href, VrfIpReservation");
                 }
 
                 @Override
-                public VrfRouteMetalGateway read(JsonReader in) throws IOException {
+                public VrfIpReservationOrHref read(JsonReader in) throws IOException {
                     Object deserialized = null;
                     JsonObject jsonObject = elementAdapter.read(in).getAsJsonObject();
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
 
                     // deserialize Href
                     try {
                         // validate the JSON object to see if any exception is thrown
                         Href.validateJsonObject(jsonObject);
-                        actualAdapter = adapterHref;
-                        match++;
                         log.log(Level.FINER, "Input data matches schema 'Href'");
+                        VrfIpReservationOrHref ret = new VrfIpReservationOrHref();
+                        ret.setActualInstance(adapterHref.fromJsonTree(jsonObject));
+                        return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Href failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Href'", e);
                     }
 
-                    // deserialize MetalGateway
+                    // deserialize VrfIpReservation
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        MetalGateway.validateJsonObject(jsonObject);
-                        actualAdapter = adapterMetalGateway;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'MetalGateway'");
+                        VrfIpReservation.validateJsonObject(jsonObject);
+                        log.log(Level.FINER, "Input data matches schema 'VrfIpReservation'");
+                        VrfIpReservationOrHref ret = new VrfIpReservationOrHref();
+                        ret.setActualInstance(adapterVrfIpReservation.fromJsonTree(jsonObject));
+                        return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MetalGateway failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'MetalGateway'", e);
+                        log.log(Level.FINER, "Input data does not match schema 'VrfIpReservation'", e);
                     }
 
-                    if (match == 1) {
-                        VrfRouteMetalGateway ret = new VrfRouteMetalGateway();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonObject));
-                        return ret;
-                    }
 
-                    throw new IOException(String.format("Failed deserialization for VrfRouteMetalGateway: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonObject.toString()));
+                    throw new IOException(String.format("Failed deserialization for VrfIpReservationOrHref: no class matched. JSON: %s", jsonObject.toString()));
                 }
             }.nullSafe();
         }
     }
 
-    // store a list of schema names defined in oneOf
+    // store a list of schema names defined in anyOf
     public static final Map<String, GenericType> schemas = new HashMap<String, GenericType>();
 
-    public VrfRouteMetalGateway() {
-        super("oneOf", Boolean.FALSE);
+    public VrfIpReservationOrHref() {
+        super("anyOf", Boolean.FALSE);
     }
 
-    public VrfRouteMetalGateway(Href o) {
-        super("oneOf", Boolean.FALSE);
+    public VrfIpReservationOrHref(Href o) {
+        super("anyOf", Boolean.FALSE);
         setActualInstance(o);
     }
 
-    public VrfRouteMetalGateway(MetalGateway o) {
-        super("oneOf", Boolean.FALSE);
+    public VrfIpReservationOrHref(VrfIpReservation o) {
+        super("anyOf", Boolean.FALSE);
         setActualInstance(o);
     }
 
     static {
         schemas.put("Href", new GenericType<Href>() {
         });
-        schemas.put("MetalGateway", new GenericType<MetalGateway>() {
+        schemas.put("VrfIpReservation", new GenericType<VrfIpReservation>() {
         });
     }
 
     @Override
     public Map<String, GenericType> getSchemas() {
-        return VrfRouteMetalGateway.schemas;
+        return VrfIpReservationOrHref.schemas;
     }
 
     /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * Href, MetalGateway
+     * Set the instance that matches the anyOf child schema, check
+     * the instance parameter is valid against the anyOf child schemas:
+     * Href, VrfIpReservation
      *
-     * It could be an instance of the 'oneOf' schemas.
-     * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
+     * It could be an instance of the 'anyOf' schemas.
+     * The anyOf child schemas may themselves be a composed schema (allOf, anyOf, anyOf).
      */
     @Override
     public void setActualInstance(Object instance) {
@@ -193,19 +187,19 @@ public class VrfRouteMetalGateway extends AbstractOpenApiSchema {
             return;
         }
 
-        if (instance instanceof MetalGateway) {
+        if (instance instanceof VrfIpReservation) {
             super.setActualInstance(instance);
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be Href, MetalGateway");
+        throw new RuntimeException("Invalid instance type. Must be Href, VrfIpReservation");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * Href, MetalGateway
+     * Href, VrfIpReservation
      *
-     * @return The actual instance (Href, MetalGateway)
+     * @return The actual instance (Href, VrfIpReservation)
      */
     @Override
     public Object getActualInstance() {
@@ -224,14 +218,14 @@ public class VrfRouteMetalGateway extends AbstractOpenApiSchema {
     }
 
     /**
-     * Get the actual instance of `MetalGateway`. If the actual instance is not `MetalGateway`,
+     * Get the actual instance of `VrfIpReservation`. If the actual instance is not `VrfIpReservation`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `MetalGateway`
-     * @throws ClassCastException if the instance is not `MetalGateway`
+     * @return The actual instance of `VrfIpReservation`
+     * @throws ClassCastException if the instance is not `VrfIpReservation`
      */
-    public MetalGateway getMetalGateway() throws ClassCastException {
-        return (MetalGateway)super.getActualInstance();
+    public VrfIpReservation getVrfIpReservation() throws ClassCastException {
+        return (VrfIpReservation)super.getActualInstance();
     }
 
 
@@ -239,46 +233,45 @@ public class VrfRouteMetalGateway extends AbstractOpenApiSchema {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VrfRouteMetalGateway
+  * @throws IOException if the JSON Object is invalid with respect to VrfIpReservationOrHref
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-    // validate oneOf schemas one by one
+    // validate anyOf schemas one by one
     int validCount = 0;
-    ArrayList<String> errorMessages = new ArrayList<>();
     // validate the json string with Href
     try {
       Href.validateJsonObject(jsonObj);
-      validCount++;
+      return; // return earlier as at least one schema is valid with respect to the Json object
+      //validCount++;
     } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for Href failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
-    // validate the json string with MetalGateway
+    // validate the json string with VrfIpReservation
     try {
-      MetalGateway.validateJsonObject(jsonObj);
-      validCount++;
+      VrfIpReservation.validateJsonObject(jsonObj);
+      return; // return earlier as at least one schema is valid with respect to the Json object
+      //validCount++;
     } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for MetalGateway failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
-    if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for VrfRouteMetalGateway with oneOf schemas: Href, MetalGateway. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
+    if (validCount == 0) {
+      throw new IOException(String.format("The JSON string is invalid for VrfIpReservationOrHref with anyOf schemas: Href, VrfIpReservation. JSON: %s", jsonObj.toString()));
     }
   }
 
  /**
-  * Create an instance of VrfRouteMetalGateway given an JSON string
+  * Create an instance of VrfIpReservationOrHref given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of VrfRouteMetalGateway
-  * @throws IOException if the JSON string is invalid with respect to VrfRouteMetalGateway
+  * @return An instance of VrfIpReservationOrHref
+  * @throws IOException if the JSON string is invalid with respect to VrfIpReservationOrHref
   */
-  public static VrfRouteMetalGateway fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VrfRouteMetalGateway.class);
+  public static VrfIpReservationOrHref fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VrfIpReservationOrHref.class);
   }
 
  /**
-  * Convert an instance of VrfRouteMetalGateway to an JSON string
+  * Convert an instance of VrfIpReservationOrHref to an JSON string
   *
   * @return JSON string
   */

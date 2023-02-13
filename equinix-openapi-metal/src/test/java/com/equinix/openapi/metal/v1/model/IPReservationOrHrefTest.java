@@ -14,12 +14,12 @@
 package com.equinix.openapi.metal.v1.model;
 
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.IPReservationOrHref;
-import com.equinix.openapi.metal.v1.model.MetalGateway;
+import com.equinix.openapi.metal.v1.model.IPAssignment;
+import com.equinix.openapi.metal.v1.model.IPReservation;
+import com.equinix.openapi.metal.v1.model.IPReservationFacility;
+import com.equinix.openapi.metal.v1.model.IPReservationMetro;
+import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.equinix.openapi.metal.v1.model.Project;
-import com.equinix.openapi.metal.v1.model.VirtualNetwork;
-import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfMetalGateway;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -27,23 +27,81 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for MetalGatewayListMetalGatewaysInner
+ * Model tests for IPReservationOrHref
  */
-public class MetalGatewayListMetalGatewaysInnerTest {
-    private final MetalGatewayListMetalGatewaysInner model = new MetalGatewayListMetalGatewaysInner();
+public class IPReservationOrHrefTest {
+    private final IPReservationOrHref model = new IPReservationOrHref();
 
     /**
-     * Model tests for MetalGatewayListMetalGatewaysInner
+     * Model tests for IPReservationOrHref
      */
     @Test
-    public void testMetalGatewayListMetalGatewaysInner() {
-        // TODO: test MetalGatewayListMetalGatewaysInner
+    public void testIPReservationOrHref() {
+        // TODO: test IPReservationOrHref
+    }
+
+    /**
+     * Test the property 'addon'
+     */
+    @Test
+    public void addonTest() {
+        // TODO: test addon
+    }
+
+    /**
+     * Test the property 'address'
+     */
+    @Test
+    public void addressTest() {
+        // TODO: test address
+    }
+
+    /**
+     * Test the property 'addressFamily'
+     */
+    @Test
+    public void addressFamilyTest() {
+        // TODO: test addressFamily
+    }
+
+    /**
+     * Test the property 'assignments'
+     */
+    @Test
+    public void assignmentsTest() {
+        // TODO: test assignments
+    }
+
+    /**
+     * Test the property 'available'
+     */
+    @Test
+    public void availableTest() {
+        // TODO: test available
+    }
+
+    /**
+     * Test the property 'bill'
+     */
+    @Test
+    public void billTest() {
+        // TODO: test bill
+    }
+
+    /**
+     * Test the property 'cidr'
+     */
+    @Test
+    public void cidrTest() {
+        // TODO: test cidr
     }
 
     /**
@@ -55,11 +113,51 @@ public class MetalGatewayListMetalGatewaysInnerTest {
     }
 
     /**
-     * Test the property 'createdBy'
+     * Test the property 'customdata'
      */
     @Test
-    public void createdByTest() {
-        // TODO: test createdBy
+    public void customdataTest() {
+        // TODO: test customdata
+    }
+
+    /**
+     * Test the property 'enabled'
+     */
+    @Test
+    public void enabledTest() {
+        // TODO: test enabled
+    }
+
+    /**
+     * Test the property 'details'
+     */
+    @Test
+    public void detailsTest() {
+        // TODO: test details
+    }
+
+    /**
+     * Test the property 'facility'
+     */
+    @Test
+    public void facilityTest() {
+        // TODO: test facility
+    }
+
+    /**
+     * Test the property 'gateway'
+     */
+    @Test
+    public void gatewayTest() {
+        // TODO: test gateway
+    }
+
+    /**
+     * Test the property 'globalIp'
+     */
+    @Test
+    public void globalIpTest() {
+        // TODO: test globalIp
     }
 
     /**
@@ -79,11 +177,51 @@ public class MetalGatewayListMetalGatewaysInnerTest {
     }
 
     /**
-     * Test the property 'ipReservation'
+     * Test the property 'manageable'
      */
     @Test
-    public void ipReservationTest() {
-        // TODO: test ipReservation
+    public void manageableTest() {
+        // TODO: test manageable
+    }
+
+    /**
+     * Test the property 'management'
+     */
+    @Test
+    public void managementTest() {
+        // TODO: test management
+    }
+
+    /**
+     * Test the property 'metalGateway'
+     */
+    @Test
+    public void metalGatewayTest() {
+        // TODO: test metalGateway
+    }
+
+    /**
+     * Test the property 'metro'
+     */
+    @Test
+    public void metroTest() {
+        // TODO: test metro
+    }
+
+    /**
+     * Test the property 'netmask'
+     */
+    @Test
+    public void netmaskTest() {
+        // TODO: test netmask
+    }
+
+    /**
+     * Test the property 'network'
+     */
+    @Test
+    public void networkTest() {
+        // TODO: test network
     }
 
     /**
@@ -95,6 +233,30 @@ public class MetalGatewayListMetalGatewaysInnerTest {
     }
 
     /**
+     * Test the property 'projectLite'
+     */
+    @Test
+    public void projectLiteTest() {
+        // TODO: test projectLite
+    }
+
+    /**
+     * Test the property 'requestedBy'
+     */
+    @Test
+    public void requestedByTest() {
+        // TODO: test requestedBy
+    }
+
+    /**
+     * Test the property '_public'
+     */
+    @Test
+    public void _publicTest() {
+        // TODO: test _public
+    }
+
+    /**
      * Test the property 'state'
      */
     @Test
@@ -103,27 +265,19 @@ public class MetalGatewayListMetalGatewaysInnerTest {
     }
 
     /**
-     * Test the property 'updatedAt'
+     * Test the property 'tags'
      */
     @Test
-    public void updatedAtTest() {
-        // TODO: test updatedAt
+    public void tagsTest() {
+        // TODO: test tags
     }
 
     /**
-     * Test the property 'virtualNetwork'
+     * Test the property 'type'
      */
     @Test
-    public void virtualNetworkTest() {
-        // TODO: test virtualNetwork
-    }
-
-    /**
-     * Test the property 'vrf'
-     */
-    @Test
-    public void vrfTest() {
-        // TODO: test vrf
+    public void typeTest() {
+        // TODO: test type
     }
 
 }

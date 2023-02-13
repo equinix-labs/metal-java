@@ -96,6 +96,7 @@ docs/IPReservationFacility.md
 docs/IPReservationList.md
 docs/IPReservationListIpAddressesInner.md
 docs/IPReservationMetro.md
+docs/IPReservationOrHref.md
 docs/IPReservationRequestInput.md
 docs/IncidentsApi.md
 docs/InstancesBatchCreateInput.md
@@ -255,6 +256,7 @@ docs/VrfCreateInput.md
 docs/VrfIpReservation.md
 docs/VrfIpReservationCreateInput.md
 docs/VrfIpReservationList.md
+docs/VrfIpReservationOrHref.md
 docs/VrfList.md
 docs/VrfMetalGateway.md
 docs/VrfMetalGatewayCreateInput.md
@@ -414,6 +416,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/IPReservationFacility.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPReservationList.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPReservationListIpAddressesInner.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPReservationMetro.java
+src/main/java/com/equinix/openapi/metal/v1/model/IPReservationOrHref.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPReservationRequestInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/InstancesBatchCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/InstancesBatchCreateInputBatchesInner.java
@@ -546,6 +549,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/VrfCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfIpReservation.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfIpReservationCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfIpReservationList.java
+src/main/java/com/equinix/openapi/metal/v1/model/VrfIpReservationOrHref.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfList.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfMetalGateway.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfMetalGatewayCreateInput.java
@@ -676,6 +680,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/IPReservationFacilityTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPReservationListIpAddressesInnerTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPReservationListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPReservationMetroTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/IPReservationOrHrefTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPReservationRequestInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPReservationTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InstancesBatchCreateInputBatchesInnerAllOfTest.java
@@ -807,6 +812,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/VirtualNetworkTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfIpReservationCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfIpReservationListTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VrfIpReservationOrHrefTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfIpReservationTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfMetalGatewayCreateInputTest.java
