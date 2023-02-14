@@ -15837,6 +15837,7 @@ components:
           $ref: '#/components/schemas/Meta'
       type: object
     Href:
+      additionalProperties: false
       example:
         href: href
       properties:
@@ -16117,34 +16118,8 @@ components:
         description: description
         created_at: 2000-01-23T04:56:07.000+00:00
         ports:
-        - role: primary
-          virtual_circuits:
-            virtual_circuits:
-            - null
-            - null
-          organization:
-            href: href
-          name: name
-          link_status: link_status
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          switch_id: switch_id
-          href: href
-          speed: 0
-          status: requested
-        - role: primary
-          virtual_circuits:
-            virtual_circuits:
-            - null
-            - null
-          organization:
-            href: href
-          name: name
-          link_status: link_status
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          switch_id: switch_id
-          href: href
-          speed: 0
-          status: requested
+        - null
+        - null
         type: shared
         speed: 10000000000
         contact_email: contact_email
@@ -16394,34 +16369,8 @@ components:
         - description: description
           created_at: 2000-01-23T04:56:07.000+00:00
           ports:
-          - role: primary
-            virtual_circuits:
-              virtual_circuits:
-              - null
-              - null
-            organization:
-              href: href
-            name: name
-            link_status: link_status
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            switch_id: switch_id
-            href: href
-            speed: 0
-            status: requested
-          - role: primary
-            virtual_circuits:
-              virtual_circuits:
-              - null
-              - null
-            organization:
-              href: href
-            name: name
-            link_status: link_status
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            switch_id: switch_id
-            href: href
-            speed: 0
-            status: requested
+          - null
+          - null
           type: shared
           speed: 10000000000
           contact_email: contact_email
@@ -16458,34 +16407,8 @@ components:
         - description: description
           created_at: 2000-01-23T04:56:07.000+00:00
           ports:
-          - role: primary
-            virtual_circuits:
-              virtual_circuits:
-              - null
-              - null
-            organization:
-              href: href
-            name: name
-            link_status: link_status
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            switch_id: switch_id
-            href: href
-            speed: 0
-            status: requested
-          - role: primary
-            virtual_circuits:
-              virtual_circuits:
-              - null
-              - null
-            organization:
-              href: href
-            name: name
-            link_status: link_status
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            switch_id: switch_id
-            href: href
-            speed: 0
-            status: requested
+          - null
+          - null
           type: shared
           speed: 10000000000
           contact_email: contact_email
@@ -16526,91 +16449,14 @@ components:
           type: array
       type: object
     InterconnectionPort:
-      example:
-        role: primary
-        virtual_circuits:
-          virtual_circuits:
-          - null
-          - null
-        organization:
-          href: href
-        name: name
-        link_status: link_status
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        switch_id: switch_id
-        href: href
-        speed: 0
-        status: requested
-      properties:
-        id:
-          format: uuid
-          type: string
-        organization:
-          $ref: '#/components/schemas/Href'
-        role:
-          description: Either 'primary' or 'secondary'.
-          enum:
-          - primary
-          - secondary
-          type: string
-        status:
-          description: "For both Fabric VCs and Dedicated Ports, this will be 'requested'\
-            \ on creation and 'deleting' on deletion. Once the Fabric VC has found\
-            \ its corresponding Fabric connection, this will turn to 'active'. For\
-            \ Dedicated Ports, once the dedicated port is associated, this will also\
-            \ turn to 'active'. For Fabric VCs, this can turn into an 'expired' state\
-            \ if the service token associated is expired."
-          enum:
-          - requested
-          - active
-          - deleting
-          - expired
-          type: string
-        switch_id:
-          description: A switch 'short ID'
-          type: string
-        virtual_circuits:
-          $ref: '#/components/schemas/VirtualCircuitList'
-        name:
-          type: string
-        speed:
-          type: integer
-        link_status:
-          type: string
-        href:
-          type: string
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/VirtualCircuitList'
+      - $ref: '#/components/schemas/InterconnectionPortCore'
     InterconnectionPortList:
       example:
         ports:
-        - role: primary
-          virtual_circuits:
-            virtual_circuits:
-            - null
-            - null
-          organization:
-            href: href
-          name: name
-          link_status: link_status
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          switch_id: switch_id
-          href: href
-          speed: 0
-          status: requested
-        - role: primary
-          virtual_circuits:
-            virtual_circuits:
-            - null
-            - null
-          organization:
-            href: href
-          name: name
-          link_status: link_status
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          switch_id: switch_id
-          href: href
-          speed: 0
-          status: requested
+        - null
+        - null
       properties:
         ports:
           items:
@@ -22734,6 +22580,44 @@ components:
           items:
             type: string
           type: array
+      type: object
+    InterconnectionPortCore:
+      properties:
+        id:
+          format: uuid
+          type: string
+        organization:
+          $ref: '#/components/schemas/Href'
+        role:
+          description: Either 'primary' or 'secondary'.
+          enum:
+          - primary
+          - secondary
+          type: string
+        status:
+          description: "For both Fabric VCs and Dedicated Ports, this will be 'requested'\
+            \ on creation and 'deleting' on deletion. Once the Fabric VC has found\
+            \ its corresponding Fabric connection, this will turn to 'active'. For\
+            \ Dedicated Ports, once the dedicated port is associated, this will also\
+            \ turn to 'active'. For Fabric VCs, this can turn into an 'expired' state\
+            \ if the service token associated is expired."
+          enum:
+          - requested
+          - active
+          - deleting
+          - expired
+          type: string
+        switch_id:
+          description: A switch 'short ID'
+          type: string
+        name:
+          type: string
+        speed:
+          type: integer
+        link_status:
+          type: string
+        href:
+          type: string
       type: object
     IPReservationOrHref:
       anyOf:

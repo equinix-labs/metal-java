@@ -107,6 +107,7 @@ docs/InterconnectionCreateInput.md
 docs/InterconnectionList.md
 docs/InterconnectionMetro.md
 docs/InterconnectionPort.md
+docs/InterconnectionPortCore.md
 docs/InterconnectionPortList.md
 docs/InterconnectionUpdateInput.md
 docs/InterconnectionsApi.md
@@ -426,6 +427,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionList.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionMetro.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionPort.java
+src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionPortCore.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionPortList.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/Invitation.java
@@ -689,6 +691,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/InstancesBatchCreateInputTest.j
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionMetroTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionPortCoreTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionPortListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionPortTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionTest.java

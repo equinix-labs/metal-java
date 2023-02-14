@@ -1,0 +1,10 @@
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/Href.yaml b/spec/oas3.patched/openapi/public/components/schemas/Href.yaml
+index bbe7e22..7cd92bb 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/Href.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/Href.yaml
+@@ -4,3 +4,4 @@ properties:
+ required:
+ - href
+ type: object
++additionalProperties: false
+\ No newline at end of file

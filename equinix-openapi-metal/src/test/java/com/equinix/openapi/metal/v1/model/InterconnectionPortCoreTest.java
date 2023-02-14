@@ -14,40 +14,29 @@
 package com.equinix.openapi.metal.v1.model;
 
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.VirtualCircuitListVirtualCircuitsInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for InterconnectionPort
+ * Model tests for InterconnectionPortCore
  */
-public class InterconnectionPortTest {
-    private final InterconnectionPort model = new InterconnectionPort();
+public class InterconnectionPortCoreTest {
+    private final InterconnectionPortCore model = new InterconnectionPortCore();
 
     /**
-     * Model tests for InterconnectionPort
+     * Model tests for InterconnectionPortCore
      */
     @Test
-    public void testInterconnectionPort() {
-        // TODO: test InterconnectionPort
-    }
-
-    /**
-     * Test the property 'virtualCircuits'
-     */
-    @Test
-    public void virtualCircuitsTest() {
-        // TODO: test virtualCircuits
+    public void testInterconnectionPortCore() {
+        // TODO: test InterconnectionPortCore
     }
 
     /**

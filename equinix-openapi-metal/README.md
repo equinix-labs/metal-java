@@ -503,6 +503,7 @@ Class | Method | HTTP request | Description
  - [InterconnectionList](docs/InterconnectionList.md)
  - [InterconnectionMetro](docs/InterconnectionMetro.md)
  - [InterconnectionPort](docs/InterconnectionPort.md)
+ - [InterconnectionPortCore](docs/InterconnectionPortCore.md)
  - [InterconnectionPortList](docs/InterconnectionPortList.md)
  - [InterconnectionUpdateInput](docs/InterconnectionUpdateInput.md)
  - [Invitation](docs/Invitation.md)
