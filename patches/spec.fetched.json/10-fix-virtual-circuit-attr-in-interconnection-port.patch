@@ -1,0 +1,84 @@
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/InterconnectionPort.yaml b/spec/oas3.patched/openapi/public/components/schemas/InterconnectionPort.yaml
+index a34b99a..a77e6f8 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/InterconnectionPort.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/InterconnectionPort.yaml
+@@ -1,36 +1,3 @@
+-properties:
+-  id:
+-    format: uuid
+-    type: string
+-  organization:
+-    $ref: './Href.yaml'
+-  role:
+-    description: Either 'primary' or 'secondary'.
+-    type: string
+-    enum:
+-    - primary
+-    - secondary
+-  status:
+-    type: string
+-    description: For both Fabric VCs and Dedicated Ports, this will be 'requested' on creation and 'deleting' on deletion. Once the Fabric VC has found its corresponding Fabric connection,
+-      this will turn to 'active'. For Dedicated Ports, once the dedicated port is associated, this will also turn to 'active'. For Fabric VCs, this can turn into an 'expired' state if the 
+-      service token associated is expired.
+-    enum:
+-    - requested
+-    - active
+-    - deleting
+-    - expired
+-  switch_id:
+-    description: A switch 'short ID'
+-    type: string
+-  virtual_circuits:
+-    $ref: './VirtualCircuitList.yaml'
+-  name:
+-    type: string
+-  speed:
+-    type: integer
+-  link_status:
+-    type: string
+-  href:
+-    type: string
+-type: object
++allOf:
++  - $ref: './VirtualCircuitList.yaml'
++  - $ref: './InterconnectionPortCore.yaml'
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/InterconnectionPortCore.yaml b/spec/oas3.patched/openapi/public/components/schemas/InterconnectionPortCore.yaml
+new file mode 100644
+index 0000000..e2407a6
+--- /dev/null
++++ b/spec/oas3.patched/openapi/public/components/schemas/InterconnectionPortCore.yaml
+@@ -0,0 +1,34 @@
++properties:
++  id:
++    format: uuid
++    type: string
++  organization:
++    $ref: './Href.yaml'
++  role:
++    description: Either 'primary' or 'secondary'.
++    type: string
++    enum:
++    - primary
++    - secondary
++  status:
++    type: string
++    description: For both Fabric VCs and Dedicated Ports, this will be 'requested' on creation and 'deleting' on deletion. Once the Fabric VC has found its corresponding Fabric connection,
++      this will turn to 'active'. For Dedicated Ports, once the dedicated port is associated, this will also turn to 'active'. For Fabric VCs, this can turn into an 'expired' state if the 
++      service token associated is expired.
++    enum:
++    - requested
++    - active
++    - deleting
++    - expired
++  switch_id:
++    description: A switch 'short ID'
++    type: string
++  name:
++    type: string
++  speed:
++    type: integer
++  link_status:
++    type: string
++  href:
++    type: string
++type: object

@@ -4,3 +4,4 @@ properties:
 required:
 - href
 type: object
+additionalProperties: false
