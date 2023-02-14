@@ -1,13 +1,12 @@
 
 
-# InterconnectionPort
+# InterconnectionPortCore
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**virtualCircuits** | [**List&lt;VirtualCircuitListVirtualCircuitsInner&gt;**](VirtualCircuitListVirtualCircuitsInner.md) |  |  [optional] |
 |**id** | **UUID** |  |  [optional] |
 |**organization** | [**Href**](Href.md) |  |  [optional] |
 |**role** | [**RoleEnum**](#RoleEnum) | Either &#39;primary&#39; or &#39;secondary&#39;. |  [optional] |

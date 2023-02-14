@@ -16,15 +16,12 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.VirtualCircuitListVirtualCircuitsInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import com.google.gson.Gson;
@@ -49,14 +46,10 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * InterconnectionPort
+ * InterconnectionPortCore
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class InterconnectionPort {
-  public static final String SERIALIZED_NAME_VIRTUAL_CIRCUITS = "virtual_circuits";
-  @SerializedName(SERIALIZED_NAME_VIRTUAL_CIRCUITS)
-  private List<VirtualCircuitListVirtualCircuitsInner> virtualCircuits = null;
-
+public class InterconnectionPortCore {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private UUID id;
@@ -191,40 +184,10 @@ public class InterconnectionPort {
   @SerializedName(SERIALIZED_NAME_HREF)
   private String href;
 
-  public InterconnectionPort() {
+  public InterconnectionPortCore() {
   }
 
-  public InterconnectionPort virtualCircuits(List<VirtualCircuitListVirtualCircuitsInner> virtualCircuits) {
-    
-    this.virtualCircuits = virtualCircuits;
-    return this;
-  }
-
-  public InterconnectionPort addVirtualCircuitsItem(VirtualCircuitListVirtualCircuitsInner virtualCircuitsItem) {
-    if (this.virtualCircuits == null) {
-      this.virtualCircuits = new ArrayList<>();
-    }
-    this.virtualCircuits.add(virtualCircuitsItem);
-    return this;
-  }
-
-   /**
-   * Get virtualCircuits
-   * @return virtualCircuits
-  **/
-  @javax.annotation.Nullable
-
-  public List<VirtualCircuitListVirtualCircuitsInner> getVirtualCircuits() {
-    return virtualCircuits;
-  }
-
-
-  public void setVirtualCircuits(List<VirtualCircuitListVirtualCircuitsInner> virtualCircuits) {
-    this.virtualCircuits = virtualCircuits;
-  }
-
-
-  public InterconnectionPort id(UUID id) {
+  public InterconnectionPortCore id(UUID id) {
     
     this.id = id;
     return this;
@@ -246,7 +209,7 @@ public class InterconnectionPort {
   }
 
 
-  public InterconnectionPort organization(Href organization) {
+  public InterconnectionPortCore organization(Href organization) {
     
     this.organization = organization;
     return this;
@@ -268,7 +231,7 @@ public class InterconnectionPort {
   }
 
 
-  public InterconnectionPort role(RoleEnum role) {
+  public InterconnectionPortCore role(RoleEnum role) {
     
     this.role = role;
     return this;
@@ -290,7 +253,7 @@ public class InterconnectionPort {
   }
 
 
-  public InterconnectionPort status(StatusEnum status) {
+  public InterconnectionPortCore status(StatusEnum status) {
     
     this.status = status;
     return this;
@@ -312,7 +275,7 @@ public class InterconnectionPort {
   }
 
 
-  public InterconnectionPort switchId(String switchId) {
+  public InterconnectionPortCore switchId(String switchId) {
     
     this.switchId = switchId;
     return this;
@@ -334,7 +297,7 @@ public class InterconnectionPort {
   }
 
 
-  public InterconnectionPort name(String name) {
+  public InterconnectionPortCore name(String name) {
     
     this.name = name;
     return this;
@@ -356,7 +319,7 @@ public class InterconnectionPort {
   }
 
 
-  public InterconnectionPort speed(Integer speed) {
+  public InterconnectionPortCore speed(Integer speed) {
     
     this.speed = speed;
     return this;
@@ -378,7 +341,7 @@ public class InterconnectionPort {
   }
 
 
-  public InterconnectionPort linkStatus(String linkStatus) {
+  public InterconnectionPortCore linkStatus(String linkStatus) {
     
     this.linkStatus = linkStatus;
     return this;
@@ -400,7 +363,7 @@ public class InterconnectionPort {
   }
 
 
-  public InterconnectionPort href(String href) {
+  public InterconnectionPortCore href(String href) {
     
     this.href = href;
     return this;
@@ -434,9 +397,9 @@ public class InterconnectionPort {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the InterconnectionPort instance itself
+   * @return the InterconnectionPortCore instance itself
    */
-  public InterconnectionPort putAdditionalProperty(String key, Object value) {
+  public InterconnectionPortCore putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -475,30 +438,28 @@ public class InterconnectionPort {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InterconnectionPort interconnectionPort = (InterconnectionPort) o;
-    return Objects.equals(this.virtualCircuits, interconnectionPort.virtualCircuits) &&
-        Objects.equals(this.id, interconnectionPort.id) &&
-        Objects.equals(this.organization, interconnectionPort.organization) &&
-        Objects.equals(this.role, interconnectionPort.role) &&
-        Objects.equals(this.status, interconnectionPort.status) &&
-        Objects.equals(this.switchId, interconnectionPort.switchId) &&
-        Objects.equals(this.name, interconnectionPort.name) &&
-        Objects.equals(this.speed, interconnectionPort.speed) &&
-        Objects.equals(this.linkStatus, interconnectionPort.linkStatus) &&
-        Objects.equals(this.href, interconnectionPort.href)&&
-        Objects.equals(this.additionalProperties, interconnectionPort.additionalProperties);
+    InterconnectionPortCore interconnectionPortCore = (InterconnectionPortCore) o;
+    return Objects.equals(this.id, interconnectionPortCore.id) &&
+        Objects.equals(this.organization, interconnectionPortCore.organization) &&
+        Objects.equals(this.role, interconnectionPortCore.role) &&
+        Objects.equals(this.status, interconnectionPortCore.status) &&
+        Objects.equals(this.switchId, interconnectionPortCore.switchId) &&
+        Objects.equals(this.name, interconnectionPortCore.name) &&
+        Objects.equals(this.speed, interconnectionPortCore.speed) &&
+        Objects.equals(this.linkStatus, interconnectionPortCore.linkStatus) &&
+        Objects.equals(this.href, interconnectionPortCore.href)&&
+        Objects.equals(this.additionalProperties, interconnectionPortCore.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(virtualCircuits, id, organization, role, status, switchId, name, speed, linkStatus, href, additionalProperties);
+    return Objects.hash(id, organization, role, status, switchId, name, speed, linkStatus, href, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InterconnectionPort {\n");
-    sb.append("    virtualCircuits: ").append(toIndentedString(virtualCircuits)).append("\n");
+    sb.append("class InterconnectionPortCore {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
@@ -531,7 +492,6 @@ public class InterconnectionPort {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("virtual_circuits");
     openapiFields.add("id");
     openapiFields.add("organization");
     openapiFields.add("role");
@@ -550,26 +510,12 @@ public class InterconnectionPort {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to InterconnectionPort
+  * @throws IOException if the JSON Object is invalid with respect to InterconnectionPortCore
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!InterconnectionPort.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in InterconnectionPort is not found in the empty JSON string", InterconnectionPort.openapiRequiredFields.toString()));
-        }
-      }
-      if (jsonObj.get("virtual_circuits") != null && !jsonObj.get("virtual_circuits").isJsonNull()) {
-        JsonArray jsonArrayvirtualCircuits = jsonObj.getAsJsonArray("virtual_circuits");
-        if (jsonArrayvirtualCircuits != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("virtual_circuits").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `virtual_circuits` to be an array in the JSON string but got `%s`", jsonObj.get("virtual_circuits").toString()));
-          }
-
-          // validate the optional field `virtual_circuits` (array)
-          for (int i = 0; i < jsonArrayvirtualCircuits.size(); i++) {
-            VirtualCircuitListVirtualCircuitsInner.validateJsonObject(jsonArrayvirtualCircuits.get(i).getAsJsonObject());
-          };
+        if (!InterconnectionPortCore.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in InterconnectionPortCore is not found in the empty JSON string", InterconnectionPortCore.openapiRequiredFields.toString()));
         }
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
@@ -603,16 +549,16 @@ public class InterconnectionPort {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!InterconnectionPort.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'InterconnectionPort' and its subtypes
+       if (!InterconnectionPortCore.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'InterconnectionPortCore' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<InterconnectionPort> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(InterconnectionPort.class));
+       final TypeAdapter<InterconnectionPortCore> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(InterconnectionPortCore.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<InterconnectionPort>() {
+       return (TypeAdapter<T>) new TypeAdapter<InterconnectionPortCore>() {
            @Override
-           public void write(JsonWriter out, InterconnectionPort value) throws IOException {
+           public void write(JsonWriter out, InterconnectionPortCore value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -635,11 +581,11 @@ public class InterconnectionPort {
            }
 
            @Override
-           public InterconnectionPort read(JsonReader in) throws IOException {
+           public InterconnectionPortCore read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             InterconnectionPort instance = thisAdapter.fromJsonTree(jsonObj);
+             InterconnectionPortCore instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -666,18 +612,18 @@ public class InterconnectionPort {
   }
 
  /**
-  * Create an instance of InterconnectionPort given an JSON string
+  * Create an instance of InterconnectionPortCore given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of InterconnectionPort
-  * @throws IOException if the JSON string is invalid with respect to InterconnectionPort
+  * @return An instance of InterconnectionPortCore
+  * @throws IOException if the JSON string is invalid with respect to InterconnectionPortCore
   */
-  public static InterconnectionPort fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, InterconnectionPort.class);
+  public static InterconnectionPortCore fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, InterconnectionPortCore.class);
   }
 
  /**
-  * Convert an instance of InterconnectionPort to an JSON string
+  * Convert an instance of InterconnectionPortCore to an JSON string
   *
   * @return JSON string
   */
