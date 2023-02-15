@@ -136,7 +136,9 @@ public class Plan {
    */
   @JsonAdapter(LineEnum.Adapter.class)
   public enum LineEnum {
-    BAREMETAL("baremetal");
+    BAREMETAL("baremetal"),
+    
+    RESERVED("reserved");
 
     private String value;
 

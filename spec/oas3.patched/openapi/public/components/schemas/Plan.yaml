@@ -56,6 +56,7 @@ properties:
     type: string
     enum:
       - baremetal
+      - reserved
   name:
     type: string
   pricing:
@@ -75,6 +76,11 @@ properties:
               type: integer
             type:
               type: string
+      memory:
+        type: object
+        properties:
+          total:
+            type: string
       drives:
         type: array
         items:

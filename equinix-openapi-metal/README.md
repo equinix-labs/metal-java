@@ -554,6 +554,7 @@ Class | Method | HTTP request | Description
  - [PlanSpecsCpusInner](docs/PlanSpecsCpusInner.md)
  - [PlanSpecsDrivesInner](docs/PlanSpecsDrivesInner.md)
  - [PlanSpecsFeatures](docs/PlanSpecsFeatures.md)
+ - [PlanSpecsMemory](docs/PlanSpecsMemory.md)
  - [PlanSpecsNicsInner](docs/PlanSpecsNicsInner.md)
  - [Port](docs/Port.md)
  - [PortAssignInput](docs/PortAssignInput.md)

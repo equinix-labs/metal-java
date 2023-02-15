@@ -170,6 +170,7 @@ docs/PlanSpecs.md
 docs/PlanSpecsCpusInner.md
 docs/PlanSpecsDrivesInner.md
 docs/PlanSpecsFeatures.md
+docs/PlanSpecsMemory.md
 docs/PlanSpecsNicsInner.md
 docs/PlansApi.md
 docs/Port.md
@@ -478,6 +479,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/PlanSpecs.java
 src/main/java/com/equinix/openapi/metal/v1/model/PlanSpecsCpusInner.java
 src/main/java/com/equinix/openapi/metal/v1/model/PlanSpecsDrivesInner.java
 src/main/java/com/equinix/openapi/metal/v1/model/PlanSpecsFeatures.java
+src/main/java/com/equinix/openapi/metal/v1/model/PlanSpecsMemory.java
 src/main/java/com/equinix/openapi/metal/v1/model/PlanSpecsNicsInner.java
 src/main/java/com/equinix/openapi/metal/v1/model/Port.java
 src/main/java/com/equinix/openapi/metal/v1/model/PortAssignInput.java
@@ -742,6 +744,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/PlanListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/PlanSpecsCpusInnerTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/PlanSpecsDrivesInnerTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/PlanSpecsFeaturesTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/PlanSpecsMemoryTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/PlanSpecsNicsInnerTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/PlanSpecsTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/PlanTest.java

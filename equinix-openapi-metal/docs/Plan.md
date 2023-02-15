@@ -37,6 +37,7 @@
 | Name | Value |
 |---- | -----|
 | BAREMETAL | &quot;baremetal&quot; |
+| RESERVED | &quot;reserved&quot; |
 
 
 

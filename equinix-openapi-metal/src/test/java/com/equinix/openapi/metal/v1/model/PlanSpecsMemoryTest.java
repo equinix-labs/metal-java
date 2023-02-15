@@ -13,75 +13,36 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.PlanSpecsCpusInner;
-import com.equinix.openapi.metal.v1.model.PlanSpecsDrivesInner;
-import com.equinix.openapi.metal.v1.model.PlanSpecsFeatures;
-import com.equinix.openapi.metal.v1.model.PlanSpecsMemory;
-import com.equinix.openapi.metal.v1.model.PlanSpecsNicsInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for PlanSpecs
+ * Model tests for PlanSpecsMemory
  */
-public class PlanSpecsTest {
-    private final PlanSpecs model = new PlanSpecs();
+public class PlanSpecsMemoryTest {
+    private final PlanSpecsMemory model = new PlanSpecsMemory();
 
     /**
-     * Model tests for PlanSpecs
+     * Model tests for PlanSpecsMemory
      */
     @Test
-    public void testPlanSpecs() {
-        // TODO: test PlanSpecs
+    public void testPlanSpecsMemory() {
+        // TODO: test PlanSpecsMemory
     }
 
     /**
-     * Test the property 'cpus'
+     * Test the property 'total'
      */
     @Test
-    public void cpusTest() {
-        // TODO: test cpus
-    }
-
-    /**
-     * Test the property 'memory'
-     */
-    @Test
-    public void memoryTest() {
-        // TODO: test memory
-    }
-
-    /**
-     * Test the property 'drives'
-     */
-    @Test
-    public void drivesTest() {
-        // TODO: test drives
-    }
-
-    /**
-     * Test the property 'nics'
-     */
-    @Test
-    public void nicsTest() {
-        // TODO: test nics
-    }
-
-    /**
-     * Test the property 'features'
-     */
-    @Test
-    public void featuresTest() {
-        // TODO: test features
+    public void totalTest() {
+        // TODO: test total
     }
 
 }
