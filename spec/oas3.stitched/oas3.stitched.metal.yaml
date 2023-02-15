@@ -11883,6 +11883,10 @@ components:
           description: "Switch short id. This can be used to determine if two devices\
             \ are connected to the same switch, for example."
           type: string
+        termination_time:
+          description: Expiration date for the reservation.
+          format: date-time
+          type: string
       type: object
     HardwareReservationList:
       properties:
@@ -11894,6 +11898,7 @@ components:
           $ref: '#/components/schemas/Meta'
       type: object
     Href:
+      additionalProperties: false
       properties:
         href:
           type: string
@@ -12281,45 +12286,9 @@ components:
           type: array
       type: object
     InterconnectionPort:
-      properties:
-        id:
-          format: uuid
-          type: string
-        organization:
-          $ref: '#/components/schemas/Href'
-        role:
-          description: Either 'primary' or 'secondary'.
-          enum:
-          - primary
-          - secondary
-          type: string
-        status:
-          description: "For both Fabric VCs and Dedicated Ports, this will be 'requested'\
-            \ on creation and 'deleting' on deletion. Once the Fabric VC has found\
-            \ its corresponding Fabric connection, this will turn to 'active'. For\
-            \ Dedicated Ports, once the dedicated port is associated, this will also\
-            \ turn to 'active'. For Fabric VCs, this can turn into an 'expired' state\
-            \ if the service token associated is expired."
-          enum:
-          - requested
-          - active
-          - deleting
-          - expired
-          type: string
-        switch_id:
-          description: A switch 'short ID'
-          type: string
-        virtual_circuits:
-          $ref: '#/components/schemas/VirtualCircuitList'
-        name:
-          type: string
-        speed:
-          type: integer
-        link_status:
-          type: string
-        href:
-          type: string
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/VirtualCircuitList'
+      - $ref: '#/components/schemas/InterconnectionPortCore'
     InterconnectionPortList:
       properties:
         ports:
@@ -14656,6 +14625,44 @@ components:
           items:
             type: string
           type: array
+      type: object
+    InterconnectionPortCore:
+      properties:
+        id:
+          format: uuid
+          type: string
+        organization:
+          $ref: '#/components/schemas/Href'
+        role:
+          description: Either 'primary' or 'secondary'.
+          enum:
+          - primary
+          - secondary
+          type: string
+        status:
+          description: "For both Fabric VCs and Dedicated Ports, this will be 'requested'\
+            \ on creation and 'deleting' on deletion. Once the Fabric VC has found\
+            \ its corresponding Fabric connection, this will turn to 'active'. For\
+            \ Dedicated Ports, once the dedicated port is associated, this will also\
+            \ turn to 'active'. For Fabric VCs, this can turn into an 'expired' state\
+            \ if the service token associated is expired."
+          enum:
+          - requested
+          - active
+          - deleting
+          - expired
+          type: string
+        switch_id:
+          description: A switch 'short ID'
+          type: string
+        name:
+          type: string
+        speed:
+          type: integer
+        link_status:
+          type: string
+        href:
+          type: string
       type: object
     IPReservationOrHref:
       anyOf:
