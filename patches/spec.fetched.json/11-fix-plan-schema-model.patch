@@ -1,0 +1,24 @@
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/Plan.yaml b/spec/oas3.patched/openapi/public/components/schemas/Plan.yaml
+index b2baf9a..988fbaa 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/Plan.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/Plan.yaml
+@@ -56,6 +56,7 @@ properties:
+     type: string
+     enum:
+       - baremetal
++      - reserved
+   name:
+     type: string
+   pricing:
+@@ -75,6 +76,11 @@ properties:
+               type: integer
+             type:
+               type: string
++      memory:
++        type: object
++        properties:
++          total:
++            type: string
+       drives:
+         type: array
+         items:
