@@ -12989,7 +12989,7 @@ components:
         spot_price_max: 3.6160767
         plan:
           legacy: true
-          line: baremetal
+          line: line
           available_in_metros:
           - price:
               hour: 1.23
@@ -13629,7 +13629,7 @@ components:
           spot_price_max: 3.6160767
           plan:
             legacy: true
-            line: baremetal
+            line: line
             available_in_metros:
             - price:
                 hour: 1.23
@@ -13925,7 +13925,7 @@ components:
           spot_price_max: 3.6160767
           plan:
             legacy: true
-            line: baremetal
+            line: line
             available_in_metros:
             - price:
                 hour: 1.23
@@ -14767,7 +14767,7 @@ components:
           spot_price_max: 3.6160767
           plan:
             legacy: true
-            line: baremetal
+            line: line
             available_in_metros:
             - price:
                 hour: 1.23
@@ -14892,7 +14892,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plan:
           legacy: true
-          line: baremetal
+          line: line
           available_in_metros:
           - price:
               hour: 1.23
@@ -15250,7 +15250,7 @@ components:
             spot_price_max: 3.6160767
             plan:
               legacy: true
-              line: baremetal
+              line: line
               available_in_metros:
               - price:
                   hour: 1.23
@@ -15375,7 +15375,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plan:
             legacy: true
-            line: baremetal
+            line: line
             available_in_metros:
             - price:
                 hour: 1.23
@@ -15669,7 +15669,7 @@ components:
             spot_price_max: 3.6160767
             plan:
               legacy: true
-              line: baremetal
+              line: line
               available_in_metros:
               - price:
                   hour: 1.23
@@ -15794,7 +15794,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plan:
             legacy: true
-            line: baremetal
+            line: line
             available_in_metros:
             - price:
                 hour: 1.23
@@ -18421,7 +18421,7 @@ components:
     Plan:
       example:
         legacy: true
-        line: baremetal
+        line: line
         available_in_metros:
         - price:
             hour: 1.23
@@ -18505,9 +18505,6 @@ components:
         legacy:
           type: boolean
         line:
-          enum:
-          - baremetal
-          - reserved
           type: string
         name:
           type: string
@@ -18530,7 +18527,7 @@ components:
       example:
         plans:
         - legacy: true
-          line: baremetal
+          line: line
           available_in_metros:
           - price:
               hour: 1.23
@@ -18582,7 +18579,7 @@ components:
           pricing: "{}"
           slug: m3.large.x86
         - legacy: true
-          line: baremetal
+          line: line
           available_in_metros:
           - price:
               hour: 1.23

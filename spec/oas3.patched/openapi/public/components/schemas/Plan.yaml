@@ -54,9 +54,6 @@ properties:
     type: boolean
   line:
     type: string
-    enum:
-      - baremetal
-      - reserved
   name:
     type: string
   pricing:
