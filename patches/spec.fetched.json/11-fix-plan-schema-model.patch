@@ -1,16 +1,17 @@
 diff --git a/spec/oas3.patched/openapi/public/components/schemas/Plan.yaml b/spec/oas3.patched/openapi/public/components/schemas/Plan.yaml
-index b2baf9a..988fbaa 100644
+index b2baf9a..dfe34ef 100644
 --- a/spec/oas3.patched/openapi/public/components/schemas/Plan.yaml
 +++ b/spec/oas3.patched/openapi/public/components/schemas/Plan.yaml
-@@ -56,6 +56,7 @@ properties:
+@@ -54,8 +54,6 @@ properties:
+     type: boolean
+   line:
      type: string
-     enum:
-       - baremetal
-+      - reserved
+-    enum:
+-      - baremetal
    name:
      type: string
    pricing:
-@@ -75,6 +76,11 @@ properties:
+@@ -75,6 +73,11 @@ properties:
                type: integer
              type:
                type: string
