@@ -5967,6 +5967,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -8380,6 +8404,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       - description: Page to return
         in: query
         name: page
@@ -12987,8 +13035,6 @@ components:
         legacy:
           type: boolean
         line:
-          enum:
-          - baremetal
           type: string
         name:
           type: string
@@ -14970,6 +15016,11 @@ components:
         type:
           type: string
       type: object
+    Plan_specs_memory:
+      properties:
+        total:
+          type: string
+      type: object
     Plan_specs_drives_inner:
       properties:
         count:
@@ -15017,6 +15068,8 @@ components:
           items:
             $ref: '#/components/schemas/Plan_specs_cpus_inner'
           type: array
+        memory:
+          $ref: '#/components/schemas/Plan_specs_memory'
         drives:
           items:
             $ref: '#/components/schemas/Plan_specs_drives_inner'

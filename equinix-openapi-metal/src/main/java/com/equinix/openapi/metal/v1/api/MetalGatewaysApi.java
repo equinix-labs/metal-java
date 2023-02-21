@@ -81,6 +81,8 @@ public class MetalGatewaysApi {
      * Build call for createMetalGateway
      * @param projectId Project UUID (required)
      * @param createMetalGatewayRequest Metal Gateway to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
      * @param _callback Callback for upload/download progress
@@ -95,7 +97,7 @@ public class MetalGatewaysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createMetalGatewayCall(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createMetalGatewayCall(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -120,6 +122,14 @@ public class MetalGatewaysApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
 
         if (page != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
@@ -150,7 +160,7 @@ public class MetalGatewaysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createMetalGatewayValidateBeforeCall(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createMetalGatewayValidateBeforeCall(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling createMetalGateway(Async)");
@@ -161,7 +171,7 @@ public class MetalGatewaysApi {
             throw new ApiException("Missing the required parameter 'createMetalGatewayRequest' when calling createMetalGateway(Async)");
         }
 
-        return createMetalGatewayCall(projectId, createMetalGatewayRequest, page, perPage, _callback);
+        return createMetalGatewayCall(projectId, createMetalGatewayRequest, include, exclude, page, perPage, _callback);
 
     }
 
@@ -170,6 +180,8 @@ public class MetalGatewaysApi {
      * Create a metal gateway in a project
      * @param projectId Project UUID (required)
      * @param createMetalGatewayRequest Metal Gateway to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
      * @return FindMetalGatewayById200Response
@@ -183,8 +195,8 @@ public class MetalGatewaysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public FindMetalGatewayById200Response createMetalGateway(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<FindMetalGatewayById200Response> localVarResp = createMetalGatewayWithHttpInfo(projectId, createMetalGatewayRequest, page, perPage);
+    public FindMetalGatewayById200Response createMetalGateway(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<FindMetalGatewayById200Response> localVarResp = createMetalGatewayWithHttpInfo(projectId, createMetalGatewayRequest, include, exclude, page, perPage);
         return localVarResp.getData();
     }
 
@@ -193,6 +205,8 @@ public class MetalGatewaysApi {
      * Create a metal gateway in a project
      * @param projectId Project UUID (required)
      * @param createMetalGatewayRequest Metal Gateway to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
      * @return ApiResponse&lt;FindMetalGatewayById200Response&gt;
@@ -206,8 +220,8 @@ public class MetalGatewaysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FindMetalGatewayById200Response> createMetalGatewayWithHttpInfo(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = createMetalGatewayValidateBeforeCall(projectId, createMetalGatewayRequest, page, perPage, null);
+    public ApiResponse<FindMetalGatewayById200Response> createMetalGatewayWithHttpInfo(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = createMetalGatewayValidateBeforeCall(projectId, createMetalGatewayRequest, include, exclude, page, perPage, null);
         Type localVarReturnType = new TypeToken<FindMetalGatewayById200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -217,6 +231,8 @@ public class MetalGatewaysApi {
      * Create a metal gateway in a project
      * @param projectId Project UUID (required)
      * @param createMetalGatewayRequest Metal Gateway to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
@@ -231,9 +247,9 @@ public class MetalGatewaysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createMetalGatewayAsync(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, Integer page, Integer perPage, final ApiCallback<FindMetalGatewayById200Response> _callback) throws ApiException {
+    public okhttp3.Call createMetalGatewayAsync(UUID projectId, CreateMetalGatewayRequest createMetalGatewayRequest, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<FindMetalGatewayById200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createMetalGatewayValidateBeforeCall(projectId, createMetalGatewayRequest, page, perPage, _callback);
+        okhttp3.Call localVarCall = createMetalGatewayValidateBeforeCall(projectId, createMetalGatewayRequest, include, exclude, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<FindMetalGatewayById200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

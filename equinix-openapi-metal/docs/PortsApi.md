@@ -693,7 +693,7 @@ public class Example {
 
 <a name="findPortVlanAssignmentBatchByPortIdAndBatchId"></a>
 # **findPortVlanAssignmentBatchByPortIdAndBatchId**
-> PortVlanAssignmentBatch findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId)
+> PortVlanAssignmentBatch findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId, include, exclude)
 
 Retrieve a VLAN Assignment Batch&#39;s details
 
@@ -723,8 +723,10 @@ public class Example {
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
     UUID batchId = UUID.randomUUID(); // UUID | Batch ID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      PortVlanAssignmentBatch result = apiInstance.findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId);
+      PortVlanAssignmentBatch result = apiInstance.findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#findPortVlanAssignmentBatchByPortIdAndBatchId");
@@ -743,6 +745,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
 | **batchId** | **UUID**| Batch ID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

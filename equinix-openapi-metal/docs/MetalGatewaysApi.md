@@ -12,7 +12,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="createMetalGateway"></a>
 # **createMetalGateway**
-> FindMetalGatewayById200Response createMetalGateway(projectId, createMetalGatewayRequest, page, perPage)
+> FindMetalGatewayById200Response createMetalGateway(projectId, createMetalGatewayRequest, include, exclude, page, perPage)
 
 Create a metal gateway
 
@@ -42,10 +42,12 @@ public class Example {
     MetalGatewaysApi apiInstance = new MetalGatewaysApi(defaultClient);
     UUID projectId = UUID.randomUUID(); // UUID | Project UUID
     CreateMetalGatewayRequest createMetalGatewayRequest = new CreateMetalGatewayRequest(); // CreateMetalGatewayRequest | Metal Gateway to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      FindMetalGatewayById200Response result = apiInstance.createMetalGateway(projectId, createMetalGatewayRequest, page, perPage);
+      FindMetalGatewayById200Response result = apiInstance.createMetalGateway(projectId, createMetalGatewayRequest, include, exclude, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetalGatewaysApi#createMetalGateway");
@@ -64,6 +66,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | **UUID**| Project UUID | |
 | **createMetalGatewayRequest** | [**CreateMetalGatewayRequest**](CreateMetalGatewayRequest.md)| Metal Gateway to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 | **page** | **Integer**| Page to return | [optional] [default to 1] |
 | **perPage** | **Integer**| Items returned per page | [optional] [default to 10] |
 
