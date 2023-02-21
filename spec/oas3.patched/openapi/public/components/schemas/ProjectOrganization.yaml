@@ -11,5 +11,5 @@ properties:
     format: date-time
     type: string
   href:
-    $ref: './Href.yaml'
+    type: string
 type: object

@@ -11,7 +11,7 @@
 |**name** | **String** |  |  [optional] |
 |**createdAt** | **OffsetDateTime** |  |  [optional] |
 |**updatedAt** | **OffsetDateTime** |  |  [optional] |
-|**href** | [**Href**](Href.md) |  |  [optional] |
+|**href** | **String** |  |  [optional] |
 
 
 

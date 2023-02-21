@@ -14702,7 +14702,7 @@ components:
           format: date-time
           type: string
         href:
-          $ref: '#/components/schemas/Href'
+          type: string
       type: object
     VrfIpReservationOrHref:
       anyOf:

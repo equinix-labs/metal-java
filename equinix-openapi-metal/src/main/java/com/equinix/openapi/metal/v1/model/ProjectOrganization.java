@@ -15,7 +15,6 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.Href;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -69,7 +68,7 @@ public class ProjectOrganization {
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
-  private Href href;
+  private String href;
 
   public ProjectOrganization() {
   }
@@ -162,7 +161,7 @@ public class ProjectOrganization {
   }
 
 
-  public ProjectOrganization href(Href href) {
+  public ProjectOrganization href(String href) {
     
     this.href = href;
     return this;
@@ -174,12 +173,12 @@ public class ProjectOrganization {
   **/
   @javax.annotation.Nullable
 
-  public Href getHref() {
+  public String getHref() {
     return href;
   }
 
 
-  public void setHref(Href href) {
+  public void setHref(String href) {
     this.href = href;
   }
 
@@ -311,9 +310,8 @@ public class ProjectOrganization {
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // validate the optional field `href`
-      if (jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("href"));
+      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
   }
 

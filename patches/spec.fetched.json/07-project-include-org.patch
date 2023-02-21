@@ -28,5 +28,5 @@ index 0000000..8142324
 +    format: date-time
 +    type: string
 +  href:
-+    $ref: './Href.yaml'
++    type: string
 +type: object

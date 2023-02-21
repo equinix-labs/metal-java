@@ -14556,8 +14556,7 @@ components:
             name: name
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            href:
-              href: href
+            href: href
           name: name
           network_status: "{}"
           customdata: "{}"
@@ -15039,8 +15038,7 @@ components:
               name: name
               created_at: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              href:
-                href: href
+              href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -15458,8 +15456,7 @@ components:
               name: name
               created_at: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              href:
-                href: href
+              href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -19100,8 +19097,7 @@ components:
           name: name
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          href:
-            href: href
+          href: href
         name: name
         network_status: "{}"
         customdata: "{}"
@@ -19224,8 +19220,7 @@ components:
             name: name
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            href:
-              href: href
+            href: href
           name: name
           network_status: "{}"
           customdata: "{}"
@@ -19260,8 +19255,7 @@ components:
             name: name
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            href:
-              href: href
+            href: href
           name: name
           network_status: "{}"
           customdata: "{}"
@@ -21189,8 +21183,7 @@ components:
             name: name
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            href:
-              href: href
+            href: href
           name: name
           network_status: "{}"
           customdata: "{}"
@@ -21355,8 +21348,7 @@ components:
             name: name
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            href:
-              href: href
+            href: href
           name: name
           network_status: "{}"
           customdata: "{}"
@@ -21393,8 +21385,7 @@ components:
             name: name
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            href:
-              href: href
+            href: href
           name: name
           network_status: "{}"
           customdata: "{}"
@@ -21443,8 +21434,7 @@ components:
               name: name
               created_at: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              href:
-                href: href
+              href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -21636,8 +21626,7 @@ components:
               name: name
               created_at: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              href:
-                href: href
+              href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -21674,8 +21663,7 @@ components:
               name: name
               created_at: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              href:
-                href: href
+              href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -21724,8 +21712,7 @@ components:
                 name: name
                 created_at: 2000-01-23T04:56:07.000+00:00
                 id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                href:
-                  href: href
+                href: href
               name: name
               network_status: "{}"
               customdata: "{}"
@@ -21821,8 +21808,7 @@ components:
               name: name
               created_at: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              href:
-                href: href
+              href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -21859,8 +21845,7 @@ components:
               name: name
               created_at: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              href:
-                href: href
+              href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -21909,8 +21894,7 @@ components:
                 name: name
                 created_at: 2000-01-23T04:56:07.000+00:00
                 id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                href:
-                  href: href
+                href: href
               name: name
               network_status: "{}"
               customdata: "{}"
@@ -22025,8 +22009,7 @@ components:
               name: name
               created_at: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              href:
-                href: href
+              href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -22100,8 +22083,7 @@ components:
               name: name
               created_at: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              href:
-                href: href
+              href: href
             name: name
             network_status: "{}"
             customdata: "{}"
@@ -22677,8 +22659,7 @@ components:
         name: name
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        href:
-          href: href
+        href: href
       properties:
         id:
           format: uuid
@@ -22692,7 +22673,7 @@ components:
           format: date-time
           type: string
         href:
-          $ref: '#/components/schemas/Href'
+          type: string
       type: object
     VrfIpReservationOrHref:
       anyOf:
