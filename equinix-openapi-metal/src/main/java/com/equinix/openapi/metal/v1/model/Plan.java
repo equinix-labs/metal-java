@@ -131,54 +131,9 @@ public class Plan {
   @SerializedName(SERIALIZED_NAME_LEGACY)
   private Boolean legacy;
 
-  /**
-   * Gets or Sets line
-   */
-  @JsonAdapter(LineEnum.Adapter.class)
-  public enum LineEnum {
-    BAREMETAL("baremetal");
-
-    private String value;
-
-    LineEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static LineEnum fromValue(String value) {
-      for (LineEnum b : LineEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<LineEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final LineEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public LineEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return LineEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_LINE = "line";
   @SerializedName(SERIALIZED_NAME_LINE)
-  private LineEnum line;
+  private String line;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -430,7 +385,7 @@ public class Plan {
   }
 
 
-  public Plan line(LineEnum line) {
+  public Plan line(String line) {
     
     this.line = line;
     return this;
@@ -442,12 +397,12 @@ public class Plan {
   **/
   @javax.annotation.Nullable
 
-  public LineEnum getLine() {
+  public String getLine() {
     return line;
   }
 
 
-  public void setLine(LineEnum line) {
+  public void setLine(String line) {
     this.line = line;
   }
 

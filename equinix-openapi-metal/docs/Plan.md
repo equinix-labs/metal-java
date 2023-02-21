@@ -14,7 +14,7 @@
 |**deploymentTypes** | [**Set&lt;DeploymentTypesEnum&gt;**](#Set&lt;DeploymentTypesEnum&gt;) |  |  [optional] |
 |**id** | **UUID** |  |  [optional] |
 |**legacy** | **Boolean** |  |  [optional] |
-|**line** | [**LineEnum**](#LineEnum) |  |  [optional] |
+|**line** | **String** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
 |**pricing** | **Object** |  |  [optional] |
 |**slug** | **String** |  |  [optional] |
@@ -29,14 +29,6 @@
 |---- | -----|
 | ON_DEMAND | &quot;on_demand&quot; |
 | SPOT_MARKET | &quot;spot_market&quot; |
-
-
-
-## Enum: LineEnum
-
-| Name | Value |
-|---- | -----|
-| BAREMETAL | &quot;baremetal&quot; |
 
 
 

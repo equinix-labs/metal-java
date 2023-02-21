@@ -12989,7 +12989,7 @@ components:
         spot_price_max: 3.6160767
         plan:
           legacy: true
-          line: baremetal
+          line: line
           available_in_metros:
           - price:
               hour: 1.23
@@ -13011,6 +13011,8 @@ components:
               txt: true
               uefi: true
               raid: true
+            memory:
+              total: total
             cpus:
             - count: 2
               type: type
@@ -13627,7 +13629,7 @@ components:
           spot_price_max: 3.6160767
           plan:
             legacy: true
-            line: baremetal
+            line: line
             available_in_metros:
             - price:
                 hour: 1.23
@@ -13649,6 +13651,8 @@ components:
                 txt: true
                 uefi: true
                 raid: true
+              memory:
+                total: total
               cpus:
               - count: 2
                 type: type
@@ -13921,7 +13925,7 @@ components:
           spot_price_max: 3.6160767
           plan:
             legacy: true
-            line: baremetal
+            line: line
             available_in_metros:
             - price:
                 hour: 1.23
@@ -13943,6 +13947,8 @@ components:
                 txt: true
                 uefi: true
                 raid: true
+              memory:
+                total: total
               cpus:
               - count: 2
                 type: type
@@ -14761,7 +14767,7 @@ components:
           spot_price_max: 3.6160767
           plan:
             legacy: true
-            line: baremetal
+            line: line
             available_in_metros:
             - price:
                 hour: 1.23
@@ -14783,6 +14789,8 @@ components:
                 txt: true
                 uefi: true
                 raid: true
+              memory:
+                total: total
               cpus:
               - count: 2
                 type: type
@@ -14884,7 +14892,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plan:
           legacy: true
-          line: baremetal
+          line: line
           available_in_metros:
           - price:
               hour: 1.23
@@ -14906,6 +14914,8 @@ components:
               txt: true
               uefi: true
               raid: true
+            memory:
+              total: total
             cpus:
             - count: 2
               type: type
@@ -15240,7 +15250,7 @@ components:
             spot_price_max: 3.6160767
             plan:
               legacy: true
-              line: baremetal
+              line: line
               available_in_metros:
               - price:
                   hour: 1.23
@@ -15262,6 +15272,8 @@ components:
                   txt: true
                   uefi: true
                   raid: true
+                memory:
+                  total: total
                 cpus:
                 - count: 2
                   type: type
@@ -15363,7 +15375,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plan:
             legacy: true
-            line: baremetal
+            line: line
             available_in_metros:
             - price:
                 hour: 1.23
@@ -15385,6 +15397,8 @@ components:
                 txt: true
                 uefi: true
                 raid: true
+              memory:
+                total: total
               cpus:
               - count: 2
                 type: type
@@ -15655,7 +15669,7 @@ components:
             spot_price_max: 3.6160767
             plan:
               legacy: true
-              line: baremetal
+              line: line
               available_in_metros:
               - price:
                   hour: 1.23
@@ -15677,6 +15691,8 @@ components:
                   txt: true
                   uefi: true
                   raid: true
+                memory:
+                  total: total
                 cpus:
                 - count: 2
                   type: type
@@ -15778,7 +15794,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plan:
             legacy: true
-            line: baremetal
+            line: line
             available_in_metros:
             - price:
                 hour: 1.23
@@ -15800,6 +15816,8 @@ components:
                 txt: true
                 uefi: true
                 raid: true
+              memory:
+                total: total
               cpus:
               - count: 2
                 type: type
@@ -18403,7 +18421,7 @@ components:
     Plan:
       example:
         legacy: true
-        line: baremetal
+        line: line
         available_in_metros:
         - price:
             hour: 1.23
@@ -18425,6 +18443,8 @@ components:
             txt: true
             uefi: true
             raid: true
+          memory:
+            total: total
           cpus:
           - count: 2
             type: type
@@ -18485,8 +18505,6 @@ components:
         legacy:
           type: boolean
         line:
-          enum:
-          - baremetal
           type: string
         name:
           type: string
@@ -18509,7 +18527,7 @@ components:
       example:
         plans:
         - legacy: true
-          line: baremetal
+          line: line
           available_in_metros:
           - price:
               hour: 1.23
@@ -18531,6 +18549,8 @@ components:
               txt: true
               uefi: true
               raid: true
+            memory:
+              total: total
             cpus:
             - count: 2
               type: type
@@ -18559,7 +18579,7 @@ components:
           pricing: "{}"
           slug: m3.large.x86
         - legacy: true
-          line: baremetal
+          line: line
           available_in_metros:
           - price:
               hour: 1.23
@@ -18581,6 +18601,8 @@ components:
               txt: true
               uefi: true
               raid: true
+            memory:
+              total: total
             cpus:
             - count: 2
               type: type
@@ -22978,6 +23000,13 @@ components:
         type:
           type: string
       type: object
+    Plan_specs_memory:
+      example:
+        total: total
+      properties:
+        total:
+          type: string
+      type: object
     Plan_specs_drives_inner:
       example:
         size: 3.84TB
@@ -23037,6 +23066,8 @@ components:
           txt: true
           uefi: true
           raid: true
+        memory:
+          total: total
         cpus:
         - count: 2
           type: type
@@ -23061,6 +23092,8 @@ components:
           items:
             $ref: '#/components/schemas/Plan_specs_cpus_inner'
           type: array
+        memory:
+          $ref: '#/components/schemas/Plan_specs_memory'
         drives:
           items:
             $ref: '#/components/schemas/Plan_specs_drives_inner'

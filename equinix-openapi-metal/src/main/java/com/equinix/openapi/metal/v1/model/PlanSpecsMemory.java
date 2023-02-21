@@ -15,19 +15,12 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.PlanSpecsCpusInner;
-import com.equinix.openapi.metal.v1.model.PlanSpecsDrivesInner;
-import com.equinix.openapi.metal.v1.model.PlanSpecsFeatures;
-import com.equinix.openapi.metal.v1.model.PlanSpecsMemory;
-import com.equinix.openapi.metal.v1.model.PlanSpecsNicsInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,164 +44,36 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * PlanSpecs
+ * PlanSpecsMemory
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PlanSpecs {
-  public static final String SERIALIZED_NAME_CPUS = "cpus";
-  @SerializedName(SERIALIZED_NAME_CPUS)
-  private List<PlanSpecsCpusInner> cpus = null;
+public class PlanSpecsMemory {
+  public static final String SERIALIZED_NAME_TOTAL = "total";
+  @SerializedName(SERIALIZED_NAME_TOTAL)
+  private String total;
 
-  public static final String SERIALIZED_NAME_MEMORY = "memory";
-  @SerializedName(SERIALIZED_NAME_MEMORY)
-  private PlanSpecsMemory memory;
-
-  public static final String SERIALIZED_NAME_DRIVES = "drives";
-  @SerializedName(SERIALIZED_NAME_DRIVES)
-  private List<PlanSpecsDrivesInner> drives = null;
-
-  public static final String SERIALIZED_NAME_NICS = "nics";
-  @SerializedName(SERIALIZED_NAME_NICS)
-  private List<PlanSpecsNicsInner> nics = null;
-
-  public static final String SERIALIZED_NAME_FEATURES = "features";
-  @SerializedName(SERIALIZED_NAME_FEATURES)
-  private PlanSpecsFeatures features;
-
-  public PlanSpecs() {
+  public PlanSpecsMemory() {
   }
 
-  public PlanSpecs cpus(List<PlanSpecsCpusInner> cpus) {
+  public PlanSpecsMemory total(String total) {
     
-    this.cpus = cpus;
-    return this;
-  }
-
-  public PlanSpecs addCpusItem(PlanSpecsCpusInner cpusItem) {
-    if (this.cpus == null) {
-      this.cpus = new ArrayList<>();
-    }
-    this.cpus.add(cpusItem);
+    this.total = total;
     return this;
   }
 
    /**
-   * Get cpus
-   * @return cpus
+   * Get total
+   * @return total
   **/
   @javax.annotation.Nullable
 
-  public List<PlanSpecsCpusInner> getCpus() {
-    return cpus;
+  public String getTotal() {
+    return total;
   }
 
 
-  public void setCpus(List<PlanSpecsCpusInner> cpus) {
-    this.cpus = cpus;
-  }
-
-
-  public PlanSpecs memory(PlanSpecsMemory memory) {
-    
-    this.memory = memory;
-    return this;
-  }
-
-   /**
-   * Get memory
-   * @return memory
-  **/
-  @javax.annotation.Nullable
-
-  public PlanSpecsMemory getMemory() {
-    return memory;
-  }
-
-
-  public void setMemory(PlanSpecsMemory memory) {
-    this.memory = memory;
-  }
-
-
-  public PlanSpecs drives(List<PlanSpecsDrivesInner> drives) {
-    
-    this.drives = drives;
-    return this;
-  }
-
-  public PlanSpecs addDrivesItem(PlanSpecsDrivesInner drivesItem) {
-    if (this.drives == null) {
-      this.drives = new ArrayList<>();
-    }
-    this.drives.add(drivesItem);
-    return this;
-  }
-
-   /**
-   * Get drives
-   * @return drives
-  **/
-  @javax.annotation.Nullable
-
-  public List<PlanSpecsDrivesInner> getDrives() {
-    return drives;
-  }
-
-
-  public void setDrives(List<PlanSpecsDrivesInner> drives) {
-    this.drives = drives;
-  }
-
-
-  public PlanSpecs nics(List<PlanSpecsNicsInner> nics) {
-    
-    this.nics = nics;
-    return this;
-  }
-
-  public PlanSpecs addNicsItem(PlanSpecsNicsInner nicsItem) {
-    if (this.nics == null) {
-      this.nics = new ArrayList<>();
-    }
-    this.nics.add(nicsItem);
-    return this;
-  }
-
-   /**
-   * Get nics
-   * @return nics
-  **/
-  @javax.annotation.Nullable
-
-  public List<PlanSpecsNicsInner> getNics() {
-    return nics;
-  }
-
-
-  public void setNics(List<PlanSpecsNicsInner> nics) {
-    this.nics = nics;
-  }
-
-
-  public PlanSpecs features(PlanSpecsFeatures features) {
-    
-    this.features = features;
-    return this;
-  }
-
-   /**
-   * Get features
-   * @return features
-  **/
-  @javax.annotation.Nullable
-
-  public PlanSpecsFeatures getFeatures() {
-    return features;
-  }
-
-
-  public void setFeatures(PlanSpecsFeatures features) {
-    this.features = features;
+  public void setTotal(String total) {
+    this.total = total;
   }
 
   /**
@@ -224,9 +89,9 @@ public class PlanSpecs {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the PlanSpecs instance itself
+   * @return the PlanSpecsMemory instance itself
    */
-  public PlanSpecs putAdditionalProperty(String key, Object value) {
+  public PlanSpecsMemory putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -265,29 +130,21 @@ public class PlanSpecs {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PlanSpecs planSpecs = (PlanSpecs) o;
-    return Objects.equals(this.cpus, planSpecs.cpus) &&
-        Objects.equals(this.memory, planSpecs.memory) &&
-        Objects.equals(this.drives, planSpecs.drives) &&
-        Objects.equals(this.nics, planSpecs.nics) &&
-        Objects.equals(this.features, planSpecs.features)&&
-        Objects.equals(this.additionalProperties, planSpecs.additionalProperties);
+    PlanSpecsMemory planSpecsMemory = (PlanSpecsMemory) o;
+    return Objects.equals(this.total, planSpecsMemory.total)&&
+        Objects.equals(this.additionalProperties, planSpecsMemory.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cpus, memory, drives, nics, features, additionalProperties);
+    return Objects.hash(total, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PlanSpecs {\n");
-    sb.append("    cpus: ").append(toIndentedString(cpus)).append("\n");
-    sb.append("    memory: ").append(toIndentedString(memory)).append("\n");
-    sb.append("    drives: ").append(toIndentedString(drives)).append("\n");
-    sb.append("    nics: ").append(toIndentedString(nics)).append("\n");
-    sb.append("    features: ").append(toIndentedString(features)).append("\n");
+    sb.append("class PlanSpecsMemory {\n");
+    sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -311,11 +168,7 @@ public class PlanSpecs {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("cpus");
-    openapiFields.add("memory");
-    openapiFields.add("drives");
-    openapiFields.add("nics");
-    openapiFields.add("features");
+    openapiFields.add("total");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -325,63 +178,16 @@ public class PlanSpecs {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PlanSpecs
+  * @throws IOException if the JSON Object is invalid with respect to PlanSpecsMemory
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!PlanSpecs.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PlanSpecs is not found in the empty JSON string", PlanSpecs.openapiRequiredFields.toString()));
+        if (!PlanSpecsMemory.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PlanSpecsMemory is not found in the empty JSON string", PlanSpecsMemory.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("cpus") != null && !jsonObj.get("cpus").isJsonNull()) {
-        JsonArray jsonArraycpus = jsonObj.getAsJsonArray("cpus");
-        if (jsonArraycpus != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("cpus").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `cpus` to be an array in the JSON string but got `%s`", jsonObj.get("cpus").toString()));
-          }
-
-          // validate the optional field `cpus` (array)
-          for (int i = 0; i < jsonArraycpus.size(); i++) {
-            PlanSpecsCpusInner.validateJsonObject(jsonArraycpus.get(i).getAsJsonObject());
-          };
-        }
-      }
-      // validate the optional field `memory`
-      if (jsonObj.get("memory") != null && !jsonObj.get("memory").isJsonNull()) {
-        PlanSpecsMemory.validateJsonObject(jsonObj.getAsJsonObject("memory"));
-      }
-      if (jsonObj.get("drives") != null && !jsonObj.get("drives").isJsonNull()) {
-        JsonArray jsonArraydrives = jsonObj.getAsJsonArray("drives");
-        if (jsonArraydrives != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("drives").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `drives` to be an array in the JSON string but got `%s`", jsonObj.get("drives").toString()));
-          }
-
-          // validate the optional field `drives` (array)
-          for (int i = 0; i < jsonArraydrives.size(); i++) {
-            PlanSpecsDrivesInner.validateJsonObject(jsonArraydrives.get(i).getAsJsonObject());
-          };
-        }
-      }
-      if (jsonObj.get("nics") != null && !jsonObj.get("nics").isJsonNull()) {
-        JsonArray jsonArraynics = jsonObj.getAsJsonArray("nics");
-        if (jsonArraynics != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("nics").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `nics` to be an array in the JSON string but got `%s`", jsonObj.get("nics").toString()));
-          }
-
-          // validate the optional field `nics` (array)
-          for (int i = 0; i < jsonArraynics.size(); i++) {
-            PlanSpecsNicsInner.validateJsonObject(jsonArraynics.get(i).getAsJsonObject());
-          };
-        }
-      }
-      // validate the optional field `features`
-      if (jsonObj.get("features") != null && !jsonObj.get("features").isJsonNull()) {
-        PlanSpecsFeatures.validateJsonObject(jsonObj.getAsJsonObject("features"));
+      if ((jsonObj.get("total") != null && !jsonObj.get("total").isJsonNull()) && !jsonObj.get("total").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `total` to be a primitive type in the JSON string but got `%s`", jsonObj.get("total").toString()));
       }
   }
 
@@ -389,16 +195,16 @@ public class PlanSpecs {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PlanSpecs.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PlanSpecs' and its subtypes
+       if (!PlanSpecsMemory.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PlanSpecsMemory' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PlanSpecs> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PlanSpecs.class));
+       final TypeAdapter<PlanSpecsMemory> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PlanSpecsMemory.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<PlanSpecs>() {
+       return (TypeAdapter<T>) new TypeAdapter<PlanSpecsMemory>() {
            @Override
-           public void write(JsonWriter out, PlanSpecs value) throws IOException {
+           public void write(JsonWriter out, PlanSpecsMemory value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -421,11 +227,11 @@ public class PlanSpecs {
            }
 
            @Override
-           public PlanSpecs read(JsonReader in) throws IOException {
+           public PlanSpecsMemory read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             PlanSpecs instance = thisAdapter.fromJsonTree(jsonObj);
+             PlanSpecsMemory instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -452,18 +258,18 @@ public class PlanSpecs {
   }
 
  /**
-  * Create an instance of PlanSpecs given an JSON string
+  * Create an instance of PlanSpecsMemory given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of PlanSpecs
-  * @throws IOException if the JSON string is invalid with respect to PlanSpecs
+  * @return An instance of PlanSpecsMemory
+  * @throws IOException if the JSON string is invalid with respect to PlanSpecsMemory
   */
-  public static PlanSpecs fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PlanSpecs.class);
+  public static PlanSpecsMemory fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PlanSpecsMemory.class);
   }
 
  /**
-  * Convert an instance of PlanSpecs to an JSON string
+  * Convert an instance of PlanSpecsMemory to an JSON string
   *
   * @return JSON string
   */
