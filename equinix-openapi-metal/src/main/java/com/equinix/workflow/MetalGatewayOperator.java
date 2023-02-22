@@ -63,7 +63,7 @@ public class MetalGatewayOperator {
      */
     public MetalGateway createMetalGateway(UUID projectId, CreateMetalGatewayRequest metalGatewayRequest)
             throws ApiException {
-        return metalGatewaysApi.createMetalGateway(projectId, metalGatewayRequest, RESPONSE_PAGE, RESPONSE_ITEMS_PER_PAGE).getMetalGateway();
+        return metalGatewaysApi.createMetalGateway(projectId, metalGatewayRequest, null, null, RESPONSE_PAGE, RESPONSE_ITEMS_PER_PAGE).getMetalGateway();
     }
 
     // Poll until metal gateway record is deleted when state is "deleting"

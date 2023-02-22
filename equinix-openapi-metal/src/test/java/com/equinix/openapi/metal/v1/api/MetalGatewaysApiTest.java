@@ -46,9 +46,11 @@ public class MetalGatewaysApiTest {
     public void createMetalGatewayTest() throws ApiException {
         UUID projectId = null;
         CreateMetalGatewayRequest createMetalGatewayRequest = null;
+        List<String> include = null;
+        List<String> exclude = null;
         Integer page = null;
         Integer perPage = null;
-        FindMetalGatewayById200Response response = api.createMetalGateway(projectId, createMetalGatewayRequest, page, perPage);
+        FindMetalGatewayById200Response response = api.createMetalGateway(projectId, createMetalGatewayRequest, include, exclude, page, perPage);
         // TODO: test validations
     }
 

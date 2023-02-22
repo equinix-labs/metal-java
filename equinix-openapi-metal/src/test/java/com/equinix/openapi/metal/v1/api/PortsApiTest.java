@@ -186,7 +186,9 @@ public class PortsApiTest {
     public void findPortVlanAssignmentBatchByPortIdAndBatchIdTest() throws ApiException {
         UUID id = null;
         UUID batchId = null;
-        PortVlanAssignmentBatch response = api.findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId);
+        List<String> include = null;
+        List<String> exclude = null;
+        PortVlanAssignmentBatch response = api.findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId, include, exclude);
         // TODO: test validations
     }
 
