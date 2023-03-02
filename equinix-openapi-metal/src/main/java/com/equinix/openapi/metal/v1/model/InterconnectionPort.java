@@ -16,7 +16,7 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.VirtualCircuitListVirtualCircuitsInner;
+import com.equinix.openapi.metal.v1.model.VirtualCircuit;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -55,7 +55,7 @@ import com.equinix.openapi.JSON;
 public class InterconnectionPort {
   public static final String SERIALIZED_NAME_VIRTUAL_CIRCUITS = "virtual_circuits";
   @SerializedName(SERIALIZED_NAME_VIRTUAL_CIRCUITS)
-  private List<VirtualCircuitListVirtualCircuitsInner> virtualCircuits = null;
+  private List<VirtualCircuit> virtualCircuits = null;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -194,13 +194,13 @@ public class InterconnectionPort {
   public InterconnectionPort() {
   }
 
-  public InterconnectionPort virtualCircuits(List<VirtualCircuitListVirtualCircuitsInner> virtualCircuits) {
+  public InterconnectionPort virtualCircuits(List<VirtualCircuit> virtualCircuits) {
     
     this.virtualCircuits = virtualCircuits;
     return this;
   }
 
-  public InterconnectionPort addVirtualCircuitsItem(VirtualCircuitListVirtualCircuitsInner virtualCircuitsItem) {
+  public InterconnectionPort addVirtualCircuitsItem(VirtualCircuit virtualCircuitsItem) {
     if (this.virtualCircuits == null) {
       this.virtualCircuits = new ArrayList<>();
     }
@@ -214,12 +214,12 @@ public class InterconnectionPort {
   **/
   @javax.annotation.Nullable
 
-  public List<VirtualCircuitListVirtualCircuitsInner> getVirtualCircuits() {
+  public List<VirtualCircuit> getVirtualCircuits() {
     return virtualCircuits;
   }
 
 
-  public void setVirtualCircuits(List<VirtualCircuitListVirtualCircuitsInner> virtualCircuits) {
+  public void setVirtualCircuits(List<VirtualCircuit> virtualCircuits) {
     this.virtualCircuits = virtualCircuits;
   }
 
@@ -568,7 +568,7 @@ public class InterconnectionPort {
 
           // validate the optional field `virtual_circuits` (array)
           for (int i = 0; i < jsonArrayvirtualCircuits.size(); i++) {
-            VirtualCircuitListVirtualCircuitsInner.validateJsonObject(jsonArrayvirtualCircuits.get(i).getAsJsonObject());
+            VirtualCircuit.validateJsonObject(jsonArrayvirtualCircuits.get(i).getAsJsonObject());
           };
         }
       }

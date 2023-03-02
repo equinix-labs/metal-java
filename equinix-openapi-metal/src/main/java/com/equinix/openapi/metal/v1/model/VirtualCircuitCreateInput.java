@@ -15,6 +15,8 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.equinix.openapi.metal.v1.model.VlanVirtualCircuitCreateInput;
+import com.equinix.openapi.metal.v1.model.VrfVirtualCircuitCreateInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,343 +26,213 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import javax.ws.rs.core.GenericType;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 import com.equinix.openapi.JSON;
 
-/**
- * VirtualCircuitCreateInput
- */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VirtualCircuitCreateInput {
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
+public class VirtualCircuitCreateInput extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(VirtualCircuitCreateInput.class.getName());
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!VirtualCircuitCreateInput.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'VirtualCircuitCreateInput' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<VlanVirtualCircuitCreateInput> adapterVlanVirtualCircuitCreateInput = gson.getDelegateAdapter(this, TypeToken.get(VlanVirtualCircuitCreateInput.class));
+            final TypeAdapter<VrfVirtualCircuitCreateInput> adapterVrfVirtualCircuitCreateInput = gson.getDelegateAdapter(this, TypeToken.get(VrfVirtualCircuitCreateInput.class));
 
-  public static final String SERIALIZED_NAME_NNI_VLAN = "nni_vlan";
-  @SerializedName(SERIALIZED_NAME_NNI_VLAN)
-  private Integer nniVlan;
+            return (TypeAdapter<T>) new TypeAdapter<VirtualCircuitCreateInput>() {
+                @Override
+                public void write(JsonWriter out, VirtualCircuitCreateInput value) throws IOException {
+                    if (value == null || value.getActualInstance() == null) {
+                        elementAdapter.write(out, null);
+                        return;
+                    }
 
-  public static final String SERIALIZED_NAME_PROJECT_ID = "project_id";
-  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
-  private UUID projectId;
+                    // check if the actual instance is of the type `VlanVirtualCircuitCreateInput`
+                    if (value.getActualInstance() instanceof VlanVirtualCircuitCreateInput) {
+                        JsonObject obj = adapterVlanVirtualCircuitCreateInput.toJsonTree((VlanVirtualCircuitCreateInput)value.getActualInstance()).getAsJsonObject();
+                        elementAdapter.write(out, obj);
+                        return;
+                    }
 
-  public static final String SERIALIZED_NAME_SPEED = "speed";
-  @SerializedName(SERIALIZED_NAME_SPEED)
-  private Integer speed;
+                    // check if the actual instance is of the type `VrfVirtualCircuitCreateInput`
+                    if (value.getActualInstance() instanceof VrfVirtualCircuitCreateInput) {
+                        JsonObject obj = adapterVrfVirtualCircuitCreateInput.toJsonTree((VrfVirtualCircuitCreateInput)value.getActualInstance()).getAsJsonObject();
+                        elementAdapter.write(out, obj);
+                        return;
+                    }
 
-  public static final String SERIALIZED_NAME_TAGS = "tags";
-  @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: VlanVirtualCircuitCreateInput, VrfVirtualCircuitCreateInput");
+                }
 
-  public static final String SERIALIZED_NAME_VNID = "vnid";
-  @SerializedName(SERIALIZED_NAME_VNID)
-  private UUID vnid;
+                @Override
+                public VirtualCircuitCreateInput read(JsonReader in) throws IOException {
+                    Object deserialized = null;
+                    JsonObject jsonObject = elementAdapter.read(in).getAsJsonObject();
 
-  public VirtualCircuitCreateInput() {
-  }
+                    int match = 0;
+                    ArrayList<String> errorMessages = new ArrayList<>();
+                    TypeAdapter actualAdapter = elementAdapter;
 
-  public VirtualCircuitCreateInput description(String description) {
-    
-    this.description = description;
-    return this;
-  }
+                    // deserialize VlanVirtualCircuitCreateInput
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        VlanVirtualCircuitCreateInput.validateJsonObject(jsonObject);
+                        actualAdapter = adapterVlanVirtualCircuitCreateInput;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'VlanVirtualCircuitCreateInput'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for VlanVirtualCircuitCreateInput failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'VlanVirtualCircuitCreateInput'", e);
+                    }
 
-   /**
-   * Get description
-   * @return description
-  **/
-  @javax.annotation.Nullable
+                    // deserialize VrfVirtualCircuitCreateInput
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        VrfVirtualCircuitCreateInput.validateJsonObject(jsonObject);
+                        actualAdapter = adapterVrfVirtualCircuitCreateInput;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'VrfVirtualCircuitCreateInput'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for VrfVirtualCircuitCreateInput failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'VrfVirtualCircuitCreateInput'", e);
+                    }
 
-  public String getDescription() {
-    return description;
-  }
+                    if (match == 1) {
+                        VirtualCircuitCreateInput ret = new VirtualCircuitCreateInput();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonObject));
+                        return ret;
+                    }
 
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public VirtualCircuitCreateInput name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nullable
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public VirtualCircuitCreateInput nniVlan(Integer nniVlan) {
-    
-    this.nniVlan = nniVlan;
-    return this;
-  }
-
-   /**
-   * Get nniVlan
-   * minimum: 2
-   * maximum: 4094
-   * @return nniVlan
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getNniVlan() {
-    return nniVlan;
-  }
-
-
-  public void setNniVlan(Integer nniVlan) {
-    this.nniVlan = nniVlan;
-  }
-
-
-  public VirtualCircuitCreateInput projectId(UUID projectId) {
-    
-    this.projectId = projectId;
-    return this;
-  }
-
-   /**
-   * Get projectId
-   * @return projectId
-  **/
-  @javax.annotation.Nonnull
-
-  public UUID getProjectId() {
-    return projectId;
-  }
-
-
-  public void setProjectId(UUID projectId) {
-    this.projectId = projectId;
-  }
-
-
-  public VirtualCircuitCreateInput speed(Integer speed) {
-    
-    this.speed = speed;
-    return this;
-  }
-
-   /**
-   * speed can be passed as integer number representing bps speed or string (e.g. &#39;52m&#39; or &#39;100g&#39; or &#39;4 gbps&#39;)
-   * @return speed
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getSpeed() {
-    return speed;
-  }
-
-
-  public void setSpeed(Integer speed) {
-    this.speed = speed;
-  }
-
-
-  public VirtualCircuitCreateInput tags(List<String> tags) {
-    
-    this.tags = tags;
-    return this;
-  }
-
-  public VirtualCircuitCreateInput addTagsItem(String tagsItem) {
-    if (this.tags == null) {
-      this.tags = new ArrayList<>();
+                    throw new IOException(String.format("Failed deserialization for VirtualCircuitCreateInput: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonObject.toString()));
+                }
+            }.nullSafe();
+        }
     }
-    this.tags.add(tagsItem);
-    return this;
-  }
 
-   /**
-   * Get tags
-   * @return tags
-  **/
-  @javax.annotation.Nullable
+    // store a list of schema names defined in oneOf
+    public static final Map<String, GenericType> schemas = new HashMap<String, GenericType>();
 
-  public List<String> getTags() {
-    return tags;
-  }
-
-
-  public void setTags(List<String> tags) {
-    this.tags = tags;
-  }
-
-
-  public VirtualCircuitCreateInput vnid(UUID vnid) {
-    
-    this.vnid = vnid;
-    return this;
-  }
-
-   /**
-   * A Virtual Network record UUID or the VNID of a Metro Virtual Network in your project (sent as integer).
-   * @return vnid
-  **/
-  @javax.annotation.Nullable
-
-  public UUID getVnid() {
-    return vnid;
-  }
-
-
-  public void setVnid(UUID vnid) {
-    this.vnid = vnid;
-  }
-
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the VirtualCircuitCreateInput instance itself
-   */
-  public VirtualCircuitCreateInput putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
+    public VirtualCircuitCreateInput() {
+        super("oneOf", Boolean.FALSE);
     }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
 
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
+    public VirtualCircuitCreateInput(VlanVirtualCircuitCreateInput o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
     }
-    return this.additionalProperties.get(key);
-  }
 
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public VirtualCircuitCreateInput(VrfVirtualCircuitCreateInput o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    static {
+        schemas.put("VlanVirtualCircuitCreateInput", new GenericType<VlanVirtualCircuitCreateInput>() {
+        });
+        schemas.put("VrfVirtualCircuitCreateInput", new GenericType<VrfVirtualCircuitCreateInput>() {
+        });
     }
-    VirtualCircuitCreateInput virtualCircuitCreateInput = (VirtualCircuitCreateInput) o;
-    return Objects.equals(this.description, virtualCircuitCreateInput.description) &&
-        Objects.equals(this.name, virtualCircuitCreateInput.name) &&
-        Objects.equals(this.nniVlan, virtualCircuitCreateInput.nniVlan) &&
-        Objects.equals(this.projectId, virtualCircuitCreateInput.projectId) &&
-        Objects.equals(this.speed, virtualCircuitCreateInput.speed) &&
-        Objects.equals(this.tags, virtualCircuitCreateInput.tags) &&
-        Objects.equals(this.vnid, virtualCircuitCreateInput.vnid)&&
-        Objects.equals(this.additionalProperties, virtualCircuitCreateInput.additionalProperties);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(description, name, nniVlan, projectId, speed, tags, vnid, additionalProperties);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class VirtualCircuitCreateInput {\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    nniVlan: ").append(toIndentedString(nniVlan)).append("\n");
-    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
-    sb.append("    speed: ").append(toIndentedString(speed)).append("\n");
-    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
-    sb.append("    vnid: ").append(toIndentedString(vnid)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    @Override
+    public Map<String, GenericType> getSchemas() {
+        return VirtualCircuitCreateInput.schemas;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    /**
+     * Set the instance that matches the oneOf child schema, check
+     * the instance parameter is valid against the oneOf child schemas:
+     * VlanVirtualCircuitCreateInput, VrfVirtualCircuitCreateInput
+     *
+     * It could be an instance of the 'oneOf' schemas.
+     * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
+     */
+    @Override
+    public void setActualInstance(Object instance) {
+        if (instance instanceof VlanVirtualCircuitCreateInput) {
+            super.setActualInstance(instance);
+            return;
+        }
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        if (instance instanceof VrfVirtualCircuitCreateInput) {
+            super.setActualInstance(instance);
+            return;
+        }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("description");
-    openapiFields.add("name");
-    openapiFields.add("nni_vlan");
-    openapiFields.add("project_id");
-    openapiFields.add("speed");
-    openapiFields.add("tags");
-    openapiFields.add("vnid");
+        throw new RuntimeException("Invalid instance type. Must be VlanVirtualCircuitCreateInput, VrfVirtualCircuitCreateInput");
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("project_id");
-  }
+    /**
+     * Get the actual instance, which can be the following:
+     * VlanVirtualCircuitCreateInput, VrfVirtualCircuitCreateInput
+     *
+     * @return The actual instance (VlanVirtualCircuitCreateInput, VrfVirtualCircuitCreateInput)
+     */
+    @Override
+    public Object getActualInstance() {
+        return super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `VlanVirtualCircuitCreateInput`. If the actual instance is not `VlanVirtualCircuitCreateInput`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `VlanVirtualCircuitCreateInput`
+     * @throws ClassCastException if the instance is not `VlanVirtualCircuitCreateInput`
+     */
+    public VlanVirtualCircuitCreateInput getVlanVirtualCircuitCreateInput() throws ClassCastException {
+        return (VlanVirtualCircuitCreateInput)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `VrfVirtualCircuitCreateInput`. If the actual instance is not `VrfVirtualCircuitCreateInput`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `VrfVirtualCircuitCreateInput`
+     * @throws ClassCastException if the instance is not `VrfVirtualCircuitCreateInput`
+     */
+    public VrfVirtualCircuitCreateInput getVrfVirtualCircuitCreateInput() throws ClassCastException {
+        return (VrfVirtualCircuitCreateInput)super.getActualInstance();
+    }
+
 
  /**
   * Validates the JSON Object and throws an exception if issues found
@@ -369,99 +241,27 @@ public class VirtualCircuitCreateInput {
   * @throws IOException if the JSON Object is invalid with respect to VirtualCircuitCreateInput
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!VirtualCircuitCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VirtualCircuitCreateInput is not found in the empty JSON string", VirtualCircuitCreateInput.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VirtualCircuitCreateInput.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (!jsonObj.get("project_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `project_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project_id").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
-      }
-      if ((jsonObj.get("vnid") != null && !jsonObj.get("vnid").isJsonNull()) && !jsonObj.get("vnid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `vnid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vnid").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VirtualCircuitCreateInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VirtualCircuitCreateInput' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VirtualCircuitCreateInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VirtualCircuitCreateInput.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<VirtualCircuitCreateInput>() {
-           @Override
-           public void write(JsonWriter out, VirtualCircuitCreateInput value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public VirtualCircuitCreateInput read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             VirtualCircuitCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
-           }
-
-       }.nullSafe();
+    // validate oneOf schemas one by one
+    int validCount = 0;
+    ArrayList<String> errorMessages = new ArrayList<>();
+    // validate the json string with VlanVirtualCircuitCreateInput
+    try {
+      VlanVirtualCircuitCreateInput.validateJsonObject(jsonObj);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for VlanVirtualCircuitCreateInput failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
+    // validate the json string with VrfVirtualCircuitCreateInput
+    try {
+      VrfVirtualCircuitCreateInput.validateJsonObject(jsonObj);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for VrfVirtualCircuitCreateInput failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
+    if (validCount != 1) {
+      throw new IOException(String.format("The JSON string is invalid for VirtualCircuitCreateInput with oneOf schemas: VlanVirtualCircuitCreateInput, VrfVirtualCircuitCreateInput. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
     }
   }
 

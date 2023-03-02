@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**virtualCircuits** | [**List&lt;VirtualCircuitListVirtualCircuitsInner&gt;**](VirtualCircuitListVirtualCircuitsInner.md) |  |  [optional] |
+|**virtualCircuits** | [**List&lt;VirtualCircuit&gt;**](VirtualCircuit.md) |  |  [optional] |
 
 
 

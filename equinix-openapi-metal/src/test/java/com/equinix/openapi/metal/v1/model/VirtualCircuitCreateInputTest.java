@@ -13,6 +13,8 @@
 
 package com.equinix.openapi.metal.v1.model;
 
+import com.equinix.openapi.metal.v1.model.VlanVirtualCircuitCreateInput;
+import com.equinix.openapi.metal.v1.model.VrfVirtualCircuitCreateInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -94,6 +97,54 @@ public class VirtualCircuitCreateInputTest {
     @Test
     public void vnidTest() {
         // TODO: test vnid
+    }
+
+    /**
+     * Test the property 'customerIp'
+     */
+    @Test
+    public void customerIpTest() {
+        // TODO: test customerIp
+    }
+
+    /**
+     * Test the property 'md5'
+     */
+    @Test
+    public void md5Test() {
+        // TODO: test md5
+    }
+
+    /**
+     * Test the property 'metalIp'
+     */
+    @Test
+    public void metalIpTest() {
+        // TODO: test metalIp
+    }
+
+    /**
+     * Test the property 'peerAsn'
+     */
+    @Test
+    public void peerAsnTest() {
+        // TODO: test peerAsn
+    }
+
+    /**
+     * Test the property 'subnet'
+     */
+    @Test
+    public void subnetTest() {
+        // TODO: test subnet
+    }
+
+    /**
+     * Test the property 'vrf'
+     */
+    @Test
+    public void vrfTest() {
+        // TODO: test vrf
     }
 
 }

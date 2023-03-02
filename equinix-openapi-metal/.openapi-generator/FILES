@@ -42,8 +42,6 @@ docs/CapacityReport.md
 docs/Coordinates.md
 docs/CreateDeviceRequest.md
 docs/CreateEmailInput.md
-docs/CreateInterconnectionPortVirtualCircuit201Response.md
-docs/CreateInterconnectionPortVirtualCircuitRequest.md
 docs/CreateMetalGatewayRequest.md
 docs/CreateSelfServiceReservationRequest.md
 docs/CreateSelfServiceReservationRequestPeriod.md
@@ -232,7 +230,6 @@ docs/TransferRequestList.md
 docs/TransferRequestsApi.md
 docs/TwoFactorAuthApi.md
 docs/UpdateEmailInput.md
-docs/UpdateVirtualCircuitRequest.md
 docs/UsagesApi.md
 docs/User.md
 docs/UserCreateInput.md
@@ -247,11 +244,13 @@ docs/VerifyEmail.md
 docs/VirtualCircuit.md
 docs/VirtualCircuitCreateInput.md
 docs/VirtualCircuitList.md
-docs/VirtualCircuitListVirtualCircuitsInner.md
 docs/VirtualCircuitUpdateInput.md
 docs/VirtualNetwork.md
 docs/VirtualNetworkCreateInput.md
 docs/VirtualNetworkList.md
+docs/VlanVirtualCircuit.md
+docs/VlanVirtualCircuitCreateInput.md
+docs/VlanVirtualCircuitUpdateInput.md
 docs/VlansApi.md
 docs/Vrf.md
 docs/VrfCreateInput.md
@@ -369,8 +368,6 @@ src/main/java/com/equinix/openapi/metal/v1/model/CapacityReport.java
 src/main/java/com/equinix/openapi/metal/v1/model/Coordinates.java
 src/main/java/com/equinix/openapi/metal/v1/model/CreateDeviceRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/CreateEmailInput.java
-src/main/java/com/equinix/openapi/metal/v1/model/CreateInterconnectionPortVirtualCircuit201Response.java
-src/main/java/com/equinix/openapi/metal/v1/model/CreateInterconnectionPortVirtualCircuitRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/CreateMetalGatewayRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/CreateSelfServiceReservationRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/CreateSelfServiceReservationRequestPeriod.java
@@ -532,7 +529,6 @@ src/main/java/com/equinix/openapi/metal/v1/model/TransferRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/TransferRequestInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/TransferRequestList.java
 src/main/java/com/equinix/openapi/metal/v1/model/UpdateEmailInput.java
-src/main/java/com/equinix/openapi/metal/v1/model/UpdateVirtualCircuitRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/User.java
 src/main/java/com/equinix/openapi/metal/v1/model/UserCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/UserList.java
@@ -543,11 +539,13 @@ src/main/java/com/equinix/openapi/metal/v1/model/VerifyEmail.java
 src/main/java/com/equinix/openapi/metal/v1/model/VirtualCircuit.java
 src/main/java/com/equinix/openapi/metal/v1/model/VirtualCircuitCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VirtualCircuitList.java
-src/main/java/com/equinix/openapi/metal/v1/model/VirtualCircuitListVirtualCircuitsInner.java
 src/main/java/com/equinix/openapi/metal/v1/model/VirtualCircuitUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VirtualNetwork.java
 src/main/java/com/equinix/openapi/metal/v1/model/VirtualNetworkCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VirtualNetworkList.java
+src/main/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuit.java
+src/main/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuitCreateInput.java
+src/main/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuitUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/Vrf.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfIpReservation.java
@@ -636,8 +634,6 @@ src/test/java/com/equinix/openapi/metal/v1/model/CapacityReportTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/CoordinatesTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/CreateDeviceRequestTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/CreateEmailInputTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/CreateInterconnectionPortVirtualCircuit201ResponseTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/CreateInterconnectionPortVirtualCircuitRequestTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/CreateMetalGatewayRequestTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/CreateSelfServiceReservationRequestPeriodTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/CreateSelfServiceReservationRequestTest.java
@@ -799,7 +795,6 @@ src/test/java/com/equinix/openapi/metal/v1/model/TransferRequestInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/TransferRequestListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/TransferRequestTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/UpdateEmailInputTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/UpdateVirtualCircuitRequestTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/UserCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/UserListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/UserLiteTest.java
@@ -809,12 +804,14 @@ src/test/java/com/equinix/openapi/metal/v1/model/UserdataTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VerifyEmailTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VirtualCircuitCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VirtualCircuitListTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/VirtualCircuitListVirtualCircuitsInnerTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VirtualCircuitTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VirtualCircuitUpdateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VirtualNetworkCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VirtualNetworkListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VirtualNetworkTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuitCreateInputTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuitTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuitUpdateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfIpReservationCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfIpReservationListTest.java

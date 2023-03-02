@@ -27,8 +27,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.equinix.openapi.metal.v1.model.CreateInterconnectionPortVirtualCircuit201Response;
-import com.equinix.openapi.metal.v1.model.CreateInterconnectionPortVirtualCircuitRequest;
 import com.equinix.openapi.metal.v1.model.Error;
 import com.equinix.openapi.metal.v1.model.Interconnection;
 import com.equinix.openapi.metal.v1.model.InterconnectionCreateInput;
@@ -37,8 +35,10 @@ import com.equinix.openapi.metal.v1.model.InterconnectionPort;
 import com.equinix.openapi.metal.v1.model.InterconnectionPortList;
 import com.equinix.openapi.metal.v1.model.InterconnectionUpdateInput;
 import java.util.UUID;
-import com.equinix.openapi.metal.v1.model.UpdateVirtualCircuitRequest;
+import com.equinix.openapi.metal.v1.model.VirtualCircuit;
+import com.equinix.openapi.metal.v1.model.VirtualCircuitCreateInput;
 import com.equinix.openapi.metal.v1.model.VirtualCircuitList;
+import com.equinix.openapi.metal.v1.model.VirtualCircuitUpdateInput;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -88,7 +88,7 @@ public class InterconnectionsApi {
      * Build call for createInterconnectionPortVirtualCircuit
      * @param connectionId UUID of the interconnection (required)
      * @param portId UUID of the interconnection port (required)
-     * @param createInterconnectionPortVirtualCircuitRequest Virtual Circuit details (required)
+     * @param virtualCircuitCreateInput Virtual Circuit details (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -100,7 +100,7 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createInterconnectionPortVirtualCircuitCall(UUID connectionId, UUID portId, CreateInterconnectionPortVirtualCircuitRequest createInterconnectionPortVirtualCircuitRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createInterconnectionPortVirtualCircuitCall(UUID connectionId, UUID portId, VirtualCircuitCreateInput virtualCircuitCreateInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -114,7 +114,7 @@ public class InterconnectionsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createInterconnectionPortVirtualCircuitRequest;
+        Object localVarPostBody = virtualCircuitCreateInput;
 
         // create path and map variables
         String localVarPath = "/connections/{connection_id}/ports/{port_id}/virtual-circuits"
@@ -148,7 +148,7 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createInterconnectionPortVirtualCircuitValidateBeforeCall(UUID connectionId, UUID portId, CreateInterconnectionPortVirtualCircuitRequest createInterconnectionPortVirtualCircuitRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createInterconnectionPortVirtualCircuitValidateBeforeCall(UUID connectionId, UUID portId, VirtualCircuitCreateInput virtualCircuitCreateInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling createInterconnectionPortVirtualCircuit(Async)");
@@ -159,12 +159,12 @@ public class InterconnectionsApi {
             throw new ApiException("Missing the required parameter 'portId' when calling createInterconnectionPortVirtualCircuit(Async)");
         }
 
-        // verify the required parameter 'createInterconnectionPortVirtualCircuitRequest' is set
-        if (createInterconnectionPortVirtualCircuitRequest == null) {
-            throw new ApiException("Missing the required parameter 'createInterconnectionPortVirtualCircuitRequest' when calling createInterconnectionPortVirtualCircuit(Async)");
+        // verify the required parameter 'virtualCircuitCreateInput' is set
+        if (virtualCircuitCreateInput == null) {
+            throw new ApiException("Missing the required parameter 'virtualCircuitCreateInput' when calling createInterconnectionPortVirtualCircuit(Async)");
         }
 
-        return createInterconnectionPortVirtualCircuitCall(connectionId, portId, createInterconnectionPortVirtualCircuitRequest, _callback);
+        return createInterconnectionPortVirtualCircuitCall(connectionId, portId, virtualCircuitCreateInput, _callback);
 
     }
 
@@ -173,8 +173,8 @@ public class InterconnectionsApi {
      * Create a new Virtual Circuit on a Dedicated Port. To create a regular Virtual Circuit, specify a Virtual Network record and an NNI VLAN value. To create a VRF-based Virtual Circuit, specify the VRF ID and subnet, along with the NNI VLAN value.
      * @param connectionId UUID of the interconnection (required)
      * @param portId UUID of the interconnection port (required)
-     * @param createInterconnectionPortVirtualCircuitRequest Virtual Circuit details (required)
-     * @return CreateInterconnectionPortVirtualCircuit201Response
+     * @param virtualCircuitCreateInput Virtual Circuit details (required)
+     * @return VirtualCircuit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -184,8 +184,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public CreateInterconnectionPortVirtualCircuit201Response createInterconnectionPortVirtualCircuit(UUID connectionId, UUID portId, CreateInterconnectionPortVirtualCircuitRequest createInterconnectionPortVirtualCircuitRequest) throws ApiException {
-        ApiResponse<CreateInterconnectionPortVirtualCircuit201Response> localVarResp = createInterconnectionPortVirtualCircuitWithHttpInfo(connectionId, portId, createInterconnectionPortVirtualCircuitRequest);
+    public VirtualCircuit createInterconnectionPortVirtualCircuit(UUID connectionId, UUID portId, VirtualCircuitCreateInput virtualCircuitCreateInput) throws ApiException {
+        ApiResponse<VirtualCircuit> localVarResp = createInterconnectionPortVirtualCircuitWithHttpInfo(connectionId, portId, virtualCircuitCreateInput);
         return localVarResp.getData();
     }
 
@@ -194,8 +194,8 @@ public class InterconnectionsApi {
      * Create a new Virtual Circuit on a Dedicated Port. To create a regular Virtual Circuit, specify a Virtual Network record and an NNI VLAN value. To create a VRF-based Virtual Circuit, specify the VRF ID and subnet, along with the NNI VLAN value.
      * @param connectionId UUID of the interconnection (required)
      * @param portId UUID of the interconnection port (required)
-     * @param createInterconnectionPortVirtualCircuitRequest Virtual Circuit details (required)
-     * @return ApiResponse&lt;CreateInterconnectionPortVirtualCircuit201Response&gt;
+     * @param virtualCircuitCreateInput Virtual Circuit details (required)
+     * @return ApiResponse&lt;VirtualCircuit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -205,9 +205,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateInterconnectionPortVirtualCircuit201Response> createInterconnectionPortVirtualCircuitWithHttpInfo(UUID connectionId, UUID portId, CreateInterconnectionPortVirtualCircuitRequest createInterconnectionPortVirtualCircuitRequest) throws ApiException {
-        okhttp3.Call localVarCall = createInterconnectionPortVirtualCircuitValidateBeforeCall(connectionId, portId, createInterconnectionPortVirtualCircuitRequest, null);
-        Type localVarReturnType = new TypeToken<CreateInterconnectionPortVirtualCircuit201Response>(){}.getType();
+    public ApiResponse<VirtualCircuit> createInterconnectionPortVirtualCircuitWithHttpInfo(UUID connectionId, UUID portId, VirtualCircuitCreateInput virtualCircuitCreateInput) throws ApiException {
+        okhttp3.Call localVarCall = createInterconnectionPortVirtualCircuitValidateBeforeCall(connectionId, portId, virtualCircuitCreateInput, null);
+        Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -216,7 +216,7 @@ public class InterconnectionsApi {
      * Create a new Virtual Circuit on a Dedicated Port. To create a regular Virtual Circuit, specify a Virtual Network record and an NNI VLAN value. To create a VRF-based Virtual Circuit, specify the VRF ID and subnet, along with the NNI VLAN value.
      * @param connectionId UUID of the interconnection (required)
      * @param portId UUID of the interconnection port (required)
-     * @param createInterconnectionPortVirtualCircuitRequest Virtual Circuit details (required)
+     * @param virtualCircuitCreateInput Virtual Circuit details (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -228,10 +228,10 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createInterconnectionPortVirtualCircuitAsync(UUID connectionId, UUID portId, CreateInterconnectionPortVirtualCircuitRequest createInterconnectionPortVirtualCircuitRequest, final ApiCallback<CreateInterconnectionPortVirtualCircuit201Response> _callback) throws ApiException {
+    public okhttp3.Call createInterconnectionPortVirtualCircuitAsync(UUID connectionId, UUID portId, VirtualCircuitCreateInput virtualCircuitCreateInput, final ApiCallback<VirtualCircuit> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createInterconnectionPortVirtualCircuitValidateBeforeCall(connectionId, portId, createInterconnectionPortVirtualCircuitRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateInterconnectionPortVirtualCircuit201Response>(){}.getType();
+        okhttp3.Call localVarCall = createInterconnectionPortVirtualCircuitValidateBeforeCall(connectionId, portId, virtualCircuitCreateInput, _callback);
+        Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -726,7 +726,7 @@ public class InterconnectionsApi {
      * Delete a virtual circuit
      * Delete a virtual circuit from a Dedicated Port.
      * @param id Virtual Circuit UUID (required)
-     * @return CreateInterconnectionPortVirtualCircuit201Response
+     * @return VirtualCircuit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -736,8 +736,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public CreateInterconnectionPortVirtualCircuit201Response deleteVirtualCircuit(UUID id) throws ApiException {
-        ApiResponse<CreateInterconnectionPortVirtualCircuit201Response> localVarResp = deleteVirtualCircuitWithHttpInfo(id);
+    public VirtualCircuit deleteVirtualCircuit(UUID id) throws ApiException {
+        ApiResponse<VirtualCircuit> localVarResp = deleteVirtualCircuitWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -745,7 +745,7 @@ public class InterconnectionsApi {
      * Delete a virtual circuit
      * Delete a virtual circuit from a Dedicated Port.
      * @param id Virtual Circuit UUID (required)
-     * @return ApiResponse&lt;CreateInterconnectionPortVirtualCircuit201Response&gt;
+     * @return ApiResponse&lt;VirtualCircuit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -755,9 +755,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateInterconnectionPortVirtualCircuit201Response> deleteVirtualCircuitWithHttpInfo(UUID id) throws ApiException {
+    public ApiResponse<VirtualCircuit> deleteVirtualCircuitWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = deleteVirtualCircuitValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CreateInterconnectionPortVirtualCircuit201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -776,10 +776,10 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteVirtualCircuitAsync(UUID id, final ApiCallback<CreateInterconnectionPortVirtualCircuit201Response> _callback) throws ApiException {
+    public okhttp3.Call deleteVirtualCircuitAsync(UUID id, final ApiCallback<VirtualCircuit> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteVirtualCircuitValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CreateInterconnectionPortVirtualCircuit201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1129,7 +1129,7 @@ public class InterconnectionsApi {
      * Get a virtual circuit
      * Get the details of a virtual circuit
      * @param id Virtual Circuit UUID (required)
-     * @return CreateInterconnectionPortVirtualCircuit201Response
+     * @return VirtualCircuit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1139,8 +1139,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public CreateInterconnectionPortVirtualCircuit201Response getVirtualCircuit(UUID id) throws ApiException {
-        ApiResponse<CreateInterconnectionPortVirtualCircuit201Response> localVarResp = getVirtualCircuitWithHttpInfo(id);
+    public VirtualCircuit getVirtualCircuit(UUID id) throws ApiException {
+        ApiResponse<VirtualCircuit> localVarResp = getVirtualCircuitWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1148,7 +1148,7 @@ public class InterconnectionsApi {
      * Get a virtual circuit
      * Get the details of a virtual circuit
      * @param id Virtual Circuit UUID (required)
-     * @return ApiResponse&lt;CreateInterconnectionPortVirtualCircuit201Response&gt;
+     * @return ApiResponse&lt;VirtualCircuit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1158,9 +1158,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateInterconnectionPortVirtualCircuit201Response> getVirtualCircuitWithHttpInfo(UUID id) throws ApiException {
+    public ApiResponse<VirtualCircuit> getVirtualCircuitWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = getVirtualCircuitValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CreateInterconnectionPortVirtualCircuit201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1179,10 +1179,10 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getVirtualCircuitAsync(UUID id, final ApiCallback<CreateInterconnectionPortVirtualCircuit201Response> _callback) throws ApiException {
+    public okhttp3.Call getVirtualCircuitAsync(UUID id, final ApiCallback<VirtualCircuit> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getVirtualCircuitValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CreateInterconnectionPortVirtualCircuit201Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1995,7 +1995,7 @@ public class InterconnectionsApi {
     /**
      * Build call for updateVirtualCircuit
      * @param id Virtual Circuit UUID (required)
-     * @param updateVirtualCircuitRequest Updated Virtual Circuit details (required)
+     * @param virtualCircuitUpdateInput Updated Virtual Circuit details (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2008,7 +2008,7 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateVirtualCircuitCall(UUID id, UpdateVirtualCircuitRequest updateVirtualCircuitRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateVirtualCircuitCall(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2022,7 +2022,7 @@ public class InterconnectionsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = updateVirtualCircuitRequest;
+        Object localVarPostBody = virtualCircuitUpdateInput;
 
         // create path and map variables
         String localVarPath = "/virtual-circuits/{id}"
@@ -2055,18 +2055,18 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateVirtualCircuitValidateBeforeCall(UUID id, UpdateVirtualCircuitRequest updateVirtualCircuitRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateVirtualCircuitValidateBeforeCall(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateVirtualCircuit(Async)");
         }
 
-        // verify the required parameter 'updateVirtualCircuitRequest' is set
-        if (updateVirtualCircuitRequest == null) {
-            throw new ApiException("Missing the required parameter 'updateVirtualCircuitRequest' when calling updateVirtualCircuit(Async)");
+        // verify the required parameter 'virtualCircuitUpdateInput' is set
+        if (virtualCircuitUpdateInput == null) {
+            throw new ApiException("Missing the required parameter 'virtualCircuitUpdateInput' when calling updateVirtualCircuit(Async)");
         }
 
-        return updateVirtualCircuitCall(id, updateVirtualCircuitRequest, _callback);
+        return updateVirtualCircuitCall(id, virtualCircuitUpdateInput, _callback);
 
     }
 
@@ -2074,8 +2074,8 @@ public class InterconnectionsApi {
      * Update a virtual circuit
      * Update the details of a virtual circuit.
      * @param id Virtual Circuit UUID (required)
-     * @param updateVirtualCircuitRequest Updated Virtual Circuit details (required)
-     * @return CreateInterconnectionPortVirtualCircuit201Response
+     * @param virtualCircuitUpdateInput Updated Virtual Circuit details (required)
+     * @return VirtualCircuit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2086,8 +2086,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public CreateInterconnectionPortVirtualCircuit201Response updateVirtualCircuit(UUID id, UpdateVirtualCircuitRequest updateVirtualCircuitRequest) throws ApiException {
-        ApiResponse<CreateInterconnectionPortVirtualCircuit201Response> localVarResp = updateVirtualCircuitWithHttpInfo(id, updateVirtualCircuitRequest);
+    public VirtualCircuit updateVirtualCircuit(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput) throws ApiException {
+        ApiResponse<VirtualCircuit> localVarResp = updateVirtualCircuitWithHttpInfo(id, virtualCircuitUpdateInput);
         return localVarResp.getData();
     }
 
@@ -2095,8 +2095,8 @@ public class InterconnectionsApi {
      * Update a virtual circuit
      * Update the details of a virtual circuit.
      * @param id Virtual Circuit UUID (required)
-     * @param updateVirtualCircuitRequest Updated Virtual Circuit details (required)
-     * @return ApiResponse&lt;CreateInterconnectionPortVirtualCircuit201Response&gt;
+     * @param virtualCircuitUpdateInput Updated Virtual Circuit details (required)
+     * @return ApiResponse&lt;VirtualCircuit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2107,9 +2107,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateInterconnectionPortVirtualCircuit201Response> updateVirtualCircuitWithHttpInfo(UUID id, UpdateVirtualCircuitRequest updateVirtualCircuitRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateVirtualCircuitValidateBeforeCall(id, updateVirtualCircuitRequest, null);
-        Type localVarReturnType = new TypeToken<CreateInterconnectionPortVirtualCircuit201Response>(){}.getType();
+    public ApiResponse<VirtualCircuit> updateVirtualCircuitWithHttpInfo(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput) throws ApiException {
+        okhttp3.Call localVarCall = updateVirtualCircuitValidateBeforeCall(id, virtualCircuitUpdateInput, null);
+        Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2117,7 +2117,7 @@ public class InterconnectionsApi {
      * Update a virtual circuit (asynchronously)
      * Update the details of a virtual circuit.
      * @param id Virtual Circuit UUID (required)
-     * @param updateVirtualCircuitRequest Updated Virtual Circuit details (required)
+     * @param virtualCircuitUpdateInput Updated Virtual Circuit details (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2130,10 +2130,10 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateVirtualCircuitAsync(UUID id, UpdateVirtualCircuitRequest updateVirtualCircuitRequest, final ApiCallback<CreateInterconnectionPortVirtualCircuit201Response> _callback) throws ApiException {
+    public okhttp3.Call updateVirtualCircuitAsync(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput, final ApiCallback<VirtualCircuit> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateVirtualCircuitValidateBeforeCall(id, updateVirtualCircuitRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateInterconnectionPortVirtualCircuit201Response>(){}.getType();
+        okhttp3.Call localVarCall = updateVirtualCircuitValidateBeforeCall(id, virtualCircuitUpdateInput, _callback);
+        Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

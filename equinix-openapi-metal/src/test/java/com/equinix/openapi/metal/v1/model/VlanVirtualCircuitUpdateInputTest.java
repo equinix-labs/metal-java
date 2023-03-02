@@ -13,8 +13,6 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.VirtualCircuitUpdateInput;
-import com.equinix.openapi.metal.v1.model.VrfVirtualCircuitUpdateInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -28,17 +26,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for UpdateVirtualCircuitRequest
+ * Model tests for VlanVirtualCircuitUpdateInput
  */
-public class UpdateVirtualCircuitRequestTest {
-    private final UpdateVirtualCircuitRequest model = new UpdateVirtualCircuitRequest();
+public class VlanVirtualCircuitUpdateInputTest {
+    private final VlanVirtualCircuitUpdateInput model = new VlanVirtualCircuitUpdateInput();
 
     /**
-     * Model tests for UpdateVirtualCircuitRequest
+     * Model tests for VlanVirtualCircuitUpdateInput
      */
     @Test
-    public void testUpdateVirtualCircuitRequest() {
-        // TODO: test UpdateVirtualCircuitRequest
+    public void testVlanVirtualCircuitUpdateInput() {
+        // TODO: test VlanVirtualCircuitUpdateInput
     }
 
     /**
@@ -79,46 +77,6 @@ public class UpdateVirtualCircuitRequestTest {
     @Test
     public void vnidTest() {
         // TODO: test vnid
-    }
-
-    /**
-     * Test the property 'customerIp'
-     */
-    @Test
-    public void customerIpTest() {
-        // TODO: test customerIp
-    }
-
-    /**
-     * Test the property 'md5'
-     */
-    @Test
-    public void md5Test() {
-        // TODO: test md5
-    }
-
-    /**
-     * Test the property 'metalIp'
-     */
-    @Test
-    public void metalIpTest() {
-        // TODO: test metalIp
-    }
-
-    /**
-     * Test the property 'peerAsn'
-     */
-    @Test
-    public void peerAsnTest() {
-        // TODO: test peerAsn
-    }
-
-    /**
-     * Test the property 'subnet'
-     */
-    @Test
-    public void subnetTest() {
-        // TODO: test subnet
     }
 
 }

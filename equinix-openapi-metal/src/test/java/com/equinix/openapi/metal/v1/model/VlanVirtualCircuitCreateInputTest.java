@@ -13,17 +13,12 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.VirtualCircuit;
-import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfVirtualCircuit;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -32,25 +27,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for VirtualCircuitListVirtualCircuitsInner
+ * Model tests for VlanVirtualCircuitCreateInput
  */
-public class VirtualCircuitListVirtualCircuitsInnerTest {
-    private final VirtualCircuitListVirtualCircuitsInner model = new VirtualCircuitListVirtualCircuitsInner();
+public class VlanVirtualCircuitCreateInputTest {
+    private final VlanVirtualCircuitCreateInput model = new VlanVirtualCircuitCreateInput();
 
     /**
-     * Model tests for VirtualCircuitListVirtualCircuitsInner
+     * Model tests for VlanVirtualCircuitCreateInput
      */
     @Test
-    public void testVirtualCircuitListVirtualCircuitsInner() {
-        // TODO: test VirtualCircuitListVirtualCircuitsInner
-    }
-
-    /**
-     * Test the property 'bill'
-     */
-    @Test
-    public void billTest() {
-        // TODO: test bill
+    public void testVlanVirtualCircuitCreateInput() {
+        // TODO: test VlanVirtualCircuitCreateInput
     }
 
     /**
@@ -59,14 +46,6 @@ public class VirtualCircuitListVirtualCircuitsInnerTest {
     @Test
     public void descriptionTest() {
         // TODO: test description
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
     }
 
     /**
@@ -86,19 +65,11 @@ public class VirtualCircuitListVirtualCircuitsInnerTest {
     }
 
     /**
-     * Test the property 'port'
+     * Test the property 'projectId'
      */
     @Test
-    public void portTest() {
-        // TODO: test port
-    }
-
-    /**
-     * Test the property 'project'
-     */
-    @Test
-    public void projectTest() {
-        // TODO: test project
+    public void projectIdTest() {
+        // TODO: test projectId
     }
 
     /**
@@ -110,14 +81,6 @@ public class VirtualCircuitListVirtualCircuitsInnerTest {
     }
 
     /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
      * Test the property 'tags'
      */
     @Test
@@ -126,83 +89,11 @@ public class VirtualCircuitListVirtualCircuitsInnerTest {
     }
 
     /**
-     * Test the property 'virtualNetwork'
-     */
-    @Test
-    public void virtualNetworkTest() {
-        // TODO: test virtualNetwork
-    }
-
-    /**
      * Test the property 'vnid'
      */
     @Test
     public void vnidTest() {
         // TODO: test vnid
-    }
-
-    /**
-     * Test the property 'createdAt'
-     */
-    @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
-    }
-
-    /**
-     * Test the property 'updatedAt'
-     */
-    @Test
-    public void updatedAtTest() {
-        // TODO: test updatedAt
-    }
-
-    /**
-     * Test the property 'customerIp'
-     */
-    @Test
-    public void customerIpTest() {
-        // TODO: test customerIp
-    }
-
-    /**
-     * Test the property 'md5'
-     */
-    @Test
-    public void md5Test() {
-        // TODO: test md5
-    }
-
-    /**
-     * Test the property 'metalIp'
-     */
-    @Test
-    public void metalIpTest() {
-        // TODO: test metalIp
-    }
-
-    /**
-     * Test the property 'peerAsn'
-     */
-    @Test
-    public void peerAsnTest() {
-        // TODO: test peerAsn
-    }
-
-    /**
-     * Test the property 'subnet'
-     */
-    @Test
-    public void subnetTest() {
-        // TODO: test subnet
-    }
-
-    /**
-     * Test the property 'vrf'
-     */
-    @Test
-    public void vrfTest() {
-        // TODO: test vrf
     }
 
 }

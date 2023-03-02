@@ -13,6 +13,8 @@
 
 package com.equinix.openapi.metal.v1.model;
 
+import com.equinix.openapi.metal.v1.model.VlanVirtualCircuitUpdateInput;
+import com.equinix.openapi.metal.v1.model.VrfVirtualCircuitUpdateInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -77,6 +79,46 @@ public class VirtualCircuitUpdateInputTest {
     @Test
     public void vnidTest() {
         // TODO: test vnid
+    }
+
+    /**
+     * Test the property 'customerIp'
+     */
+    @Test
+    public void customerIpTest() {
+        // TODO: test customerIp
+    }
+
+    /**
+     * Test the property 'md5'
+     */
+    @Test
+    public void md5Test() {
+        // TODO: test md5
+    }
+
+    /**
+     * Test the property 'metalIp'
+     */
+    @Test
+    public void metalIpTest() {
+        // TODO: test metalIp
+    }
+
+    /**
+     * Test the property 'peerAsn'
+     */
+    @Test
+    public void peerAsnTest() {
+        // TODO: test peerAsn
+    }
+
+    /**
+     * Test the property 'subnet'
+     */
+    @Test
+    public void subnetTest() {
+        // TODO: test subnet
     }
 
 }
