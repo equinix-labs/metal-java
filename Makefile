@@ -17,10 +17,14 @@ GIT_REPO=metal-java
 # Equinix Metal OAS 3.0.0
 OPENAPI_CONFIG:=spec/oas3.config.json
 OPENAPI_GENERATED_CLIENT=equinix-openapi-metal/
+CRI=docker # nerdctl
 
-PATCHED_SPEC_ENTRY_POINT=spec/oas3.patched/openapi/public/openapi3.yaml
+SPEC_BASE_URL:=https://api.equinix.com/metal/v1/api-docs
+SPEC_ROOT_FILE:=openapi3.yaml
+PATCHED_SPEC_ENTRY_POINT=spec/oas3.patched/openapi/public/${SPEC_ROOT_FILE}
 PATCHED_SPEC_OUTPUT_DIR=spec/oas3.stitched/
 
+SPEC_FETCHER=${CRI} run --rm -v $(CURDIR):/workdir --entrypoint sh mikefarah/yq:4.30.8 script/download_spec.sh
 SPEC_PATCHED_FILE=oas3.stitched.metal.yaml
 
 SPEC_DIR_FETCHED_FILE=spec/oas3.fetched/
@@ -35,12 +39,12 @@ SPEC_FETCHED_PATCHES=patches/spec.fetched.json
 OPENAPI_CODEGEN_SHA=sha256:be8c2ef6be22f695410c2cc13d0ec7fdf2533fc88a7f17288ad758b7679de8df
 
 OPENAPI_CODEGEN_IMAGE=openapitools/openapi-generator-cli@${OPENAPI_CODEGEN_SHA}
-DOCKER_OPENAPI=docker run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/local ${OPENAPI_CODEGEN_IMAGE}
+DOCKER_OPENAPI=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/local ${OPENAPI_CODEGEN_IMAGE}
 
 docker_run: clean pre-spec-patch-dir pull docker_generate_spec docker_generate move-workflow build_client
 
 pull:
-	docker pull ${OPENAPI_CODEGEN_IMAGE}
+	${CRI} pull ${OPENAPI_CODEGEN_IMAGE}
 
 docker_generate:
 	${DOCKER_OPENAPI} generate \
@@ -62,7 +66,7 @@ docker_generate_spec:
 # Utility functions
 ##
 fetch:
-	curl ${OPENAPI_URL} | jq . > ${SPEC_FETCHED_FILE}
+	${SPEC_FETCHER} ${SPEC_BASE_URL} ${SPEC_DIR_FETCHED_FILE}/openapi/public ${SPEC_ROOT_FILE}
 
 clean:
 	rm -rf ${OPENAPI_GENERATED_CLIENT}
