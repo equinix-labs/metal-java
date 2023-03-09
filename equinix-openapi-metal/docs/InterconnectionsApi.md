@@ -23,7 +23,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="createInterconnectionPortVirtualCircuit"></a>
 # **createInterconnectionPortVirtualCircuit**
-> CreateInterconnectionPortVirtualCircuit201Response createInterconnectionPortVirtualCircuit(connectionId, portId, createInterconnectionPortVirtualCircuitRequest)
+> VirtualCircuit createInterconnectionPortVirtualCircuit(connectionId, portId, virtualCircuitCreateInput)
 
 Create a new Virtual Circuit
 
@@ -53,9 +53,9 @@ public class Example {
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID connectionId = UUID.randomUUID(); // UUID | UUID of the interconnection
     UUID portId = UUID.randomUUID(); // UUID | UUID of the interconnection port
-    CreateInterconnectionPortVirtualCircuitRequest createInterconnectionPortVirtualCircuitRequest = new CreateInterconnectionPortVirtualCircuitRequest(); // CreateInterconnectionPortVirtualCircuitRequest | Virtual Circuit details
+    VirtualCircuitCreateInput virtualCircuitCreateInput = new VirtualCircuitCreateInput(); // VirtualCircuitCreateInput | Virtual Circuit details
     try {
-      CreateInterconnectionPortVirtualCircuit201Response result = apiInstance.createInterconnectionPortVirtualCircuit(connectionId, portId, createInterconnectionPortVirtualCircuitRequest);
+      VirtualCircuit result = apiInstance.createInterconnectionPortVirtualCircuit(connectionId, portId, virtualCircuitCreateInput);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#createInterconnectionPortVirtualCircuit");
@@ -74,11 +74,11 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **connectionId** | **UUID**| UUID of the interconnection | |
 | **portId** | **UUID**| UUID of the interconnection port | |
-| **createInterconnectionPortVirtualCircuitRequest** | [**CreateInterconnectionPortVirtualCircuitRequest**](CreateInterconnectionPortVirtualCircuitRequest.md)| Virtual Circuit details | |
+| **virtualCircuitCreateInput** | [**VirtualCircuitCreateInput**](VirtualCircuitCreateInput.md)| Virtual Circuit details | |
 
 ### Return type
 
-[**CreateInterconnectionPortVirtualCircuit201Response**](CreateInterconnectionPortVirtualCircuit201Response.md)
+[**VirtualCircuit**](VirtualCircuit.md)
 
 ### Authorization
 
@@ -316,7 +316,7 @@ public class Example {
 
 <a name="deleteVirtualCircuit"></a>
 # **deleteVirtualCircuit**
-> CreateInterconnectionPortVirtualCircuit201Response deleteVirtualCircuit(id)
+> VirtualCircuit deleteVirtualCircuit(id)
 
 Delete a virtual circuit
 
@@ -346,7 +346,7 @@ public class Example {
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Virtual Circuit UUID
     try {
-      CreateInterconnectionPortVirtualCircuit201Response result = apiInstance.deleteVirtualCircuit(id);
+      VirtualCircuit result = apiInstance.deleteVirtualCircuit(id);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#deleteVirtualCircuit");
@@ -367,7 +367,7 @@ public class Example {
 
 ### Return type
 
-[**CreateInterconnectionPortVirtualCircuit201Response**](CreateInterconnectionPortVirtualCircuit201Response.md)
+[**VirtualCircuit**](VirtualCircuit.md)
 
 ### Authorization
 
@@ -531,7 +531,7 @@ public class Example {
 
 <a name="getVirtualCircuit"></a>
 # **getVirtualCircuit**
-> CreateInterconnectionPortVirtualCircuit201Response getVirtualCircuit(id)
+> VirtualCircuit getVirtualCircuit(id)
 
 Get a virtual circuit
 
@@ -561,7 +561,7 @@ public class Example {
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Virtual Circuit UUID
     try {
-      CreateInterconnectionPortVirtualCircuit201Response result = apiInstance.getVirtualCircuit(id);
+      VirtualCircuit result = apiInstance.getVirtualCircuit(id);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#getVirtualCircuit");
@@ -582,7 +582,7 @@ public class Example {
 
 ### Return type
 
-[**CreateInterconnectionPortVirtualCircuit201Response**](CreateInterconnectionPortVirtualCircuit201Response.md)
+[**VirtualCircuit**](VirtualCircuit.md)
 
 ### Authorization
 
@@ -1032,7 +1032,7 @@ public class Example {
 
 <a name="updateVirtualCircuit"></a>
 # **updateVirtualCircuit**
-> CreateInterconnectionPortVirtualCircuit201Response updateVirtualCircuit(id, updateVirtualCircuitRequest)
+> VirtualCircuit updateVirtualCircuit(id, virtualCircuitUpdateInput)
 
 Update a virtual circuit
 
@@ -1061,9 +1061,9 @@ public class Example {
 
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Virtual Circuit UUID
-    UpdateVirtualCircuitRequest updateVirtualCircuitRequest = new UpdateVirtualCircuitRequest(); // UpdateVirtualCircuitRequest | Updated Virtual Circuit details
+    VirtualCircuitUpdateInput virtualCircuitUpdateInput = new VirtualCircuitUpdateInput(); // VirtualCircuitUpdateInput | Updated Virtual Circuit details
     try {
-      CreateInterconnectionPortVirtualCircuit201Response result = apiInstance.updateVirtualCircuit(id, updateVirtualCircuitRequest);
+      VirtualCircuit result = apiInstance.updateVirtualCircuit(id, virtualCircuitUpdateInput);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#updateVirtualCircuit");
@@ -1081,11 +1081,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Virtual Circuit UUID | |
-| **updateVirtualCircuitRequest** | [**UpdateVirtualCircuitRequest**](UpdateVirtualCircuitRequest.md)| Updated Virtual Circuit details | |
+| **virtualCircuitUpdateInput** | [**VirtualCircuitUpdateInput**](VirtualCircuitUpdateInput.md)| Updated Virtual Circuit details | |
 
 ### Return type
 
-[**CreateInterconnectionPortVirtualCircuit201Response**](CreateInterconnectionPortVirtualCircuit201Response.md)
+[**VirtualCircuit**](VirtualCircuit.md)
 
 ### Authorization
 

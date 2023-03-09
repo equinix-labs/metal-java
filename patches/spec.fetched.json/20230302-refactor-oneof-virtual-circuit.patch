@@ -1,0 +1,395 @@
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuit.yaml b/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuit.yaml
+index 16a23b1..2c12357 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuit.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuit.yaml
+@@ -1,71 +1,3 @@
+-required:
+-- bill
+-- description
+-- id
+-- name
+-- nni_vlan
+-- port
+-- project
+-- status
+-- tags
+-- virtual_network
+-- vnid
+-properties:
+-  bill:
+-    type: boolean
+-    default: false
+-    description: True if the Virtual Circuit is being billed. Currently, only Virtual Circuits of Fabric VCs (Metal Billed) will be billed. Usage will start the first time the Virtual Circuit becomes active, and will not stop until it is deleted from Metal.
+-  description:
+-    type: string
+-  id:
+-    format: uuid
+-    type: string
+-  name:
+-    type: string
+-  nni_vlan:
+-    type: integer
+-  port:
+-    $ref: './Href.yaml'
+-  project:
+-    $ref: './Href.yaml'
+-  speed:
+-    description: For Virtual Circuits on shared and dedicated connections, this speed should match the one set on their Interconnection Ports. For Virtual Circuits on
+-      Fabric VCs (both Metal and Fabric Billed) that have found their corresponding Fabric connection, this is the actual speed of the interconnection that was configured when setting up the interconnection on the Fabric Portal. 
+-      Details on Fabric VCs are included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
+-    type: integer
+-  status:
+-    type: string
+-    description: The status of a Virtual Circuit is always 'Pending' on creation. The status can turn to 'Waiting on Customer VLAN' if a Metro VLAN was not set yet on the Virtual Circuit and is the last step needed for full activation. For Dedicated interconnections, as long as the Dedicated Port has been associated 
+-      to the Virtual Circuit and a NNI VNID has been set, it will turn to 'Waiting on Customer VLAN'.
+-      For Fabric VCs, it will only change to 'Waiting on Customer VLAN' once the corresponding Fabric connection has been found on the Fabric side. Once a Metro VLAN is set on the Virtual Circuit 
+-      (which for Fabric VCs, can be set on creation) and the necessary set up is done, it will turn into 'Activating' status as it tries to activate the Virtual Circuit. Once the Virtual Circuit fully activates and is configured on the switch, it will turn to staus 'Active'. For Fabric VCs (Metal Billed), 
+-      we will start billing the moment the status of the Virtual Circuit turns to 'Active'. If there are any changes to the VLAN after the Virtual Circuit is in an 'Active' status, the status will show 'Changing VLAN' if a new VLAN has been provided, or 'Deactivating' if we are removing the VLAN. When a 
+-      deletion request is issued for the Virtual Circuit, it will move to a 'deleting' status until it is fully deleted. If the Virtual Circuit is on a Fabric VC, it can also change into an 'Expired' status if the associated service token has expired.
+-    enum: 
+-    - pending
+-    - waiting_on_customer_vlan
+-    - activating
+-    - changing_vlan
+-    - deactivating
+-    - deleting
+-    - active
+-    - expired
+-    - activation_failed
+-    - changing_vlan_failed
+-    - deactivation_failed
+-    - delete_failed
+-  tags:
+-    items:
+-      type: string
+-    type: array
+-  virtual_network:
+-    $ref: './Href.yaml'
+-  vnid:
+-    type: integer
+-  created_at:
+-    format: date-time
+-    type: string
+-  updated_at:
+-    format: date-time
+-    type: string
+-type: object
++oneOf:
++- $ref: './VlanVirtualCircuit.yaml'
++- $ref: './VrfVirtualCircuit.yaml'
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitCreateInput.yaml b/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitCreateInput.yaml
+index d5f9c47..d4b72f3 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitCreateInput.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitCreateInput.yaml
+@@ -1,28 +1,3 @@
+-properties:
+-  description:
+-    type: string
+-  name:
+-    type: string
+-  nni_vlan:
+-    maximum: 4094
+-    minimum: 2
+-    type: integer
+-  project_id:
+-    format: uuid
+-    type: string
+-  speed:
+-    description: speed can be passed as integer number representing bps speed or string
+-      (e.g. '52m' or '100g' or '4 gbps')
+-    type: integer
+-  tags:
+-    items:
+-      type: string
+-    type: array
+-  vnid:
+-    description: A Virtual Network record UUID or the VNID of a Metro Virtual Network in
+-      your project (sent as integer).
+-    format: uuid
+-    type: string
+-type: object
+-required:
+-  - project_id
++oneOf:
++    - $ref: 'VlanVirtualCircuitCreateInput.yaml'
++    - $ref: 'VrfVirtualCircuitCreateInput.yaml'
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitList.yaml b/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitList.yaml
+index 4c7aaf9..03ecf33 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitList.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitList.yaml
+@@ -1,8 +1,6 @@
+ properties:
+   virtual_circuits:
+     items:
+-      anyOf:
+-      - $ref: './VirtualCircuit.yaml'
+-      - $ref: './VrfVirtualCircuit.yaml'
++      $ref: './VirtualCircuit.yaml'
+     type: array
+ type: object
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitUpdateInput.yaml b/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitUpdateInput.yaml
+index 1d88bf7..5205301 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitUpdateInput.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitUpdateInput.yaml
+@@ -1,17 +1,3 @@
+-properties:
+-  description:
+-    type: string
+-  name:
+-    type: string
+-  speed:
+-    description: Speed can be changed only if it is an interconnection on a Dedicated Port
+-    type: string
+-  tags:
+-    items:
+-      type: string
+-    type: array
+-  vnid:
+-    description: A Virtual Network record UUID or the VNID of a Metro Virtual Network in
+-      your project.
+-    type: string
+-type: object
++oneOf:
++    - $ref: 'VlanVirtualCircuitUpdateInput.yaml'
++    - $ref: 'VrfVirtualCircuitUpdateInput.yaml'
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuit.yaml b/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuit.yaml
+new file mode 100644
+index 0000000..16a23b1
+--- /dev/null
++++ b/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuit.yaml
+@@ -0,0 +1,71 @@
++required:
++- bill
++- description
++- id
++- name
++- nni_vlan
++- port
++- project
++- status
++- tags
++- virtual_network
++- vnid
++properties:
++  bill:
++    type: boolean
++    default: false
++    description: True if the Virtual Circuit is being billed. Currently, only Virtual Circuits of Fabric VCs (Metal Billed) will be billed. Usage will start the first time the Virtual Circuit becomes active, and will not stop until it is deleted from Metal.
++  description:
++    type: string
++  id:
++    format: uuid
++    type: string
++  name:
++    type: string
++  nni_vlan:
++    type: integer
++  port:
++    $ref: './Href.yaml'
++  project:
++    $ref: './Href.yaml'
++  speed:
++    description: For Virtual Circuits on shared and dedicated connections, this speed should match the one set on their Interconnection Ports. For Virtual Circuits on
++      Fabric VCs (both Metal and Fabric Billed) that have found their corresponding Fabric connection, this is the actual speed of the interconnection that was configured when setting up the interconnection on the Fabric Portal. 
++      Details on Fabric VCs are included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
++    type: integer
++  status:
++    type: string
++    description: The status of a Virtual Circuit is always 'Pending' on creation. The status can turn to 'Waiting on Customer VLAN' if a Metro VLAN was not set yet on the Virtual Circuit and is the last step needed for full activation. For Dedicated interconnections, as long as the Dedicated Port has been associated 
++      to the Virtual Circuit and a NNI VNID has been set, it will turn to 'Waiting on Customer VLAN'.
++      For Fabric VCs, it will only change to 'Waiting on Customer VLAN' once the corresponding Fabric connection has been found on the Fabric side. Once a Metro VLAN is set on the Virtual Circuit 
++      (which for Fabric VCs, can be set on creation) and the necessary set up is done, it will turn into 'Activating' status as it tries to activate the Virtual Circuit. Once the Virtual Circuit fully activates and is configured on the switch, it will turn to staus 'Active'. For Fabric VCs (Metal Billed), 
++      we will start billing the moment the status of the Virtual Circuit turns to 'Active'. If there are any changes to the VLAN after the Virtual Circuit is in an 'Active' status, the status will show 'Changing VLAN' if a new VLAN has been provided, or 'Deactivating' if we are removing the VLAN. When a 
++      deletion request is issued for the Virtual Circuit, it will move to a 'deleting' status until it is fully deleted. If the Virtual Circuit is on a Fabric VC, it can also change into an 'Expired' status if the associated service token has expired.
++    enum: 
++    - pending
++    - waiting_on_customer_vlan
++    - activating
++    - changing_vlan
++    - deactivating
++    - deleting
++    - active
++    - expired
++    - activation_failed
++    - changing_vlan_failed
++    - deactivation_failed
++    - delete_failed
++  tags:
++    items:
++      type: string
++    type: array
++  virtual_network:
++    $ref: './Href.yaml'
++  vnid:
++    type: integer
++  created_at:
++    format: date-time
++    type: string
++  updated_at:
++    format: date-time
++    type: string
++type: object
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuitCreateInput.yaml b/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuitCreateInput.yaml
+new file mode 100644
+index 0000000..d5f9c47
+--- /dev/null
++++ b/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuitCreateInput.yaml
+@@ -0,0 +1,28 @@
++properties:
++  description:
++    type: string
++  name:
++    type: string
++  nni_vlan:
++    maximum: 4094
++    minimum: 2
++    type: integer
++  project_id:
++    format: uuid
++    type: string
++  speed:
++    description: speed can be passed as integer number representing bps speed or string
++      (e.g. '52m' or '100g' or '4 gbps')
++    type: integer
++  tags:
++    items:
++      type: string
++    type: array
++  vnid:
++    description: A Virtual Network record UUID or the VNID of a Metro Virtual Network in
++      your project (sent as integer).
++    format: uuid
++    type: string
++type: object
++required:
++  - project_id
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuitUpdateInput.yaml b/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuitUpdateInput.yaml
+new file mode 100644
+index 0000000..1d88bf7
+--- /dev/null
++++ b/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuitUpdateInput.yaml
+@@ -0,0 +1,17 @@
++properties:
++  description:
++    type: string
++  name:
++    type: string
++  speed:
++    description: Speed can be changed only if it is an interconnection on a Dedicated Port
++    type: string
++  tags:
++    items:
++      type: string
++    type: array
++  vnid:
++    description: A Virtual Network record UUID or the VNID of a Metro Virtual Network in
++      your project.
++    type: string
++type: object
+diff --git a/spec/oas3.patched/openapi/public/openapi3.yaml b/spec/oas3.patched/openapi/public/openapi3.yaml
+index 054d2b4..0ed1ed3 100644
+--- a/spec/oas3.patched/openapi/public/openapi3.yaml
++++ b/spec/oas3.patched/openapi/public/openapi3.yaml
+@@ -429,6 +429,12 @@ components:
+       $ref: './components/schemas/VirtualNetworkCreateInput.yaml'
+     VirtualNetworkList:
+       $ref: './components/schemas/VirtualNetworkList.yaml'
++    VlanVirtualCircuit:
++      $ref: './components/schemas/VlanVirtualCircuit.yaml'
++    VlanVirtualCircuitCreateInput:
++      $ref: './components/schemas/VlanVirtualCircuitCreateInput.yaml'
++    VlanVirtualCircuitUpdateInput:
++      $ref: './components/schemas/VlanVirtualCircuitUpdateInput.yaml'
+     Vrf:
+       $ref: './components/schemas/Vrf.yaml'
+     VrfCreateInput:
+diff --git a/spec/oas3.patched/openapi/public/paths/connections/connection_id/ports/port_id/virtual-circuits.yaml b/spec/oas3.patched/openapi/public/paths/connections/connection_id/ports/port_id/virtual-circuits.yaml
+index 995de5c..2facfb1 100644
+--- a/spec/oas3.patched/openapi/public/paths/connections/connection_id/ports/port_id/virtual-circuits.yaml
++++ b/spec/oas3.patched/openapi/public/paths/connections/connection_id/ports/port_id/virtual-circuits.yaml
+@@ -63,9 +63,7 @@ post:
+     content:
+       application/json:
+         schema:
+-          oneOf:
+-          - $ref: '../../../../../components/schemas/VirtualCircuitCreateInput.yaml'
+-          - $ref: '../../../../../components/schemas/VrfVirtualCircuitCreateInput.yaml'
++          $ref: '../../../../../components/schemas/VirtualCircuitCreateInput.yaml'
+     description: Virtual Circuit details
+     required: true
+   responses:
+@@ -73,9 +71,7 @@ post:
+       content:
+         application/json:
+           schema:
+-            oneOf:
+-            - $ref: '../../../../../components/schemas/VirtualCircuit.yaml'
+-            - $ref: '../../../../../components/schemas/VrfVirtualCircuit.yaml'
++            $ref: '../../../../../components/schemas/VirtualCircuit.yaml'
+       description: ok
+     "403":
+       content:
+@@ -91,4 +87,4 @@ post:
+       description: not found
+   summary: Create a new Virtual Circuit
+   tags:
+-  - Interconnections
+\ No newline at end of file
++  - Interconnections
+diff --git a/spec/oas3.patched/openapi/public/paths/virtual-circuits/id.yaml b/spec/oas3.patched/openapi/public/paths/virtual-circuits/id.yaml
+index a9e60c0..e202a44 100644
+--- a/spec/oas3.patched/openapi/public/paths/virtual-circuits/id.yaml
++++ b/spec/oas3.patched/openapi/public/paths/virtual-circuits/id.yaml
+@@ -14,9 +14,7 @@ delete:
+       content:
+         application/json:
+           schema:
+-            oneOf:
+-            - $ref: '../../components/schemas/VirtualCircuit.yaml'
+-            - $ref: '../../components/schemas/VrfVirtualCircuit.yaml'
++            $ref: '../../components/schemas/VirtualCircuit.yaml'
+       description: accepted
+     "403":
+       content:
+@@ -49,9 +47,7 @@ get:
+       content:
+         application/json:
+           schema:
+-            oneOf:
+-            - $ref: '../../components/schemas/VirtualCircuit.yaml'
+-            - $ref: '../../components/schemas/VrfVirtualCircuit.yaml'
++            $ref: '../../components/schemas/VirtualCircuit.yaml'
+       description: ok
+     "403":
+       content:
+@@ -83,9 +79,7 @@ put:
+     content:
+       application/json:
+         schema:
+-          oneOf:
+-          - $ref: '../../components/schemas/VirtualCircuitUpdateInput.yaml'
+-          - $ref: '../../components/schemas/VrfVirtualCircuitUpdateInput.yaml'
++          $ref: '../../components/schemas/VirtualCircuitUpdateInput.yaml'
+     description: Updated Virtual Circuit details
+     required: true
+   responses:
+@@ -93,17 +87,13 @@ put:
+       content:
+         application/json:
+           schema:
+-            oneOf:
+-            - $ref: '../../components/schemas/VirtualCircuit.yaml'
+-            - $ref: '../../components/schemas/VrfVirtualCircuit.yaml'
++            $ref: '../../components/schemas/VirtualCircuit.yaml'
+       description: ok
+     "202":
+       content:
+         application/json:
+           schema:
+-            oneOf:
+-            - $ref: '../../components/schemas/VirtualCircuit.yaml'
+-            - $ref: '../../components/schemas/VrfVirtualCircuit.yaml'
++            $ref: '../../components/schemas/VirtualCircuit.yaml'
+       description: accepted
+     "403":
+       content:

@@ -13,34 +13,41 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.VirtualCircuitCreateInput;
-import com.equinix.openapi.metal.v1.model.VrfVirtualCircuitCreateInput;
+import com.equinix.openapi.metal.v1.model.Href;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for CreateInterconnectionPortVirtualCircuitRequest
+ * Model tests for VlanVirtualCircuit
  */
-public class CreateInterconnectionPortVirtualCircuitRequestTest {
-    private final CreateInterconnectionPortVirtualCircuitRequest model = new CreateInterconnectionPortVirtualCircuitRequest();
+public class VlanVirtualCircuitTest {
+    private final VlanVirtualCircuit model = new VlanVirtualCircuit();
 
     /**
-     * Model tests for CreateInterconnectionPortVirtualCircuitRequest
+     * Model tests for VlanVirtualCircuit
      */
     @Test
-    public void testCreateInterconnectionPortVirtualCircuitRequest() {
-        // TODO: test CreateInterconnectionPortVirtualCircuitRequest
+    public void testVlanVirtualCircuit() {
+        // TODO: test VlanVirtualCircuit
+    }
+
+    /**
+     * Test the property 'bill'
+     */
+    @Test
+    public void billTest() {
+        // TODO: test bill
     }
 
     /**
@@ -49,6 +56,14 @@ public class CreateInterconnectionPortVirtualCircuitRequestTest {
     @Test
     public void descriptionTest() {
         // TODO: test description
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
     }
 
     /**
@@ -68,11 +83,19 @@ public class CreateInterconnectionPortVirtualCircuitRequestTest {
     }
 
     /**
-     * Test the property 'projectId'
+     * Test the property 'port'
      */
     @Test
-    public void projectIdTest() {
-        // TODO: test projectId
+    public void portTest() {
+        // TODO: test port
+    }
+
+    /**
+     * Test the property 'project'
+     */
+    @Test
+    public void projectTest() {
+        // TODO: test project
     }
 
     /**
@@ -84,11 +107,27 @@ public class CreateInterconnectionPortVirtualCircuitRequestTest {
     }
 
     /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
+    }
+
+    /**
      * Test the property 'tags'
      */
     @Test
     public void tagsTest() {
         // TODO: test tags
+    }
+
+    /**
+     * Test the property 'virtualNetwork'
+     */
+    @Test
+    public void virtualNetworkTest() {
+        // TODO: test virtualNetwork
     }
 
     /**
@@ -100,51 +139,19 @@ public class CreateInterconnectionPortVirtualCircuitRequestTest {
     }
 
     /**
-     * Test the property 'customerIp'
+     * Test the property 'createdAt'
      */
     @Test
-    public void customerIpTest() {
-        // TODO: test customerIp
+    public void createdAtTest() {
+        // TODO: test createdAt
     }
 
     /**
-     * Test the property 'md5'
+     * Test the property 'updatedAt'
      */
     @Test
-    public void md5Test() {
-        // TODO: test md5
-    }
-
-    /**
-     * Test the property 'metalIp'
-     */
-    @Test
-    public void metalIpTest() {
-        // TODO: test metalIp
-    }
-
-    /**
-     * Test the property 'peerAsn'
-     */
-    @Test
-    public void peerAsnTest() {
-        // TODO: test peerAsn
-    }
-
-    /**
-     * Test the property 'subnet'
-     */
-    @Test
-    public void subnetTest() {
-        // TODO: test subnet
-    }
-
-    /**
-     * Test the property 'vrf'
-     */
-    @Test
-    public void vrfTest() {
-        // TODO: test vrf
+    public void updatedAtTest() {
+        // TODO: test updatedAt
     }
 
 }

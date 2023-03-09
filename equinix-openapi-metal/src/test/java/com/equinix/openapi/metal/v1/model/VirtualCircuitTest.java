@@ -14,6 +14,9 @@
 package com.equinix.openapi.metal.v1.model;
 
 import com.equinix.openapi.metal.v1.model.Href;
+import com.equinix.openapi.metal.v1.model.VlanVirtualCircuit;
+import com.equinix.openapi.metal.v1.model.Vrf;
+import com.equinix.openapi.metal.v1.model.VrfVirtualCircuit;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -152,6 +155,54 @@ public class VirtualCircuitTest {
     @Test
     public void updatedAtTest() {
         // TODO: test updatedAt
+    }
+
+    /**
+     * Test the property 'customerIp'
+     */
+    @Test
+    public void customerIpTest() {
+        // TODO: test customerIp
+    }
+
+    /**
+     * Test the property 'md5'
+     */
+    @Test
+    public void md5Test() {
+        // TODO: test md5
+    }
+
+    /**
+     * Test the property 'metalIp'
+     */
+    @Test
+    public void metalIpTest() {
+        // TODO: test metalIp
+    }
+
+    /**
+     * Test the property 'peerAsn'
+     */
+    @Test
+    public void peerAsnTest() {
+        // TODO: test peerAsn
+    }
+
+    /**
+     * Test the property 'subnet'
+     */
+    @Test
+    public void subnetTest() {
+        // TODO: test subnet
+    }
+
+    /**
+     * Test the property 'vrf'
+     */
+    @Test
+    public void vrfTest() {
+        // TODO: test vrf
     }
 
 }

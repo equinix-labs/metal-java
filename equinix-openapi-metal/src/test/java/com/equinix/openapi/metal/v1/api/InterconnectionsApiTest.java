@@ -14,8 +14,6 @@
 package com.equinix.openapi.metal.v1.api;
 
 import com.equinix.openapi.ApiException;
-import com.equinix.openapi.metal.v1.model.CreateInterconnectionPortVirtualCircuit201Response;
-import com.equinix.openapi.metal.v1.model.CreateInterconnectionPortVirtualCircuitRequest;
 import com.equinix.openapi.metal.v1.model.Error;
 import com.equinix.openapi.metal.v1.model.Interconnection;
 import com.equinix.openapi.metal.v1.model.InterconnectionCreateInput;
@@ -24,8 +22,10 @@ import com.equinix.openapi.metal.v1.model.InterconnectionPort;
 import com.equinix.openapi.metal.v1.model.InterconnectionPortList;
 import com.equinix.openapi.metal.v1.model.InterconnectionUpdateInput;
 import java.util.UUID;
-import com.equinix.openapi.metal.v1.model.UpdateVirtualCircuitRequest;
+import com.equinix.openapi.metal.v1.model.VirtualCircuit;
+import com.equinix.openapi.metal.v1.model.VirtualCircuitCreateInput;
 import com.equinix.openapi.metal.v1.model.VirtualCircuitList;
+import com.equinix.openapi.metal.v1.model.VirtualCircuitUpdateInput;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -53,8 +53,8 @@ public class InterconnectionsApiTest {
     public void createInterconnectionPortVirtualCircuitTest() throws ApiException {
         UUID connectionId = null;
         UUID portId = null;
-        CreateInterconnectionPortVirtualCircuitRequest createInterconnectionPortVirtualCircuitRequest = null;
-        CreateInterconnectionPortVirtualCircuit201Response response = api.createInterconnectionPortVirtualCircuit(connectionId, portId, createInterconnectionPortVirtualCircuitRequest);
+        VirtualCircuitCreateInput virtualCircuitCreateInput = null;
+        VirtualCircuit response = api.createInterconnectionPortVirtualCircuit(connectionId, portId, virtualCircuitCreateInput);
         // TODO: test validations
     }
 
@@ -112,7 +112,7 @@ public class InterconnectionsApiTest {
     @Test
     public void deleteVirtualCircuitTest() throws ApiException {
         UUID id = null;
-        CreateInterconnectionPortVirtualCircuit201Response response = api.deleteVirtualCircuit(id);
+        VirtualCircuit response = api.deleteVirtualCircuit(id);
         // TODO: test validations
     }
 
@@ -155,7 +155,7 @@ public class InterconnectionsApiTest {
     @Test
     public void getVirtualCircuitTest() throws ApiException {
         UUID id = null;
-        CreateInterconnectionPortVirtualCircuit201Response response = api.getVirtualCircuit(id);
+        VirtualCircuit response = api.getVirtualCircuit(id);
         // TODO: test validations
     }
 
@@ -255,8 +255,8 @@ public class InterconnectionsApiTest {
     @Test
     public void updateVirtualCircuitTest() throws ApiException {
         UUID id = null;
-        UpdateVirtualCircuitRequest updateVirtualCircuitRequest = null;
-        CreateInterconnectionPortVirtualCircuit201Response response = api.updateVirtualCircuit(id, updateVirtualCircuitRequest);
+        VirtualCircuitUpdateInput virtualCircuitUpdateInput = null;
+        VirtualCircuit response = api.updateVirtualCircuit(id, virtualCircuitUpdateInput);
         // TODO: test validations
     }
 
