@@ -13,19 +13,12 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.DeviceActionsInner;
-import com.equinix.openapi.metal.v1.model.DeviceCreatedBy;
-import com.equinix.openapi.metal.v1.model.DeviceMetro;
-import com.equinix.openapi.metal.v1.model.DeviceProject;
-import com.equinix.openapi.metal.v1.model.DeviceProjectLite;
-import com.equinix.openapi.metal.v1.model.Event;
+import com.equinix.openapi.metal.v1.model.Device;
 import com.equinix.openapi.metal.v1.model.Facility;
-import com.equinix.openapi.metal.v1.model.HardwareReservationOrHref;
+import com.equinix.openapi.metal.v1.model.HardwareReservation;
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.IPAssignment;
-import com.equinix.openapi.metal.v1.model.OperatingSystem;
 import com.equinix.openapi.metal.v1.model.Plan;
-import com.equinix.openapi.metal.v1.model.Port;
+import com.equinix.openapi.metal.v1.model.Project;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -33,51 +26,23 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for Device
+ * Model tests for HardwareReservationOrHref
  */
-public class DeviceTest {
-    private final Device model = new Device();
+public class HardwareReservationOrHrefTest {
+    private final HardwareReservationOrHref model = new HardwareReservationOrHref();
 
     /**
-     * Model tests for Device
+     * Model tests for HardwareReservationOrHref
      */
     @Test
-    public void testDevice() {
-        // TODO: test Device
-    }
-
-    /**
-     * Test the property 'alwaysPxe'
-     */
-    @Test
-    public void alwaysPxeTest() {
-        // TODO: test alwaysPxe
-    }
-
-    /**
-     * Test the property 'billingCycle'
-     */
-    @Test
-    public void billingCycleTest() {
-        // TODO: test billingCycle
-    }
-
-    /**
-     * Test the property 'bondingMode'
-     */
-    @Test
-    public void bondingModeTest() {
-        // TODO: test bondingMode
+    public void testHardwareReservationOrHref() {
+        // TODO: test HardwareReservationOrHref
     }
 
     /**
@@ -89,27 +54,19 @@ public class DeviceTest {
     }
 
     /**
-     * Test the property 'createdBy'
+     * Test the property 'customRate'
      */
     @Test
-    public void createdByTest() {
-        // TODO: test createdBy
+    public void customRateTest() {
+        // TODO: test customRate
     }
 
     /**
-     * Test the property 'customdata'
+     * Test the property 'device'
      */
     @Test
-    public void customdataTest() {
-        // TODO: test customdata
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
+    public void deviceTest() {
+        // TODO: test device
     }
 
     /**
@@ -118,22 +75,6 @@ public class DeviceTest {
     @Test
     public void facilityTest() {
         // TODO: test facility
-    }
-
-    /**
-     * Test the property 'hardwareReservation'
-     */
-    @Test
-    public void hardwareReservationTest() {
-        // TODO: test hardwareReservation
-    }
-
-    /**
-     * Test the property 'hostname'
-     */
-    @Test
-    public void hostnameTest() {
-        // TODO: test hostname
     }
 
     /**
@@ -153,75 +94,11 @@ public class DeviceTest {
     }
 
     /**
-     * Test the property 'imageUrl'
+     * Test the property 'needOfService'
      */
     @Test
-    public void imageUrlTest() {
-        // TODO: test imageUrl
-    }
-
-    /**
-     * Test the property 'ipAddresses'
-     */
-    @Test
-    public void ipAddressesTest() {
-        // TODO: test ipAddresses
-    }
-
-    /**
-     * Test the property 'ipxeScriptUrl'
-     */
-    @Test
-    public void ipxeScriptUrlTest() {
-        // TODO: test ipxeScriptUrl
-    }
-
-    /**
-     * Test the property 'iqn'
-     */
-    @Test
-    public void iqnTest() {
-        // TODO: test iqn
-    }
-
-    /**
-     * Test the property 'locked'
-     */
-    @Test
-    public void lockedTest() {
-        // TODO: test locked
-    }
-
-    /**
-     * Test the property 'metro'
-     */
-    @Test
-    public void metroTest() {
-        // TODO: test metro
-    }
-
-    /**
-     * Test the property 'networkPorts'
-     */
-    @Test
-    public void networkPortsTest() {
-        // TODO: test networkPorts
-    }
-
-    /**
-     * Test the property 'operatingSystem'
-     */
-    @Test
-    public void operatingSystemTest() {
-        // TODO: test operatingSystem
-    }
-
-    /**
-     * Test the property 'actions'
-     */
-    @Test
-    public void actionsTest() {
-        // TODO: test actions
+    public void needOfServiceTest() {
+        // TODO: test needOfService
     }
 
     /**
@@ -241,35 +118,11 @@ public class DeviceTest {
     }
 
     /**
-     * Test the property 'projectLite'
+     * Test the property 'provisionable'
      */
     @Test
-    public void projectLiteTest() {
-        // TODO: test projectLite
-    }
-
-    /**
-     * Test the property 'provisioningEvents'
-     */
-    @Test
-    public void provisioningEventsTest() {
-        // TODO: test provisioningEvents
-    }
-
-    /**
-     * Test the property 'provisioningPercentage'
-     */
-    @Test
-    public void provisioningPercentageTest() {
-        // TODO: test provisioningPercentage
-    }
-
-    /**
-     * Test the property 'rootPassword'
-     */
-    @Test
-    public void rootPasswordTest() {
-        // TODO: test rootPassword
+    public void provisionableTest() {
+        // TODO: test provisionable
     }
 
     /**
@@ -281,35 +134,11 @@ public class DeviceTest {
     }
 
     /**
-     * Test the property 'spotInstance'
+     * Test the property 'spare'
      */
     @Test
-    public void spotInstanceTest() {
-        // TODO: test spotInstance
-    }
-
-    /**
-     * Test the property 'spotPriceMax'
-     */
-    @Test
-    public void spotPriceMaxTest() {
-        // TODO: test spotPriceMax
-    }
-
-    /**
-     * Test the property 'sshKeys'
-     */
-    @Test
-    public void sshKeysTest() {
-        // TODO: test sshKeys
-    }
-
-    /**
-     * Test the property 'state'
-     */
-    @Test
-    public void stateTest() {
-        // TODO: test state
+    public void spareTest() {
+        // TODO: test spare
     }
 
     /**
@@ -321,51 +150,11 @@ public class DeviceTest {
     }
 
     /**
-     * Test the property 'tags'
-     */
-    @Test
-    public void tagsTest() {
-        // TODO: test tags
-    }
-
-    /**
      * Test the property 'terminationTime'
      */
     @Test
     public void terminationTimeTest() {
         // TODO: test terminationTime
-    }
-
-    /**
-     * Test the property 'updatedAt'
-     */
-    @Test
-    public void updatedAtTest() {
-        // TODO: test updatedAt
-    }
-
-    /**
-     * Test the property 'user'
-     */
-    @Test
-    public void userTest() {
-        // TODO: test user
-    }
-
-    /**
-     * Test the property 'userdata'
-     */
-    @Test
-    public void userdataTest() {
-        // TODO: test userdata
-    }
-
-    /**
-     * Test the property 'volumes'
-     */
-    @Test
-    public void volumesTest() {
-        // TODO: test volumes
     }
 
 }

@@ -479,6 +479,7 @@ Class | Method | HTTP request | Description
  - [GlobalBgpRangeList](docs/GlobalBgpRangeList.md)
  - [HardwareReservation](docs/HardwareReservation.md)
  - [HardwareReservationList](docs/HardwareReservationList.md)
+ - [HardwareReservationOrHref](docs/HardwareReservationOrHref.md)
  - [Href](docs/Href.md)
  - [IPAssignment](docs/IPAssignment.md)
  - [IPAssignmentInput](docs/IPAssignmentInput.md)
