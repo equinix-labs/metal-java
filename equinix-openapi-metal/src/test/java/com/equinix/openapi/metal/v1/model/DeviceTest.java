@@ -20,6 +20,7 @@ import com.equinix.openapi.metal.v1.model.DeviceProject;
 import com.equinix.openapi.metal.v1.model.DeviceProjectLite;
 import com.equinix.openapi.metal.v1.model.Event;
 import com.equinix.openapi.metal.v1.model.Facility;
+import com.equinix.openapi.metal.v1.model.HardwareReservation;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.IPAssignment;
 import com.equinix.openapi.metal.v1.model.OperatingSystem;

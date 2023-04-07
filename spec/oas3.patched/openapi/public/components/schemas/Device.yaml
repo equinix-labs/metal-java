@@ -21,7 +21,7 @@ properties:
   facility:
     $ref: './Facility.yaml'
   hardware_reservation:
-    $ref: './Href.yaml'
+    $ref: './HardwareReservation.yaml'
   hostname:
     type: string
   href:

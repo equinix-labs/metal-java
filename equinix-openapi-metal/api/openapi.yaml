@@ -12850,19 +12850,19 @@ components:
         - address: address
           parent_block:
             netmask: netmask
-            cidr: 5
+            cidr: 2
             href: href
             network: network
           created_at: 2000-01-23T04:56:07.000+00:00
           enabled: true
           manageable: true
           network: network
-          address_family: 6
+          address_family: 5
           public: true
           management: true
           netmask: netmask
           metro: null
-          cidr: 1
+          cidr: 5
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           global_ip: true
@@ -12872,19 +12872,19 @@ components:
         - address: address
           parent_block:
             netmask: netmask
-            cidr: 5
+            cidr: 2
             href: href
             network: network
           created_at: 2000-01-23T04:56:07.000+00:00
           enabled: true
           manageable: true
           network: network
-          address_family: 6
+          address_family: 5
           public: true
           management: true
           netmask: netmask
           metro: null
-          cidr: 1
+          cidr: 5
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           global_ip: true
@@ -12924,7 +12924,7 @@ components:
           type: type
         network_ports:
         - native_virtual_network:
-            vxlan: 5
+            vxlan: 7
             metal_gateways:
             - gateway_address: 10.1.2.1/27
               updated_at: 2000-01-23T04:56:07.000+00:00
@@ -12970,7 +12970,7 @@ components:
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - native_virtual_network:
-            vxlan: 5
+            vxlan: 7
             metal_gateways:
             - gateway_address: 10.1.2.1/27
               updated_at: 2000-01-23T04:56:07.000+00:00
@@ -13066,17 +13066,17 @@ components:
             memory:
               total: total
             cpus:
-            - count: 2
+            - count: 6
               type: type
-            - count: 2
+            - count: 6
               type: type
             drives:
             - size: 3.84TB
-              count: 7
+              count: 1
               type: HDD
               category: boot
             - size: 3.84TB
-              count: 7
+              count: 1
               type: HDD
               category: boot
             nics:
@@ -13106,7 +13106,128 @@ components:
         - tags
         - tags
         hardware_reservation:
+          custom_rate: 1050.5
+          created_at: 2000-01-23T04:56:07.000+00:00
+          project:
+            devices:
+            - href: href
+            - href: href
+            volumes:
+            - href: href
+            - href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            memberships:
+            - href: href
+            - href: href
+            bgp_config:
+              href: href
+            max_devices: "{}"
+            ssh_keys:
+            - href: href
+            - href: href
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            invitations:
+            - href: href
+            - href: href
+            members:
+            - href: href
+            - href: href
+            organization:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              href: href
+            name: name
+            network_status: "{}"
+            customdata: "{}"
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            payment_method:
+              href: href
+          switch_uuid: switch_uuid
+          short_id: short_id
+          termination_time: 2000-01-23T04:56:07.000+00:00
+          provisionable: true
+          need_of_service: true
           href: href
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          device: null
+          facility:
+            features:
+            - baremetal
+            - backend_transfer
+            - global_ipv4
+            address:
+              country: country
+              address: address
+              address2: address2
+              city: city
+              coordinates:
+                latitude: latitude
+                longitude: longitude
+              state: state
+              zip_code: zip_code
+            code: code
+            ip_ranges:
+            - 2604:1380::/36
+            - 147.75.192.0/21
+            metro: null
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          plan:
+            legacy: true
+            line: line
+            available_in_metros:
+            - price:
+                hour: 1.23
+              href: href
+            - price:
+                hour: 1.23
+              href: href
+            description: description
+            available_in:
+            - price:
+                hour: 1.23
+              href: href
+            - price:
+                hour: 1.23
+              href: href
+            type: standard
+            specs:
+              features:
+                txt: true
+                uefi: true
+                raid: true
+              memory:
+                total: total
+              cpus:
+              - count: 6
+                type: type
+              - count: 6
+                type: type
+              drives:
+              - size: 3.84TB
+                count: 1
+                type: HDD
+                category: boot
+              - size: 3.84TB
+                count: 1
+                type: HDD
+                category: boot
+              nics:
+              - count: 2
+                type: 1Gbps
+              - count: 2
+                type: 1Gbps
+            deployment_types:
+            - on_demand
+            - on_demand
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            class: m3.large.x86
+            pricing: "{}"
+            slug: m3.large.x86
+          spare: true
         spot_instance: true
         ssh_keys:
         - href: href
@@ -13163,7 +13284,7 @@ components:
         facility:
           $ref: '#/components/schemas/Facility'
         hardware_reservation:
-          $ref: '#/components/schemas/Href'
+          $ref: '#/components/schemas/HardwareReservation'
         hostname:
           type: string
         href:
@@ -13490,19 +13611,19 @@ components:
           - address: address
             parent_block:
               netmask: netmask
-              cidr: 5
+              cidr: 2
               href: href
               network: network
             created_at: 2000-01-23T04:56:07.000+00:00
             enabled: true
             manageable: true
             network: network
-            address_family: 6
+            address_family: 5
             public: true
             management: true
             netmask: netmask
             metro: null
-            cidr: 1
+            cidr: 5
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             global_ip: true
@@ -13512,19 +13633,19 @@ components:
           - address: address
             parent_block:
               netmask: netmask
-              cidr: 5
+              cidr: 2
               href: href
               network: network
             created_at: 2000-01-23T04:56:07.000+00:00
             enabled: true
             manageable: true
             network: network
-            address_family: 6
+            address_family: 5
             public: true
             management: true
             netmask: netmask
             metro: null
-            cidr: 1
+            cidr: 5
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             global_ip: true
@@ -13564,7 +13685,7 @@ components:
             type: type
           network_ports:
           - native_virtual_network:
-              vxlan: 5
+              vxlan: 7
               metal_gateways:
               - gateway_address: 10.1.2.1/27
                 updated_at: 2000-01-23T04:56:07.000+00:00
@@ -13610,7 +13731,7 @@ components:
               name: name
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - native_virtual_network:
-              vxlan: 5
+              vxlan: 7
               metal_gateways:
               - gateway_address: 10.1.2.1/27
                 updated_at: 2000-01-23T04:56:07.000+00:00
@@ -13706,17 +13827,17 @@ components:
               memory:
                 total: total
               cpus:
-              - count: 2
+              - count: 6
                 type: type
-              - count: 2
+              - count: 6
                 type: type
               drives:
               - size: 3.84TB
-                count: 7
+                count: 1
                 type: HDD
                 category: boot
               - size: 3.84TB
-                count: 7
+                count: 1
                 type: HDD
                 category: boot
               nics:
@@ -13746,7 +13867,128 @@ components:
           - tags
           - tags
           hardware_reservation:
+            custom_rate: 1050.5
+            created_at: 2000-01-23T04:56:07.000+00:00
+            project:
+              devices:
+              - href: href
+              - href: href
+              volumes:
+              - href: href
+              - href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              memberships:
+              - href: href
+              - href: href
+              bgp_config:
+                href: href
+              max_devices: "{}"
+              ssh_keys:
+              - href: href
+              - href: href
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              invitations:
+              - href: href
+              - href: href
+              members:
+              - href: href
+              - href: href
+              organization:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                href: href
+              name: name
+              network_status: "{}"
+              customdata: "{}"
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              payment_method:
+                href: href
+            switch_uuid: switch_uuid
+            short_id: short_id
+            termination_time: 2000-01-23T04:56:07.000+00:00
+            provisionable: true
+            need_of_service: true
             href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            device: null
+            facility:
+              features:
+              - baremetal
+              - backend_transfer
+              - global_ipv4
+              address:
+                country: country
+                address: address
+                address2: address2
+                city: city
+                coordinates:
+                  latitude: latitude
+                  longitude: longitude
+                state: state
+                zip_code: zip_code
+              code: code
+              ip_ranges:
+              - 2604:1380::/36
+              - 147.75.192.0/21
+              metro: null
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            plan:
+              legacy: true
+              line: line
+              available_in_metros:
+              - price:
+                  hour: 1.23
+                href: href
+              - price:
+                  hour: 1.23
+                href: href
+              description: description
+              available_in:
+              - price:
+                  hour: 1.23
+                href: href
+              - price:
+                  hour: 1.23
+                href: href
+              type: standard
+              specs:
+                features:
+                  txt: true
+                  uefi: true
+                  raid: true
+                memory:
+                  total: total
+                cpus:
+                - count: 6
+                  type: type
+                - count: 6
+                  type: type
+                drives:
+                - size: 3.84TB
+                  count: 1
+                  type: HDD
+                  category: boot
+                - size: 3.84TB
+                  count: 1
+                  type: HDD
+                  category: boot
+                nics:
+                - count: 2
+                  type: 1Gbps
+                - count: 2
+                  type: 1Gbps
+              deployment_types:
+              - on_demand
+              - on_demand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              class: m3.large.x86
+              pricing: "{}"
+              slug: m3.large.x86
+            spare: true
           spot_instance: true
           ssh_keys:
           - href: href
@@ -13786,19 +14028,19 @@ components:
           - address: address
             parent_block:
               netmask: netmask
-              cidr: 5
+              cidr: 2
               href: href
               network: network
             created_at: 2000-01-23T04:56:07.000+00:00
             enabled: true
             manageable: true
             network: network
-            address_family: 6
+            address_family: 5
             public: true
             management: true
             netmask: netmask
             metro: null
-            cidr: 1
+            cidr: 5
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             global_ip: true
@@ -13808,19 +14050,19 @@ components:
           - address: address
             parent_block:
               netmask: netmask
-              cidr: 5
+              cidr: 2
               href: href
               network: network
             created_at: 2000-01-23T04:56:07.000+00:00
             enabled: true
             manageable: true
             network: network
-            address_family: 6
+            address_family: 5
             public: true
             management: true
             netmask: netmask
             metro: null
-            cidr: 1
+            cidr: 5
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             global_ip: true
@@ -13860,7 +14102,7 @@ components:
             type: type
           network_ports:
           - native_virtual_network:
-              vxlan: 5
+              vxlan: 7
               metal_gateways:
               - gateway_address: 10.1.2.1/27
                 updated_at: 2000-01-23T04:56:07.000+00:00
@@ -13906,7 +14148,7 @@ components:
               name: name
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - native_virtual_network:
-              vxlan: 5
+              vxlan: 7
               metal_gateways:
               - gateway_address: 10.1.2.1/27
                 updated_at: 2000-01-23T04:56:07.000+00:00
@@ -14002,17 +14244,17 @@ components:
               memory:
                 total: total
               cpus:
-              - count: 2
+              - count: 6
                 type: type
-              - count: 2
+              - count: 6
                 type: type
               drives:
               - size: 3.84TB
-                count: 7
+                count: 1
                 type: HDD
                 category: boot
               - size: 3.84TB
-                count: 7
+                count: 1
                 type: HDD
                 category: boot
               nics:
@@ -14042,7 +14284,128 @@ components:
           - tags
           - tags
           hardware_reservation:
+            custom_rate: 1050.5
+            created_at: 2000-01-23T04:56:07.000+00:00
+            project:
+              devices:
+              - href: href
+              - href: href
+              volumes:
+              - href: href
+              - href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              memberships:
+              - href: href
+              - href: href
+              bgp_config:
+                href: href
+              max_devices: "{}"
+              ssh_keys:
+              - href: href
+              - href: href
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              invitations:
+              - href: href
+              - href: href
+              members:
+              - href: href
+              - href: href
+              organization:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                href: href
+              name: name
+              network_status: "{}"
+              customdata: "{}"
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              payment_method:
+                href: href
+            switch_uuid: switch_uuid
+            short_id: short_id
+            termination_time: 2000-01-23T04:56:07.000+00:00
+            provisionable: true
+            need_of_service: true
             href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            device: null
+            facility:
+              features:
+              - baremetal
+              - backend_transfer
+              - global_ipv4
+              address:
+                country: country
+                address: address
+                address2: address2
+                city: city
+                coordinates:
+                  latitude: latitude
+                  longitude: longitude
+                state: state
+                zip_code: zip_code
+              code: code
+              ip_ranges:
+              - 2604:1380::/36
+              - 147.75.192.0/21
+              metro: null
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            plan:
+              legacy: true
+              line: line
+              available_in_metros:
+              - price:
+                  hour: 1.23
+                href: href
+              - price:
+                  hour: 1.23
+                href: href
+              description: description
+              available_in:
+              - price:
+                  hour: 1.23
+                href: href
+              - price:
+                  hour: 1.23
+                href: href
+              type: standard
+              specs:
+                features:
+                  txt: true
+                  uefi: true
+                  raid: true
+                memory:
+                  total: total
+                cpus:
+                - count: 6
+                  type: type
+                - count: 6
+                  type: type
+                drives:
+                - size: 3.84TB
+                  count: 1
+                  type: HDD
+                  category: boot
+                - size: 3.84TB
+                  count: 1
+                  type: HDD
+                  category: boot
+                nics:
+                - count: 2
+                  type: 1Gbps
+                - count: 2
+                  type: 1Gbps
+              deployment_types:
+              - on_demand
+              - on_demand
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              class: m3.large.x86
+              pricing: "{}"
+              slug: m3.large.x86
+            spare: true
           spot_instance: true
           ssh_keys:
           - href: href
@@ -14622,303 +14985,7 @@ components:
         need_of_service: true
         href: href
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        device:
-          ip_addresses:
-          - address: address
-            parent_block:
-              netmask: netmask
-              cidr: 5
-              href: href
-              network: network
-            created_at: 2000-01-23T04:56:07.000+00:00
-            enabled: true
-            manageable: true
-            network: network
-            address_family: 6
-            public: true
-            management: true
-            netmask: netmask
-            metro: null
-            cidr: 1
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            global_ip: true
-            gateway: gateway
-            assigned_to:
-              href: href
-          - address: address
-            parent_block:
-              netmask: netmask
-              cidr: 5
-              href: href
-              network: network
-            created_at: 2000-01-23T04:56:07.000+00:00
-            enabled: true
-            manageable: true
-            network: network
-            address_family: 6
-            public: true
-            management: true
-            netmask: netmask
-            metro: null
-            cidr: 1
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            global_ip: true
-            gateway: gateway
-            assigned_to:
-              href: href
-          iqn: iqn
-          created_at: 2000-01-23T04:56:07.000+00:00
-          description: description
-          project: null
-          switch_uuid: switch_uuid
-          bonding_mode: 0
-          provisioning_events:
-          - interpolated: interpolated
-            relationships:
-            - href: href
-            - href: href
-            ip: ip
-            modified_by: "{}"
-            created_at: 2000-01-23T04:56:07.000+00:00
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: state
-            body: body
-            type: type
-          - interpolated: interpolated
-            relationships:
-            - href: href
-            - href: href
-            ip: ip
-            modified_by: "{}"
-            created_at: 2000-01-23T04:56:07.000+00:00
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: state
-            body: body
-            type: type
-          network_ports:
-          - native_virtual_network:
-              vxlan: 5
-              metal_gateways:
-              - gateway_address: 10.1.2.1/27
-                updated_at: 2000-01-23T04:56:07.000+00:00
-                vlan: 1001
-                created_at: 2000-01-23T04:56:07.000+00:00
-                href: href
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                state: ready
-              - gateway_address: 10.1.2.1/27
-                updated_at: 2000-01-23T04:56:07.000+00:00
-                vlan: 1001
-                created_at: 2000-01-23T04:56:07.000+00:00
-                href: href
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                state: ready
-              metro_code: metro_code
-              instances:
-              - href: href
-              - href: href
-              metro:
-                href: href
-              description: description
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              facility:
-                href: href
-              assigned_to_virtual_circuit: true
-              assigned_to:
-                href: href
-            disbond_operation_supported: true
-            data:
-              bonded: true
-              mac: mac
-            name: bond0
-            virtual_networks:
-            - href: href
-            - href: href
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            type: NetworkPort
-            network_type: layer2-bonded
-            bond:
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - native_virtual_network:
-              vxlan: 5
-              metal_gateways:
-              - gateway_address: 10.1.2.1/27
-                updated_at: 2000-01-23T04:56:07.000+00:00
-                vlan: 1001
-                created_at: 2000-01-23T04:56:07.000+00:00
-                href: href
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                state: ready
-              - gateway_address: 10.1.2.1/27
-                updated_at: 2000-01-23T04:56:07.000+00:00
-                vlan: 1001
-                created_at: 2000-01-23T04:56:07.000+00:00
-                href: href
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                state: ready
-              metro_code: metro_code
-              instances:
-              - href: href
-              - href: href
-              metro:
-                href: href
-              description: description
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              facility:
-                href: href
-              assigned_to_virtual_circuit: true
-              assigned_to:
-                href: href
-            disbond_operation_supported: true
-            data:
-              bonded: true
-              mac: mac
-            name: bond0
-            virtual_networks:
-            - href: href
-            - href: href
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            type: NetworkPort
-            network_type: layer2-bonded
-            bond:
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          userdata: userdata
-          hostname: hostname
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          operating_system:
-            distro: distro
-            preinstallable: true
-            licensed: true
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            provisionable_on:
-            - provisionable_on
-            - provisionable_on
-            version: version
-            pricing: "{}"
-            slug: slug
-            distro_label: distro_label
-          billing_cycle: billing_cycle
-          customdata:
-            key: ""
-          href: href
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: active
-          locked: true
-          spot_price_max: 3.6160767
-          plan:
-            legacy: true
-            line: line
-            available_in_metros:
-            - price:
-                hour: 1.23
-              href: href
-            - price:
-                hour: 1.23
-              href: href
-            description: description
-            available_in:
-            - price:
-                hour: 1.23
-              href: href
-            - price:
-                hour: 1.23
-              href: href
-            type: standard
-            specs:
-              features:
-                txt: true
-                uefi: true
-                raid: true
-              memory:
-                total: total
-              cpus:
-              - count: 2
-                type: type
-              - count: 2
-                type: type
-              drives:
-              - size: 3.84TB
-                count: 7
-                type: HDD
-                category: boot
-              - size: 3.84TB
-                count: 7
-                type: HDD
-                category: boot
-              nics:
-              - count: 2
-                type: 1Gbps
-              - count: 2
-                type: 1Gbps
-            deployment_types:
-            - on_demand
-            - on_demand
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            class: m3.large.x86
-            pricing: "{}"
-            slug: m3.large.x86
-          provisioning_percentage: 9.301444
-          image_url: image_url
-          root_password: root_password
-          volumes:
-          - href: href
-          - href: href
-          project_lite: null
-          short_id: short_id
-          termination_time: 2000-01-23T04:56:07.000+00:00
-          created_by: null
-          tags:
-          - tags
-          - tags
-          hardware_reservation:
-            href: href
-          spot_instance: true
-          ssh_keys:
-          - href: href
-          - href: href
-          metro: null
-          always_pxe: true
-          ipxe_script_url: ipxe_script_url
-          facility:
-            features:
-            - baremetal
-            - backend_transfer
-            - global_ipv4
-            address:
-              country: country
-              address: address
-              address2: address2
-              city: city
-              coordinates:
-                latitude: latitude
-                longitude: longitude
-              state: state
-              zip_code: zip_code
-            code: code
-            ip_ranges:
-            - 2604:1380::/36
-            - 147.75.192.0/21
-            metro: null
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          actions:
-          - name: name
-            type: type
-          - name: name
-            type: type
-          user: user
+        device: null
         facility:
           features:
           - baremetal
@@ -14968,17 +15035,17 @@ components:
             memory:
               total: total
             cpus:
-            - count: 2
+            - count: 6
               type: type
-            - count: 2
+            - count: 6
               type: type
             drives:
             - size: 3.84TB
-              count: 7
+              count: 1
               type: HDD
               category: boot
             - size: 3.84TB
-              count: 7
+              count: 1
               type: HDD
               category: boot
             nics:
@@ -15104,303 +15171,7 @@ components:
           need_of_service: true
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          device:
-            ip_addresses:
-            - address: address
-              parent_block:
-                netmask: netmask
-                cidr: 5
-                href: href
-                network: network
-              created_at: 2000-01-23T04:56:07.000+00:00
-              enabled: true
-              manageable: true
-              network: network
-              address_family: 6
-              public: true
-              management: true
-              netmask: netmask
-              metro: null
-              cidr: 1
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              global_ip: true
-              gateway: gateway
-              assigned_to:
-                href: href
-            - address: address
-              parent_block:
-                netmask: netmask
-                cidr: 5
-                href: href
-                network: network
-              created_at: 2000-01-23T04:56:07.000+00:00
-              enabled: true
-              manageable: true
-              network: network
-              address_family: 6
-              public: true
-              management: true
-              netmask: netmask
-              metro: null
-              cidr: 1
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              global_ip: true
-              gateway: gateway
-              assigned_to:
-                href: href
-            iqn: iqn
-            created_at: 2000-01-23T04:56:07.000+00:00
-            description: description
-            project: null
-            switch_uuid: switch_uuid
-            bonding_mode: 0
-            provisioning_events:
-            - interpolated: interpolated
-              relationships:
-              - href: href
-              - href: href
-              ip: ip
-              modified_by: "{}"
-              created_at: 2000-01-23T04:56:07.000+00:00
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: state
-              body: body
-              type: type
-            - interpolated: interpolated
-              relationships:
-              - href: href
-              - href: href
-              ip: ip
-              modified_by: "{}"
-              created_at: 2000-01-23T04:56:07.000+00:00
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: state
-              body: body
-              type: type
-            network_ports:
-            - native_virtual_network:
-                vxlan: 5
-                metal_gateways:
-                - gateway_address: 10.1.2.1/27
-                  updated_at: 2000-01-23T04:56:07.000+00:00
-                  vlan: 1001
-                  created_at: 2000-01-23T04:56:07.000+00:00
-                  href: href
-                  id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                  state: ready
-                - gateway_address: 10.1.2.1/27
-                  updated_at: 2000-01-23T04:56:07.000+00:00
-                  vlan: 1001
-                  created_at: 2000-01-23T04:56:07.000+00:00
-                  href: href
-                  id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                  state: ready
-                metro_code: metro_code
-                instances:
-                - href: href
-                - href: href
-                metro:
-                  href: href
-                description: description
-                href: href
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                facility:
-                  href: href
-                assigned_to_virtual_circuit: true
-                assigned_to:
-                  href: href
-              disbond_operation_supported: true
-              data:
-                bonded: true
-                mac: mac
-              name: bond0
-              virtual_networks:
-              - href: href
-              - href: href
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              type: NetworkPort
-              network_type: layer2-bonded
-              bond:
-                name: name
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - native_virtual_network:
-                vxlan: 5
-                metal_gateways:
-                - gateway_address: 10.1.2.1/27
-                  updated_at: 2000-01-23T04:56:07.000+00:00
-                  vlan: 1001
-                  created_at: 2000-01-23T04:56:07.000+00:00
-                  href: href
-                  id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                  state: ready
-                - gateway_address: 10.1.2.1/27
-                  updated_at: 2000-01-23T04:56:07.000+00:00
-                  vlan: 1001
-                  created_at: 2000-01-23T04:56:07.000+00:00
-                  href: href
-                  id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                  state: ready
-                metro_code: metro_code
-                instances:
-                - href: href
-                - href: href
-                metro:
-                  href: href
-                description: description
-                href: href
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                facility:
-                  href: href
-                assigned_to_virtual_circuit: true
-                assigned_to:
-                  href: href
-              disbond_operation_supported: true
-              data:
-                bonded: true
-                mac: mac
-              name: bond0
-              virtual_networks:
-              - href: href
-              - href: href
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              type: NetworkPort
-              network_type: layer2-bonded
-              bond:
-                name: name
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            userdata: userdata
-            hostname: hostname
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            operating_system:
-              distro: distro
-              preinstallable: true
-              licensed: true
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              provisionable_on:
-              - provisionable_on
-              - provisionable_on
-              version: version
-              pricing: "{}"
-              slug: slug
-              distro_label: distro_label
-            billing_cycle: billing_cycle
-            customdata:
-              key: ""
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: active
-            locked: true
-            spot_price_max: 3.6160767
-            plan:
-              legacy: true
-              line: line
-              available_in_metros:
-              - price:
-                  hour: 1.23
-                href: href
-              - price:
-                  hour: 1.23
-                href: href
-              description: description
-              available_in:
-              - price:
-                  hour: 1.23
-                href: href
-              - price:
-                  hour: 1.23
-                href: href
-              type: standard
-              specs:
-                features:
-                  txt: true
-                  uefi: true
-                  raid: true
-                memory:
-                  total: total
-                cpus:
-                - count: 2
-                  type: type
-                - count: 2
-                  type: type
-                drives:
-                - size: 3.84TB
-                  count: 7
-                  type: HDD
-                  category: boot
-                - size: 3.84TB
-                  count: 7
-                  type: HDD
-                  category: boot
-                nics:
-                - count: 2
-                  type: 1Gbps
-                - count: 2
-                  type: 1Gbps
-              deployment_types:
-              - on_demand
-              - on_demand
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              class: m3.large.x86
-              pricing: "{}"
-              slug: m3.large.x86
-            provisioning_percentage: 9.301444
-            image_url: image_url
-            root_password: root_password
-            volumes:
-            - href: href
-            - href: href
-            project_lite: null
-            short_id: short_id
-            termination_time: 2000-01-23T04:56:07.000+00:00
-            created_by: null
-            tags:
-            - tags
-            - tags
-            hardware_reservation:
-              href: href
-            spot_instance: true
-            ssh_keys:
-            - href: href
-            - href: href
-            metro: null
-            always_pxe: true
-            ipxe_script_url: ipxe_script_url
-            facility:
-              features:
-              - baremetal
-              - backend_transfer
-              - global_ipv4
-              address:
-                country: country
-                address: address
-                address2: address2
-                city: city
-                coordinates:
-                  latitude: latitude
-                  longitude: longitude
-                state: state
-                zip_code: zip_code
-              code: code
-              ip_ranges:
-              - 2604:1380::/36
-              - 147.75.192.0/21
-              metro: null
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            actions:
-            - name: name
-              type: type
-            - name: name
-              type: type
-            user: user
+          device: null
           facility:
             features:
             - baremetal
@@ -15450,17 +15221,17 @@ components:
               memory:
                 total: total
               cpus:
-              - count: 2
+              - count: 6
                 type: type
-              - count: 2
+              - count: 6
                 type: type
               drives:
               - size: 3.84TB
-                count: 7
+                count: 1
                 type: HDD
                 category: boot
               - size: 3.84TB
-                count: 7
+                count: 1
                 type: HDD
                 category: boot
               nics:
@@ -15522,303 +15293,7 @@ components:
           need_of_service: true
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          device:
-            ip_addresses:
-            - address: address
-              parent_block:
-                netmask: netmask
-                cidr: 5
-                href: href
-                network: network
-              created_at: 2000-01-23T04:56:07.000+00:00
-              enabled: true
-              manageable: true
-              network: network
-              address_family: 6
-              public: true
-              management: true
-              netmask: netmask
-              metro: null
-              cidr: 1
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              global_ip: true
-              gateway: gateway
-              assigned_to:
-                href: href
-            - address: address
-              parent_block:
-                netmask: netmask
-                cidr: 5
-                href: href
-                network: network
-              created_at: 2000-01-23T04:56:07.000+00:00
-              enabled: true
-              manageable: true
-              network: network
-              address_family: 6
-              public: true
-              management: true
-              netmask: netmask
-              metro: null
-              cidr: 1
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              global_ip: true
-              gateway: gateway
-              assigned_to:
-                href: href
-            iqn: iqn
-            created_at: 2000-01-23T04:56:07.000+00:00
-            description: description
-            project: null
-            switch_uuid: switch_uuid
-            bonding_mode: 0
-            provisioning_events:
-            - interpolated: interpolated
-              relationships:
-              - href: href
-              - href: href
-              ip: ip
-              modified_by: "{}"
-              created_at: 2000-01-23T04:56:07.000+00:00
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: state
-              body: body
-              type: type
-            - interpolated: interpolated
-              relationships:
-              - href: href
-              - href: href
-              ip: ip
-              modified_by: "{}"
-              created_at: 2000-01-23T04:56:07.000+00:00
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: state
-              body: body
-              type: type
-            network_ports:
-            - native_virtual_network:
-                vxlan: 5
-                metal_gateways:
-                - gateway_address: 10.1.2.1/27
-                  updated_at: 2000-01-23T04:56:07.000+00:00
-                  vlan: 1001
-                  created_at: 2000-01-23T04:56:07.000+00:00
-                  href: href
-                  id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                  state: ready
-                - gateway_address: 10.1.2.1/27
-                  updated_at: 2000-01-23T04:56:07.000+00:00
-                  vlan: 1001
-                  created_at: 2000-01-23T04:56:07.000+00:00
-                  href: href
-                  id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                  state: ready
-                metro_code: metro_code
-                instances:
-                - href: href
-                - href: href
-                metro:
-                  href: href
-                description: description
-                href: href
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                facility:
-                  href: href
-                assigned_to_virtual_circuit: true
-                assigned_to:
-                  href: href
-              disbond_operation_supported: true
-              data:
-                bonded: true
-                mac: mac
-              name: bond0
-              virtual_networks:
-              - href: href
-              - href: href
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              type: NetworkPort
-              network_type: layer2-bonded
-              bond:
-                name: name
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - native_virtual_network:
-                vxlan: 5
-                metal_gateways:
-                - gateway_address: 10.1.2.1/27
-                  updated_at: 2000-01-23T04:56:07.000+00:00
-                  vlan: 1001
-                  created_at: 2000-01-23T04:56:07.000+00:00
-                  href: href
-                  id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                  state: ready
-                - gateway_address: 10.1.2.1/27
-                  updated_at: 2000-01-23T04:56:07.000+00:00
-                  vlan: 1001
-                  created_at: 2000-01-23T04:56:07.000+00:00
-                  href: href
-                  id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                  state: ready
-                metro_code: metro_code
-                instances:
-                - href: href
-                - href: href
-                metro:
-                  href: href
-                description: description
-                href: href
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                facility:
-                  href: href
-                assigned_to_virtual_circuit: true
-                assigned_to:
-                  href: href
-              disbond_operation_supported: true
-              data:
-                bonded: true
-                mac: mac
-              name: bond0
-              virtual_networks:
-              - href: href
-              - href: href
-              href: href
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              type: NetworkPort
-              network_type: layer2-bonded
-              bond:
-                name: name
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            userdata: userdata
-            hostname: hostname
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            operating_system:
-              distro: distro
-              preinstallable: true
-              licensed: true
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              provisionable_on:
-              - provisionable_on
-              - provisionable_on
-              version: version
-              pricing: "{}"
-              slug: slug
-              distro_label: distro_label
-            billing_cycle: billing_cycle
-            customdata:
-              key: ""
-            href: href
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: active
-            locked: true
-            spot_price_max: 3.6160767
-            plan:
-              legacy: true
-              line: line
-              available_in_metros:
-              - price:
-                  hour: 1.23
-                href: href
-              - price:
-                  hour: 1.23
-                href: href
-              description: description
-              available_in:
-              - price:
-                  hour: 1.23
-                href: href
-              - price:
-                  hour: 1.23
-                href: href
-              type: standard
-              specs:
-                features:
-                  txt: true
-                  uefi: true
-                  raid: true
-                memory:
-                  total: total
-                cpus:
-                - count: 2
-                  type: type
-                - count: 2
-                  type: type
-                drives:
-                - size: 3.84TB
-                  count: 7
-                  type: HDD
-                  category: boot
-                - size: 3.84TB
-                  count: 7
-                  type: HDD
-                  category: boot
-                nics:
-                - count: 2
-                  type: 1Gbps
-                - count: 2
-                  type: 1Gbps
-              deployment_types:
-              - on_demand
-              - on_demand
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              class: m3.large.x86
-              pricing: "{}"
-              slug: m3.large.x86
-            provisioning_percentage: 9.301444
-            image_url: image_url
-            root_password: root_password
-            volumes:
-            - href: href
-            - href: href
-            project_lite: null
-            short_id: short_id
-            termination_time: 2000-01-23T04:56:07.000+00:00
-            created_by: null
-            tags:
-            - tags
-            - tags
-            hardware_reservation:
-              href: href
-            spot_instance: true
-            ssh_keys:
-            - href: href
-            - href: href
-            metro: null
-            always_pxe: true
-            ipxe_script_url: ipxe_script_url
-            facility:
-              features:
-              - baremetal
-              - backend_transfer
-              - global_ipv4
-              address:
-                country: country
-                address: address
-                address2: address2
-                city: city
-                coordinates:
-                  latitude: latitude
-                  longitude: longitude
-                state: state
-                zip_code: zip_code
-              code: code
-              ip_ranges:
-              - 2604:1380::/36
-              - 147.75.192.0/21
-              metro: null
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            actions:
-            - name: name
-              type: type
-            - name: name
-              type: type
-            user: user
+          device: null
           facility:
             features:
             - baremetal
@@ -15868,17 +15343,17 @@ components:
               memory:
                 total: total
               cpus:
-              - count: 2
+              - count: 6
                 type: type
-              - count: 2
+              - count: 6
                 type: type
               drives:
               - size: 3.84TB
-                count: 7
+                count: 1
                 type: HDD
                 category: boot
               - size: 3.84TB
-                count: 7
+                count: 1
                 type: HDD
                 category: boot
               nics:
@@ -15918,19 +15393,19 @@ components:
         address: address
         parent_block:
           netmask: netmask
-          cidr: 5
+          cidr: 2
           href: href
           network: network
         created_at: 2000-01-23T04:56:07.000+00:00
         enabled: true
         manageable: true
         network: network
-        address_family: 6
+        address_family: 5
         public: true
         management: true
         netmask: netmask
         metro: null
-        cidr: 1
+        cidr: 5
         href: href
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         global_ip: true
@@ -15996,19 +15471,19 @@ components:
         - address: address
           parent_block:
             netmask: netmask
-            cidr: 5
+            cidr: 2
             href: href
             network: network
           created_at: 2000-01-23T04:56:07.000+00:00
           enabled: true
           manageable: true
           network: network
-          address_family: 6
+          address_family: 5
           public: true
           management: true
           netmask: netmask
           metro: null
-          cidr: 1
+          cidr: 5
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           global_ip: true
@@ -16018,19 +15493,19 @@ components:
         - address: address
           parent_block:
             netmask: netmask
-            cidr: 5
+            cidr: 2
             href: href
             network: network
           created_at: 2000-01-23T04:56:07.000+00:00
           enabled: true
           manageable: true
           network: network
-          address_family: 6
+          address_family: 5
           public: true
           management: true
           netmask: netmask
           metro: null
-          cidr: 1
+          cidr: 5
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           global_ip: true
@@ -18289,7 +17764,7 @@ components:
     ParentBlock:
       example:
         netmask: netmask
-        cidr: 5
+        cidr: 2
         href: href
         network: network
       properties:
@@ -18495,17 +17970,17 @@ components:
           memory:
             total: total
           cpus:
-          - count: 2
+          - count: 6
             type: type
-          - count: 2
+          - count: 6
             type: type
           drives:
           - size: 3.84TB
-            count: 7
+            count: 1
             type: HDD
             category: boot
           - size: 3.84TB
-            count: 7
+            count: 1
             type: HDD
             category: boot
           nics:
@@ -18601,17 +18076,17 @@ components:
             memory:
               total: total
             cpus:
-            - count: 2
+            - count: 6
               type: type
-            - count: 2
+            - count: 6
               type: type
             drives:
             - size: 3.84TB
-              count: 7
+              count: 1
               type: HDD
               category: boot
             - size: 3.84TB
-              count: 7
+              count: 1
               type: HDD
               category: boot
             nics:
@@ -18653,17 +18128,17 @@ components:
             memory:
               total: total
             cpus:
-            - count: 2
+            - count: 6
               type: type
-            - count: 2
+            - count: 6
               type: type
             drives:
             - size: 3.84TB
-              count: 7
+              count: 1
               type: HDD
               category: boot
             - size: 3.84TB
-              count: 7
+              count: 1
               type: HDD
               category: boot
             nics:
@@ -18690,7 +18165,7 @@ components:
         hardware device.
       example:
         native_virtual_network:
-          vxlan: 5
+          vxlan: 7
           metal_gateways:
           - gateway_address: 10.1.2.1/27
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -18840,7 +18315,7 @@ components:
         updated_at: 2000-01-23T04:56:07.000+00:00
         port:
           native_virtual_network:
-            vxlan: 5
+            vxlan: 7
             metal_gateways:
             - gateway_address: 10.1.2.1/27
               updated_at: 2000-01-23T04:56:07.000+00:00
@@ -18956,7 +18431,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           port:
             native_virtual_network:
-              vxlan: 5
+              vxlan: 7
               metal_gateways:
               - gateway_address: 10.1.2.1/27
                 updated_at: 2000-01-23T04:56:07.000+00:00
@@ -19022,7 +18497,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           port:
             native_virtual_network:
-              vxlan: 5
+              vxlan: 7
               metal_gateways:
               - gateway_address: 10.1.2.1/27
                 updated_at: 2000-01-23T04:56:07.000+00:00
@@ -20900,7 +20375,7 @@ components:
       - $ref: '#/components/schemas/VrfVirtualCircuitUpdateInput'
     VirtualNetwork:
       example:
-        vxlan: 5
+        vxlan: 7
         metal_gateways:
         - gateway_address: 10.1.2.1/27
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -20995,7 +20470,7 @@ components:
     VirtualNetworkList:
       example:
         virtual_networks:
-        - vxlan: 5
+        - vxlan: 7
           metal_gateways:
           - gateway_address: 10.1.2.1/27
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -21025,7 +20500,7 @@ components:
           assigned_to_virtual_circuit: true
           assigned_to:
             href: href
-        - vxlan: 5
+        - vxlan: 7
           metal_gateways:
           - gateway_address: 10.1.2.1/27
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -23025,7 +22500,7 @@ components:
       type: object
     Plan_specs_cpus_inner:
       example:
-        count: 2
+        count: 6
         type: type
       properties:
         count:
@@ -23043,7 +22518,7 @@ components:
     Plan_specs_drives_inner:
       example:
         size: 3.84TB
-        count: 7
+        count: 1
         type: HDD
         category: boot
       properties:
@@ -23102,17 +22577,17 @@ components:
         memory:
           total: total
         cpus:
-        - count: 2
+        - count: 6
           type: type
-        - count: 2
+        - count: 6
           type: type
         drives:
         - size: 3.84TB
-          count: 7
+          count: 1
           type: HDD
           category: boot
         - size: 3.84TB
-          count: 7
+          count: 1
           type: HDD
           category: boot
         nics:

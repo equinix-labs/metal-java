@@ -11267,7 +11267,7 @@ components:
         facility:
           $ref: '#/components/schemas/Facility'
         hardware_reservation:
-          $ref: '#/components/schemas/Href'
+          $ref: '#/components/schemas/HardwareReservation'
         hostname:
           type: string
         href:
