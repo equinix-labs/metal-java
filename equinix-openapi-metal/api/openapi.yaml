@@ -13105,8 +13105,7 @@ components:
         tags:
         - tags
         - tags
-        hardware_reservation:
-          href: href
+        hardware_reservation: null
         spot_instance: true
         ssh_keys:
         - href: href
@@ -13163,7 +13162,7 @@ components:
         facility:
           $ref: '#/components/schemas/Facility'
         hardware_reservation:
-          $ref: '#/components/schemas/Href'
+          $ref: '#/components/schemas/HardwareReservationOrHref'
         hostname:
           type: string
         href:
@@ -13745,8 +13744,7 @@ components:
           tags:
           - tags
           - tags
-          hardware_reservation:
-            href: href
+          hardware_reservation: null
           spot_instance: true
           ssh_keys:
           - href: href
@@ -14041,8 +14039,7 @@ components:
           tags:
           - tags
           - tags
-          hardware_reservation:
-            href: href
+          hardware_reservation: null
           spot_instance: true
           ssh_keys:
           - href: href
@@ -14882,8 +14879,7 @@ components:
           tags:
           - tags
           - tags
-          hardware_reservation:
-            href: href
+          hardware_reservation: null
           spot_instance: true
           ssh_keys:
           - href: href
@@ -15364,8 +15360,7 @@ components:
             tags:
             - tags
             - tags
-            hardware_reservation:
-              href: href
+            hardware_reservation: null
             spot_instance: true
             ssh_keys:
             - href: href
@@ -15782,8 +15777,7 @@ components:
             tags:
             - tags
             - tags
-            hardware_reservation:
-              href: href
+            hardware_reservation: null
             spot_instance: true
             ssh_keys:
             - href: href
@@ -22649,6 +22643,10 @@ components:
             type: string
           type: array
       type: object
+    HardwareReservationOrHref:
+      anyOf:
+      - $ref: '#/components/schemas/HardwareReservation'
+      - $ref: '#/components/schemas/Href'
     InterconnectionPortCore:
       properties:
         id:

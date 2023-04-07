@@ -81,6 +81,7 @@ docs/GlobalBgpRange.md
 docs/GlobalBgpRangeList.md
 docs/HardwareReservation.md
 docs/HardwareReservationList.md
+docs/HardwareReservationOrHref.md
 docs/HardwareReservationsApi.md
 docs/Href.md
 docs/IPAssignment.md
@@ -403,6 +404,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/GlobalBgpRange.java
 src/main/java/com/equinix/openapi/metal/v1/model/GlobalBgpRangeList.java
 src/main/java/com/equinix/openapi/metal/v1/model/HardwareReservation.java
 src/main/java/com/equinix/openapi/metal/v1/model/HardwareReservationList.java
+src/main/java/com/equinix/openapi/metal/v1/model/HardwareReservationOrHref.java
 src/main/java/com/equinix/openapi/metal/v1/model/Href.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPAssignment.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPAssignmentInput.java
@@ -668,6 +670,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/FindTrafficTimeframeParameterTe
 src/test/java/com/equinix/openapi/metal/v1/model/GlobalBgpRangeListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/GlobalBgpRangeTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/HardwareReservationListTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/HardwareReservationOrHrefTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/HardwareReservationTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/HrefTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPAssignmentInputTest.java

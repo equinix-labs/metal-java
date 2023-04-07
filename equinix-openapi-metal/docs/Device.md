@@ -15,7 +15,7 @@
 |**customdata** | **Map&lt;String, Object&gt;** |  |  [optional] |
 |**description** | **String** |  |  [optional] |
 |**facility** | [**Facility**](Facility.md) |  |  [optional] |
-|**hardwareReservation** | [**Href**](Href.md) |  |  [optional] |
+|**hardwareReservation** | [**HardwareReservationOrHref**](HardwareReservationOrHref.md) |  |  [optional] |
 |**hostname** | **String** |  |  [optional] |
 |**href** | **String** |  |  [optional] |
 |**id** | **UUID** |  |  [optional] |

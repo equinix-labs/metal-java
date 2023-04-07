@@ -11267,7 +11267,7 @@ components:
         facility:
           $ref: '#/components/schemas/Facility'
         hardware_reservation:
-          $ref: '#/components/schemas/Href'
+          $ref: '#/components/schemas/HardwareReservationOrHref'
         hostname:
           type: string
         href:
@@ -14684,6 +14684,10 @@ components:
             type: string
           type: array
       type: object
+    HardwareReservationOrHref:
+      anyOf:
+      - $ref: '#/components/schemas/HardwareReservation'
+      - $ref: '#/components/schemas/Href'
     InterconnectionPortCore:
       properties:
         id:
