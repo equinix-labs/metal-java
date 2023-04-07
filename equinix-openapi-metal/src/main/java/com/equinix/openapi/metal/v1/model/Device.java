@@ -22,7 +22,7 @@ import com.equinix.openapi.metal.v1.model.DeviceProject;
 import com.equinix.openapi.metal.v1.model.DeviceProjectLite;
 import com.equinix.openapi.metal.v1.model.Event;
 import com.equinix.openapi.metal.v1.model.Facility;
-import com.equinix.openapi.metal.v1.model.HardwareReservationOrHref;
+import com.equinix.openapi.metal.v1.model.HardwareReservation;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.IPAssignment;
 import com.equinix.openapi.metal.v1.model.OperatingSystem;
@@ -101,7 +101,7 @@ public class Device {
 
   public static final String SERIALIZED_NAME_HARDWARE_RESERVATION = "hardware_reservation";
   @SerializedName(SERIALIZED_NAME_HARDWARE_RESERVATION)
-  private HardwareReservationOrHref hardwareReservation;
+  private HardwareReservation hardwareReservation;
 
   public static final String SERIALIZED_NAME_HOSTNAME = "hostname";
   @SerializedName(SERIALIZED_NAME_HOSTNAME)
@@ -475,7 +475,7 @@ public class Device {
   }
 
 
-  public Device hardwareReservation(HardwareReservationOrHref hardwareReservation) {
+  public Device hardwareReservation(HardwareReservation hardwareReservation) {
     
     this.hardwareReservation = hardwareReservation;
     return this;
@@ -487,12 +487,12 @@ public class Device {
   **/
   @javax.annotation.Nullable
 
-  public HardwareReservationOrHref getHardwareReservation() {
+  public HardwareReservation getHardwareReservation() {
     return hardwareReservation;
   }
 
 
-  public void setHardwareReservation(HardwareReservationOrHref hardwareReservation) {
+  public void setHardwareReservation(HardwareReservation hardwareReservation) {
     this.hardwareReservation = hardwareReservation;
   }
 
@@ -1452,7 +1452,7 @@ public class Device {
       }
       // validate the optional field `hardware_reservation`
       if (jsonObj.get("hardware_reservation") != null && !jsonObj.get("hardware_reservation").isJsonNull()) {
-        HardwareReservationOrHref.validateJsonObject(jsonObj.getAsJsonObject("hardware_reservation"));
+        HardwareReservation.validateJsonObject(jsonObj.getAsJsonObject("hardware_reservation"));
       }
       if ((jsonObj.get("hostname") != null && !jsonObj.get("hostname").isJsonNull()) && !jsonObj.get("hostname").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hostname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hostname").toString()));

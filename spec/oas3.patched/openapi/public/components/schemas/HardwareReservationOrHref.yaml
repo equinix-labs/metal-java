@@ -1,3 +1,0 @@
-anyOf:
-- $ref: './HardwareReservation.yaml'
-- $ref: './Href.yaml'
