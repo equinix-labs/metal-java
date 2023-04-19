@@ -14,14 +14,26 @@ jobs:
       uses: actions/checkout@v3
     - name: GitHub user
       run: |
-        # https://api.github.com/users/github-actions[bot]
         git config user.name 'github-actions[bot]'
-        git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        git config user.email 'bot@equinix.noreply.github.com'
     - name: Sync
       run: |
         make fetch
         git add spec/oas3.fetched
         git commit -m 'sync: fetch ${{ steps.date.outputs.date }} spec' spec/oas3.fetched
+    - name: Generate code
+      run: |
+        make docker_run
+        echo -e "Make execution completed."
+        git add spec/oas3.patched/.
+        git add spec/oas3.stitched/.
+        git add equinix-openapi-metal/.
+        echo -e "\nGit status:"
+        echo `git status`
+        cmsg='sync: generate code for ${{ steps.date.outputs.date }} spec'
+        echo -e "\nCommit message created : $cmsg"
+        echo -e "\nCommitting if there are files to update in client dir:"
+        echo `git commit -m "$cmsg"`
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
       with:
