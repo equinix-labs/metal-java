@@ -78,9 +78,8 @@ pre-spec-patch-dir:
 	cp -r ${SPEC_DIR_FETCHED_FILE} ${SPEC_DIR_PATCHED_FILE}
 
 	for diff in $(shell find ${SPEC_FETCHED_PATCHES} -name \*.patch | sort -n); do \
-		patch -p1 < $$diff; \
+		patch --no-backup-if-mismatch -N -t -p1 -i $$diff; \
 	done
-
 
 move-workflow:
 	cp -r internal/workflow equinix-openapi-metal/src/main/java/com/equinix/
