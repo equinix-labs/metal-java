@@ -24,7 +24,7 @@ SPEC_ROOT_FILE:=openapi3.yaml
 PATCHED_SPEC_ENTRY_POINT=spec/oas3.patched/openapi/public/${SPEC_ROOT_FILE}
 PATCHED_SPEC_OUTPUT_DIR=spec/oas3.stitched/
 
-SPEC_FETCHER=${CRI} run --rm -v $(CURDIR):/workdir --entrypoint sh mikefarah/yq:4.30.8 script/download_spec.sh
+SPEC_FETCHER=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/workdir --entrypoint sh mikefarah/yq:4.30.8 script/download_spec.sh
 SPEC_PATCHED_FILE=oas3.stitched.metal.yaml
 
 SPEC_DIR_FETCHED_FILE=spec/oas3.fetched/
