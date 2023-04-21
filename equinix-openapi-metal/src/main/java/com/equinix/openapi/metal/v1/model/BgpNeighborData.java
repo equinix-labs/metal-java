@@ -22,7 +22,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,11 +53,11 @@ import com.equinix.openapi.JSON;
 public class BgpNeighborData {
   public static final String SERIALIZED_NAME_ADDRESS_FAMILY = "address_family";
   @SerializedName(SERIALIZED_NAME_ADDRESS_FAMILY)
-  private BigDecimal addressFamily;
+  private Integer addressFamily;
 
   public static final String SERIALIZED_NAME_CUSTOMER_AS = "customer_as";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_AS)
-  private BigDecimal customerAs;
+  private Integer customerAs;
 
   public static final String SERIALIZED_NAME_CUSTOMER_IP = "customer_ip";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_IP)
@@ -78,7 +77,7 @@ public class BgpNeighborData {
 
   public static final String SERIALIZED_NAME_PEER_AS = "peer_as";
   @SerializedName(SERIALIZED_NAME_PEER_AS)
-  private BigDecimal peerAs;
+  private Integer peerAs;
 
   public static final String SERIALIZED_NAME_PEER_IPS = "peer_ips";
   @SerializedName(SERIALIZED_NAME_PEER_IPS)
@@ -95,7 +94,7 @@ public class BgpNeighborData {
   public BgpNeighborData() {
   }
 
-  public BgpNeighborData addressFamily(BigDecimal addressFamily) {
+  public BgpNeighborData addressFamily(Integer addressFamily) {
     
     this.addressFamily = addressFamily;
     return this;
@@ -107,17 +106,17 @@ public class BgpNeighborData {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getAddressFamily() {
+  public Integer getAddressFamily() {
     return addressFamily;
   }
 
 
-  public void setAddressFamily(BigDecimal addressFamily) {
+  public void setAddressFamily(Integer addressFamily) {
     this.addressFamily = addressFamily;
   }
 
 
-  public BgpNeighborData customerAs(BigDecimal customerAs) {
+  public BgpNeighborData customerAs(Integer customerAs) {
     
     this.customerAs = customerAs;
     return this;
@@ -129,12 +128,12 @@ public class BgpNeighborData {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getCustomerAs() {
+  public Integer getCustomerAs() {
     return customerAs;
   }
 
 
-  public void setCustomerAs(BigDecimal customerAs) {
+  public void setCustomerAs(Integer customerAs) {
     this.customerAs = customerAs;
   }
 
@@ -227,7 +226,7 @@ public class BgpNeighborData {
   }
 
 
-  public BgpNeighborData peerAs(BigDecimal peerAs) {
+  public BgpNeighborData peerAs(Integer peerAs) {
     
     this.peerAs = peerAs;
     return this;
@@ -239,12 +238,12 @@ public class BgpNeighborData {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getPeerAs() {
+  public Integer getPeerAs() {
     return peerAs;
   }
 
 
-  public void setPeerAs(BigDecimal peerAs) {
+  public void setPeerAs(Integer peerAs) {
     this.peerAs = peerAs;
   }
 

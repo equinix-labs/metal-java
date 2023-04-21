@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,17 +53,17 @@ public class CreateSelfServiceReservationRequestPeriod {
    */
   @JsonAdapter(CountEnum.Adapter.class)
   public enum CountEnum {
-    NUMBER_12(new BigDecimal("12")),
+    NUMBER_12(12),
     
-    NUMBER_36(new BigDecimal("36"));
+    NUMBER_36(36);
 
-    private BigDecimal value;
+    private Integer value;
 
-    CountEnum(BigDecimal value) {
+    CountEnum(Integer value) {
       this.value = value;
     }
 
-    public BigDecimal getValue() {
+    public Integer getValue() {
       return value;
     }
 
@@ -73,7 +72,7 @@ public class CreateSelfServiceReservationRequestPeriod {
       return String.valueOf(value);
     }
 
-    public static CountEnum fromValue(BigDecimal value) {
+    public static CountEnum fromValue(Integer value) {
       for (CountEnum b : CountEnum.values()) {
         if (b.value.equals(value)) {
           return b;
@@ -90,8 +89,8 @@ public class CreateSelfServiceReservationRequestPeriod {
 
       @Override
       public CountEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CountEnum.fromValue(new BigDecimal(value));
+        Integer value =  jsonReader.nextInt();
+        return CountEnum.fromValue(value);
       }
     }
   }

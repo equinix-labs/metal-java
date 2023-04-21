@@ -1,0 +1,12 @@
+--- spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitList.yaml
++++ spec/oas3.patched/openapi/public/components/schemas/VirtualCircuitList.yaml
+@@ -1,8 +1,6 @@
+ properties:
+   virtual_circuits:
+     items:
+-      anyOf:
+-      - $ref: './VirtualCircuit.yaml'
+-      - $ref: './VrfVirtualCircuit.yaml'
++      $ref: './VirtualCircuit.yaml'
+     type: array
+ type: object

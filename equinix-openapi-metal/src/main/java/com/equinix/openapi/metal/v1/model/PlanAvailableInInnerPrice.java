@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,12 +50,12 @@ import com.equinix.openapi.JSON;
 public class PlanAvailableInInnerPrice {
   public static final String SERIALIZED_NAME_HOUR = "hour";
   @SerializedName(SERIALIZED_NAME_HOUR)
-  private BigDecimal hour;
+  private Double hour;
 
   public PlanAvailableInInnerPrice() {
   }
 
-  public PlanAvailableInInnerPrice hour(BigDecimal hour) {
+  public PlanAvailableInInnerPrice hour(Double hour) {
     
     this.hour = hour;
     return this;
@@ -68,12 +67,12 @@ public class PlanAvailableInInnerPrice {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getHour() {
+  public Double getHour() {
     return hour;
   }
 
 
-  public void setHour(BigDecimal hour) {
+  public void setHour(Double hour) {
     this.hour = hour;
   }
 

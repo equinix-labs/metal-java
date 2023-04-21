@@ -12227,6 +12227,67 @@ components:
       - asn
       - deployment_type
       type: object
+    BgpDynamicNeighbor:
+      properties:
+        id:
+          description: The unique identifier for the resource
+          example: aea82f16-57ec-412c-9523-b7f2b27635b2
+          format: uuid
+          readOnly: true
+          type: string
+        bgp_neighbor_asn:
+          description: The ASN of the dynamic BGP neighbor
+          example: 12345
+          type: integer
+        bgp_neighbor_range:
+          description: Network range of the dynamic BGP neighbor in CIDR format
+          example: 192.168.1.0/25
+          type: string
+        metal_gateway:
+          $ref: '#/components/schemas/VrfMetalGateway'
+        state:
+          enum:
+          - active
+          - deleting
+          - pending
+          - ready
+          readOnly: true
+          type: string
+        href:
+          example: /bgp-dynamic-neighbors/aea82f16-57ec-412c-9523-b7f2b27635b2
+          readOnly: true
+          type: string
+        created_at:
+          format: date-time
+          readOnly: true
+          type: string
+        created_by:
+          $ref: '#/components/schemas/UserLimited'
+        updated_at:
+          format: date-time
+          readOnly: true
+          type: string
+      type: object
+    BgpDynamicNeighborCreateInput:
+      properties:
+        bgp_neighbor_range:
+          description: Network range of the dynamic BGP neighbor in CIDR format
+          example: 192.168.1.0/25
+          type: string
+        bgp_neighbor_asn:
+          description: The ASN of the dynamic BGP neighbor
+          example: 12345
+          type: integer
+      type: object
+    BgpDynamicNeighborList:
+      properties:
+        bgp_dynamic_neighbors:
+          items:
+            $ref: '#/components/schemas/BgpDynamicNeighbor'
+          type: array
+        meta:
+          $ref: '#/components/schemas/Meta'
+      type: object
     BgpNeighborData:
       example:
         md5_password: md5_password
@@ -12249,16 +12310,16 @@ components:
         address_family:
           description: Address Family for IP Address. Accepted values are 4 or 6
           example: 4
-          format: integer
-          type: number
+          format: int32
+          type: integer
         customer_as:
           description: "The customer's ASN. In a local BGP deployment, this will be\
             \ an internal ASN used to route within the data center. For a global BGP\
             \ deployment, this will be the your own ASN, configured when you set up\
             \ BGP for your project."
           example: 65000
-          format: integer
-          type: number
+          format: int32
+          type: integer
         customer_ip:
           description: "The device's IP address. For an IPv4 BGP session, this is\
             \ typically the private bond0 address for the device."
@@ -12276,8 +12337,8 @@ components:
         peer_as:
           description: The Peer ASN to use when configuring BGP on your device.
           example: 65530
-          format: integer
-          type: number
+          format: int32
+          type: integer
         peer_ips:
           description: "A list of one or more IP addresses to use for the Peer IP\
             \ section of your BGP configuration. For non-multihop sessions, this will\
@@ -12878,7 +12939,7 @@ components:
           plan_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         period:
           unit: monthly
-          count: 1.4658129805029452
+          count: 1
         notes: notes
         start_date: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -13531,7 +13592,7 @@ components:
 
             To access a server without public IPs, you can use our Out-of-Band console access (SOS) or proxy through another server in the project with public IPs enabled.
           items:
-            $ref: '#/components/schemas/DeviceCreateInput_ip_addresses_inner'
+            $ref: '#/components/schemas/IPAddress'
           type: array
         ipxe_script_url:
           description: |-
@@ -13565,8 +13626,8 @@ components:
           default: 28
           description: Deprecated. Use ip_addresses. Subnet range for addresses allocated
             to this device.
-          format: integer
-          type: number
+          format: int32
+          type: integer
           x-deprecated: true
         project_ssh_keys:
           description: |
@@ -13586,8 +13647,8 @@ components:
           description: Deprecated. Use ip_addresses. Subnet range for addresses allocated
             to this device. Your project must have addresses available for a non-default
             request.
-          format: integer
-          type: number
+          format: int32
+          type: integer
           x-deprecated: true
         spot_instance:
           description: "Create a spot instance. Spot instances are created with a\
@@ -15438,6 +15499,34 @@ components:
       required:
       - href
       type: object
+    IPAddress:
+      properties:
+        address_family:
+          description: Address Family for IP Address
+          enum:
+          - 4
+          - 6
+          example: 4
+          format: int32
+          type: integer
+        cidr:
+          description: "Cidr Size for the IP Block created. Valid values depends on\
+            \ the operating system being provisioned. (28..32 for IPv4 addresses,\
+            \ 124..127 for IPv6 addresses)"
+          example: 28
+          format: int32
+          type: integer
+        ip_reservations:
+          description: UUIDs of any IP reservations to use when assigning IPs
+          items:
+            type: string
+          type: array
+        public:
+          default: true
+          description: Address Type for IP Address
+          example: false
+          type: boolean
+      type: object
     IPAssignment:
       example:
         address: address
@@ -15504,14 +15593,11 @@ components:
       example:
         address: address
         customdata: "{}"
-        manageable: true
       properties:
         address:
           type: string
         customdata:
           type: object
-        manageable:
-          type: boolean
       required:
       - address
       type: object
@@ -16550,11 +16636,27 @@ components:
         metal_gateways:
         - null
         - null
+        meta:
+          next:
+            href: href
+          total: 0
+          last:
+            href: href
+          previous:
+            href: href
+          last_page: 1
+          self:
+            href: href
+          first:
+            href: href
+          current_page: 6
       properties:
         metal_gateways:
           items:
             $ref: '#/components/schemas/MetalGatewayList_metal_gateways_inner'
           type: array
+        meta:
+          $ref: '#/components/schemas/Meta'
       type: object
     MetalGatewayLite:
       example:
@@ -18077,7 +18179,9 @@ components:
           format: uuid
           type: string
         legacy:
+          description: Deprecated. Always return false
           type: boolean
+          x-deprecated: true
         line:
           type: string
         name:
@@ -19122,7 +19226,7 @@ components:
             plan_name: plan_name
           period:
             unit: monthly
-            count: 1.4658129805029452
+            count: 1
           notes: notes
           total_cost: 5
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19155,7 +19259,7 @@ components:
             plan_name: plan_name
           period:
             unit: monthly
-            count: 1.4658129805029452
+            count: 1
           notes: notes
           total_cost: 5
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19196,7 +19300,7 @@ components:
           plan_name: plan_name
         period:
           unit: monthly
-          count: 1.4658129805029452
+          count: 1
         notes: notes
         total_cost: 5
         project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19700,8 +19804,7 @@ components:
     SpotMarketRequestCreateInput:
       example:
         end_at: 2000-01-23T04:56:07.000+00:00
-        metro: metro
-        instance_attributes:
+        instance_parameters:
           user_ssh_keys:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19730,6 +19833,7 @@ components:
           customdata: "{}"
           locked: true
           plan: plan
+        metro: metro
         devices_min: 6
         devices_max: 0
         max_bid_price: 5.637377
@@ -19749,8 +19853,8 @@ components:
             format: uuid
             type: string
           type: array
-        instance_attributes:
-          $ref: '#/components/schemas/SpotMarketRequestCreateInput_instance_attributes'
+        instance_parameters:
+          $ref: '#/components/schemas/SpotMarketRequestCreateInput_instance_parameters'
         max_bid_price:
           format: float
           type: number
@@ -20113,7 +20217,7 @@ components:
       example:
         avatar_thumb_url: avatar_thumb_url
         last_login_at: 2000-01-23T04:56:07.000+00:00
-        max_projects: 1
+        max_projects: 5
         timezone: timezone
         created_at: 2000-01-23T04:56:07.000+00:00
         last_name: last_name
@@ -20130,7 +20234,7 @@ components:
         href: href
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         first_name: first_name
-        max_organizations: 6
+        max_organizations: 1
         two_factor_auth: two_factor_auth
         email: email
       properties:
@@ -20259,6 +20363,27 @@ components:
         userdata:
           type: string
       type: object
+    UserLimited:
+      properties:
+        avatar_thumb_url:
+          description: Avatar thumbnail URL of the User
+          type: string
+        avatar_url:
+          description: Avatar URL of the User
+          type: string
+        full_name:
+          description: Full name of the User
+          type: string
+        href:
+          description: API URL uniquely representing the User
+          type: string
+        id:
+          description: ID of the User
+          format: uuid
+          type: string
+      required:
+      - id
+      type: object
     UserList:
       example:
         meta:
@@ -20278,7 +20403,7 @@ components:
         users:
         - avatar_thumb_url: avatar_thumb_url
           last_login_at: 2000-01-23T04:56:07.000+00:00
-          max_projects: 1
+          max_projects: 5
           timezone: timezone
           created_at: 2000-01-23T04:56:07.000+00:00
           last_name: last_name
@@ -20295,12 +20420,12 @@ components:
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           first_name: first_name
-          max_organizations: 6
+          max_organizations: 1
           two_factor_auth: two_factor_auth
           email: email
         - avatar_thumb_url: avatar_thumb_url
           last_login_at: 2000-01-23T04:56:07.000+00:00
-          max_projects: 1
+          max_projects: 5
           timezone: timezone
           created_at: 2000-01-23T04:56:07.000+00:00
           last_name: last_name
@@ -20317,7 +20442,7 @@ components:
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           first_name: first_name
-          max_organizations: 6
+          max_organizations: 1
           two_factor_auth: two_factor_auth
           email: email
       properties:
@@ -20731,18 +20856,12 @@ components:
       type: object
     Vrf:
       example:
-        updated_at: 2000-01-23T04:56:07.000+00:00
+        bgp_dynamic_neighbors_export_route_map: true
+        bgp_dynamic_neighbors_bfd_enabled: true
         local_asn: 0
-        ip_ranges:
-        - ip_ranges
-        - ip_ranges
-        metro:
-          country: country
-          code: code
-          name: name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
         description: description
+        bill: false
+        bgp_dynamic_neighbors_enabled: true
         project:
           devices:
           - href: href
@@ -20780,12 +20899,10 @@ components:
           payment_method:
             href: href
         created_at: 2000-01-23T04:56:07.000+00:00
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        href: href
         created_by:
           avatar_thumb_url: avatar_thumb_url
           last_login_at: 2000-01-23T04:56:07.000+00:00
-          max_projects: 1
+          max_projects: 5
           timezone: timezone
           created_at: 2000-01-23T04:56:07.000+00:00
           last_name: last_name
@@ -20802,9 +20919,42 @@ components:
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           first_name: first_name
-          max_organizations: 6
+          max_organizations: 1
           two_factor_auth: two_factor_auth
           email: email
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        virtual_circuits:
+        - subnet: 12.0.0.0/30
+          port:
+            href: href
+          name: name
+          customer_ip: 12.0.0.2
+          peer_asn: 6
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          metal_ip: 12.0.0.1
+          status: status
+          md5: md5
+        - subnet: 12.0.0.0/30
+          port:
+            href: href
+          name: name
+          customer_ip: 12.0.0.2
+          peer_asn: 6
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          metal_ip: 12.0.0.1
+          status: status
+          md5: md5
+        ip_ranges:
+        - ip_ranges
+        - ip_ranges
+        metro:
+          country: country
+          code: code
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        href: href
       properties:
         id:
           format: uuid
@@ -20814,10 +20964,30 @@ components:
         description:
           description: Optional field that can be set to describe the VRF
           type: string
+        bill:
+          default: false
+          description: "True if the VRF is being billed. Usage will start when the\
+            \ first VRF Virtual Circuit is active, and will only stop when the VRF\
+            \ has been deleted."
+          type: boolean
+        bgp_dynamic_neighbors_enabled:
+          description: Toggle to enable the dynamic bgp neighbors feature on the VRF
+          type: boolean
+        bgp_dynamic_neighbors_export_route_map:
+          description: Toggle to export the VRF route-map to the dynamic bgp neighbors
+          type: boolean
+        bgp_dynamic_neighbors_bfd_enabled:
+          description: Toggle BFD on dynamic bgp neighbors sessions
+          type: boolean
         local_asn:
           description: A 4-byte ASN associated with the VRF.
           format: int32
           type: integer
+        virtual_circuits:
+          description: Virtual circuits that are in the VRF
+          items:
+            $ref: '#/components/schemas/Vrf_virtual_circuits_inner'
+          type: array
         ip_ranges:
           description: "A list of CIDR network addresses. Like [\"10.0.0.0/16\", \"\
             2001:d78::/56\"]."
@@ -20841,14 +21011,26 @@ components:
       type: object
     VrfCreateInput:
       example:
+        bgp_dynamic_neighbors_export_route_map: true
+        bgp_dynamic_neighbors_bfd_enabled: true
         ip_ranges:
         - ip_ranges
         - ip_ranges
         local_asn: 0
         metro: metro
         name: name
+        bgp_dynamic_neighbors_enabled: true
         description: description
       properties:
+        bgp_dynamic_neighbors_enabled:
+          description: Toggle to enable the dynamic bgp neighbors feature on the VRF
+          type: boolean
+        bgp_dynamic_neighbors_export_route_map:
+          description: Toggle to export the VRF route-map to the dynamic bgp neighbors
+          type: boolean
+        bgp_dynamic_neighbors_bfd_enabled:
+          description: Toggle BFD on dynamic bgp neighbors sessions
+          type: boolean
         description:
           type: string
         ip_ranges:
@@ -20982,18 +21164,12 @@ components:
           payment_method:
             href: href
         vrf:
-          updated_at: 2000-01-23T04:56:07.000+00:00
+          bgp_dynamic_neighbors_export_route_map: true
+          bgp_dynamic_neighbors_bfd_enabled: true
           local_asn: 0
-          ip_ranges:
-          - ip_ranges
-          - ip_ranges
-          metro:
-            country: country
-            code: code
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
           description: description
+          bill: false
+          bgp_dynamic_neighbors_enabled: true
           project:
             devices:
             - href: href
@@ -21031,12 +21207,10 @@ components:
             payment_method:
               href: href
           created_at: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          href: href
           created_by:
             avatar_thumb_url: avatar_thumb_url
             last_login_at: 2000-01-23T04:56:07.000+00:00
-            max_projects: 1
+            max_projects: 5
             timezone: timezone
             created_at: 2000-01-23T04:56:07.000+00:00
             last_name: last_name
@@ -21053,9 +21227,42 @@ components:
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             first_name: first_name
-            max_organizations: 6
+            max_organizations: 1
             two_factor_auth: two_factor_auth
             email: email
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          virtual_circuits:
+          - subnet: 12.0.0.0/30
+            port:
+              href: href
+            name: name
+            customer_ip: 12.0.0.2
+            peer_asn: 6
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            metal_ip: 12.0.0.1
+            status: status
+            md5: md5
+          - subnet: 12.0.0.0/30
+            port:
+              href: href
+            name: name
+            customer_ip: 12.0.0.2
+            peer_asn: 6
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            metal_ip: 12.0.0.1
+            status: status
+            md5: md5
+          ip_ranges:
+          - ip_ranges
+          - ip_ranges
+          metro:
+            country: country
+            code: code
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          href: href
         type: vrf
         created_by:
           href: href
@@ -21260,18 +21467,12 @@ components:
             payment_method:
               href: href
           vrf:
-            updated_at: 2000-01-23T04:56:07.000+00:00
+            bgp_dynamic_neighbors_export_route_map: true
+            bgp_dynamic_neighbors_bfd_enabled: true
             local_asn: 0
-            ip_ranges:
-            - ip_ranges
-            - ip_ranges
-            metro:
-              country: country
-              code: code
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            name: name
             description: description
+            bill: false
+            bgp_dynamic_neighbors_enabled: true
             project:
               devices:
               - href: href
@@ -21309,12 +21510,10 @@ components:
               payment_method:
                 href: href
             created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            href: href
             created_by:
               avatar_thumb_url: avatar_thumb_url
               last_login_at: 2000-01-23T04:56:07.000+00:00
-              max_projects: 1
+              max_projects: 5
               timezone: timezone
               created_at: 2000-01-23T04:56:07.000+00:00
               last_name: last_name
@@ -21331,9 +21530,42 @@ components:
               href: href
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               first_name: first_name
-              max_organizations: 6
+              max_organizations: 1
               two_factor_auth: two_factor_auth
               email: email
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            virtual_circuits:
+            - subnet: 12.0.0.0/30
+              port:
+                href: href
+              name: name
+              customer_ip: 12.0.0.2
+              peer_asn: 6
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              metal_ip: 12.0.0.1
+              status: status
+              md5: md5
+            - subnet: 12.0.0.0/30
+              port:
+                href: href
+              name: name
+              customer_ip: 12.0.0.2
+              peer_asn: 6
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              metal_ip: 12.0.0.1
+              status: status
+              md5: md5
+            ip_ranges:
+            - ip_ranges
+            - ip_ranges
+            metro:
+              country: country
+              code: code
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href: href
           type: vrf
           created_by:
             href: href
@@ -21442,18 +21674,12 @@ components:
             payment_method:
               href: href
           vrf:
-            updated_at: 2000-01-23T04:56:07.000+00:00
+            bgp_dynamic_neighbors_export_route_map: true
+            bgp_dynamic_neighbors_bfd_enabled: true
             local_asn: 0
-            ip_ranges:
-            - ip_ranges
-            - ip_ranges
-            metro:
-              country: country
-              code: code
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            name: name
             description: description
+            bill: false
+            bgp_dynamic_neighbors_enabled: true
             project:
               devices:
               - href: href
@@ -21491,12 +21717,10 @@ components:
               payment_method:
                 href: href
             created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            href: href
             created_by:
               avatar_thumb_url: avatar_thumb_url
               last_login_at: 2000-01-23T04:56:07.000+00:00
-              max_projects: 1
+              max_projects: 5
               timezone: timezone
               created_at: 2000-01-23T04:56:07.000+00:00
               last_name: last_name
@@ -21513,9 +21737,42 @@ components:
               href: href
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               first_name: first_name
-              max_organizations: 6
+              max_organizations: 1
               two_factor_auth: two_factor_auth
               email: email
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            virtual_circuits:
+            - subnet: 12.0.0.0/30
+              port:
+                href: href
+              name: name
+              customer_ip: 12.0.0.2
+              peer_asn: 6
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              metal_ip: 12.0.0.1
+              status: status
+              md5: md5
+            - subnet: 12.0.0.0/30
+              port:
+                href: href
+              name: name
+              customer_ip: 12.0.0.2
+              peer_asn: 6
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              metal_ip: 12.0.0.1
+              status: status
+              md5: md5
+            ip_ranges:
+            - ip_ranges
+            - ip_ranges
+            metro:
+              country: country
+              code: code
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href: href
           type: vrf
           created_by:
             href: href
@@ -21557,18 +21814,12 @@ components:
     VrfList:
       example:
         vrfs:
-        - updated_at: 2000-01-23T04:56:07.000+00:00
+        - bgp_dynamic_neighbors_export_route_map: true
+          bgp_dynamic_neighbors_bfd_enabled: true
           local_asn: 0
-          ip_ranges:
-          - ip_ranges
-          - ip_ranges
-          metro:
-            country: country
-            code: code
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
           description: description
+          bill: false
+          bgp_dynamic_neighbors_enabled: true
           project:
             devices:
             - href: href
@@ -21606,12 +21857,10 @@ components:
             payment_method:
               href: href
           created_at: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          href: href
           created_by:
             avatar_thumb_url: avatar_thumb_url
             last_login_at: 2000-01-23T04:56:07.000+00:00
-            max_projects: 1
+            max_projects: 5
             timezone: timezone
             created_at: 2000-01-23T04:56:07.000+00:00
             last_name: last_name
@@ -21628,11 +21877,31 @@ components:
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             first_name: first_name
-            max_organizations: 6
+            max_organizations: 1
             two_factor_auth: two_factor_auth
             email: email
-        - updated_at: 2000-01-23T04:56:07.000+00:00
-          local_asn: 0
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          virtual_circuits:
+          - subnet: 12.0.0.0/30
+            port:
+              href: href
+            name: name
+            customer_ip: 12.0.0.2
+            peer_asn: 6
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            metal_ip: 12.0.0.1
+            status: status
+            md5: md5
+          - subnet: 12.0.0.0/30
+            port:
+              href: href
+            name: name
+            customer_ip: 12.0.0.2
+            peer_asn: 6
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            metal_ip: 12.0.0.1
+            status: status
+            md5: md5
           ip_ranges:
           - ip_ranges
           - ip_ranges
@@ -21642,7 +21911,14 @@ components:
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          href: href
+        - bgp_dynamic_neighbors_export_route_map: true
+          bgp_dynamic_neighbors_bfd_enabled: true
+          local_asn: 0
           description: description
+          bill: false
+          bgp_dynamic_neighbors_enabled: true
           project:
             devices:
             - href: href
@@ -21680,12 +21956,10 @@ components:
             payment_method:
               href: href
           created_at: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          href: href
           created_by:
             avatar_thumb_url: avatar_thumb_url
             last_login_at: 2000-01-23T04:56:07.000+00:00
-            max_projects: 1
+            max_projects: 5
             timezone: timezone
             created_at: 2000-01-23T04:56:07.000+00:00
             last_name: last_name
@@ -21702,9 +21976,42 @@ components:
             href: href
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             first_name: first_name
-            max_organizations: 6
+            max_organizations: 1
             two_factor_auth: two_factor_auth
             email: email
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          virtual_circuits:
+          - subnet: 12.0.0.0/30
+            port:
+              href: href
+            name: name
+            customer_ip: 12.0.0.2
+            peer_asn: 6
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            metal_ip: 12.0.0.1
+            status: status
+            md5: md5
+          - subnet: 12.0.0.0/30
+            port:
+              href: href
+            name: name
+            customer_ip: 12.0.0.2
+            peer_asn: 6
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            metal_ip: 12.0.0.1
+            status: status
+            md5: md5
+          ip_ranges:
+          - ip_ranges
+          - ip_ranges
+          metro:
+            country: country
+            code: code
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          href: href
       properties:
         vrfs:
           items:
@@ -21907,13 +22214,25 @@ components:
       type: object
     VrfUpdateInput:
       example:
+        bgp_dynamic_neighbors_export_route_map: true
+        bgp_dynamic_neighbors_bfd_enabled: true
         ip_ranges:
         - ip_ranges
         - ip_ranges
         local_asn: 0
         name: name
+        bgp_dynamic_neighbors_enabled: true
         description: description
       properties:
+        bgp_dynamic_neighbors_enabled:
+          description: Toggle to enable the dynamic bgp neighbors feature on the VRF
+          type: boolean
+        bgp_dynamic_neighbors_export_route_map:
+          description: Toggle to export the VRF route-map to the dynamic bgp neighbors
+          type: boolean
+        bgp_dynamic_neighbors_bfd_enabled:
+          description: Toggle BFD on dynamic bgp neighbors sessions
+          type: boolean
         description:
           type: string
         ip_ranges:
@@ -22337,13 +22656,13 @@ components:
     CreateSelfServiceReservationRequest_period:
       example:
         unit: monthly
-        count: 1.4658129805029452
+        count: 1
       properties:
         count:
           enum:
           - 12
           - 36
-          type: number
+          type: integer
         unit:
           enum:
           - monthly
@@ -22379,34 +22698,6 @@ components:
       - $ref: '#/components/schemas/Href'
       - description: Lite version of project object when included
         type: object
-    DeviceCreateInput_ip_addresses_inner:
-      properties:
-        address_family:
-          description: Address Family for IP Address
-          enum:
-          - 4
-          - 6
-          example: 4
-          format: integer
-          type: number
-        cidr:
-          description: "Cidr Size for the IP Block created. Valid values depends on\
-            \ the operating system being provisioned. (28..32 for IPv4 addresses,\
-            \ 124..127 for IPv6 addresses)"
-          example: 28
-          format: integer
-          type: number
-        ip_reservations:
-          description: UUIDs of any IP reservations to use when assigning IPs
-          items:
-            type: string
-          type: array
-        public:
-          default: true
-          description: Address Type for IP Address
-          example: false
-          type: boolean
-      type: object
     IPAssignment_metro:
       allOf:
       - $ref: '#/components/schemas/Metro'
@@ -22521,7 +22812,7 @@ components:
       properties:
         hour:
           example: 1.23
-          format: decimal
+          format: double
           type: number
       type: object
     Plan_available_in_inner:
@@ -22714,7 +23005,7 @@ components:
       - $ref: '#/components/schemas/Metro'
       - description: The metro the spot market request was created in
         type: object
-    SpotMarketRequestCreateInput_instance_attributes:
+    SpotMarketRequestCreateInput_instance_parameters:
       example:
         user_ssh_keys:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -22796,6 +23087,59 @@ components:
           type: array
         userdata:
           type: string
+      type: object
+    Vrf_virtual_circuits_inner:
+      example:
+        subnet: 12.0.0.0/30
+        port:
+          href: href
+        name: name
+        customer_ip: 12.0.0.2
+        peer_asn: 6
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        metal_ip: 12.0.0.1
+        status: status
+        md5: md5
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        md5:
+          description: The MD5 password for the BGP peering in plaintext (not a checksum).
+          type: string
+        peer_asn:
+          description: The peer ASN that will be used with the VRF on the Virtual
+            Circuit.
+          type: integer
+        subnet:
+          description: "The /30 or /31 subnet of one of the VRF IP Blocks that will\
+            \ be used with the VRF for the Virtual Circuit. This subnet does not have\
+            \ to be an existing VRF IP reservation, as we will create the VRF IP reservation\
+            \ on creation if it does not exist. The Metal IP and Customer IP must\
+            \ be IPs from this subnet. For /30 subnets, the network and broadcast\
+            \ IPs cannot be used as the Metal or Customer IP."
+          example: 12.0.0.0/30
+          type: string
+        metal_ip:
+          description: "An IP address from the subnet that will be used on the Metal\
+            \ side. This parameter is optional, but if supplied, we will use the other\
+            \ usable IP address in the subnet as the Customer IP. By default, the\
+            \ first usable IP address in the subnet will be used."
+          example: 12.0.0.1
+          type: string
+        customer_ip:
+          description: "An IP address from the subnet that will be used on the Customer\
+            \ side. This parameter is optional, but if supplied, we will use the other\
+            \ usable IP address in the subnet as the Metal IP. By default, the last\
+            \ usable IP address in the subnet will be used."
+          example: 12.0.0.2
+          type: string
+        port:
+          $ref: '#/components/schemas/Href'
       type: object
     VrfRoute_metal_gateway:
       description: A link to the Metal Gateway to which this VRF Route is associated

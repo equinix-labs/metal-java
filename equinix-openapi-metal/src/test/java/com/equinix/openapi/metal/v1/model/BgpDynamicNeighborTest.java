@@ -13,63 +13,104 @@
 
 package com.equinix.openapi.metal.v1.model;
 
+import com.equinix.openapi.metal.v1.model.UserLimited;
+import com.equinix.openapi.metal.v1.model.VrfMetalGateway;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.OffsetDateTime;
+import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for DeviceCreateInputIpAddressesInner
+ * Model tests for BgpDynamicNeighbor
  */
-public class DeviceCreateInputIpAddressesInnerTest {
-    private final DeviceCreateInputIpAddressesInner model = new DeviceCreateInputIpAddressesInner();
+public class BgpDynamicNeighborTest {
+    private final BgpDynamicNeighbor model = new BgpDynamicNeighbor();
 
     /**
-     * Model tests for DeviceCreateInputIpAddressesInner
+     * Model tests for BgpDynamicNeighbor
      */
     @Test
-    public void testDeviceCreateInputIpAddressesInner() {
-        // TODO: test DeviceCreateInputIpAddressesInner
+    public void testBgpDynamicNeighbor() {
+        // TODO: test BgpDynamicNeighbor
     }
 
     /**
-     * Test the property 'addressFamily'
+     * Test the property 'id'
      */
     @Test
-    public void addressFamilyTest() {
-        // TODO: test addressFamily
+    public void idTest() {
+        // TODO: test id
     }
 
     /**
-     * Test the property 'cidr'
+     * Test the property 'bgpNeighborAsn'
      */
     @Test
-    public void cidrTest() {
-        // TODO: test cidr
+    public void bgpNeighborAsnTest() {
+        // TODO: test bgpNeighborAsn
     }
 
     /**
-     * Test the property 'ipReservations'
+     * Test the property 'bgpNeighborRange'
      */
     @Test
-    public void ipReservationsTest() {
-        // TODO: test ipReservations
+    public void bgpNeighborRangeTest() {
+        // TODO: test bgpNeighborRange
     }
 
     /**
-     * Test the property '_public'
+     * Test the property 'metalGateway'
      */
     @Test
-    public void _publicTest() {
-        // TODO: test _public
+    public void metalGatewayTest() {
+        // TODO: test metalGateway
+    }
+
+    /**
+     * Test the property 'state'
+     */
+    @Test
+    public void stateTest() {
+        // TODO: test state
+    }
+
+    /**
+     * Test the property 'href'
+     */
+    @Test
+    public void hrefTest() {
+        // TODO: test href
+    }
+
+    /**
+     * Test the property 'createdAt'
+     */
+    @Test
+    public void createdAtTest() {
+        // TODO: test createdAt
+    }
+
+    /**
+     * Test the property 'createdBy'
+     */
+    @Test
+    public void createdByTest() {
+        // TODO: test createdBy
+    }
+
+    /**
+     * Test the property 'updatedAt'
+     */
+    @Test
+    public void updatedAtTest() {
+        // TODO: test updatedAt
     }
 
 }

@@ -15,6 +15,7 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.equinix.openapi.metal.v1.model.Meta;
 import com.equinix.openapi.metal.v1.model.MetalGatewayListMetalGatewaysInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -55,6 +56,10 @@ public class MetalGatewayList {
   @SerializedName(SERIALIZED_NAME_METAL_GATEWAYS)
   private List<MetalGatewayListMetalGatewaysInner> metalGateways = null;
 
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private Meta meta;
+
   public MetalGatewayList() {
   }
 
@@ -85,6 +90,28 @@ public class MetalGatewayList {
 
   public void setMetalGateways(List<MetalGatewayListMetalGatewaysInner> metalGateways) {
     this.metalGateways = metalGateways;
+  }
+
+
+  public MetalGatewayList meta(Meta meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+
+  public Meta getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(Meta meta) {
+    this.meta = meta;
   }
 
   /**
@@ -142,13 +169,14 @@ public class MetalGatewayList {
       return false;
     }
     MetalGatewayList metalGatewayList = (MetalGatewayList) o;
-    return Objects.equals(this.metalGateways, metalGatewayList.metalGateways)&&
+    return Objects.equals(this.metalGateways, metalGatewayList.metalGateways) &&
+        Objects.equals(this.meta, metalGatewayList.meta)&&
         Objects.equals(this.additionalProperties, metalGatewayList.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metalGateways, additionalProperties);
+    return Objects.hash(metalGateways, meta, additionalProperties);
   }
 
   @Override
@@ -156,6 +184,7 @@ public class MetalGatewayList {
     StringBuilder sb = new StringBuilder();
     sb.append("class MetalGatewayList {\n");
     sb.append("    metalGateways: ").append(toIndentedString(metalGateways)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -180,6 +209,7 @@ public class MetalGatewayList {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("metal_gateways");
+    openapiFields.add("meta");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -210,6 +240,10 @@ public class MetalGatewayList {
             MetalGatewayListMetalGatewaysInner.validateJsonObject(jsonArraymetalGateways.get(i).getAsJsonObject());
           };
         }
+      }
+      // validate the optional field `meta`
+      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
+        Meta.validateJsonObject(jsonObj.getAsJsonObject("meta"));
       }
   }
 

@@ -1,6 +1,6 @@
 
 
-# SpotMarketRequestCreateInputInstanceAttributes
+# SpotMarketRequestCreateInputInstanceParameters
 
 
 ## Properties

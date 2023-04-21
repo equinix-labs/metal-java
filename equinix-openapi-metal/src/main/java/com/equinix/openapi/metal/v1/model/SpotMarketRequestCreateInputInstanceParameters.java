@@ -48,10 +48,10 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * SpotMarketRequestCreateInputInstanceAttributes
+ * SpotMarketRequestCreateInputInstanceParameters
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SpotMarketRequestCreateInputInstanceAttributes {
+public class SpotMarketRequestCreateInputInstanceParameters {
   public static final String SERIALIZED_NAME_ALWAYS_PXE = "always_pxe";
   @SerializedName(SERIALIZED_NAME_ALWAYS_PXE)
   private Boolean alwaysPxe;
@@ -124,10 +124,10 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   @SerializedName(SERIALIZED_NAME_USERDATA)
   private String userdata;
 
-  public SpotMarketRequestCreateInputInstanceAttributes() {
+  public SpotMarketRequestCreateInputInstanceParameters() {
   }
 
-  public SpotMarketRequestCreateInputInstanceAttributes alwaysPxe(Boolean alwaysPxe) {
+  public SpotMarketRequestCreateInputInstanceParameters alwaysPxe(Boolean alwaysPxe) {
     
     this.alwaysPxe = alwaysPxe;
     return this;
@@ -149,7 +149,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes billingCycle(String billingCycle) {
+  public SpotMarketRequestCreateInputInstanceParameters billingCycle(String billingCycle) {
     
     this.billingCycle = billingCycle;
     return this;
@@ -171,7 +171,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes customdata(Object customdata) {
+  public SpotMarketRequestCreateInputInstanceParameters customdata(Object customdata) {
     
     this.customdata = customdata;
     return this;
@@ -193,7 +193,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes description(String description) {
+  public SpotMarketRequestCreateInputInstanceParameters description(String description) {
     
     this.description = description;
     return this;
@@ -215,13 +215,13 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes features(List<String> features) {
+  public SpotMarketRequestCreateInputInstanceParameters features(List<String> features) {
     
     this.features = features;
     return this;
   }
 
-  public SpotMarketRequestCreateInputInstanceAttributes addFeaturesItem(String featuresItem) {
+  public SpotMarketRequestCreateInputInstanceParameters addFeaturesItem(String featuresItem) {
     if (this.features == null) {
       this.features = new ArrayList<>();
     }
@@ -245,7 +245,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes hostname(String hostname) {
+  public SpotMarketRequestCreateInputInstanceParameters hostname(String hostname) {
     
     this.hostname = hostname;
     return this;
@@ -267,13 +267,13 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes hostnames(List<String> hostnames) {
+  public SpotMarketRequestCreateInputInstanceParameters hostnames(List<String> hostnames) {
     
     this.hostnames = hostnames;
     return this;
   }
 
-  public SpotMarketRequestCreateInputInstanceAttributes addHostnamesItem(String hostnamesItem) {
+  public SpotMarketRequestCreateInputInstanceParameters addHostnamesItem(String hostnamesItem) {
     if (this.hostnames == null) {
       this.hostnames = new ArrayList<>();
     }
@@ -297,7 +297,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes locked(Boolean locked) {
+  public SpotMarketRequestCreateInputInstanceParameters locked(Boolean locked) {
     
     this.locked = locked;
     return this;
@@ -319,7 +319,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes noSshKeys(Boolean noSshKeys) {
+  public SpotMarketRequestCreateInputInstanceParameters noSshKeys(Boolean noSshKeys) {
     
     this.noSshKeys = noSshKeys;
     return this;
@@ -341,7 +341,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes operatingSystem(String operatingSystem) {
+  public SpotMarketRequestCreateInputInstanceParameters operatingSystem(String operatingSystem) {
     
     this.operatingSystem = operatingSystem;
     return this;
@@ -363,7 +363,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes plan(String plan) {
+  public SpotMarketRequestCreateInputInstanceParameters plan(String plan) {
     
     this.plan = plan;
     return this;
@@ -385,7 +385,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes privateIpv4SubnetSize(Integer privateIpv4SubnetSize) {
+  public SpotMarketRequestCreateInputInstanceParameters privateIpv4SubnetSize(Integer privateIpv4SubnetSize) {
     
     this.privateIpv4SubnetSize = privateIpv4SubnetSize;
     return this;
@@ -407,13 +407,13 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes projectSshKeys(List<UUID> projectSshKeys) {
+  public SpotMarketRequestCreateInputInstanceParameters projectSshKeys(List<UUID> projectSshKeys) {
     
     this.projectSshKeys = projectSshKeys;
     return this;
   }
 
-  public SpotMarketRequestCreateInputInstanceAttributes addProjectSshKeysItem(UUID projectSshKeysItem) {
+  public SpotMarketRequestCreateInputInstanceParameters addProjectSshKeysItem(UUID projectSshKeysItem) {
     if (this.projectSshKeys == null) {
       this.projectSshKeys = new ArrayList<>();
     }
@@ -437,7 +437,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes publicIpv4SubnetSize(Integer publicIpv4SubnetSize) {
+  public SpotMarketRequestCreateInputInstanceParameters publicIpv4SubnetSize(Integer publicIpv4SubnetSize) {
     
     this.publicIpv4SubnetSize = publicIpv4SubnetSize;
     return this;
@@ -459,13 +459,13 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes tags(List<String> tags) {
+  public SpotMarketRequestCreateInputInstanceParameters tags(List<String> tags) {
     
     this.tags = tags;
     return this;
   }
 
-  public SpotMarketRequestCreateInputInstanceAttributes addTagsItem(String tagsItem) {
+  public SpotMarketRequestCreateInputInstanceParameters addTagsItem(String tagsItem) {
     if (this.tags == null) {
       this.tags = new ArrayList<>();
     }
@@ -489,7 +489,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes terminationTime(OffsetDateTime terminationTime) {
+  public SpotMarketRequestCreateInputInstanceParameters terminationTime(OffsetDateTime terminationTime) {
     
     this.terminationTime = terminationTime;
     return this;
@@ -511,13 +511,13 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes userSshKeys(List<UUID> userSshKeys) {
+  public SpotMarketRequestCreateInputInstanceParameters userSshKeys(List<UUID> userSshKeys) {
     
     this.userSshKeys = userSshKeys;
     return this;
   }
 
-  public SpotMarketRequestCreateInputInstanceAttributes addUserSshKeysItem(UUID userSshKeysItem) {
+  public SpotMarketRequestCreateInputInstanceParameters addUserSshKeysItem(UUID userSshKeysItem) {
     if (this.userSshKeys == null) {
       this.userSshKeys = new ArrayList<>();
     }
@@ -541,7 +541,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
 
-  public SpotMarketRequestCreateInputInstanceAttributes userdata(String userdata) {
+  public SpotMarketRequestCreateInputInstanceParameters userdata(String userdata) {
     
     this.userdata = userdata;
     return this;
@@ -575,9 +575,9 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the SpotMarketRequestCreateInputInstanceAttributes instance itself
+   * @return the SpotMarketRequestCreateInputInstanceParameters instance itself
    */
-  public SpotMarketRequestCreateInputInstanceAttributes putAdditionalProperty(String key, Object value) {
+  public SpotMarketRequestCreateInputInstanceParameters putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -616,26 +616,26 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SpotMarketRequestCreateInputInstanceAttributes spotMarketRequestCreateInputInstanceAttributes = (SpotMarketRequestCreateInputInstanceAttributes) o;
-    return Objects.equals(this.alwaysPxe, spotMarketRequestCreateInputInstanceAttributes.alwaysPxe) &&
-        Objects.equals(this.billingCycle, spotMarketRequestCreateInputInstanceAttributes.billingCycle) &&
-        Objects.equals(this.customdata, spotMarketRequestCreateInputInstanceAttributes.customdata) &&
-        Objects.equals(this.description, spotMarketRequestCreateInputInstanceAttributes.description) &&
-        Objects.equals(this.features, spotMarketRequestCreateInputInstanceAttributes.features) &&
-        Objects.equals(this.hostname, spotMarketRequestCreateInputInstanceAttributes.hostname) &&
-        Objects.equals(this.hostnames, spotMarketRequestCreateInputInstanceAttributes.hostnames) &&
-        Objects.equals(this.locked, spotMarketRequestCreateInputInstanceAttributes.locked) &&
-        Objects.equals(this.noSshKeys, spotMarketRequestCreateInputInstanceAttributes.noSshKeys) &&
-        Objects.equals(this.operatingSystem, spotMarketRequestCreateInputInstanceAttributes.operatingSystem) &&
-        Objects.equals(this.plan, spotMarketRequestCreateInputInstanceAttributes.plan) &&
-        Objects.equals(this.privateIpv4SubnetSize, spotMarketRequestCreateInputInstanceAttributes.privateIpv4SubnetSize) &&
-        Objects.equals(this.projectSshKeys, spotMarketRequestCreateInputInstanceAttributes.projectSshKeys) &&
-        Objects.equals(this.publicIpv4SubnetSize, spotMarketRequestCreateInputInstanceAttributes.publicIpv4SubnetSize) &&
-        Objects.equals(this.tags, spotMarketRequestCreateInputInstanceAttributes.tags) &&
-        Objects.equals(this.terminationTime, spotMarketRequestCreateInputInstanceAttributes.terminationTime) &&
-        Objects.equals(this.userSshKeys, spotMarketRequestCreateInputInstanceAttributes.userSshKeys) &&
-        Objects.equals(this.userdata, spotMarketRequestCreateInputInstanceAttributes.userdata)&&
-        Objects.equals(this.additionalProperties, spotMarketRequestCreateInputInstanceAttributes.additionalProperties);
+    SpotMarketRequestCreateInputInstanceParameters spotMarketRequestCreateInputInstanceParameters = (SpotMarketRequestCreateInputInstanceParameters) o;
+    return Objects.equals(this.alwaysPxe, spotMarketRequestCreateInputInstanceParameters.alwaysPxe) &&
+        Objects.equals(this.billingCycle, spotMarketRequestCreateInputInstanceParameters.billingCycle) &&
+        Objects.equals(this.customdata, spotMarketRequestCreateInputInstanceParameters.customdata) &&
+        Objects.equals(this.description, spotMarketRequestCreateInputInstanceParameters.description) &&
+        Objects.equals(this.features, spotMarketRequestCreateInputInstanceParameters.features) &&
+        Objects.equals(this.hostname, spotMarketRequestCreateInputInstanceParameters.hostname) &&
+        Objects.equals(this.hostnames, spotMarketRequestCreateInputInstanceParameters.hostnames) &&
+        Objects.equals(this.locked, spotMarketRequestCreateInputInstanceParameters.locked) &&
+        Objects.equals(this.noSshKeys, spotMarketRequestCreateInputInstanceParameters.noSshKeys) &&
+        Objects.equals(this.operatingSystem, spotMarketRequestCreateInputInstanceParameters.operatingSystem) &&
+        Objects.equals(this.plan, spotMarketRequestCreateInputInstanceParameters.plan) &&
+        Objects.equals(this.privateIpv4SubnetSize, spotMarketRequestCreateInputInstanceParameters.privateIpv4SubnetSize) &&
+        Objects.equals(this.projectSshKeys, spotMarketRequestCreateInputInstanceParameters.projectSshKeys) &&
+        Objects.equals(this.publicIpv4SubnetSize, spotMarketRequestCreateInputInstanceParameters.publicIpv4SubnetSize) &&
+        Objects.equals(this.tags, spotMarketRequestCreateInputInstanceParameters.tags) &&
+        Objects.equals(this.terminationTime, spotMarketRequestCreateInputInstanceParameters.terminationTime) &&
+        Objects.equals(this.userSshKeys, spotMarketRequestCreateInputInstanceParameters.userSshKeys) &&
+        Objects.equals(this.userdata, spotMarketRequestCreateInputInstanceParameters.userdata)&&
+        Objects.equals(this.additionalProperties, spotMarketRequestCreateInputInstanceParameters.additionalProperties);
   }
 
   @Override
@@ -646,7 +646,7 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SpotMarketRequestCreateInputInstanceAttributes {\n");
+    sb.append("class SpotMarketRequestCreateInputInstanceParameters {\n");
     sb.append("    alwaysPxe: ").append(toIndentedString(alwaysPxe)).append("\n");
     sb.append("    billingCycle: ").append(toIndentedString(billingCycle)).append("\n");
     sb.append("    customdata: ").append(toIndentedString(customdata)).append("\n");
@@ -715,12 +715,12 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SpotMarketRequestCreateInputInstanceAttributes
+  * @throws IOException if the JSON Object is invalid with respect to SpotMarketRequestCreateInputInstanceParameters
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!SpotMarketRequestCreateInputInstanceAttributes.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SpotMarketRequestCreateInputInstanceAttributes is not found in the empty JSON string", SpotMarketRequestCreateInputInstanceAttributes.openapiRequiredFields.toString()));
+        if (!SpotMarketRequestCreateInputInstanceParameters.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SpotMarketRequestCreateInputInstanceParameters is not found in the empty JSON string", SpotMarketRequestCreateInputInstanceParameters.openapiRequiredFields.toString()));
         }
       }
       if ((jsonObj.get("billing_cycle") != null && !jsonObj.get("billing_cycle").isJsonNull()) && !jsonObj.get("billing_cycle").isJsonPrimitive()) {
@@ -767,16 +767,16 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SpotMarketRequestCreateInputInstanceAttributes.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SpotMarketRequestCreateInputInstanceAttributes' and its subtypes
+       if (!SpotMarketRequestCreateInputInstanceParameters.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SpotMarketRequestCreateInputInstanceParameters' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SpotMarketRequestCreateInputInstanceAttributes> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SpotMarketRequestCreateInputInstanceAttributes.class));
+       final TypeAdapter<SpotMarketRequestCreateInputInstanceParameters> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SpotMarketRequestCreateInputInstanceParameters.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SpotMarketRequestCreateInputInstanceAttributes>() {
+       return (TypeAdapter<T>) new TypeAdapter<SpotMarketRequestCreateInputInstanceParameters>() {
            @Override
-           public void write(JsonWriter out, SpotMarketRequestCreateInputInstanceAttributes value) throws IOException {
+           public void write(JsonWriter out, SpotMarketRequestCreateInputInstanceParameters value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -799,11 +799,11 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
            }
 
            @Override
-           public SpotMarketRequestCreateInputInstanceAttributes read(JsonReader in) throws IOException {
+           public SpotMarketRequestCreateInputInstanceParameters read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             SpotMarketRequestCreateInputInstanceAttributes instance = thisAdapter.fromJsonTree(jsonObj);
+             SpotMarketRequestCreateInputInstanceParameters instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -830,18 +830,18 @@ public class SpotMarketRequestCreateInputInstanceAttributes {
   }
 
  /**
-  * Create an instance of SpotMarketRequestCreateInputInstanceAttributes given an JSON string
+  * Create an instance of SpotMarketRequestCreateInputInstanceParameters given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of SpotMarketRequestCreateInputInstanceAttributes
-  * @throws IOException if the JSON string is invalid with respect to SpotMarketRequestCreateInputInstanceAttributes
+  * @return An instance of SpotMarketRequestCreateInputInstanceParameters
+  * @throws IOException if the JSON string is invalid with respect to SpotMarketRequestCreateInputInstanceParameters
   */
-  public static SpotMarketRequestCreateInputInstanceAttributes fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SpotMarketRequestCreateInputInstanceAttributes.class);
+  public static SpotMarketRequestCreateInputInstanceParameters fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SpotMarketRequestCreateInputInstanceParameters.class);
   }
 
  /**
-  * Convert an instance of SpotMarketRequestCreateInputInstanceAttributes to an JSON string
+  * Convert an instance of SpotMarketRequestCreateInputInstanceParameters to an JSON string
   *
   * @return JSON string
   */

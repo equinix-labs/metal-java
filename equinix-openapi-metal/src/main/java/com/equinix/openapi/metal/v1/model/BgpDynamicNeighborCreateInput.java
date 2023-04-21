@@ -21,9 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,169 +44,62 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * DeviceCreateInputIpAddressesInner
+ * BgpDynamicNeighborCreateInput
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class DeviceCreateInputIpAddressesInner {
-  /**
-   * Address Family for IP Address
-   */
-  @JsonAdapter(AddressFamilyEnum.Adapter.class)
-  public enum AddressFamilyEnum {
-    NUMBER_4(new BigDecimal("4")),
-    
-    NUMBER_6(new BigDecimal("6"));
+public class BgpDynamicNeighborCreateInput {
+  public static final String SERIALIZED_NAME_BGP_NEIGHBOR_RANGE = "bgp_neighbor_range";
+  @SerializedName(SERIALIZED_NAME_BGP_NEIGHBOR_RANGE)
+  private String bgpNeighborRange;
 
-    private BigDecimal value;
+  public static final String SERIALIZED_NAME_BGP_NEIGHBOR_ASN = "bgp_neighbor_asn";
+  @SerializedName(SERIALIZED_NAME_BGP_NEIGHBOR_ASN)
+  private Integer bgpNeighborAsn;
 
-    AddressFamilyEnum(BigDecimal value) {
-      this.value = value;
-    }
-
-    public BigDecimal getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static AddressFamilyEnum fromValue(BigDecimal value) {
-      for (AddressFamilyEnum b : AddressFamilyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<AddressFamilyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final AddressFamilyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public AddressFamilyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return AddressFamilyEnum.fromValue(new BigDecimal(value));
-      }
-    }
+  public BgpDynamicNeighborCreateInput() {
   }
 
-  public static final String SERIALIZED_NAME_ADDRESS_FAMILY = "address_family";
-  @SerializedName(SERIALIZED_NAME_ADDRESS_FAMILY)
-  private AddressFamilyEnum addressFamily;
-
-  public static final String SERIALIZED_NAME_CIDR = "cidr";
-  @SerializedName(SERIALIZED_NAME_CIDR)
-  private BigDecimal cidr;
-
-  public static final String SERIALIZED_NAME_IP_RESERVATIONS = "ip_reservations";
-  @SerializedName(SERIALIZED_NAME_IP_RESERVATIONS)
-  private List<String> ipReservations = null;
-
-  public static final String SERIALIZED_NAME_PUBLIC = "public";
-  @SerializedName(SERIALIZED_NAME_PUBLIC)
-  private Boolean _public = true;
-
-  public DeviceCreateInputIpAddressesInner() {
-  }
-
-  public DeviceCreateInputIpAddressesInner addressFamily(AddressFamilyEnum addressFamily) {
+  public BgpDynamicNeighborCreateInput bgpNeighborRange(String bgpNeighborRange) {
     
-    this.addressFamily = addressFamily;
+    this.bgpNeighborRange = bgpNeighborRange;
     return this;
   }
 
    /**
-   * Address Family for IP Address
-   * @return addressFamily
+   * Network range of the dynamic BGP neighbor in CIDR format
+   * @return bgpNeighborRange
   **/
   @javax.annotation.Nullable
 
-  public AddressFamilyEnum getAddressFamily() {
-    return addressFamily;
+  public String getBgpNeighborRange() {
+    return bgpNeighborRange;
   }
 
 
-  public void setAddressFamily(AddressFamilyEnum addressFamily) {
-    this.addressFamily = addressFamily;
+  public void setBgpNeighborRange(String bgpNeighborRange) {
+    this.bgpNeighborRange = bgpNeighborRange;
   }
 
 
-  public DeviceCreateInputIpAddressesInner cidr(BigDecimal cidr) {
+  public BgpDynamicNeighborCreateInput bgpNeighborAsn(Integer bgpNeighborAsn) {
     
-    this.cidr = cidr;
+    this.bgpNeighborAsn = bgpNeighborAsn;
     return this;
   }
 
    /**
-   * Cidr Size for the IP Block created. Valid values depends on the operating system being provisioned. (28..32 for IPv4 addresses, 124..127 for IPv6 addresses)
-   * @return cidr
+   * The ASN of the dynamic BGP neighbor
+   * @return bgpNeighborAsn
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getCidr() {
-    return cidr;
+  public Integer getBgpNeighborAsn() {
+    return bgpNeighborAsn;
   }
 
 
-  public void setCidr(BigDecimal cidr) {
-    this.cidr = cidr;
-  }
-
-
-  public DeviceCreateInputIpAddressesInner ipReservations(List<String> ipReservations) {
-    
-    this.ipReservations = ipReservations;
-    return this;
-  }
-
-  public DeviceCreateInputIpAddressesInner addIpReservationsItem(String ipReservationsItem) {
-    if (this.ipReservations == null) {
-      this.ipReservations = new ArrayList<>();
-    }
-    this.ipReservations.add(ipReservationsItem);
-    return this;
-  }
-
-   /**
-   * UUIDs of any IP reservations to use when assigning IPs
-   * @return ipReservations
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getIpReservations() {
-    return ipReservations;
-  }
-
-
-  public void setIpReservations(List<String> ipReservations) {
-    this.ipReservations = ipReservations;
-  }
-
-
-  public DeviceCreateInputIpAddressesInner _public(Boolean _public) {
-    
-    this._public = _public;
-    return this;
-  }
-
-   /**
-   * Address Type for IP Address
-   * @return _public
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getPublic() {
-    return _public;
-  }
-
-
-  public void setPublic(Boolean _public) {
-    this._public = _public;
+  public void setBgpNeighborAsn(Integer bgpNeighborAsn) {
+    this.bgpNeighborAsn = bgpNeighborAsn;
   }
 
   /**
@@ -225,9 +115,9 @@ public class DeviceCreateInputIpAddressesInner {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the DeviceCreateInputIpAddressesInner instance itself
+   * @return the BgpDynamicNeighborCreateInput instance itself
    */
-  public DeviceCreateInputIpAddressesInner putAdditionalProperty(String key, Object value) {
+  public BgpDynamicNeighborCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -266,27 +156,23 @@ public class DeviceCreateInputIpAddressesInner {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeviceCreateInputIpAddressesInner deviceCreateInputIpAddressesInner = (DeviceCreateInputIpAddressesInner) o;
-    return Objects.equals(this.addressFamily, deviceCreateInputIpAddressesInner.addressFamily) &&
-        Objects.equals(this.cidr, deviceCreateInputIpAddressesInner.cidr) &&
-        Objects.equals(this.ipReservations, deviceCreateInputIpAddressesInner.ipReservations) &&
-        Objects.equals(this._public, deviceCreateInputIpAddressesInner._public)&&
-        Objects.equals(this.additionalProperties, deviceCreateInputIpAddressesInner.additionalProperties);
+    BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput = (BgpDynamicNeighborCreateInput) o;
+    return Objects.equals(this.bgpNeighborRange, bgpDynamicNeighborCreateInput.bgpNeighborRange) &&
+        Objects.equals(this.bgpNeighborAsn, bgpDynamicNeighborCreateInput.bgpNeighborAsn)&&
+        Objects.equals(this.additionalProperties, bgpDynamicNeighborCreateInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addressFamily, cidr, ipReservations, _public, additionalProperties);
+    return Objects.hash(bgpNeighborRange, bgpNeighborAsn, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DeviceCreateInputIpAddressesInner {\n");
-    sb.append("    addressFamily: ").append(toIndentedString(addressFamily)).append("\n");
-    sb.append("    cidr: ").append(toIndentedString(cidr)).append("\n");
-    sb.append("    ipReservations: ").append(toIndentedString(ipReservations)).append("\n");
-    sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
+    sb.append("class BgpDynamicNeighborCreateInput {\n");
+    sb.append("    bgpNeighborRange: ").append(toIndentedString(bgpNeighborRange)).append("\n");
+    sb.append("    bgpNeighborAsn: ").append(toIndentedString(bgpNeighborAsn)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -310,10 +196,8 @@ public class DeviceCreateInputIpAddressesInner {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("address_family");
-    openapiFields.add("cidr");
-    openapiFields.add("ip_reservations");
-    openapiFields.add("public");
+    openapiFields.add("bgp_neighbor_range");
+    openapiFields.add("bgp_neighbor_asn");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -323,17 +207,16 @@ public class DeviceCreateInputIpAddressesInner {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to DeviceCreateInputIpAddressesInner
+  * @throws IOException if the JSON Object is invalid with respect to BgpDynamicNeighborCreateInput
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!DeviceCreateInputIpAddressesInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DeviceCreateInputIpAddressesInner is not found in the empty JSON string", DeviceCreateInputIpAddressesInner.openapiRequiredFields.toString()));
+        if (!BgpDynamicNeighborCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in BgpDynamicNeighborCreateInput is not found in the empty JSON string", BgpDynamicNeighborCreateInput.openapiRequiredFields.toString()));
         }
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("ip_reservations") != null && !jsonObj.get("ip_reservations").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ip_reservations` to be an array in the JSON string but got `%s`", jsonObj.get("ip_reservations").toString()));
+      if ((jsonObj.get("bgp_neighbor_range") != null && !jsonObj.get("bgp_neighbor_range").isJsonNull()) && !jsonObj.get("bgp_neighbor_range").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `bgp_neighbor_range` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bgp_neighbor_range").toString()));
       }
   }
 
@@ -341,16 +224,16 @@ public class DeviceCreateInputIpAddressesInner {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DeviceCreateInputIpAddressesInner.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DeviceCreateInputIpAddressesInner' and its subtypes
+       if (!BgpDynamicNeighborCreateInput.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BgpDynamicNeighborCreateInput' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DeviceCreateInputIpAddressesInner> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DeviceCreateInputIpAddressesInner.class));
+       final TypeAdapter<BgpDynamicNeighborCreateInput> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BgpDynamicNeighborCreateInput.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<DeviceCreateInputIpAddressesInner>() {
+       return (TypeAdapter<T>) new TypeAdapter<BgpDynamicNeighborCreateInput>() {
            @Override
-           public void write(JsonWriter out, DeviceCreateInputIpAddressesInner value) throws IOException {
+           public void write(JsonWriter out, BgpDynamicNeighborCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -373,11 +256,11 @@ public class DeviceCreateInputIpAddressesInner {
            }
 
            @Override
-           public DeviceCreateInputIpAddressesInner read(JsonReader in) throws IOException {
+           public BgpDynamicNeighborCreateInput read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             DeviceCreateInputIpAddressesInner instance = thisAdapter.fromJsonTree(jsonObj);
+             BgpDynamicNeighborCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -404,18 +287,18 @@ public class DeviceCreateInputIpAddressesInner {
   }
 
  /**
-  * Create an instance of DeviceCreateInputIpAddressesInner given an JSON string
+  * Create an instance of BgpDynamicNeighborCreateInput given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of DeviceCreateInputIpAddressesInner
-  * @throws IOException if the JSON string is invalid with respect to DeviceCreateInputIpAddressesInner
+  * @return An instance of BgpDynamicNeighborCreateInput
+  * @throws IOException if the JSON string is invalid with respect to BgpDynamicNeighborCreateInput
   */
-  public static DeviceCreateInputIpAddressesInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DeviceCreateInputIpAddressesInner.class);
+  public static BgpDynamicNeighborCreateInput fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BgpDynamicNeighborCreateInput.class);
   }
 
  /**
-  * Convert an instance of DeviceCreateInputIpAddressesInner to an JSON string
+  * Convert an instance of BgpDynamicNeighborCreateInput to an JSON string
   *
   * @return JSON string
   */

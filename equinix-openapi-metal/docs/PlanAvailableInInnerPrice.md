@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**hour** | **BigDecimal** |  |  [optional] |
+|**hour** | **Double** |  |  [optional] |
 
 
 
