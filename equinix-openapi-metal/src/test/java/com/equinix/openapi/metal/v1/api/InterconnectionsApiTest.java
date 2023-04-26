@@ -226,7 +226,11 @@ public class InterconnectionsApiTest {
     @Test
     public void projectListInterconnectionsTest() throws ApiException {
         UUID projectId = null;
-        InterconnectionList response = api.projectListInterconnections(projectId);
+        List<String> include = null;
+        List<String> exclude = null;
+        Integer page = null;
+        Integer perPage = null;
+        InterconnectionList response = api.projectListInterconnections(projectId, include, exclude, page, perPage);
         // TODO: test validations
     }
 
