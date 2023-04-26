@@ -19,170 +19,56 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for SpotMarketRequestCreateInputInstanceAttributes
+ * Model tests for IPAddress
  */
-public class SpotMarketRequestCreateInputInstanceAttributesTest {
-    private final SpotMarketRequestCreateInputInstanceAttributes model = new SpotMarketRequestCreateInputInstanceAttributes();
+public class IPAddressTest {
+    private final IPAddress model = new IPAddress();
 
     /**
-     * Model tests for SpotMarketRequestCreateInputInstanceAttributes
+     * Model tests for IPAddress
      */
     @Test
-    public void testSpotMarketRequestCreateInputInstanceAttributes() {
-        // TODO: test SpotMarketRequestCreateInputInstanceAttributes
+    public void testIPAddress() {
+        // TODO: test IPAddress
     }
 
     /**
-     * Test the property 'alwaysPxe'
+     * Test the property 'addressFamily'
      */
     @Test
-    public void alwaysPxeTest() {
-        // TODO: test alwaysPxe
+    public void addressFamilyTest() {
+        // TODO: test addressFamily
     }
 
     /**
-     * Test the property 'billingCycle'
+     * Test the property 'cidr'
      */
     @Test
-    public void billingCycleTest() {
-        // TODO: test billingCycle
+    public void cidrTest() {
+        // TODO: test cidr
     }
 
     /**
-     * Test the property 'customdata'
+     * Test the property 'ipReservations'
      */
     @Test
-    public void customdataTest() {
-        // TODO: test customdata
+    public void ipReservationsTest() {
+        // TODO: test ipReservations
     }
 
     /**
-     * Test the property 'description'
+     * Test the property '_public'
      */
     @Test
-    public void descriptionTest() {
-        // TODO: test description
-    }
-
-    /**
-     * Test the property 'features'
-     */
-    @Test
-    public void featuresTest() {
-        // TODO: test features
-    }
-
-    /**
-     * Test the property 'hostname'
-     */
-    @Test
-    public void hostnameTest() {
-        // TODO: test hostname
-    }
-
-    /**
-     * Test the property 'hostnames'
-     */
-    @Test
-    public void hostnamesTest() {
-        // TODO: test hostnames
-    }
-
-    /**
-     * Test the property 'locked'
-     */
-    @Test
-    public void lockedTest() {
-        // TODO: test locked
-    }
-
-    /**
-     * Test the property 'noSshKeys'
-     */
-    @Test
-    public void noSshKeysTest() {
-        // TODO: test noSshKeys
-    }
-
-    /**
-     * Test the property 'operatingSystem'
-     */
-    @Test
-    public void operatingSystemTest() {
-        // TODO: test operatingSystem
-    }
-
-    /**
-     * Test the property 'plan'
-     */
-    @Test
-    public void planTest() {
-        // TODO: test plan
-    }
-
-    /**
-     * Test the property 'privateIpv4SubnetSize'
-     */
-    @Test
-    public void privateIpv4SubnetSizeTest() {
-        // TODO: test privateIpv4SubnetSize
-    }
-
-    /**
-     * Test the property 'projectSshKeys'
-     */
-    @Test
-    public void projectSshKeysTest() {
-        // TODO: test projectSshKeys
-    }
-
-    /**
-     * Test the property 'publicIpv4SubnetSize'
-     */
-    @Test
-    public void publicIpv4SubnetSizeTest() {
-        // TODO: test publicIpv4SubnetSize
-    }
-
-    /**
-     * Test the property 'tags'
-     */
-    @Test
-    public void tagsTest() {
-        // TODO: test tags
-    }
-
-    /**
-     * Test the property 'terminationTime'
-     */
-    @Test
-    public void terminationTimeTest() {
-        // TODO: test terminationTime
-    }
-
-    /**
-     * Test the property 'userSshKeys'
-     */
-    @Test
-    public void userSshKeysTest() {
-        // TODO: test userSshKeys
-    }
-
-    /**
-     * Test the property 'userdata'
-     */
-    @Test
-    public void userdataTest() {
-        // TODO: test userdata
+    public void _publicTest() {
+        // TODO: test _public
     }
 
 }

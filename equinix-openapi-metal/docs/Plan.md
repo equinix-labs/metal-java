@@ -13,7 +13,7 @@
 |**description** | **String** |  |  [optional] |
 |**deploymentTypes** | [**Set&lt;DeploymentTypesEnum&gt;**](#Set&lt;DeploymentTypesEnum&gt;) |  |  [optional] |
 |**id** | **UUID** |  |  [optional] |
-|**legacy** | **Boolean** |  |  [optional] |
+|**legacy** | **Boolean** | Deprecated. Always return false |  [optional] |
 |**line** | **String** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
 |**pricing** | **Object** |  |  [optional] |

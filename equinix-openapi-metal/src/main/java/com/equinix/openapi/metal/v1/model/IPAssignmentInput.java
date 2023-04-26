@@ -56,10 +56,6 @@ public class IPAssignmentInput {
   @SerializedName(SERIALIZED_NAME_CUSTOMDATA)
   private Object customdata;
 
-  public static final String SERIALIZED_NAME_MANAGEABLE = "manageable";
-  @SerializedName(SERIALIZED_NAME_MANAGEABLE)
-  private Boolean manageable;
-
   public IPAssignmentInput() {
   }
 
@@ -104,28 +100,6 @@ public class IPAssignmentInput {
 
   public void setCustomdata(Object customdata) {
     this.customdata = customdata;
-  }
-
-
-  public IPAssignmentInput manageable(Boolean manageable) {
-    
-    this.manageable = manageable;
-    return this;
-  }
-
-   /**
-   * Get manageable
-   * @return manageable
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getManageable() {
-    return manageable;
-  }
-
-
-  public void setManageable(Boolean manageable) {
-    this.manageable = manageable;
   }
 
   /**
@@ -184,14 +158,13 @@ public class IPAssignmentInput {
     }
     IPAssignmentInput ipAssignmentInput = (IPAssignmentInput) o;
     return Objects.equals(this.address, ipAssignmentInput.address) &&
-        Objects.equals(this.customdata, ipAssignmentInput.customdata) &&
-        Objects.equals(this.manageable, ipAssignmentInput.manageable)&&
+        Objects.equals(this.customdata, ipAssignmentInput.customdata)&&
         Objects.equals(this.additionalProperties, ipAssignmentInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, customdata, manageable, additionalProperties);
+    return Objects.hash(address, customdata, additionalProperties);
   }
 
   @Override
@@ -200,7 +173,6 @@ public class IPAssignmentInput {
     sb.append("class IPAssignmentInput {\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    customdata: ").append(toIndentedString(customdata)).append("\n");
-    sb.append("    manageable: ").append(toIndentedString(manageable)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -226,7 +198,6 @@ public class IPAssignmentInput {
     openapiFields = new HashSet<String>();
     openapiFields.add("address");
     openapiFields.add("customdata");
-    openapiFields.add("manageable");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

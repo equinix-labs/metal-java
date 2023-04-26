@@ -53,12 +53,4 @@ public class IPAssignmentInputTest {
         // TODO: test customdata
     }
 
-    /**
-     * Test the property 'manageable'
-     */
-    @Test
-    public void manageableTest() {
-        // TODO: test manageable
-    }
-
 }

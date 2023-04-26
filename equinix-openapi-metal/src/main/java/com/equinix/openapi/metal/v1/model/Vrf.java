@@ -18,6 +18,7 @@ import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Metro;
 import com.equinix.openapi.metal.v1.model.Project;
 import com.equinix.openapi.metal.v1.model.User;
+import com.equinix.openapi.metal.v1.model.VrfVirtualCircuitsInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -67,9 +68,29 @@ public class Vrf {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_BILL = "bill";
+  @SerializedName(SERIALIZED_NAME_BILL)
+  private Boolean bill = false;
+
+  public static final String SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS_ENABLED = "bgp_dynamic_neighbors_enabled";
+  @SerializedName(SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS_ENABLED)
+  private Boolean bgpDynamicNeighborsEnabled;
+
+  public static final String SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS_EXPORT_ROUTE_MAP = "bgp_dynamic_neighbors_export_route_map";
+  @SerializedName(SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS_EXPORT_ROUTE_MAP)
+  private Boolean bgpDynamicNeighborsExportRouteMap;
+
+  public static final String SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS_BFD_ENABLED = "bgp_dynamic_neighbors_bfd_enabled";
+  @SerializedName(SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS_BFD_ENABLED)
+  private Boolean bgpDynamicNeighborsBfdEnabled;
+
   public static final String SERIALIZED_NAME_LOCAL_ASN = "local_asn";
   @SerializedName(SERIALIZED_NAME_LOCAL_ASN)
   private Integer localAsn;
+
+  public static final String SERIALIZED_NAME_VIRTUAL_CIRCUITS = "virtual_circuits";
+  @SerializedName(SERIALIZED_NAME_VIRTUAL_CIRCUITS)
+  private List<VrfVirtualCircuitsInner> virtualCircuits = null;
 
   public static final String SERIALIZED_NAME_IP_RANGES = "ip_ranges";
   @SerializedName(SERIALIZED_NAME_IP_RANGES)
@@ -168,6 +189,94 @@ public class Vrf {
   }
 
 
+  public Vrf bill(Boolean bill) {
+    
+    this.bill = bill;
+    return this;
+  }
+
+   /**
+   * True if the VRF is being billed. Usage will start when the first VRF Virtual Circuit is active, and will only stop when the VRF has been deleted.
+   * @return bill
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getBill() {
+    return bill;
+  }
+
+
+  public void setBill(Boolean bill) {
+    this.bill = bill;
+  }
+
+
+  public Vrf bgpDynamicNeighborsEnabled(Boolean bgpDynamicNeighborsEnabled) {
+    
+    this.bgpDynamicNeighborsEnabled = bgpDynamicNeighborsEnabled;
+    return this;
+  }
+
+   /**
+   * Toggle to enable the dynamic bgp neighbors feature on the VRF
+   * @return bgpDynamicNeighborsEnabled
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getBgpDynamicNeighborsEnabled() {
+    return bgpDynamicNeighborsEnabled;
+  }
+
+
+  public void setBgpDynamicNeighborsEnabled(Boolean bgpDynamicNeighborsEnabled) {
+    this.bgpDynamicNeighborsEnabled = bgpDynamicNeighborsEnabled;
+  }
+
+
+  public Vrf bgpDynamicNeighborsExportRouteMap(Boolean bgpDynamicNeighborsExportRouteMap) {
+    
+    this.bgpDynamicNeighborsExportRouteMap = bgpDynamicNeighborsExportRouteMap;
+    return this;
+  }
+
+   /**
+   * Toggle to export the VRF route-map to the dynamic bgp neighbors
+   * @return bgpDynamicNeighborsExportRouteMap
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getBgpDynamicNeighborsExportRouteMap() {
+    return bgpDynamicNeighborsExportRouteMap;
+  }
+
+
+  public void setBgpDynamicNeighborsExportRouteMap(Boolean bgpDynamicNeighborsExportRouteMap) {
+    this.bgpDynamicNeighborsExportRouteMap = bgpDynamicNeighborsExportRouteMap;
+  }
+
+
+  public Vrf bgpDynamicNeighborsBfdEnabled(Boolean bgpDynamicNeighborsBfdEnabled) {
+    
+    this.bgpDynamicNeighborsBfdEnabled = bgpDynamicNeighborsBfdEnabled;
+    return this;
+  }
+
+   /**
+   * Toggle BFD on dynamic bgp neighbors sessions
+   * @return bgpDynamicNeighborsBfdEnabled
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getBgpDynamicNeighborsBfdEnabled() {
+    return bgpDynamicNeighborsBfdEnabled;
+  }
+
+
+  public void setBgpDynamicNeighborsBfdEnabled(Boolean bgpDynamicNeighborsBfdEnabled) {
+    this.bgpDynamicNeighborsBfdEnabled = bgpDynamicNeighborsBfdEnabled;
+  }
+
+
   public Vrf localAsn(Integer localAsn) {
     
     this.localAsn = localAsn;
@@ -187,6 +296,36 @@ public class Vrf {
 
   public void setLocalAsn(Integer localAsn) {
     this.localAsn = localAsn;
+  }
+
+
+  public Vrf virtualCircuits(List<VrfVirtualCircuitsInner> virtualCircuits) {
+    
+    this.virtualCircuits = virtualCircuits;
+    return this;
+  }
+
+  public Vrf addVirtualCircuitsItem(VrfVirtualCircuitsInner virtualCircuitsItem) {
+    if (this.virtualCircuits == null) {
+      this.virtualCircuits = new ArrayList<>();
+    }
+    this.virtualCircuits.add(virtualCircuitsItem);
+    return this;
+  }
+
+   /**
+   * Virtual circuits that are in the VRF
+   * @return virtualCircuits
+  **/
+  @javax.annotation.Nullable
+
+  public List<VrfVirtualCircuitsInner> getVirtualCircuits() {
+    return virtualCircuits;
+  }
+
+
+  public void setVirtualCircuits(List<VrfVirtualCircuitsInner> virtualCircuits) {
+    this.virtualCircuits = virtualCircuits;
   }
 
 
@@ -409,7 +548,12 @@ public class Vrf {
     return Objects.equals(this.id, vrf.id) &&
         Objects.equals(this.name, vrf.name) &&
         Objects.equals(this.description, vrf.description) &&
+        Objects.equals(this.bill, vrf.bill) &&
+        Objects.equals(this.bgpDynamicNeighborsEnabled, vrf.bgpDynamicNeighborsEnabled) &&
+        Objects.equals(this.bgpDynamicNeighborsExportRouteMap, vrf.bgpDynamicNeighborsExportRouteMap) &&
+        Objects.equals(this.bgpDynamicNeighborsBfdEnabled, vrf.bgpDynamicNeighborsBfdEnabled) &&
         Objects.equals(this.localAsn, vrf.localAsn) &&
+        Objects.equals(this.virtualCircuits, vrf.virtualCircuits) &&
         Objects.equals(this.ipRanges, vrf.ipRanges) &&
         Objects.equals(this.project, vrf.project) &&
         Objects.equals(this.metro, vrf.metro) &&
@@ -422,7 +566,7 @@ public class Vrf {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, localAsn, ipRanges, project, metro, createdBy, href, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(id, name, description, bill, bgpDynamicNeighborsEnabled, bgpDynamicNeighborsExportRouteMap, bgpDynamicNeighborsBfdEnabled, localAsn, virtualCircuits, ipRanges, project, metro, createdBy, href, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -432,7 +576,12 @@ public class Vrf {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    bill: ").append(toIndentedString(bill)).append("\n");
+    sb.append("    bgpDynamicNeighborsEnabled: ").append(toIndentedString(bgpDynamicNeighborsEnabled)).append("\n");
+    sb.append("    bgpDynamicNeighborsExportRouteMap: ").append(toIndentedString(bgpDynamicNeighborsExportRouteMap)).append("\n");
+    sb.append("    bgpDynamicNeighborsBfdEnabled: ").append(toIndentedString(bgpDynamicNeighborsBfdEnabled)).append("\n");
     sb.append("    localAsn: ").append(toIndentedString(localAsn)).append("\n");
+    sb.append("    virtualCircuits: ").append(toIndentedString(virtualCircuits)).append("\n");
     sb.append("    ipRanges: ").append(toIndentedString(ipRanges)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
@@ -466,7 +615,12 @@ public class Vrf {
     openapiFields.add("id");
     openapiFields.add("name");
     openapiFields.add("description");
+    openapiFields.add("bill");
+    openapiFields.add("bgp_dynamic_neighbors_enabled");
+    openapiFields.add("bgp_dynamic_neighbors_export_route_map");
+    openapiFields.add("bgp_dynamic_neighbors_bfd_enabled");
     openapiFields.add("local_asn");
+    openapiFields.add("virtual_circuits");
     openapiFields.add("ip_ranges");
     openapiFields.add("project");
     openapiFields.add("metro");
@@ -499,6 +653,20 @@ public class Vrf {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if (jsonObj.get("virtual_circuits") != null && !jsonObj.get("virtual_circuits").isJsonNull()) {
+        JsonArray jsonArrayvirtualCircuits = jsonObj.getAsJsonArray("virtual_circuits");
+        if (jsonArrayvirtualCircuits != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("virtual_circuits").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `virtual_circuits` to be an array in the JSON string but got `%s`", jsonObj.get("virtual_circuits").toString()));
+          }
+
+          // validate the optional field `virtual_circuits` (array)
+          for (int i = 0; i < jsonArrayvirtualCircuits.size(); i++) {
+            VrfVirtualCircuitsInner.validateJsonObject(jsonArrayvirtualCircuits.get(i).getAsJsonObject());
+          };
+        }
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("ip_ranges") != null && !jsonObj.get("ip_ranges").isJsonArray()) {

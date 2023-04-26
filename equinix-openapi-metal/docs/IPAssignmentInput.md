@@ -9,7 +9,6 @@
 |------------ | ------------- | ------------- | -------------|
 |**address** | **String** |  |  |
 |**customdata** | **Object** |  |  [optional] |
-|**manageable** | **Boolean** |  |  [optional] |
 
 
 

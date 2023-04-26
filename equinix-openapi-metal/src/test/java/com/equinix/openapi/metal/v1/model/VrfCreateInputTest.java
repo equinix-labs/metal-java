@@ -40,6 +40,30 @@ public class VrfCreateInputTest {
     }
 
     /**
+     * Test the property 'bgpDynamicNeighborsEnabled'
+     */
+    @Test
+    public void bgpDynamicNeighborsEnabledTest() {
+        // TODO: test bgpDynamicNeighborsEnabled
+    }
+
+    /**
+     * Test the property 'bgpDynamicNeighborsExportRouteMap'
+     */
+    @Test
+    public void bgpDynamicNeighborsExportRouteMapTest() {
+        // TODO: test bgpDynamicNeighborsExportRouteMap
+    }
+
+    /**
+     * Test the property 'bgpDynamicNeighborsBfdEnabled'
+     */
+    @Test
+    public void bgpDynamicNeighborsBfdEnabledTest() {
+        // TODO: test bgpDynamicNeighborsBfdEnabled
+    }
+
+    /**
      * Test the property 'description'
      */
     @Test

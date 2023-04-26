@@ -13,7 +13,7 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.SpotMarketRequestCreateInputInstanceAttributes;
+import com.equinix.openapi.metal.v1.model.SpotMarketRequestCreateInputInstanceParameters;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -75,11 +75,11 @@ public class SpotMarketRequestCreateInputTest {
     }
 
     /**
-     * Test the property 'instanceAttributes'
+     * Test the property 'instanceParameters'
      */
     @Test
-    public void instanceAttributesTest() {
-        // TODO: test instanceAttributes
+    public void instanceParametersTest() {
+        // TODO: test instanceParameters
     }
 
     /**

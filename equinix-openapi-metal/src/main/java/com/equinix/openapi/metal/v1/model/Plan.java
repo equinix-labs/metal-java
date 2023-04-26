@@ -370,7 +370,7 @@ public class Plan {
   }
 
    /**
-   * Get legacy
+   * Deprecated. Always return false
    * @return legacy
   **/
   @javax.annotation.Nullable

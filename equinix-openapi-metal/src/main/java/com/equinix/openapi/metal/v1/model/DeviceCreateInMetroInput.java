@@ -15,7 +15,7 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.DeviceCreateInputIpAddressesInner;
+import com.equinix.openapi.metal.v1.model.IPAddress;
 import com.equinix.openapi.metal.v1.model.SSHKeyInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,7 +23,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -142,7 +141,7 @@ public class DeviceCreateInMetroInput {
 
   public static final String SERIALIZED_NAME_IP_ADDRESSES = "ip_addresses";
   @SerializedName(SERIALIZED_NAME_IP_ADDRESSES)
-  private List<DeviceCreateInputIpAddressesInner> ipAddresses = null;
+  private List<IPAddress> ipAddresses = null;
 
   public static final String SERIALIZED_NAME_IPXE_SCRIPT_URL = "ipxe_script_url";
   @SerializedName(SERIALIZED_NAME_IPXE_SCRIPT_URL)
@@ -166,7 +165,7 @@ public class DeviceCreateInMetroInput {
 
   public static final String SERIALIZED_NAME_PRIVATE_IPV4_SUBNET_SIZE = "private_ipv4_subnet_size";
   @SerializedName(SERIALIZED_NAME_PRIVATE_IPV4_SUBNET_SIZE)
-  private BigDecimal privateIpv4SubnetSize = new BigDecimal("28");
+  private Integer privateIpv4SubnetSize = 28;
 
   public static final String SERIALIZED_NAME_PROJECT_SSH_KEYS = "project_ssh_keys";
   @SerializedName(SERIALIZED_NAME_PROJECT_SSH_KEYS)
@@ -174,7 +173,7 @@ public class DeviceCreateInMetroInput {
 
   public static final String SERIALIZED_NAME_PUBLIC_IPV4_SUBNET_SIZE = "public_ipv4_subnet_size";
   @SerializedName(SERIALIZED_NAME_PUBLIC_IPV4_SUBNET_SIZE)
-  private BigDecimal publicIpv4SubnetSize = new BigDecimal("31");
+  private Integer publicIpv4SubnetSize = 31;
 
   public static final String SERIALIZED_NAME_SPOT_INSTANCE = "spot_instance";
   @SerializedName(SERIALIZED_NAME_SPOT_INSTANCE)
@@ -399,13 +398,13 @@ public class DeviceCreateInMetroInput {
   }
 
 
-  public DeviceCreateInMetroInput ipAddresses(List<DeviceCreateInputIpAddressesInner> ipAddresses) {
+  public DeviceCreateInMetroInput ipAddresses(List<IPAddress> ipAddresses) {
     
     this.ipAddresses = ipAddresses;
     return this;
   }
 
-  public DeviceCreateInMetroInput addIpAddressesItem(DeviceCreateInputIpAddressesInner ipAddressesItem) {
+  public DeviceCreateInMetroInput addIpAddressesItem(IPAddress ipAddressesItem) {
     if (this.ipAddresses == null) {
       this.ipAddresses = new ArrayList<>();
     }
@@ -419,12 +418,12 @@ public class DeviceCreateInMetroInput {
   **/
   @javax.annotation.Nullable
 
-  public List<DeviceCreateInputIpAddressesInner> getIpAddresses() {
+  public List<IPAddress> getIpAddresses() {
     return ipAddresses;
   }
 
 
-  public void setIpAddresses(List<DeviceCreateInputIpAddressesInner> ipAddresses) {
+  public void setIpAddresses(List<IPAddress> ipAddresses) {
     this.ipAddresses = ipAddresses;
   }
 
@@ -539,7 +538,7 @@ public class DeviceCreateInMetroInput {
   }
 
 
-  public DeviceCreateInMetroInput privateIpv4SubnetSize(BigDecimal privateIpv4SubnetSize) {
+  public DeviceCreateInMetroInput privateIpv4SubnetSize(Integer privateIpv4SubnetSize) {
     
     this.privateIpv4SubnetSize = privateIpv4SubnetSize;
     return this;
@@ -551,12 +550,12 @@ public class DeviceCreateInMetroInput {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getPrivateIpv4SubnetSize() {
+  public Integer getPrivateIpv4SubnetSize() {
     return privateIpv4SubnetSize;
   }
 
 
-  public void setPrivateIpv4SubnetSize(BigDecimal privateIpv4SubnetSize) {
+  public void setPrivateIpv4SubnetSize(Integer privateIpv4SubnetSize) {
     this.privateIpv4SubnetSize = privateIpv4SubnetSize;
   }
 
@@ -591,7 +590,7 @@ public class DeviceCreateInMetroInput {
   }
 
 
-  public DeviceCreateInMetroInput publicIpv4SubnetSize(BigDecimal publicIpv4SubnetSize) {
+  public DeviceCreateInMetroInput publicIpv4SubnetSize(Integer publicIpv4SubnetSize) {
     
     this.publicIpv4SubnetSize = publicIpv4SubnetSize;
     return this;
@@ -603,12 +602,12 @@ public class DeviceCreateInMetroInput {
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getPublicIpv4SubnetSize() {
+  public Integer getPublicIpv4SubnetSize() {
     return publicIpv4SubnetSize;
   }
 
 
-  public void setPublicIpv4SubnetSize(BigDecimal publicIpv4SubnetSize) {
+  public void setPublicIpv4SubnetSize(Integer publicIpv4SubnetSize) {
     this.publicIpv4SubnetSize = publicIpv4SubnetSize;
   }
 
@@ -1008,7 +1007,7 @@ public class DeviceCreateInMetroInput {
 
           // validate the optional field `ip_addresses` (array)
           for (int i = 0; i < jsonArrayipAddresses.size(); i++) {
-            DeviceCreateInputIpAddressesInner.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
+            IPAddress.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
           };
         }
       }

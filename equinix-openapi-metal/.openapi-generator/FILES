@@ -21,6 +21,9 @@ docs/BatchesList.md
 docs/BgpApi.md
 docs/BgpConfig.md
 docs/BgpConfigRequestInput.md
+docs/BgpDynamicNeighbor.md
+docs/BgpDynamicNeighborCreateInput.md
+docs/BgpDynamicNeighborList.md
 docs/BgpNeighborData.md
 docs/BgpRoute.md
 docs/BgpSession.md
@@ -51,7 +54,6 @@ docs/DeviceActionsInner.md
 docs/DeviceCreateInFacilityInput.md
 docs/DeviceCreateInMetroInput.md
 docs/DeviceCreateInput.md
-docs/DeviceCreateInputIpAddressesInner.md
 docs/DeviceCreatedBy.md
 docs/DeviceList.md
 docs/DeviceMetro.md
@@ -83,6 +85,7 @@ docs/HardwareReservation.md
 docs/HardwareReservationList.md
 docs/HardwareReservationsApi.md
 docs/Href.md
+docs/IPAddress.md
 docs/IPAssignment.md
 docs/IPAssignmentInput.md
 docs/IPAssignmentList.md
@@ -212,7 +215,7 @@ docs/SpotMarketPricesPerMetroList.md
 docs/SpotMarketPricesPerMetroReport.md
 docs/SpotMarketRequest.md
 docs/SpotMarketRequestCreateInput.md
-docs/SpotMarketRequestCreateInputInstanceAttributes.md
+docs/SpotMarketRequestCreateInputInstanceParameters.md
 docs/SpotMarketRequestList.md
 docs/SpotMarketRequestMetro.md
 docs/SpotPricesDatapoints.md
@@ -233,6 +236,7 @@ docs/UpdateEmailInput.md
 docs/UsagesApi.md
 docs/User.md
 docs/UserCreateInput.md
+docs/UserLimited.md
 docs/UserList.md
 docs/UserLite.md
 docs/UserUpdateInput.md
@@ -271,6 +275,7 @@ docs/VrfUpdateInput.md
 docs/VrfVirtualCircuit.md
 docs/VrfVirtualCircuitCreateInput.md
 docs/VrfVirtualCircuitUpdateInput.md
+docs/VrfVirtualCircuitsInner.md
 docs/VrfsApi.md
 git_push.sh
 gradle.properties
@@ -348,6 +353,9 @@ src/main/java/com/equinix/openapi/metal/v1/model/Batch.java
 src/main/java/com/equinix/openapi/metal/v1/model/BatchesList.java
 src/main/java/com/equinix/openapi/metal/v1/model/BgpConfig.java
 src/main/java/com/equinix/openapi/metal/v1/model/BgpConfigRequestInput.java
+src/main/java/com/equinix/openapi/metal/v1/model/BgpDynamicNeighbor.java
+src/main/java/com/equinix/openapi/metal/v1/model/BgpDynamicNeighborCreateInput.java
+src/main/java/com/equinix/openapi/metal/v1/model/BgpDynamicNeighborList.java
 src/main/java/com/equinix/openapi/metal/v1/model/BgpNeighborData.java
 src/main/java/com/equinix/openapi/metal/v1/model/BgpRoute.java
 src/main/java/com/equinix/openapi/metal/v1/model/BgpSession.java
@@ -377,7 +385,6 @@ src/main/java/com/equinix/openapi/metal/v1/model/DeviceActionsInner.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceCreateInFacilityInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceCreateInMetroInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceCreateInput.java
-src/main/java/com/equinix/openapi/metal/v1/model/DeviceCreateInputIpAddressesInner.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceCreatedBy.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceList.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceMetro.java
@@ -404,6 +411,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/GlobalBgpRangeList.java
 src/main/java/com/equinix/openapi/metal/v1/model/HardwareReservation.java
 src/main/java/com/equinix/openapi/metal/v1/model/HardwareReservationList.java
 src/main/java/com/equinix/openapi/metal/v1/model/Href.java
+src/main/java/com/equinix/openapi/metal/v1/model/IPAddress.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPAssignment.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPAssignmentInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPAssignmentList.java
@@ -515,7 +523,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/SpotMarketPricesPerMetroList.ja
 src/main/java/com/equinix/openapi/metal/v1/model/SpotMarketPricesPerMetroReport.java
 src/main/java/com/equinix/openapi/metal/v1/model/SpotMarketRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/SpotMarketRequestCreateInput.java
-src/main/java/com/equinix/openapi/metal/v1/model/SpotMarketRequestCreateInputInstanceAttributes.java
+src/main/java/com/equinix/openapi/metal/v1/model/SpotMarketRequestCreateInputInstanceParameters.java
 src/main/java/com/equinix/openapi/metal/v1/model/SpotMarketRequestList.java
 src/main/java/com/equinix/openapi/metal/v1/model/SpotMarketRequestMetro.java
 src/main/java/com/equinix/openapi/metal/v1/model/SpotPricesDatapoints.java
@@ -531,6 +539,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/TransferRequestList.java
 src/main/java/com/equinix/openapi/metal/v1/model/UpdateEmailInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/User.java
 src/main/java/com/equinix/openapi/metal/v1/model/UserCreateInput.java
+src/main/java/com/equinix/openapi/metal/v1/model/UserLimited.java
 src/main/java/com/equinix/openapi/metal/v1/model/UserList.java
 src/main/java/com/equinix/openapi/metal/v1/model/UserLite.java
 src/main/java/com/equinix/openapi/metal/v1/model/UserUpdateInput.java
@@ -565,6 +574,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/VrfUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuit.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitUpdateInput.java
+src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitsInner.java
 src/test/java/com/equinix/openapi/metal/v1/api/AuthenticationApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/BatchesApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/BgpApiTest.java
@@ -614,6 +624,9 @@ src/test/java/com/equinix/openapi/metal/v1/model/BatchTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BatchesListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BgpConfigRequestInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BgpConfigTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/BgpDynamicNeighborCreateInputTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/BgpDynamicNeighborListTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/BgpDynamicNeighborTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BgpNeighborDataTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BgpRouteTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/BgpSessionListTest.java
@@ -641,7 +654,6 @@ src/test/java/com/equinix/openapi/metal/v1/model/DeviceActionInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceActionsInnerTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceCreateInFacilityInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceCreateInMetroInputTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/DeviceCreateInputIpAddressesInnerTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceCreatedByTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceListTest.java
@@ -670,6 +682,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/GlobalBgpRangeTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/HardwareReservationListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/HardwareReservationTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/HrefTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/IPAddressTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPAssignmentInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPAssignmentListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPAssignmentMetroTest.java
@@ -779,7 +792,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/ServerInfoTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/SpotMarketPricesListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/SpotMarketPricesPerMetroListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/SpotMarketPricesPerMetroReportTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/SpotMarketRequestCreateInputInstanceAttributesTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/SpotMarketRequestCreateInputInstanceParametersTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/SpotMarketRequestCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/SpotMarketRequestListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/SpotMarketRequestMetroTest.java
@@ -796,6 +809,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/TransferRequestListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/TransferRequestTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/UpdateEmailInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/UserCreateInputTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/UserLimitedTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/UserListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/UserLiteTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/UserTest.java
@@ -831,3 +845,4 @@ src/test/java/com/equinix/openapi/metal/v1/model/VrfUpdateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitUpdateInputTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitsInnerTest.java

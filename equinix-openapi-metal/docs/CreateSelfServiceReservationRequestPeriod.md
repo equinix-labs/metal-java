@@ -16,8 +16,8 @@
 
 | Name | Value |
 |---- | -----|
-| NUMBER_12 | new BigDecimal(&quot;12&quot;) |
-| NUMBER_36 | new BigDecimal(&quot;36&quot;) |
+| NUMBER_12 | 12 |
+| NUMBER_36 | 36 |
 
 
 

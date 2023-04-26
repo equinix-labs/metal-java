@@ -15,7 +15,7 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.SpotMarketRequestCreateInputInstanceAttributes;
+import com.equinix.openapi.metal.v1.model.SpotMarketRequestCreateInputInstanceParameters;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -69,9 +69,9 @@ public class SpotMarketRequestCreateInput {
   @SerializedName(SERIALIZED_NAME_FACILITIES)
   private List<UUID> facilities = null;
 
-  public static final String SERIALIZED_NAME_INSTANCE_ATTRIBUTES = "instance_attributes";
-  @SerializedName(SERIALIZED_NAME_INSTANCE_ATTRIBUTES)
-  private SpotMarketRequestCreateInputInstanceAttributes instanceAttributes;
+  public static final String SERIALIZED_NAME_INSTANCE_PARAMETERS = "instance_parameters";
+  @SerializedName(SERIALIZED_NAME_INSTANCE_PARAMETERS)
+  private SpotMarketRequestCreateInputInstanceParameters instanceParameters;
 
   public static final String SERIALIZED_NAME_MAX_BID_PRICE = "max_bid_price";
   @SerializedName(SERIALIZED_NAME_MAX_BID_PRICE)
@@ -180,25 +180,25 @@ public class SpotMarketRequestCreateInput {
   }
 
 
-  public SpotMarketRequestCreateInput instanceAttributes(SpotMarketRequestCreateInputInstanceAttributes instanceAttributes) {
+  public SpotMarketRequestCreateInput instanceParameters(SpotMarketRequestCreateInputInstanceParameters instanceParameters) {
     
-    this.instanceAttributes = instanceAttributes;
+    this.instanceParameters = instanceParameters;
     return this;
   }
 
    /**
-   * Get instanceAttributes
-   * @return instanceAttributes
+   * Get instanceParameters
+   * @return instanceParameters
   **/
   @javax.annotation.Nullable
 
-  public SpotMarketRequestCreateInputInstanceAttributes getInstanceAttributes() {
-    return instanceAttributes;
+  public SpotMarketRequestCreateInputInstanceParameters getInstanceParameters() {
+    return instanceParameters;
   }
 
 
-  public void setInstanceAttributes(SpotMarketRequestCreateInputInstanceAttributes instanceAttributes) {
-    this.instanceAttributes = instanceAttributes;
+  public void setInstanceParameters(SpotMarketRequestCreateInputInstanceParameters instanceParameters) {
+    this.instanceParameters = instanceParameters;
   }
 
 
@@ -304,7 +304,7 @@ public class SpotMarketRequestCreateInput {
         Objects.equals(this.devicesMin, spotMarketRequestCreateInput.devicesMin) &&
         Objects.equals(this.endAt, spotMarketRequestCreateInput.endAt) &&
         Objects.equals(this.facilities, spotMarketRequestCreateInput.facilities) &&
-        Objects.equals(this.instanceAttributes, spotMarketRequestCreateInput.instanceAttributes) &&
+        Objects.equals(this.instanceParameters, spotMarketRequestCreateInput.instanceParameters) &&
         Objects.equals(this.maxBidPrice, spotMarketRequestCreateInput.maxBidPrice) &&
         Objects.equals(this.metro, spotMarketRequestCreateInput.metro)&&
         Objects.equals(this.additionalProperties, spotMarketRequestCreateInput.additionalProperties);
@@ -312,7 +312,7 @@ public class SpotMarketRequestCreateInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(devicesMax, devicesMin, endAt, facilities, instanceAttributes, maxBidPrice, metro, additionalProperties);
+    return Objects.hash(devicesMax, devicesMin, endAt, facilities, instanceParameters, maxBidPrice, metro, additionalProperties);
   }
 
   @Override
@@ -323,7 +323,7 @@ public class SpotMarketRequestCreateInput {
     sb.append("    devicesMin: ").append(toIndentedString(devicesMin)).append("\n");
     sb.append("    endAt: ").append(toIndentedString(endAt)).append("\n");
     sb.append("    facilities: ").append(toIndentedString(facilities)).append("\n");
-    sb.append("    instanceAttributes: ").append(toIndentedString(instanceAttributes)).append("\n");
+    sb.append("    instanceParameters: ").append(toIndentedString(instanceParameters)).append("\n");
     sb.append("    maxBidPrice: ").append(toIndentedString(maxBidPrice)).append("\n");
     sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -353,7 +353,7 @@ public class SpotMarketRequestCreateInput {
     openapiFields.add("devices_min");
     openapiFields.add("end_at");
     openapiFields.add("facilities");
-    openapiFields.add("instance_attributes");
+    openapiFields.add("instance_parameters");
     openapiFields.add("max_bid_price");
     openapiFields.add("metro");
 
@@ -377,9 +377,9 @@ public class SpotMarketRequestCreateInput {
       if (jsonObj.get("facilities") != null && !jsonObj.get("facilities").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `facilities` to be an array in the JSON string but got `%s`", jsonObj.get("facilities").toString()));
       }
-      // validate the optional field `instance_attributes`
-      if (jsonObj.get("instance_attributes") != null && !jsonObj.get("instance_attributes").isJsonNull()) {
-        SpotMarketRequestCreateInputInstanceAttributes.validateJsonObject(jsonObj.getAsJsonObject("instance_attributes"));
+      // validate the optional field `instance_parameters`
+      if (jsonObj.get("instance_parameters") != null && !jsonObj.get("instance_parameters").isJsonNull()) {
+        SpotMarketRequestCreateInputInstanceParameters.validateJsonObject(jsonObj.getAsJsonObject("instance_parameters"));
       }
       if ((jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) && !jsonObj.get("metro").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `metro` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metro").toString()));

@@ -50,6 +50,18 @@ import com.equinix.openapi.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class VrfUpdateInput {
+  public static final String SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS_ENABLED = "bgp_dynamic_neighbors_enabled";
+  @SerializedName(SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS_ENABLED)
+  private Boolean bgpDynamicNeighborsEnabled;
+
+  public static final String SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS_EXPORT_ROUTE_MAP = "bgp_dynamic_neighbors_export_route_map";
+  @SerializedName(SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS_EXPORT_ROUTE_MAP)
+  private Boolean bgpDynamicNeighborsExportRouteMap;
+
+  public static final String SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS_BFD_ENABLED = "bgp_dynamic_neighbors_bfd_enabled";
+  @SerializedName(SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS_BFD_ENABLED)
+  private Boolean bgpDynamicNeighborsBfdEnabled;
+
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
@@ -68,6 +80,72 @@ public class VrfUpdateInput {
 
   public VrfUpdateInput() {
   }
+
+  public VrfUpdateInput bgpDynamicNeighborsEnabled(Boolean bgpDynamicNeighborsEnabled) {
+    
+    this.bgpDynamicNeighborsEnabled = bgpDynamicNeighborsEnabled;
+    return this;
+  }
+
+   /**
+   * Toggle to enable the dynamic bgp neighbors feature on the VRF
+   * @return bgpDynamicNeighborsEnabled
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getBgpDynamicNeighborsEnabled() {
+    return bgpDynamicNeighborsEnabled;
+  }
+
+
+  public void setBgpDynamicNeighborsEnabled(Boolean bgpDynamicNeighborsEnabled) {
+    this.bgpDynamicNeighborsEnabled = bgpDynamicNeighborsEnabled;
+  }
+
+
+  public VrfUpdateInput bgpDynamicNeighborsExportRouteMap(Boolean bgpDynamicNeighborsExportRouteMap) {
+    
+    this.bgpDynamicNeighborsExportRouteMap = bgpDynamicNeighborsExportRouteMap;
+    return this;
+  }
+
+   /**
+   * Toggle to export the VRF route-map to the dynamic bgp neighbors
+   * @return bgpDynamicNeighborsExportRouteMap
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getBgpDynamicNeighborsExportRouteMap() {
+    return bgpDynamicNeighborsExportRouteMap;
+  }
+
+
+  public void setBgpDynamicNeighborsExportRouteMap(Boolean bgpDynamicNeighborsExportRouteMap) {
+    this.bgpDynamicNeighborsExportRouteMap = bgpDynamicNeighborsExportRouteMap;
+  }
+
+
+  public VrfUpdateInput bgpDynamicNeighborsBfdEnabled(Boolean bgpDynamicNeighborsBfdEnabled) {
+    
+    this.bgpDynamicNeighborsBfdEnabled = bgpDynamicNeighborsBfdEnabled;
+    return this;
+  }
+
+   /**
+   * Toggle BFD on dynamic bgp neighbors sessions
+   * @return bgpDynamicNeighborsBfdEnabled
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getBgpDynamicNeighborsBfdEnabled() {
+    return bgpDynamicNeighborsBfdEnabled;
+  }
+
+
+  public void setBgpDynamicNeighborsBfdEnabled(Boolean bgpDynamicNeighborsBfdEnabled) {
+    this.bgpDynamicNeighborsBfdEnabled = bgpDynamicNeighborsBfdEnabled;
+  }
+
 
   public VrfUpdateInput description(String description) {
     
@@ -219,7 +297,10 @@ public class VrfUpdateInput {
       return false;
     }
     VrfUpdateInput vrfUpdateInput = (VrfUpdateInput) o;
-    return Objects.equals(this.description, vrfUpdateInput.description) &&
+    return Objects.equals(this.bgpDynamicNeighborsEnabled, vrfUpdateInput.bgpDynamicNeighborsEnabled) &&
+        Objects.equals(this.bgpDynamicNeighborsExportRouteMap, vrfUpdateInput.bgpDynamicNeighborsExportRouteMap) &&
+        Objects.equals(this.bgpDynamicNeighborsBfdEnabled, vrfUpdateInput.bgpDynamicNeighborsBfdEnabled) &&
+        Objects.equals(this.description, vrfUpdateInput.description) &&
         Objects.equals(this.ipRanges, vrfUpdateInput.ipRanges) &&
         Objects.equals(this.localAsn, vrfUpdateInput.localAsn) &&
         Objects.equals(this.name, vrfUpdateInput.name)&&
@@ -228,13 +309,16 @@ public class VrfUpdateInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, ipRanges, localAsn, name, additionalProperties);
+    return Objects.hash(bgpDynamicNeighborsEnabled, bgpDynamicNeighborsExportRouteMap, bgpDynamicNeighborsBfdEnabled, description, ipRanges, localAsn, name, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class VrfUpdateInput {\n");
+    sb.append("    bgpDynamicNeighborsEnabled: ").append(toIndentedString(bgpDynamicNeighborsEnabled)).append("\n");
+    sb.append("    bgpDynamicNeighborsExportRouteMap: ").append(toIndentedString(bgpDynamicNeighborsExportRouteMap)).append("\n");
+    sb.append("    bgpDynamicNeighborsBfdEnabled: ").append(toIndentedString(bgpDynamicNeighborsBfdEnabled)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    ipRanges: ").append(toIndentedString(ipRanges)).append("\n");
     sb.append("    localAsn: ").append(toIndentedString(localAsn)).append("\n");
@@ -262,6 +346,9 @@ public class VrfUpdateInput {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("bgp_dynamic_neighbors_enabled");
+    openapiFields.add("bgp_dynamic_neighbors_export_route_map");
+    openapiFields.add("bgp_dynamic_neighbors_bfd_enabled");
     openapiFields.add("description");
     openapiFields.add("ip_ranges");
     openapiFields.add("local_asn");

@@ -13,6 +13,7 @@
 
 package com.equinix.openapi.metal.v1.model;
 
+import com.equinix.openapi.metal.v1.model.Meta;
 import com.equinix.openapi.metal.v1.model.MetalGatewayListMetalGatewaysInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -46,6 +47,14 @@ public class MetalGatewayListTest {
     @Test
     public void metalGatewaysTest() {
         // TODO: test metalGateways
+    }
+
+    /**
+     * Test the property 'meta'
+     */
+    @Test
+    public void metaTest() {
+        // TODO: test meta
     }
 
 }

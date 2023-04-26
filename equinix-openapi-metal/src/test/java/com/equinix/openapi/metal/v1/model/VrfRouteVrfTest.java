@@ -18,6 +18,7 @@ import com.equinix.openapi.metal.v1.model.Metro;
 import com.equinix.openapi.metal.v1.model.Project;
 import com.equinix.openapi.metal.v1.model.User;
 import com.equinix.openapi.metal.v1.model.Vrf;
+import com.equinix.openapi.metal.v1.model.VrfVirtualCircuitsInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -79,11 +80,51 @@ public class VrfRouteVrfTest {
     }
 
     /**
+     * Test the property 'bill'
+     */
+    @Test
+    public void billTest() {
+        // TODO: test bill
+    }
+
+    /**
+     * Test the property 'bgpDynamicNeighborsEnabled'
+     */
+    @Test
+    public void bgpDynamicNeighborsEnabledTest() {
+        // TODO: test bgpDynamicNeighborsEnabled
+    }
+
+    /**
+     * Test the property 'bgpDynamicNeighborsExportRouteMap'
+     */
+    @Test
+    public void bgpDynamicNeighborsExportRouteMapTest() {
+        // TODO: test bgpDynamicNeighborsExportRouteMap
+    }
+
+    /**
+     * Test the property 'bgpDynamicNeighborsBfdEnabled'
+     */
+    @Test
+    public void bgpDynamicNeighborsBfdEnabledTest() {
+        // TODO: test bgpDynamicNeighborsBfdEnabled
+    }
+
+    /**
      * Test the property 'localAsn'
      */
     @Test
     public void localAsnTest() {
         // TODO: test localAsn
+    }
+
+    /**
+     * Test the property 'virtualCircuits'
+     */
+    @Test
+    public void virtualCircuitsTest() {
+        // TODO: test virtualCircuits
     }
 
     /**
