@@ -8005,6 +8005,48 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Page to return
+        in: query
+        name: page
+        schema:
+          default: 1
+          format: int32
+          maximum: 100000
+          minimum: 1
+          type: integer
+      - description: Items returned per page
+        in: query
+        name: per_page
+        schema:
+          default: 10
+          format: int32
+          maximum: 1000
+          minimum: 1
+          type: integer
       responses:
         "200":
           content:

@@ -1723,6 +1723,10 @@ public class InterconnectionsApi {
     /**
      * Build call for projectListInterconnections
      * @param projectId UUID of the project (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param page Page to return (optional, default to 1)
+     * @param perPage Items returned per page (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1734,7 +1738,7 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call projectListInterconnectionsCall(UUID projectId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call projectListInterconnectionsCall(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1760,6 +1764,22 @@ public class InterconnectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (perPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1780,13 +1800,13 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call projectListInterconnectionsValidateBeforeCall(UUID projectId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call projectListInterconnectionsValidateBeforeCall(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling projectListInterconnections(Async)");
         }
 
-        return projectListInterconnectionsCall(projectId, _callback);
+        return projectListInterconnectionsCall(projectId, include, exclude, page, perPage, _callback);
 
     }
 
@@ -1794,6 +1814,10 @@ public class InterconnectionsApi {
      * List project connections
      * List the connections belonging to the project
      * @param projectId UUID of the project (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param page Page to return (optional, default to 1)
+     * @param perPage Items returned per page (optional, default to 10)
      * @return InterconnectionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1804,8 +1828,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public InterconnectionList projectListInterconnections(UUID projectId) throws ApiException {
-        ApiResponse<InterconnectionList> localVarResp = projectListInterconnectionsWithHttpInfo(projectId);
+    public InterconnectionList projectListInterconnections(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<InterconnectionList> localVarResp = projectListInterconnectionsWithHttpInfo(projectId, include, exclude, page, perPage);
         return localVarResp.getData();
     }
 
@@ -1813,6 +1837,10 @@ public class InterconnectionsApi {
      * List project connections
      * List the connections belonging to the project
      * @param projectId UUID of the project (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param page Page to return (optional, default to 1)
+     * @param perPage Items returned per page (optional, default to 10)
      * @return ApiResponse&lt;InterconnectionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1823,8 +1851,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InterconnectionList> projectListInterconnectionsWithHttpInfo(UUID projectId) throws ApiException {
-        okhttp3.Call localVarCall = projectListInterconnectionsValidateBeforeCall(projectId, null);
+    public ApiResponse<InterconnectionList> projectListInterconnectionsWithHttpInfo(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = projectListInterconnectionsValidateBeforeCall(projectId, include, exclude, page, perPage, null);
         Type localVarReturnType = new TypeToken<InterconnectionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1833,6 +1861,10 @@ public class InterconnectionsApi {
      * List project connections (asynchronously)
      * List the connections belonging to the project
      * @param projectId UUID of the project (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param page Page to return (optional, default to 1)
+     * @param perPage Items returned per page (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1844,9 +1876,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call projectListInterconnectionsAsync(UUID projectId, final ApiCallback<InterconnectionList> _callback) throws ApiException {
+    public okhttp3.Call projectListInterconnectionsAsync(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<InterconnectionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = projectListInterconnectionsValidateBeforeCall(projectId, _callback);
+        okhttp3.Call localVarCall = projectListInterconnectionsValidateBeforeCall(projectId, include, exclude, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<InterconnectionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -888,7 +888,7 @@ public class Example {
 
 <a name="projectListInterconnections"></a>
 # **projectListInterconnections**
-> InterconnectionList projectListInterconnections(projectId)
+> InterconnectionList projectListInterconnections(projectId, include, exclude, page, perPage)
 
 List project connections
 
@@ -917,8 +917,12 @@ public class Example {
 
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID projectId = UUID.randomUUID(); // UUID | UUID of the project
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
+    Integer page = 1; // Integer | Page to return
+    Integer perPage = 10; // Integer | Items returned per page
     try {
-      InterconnectionList result = apiInstance.projectListInterconnections(projectId);
+      InterconnectionList result = apiInstance.projectListInterconnections(projectId, include, exclude, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#projectListInterconnections");
@@ -936,6 +940,10 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | **UUID**| UUID of the project | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
+| **page** | **Integer**| Page to return | [optional] [default to 1] |
+| **perPage** | **Integer**| Items returned per page | [optional] [default to 10] |
 
 ### Return type
 
