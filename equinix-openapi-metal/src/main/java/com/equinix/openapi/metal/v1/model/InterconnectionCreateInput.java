@@ -207,7 +207,7 @@ public class InterconnectionCreateInput {
   }
 
    /**
-   * Get contactEmail
+   * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
    * @return contactEmail
   **/
   @javax.annotation.Nullable

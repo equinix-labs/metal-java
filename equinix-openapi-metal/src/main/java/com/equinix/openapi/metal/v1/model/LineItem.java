@@ -15,14 +15,13 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.Href;
+import com.equinix.openapi.metal.v1.model.Plan;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,244 +45,192 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * VrfVirtualCircuitsInner
+ * LineItem
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VrfVirtualCircuitsInner {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private UUID id;
+public class LineItem {
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private Float amount;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_CURRENCY = "currency";
+  @SerializedName(SERIALIZED_NAME_CURRENCY)
+  private String currency;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
 
-  public static final String SERIALIZED_NAME_MD5 = "md5";
-  @SerializedName(SERIALIZED_NAME_MD5)
-  private String md5;
+  public static final String SERIALIZED_NAME_DETAILS = "details";
+  @SerializedName(SERIALIZED_NAME_DETAILS)
+  private String details;
 
-  public static final String SERIALIZED_NAME_PEER_ASN = "peer_asn";
-  @SerializedName(SERIALIZED_NAME_PEER_ASN)
-  private Integer peerAsn;
+  public static final String SERIALIZED_NAME_PLAN = "plan";
+  @SerializedName(SERIALIZED_NAME_PLAN)
+  private Plan plan;
 
-  public static final String SERIALIZED_NAME_SUBNET = "subnet";
-  @SerializedName(SERIALIZED_NAME_SUBNET)
-  private String subnet;
+  public static final String SERIALIZED_NAME_UNIT = "unit";
+  @SerializedName(SERIALIZED_NAME_UNIT)
+  private String unit;
 
-  public static final String SERIALIZED_NAME_METAL_IP = "metal_ip";
-  @SerializedName(SERIALIZED_NAME_METAL_IP)
-  private String metalIp;
+  public static final String SERIALIZED_NAME_UNIT_PRICE = "unit_price";
+  @SerializedName(SERIALIZED_NAME_UNIT_PRICE)
+  private Float unitPrice;
 
-  public static final String SERIALIZED_NAME_CUSTOMER_IP = "customer_ip";
-  @SerializedName(SERIALIZED_NAME_CUSTOMER_IP)
-  private String customerIp;
-
-  public static final String SERIALIZED_NAME_PORT = "port";
-  @SerializedName(SERIALIZED_NAME_PORT)
-  private Href port;
-
-  public VrfVirtualCircuitsInner() {
+  public LineItem() {
   }
 
-  public VrfVirtualCircuitsInner id(UUID id) {
+  public LineItem amount(Float amount) {
     
-    this.id = id;
+    this.amount = amount;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get amount
+   * @return amount
   **/
   @javax.annotation.Nullable
 
-  public UUID getId() {
-    return id;
+  public Float getAmount() {
+    return amount;
   }
 
 
-  public void setId(UUID id) {
-    this.id = id;
+  public void setAmount(Float amount) {
+    this.amount = amount;
   }
 
 
-  public VrfVirtualCircuitsInner name(String name) {
+  public LineItem currency(String currency) {
     
-    this.name = name;
+    this.currency = currency;
     return this;
   }
 
    /**
-   * Get name
-   * @return name
+   * Get currency
+   * @return currency
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public String getCurrency() {
+    return currency;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCurrency(String currency) {
+    this.currency = currency;
   }
 
 
-  public VrfVirtualCircuitsInner status(String status) {
+  public LineItem description(String description) {
     
-    this.status = status;
+    this.description = description;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get description
+   * @return description
   **/
   @javax.annotation.Nullable
 
-  public String getStatus() {
-    return status;
+  public String getDescription() {
+    return description;
   }
 
 
-  public void setStatus(String status) {
-    this.status = status;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
-  public VrfVirtualCircuitsInner md5(String md5) {
+  public LineItem details(String details) {
     
-    this.md5 = md5;
+    this.details = details;
     return this;
   }
 
    /**
-   * The MD5 password for the BGP peering in plaintext (not a checksum).
-   * @return md5
+   * Get details
+   * @return details
   **/
   @javax.annotation.Nullable
 
-  public String getMd5() {
-    return md5;
+  public String getDetails() {
+    return details;
   }
 
 
-  public void setMd5(String md5) {
-    this.md5 = md5;
+  public void setDetails(String details) {
+    this.details = details;
   }
 
 
-  public VrfVirtualCircuitsInner peerAsn(Integer peerAsn) {
+  public LineItem plan(Plan plan) {
     
-    this.peerAsn = peerAsn;
+    this.plan = plan;
     return this;
   }
 
    /**
-   * The peer ASN that will be used with the VRF on the Virtual Circuit.
-   * @return peerAsn
+   * Get plan
+   * @return plan
   **/
   @javax.annotation.Nullable
 
-  public Integer getPeerAsn() {
-    return peerAsn;
+  public Plan getPlan() {
+    return plan;
   }
 
 
-  public void setPeerAsn(Integer peerAsn) {
-    this.peerAsn = peerAsn;
+  public void setPlan(Plan plan) {
+    this.plan = plan;
   }
 
 
-  public VrfVirtualCircuitsInner subnet(String subnet) {
+  public LineItem unit(String unit) {
     
-    this.subnet = subnet;
+    this.unit = unit;
     return this;
   }
 
    /**
-   * The /30 or /31 subnet of one of the VRF IP Blocks that will be used with the VRF for the Virtual Circuit. This subnet does not have to be an existing VRF IP reservation, as we will create the VRF IP reservation on creation if it does not exist. The Metal IP and Customer IP must be IPs from this subnet. For /30 subnets, the network and broadcast IPs cannot be used as the Metal or Customer IP.
-   * @return subnet
+   * Get unit
+   * @return unit
   **/
   @javax.annotation.Nullable
 
-  public String getSubnet() {
-    return subnet;
+  public String getUnit() {
+    return unit;
   }
 
 
-  public void setSubnet(String subnet) {
-    this.subnet = subnet;
+  public void setUnit(String unit) {
+    this.unit = unit;
   }
 
 
-  public VrfVirtualCircuitsInner metalIp(String metalIp) {
+  public LineItem unitPrice(Float unitPrice) {
     
-    this.metalIp = metalIp;
+    this.unitPrice = unitPrice;
     return this;
   }
 
    /**
-   * An IP address from the subnet that will be used on the Metal side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Customer IP. By default, the first usable IP address in the subnet will be used.
-   * @return metalIp
+   * Get unitPrice
+   * @return unitPrice
   **/
   @javax.annotation.Nullable
 
-  public String getMetalIp() {
-    return metalIp;
+  public Float getUnitPrice() {
+    return unitPrice;
   }
 
 
-  public void setMetalIp(String metalIp) {
-    this.metalIp = metalIp;
-  }
-
-
-  public VrfVirtualCircuitsInner customerIp(String customerIp) {
-    
-    this.customerIp = customerIp;
-    return this;
-  }
-
-   /**
-   * An IP address from the subnet that will be used on the Customer side. This parameter is optional, but if supplied, we will use the other usable IP address in the subnet as the Metal IP. By default, the last usable IP address in the subnet will be used.
-   * @return customerIp
-  **/
-  @javax.annotation.Nullable
-
-  public String getCustomerIp() {
-    return customerIp;
-  }
-
-
-  public void setCustomerIp(String customerIp) {
-    this.customerIp = customerIp;
-  }
-
-
-  public VrfVirtualCircuitsInner port(Href port) {
-    
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Get port
-   * @return port
-  **/
-  @javax.annotation.Nullable
-
-  public Href getPort() {
-    return port;
-  }
-
-
-  public void setPort(Href port) {
-    this.port = port;
+  public void setUnitPrice(Float unitPrice) {
+    this.unitPrice = unitPrice;
   }
 
   /**
@@ -299,9 +246,9 @@ public class VrfVirtualCircuitsInner {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the VrfVirtualCircuitsInner instance itself
+   * @return the LineItem instance itself
    */
-  public VrfVirtualCircuitsInner putAdditionalProperty(String key, Object value) {
+  public LineItem putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -340,37 +287,33 @@ public class VrfVirtualCircuitsInner {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VrfVirtualCircuitsInner vrfVirtualCircuitsInner = (VrfVirtualCircuitsInner) o;
-    return Objects.equals(this.id, vrfVirtualCircuitsInner.id) &&
-        Objects.equals(this.name, vrfVirtualCircuitsInner.name) &&
-        Objects.equals(this.status, vrfVirtualCircuitsInner.status) &&
-        Objects.equals(this.md5, vrfVirtualCircuitsInner.md5) &&
-        Objects.equals(this.peerAsn, vrfVirtualCircuitsInner.peerAsn) &&
-        Objects.equals(this.subnet, vrfVirtualCircuitsInner.subnet) &&
-        Objects.equals(this.metalIp, vrfVirtualCircuitsInner.metalIp) &&
-        Objects.equals(this.customerIp, vrfVirtualCircuitsInner.customerIp) &&
-        Objects.equals(this.port, vrfVirtualCircuitsInner.port)&&
-        Objects.equals(this.additionalProperties, vrfVirtualCircuitsInner.additionalProperties);
+    LineItem lineItem = (LineItem) o;
+    return Objects.equals(this.amount, lineItem.amount) &&
+        Objects.equals(this.currency, lineItem.currency) &&
+        Objects.equals(this.description, lineItem.description) &&
+        Objects.equals(this.details, lineItem.details) &&
+        Objects.equals(this.plan, lineItem.plan) &&
+        Objects.equals(this.unit, lineItem.unit) &&
+        Objects.equals(this.unitPrice, lineItem.unitPrice)&&
+        Objects.equals(this.additionalProperties, lineItem.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, status, md5, peerAsn, subnet, metalIp, customerIp, port, additionalProperties);
+    return Objects.hash(amount, currency, description, details, plan, unit, unitPrice, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VrfVirtualCircuitsInner {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    md5: ").append(toIndentedString(md5)).append("\n");
-    sb.append("    peerAsn: ").append(toIndentedString(peerAsn)).append("\n");
-    sb.append("    subnet: ").append(toIndentedString(subnet)).append("\n");
-    sb.append("    metalIp: ").append(toIndentedString(metalIp)).append("\n");
-    sb.append("    customerIp: ").append(toIndentedString(customerIp)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
+    sb.append("class LineItem {\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    plan: ").append(toIndentedString(plan)).append("\n");
+    sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
+    sb.append("    unitPrice: ").append(toIndentedString(unitPrice)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -394,15 +337,13 @@ public class VrfVirtualCircuitsInner {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("name");
-    openapiFields.add("status");
-    openapiFields.add("md5");
-    openapiFields.add("peer_asn");
-    openapiFields.add("subnet");
-    openapiFields.add("metal_ip");
-    openapiFields.add("customer_ip");
-    openapiFields.add("port");
+    openapiFields.add("amount");
+    openapiFields.add("currency");
+    openapiFields.add("description");
+    openapiFields.add("details");
+    openapiFields.add("plan");
+    openapiFields.add("unit");
+    openapiFields.add("unit_price");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -412,38 +353,29 @@ public class VrfVirtualCircuitsInner {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VrfVirtualCircuitsInner
+  * @throws IOException if the JSON Object is invalid with respect to LineItem
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!VrfVirtualCircuitsInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfVirtualCircuitsInner is not found in the empty JSON string", VrfVirtualCircuitsInner.openapiRequiredFields.toString()));
+        if (!LineItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItem is not found in the empty JSON string", LineItem.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      if ((jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) && !jsonObj.get("details").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `details` to be a primitive type in the JSON string but got `%s`", jsonObj.get("details").toString()));
       }
-      if ((jsonObj.get("md5") != null && !jsonObj.get("md5").isJsonNull()) && !jsonObj.get("md5").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `md5` to be a primitive type in the JSON string but got `%s`", jsonObj.get("md5").toString()));
+      // validate the optional field `plan`
+      if (jsonObj.get("plan") != null && !jsonObj.get("plan").isJsonNull()) {
+        Plan.validateJsonObject(jsonObj.getAsJsonObject("plan"));
       }
-      if ((jsonObj.get("subnet") != null && !jsonObj.get("subnet").isJsonNull()) && !jsonObj.get("subnet").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `subnet` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subnet").toString()));
-      }
-      if ((jsonObj.get("metal_ip") != null && !jsonObj.get("metal_ip").isJsonNull()) && !jsonObj.get("metal_ip").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `metal_ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metal_ip").toString()));
-      }
-      if ((jsonObj.get("customer_ip") != null && !jsonObj.get("customer_ip").isJsonNull()) && !jsonObj.get("customer_ip").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customer_ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_ip").toString()));
-      }
-      // validate the optional field `port`
-      if (jsonObj.get("port") != null && !jsonObj.get("port").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("port"));
+      if ((jsonObj.get("unit") != null && !jsonObj.get("unit").isJsonNull()) && !jsonObj.get("unit").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `unit` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unit").toString()));
       }
   }
 
@@ -451,16 +383,16 @@ public class VrfVirtualCircuitsInner {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VrfVirtualCircuitsInner.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VrfVirtualCircuitsInner' and its subtypes
+       if (!LineItem.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LineItem' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VrfVirtualCircuitsInner> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VrfVirtualCircuitsInner.class));
+       final TypeAdapter<LineItem> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LineItem.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<VrfVirtualCircuitsInner>() {
+       return (TypeAdapter<T>) new TypeAdapter<LineItem>() {
            @Override
-           public void write(JsonWriter out, VrfVirtualCircuitsInner value) throws IOException {
+           public void write(JsonWriter out, LineItem value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -483,11 +415,11 @@ public class VrfVirtualCircuitsInner {
            }
 
            @Override
-           public VrfVirtualCircuitsInner read(JsonReader in) throws IOException {
+           public LineItem read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             VrfVirtualCircuitsInner instance = thisAdapter.fromJsonTree(jsonObj);
+             LineItem instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -514,18 +446,18 @@ public class VrfVirtualCircuitsInner {
   }
 
  /**
-  * Create an instance of VrfVirtualCircuitsInner given an JSON string
+  * Create an instance of LineItem given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of VrfVirtualCircuitsInner
-  * @throws IOException if the JSON string is invalid with respect to VrfVirtualCircuitsInner
+  * @return An instance of LineItem
+  * @throws IOException if the JSON string is invalid with respect to LineItem
   */
-  public static VrfVirtualCircuitsInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VrfVirtualCircuitsInner.class);
+  public static LineItem fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LineItem.class);
   }
 
  /**
-  * Convert an instance of VrfVirtualCircuitsInner to an JSON string
+  * Convert an instance of LineItem to an JSON string
   *
   * @return JSON string
   */

@@ -288,6 +288,10 @@ public class Device {
   @SerializedName(SERIALIZED_NAME_VOLUMES)
   private List<Href> volumes = null;
 
+  public static final String SERIALIZED_NAME_SOS = "sos";
+  @SerializedName(SERIALIZED_NAME_SOS)
+  private String sos;
+
   public Device() {
   }
 
@@ -1212,6 +1216,28 @@ public class Device {
     this.volumes = volumes;
   }
 
+
+  public Device sos(String sos) {
+    
+    this.sos = sos;
+    return this;
+  }
+
+   /**
+   * Hostname used to connect to the instance via the SOS (Serial over SSH) out-of-band console.
+   * @return sos
+  **/
+  @javax.annotation.Nullable
+
+  public String getSos() {
+    return sos;
+  }
+
+
+  public void setSos(String sos) {
+    this.sos = sos;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -1305,13 +1331,14 @@ public class Device {
         Objects.equals(this.updatedAt, device.updatedAt) &&
         Objects.equals(this.user, device.user) &&
         Objects.equals(this.userdata, device.userdata) &&
-        Objects.equals(this.volumes, device.volumes)&&
+        Objects.equals(this.volumes, device.volumes) &&
+        Objects.equals(this.sos, device.sos)&&
         Objects.equals(this.additionalProperties, device.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(alwaysPxe, billingCycle, bondingMode, createdAt, createdBy, customdata, description, facility, hardwareReservation, hostname, href, id, imageUrl, ipAddresses, ipxeScriptUrl, iqn, locked, metro, networkPorts, operatingSystem, actions, plan, project, projectLite, provisioningEvents, provisioningPercentage, rootPassword, shortId, spotInstance, spotPriceMax, sshKeys, state, switchUuid, tags, terminationTime, updatedAt, user, userdata, volumes, additionalProperties);
+    return Objects.hash(alwaysPxe, billingCycle, bondingMode, createdAt, createdBy, customdata, description, facility, hardwareReservation, hostname, href, id, imageUrl, ipAddresses, ipxeScriptUrl, iqn, locked, metro, networkPorts, operatingSystem, actions, plan, project, projectLite, provisioningEvents, provisioningPercentage, rootPassword, shortId, spotInstance, spotPriceMax, sshKeys, state, switchUuid, tags, terminationTime, updatedAt, user, userdata, volumes, sos, additionalProperties);
   }
 
   @Override
@@ -1357,6 +1384,7 @@ public class Device {
     sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    userdata: ").append(toIndentedString(userdata)).append("\n");
     sb.append("    volumes: ").append(toIndentedString(volumes)).append("\n");
+    sb.append("    sos: ").append(toIndentedString(sos)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1419,6 +1447,7 @@ public class Device {
     openapiFields.add("user");
     openapiFields.add("userdata");
     openapiFields.add("volumes");
+    openapiFields.add("sos");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1597,6 +1626,9 @@ public class Device {
             Href.validateJsonObject(jsonArrayvolumes.get(i).getAsJsonObject());
           };
         }
+      }
+      if ((jsonObj.get("sos") != null && !jsonObj.get("sos").isJsonNull()) && !jsonObj.get("sos").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sos` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sos").toString()));
       }
   }
 

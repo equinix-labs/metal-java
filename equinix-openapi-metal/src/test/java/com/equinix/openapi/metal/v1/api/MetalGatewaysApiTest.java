@@ -17,6 +17,9 @@ import com.equinix.openapi.ApiException;
 import com.equinix.openapi.metal.v1.model.CreateMetalGatewayRequest;
 import com.equinix.openapi.metal.v1.model.Error;
 import com.equinix.openapi.metal.v1.model.FindMetalGatewayById200Response;
+import com.equinix.openapi.metal.v1.model.IPAssignment;
+import com.equinix.openapi.metal.v1.model.IPAssignmentList;
+import com.equinix.openapi.metal.v1.model.MetalGatewayElasticIpCreateInput;
 import com.equinix.openapi.metal.v1.model.MetalGatewayList;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
@@ -55,9 +58,24 @@ public class MetalGatewaysApiTest {
     }
 
     /**
+     * Create a Metal Gateway Elastic IP
+     *
+     * Create a new Elastic IP on this Metal Gateway.  Assign an IPv4 range as an elastic IP to the Metal Gateway, with a specified next-hop address contained within the Metal Gateway.  Notice: Elastic IPs on Metal Gateways are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createMetalGatewayElasticIpTest() throws ApiException {
+        UUID id = null;
+        MetalGatewayElasticIpCreateInput metalGatewayElasticIpCreateInput = null;
+        IPAssignment response = api.createMetalGatewayElasticIp(id, metalGatewayElasticIpCreateInput);
+        // TODO: test validations
+    }
+
+    /**
      * Deletes the metal gateway
      *
-     * Deletes a specific metal gateway
+     * Deletes a metal gateway and any elastic IP assignments associated with this metal gateway.
      *
      * @throws ApiException if the Api call fails
      */
@@ -101,6 +119,22 @@ public class MetalGatewaysApiTest {
         Integer page = null;
         Integer perPage = null;
         MetalGatewayList response = api.findMetalGatewaysByProject(projectId, include, exclude, page, perPage);
+        // TODO: test validations
+    }
+
+    /**
+     * List Metal Gateway Elastic IPs
+     *
+     * Returns the list of Elastic IPs assigned to this Metal Gateway
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getMetalGatewayElasticIpsTest() throws ApiException {
+        UUID id = null;
+        List<String> include = null;
+        List<String> exclude = null;
+        IPAssignmentList response = api.getMetalGatewayElasticIps(id, include, exclude);
         // TODO: test validations
     }
 

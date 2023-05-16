@@ -15,8 +15,7 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.Interconnection;
-import com.equinix.openapi.metal.v1.model.Meta;
+import com.equinix.openapi.metal.v1.model.Invoice;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -48,70 +47,44 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * InterconnectionList
+ * InvoiceList
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class InterconnectionList {
-  public static final String SERIALIZED_NAME_INTERCONNECTIONS = "interconnections";
-  @SerializedName(SERIALIZED_NAME_INTERCONNECTIONS)
-  private List<Interconnection> interconnections = null;
+public class InvoiceList {
+  public static final String SERIALIZED_NAME_INVOICES = "invoices";
+  @SerializedName(SERIALIZED_NAME_INVOICES)
+  private List<Invoice> invoices = null;
 
-  public static final String SERIALIZED_NAME_META = "meta";
-  @SerializedName(SERIALIZED_NAME_META)
-  private Meta meta;
-
-  public InterconnectionList() {
+  public InvoiceList() {
   }
 
-  public InterconnectionList interconnections(List<Interconnection> interconnections) {
+  public InvoiceList invoices(List<Invoice> invoices) {
     
-    this.interconnections = interconnections;
+    this.invoices = invoices;
     return this;
   }
 
-  public InterconnectionList addInterconnectionsItem(Interconnection interconnectionsItem) {
-    if (this.interconnections == null) {
-      this.interconnections = new ArrayList<>();
+  public InvoiceList addInvoicesItem(Invoice invoicesItem) {
+    if (this.invoices == null) {
+      this.invoices = new ArrayList<>();
     }
-    this.interconnections.add(interconnectionsItem);
+    this.invoices.add(invoicesItem);
     return this;
   }
 
    /**
-   * Get interconnections
-   * @return interconnections
+   * Get invoices
+   * @return invoices
   **/
   @javax.annotation.Nullable
 
-  public List<Interconnection> getInterconnections() {
-    return interconnections;
+  public List<Invoice> getInvoices() {
+    return invoices;
   }
 
 
-  public void setInterconnections(List<Interconnection> interconnections) {
-    this.interconnections = interconnections;
-  }
-
-
-  public InterconnectionList meta(Meta meta) {
-    
-    this.meta = meta;
-    return this;
-  }
-
-   /**
-   * Get meta
-   * @return meta
-  **/
-  @javax.annotation.Nullable
-
-  public Meta getMeta() {
-    return meta;
-  }
-
-
-  public void setMeta(Meta meta) {
-    this.meta = meta;
+  public void setInvoices(List<Invoice> invoices) {
+    this.invoices = invoices;
   }
 
   /**
@@ -127,9 +100,9 @@ public class InterconnectionList {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the InterconnectionList instance itself
+   * @return the InvoiceList instance itself
    */
-  public InterconnectionList putAdditionalProperty(String key, Object value) {
+  public InvoiceList putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -168,23 +141,21 @@ public class InterconnectionList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InterconnectionList interconnectionList = (InterconnectionList) o;
-    return Objects.equals(this.interconnections, interconnectionList.interconnections) &&
-        Objects.equals(this.meta, interconnectionList.meta)&&
-        Objects.equals(this.additionalProperties, interconnectionList.additionalProperties);
+    InvoiceList invoiceList = (InvoiceList) o;
+    return Objects.equals(this.invoices, invoiceList.invoices)&&
+        Objects.equals(this.additionalProperties, invoiceList.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interconnections, meta, additionalProperties);
+    return Objects.hash(invoices, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InterconnectionList {\n");
-    sb.append("    interconnections: ").append(toIndentedString(interconnections)).append("\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+    sb.append("class InvoiceList {\n");
+    sb.append("    invoices: ").append(toIndentedString(invoices)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -208,8 +179,7 @@ public class InterconnectionList {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("interconnections");
-    openapiFields.add("meta");
+    openapiFields.add("invoices");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -219,31 +189,27 @@ public class InterconnectionList {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to InterconnectionList
+  * @throws IOException if the JSON Object is invalid with respect to InvoiceList
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!InterconnectionList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in InterconnectionList is not found in the empty JSON string", InterconnectionList.openapiRequiredFields.toString()));
+        if (!InvoiceList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in InvoiceList is not found in the empty JSON string", InvoiceList.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("interconnections") != null && !jsonObj.get("interconnections").isJsonNull()) {
-        JsonArray jsonArrayinterconnections = jsonObj.getAsJsonArray("interconnections");
-        if (jsonArrayinterconnections != null) {
+      if (jsonObj.get("invoices") != null && !jsonObj.get("invoices").isJsonNull()) {
+        JsonArray jsonArrayinvoices = jsonObj.getAsJsonArray("invoices");
+        if (jsonArrayinvoices != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("interconnections").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `interconnections` to be an array in the JSON string but got `%s`", jsonObj.get("interconnections").toString()));
+          if (!jsonObj.get("invoices").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `invoices` to be an array in the JSON string but got `%s`", jsonObj.get("invoices").toString()));
           }
 
-          // validate the optional field `interconnections` (array)
-          for (int i = 0; i < jsonArrayinterconnections.size(); i++) {
-            Interconnection.validateJsonObject(jsonArrayinterconnections.get(i).getAsJsonObject());
+          // validate the optional field `invoices` (array)
+          for (int i = 0; i < jsonArrayinvoices.size(); i++) {
+            Invoice.validateJsonObject(jsonArrayinvoices.get(i).getAsJsonObject());
           };
         }
-      }
-      // validate the optional field `meta`
-      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
-        Meta.validateJsonObject(jsonObj.getAsJsonObject("meta"));
       }
   }
 
@@ -251,16 +217,16 @@ public class InterconnectionList {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!InterconnectionList.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'InterconnectionList' and its subtypes
+       if (!InvoiceList.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'InvoiceList' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<InterconnectionList> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(InterconnectionList.class));
+       final TypeAdapter<InvoiceList> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(InvoiceList.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<InterconnectionList>() {
+       return (TypeAdapter<T>) new TypeAdapter<InvoiceList>() {
            @Override
-           public void write(JsonWriter out, InterconnectionList value) throws IOException {
+           public void write(JsonWriter out, InvoiceList value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -283,11 +249,11 @@ public class InterconnectionList {
            }
 
            @Override
-           public InterconnectionList read(JsonReader in) throws IOException {
+           public InvoiceList read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             InterconnectionList instance = thisAdapter.fromJsonTree(jsonObj);
+             InvoiceList instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -314,18 +280,18 @@ public class InterconnectionList {
   }
 
  /**
-  * Create an instance of InterconnectionList given an JSON string
+  * Create an instance of InvoiceList given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of InterconnectionList
-  * @throws IOException if the JSON string is invalid with respect to InterconnectionList
+  * @return An instance of InvoiceList
+  * @throws IOException if the JSON string is invalid with respect to InvoiceList
   */
-  public static InterconnectionList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, InterconnectionList.class);
+  public static InvoiceList fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, InvoiceList.class);
   }
 
  /**
-  * Convert an instance of InterconnectionList to an JSON string
+  * Convert an instance of InvoiceList to an JSON string
   *
   * @return JSON string
   */

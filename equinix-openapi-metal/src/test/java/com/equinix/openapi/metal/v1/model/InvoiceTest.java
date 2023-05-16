@@ -13,105 +13,90 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.IPAssignmentMetro;
-import com.equinix.openapi.metal.v1.model.ParentBlock;
+import com.equinix.openapi.metal.v1.model.LineItem;
+import com.equinix.openapi.metal.v1.model.ProjectIdName;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for IPAssignment
+ * Model tests for Invoice
  */
-public class IPAssignmentTest {
-    private final IPAssignment model = new IPAssignment();
+public class InvoiceTest {
+    private final Invoice model = new Invoice();
 
     /**
-     * Model tests for IPAssignment
+     * Model tests for Invoice
      */
     @Test
-    public void testIPAssignment() {
-        // TODO: test IPAssignment
+    public void testInvoice() {
+        // TODO: test Invoice
     }
 
     /**
-     * Test the property 'address'
+     * Test the property 'amount'
      */
     @Test
-    public void addressTest() {
-        // TODO: test address
+    public void amountTest() {
+        // TODO: test amount
     }
 
     /**
-     * Test the property 'addressFamily'
+     * Test the property 'balance'
      */
     @Test
-    public void addressFamilyTest() {
-        // TODO: test addressFamily
+    public void balanceTest() {
+        // TODO: test balance
     }
 
     /**
-     * Test the property 'assignedTo'
+     * Test the property 'createdOn'
      */
     @Test
-    public void assignedToTest() {
-        // TODO: test assignedTo
+    public void createdOnTest() {
+        // TODO: test createdOn
     }
 
     /**
-     * Test the property 'cidr'
+     * Test the property 'creditAmount'
      */
     @Test
-    public void cidrTest() {
-        // TODO: test cidr
+    public void creditAmountTest() {
+        // TODO: test creditAmount
     }
 
     /**
-     * Test the property 'createdAt'
+     * Test the property 'creditsApplied'
      */
     @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
+    public void creditsAppliedTest() {
+        // TODO: test creditsApplied
     }
 
     /**
-     * Test the property 'enabled'
+     * Test the property 'currency'
      */
     @Test
-    public void enabledTest() {
-        // TODO: test enabled
+    public void currencyTest() {
+        // TODO: test currency
     }
 
     /**
-     * Test the property 'gateway'
+     * Test the property 'dueOn'
      */
     @Test
-    public void gatewayTest() {
-        // TODO: test gateway
-    }
-
-    /**
-     * Test the property 'globalIp'
-     */
-    @Test
-    public void globalIpTest() {
-        // TODO: test globalIp
-    }
-
-    /**
-     * Test the property 'href'
-     */
-    @Test
-    public void hrefTest() {
-        // TODO: test href
+    public void dueOnTest() {
+        // TODO: test dueOn
     }
 
     /**
@@ -123,75 +108,51 @@ public class IPAssignmentTest {
     }
 
     /**
-     * Test the property 'manageable'
+     * Test the property 'items'
      */
     @Test
-    public void manageableTest() {
-        // TODO: test manageable
+    public void itemsTest() {
+        // TODO: test items
     }
 
     /**
-     * Test the property 'management'
+     * Test the property 'number'
      */
     @Test
-    public void managementTest() {
-        // TODO: test management
+    public void numberTest() {
+        // TODO: test number
     }
 
     /**
-     * Test the property 'metro'
+     * Test the property 'project'
      */
     @Test
-    public void metroTest() {
-        // TODO: test metro
+    public void projectTest() {
+        // TODO: test project
     }
 
     /**
-     * Test the property 'netmask'
+     * Test the property 'referenceNumber'
      */
     @Test
-    public void netmaskTest() {
-        // TODO: test netmask
+    public void referenceNumberTest() {
+        // TODO: test referenceNumber
     }
 
     /**
-     * Test the property 'network'
+     * Test the property 'status'
      */
     @Test
-    public void networkTest() {
-        // TODO: test network
+    public void statusTest() {
+        // TODO: test status
     }
 
     /**
-     * Test the property 'parentBlock'
+     * Test the property 'targetDate'
      */
     @Test
-    public void parentBlockTest() {
-        // TODO: test parentBlock
-    }
-
-    /**
-     * Test the property '_public'
-     */
-    @Test
-    public void _publicTest() {
-        // TODO: test _public
-    }
-
-    /**
-     * Test the property 'state'
-     */
-    @Test
-    public void stateTest() {
-        // TODO: test state
-    }
-
-    /**
-     * Test the property 'nextHop'
-     */
-    @Test
-    public void nextHopTest() {
-        // TODO: test nextHop
+    public void targetDateTest() {
+        // TODO: test targetDate
     }
 
 }

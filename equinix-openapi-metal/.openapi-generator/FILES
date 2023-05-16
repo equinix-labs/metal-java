@@ -116,12 +116,16 @@ docs/Invitation.md
 docs/InvitationInput.md
 docs/InvitationList.md
 docs/InvitationsApi.md
+docs/Invoice.md
+docs/InvoiceList.md
+docs/InvoicesApi.md
 docs/IpAddressesApi.md
 docs/License.md
 docs/LicenseCreateInput.md
 docs/LicenseList.md
 docs/LicenseUpdateInput.md
 docs/LicensesApi.md
+docs/LineItem.md
 docs/Membership.md
 docs/MembershipInput.md
 docs/MembershipList.md
@@ -133,6 +137,7 @@ docs/MetadataNetworkNetwork.md
 docs/MetadataNetworkNetworkBonding.md
 docs/MetalGateway.md
 docs/MetalGatewayCreateInput.md
+docs/MetalGatewayElasticIpCreateInput.md
 docs/MetalGatewayList.md
 docs/MetalGatewayListMetalGatewaysInner.md
 docs/MetalGatewayLite.md
@@ -190,6 +195,7 @@ docs/PortsApi.md
 docs/Project.md
 docs/ProjectCreateFromRootInput.md
 docs/ProjectCreateInput.md
+docs/ProjectIdName.md
 docs/ProjectList.md
 docs/ProjectOrganization.md
 docs/ProjectUpdateInput.md
@@ -275,7 +281,6 @@ docs/VrfUpdateInput.md
 docs/VrfVirtualCircuit.md
 docs/VrfVirtualCircuitCreateInput.md
 docs/VrfVirtualCircuitUpdateInput.md
-docs/VrfVirtualCircuitsInner.md
 docs/VrfsApi.md
 git_push.sh
 gradle.properties
@@ -315,6 +320,7 @@ src/main/java/com/equinix/openapi/metal/v1/api/HardwareReservationsApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/IncidentsApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/InterconnectionsApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/InvitationsApi.java
+src/main/java/com/equinix/openapi/metal/v1/api/InvoicesApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/IpAddressesApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/LicensesApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/MembershipsApi.java
@@ -439,10 +445,13 @@ src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/Invitation.java
 src/main/java/com/equinix/openapi/metal/v1/model/InvitationInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/InvitationList.java
+src/main/java/com/equinix/openapi/metal/v1/model/Invoice.java
+src/main/java/com/equinix/openapi/metal/v1/model/InvoiceList.java
 src/main/java/com/equinix/openapi/metal/v1/model/License.java
 src/main/java/com/equinix/openapi/metal/v1/model/LicenseCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/LicenseList.java
 src/main/java/com/equinix/openapi/metal/v1/model/LicenseUpdateInput.java
+src/main/java/com/equinix/openapi/metal/v1/model/LineItem.java
 src/main/java/com/equinix/openapi/metal/v1/model/Membership.java
 src/main/java/com/equinix/openapi/metal/v1/model/MembershipInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/MembershipList.java
@@ -453,6 +462,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/MetadataNetworkNetwork.java
 src/main/java/com/equinix/openapi/metal/v1/model/MetadataNetworkNetworkBonding.java
 src/main/java/com/equinix/openapi/metal/v1/model/MetalGateway.java
 src/main/java/com/equinix/openapi/metal/v1/model/MetalGatewayCreateInput.java
+src/main/java/com/equinix/openapi/metal/v1/model/MetalGatewayElasticIpCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/MetalGatewayList.java
 src/main/java/com/equinix/openapi/metal/v1/model/MetalGatewayListMetalGatewaysInner.java
 src/main/java/com/equinix/openapi/metal/v1/model/MetalGatewayLite.java
@@ -501,6 +511,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/PortVlanAssignmentList.java
 src/main/java/com/equinix/openapi/metal/v1/model/Project.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectCreateFromRootInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectCreateInput.java
+src/main/java/com/equinix/openapi/metal/v1/model/ProjectIdName.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectList.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectOrganization.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectUpdateInput.java
@@ -574,7 +585,6 @@ src/main/java/com/equinix/openapi/metal/v1/model/VrfUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuit.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitUpdateInput.java
-src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitsInner.java
 src/test/java/com/equinix/openapi/metal/v1/api/AuthenticationApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/BatchesApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/BgpApiTest.java
@@ -587,6 +597,7 @@ src/test/java/com/equinix/openapi/metal/v1/api/HardwareReservationsApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/IncidentsApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/InterconnectionsApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/InvitationsApiTest.java
+src/test/java/com/equinix/openapi/metal/v1/api/InvoicesApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/IpAddressesApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/LicensesApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/MembershipsApiTest.java
@@ -710,10 +721,13 @@ src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionUpdateInputTest.
 src/test/java/com/equinix/openapi/metal/v1/model/InvitationInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InvitationListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InvitationTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/InvoiceListTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/InvoiceTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/LicenseCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/LicenseListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/LicenseTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/LicenseUpdateInputTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/LineItemTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MembershipInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MembershipListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MembershipTest.java
@@ -723,6 +737,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/MetadataNetworkNetworkTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MetadataNetworkTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MetadataTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MetalGatewayCreateInputTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/MetalGatewayElasticIpCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MetalGatewayListMetalGatewaysInnerTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MetalGatewayListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MetalGatewayLiteTest.java
@@ -771,6 +786,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/PortVlanAssignmentListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/PortVlanAssignmentTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectCreateFromRootInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectCreateInputTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/ProjectIdNameTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectOrganizationTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectTest.java
@@ -845,4 +861,3 @@ src/test/java/com/equinix/openapi/metal/v1/model/VrfUpdateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitUpdateInputTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitsInnerTest.java

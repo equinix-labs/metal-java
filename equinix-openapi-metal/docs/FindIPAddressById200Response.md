@@ -24,6 +24,8 @@
 |**network** | **String** |  |  [optional] |
 |**parentBlock** | [**ParentBlock**](ParentBlock.md) |  |  [optional] |
 |**_public** | **Boolean** |  |  [optional] |
+|**state** | **String** |  |  [optional] |
+|**nextHop** | **String** | Only set when this is a Metal Gateway Elastic IP Assignment.  The IP address within the Metal Gateway to which requests to the Elastic IP are forwarded.  |  [optional] |
 |**addon** | **Boolean** |  |  [optional] |
 |**assignments** | [**List&lt;IPAssignment&gt;**](IPAssignment.md) |  |  [optional] |
 |**available** | **String** |  |  [optional] |
@@ -35,7 +37,6 @@
 |**project** | [**Project**](Project.md) |  |  [optional] |
 |**projectLite** | [**Project**](Project.md) |  |  [optional] |
 |**requestedBy** | [**Href**](Href.md) |  |  [optional] |
-|**state** | **String** |  |  [optional] |
 |**tags** | **List&lt;String&gt;** |  |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) |  |  |
 |**createdBy** | [**Href**](Href.md) |  |  [optional] |

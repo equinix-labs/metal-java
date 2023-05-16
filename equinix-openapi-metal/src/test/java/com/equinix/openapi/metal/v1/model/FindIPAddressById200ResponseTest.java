@@ -188,6 +188,22 @@ public class FindIPAddressById200ResponseTest {
     }
 
     /**
+     * Test the property 'state'
+     */
+    @Test
+    public void stateTest() {
+        // TODO: test state
+    }
+
+    /**
+     * Test the property 'nextHop'
+     */
+    @Test
+    public void nextHopTest() {
+        // TODO: test nextHop
+    }
+
+    /**
      * Test the property 'addon'
      */
     @Test
@@ -273,14 +289,6 @@ public class FindIPAddressById200ResponseTest {
     @Test
     public void requestedByTest() {
         // TODO: test requestedBy
-    }
-
-    /**
-     * Test the property 'state'
-     */
-    @Test
-    public void stateTest() {
-        // TODO: test state
     }
 
     /**

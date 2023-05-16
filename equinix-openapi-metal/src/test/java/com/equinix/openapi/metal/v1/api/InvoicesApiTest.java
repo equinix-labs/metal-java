@@ -11,187 +11,58 @@
  */
 
 
-package com.equinix.openapi.metal.v1.model;
+package com.equinix.openapi.metal.v1.api;
 
-import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.IPAssignmentMetro;
-import com.equinix.openapi.metal.v1.model.ParentBlock;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.metal.v1.model.Error;
+import com.equinix.openapi.metal.v1.model.Invoice;
+import com.equinix.openapi.metal.v1.model.InvoiceList;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * Model tests for IPAssignment
+ * API tests for InvoicesApi
  */
-public class IPAssignmentTest {
-    private final IPAssignment model = new IPAssignment();
+@Disabled
+public class InvoicesApiTest {
+
+    private final InvoicesApi api = new InvoicesApi();
 
     /**
-     * Model tests for IPAssignment
+     * Retrieve all invoices for an organization
+     *
+     * Returns all invoices for an organization
+     *
+     * @throws ApiException if the Api call fails
      */
     @Test
-    public void testIPAssignment() {
-        // TODO: test IPAssignment
+    public void findOrganizationInvoicesTest() throws ApiException {
+        UUID id = null;
+        Integer page = null;
+        Integer perPage = null;
+        String status = null;
+        InvoiceList response = api.findOrganizationInvoices(id, page, perPage, status);
+        // TODO: test validations
     }
 
     /**
-     * Test the property 'address'
+     * Retrieve an invoice
+     *
+     * Returns the invoice identified by the provided id
+     *
+     * @throws ApiException if the Api call fails
      */
     @Test
-    public void addressTest() {
-        // TODO: test address
-    }
-
-    /**
-     * Test the property 'addressFamily'
-     */
-    @Test
-    public void addressFamilyTest() {
-        // TODO: test addressFamily
-    }
-
-    /**
-     * Test the property 'assignedTo'
-     */
-    @Test
-    public void assignedToTest() {
-        // TODO: test assignedTo
-    }
-
-    /**
-     * Test the property 'cidr'
-     */
-    @Test
-    public void cidrTest() {
-        // TODO: test cidr
-    }
-
-    /**
-     * Test the property 'createdAt'
-     */
-    @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
-    }
-
-    /**
-     * Test the property 'enabled'
-     */
-    @Test
-    public void enabledTest() {
-        // TODO: test enabled
-    }
-
-    /**
-     * Test the property 'gateway'
-     */
-    @Test
-    public void gatewayTest() {
-        // TODO: test gateway
-    }
-
-    /**
-     * Test the property 'globalIp'
-     */
-    @Test
-    public void globalIpTest() {
-        // TODO: test globalIp
-    }
-
-    /**
-     * Test the property 'href'
-     */
-    @Test
-    public void hrefTest() {
-        // TODO: test href
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'manageable'
-     */
-    @Test
-    public void manageableTest() {
-        // TODO: test manageable
-    }
-
-    /**
-     * Test the property 'management'
-     */
-    @Test
-    public void managementTest() {
-        // TODO: test management
-    }
-
-    /**
-     * Test the property 'metro'
-     */
-    @Test
-    public void metroTest() {
-        // TODO: test metro
-    }
-
-    /**
-     * Test the property 'netmask'
-     */
-    @Test
-    public void netmaskTest() {
-        // TODO: test netmask
-    }
-
-    /**
-     * Test the property 'network'
-     */
-    @Test
-    public void networkTest() {
-        // TODO: test network
-    }
-
-    /**
-     * Test the property 'parentBlock'
-     */
-    @Test
-    public void parentBlockTest() {
-        // TODO: test parentBlock
-    }
-
-    /**
-     * Test the property '_public'
-     */
-    @Test
-    public void _publicTest() {
-        // TODO: test _public
-    }
-
-    /**
-     * Test the property 'state'
-     */
-    @Test
-    public void stateTest() {
-        // TODO: test state
-    }
-
-    /**
-     * Test the property 'nextHop'
-     */
-    @Test
-    public void nextHopTest() {
-        // TODO: test nextHop
+    public void getInvoiceByIdTest() throws ApiException {
+        UUID id = null;
+        Invoice response = api.getInvoiceById(id);
+        // TODO: test validations
     }
 
 }
