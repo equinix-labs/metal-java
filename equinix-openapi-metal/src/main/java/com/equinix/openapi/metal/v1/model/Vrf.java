@@ -18,7 +18,7 @@ import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Metro;
 import com.equinix.openapi.metal.v1.model.Project;
 import com.equinix.openapi.metal.v1.model.User;
-import com.equinix.openapi.metal.v1.model.VrfVirtualCircuitsInner;
+import com.equinix.openapi.metal.v1.model.VrfVirtualCircuit;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -90,7 +90,7 @@ public class Vrf {
 
   public static final String SERIALIZED_NAME_VIRTUAL_CIRCUITS = "virtual_circuits";
   @SerializedName(SERIALIZED_NAME_VIRTUAL_CIRCUITS)
-  private List<VrfVirtualCircuitsInner> virtualCircuits = null;
+  private List<VrfVirtualCircuit> virtualCircuits = null;
 
   public static final String SERIALIZED_NAME_IP_RANGES = "ip_ranges";
   @SerializedName(SERIALIZED_NAME_IP_RANGES)
@@ -299,13 +299,13 @@ public class Vrf {
   }
 
 
-  public Vrf virtualCircuits(List<VrfVirtualCircuitsInner> virtualCircuits) {
+  public Vrf virtualCircuits(List<VrfVirtualCircuit> virtualCircuits) {
     
     this.virtualCircuits = virtualCircuits;
     return this;
   }
 
-  public Vrf addVirtualCircuitsItem(VrfVirtualCircuitsInner virtualCircuitsItem) {
+  public Vrf addVirtualCircuitsItem(VrfVirtualCircuit virtualCircuitsItem) {
     if (this.virtualCircuits == null) {
       this.virtualCircuits = new ArrayList<>();
     }
@@ -319,12 +319,12 @@ public class Vrf {
   **/
   @javax.annotation.Nullable
 
-  public List<VrfVirtualCircuitsInner> getVirtualCircuits() {
+  public List<VrfVirtualCircuit> getVirtualCircuits() {
     return virtualCircuits;
   }
 
 
-  public void setVirtualCircuits(List<VrfVirtualCircuitsInner> virtualCircuits) {
+  public void setVirtualCircuits(List<VrfVirtualCircuit> virtualCircuits) {
     this.virtualCircuits = virtualCircuits;
   }
 
@@ -664,7 +664,7 @@ public class Vrf {
 
           // validate the optional field `virtual_circuits` (array)
           for (int i = 0; i < jsonArrayvirtualCircuits.size(); i++) {
-            VrfVirtualCircuitsInner.validateJsonObject(jsonArrayvirtualCircuits.get(i).getAsJsonObject());
+            VrfVirtualCircuit.validateJsonObject(jsonArrayvirtualCircuits.get(i).getAsJsonObject());
           };
         }
       }

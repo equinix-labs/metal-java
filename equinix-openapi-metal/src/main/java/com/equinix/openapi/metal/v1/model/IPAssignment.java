@@ -121,6 +121,63 @@ public class IPAssignment {
   @SerializedName(SERIALIZED_NAME_PUBLIC)
   private Boolean _public;
 
+  /**
+   * Only set when this is a Metal Gateway Elastic IP Assignment.  Describes the current configuration state of this IP on the network. 
+   */
+  @JsonAdapter(StateEnum.Adapter.class)
+  public enum StateEnum {
+    PENDING("pending"),
+    
+    ACTIVE("active"),
+    
+    DELETING("deleting");
+
+    private String value;
+
+    StateEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StateEnum fromValue(String value) {
+      for (StateEnum b : StateEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StateEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StateEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StateEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_STATE = "state";
+  @SerializedName(SERIALIZED_NAME_STATE)
+  private StateEnum state;
+
+  public static final String SERIALIZED_NAME_NEXT_HOP = "next_hop";
+  @SerializedName(SERIALIZED_NAME_NEXT_HOP)
+  private String nextHop;
+
   public IPAssignment() {
   }
 
@@ -497,6 +554,50 @@ public class IPAssignment {
     this._public = _public;
   }
 
+
+  public IPAssignment state(StateEnum state) {
+    
+    this.state = state;
+    return this;
+  }
+
+   /**
+   * Only set when this is a Metal Gateway Elastic IP Assignment.  Describes the current configuration state of this IP on the network. 
+   * @return state
+  **/
+  @javax.annotation.Nullable
+
+  public StateEnum getState() {
+    return state;
+  }
+
+
+  public void setState(StateEnum state) {
+    this.state = state;
+  }
+
+
+  public IPAssignment nextHop(String nextHop) {
+    
+    this.nextHop = nextHop;
+    return this;
+  }
+
+   /**
+   * Only set when this is a Metal Gateway Elastic IP Assignment.  The IP address within the Metal Gateway to which requests to the Elastic IP are forwarded. 
+   * @return nextHop
+  **/
+  @javax.annotation.Nullable
+
+  public String getNextHop() {
+    return nextHop;
+  }
+
+
+  public void setNextHop(String nextHop) {
+    this.nextHop = nextHop;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -568,13 +669,15 @@ public class IPAssignment {
         Objects.equals(this.netmask, ipAssignment.netmask) &&
         Objects.equals(this.network, ipAssignment.network) &&
         Objects.equals(this.parentBlock, ipAssignment.parentBlock) &&
-        Objects.equals(this._public, ipAssignment._public)&&
+        Objects.equals(this._public, ipAssignment._public) &&
+        Objects.equals(this.state, ipAssignment.state) &&
+        Objects.equals(this.nextHop, ipAssignment.nextHop)&&
         Objects.equals(this.additionalProperties, ipAssignment.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, addressFamily, assignedTo, cidr, createdAt, enabled, gateway, globalIp, href, id, manageable, management, metro, netmask, network, parentBlock, _public, additionalProperties);
+    return Objects.hash(address, addressFamily, assignedTo, cidr, createdAt, enabled, gateway, globalIp, href, id, manageable, management, metro, netmask, network, parentBlock, _public, state, nextHop, additionalProperties);
   }
 
   @Override
@@ -598,6 +701,8 @@ public class IPAssignment {
     sb.append("    network: ").append(toIndentedString(network)).append("\n");
     sb.append("    parentBlock: ").append(toIndentedString(parentBlock)).append("\n");
     sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
+    sb.append("    state: ").append(toIndentedString(state)).append("\n");
+    sb.append("    nextHop: ").append(toIndentedString(nextHop)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -638,6 +743,8 @@ public class IPAssignment {
     openapiFields.add("network");
     openapiFields.add("parent_block");
     openapiFields.add("public");
+    openapiFields.add("state");
+    openapiFields.add("next_hop");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -684,6 +791,12 @@ public class IPAssignment {
       // validate the optional field `parent_block`
       if (jsonObj.get("parent_block") != null && !jsonObj.get("parent_block").isJsonNull()) {
         ParentBlock.validateJsonObject(jsonObj.getAsJsonObject("parent_block"));
+      }
+      if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
+      }
+      if ((jsonObj.get("next_hop") != null && !jsonObj.get("next_hop").isJsonNull()) && !jsonObj.get("next_hop").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `next_hop` to be a primitive type in the JSON string but got `%s`", jsonObj.get("next_hop").toString()));
       }
   }
 

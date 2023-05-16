@@ -16,6 +16,7 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Interconnection;
+import com.equinix.openapi.metal.v1.model.Meta;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -55,6 +56,10 @@ public class InterconnectionList {
   @SerializedName(SERIALIZED_NAME_INTERCONNECTIONS)
   private List<Interconnection> interconnections = null;
 
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private Meta meta;
+
   public InterconnectionList() {
   }
 
@@ -85,6 +90,28 @@ public class InterconnectionList {
 
   public void setInterconnections(List<Interconnection> interconnections) {
     this.interconnections = interconnections;
+  }
+
+
+  public InterconnectionList meta(Meta meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+
+  public Meta getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(Meta meta) {
+    this.meta = meta;
   }
 
   /**
@@ -142,13 +169,14 @@ public class InterconnectionList {
       return false;
     }
     InterconnectionList interconnectionList = (InterconnectionList) o;
-    return Objects.equals(this.interconnections, interconnectionList.interconnections)&&
+    return Objects.equals(this.interconnections, interconnectionList.interconnections) &&
+        Objects.equals(this.meta, interconnectionList.meta)&&
         Objects.equals(this.additionalProperties, interconnectionList.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(interconnections, additionalProperties);
+    return Objects.hash(interconnections, meta, additionalProperties);
   }
 
   @Override
@@ -156,6 +184,7 @@ public class InterconnectionList {
     StringBuilder sb = new StringBuilder();
     sb.append("class InterconnectionList {\n");
     sb.append("    interconnections: ").append(toIndentedString(interconnections)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -180,6 +209,7 @@ public class InterconnectionList {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("interconnections");
+    openapiFields.add("meta");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -210,6 +240,10 @@ public class InterconnectionList {
             Interconnection.validateJsonObject(jsonArrayinterconnections.get(i).getAsJsonObject());
           };
         }
+      }
+      // validate the optional field `meta`
+      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
+        Meta.validateJsonObject(jsonObj.getAsJsonObject("meta"));
       }
   }
 

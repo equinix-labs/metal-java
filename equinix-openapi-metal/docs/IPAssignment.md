@@ -24,6 +24,18 @@
 |**network** | **String** |  |  [optional] |
 |**parentBlock** | [**ParentBlock**](ParentBlock.md) |  |  [optional] |
 |**_public** | **Boolean** |  |  [optional] |
+|**state** | [**StateEnum**](#StateEnum) | Only set when this is a Metal Gateway Elastic IP Assignment.  Describes the current configuration state of this IP on the network.  |  [optional] |
+|**nextHop** | **String** | Only set when this is a Metal Gateway Elastic IP Assignment.  The IP address within the Metal Gateway to which requests to the Elastic IP are forwarded.  |  [optional] |
+
+
+
+## Enum: StateEnum
+
+| Name | Value |
+|---- | -----|
+| PENDING | &quot;pending&quot; |
+| ACTIVE | &quot;active&quot; |
+| DELETING | &quot;deleting&quot; |
 
 
 

@@ -13,102 +13,64 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.Href;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for VrfVirtualCircuitsInner
+ * Model tests for MetalGatewayElasticIpCreateInput
  */
-public class VrfVirtualCircuitsInnerTest {
-    private final VrfVirtualCircuitsInner model = new VrfVirtualCircuitsInner();
+public class MetalGatewayElasticIpCreateInputTest {
+    private final MetalGatewayElasticIpCreateInput model = new MetalGatewayElasticIpCreateInput();
 
     /**
-     * Model tests for VrfVirtualCircuitsInner
+     * Model tests for MetalGatewayElasticIpCreateInput
      */
     @Test
-    public void testVrfVirtualCircuitsInner() {
-        // TODO: test VrfVirtualCircuitsInner
+    public void testMetalGatewayElasticIpCreateInput() {
+        // TODO: test MetalGatewayElasticIpCreateInput
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'address'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
+    public void addressTest() {
+        // TODO: test address
     }
 
     /**
-     * Test the property 'name'
+     * Test the property 'nextHop'
      */
     @Test
-    public void nameTest() {
-        // TODO: test name
+    public void nextHopTest() {
+        // TODO: test nextHop
     }
 
     /**
-     * Test the property 'status'
+     * Test the property 'customdata'
      */
     @Test
-    public void statusTest() {
-        // TODO: test status
+    public void customdataTest() {
+        // TODO: test customdata
     }
 
     /**
-     * Test the property 'md5'
+     * Test the property 'tags'
      */
     @Test
-    public void md5Test() {
-        // TODO: test md5
-    }
-
-    /**
-     * Test the property 'peerAsn'
-     */
-    @Test
-    public void peerAsnTest() {
-        // TODO: test peerAsn
-    }
-
-    /**
-     * Test the property 'subnet'
-     */
-    @Test
-    public void subnetTest() {
-        // TODO: test subnet
-    }
-
-    /**
-     * Test the property 'metalIp'
-     */
-    @Test
-    public void metalIpTest() {
-        // TODO: test metalIp
-    }
-
-    /**
-     * Test the property 'customerIp'
-     */
-    @Test
-    public void customerIpTest() {
-        // TODO: test customerIp
-    }
-
-    /**
-     * Test the property 'port'
-     */
-    @Test
-    public void portTest() {
-        // TODO: test port
+    public void tagsTest() {
+        // TODO: test tags
     }
 
 }

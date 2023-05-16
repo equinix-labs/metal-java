@@ -30,6 +30,9 @@ import java.io.IOException;
 import com.equinix.openapi.metal.v1.model.CreateMetalGatewayRequest;
 import com.equinix.openapi.metal.v1.model.Error;
 import com.equinix.openapi.metal.v1.model.FindMetalGatewayById200Response;
+import com.equinix.openapi.metal.v1.model.IPAssignment;
+import com.equinix.openapi.metal.v1.model.IPAssignmentList;
+import com.equinix.openapi.metal.v1.model.MetalGatewayElasticIpCreateInput;
 import com.equinix.openapi.metal.v1.model.MetalGatewayList;
 import java.util.UUID;
 
@@ -255,6 +258,155 @@ public class MetalGatewaysApi {
         return localVarCall;
     }
     /**
+     * Build call for createMetalGatewayElasticIp
+     * @param id Metal Gateway UUID (required)
+     * @param metalGatewayElasticIpCreateInput  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMetalGatewayElasticIpCall(UUID id, MetalGatewayElasticIpCreateInput metalGatewayElasticIpCreateInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = metalGatewayElasticIpCreateInput;
+
+        // create path and map variables
+        String localVarPath = "/metal-gateways/{id}/ips.yaml"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "x_auth_token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createMetalGatewayElasticIpValidateBeforeCall(UUID id, MetalGatewayElasticIpCreateInput metalGatewayElasticIpCreateInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createMetalGatewayElasticIp(Async)");
+        }
+
+        // verify the required parameter 'metalGatewayElasticIpCreateInput' is set
+        if (metalGatewayElasticIpCreateInput == null) {
+            throw new ApiException("Missing the required parameter 'metalGatewayElasticIpCreateInput' when calling createMetalGatewayElasticIp(Async)");
+        }
+
+        return createMetalGatewayElasticIpCall(id, metalGatewayElasticIpCreateInput, _callback);
+
+    }
+
+    /**
+     * Create a Metal Gateway Elastic IP
+     * Create a new Elastic IP on this Metal Gateway.  Assign an IPv4 range as an elastic IP to the Metal Gateway, with a specified next-hop address contained within the Metal Gateway.  Notice: Elastic IPs on Metal Gateways are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+     * @param id Metal Gateway UUID (required)
+     * @param metalGatewayElasticIpCreateInput  (required)
+     * @return IPAssignment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public IPAssignment createMetalGatewayElasticIp(UUID id, MetalGatewayElasticIpCreateInput metalGatewayElasticIpCreateInput) throws ApiException {
+        ApiResponse<IPAssignment> localVarResp = createMetalGatewayElasticIpWithHttpInfo(id, metalGatewayElasticIpCreateInput);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create a Metal Gateway Elastic IP
+     * Create a new Elastic IP on this Metal Gateway.  Assign an IPv4 range as an elastic IP to the Metal Gateway, with a specified next-hop address contained within the Metal Gateway.  Notice: Elastic IPs on Metal Gateways are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+     * @param id Metal Gateway UUID (required)
+     * @param metalGatewayElasticIpCreateInput  (required)
+     * @return ApiResponse&lt;IPAssignment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IPAssignment> createMetalGatewayElasticIpWithHttpInfo(UUID id, MetalGatewayElasticIpCreateInput metalGatewayElasticIpCreateInput) throws ApiException {
+        okhttp3.Call localVarCall = createMetalGatewayElasticIpValidateBeforeCall(id, metalGatewayElasticIpCreateInput, null);
+        Type localVarReturnType = new TypeToken<IPAssignment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create a Metal Gateway Elastic IP (asynchronously)
+     * Create a new Elastic IP on this Metal Gateway.  Assign an IPv4 range as an elastic IP to the Metal Gateway, with a specified next-hop address contained within the Metal Gateway.  Notice: Elastic IPs on Metal Gateways are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+     * @param id Metal Gateway UUID (required)
+     * @param metalGatewayElasticIpCreateInput  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createMetalGatewayElasticIpAsync(UUID id, MetalGatewayElasticIpCreateInput metalGatewayElasticIpCreateInput, final ApiCallback<IPAssignment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createMetalGatewayElasticIpValidateBeforeCall(id, metalGatewayElasticIpCreateInput, _callback);
+        Type localVarReturnType = new TypeToken<IPAssignment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for deleteMetalGateway
      * @param id Metal Gateway UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
@@ -336,7 +488,7 @@ public class MetalGatewaysApi {
 
     /**
      * Deletes the metal gateway
-     * Deletes a specific metal gateway
+     * Deletes a metal gateway and any elastic IP assignments associated with this metal gateway.
      * @param id Metal Gateway UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
@@ -357,7 +509,7 @@ public class MetalGatewaysApi {
 
     /**
      * Deletes the metal gateway
-     * Deletes a specific metal gateway
+     * Deletes a metal gateway and any elastic IP assignments associated with this metal gateway.
      * @param id Metal Gateway UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
@@ -379,7 +531,7 @@ public class MetalGatewaysApi {
 
     /**
      * Deletes the metal gateway (asynchronously)
-     * Deletes a specific metal gateway
+     * Deletes a metal gateway and any elastic IP assignments associated with this metal gateway.
      * @param id Metal Gateway UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
@@ -708,6 +860,153 @@ public class MetalGatewaysApi {
 
         okhttp3.Call localVarCall = findMetalGatewaysByProjectValidateBeforeCall(projectId, include, exclude, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<MetalGatewayList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getMetalGatewayElasticIps
+     * @param id Metal Gateway UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMetalGatewayElasticIpsCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/metal-gateways/{id}/ips.yaml"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "x_auth_token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMetalGatewayElasticIpsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getMetalGatewayElasticIps(Async)");
+        }
+
+        return getMetalGatewayElasticIpsCall(id, include, exclude, _callback);
+
+    }
+
+    /**
+     * List Metal Gateway Elastic IPs
+     * Returns the list of Elastic IPs assigned to this Metal Gateway
+     * @param id Metal Gateway UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @return IPAssignmentList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public IPAssignmentList getMetalGatewayElasticIps(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<IPAssignmentList> localVarResp = getMetalGatewayElasticIpsWithHttpInfo(id, include, exclude);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List Metal Gateway Elastic IPs
+     * Returns the list of Elastic IPs assigned to this Metal Gateway
+     * @param id Metal Gateway UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @return ApiResponse&lt;IPAssignmentList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IPAssignmentList> getMetalGatewayElasticIpsWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = getMetalGatewayElasticIpsValidateBeforeCall(id, include, exclude, null);
+        Type localVarReturnType = new TypeToken<IPAssignmentList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List Metal Gateway Elastic IPs (asynchronously)
+     * Returns the list of Elastic IPs assigned to this Metal Gateway
+     * @param id Metal Gateway UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getMetalGatewayElasticIpsAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<IPAssignmentList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMetalGatewayElasticIpsValidateBeforeCall(id, include, exclude, _callback);
+        Type localVarReturnType = new TypeToken<IPAssignmentList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

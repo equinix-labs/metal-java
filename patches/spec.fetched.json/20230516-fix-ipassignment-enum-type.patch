@@ -1,0 +1,12 @@
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/IPAssignment.yaml b/spec/oas3.patched/openapi/public/components/schemas/IPAssignment.yaml
+index 7b34335..efce269 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/IPAssignment.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/IPAssignment.yaml
+@@ -38,6 +38,7 @@ properties:
+   public:
+     type: boolean
+   state:
++    type: string
+     enum:
+       - pending
+       - active

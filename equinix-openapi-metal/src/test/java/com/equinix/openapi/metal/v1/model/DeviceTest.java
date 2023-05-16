@@ -368,4 +368,12 @@ public class DeviceTest {
         // TODO: test volumes
     }
 
+    /**
+     * Test the property 'sos'
+     */
+    @Test
+    public void sosTest() {
+        // TODO: test sos
+    }
+
 }

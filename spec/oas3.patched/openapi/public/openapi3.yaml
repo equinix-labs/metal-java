@@ -257,6 +257,10 @@ components:
       $ref: './components/schemas/InvitationInput.yaml'
     InvitationList:
       $ref: './components/schemas/InvitationList.yaml'
+    Invoice:
+      $ref: './components/schemas/Invoice.yaml'
+    InvoiceList:
+      $ref: './components/schemas/InvoiceList.yaml'
     License:
       $ref: './components/schemas/License.yaml'
     LicenseCreateInput:
@@ -265,6 +269,8 @@ components:
       $ref: './components/schemas/LicenseList.yaml'
     LicenseUpdateInput:
       $ref: './components/schemas/LicenseUpdateInput.yaml'
+    LineItem:
+      $ref: './components/schemas/LineItem.yaml'
     Membership:
       $ref: './components/schemas/Membership.yaml'
     MembershipInput:
@@ -279,6 +285,8 @@ components:
       $ref: './components/schemas/MetalGateway.yaml'
     MetalGatewayCreateInput:
       $ref: './components/schemas/MetalGatewayCreateInput.yaml'
+    MetalGatewayElasticIpCreateInput:
+      $ref: './components/schemas/MetalGatewayElasticIpCreateInput.yaml'
     MetalGatewayList:
       $ref: './components/schemas/MetalGatewayList.yaml'
     MetalGatewayLite:
@@ -345,6 +353,8 @@ components:
       $ref: './components/schemas/ProjectCreateFromRootInput.yaml'
     ProjectCreateInput:
       $ref: './components/schemas/ProjectCreateInput.yaml'
+    ProjectIdName:
+      $ref: './components/schemas/ProjectIdName.yaml'
     ProjectList:
       $ref: './components/schemas/ProjectList.yaml'
     ProjectUpdateInput:
@@ -448,9 +458,9 @@ components:
     Vrf:
       $ref: './components/schemas/Vrf.yaml'
     VrfCreateInput:
-      $ref: './components/schemas//VrfCreateInput.yaml'
+      $ref: './components/schemas/VrfCreateInput.yaml'
     VrfIpRangeCreateInput:
-      $ref: './components/schemas//VrfIpRangeCreateInput.yaml'
+      $ref: './components/schemas/VrfIpRangeCreateInput.yaml'
     VrfIpRangeList:
       $ref: './components/schemas/VrfIpRangeList.yaml'
     VrfIpRangeUpdateInput:
@@ -564,6 +574,8 @@ paths:
     $ref: ./paths/invitations.yaml
   /invitations/{id}:
     $ref: ./paths/invitations/id.yaml
+  /invoices/{id}:
+    $ref: ./paths/invoices/id.yaml
   /ips/{id}:
     $ref: ./paths/ips/id.yaml
   /ips/{id}/available:
@@ -586,6 +598,8 @@ paths:
     $ref: ./paths/memberships/id.yaml
   /metal-gateways/{id}:
     $ref: ./paths/metal-gateways/id.yaml
+  /metal-gateways/{id}/ips.yaml:
+    $ref: ./paths/metal-gateways/id/ips.yaml
   /operating-system-versions:
     $ref: ./paths/operating-system-versions.yaml
   /operating-systems:
@@ -608,6 +622,8 @@ paths:
     $ref: ./paths/organizations/id/facilities.yaml
   /organizations/{id}/invitations:
     $ref: ./paths/organizations/id/invitations.yaml
+  /organizations/{id}/invoices:
+    $ref: ./paths/organizations/id/invoices.yaml
   /organizations/{id}/operating-systems:
     $ref: ./paths/organizations/id/operating-systems.yaml
   /organizations/{id}/payment-methods:
@@ -1049,6 +1065,7 @@ x-tagGroups:
       - Events
       - Facilities
       - Incidents
+      - Invoices
       - Licenses
       - Metros
       - Plans

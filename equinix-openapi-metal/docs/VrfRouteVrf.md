@@ -17,7 +17,7 @@ A link to the VRF within which this route exists
 |**bgpDynamicNeighborsExportRouteMap** | **Boolean** | Toggle to export the VRF route-map to the dynamic bgp neighbors |  [optional] |
 |**bgpDynamicNeighborsBfdEnabled** | **Boolean** | Toggle BFD on dynamic bgp neighbors sessions |  [optional] |
 |**localAsn** | **Integer** | A 4-byte ASN associated with the VRF. |  [optional] |
-|**virtualCircuits** | [**List&lt;VrfVirtualCircuitsInner&gt;**](VrfVirtualCircuitsInner.md) | Virtual circuits that are in the VRF |  [optional] |
+|**virtualCircuits** | [**List&lt;VrfVirtualCircuit&gt;**](VrfVirtualCircuit.md) | Virtual circuits that are in the VRF |  [optional] |
 |**ipRanges** | **List&lt;String&gt;** | A list of CIDR network addresses. Like [\&quot;10.0.0.0/16\&quot;, \&quot;2001:d78::/56\&quot;]. |  [optional] |
 |**project** | [**Project**](Project.md) |  |  [optional] |
 |**metro** | [**Metro**](Metro.md) |  |  [optional] |

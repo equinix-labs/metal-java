@@ -46,6 +46,7 @@
 |**user** | **String** |  |  [optional] |
 |**userdata** | **String** |  |  [optional] |
 |**volumes** | [**List&lt;Href&gt;**](Href.md) |  |  [optional] |
+|**sos** | **String** | Hostname used to connect to the instance via the SOS (Serial over SSH) out-of-band console. |  [optional] |
 
 
 

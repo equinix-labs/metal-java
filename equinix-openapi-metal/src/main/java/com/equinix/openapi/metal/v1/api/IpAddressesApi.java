@@ -153,7 +153,7 @@ public class IpAddressesApi {
 
     /**
      * Unassign an ip address
-     * Note! This call can be used to un-assign an IP assignment or delete an IP reservation. Un-assign an IP address record. Use the assignment UUID you get after attaching the IP. This will remove the relationship between an IP and the device and will make the IP address available to be assigned to another device. Delete and IP reservation. Use the reservation UUID you get after adding the IP to the project. This will permanently delete the IP block reservation from the project.
+     * This call can be used to un-assign an IP assignment or delete an IP reservation.  Un-assign an IP address record. Use the assignment UUID you get after attaching the IP. This will remove the relationship between an IP and the device or metal gateway and will make the IP address available to be assigned to another device, once the IP has been un-configured from the network.  Delete an IP reservation. Use the reservation UUID you get after adding the IP to the project. This will permanently delete the IP block reservation from the project. 
      * @param id IP Address UUID (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -171,7 +171,7 @@ public class IpAddressesApi {
 
     /**
      * Unassign an ip address
-     * Note! This call can be used to un-assign an IP assignment or delete an IP reservation. Un-assign an IP address record. Use the assignment UUID you get after attaching the IP. This will remove the relationship between an IP and the device and will make the IP address available to be assigned to another device. Delete and IP reservation. Use the reservation UUID you get after adding the IP to the project. This will permanently delete the IP block reservation from the project.
+     * This call can be used to un-assign an IP assignment or delete an IP reservation.  Un-assign an IP address record. Use the assignment UUID you get after attaching the IP. This will remove the relationship between an IP and the device or metal gateway and will make the IP address available to be assigned to another device, once the IP has been un-configured from the network.  Delete an IP reservation. Use the reservation UUID you get after adding the IP to the project. This will permanently delete the IP block reservation from the project. 
      * @param id IP Address UUID (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -191,7 +191,7 @@ public class IpAddressesApi {
 
     /**
      * Unassign an ip address (asynchronously)
-     * Note! This call can be used to un-assign an IP assignment or delete an IP reservation. Un-assign an IP address record. Use the assignment UUID you get after attaching the IP. This will remove the relationship between an IP and the device and will make the IP address available to be assigned to another device. Delete and IP reservation. Use the reservation UUID you get after adding the IP to the project. This will permanently delete the IP block reservation from the project.
+     * This call can be used to un-assign an IP assignment or delete an IP reservation.  Un-assign an IP address record. Use the assignment UUID you get after attaching the IP. This will remove the relationship between an IP and the device or metal gateway and will make the IP address available to be assigned to another device, once the IP has been un-configured from the network.  Delete an IP reservation. Use the reservation UUID you get after adding the IP to the project. This will permanently delete the IP block reservation from the project. 
      * @param id IP Address UUID (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

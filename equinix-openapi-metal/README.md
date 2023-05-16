@@ -280,6 +280,8 @@ Class | Method | HTTP request | Description
 *InvitationsApi* | [**acceptInvitation**](docs/InvitationsApi.md#acceptInvitation) | **PUT** /invitations/{id} | Accept an invitation
 *InvitationsApi* | [**declineInvitation**](docs/InvitationsApi.md#declineInvitation) | **DELETE** /invitations/{id} | Decline an invitation
 *InvitationsApi* | [**findInvitationById**](docs/InvitationsApi.md#findInvitationById) | **GET** /invitations/{id} | View an invitation
+*InvoicesApi* | [**findOrganizationInvoices**](docs/InvoicesApi.md#findOrganizationInvoices) | **GET** /organizations/{id}/invoices | Retrieve all invoices for an organization
+*InvoicesApi* | [**getInvoiceById**](docs/InvoicesApi.md#getInvoiceById) | **GET** /invoices/{id} | Retrieve an invoice
 *IpAddressesApi* | [**deleteIPAddress**](docs/IpAddressesApi.md#deleteIPAddress) | **DELETE** /ips/{id} | Unassign an ip address
 *IpAddressesApi* | [**findIPAddressById**](docs/IpAddressesApi.md#findIPAddressById) | **GET** /ips/{id} | Retrieve an ip address
 *IpAddressesApi* | [**findIPAddressCustomdata**](docs/IpAddressesApi.md#findIPAddressCustomdata) | **GET** /ips/{id}/customdata | Retrieve the custom metadata of an IP Reservation or IP Assignment
@@ -296,9 +298,11 @@ Class | Method | HTTP request | Description
 *MembershipsApi* | [**findMembershipById**](docs/MembershipsApi.md#findMembershipById) | **GET** /memberships/{id} | Retrieve a membership
 *MembershipsApi* | [**updateMembership**](docs/MembershipsApi.md#updateMembership) | **PUT** /memberships/{id} | Update the membership
 *MetalGatewaysApi* | [**createMetalGateway**](docs/MetalGatewaysApi.md#createMetalGateway) | **POST** /projects/{project_id}/metal-gateways | Create a metal gateway
+*MetalGatewaysApi* | [**createMetalGatewayElasticIp**](docs/MetalGatewaysApi.md#createMetalGatewayElasticIp) | **POST** /metal-gateways/{id}/ips.yaml | Create a Metal Gateway Elastic IP
 *MetalGatewaysApi* | [**deleteMetalGateway**](docs/MetalGatewaysApi.md#deleteMetalGateway) | **DELETE** /metal-gateways/{id} | Deletes the metal gateway
 *MetalGatewaysApi* | [**findMetalGatewayById**](docs/MetalGatewaysApi.md#findMetalGatewayById) | **GET** /metal-gateways/{id} | Returns the metal gateway
 *MetalGatewaysApi* | [**findMetalGatewaysByProject**](docs/MetalGatewaysApi.md#findMetalGatewaysByProject) | **GET** /projects/{project_id}/metal-gateways | Returns all metal gateways for a project
+*MetalGatewaysApi* | [**getMetalGatewayElasticIps**](docs/MetalGatewaysApi.md#getMetalGatewayElasticIps) | **GET** /metal-gateways/{id}/ips.yaml | List Metal Gateway Elastic IPs
 *MetrosApi* | [**findMetros**](docs/MetrosApi.md#findMetros) | **GET** /locations/metros | Retrieve all metros
 *MetrosApi* | [**getMetro**](docs/MetrosApi.md#getMetro) | **GET** /locations/metros/{id} | Retrieve a specific Metro&#39;s details
 *OperatingSystemsApi* | [**findOperatingSystemVersion**](docs/OperatingSystemsApi.md#findOperatingSystemVersion) | **GET** /operating-system-versions | Retrieve all operating system versions
@@ -510,10 +514,13 @@ Class | Method | HTTP request | Description
  - [Invitation](docs/Invitation.md)
  - [InvitationInput](docs/InvitationInput.md)
  - [InvitationList](docs/InvitationList.md)
+ - [Invoice](docs/Invoice.md)
+ - [InvoiceList](docs/InvoiceList.md)
  - [License](docs/License.md)
  - [LicenseCreateInput](docs/LicenseCreateInput.md)
  - [LicenseList](docs/LicenseList.md)
  - [LicenseUpdateInput](docs/LicenseUpdateInput.md)
+ - [LineItem](docs/LineItem.md)
  - [Membership](docs/Membership.md)
  - [MembershipInput](docs/MembershipInput.md)
  - [MembershipList](docs/MembershipList.md)
@@ -524,6 +531,7 @@ Class | Method | HTTP request | Description
  - [MetadataNetworkNetworkBonding](docs/MetadataNetworkNetworkBonding.md)
  - [MetalGateway](docs/MetalGateway.md)
  - [MetalGatewayCreateInput](docs/MetalGatewayCreateInput.md)
+ - [MetalGatewayElasticIpCreateInput](docs/MetalGatewayElasticIpCreateInput.md)
  - [MetalGatewayList](docs/MetalGatewayList.md)
  - [MetalGatewayListMetalGatewaysInner](docs/MetalGatewayListMetalGatewaysInner.md)
  - [MetalGatewayLite](docs/MetalGatewayLite.md)
@@ -572,6 +580,7 @@ Class | Method | HTTP request | Description
  - [Project](docs/Project.md)
  - [ProjectCreateFromRootInput](docs/ProjectCreateFromRootInput.md)
  - [ProjectCreateInput](docs/ProjectCreateInput.md)
+ - [ProjectIdName](docs/ProjectIdName.md)
  - [ProjectList](docs/ProjectList.md)
  - [ProjectOrganization](docs/ProjectOrganization.md)
  - [ProjectUpdateInput](docs/ProjectUpdateInput.md)
@@ -645,7 +654,6 @@ Class | Method | HTTP request | Description
  - [VrfVirtualCircuit](docs/VrfVirtualCircuit.md)
  - [VrfVirtualCircuitCreateInput](docs/VrfVirtualCircuitCreateInput.md)
  - [VrfVirtualCircuitUpdateInput](docs/VrfVirtualCircuitUpdateInput.md)
- - [VrfVirtualCircuitsInner](docs/VrfVirtualCircuitsInner.md)
 
 
 ## Documentation for Authorization

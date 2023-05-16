@@ -178,4 +178,20 @@ public class IPAssignmentTest {
         // TODO: test _public
     }
 
+    /**
+     * Test the property 'state'
+     */
+    @Test
+    public void stateTest() {
+        // TODO: test state
+    }
+
+    /**
+     * Test the property 'nextHop'
+     */
+    @Test
+    public void nextHopTest() {
+        // TODO: test nextHop
+    }
+
 }
