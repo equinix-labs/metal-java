@@ -27,6 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.equinix.openapi.metal.v1.model.BgpDynamicNeighbor;
+import com.equinix.openapi.metal.v1.model.BgpDynamicNeighborCreateInput;
+import com.equinix.openapi.metal.v1.model.BgpDynamicNeighborList;
 import com.equinix.openapi.metal.v1.model.Error;
 import java.util.UUID;
 import com.equinix.openapi.metal.v1.model.Vrf;
@@ -37,6 +40,7 @@ import com.equinix.openapi.metal.v1.model.VrfList;
 import com.equinix.openapi.metal.v1.model.VrfRoute;
 import com.equinix.openapi.metal.v1.model.VrfRouteCreateInput;
 import com.equinix.openapi.metal.v1.model.VrfRouteList;
+import com.equinix.openapi.metal.v1.model.VrfRouteUpdateInput;
 import com.equinix.openapi.metal.v1.model.VrfUpdateInput;
 
 import java.lang.reflect.Type;
@@ -83,6 +87,302 @@ public class VrfsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for bgpDynamicNeighborsIdGet
+     * @param id BGP Dynamic Neighbor UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call bgpDynamicNeighborsIdGetCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/bgp-dynamic-neighbors/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "x_auth_token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call bgpDynamicNeighborsIdGetValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling bgpDynamicNeighborsIdGet(Async)");
+        }
+
+        return bgpDynamicNeighborsIdGetCall(id, include, exclude, _callback);
+
+    }
+
+    /**
+     * Retrieve a BGP Dynamic Neighbor
+     * Return a single BGP Dynamic Neighbor resource
+     * @param id BGP Dynamic Neighbor UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @return BgpDynamicNeighbor
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public BgpDynamicNeighbor bgpDynamicNeighborsIdGet(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<BgpDynamicNeighbor> localVarResp = bgpDynamicNeighborsIdGetWithHttpInfo(id, include, exclude);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Retrieve a BGP Dynamic Neighbor
+     * Return a single BGP Dynamic Neighbor resource
+     * @param id BGP Dynamic Neighbor UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @return ApiResponse&lt;BgpDynamicNeighbor&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BgpDynamicNeighbor> bgpDynamicNeighborsIdGetWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = bgpDynamicNeighborsIdGetValidateBeforeCall(id, include, exclude, null);
+        Type localVarReturnType = new TypeToken<BgpDynamicNeighbor>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retrieve a BGP Dynamic Neighbor (asynchronously)
+     * Return a single BGP Dynamic Neighbor resource
+     * @param id BGP Dynamic Neighbor UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call bgpDynamicNeighborsIdGetAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<BgpDynamicNeighbor> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = bgpDynamicNeighborsIdGetValidateBeforeCall(id, include, exclude, _callback);
+        Type localVarReturnType = new TypeToken<BgpDynamicNeighbor>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createBgpDynamicNeighbor
+     * @param id Metal Gateway UUID (required)
+     * @param bgpDynamicNeighborCreateInput  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createBgpDynamicNeighborCall(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = bgpDynamicNeighborCreateInput;
+
+        // create path and map variables
+        String localVarPath = "/metal-gateways/{id}/bgp-dynamic-neighbors"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "x_auth_token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createBgpDynamicNeighborValidateBeforeCall(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createBgpDynamicNeighbor(Async)");
+        }
+
+        // verify the required parameter 'bgpDynamicNeighborCreateInput' is set
+        if (bgpDynamicNeighborCreateInput == null) {
+            throw new ApiException("Missing the required parameter 'bgpDynamicNeighborCreateInput' when calling createBgpDynamicNeighbor(Async)");
+        }
+
+        return createBgpDynamicNeighborCall(id, bgpDynamicNeighborCreateInput, _callback);
+
+    }
+
+    /**
+     * Create a VRF BGP Dynamic Neighbor range
+     * Create a VRF BGP Dynamic Neighbor range.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+     * @param id Metal Gateway UUID (required)
+     * @param bgpDynamicNeighborCreateInput  (required)
+     * @return BgpDynamicNeighbor
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public BgpDynamicNeighbor createBgpDynamicNeighbor(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput) throws ApiException {
+        ApiResponse<BgpDynamicNeighbor> localVarResp = createBgpDynamicNeighborWithHttpInfo(id, bgpDynamicNeighborCreateInput);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create a VRF BGP Dynamic Neighbor range
+     * Create a VRF BGP Dynamic Neighbor range.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+     * @param id Metal Gateway UUID (required)
+     * @param bgpDynamicNeighborCreateInput  (required)
+     * @return ApiResponse&lt;BgpDynamicNeighbor&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BgpDynamicNeighbor> createBgpDynamicNeighborWithHttpInfo(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput) throws ApiException {
+        okhttp3.Call localVarCall = createBgpDynamicNeighborValidateBeforeCall(id, bgpDynamicNeighborCreateInput, null);
+        Type localVarReturnType = new TypeToken<BgpDynamicNeighbor>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create a VRF BGP Dynamic Neighbor range (asynchronously)
+     * Create a VRF BGP Dynamic Neighbor range.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+     * @param id Metal Gateway UUID (required)
+     * @param bgpDynamicNeighborCreateInput  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Unprocessable entity </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createBgpDynamicNeighborAsync(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput, final ApiCallback<BgpDynamicNeighbor> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createBgpDynamicNeighborValidateBeforeCall(id, bgpDynamicNeighborCreateInput, _callback);
+        Type localVarReturnType = new TypeToken<BgpDynamicNeighbor>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for createVrf
      * @param id Project UUID (required)
@@ -374,6 +674,157 @@ public class VrfsApi {
 
         okhttp3.Call localVarCall = createVrfRouteValidateBeforeCall(id, vrfRouteCreateInput, _callback);
         Type localVarReturnType = new TypeToken<VrfRoute>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteBgpDynamicNeighborById
+     * @param id BGP Dynamic Neighbor UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteBgpDynamicNeighborByIdCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/bgp-dynamic-neighbors/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "x_auth_token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteBgpDynamicNeighborByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteBgpDynamicNeighborById(Async)");
+        }
+
+        return deleteBgpDynamicNeighborByIdCall(id, include, exclude, _callback);
+
+    }
+
+    /**
+     * Delete a VRF BGP Dynamic Neighbor
+     * Trigger the removal of a BGP Neighbor range from a VRF
+     * @param id BGP Dynamic Neighbor UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @return BgpDynamicNeighbor
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public BgpDynamicNeighbor deleteBgpDynamicNeighborById(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<BgpDynamicNeighbor> localVarResp = deleteBgpDynamicNeighborByIdWithHttpInfo(id, include, exclude);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Delete a VRF BGP Dynamic Neighbor
+     * Trigger the removal of a BGP Neighbor range from a VRF
+     * @param id BGP Dynamic Neighbor UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @return ApiResponse&lt;BgpDynamicNeighbor&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BgpDynamicNeighbor> deleteBgpDynamicNeighborByIdWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = deleteBgpDynamicNeighborByIdValidateBeforeCall(id, include, exclude, null);
+        Type localVarReturnType = new TypeToken<BgpDynamicNeighbor>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Delete a VRF BGP Dynamic Neighbor (asynchronously)
+     * Trigger the removal of a BGP Neighbor range from a VRF
+     * @param id BGP Dynamic Neighbor UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteBgpDynamicNeighborByIdAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<BgpDynamicNeighbor> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteBgpDynamicNeighborByIdValidateBeforeCall(id, include, exclude, _callback);
+        Type localVarReturnType = new TypeToken<BgpDynamicNeighbor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1417,6 +1868,153 @@ public class VrfsApi {
         return localVarCall;
     }
     /**
+     * Build call for getBgpDynamicNeighbors
+     * @param id Metal Gateway UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBgpDynamicNeighborsCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/metal-gateways/{id}/bgp-dynamic-neighbors"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "x_auth_token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBgpDynamicNeighborsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getBgpDynamicNeighbors(Async)");
+        }
+
+        return getBgpDynamicNeighborsCall(id, include, exclude, _callback);
+
+    }
+
+    /**
+     * List BGP Dynamic Neighbors
+     * Returns the list of VRF BGP Dynamic Neighbors for this Metal Gateway
+     * @param id Metal Gateway UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @return BgpDynamicNeighborList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public BgpDynamicNeighborList getBgpDynamicNeighbors(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<BgpDynamicNeighborList> localVarResp = getBgpDynamicNeighborsWithHttpInfo(id, include, exclude);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List BGP Dynamic Neighbors
+     * Returns the list of VRF BGP Dynamic Neighbors for this Metal Gateway
+     * @param id Metal Gateway UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @return ApiResponse&lt;BgpDynamicNeighborList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BgpDynamicNeighborList> getBgpDynamicNeighborsWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = getBgpDynamicNeighborsValidateBeforeCall(id, include, exclude, null);
+        Type localVarReturnType = new TypeToken<BgpDynamicNeighborList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List BGP Dynamic Neighbors (asynchronously)
+     * Returns the list of VRF BGP Dynamic Neighbors for this Metal Gateway
+     * @param id Metal Gateway UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBgpDynamicNeighborsAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<BgpDynamicNeighborList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBgpDynamicNeighborsValidateBeforeCall(id, include, exclude, _callback);
+        Type localVarReturnType = new TypeToken<BgpDynamicNeighborList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getVrfRoutes
      * @param id VRF UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
@@ -1715,6 +2313,7 @@ public class VrfsApi {
     /**
      * Build call for updateVrfRouteById
      * @param id VRF Route UUID (required)
+     * @param vrfRouteUpdateInput  (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
@@ -1731,7 +2330,7 @@ public class VrfsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateVrfRouteByIdCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateVrfRouteByIdCall(UUID id, VrfRouteUpdateInput vrfRouteUpdateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1745,7 +2344,7 @@ public class VrfsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = vrfRouteUpdateInput;
 
         // create path and map variables
         String localVarPath = "/routes/{id}"
@@ -1774,6 +2373,7 @@ public class VrfsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1785,13 +2385,18 @@ public class VrfsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateVrfRouteByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateVrfRouteByIdValidateBeforeCall(UUID id, VrfRouteUpdateInput vrfRouteUpdateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateVrfRouteById(Async)");
         }
 
-        return updateVrfRouteByIdCall(id, include, exclude, _callback);
+        // verify the required parameter 'vrfRouteUpdateInput' is set
+        if (vrfRouteUpdateInput == null) {
+            throw new ApiException("Missing the required parameter 'vrfRouteUpdateInput' when calling updateVrfRouteById(Async)");
+        }
+
+        return updateVrfRouteByIdCall(id, vrfRouteUpdateInput, include, exclude, _callback);
 
     }
 
@@ -1799,6 +2404,7 @@ public class VrfsApi {
      * Update a VRF Route
      * Requests a VRF Route be redeployed across the network. Updating the prefix or next-hop address on a route is not currently supported.
      * @param id VRF Route UUID (required)
+     * @param vrfRouteUpdateInput  (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return VrfRoute
@@ -1814,8 +2420,8 @@ public class VrfsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public VrfRoute updateVrfRouteById(UUID id, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<VrfRoute> localVarResp = updateVrfRouteByIdWithHttpInfo(id, include, exclude);
+    public VrfRoute updateVrfRouteById(UUID id, VrfRouteUpdateInput vrfRouteUpdateInput, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<VrfRoute> localVarResp = updateVrfRouteByIdWithHttpInfo(id, vrfRouteUpdateInput, include, exclude);
         return localVarResp.getData();
     }
 
@@ -1823,6 +2429,7 @@ public class VrfsApi {
      * Update a VRF Route
      * Requests a VRF Route be redeployed across the network. Updating the prefix or next-hop address on a route is not currently supported.
      * @param id VRF Route UUID (required)
+     * @param vrfRouteUpdateInput  (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;VrfRoute&gt;
@@ -1838,8 +2445,8 @@ public class VrfsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VrfRoute> updateVrfRouteByIdWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = updateVrfRouteByIdValidateBeforeCall(id, include, exclude, null);
+    public ApiResponse<VrfRoute> updateVrfRouteByIdWithHttpInfo(UUID id, VrfRouteUpdateInput vrfRouteUpdateInput, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = updateVrfRouteByIdValidateBeforeCall(id, vrfRouteUpdateInput, include, exclude, null);
         Type localVarReturnType = new TypeToken<VrfRoute>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1848,6 +2455,7 @@ public class VrfsApi {
      * Update a VRF Route (asynchronously)
      * Requests a VRF Route be redeployed across the network. Updating the prefix or next-hop address on a route is not currently supported.
      * @param id VRF Route UUID (required)
+     * @param vrfRouteUpdateInput  (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1864,9 +2472,9 @@ public class VrfsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateVrfRouteByIdAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<VrfRoute> _callback) throws ApiException {
+    public okhttp3.Call updateVrfRouteByIdAsync(UUID id, VrfRouteUpdateInput vrfRouteUpdateInput, List<String> include, List<String> exclude, final ApiCallback<VrfRoute> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateVrfRouteByIdValidateBeforeCall(id, include, exclude, _callback);
+        okhttp3.Call localVarCall = updateVrfRouteByIdValidateBeforeCall(id, vrfRouteUpdateInput, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<VrfRoute>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

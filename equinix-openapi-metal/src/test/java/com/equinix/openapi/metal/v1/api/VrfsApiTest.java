@@ -14,6 +14,9 @@
 package com.equinix.openapi.metal.v1.api;
 
 import com.equinix.openapi.ApiException;
+import com.equinix.openapi.metal.v1.model.BgpDynamicNeighbor;
+import com.equinix.openapi.metal.v1.model.BgpDynamicNeighborCreateInput;
+import com.equinix.openapi.metal.v1.model.BgpDynamicNeighborList;
 import com.equinix.openapi.metal.v1.model.Error;
 import java.util.UUID;
 import com.equinix.openapi.metal.v1.model.Vrf;
@@ -24,6 +27,7 @@ import com.equinix.openapi.metal.v1.model.VrfList;
 import com.equinix.openapi.metal.v1.model.VrfRoute;
 import com.equinix.openapi.metal.v1.model.VrfRouteCreateInput;
 import com.equinix.openapi.metal.v1.model.VrfRouteList;
+import com.equinix.openapi.metal.v1.model.VrfRouteUpdateInput;
 import com.equinix.openapi.metal.v1.model.VrfUpdateInput;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -40,6 +44,37 @@ import java.util.Map;
 public class VrfsApiTest {
 
     private final VrfsApi api = new VrfsApi();
+
+    /**
+     * Retrieve a BGP Dynamic Neighbor
+     *
+     * Return a single BGP Dynamic Neighbor resource
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void bgpDynamicNeighborsIdGetTest() throws ApiException {
+        UUID id = null;
+        List<String> include = null;
+        List<String> exclude = null;
+        BgpDynamicNeighbor response = api.bgpDynamicNeighborsIdGet(id, include, exclude);
+        // TODO: test validations
+    }
+
+    /**
+     * Create a VRF BGP Dynamic Neighbor range
+     *
+     * Create a VRF BGP Dynamic Neighbor range.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void createBgpDynamicNeighborTest() throws ApiException {
+        UUID id = null;
+        BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput = null;
+        BgpDynamicNeighbor response = api.createBgpDynamicNeighbor(id, bgpDynamicNeighborCreateInput);
+        // TODO: test validations
+    }
 
     /**
      * Create a new VRF in the specified project
@@ -68,6 +103,22 @@ public class VrfsApiTest {
         UUID id = null;
         VrfRouteCreateInput vrfRouteCreateInput = null;
         VrfRoute response = api.createVrfRoute(id, vrfRouteCreateInput);
+        // TODO: test validations
+    }
+
+    /**
+     * Delete a VRF BGP Dynamic Neighbor
+     *
+     * Trigger the removal of a BGP Neighbor range from a VRF
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteBgpDynamicNeighborByIdTest() throws ApiException {
+        UUID id = null;
+        List<String> include = null;
+        List<String> exclude = null;
+        BgpDynamicNeighbor response = api.deleteBgpDynamicNeighborById(id, include, exclude);
         // TODO: test validations
     }
 
@@ -184,6 +235,22 @@ public class VrfsApiTest {
     }
 
     /**
+     * List BGP Dynamic Neighbors
+     *
+     * Returns the list of VRF BGP Dynamic Neighbors for this Metal Gateway
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getBgpDynamicNeighborsTest() throws ApiException {
+        UUID id = null;
+        List<String> include = null;
+        List<String> exclude = null;
+        BgpDynamicNeighborList response = api.getBgpDynamicNeighbors(id, include, exclude);
+        // TODO: test validations
+    }
+
+    /**
      * Retrieve all routes in the VRF
      *
      * Returns the list of routes for the VRF
@@ -224,9 +291,10 @@ public class VrfsApiTest {
     @Test
     public void updateVrfRouteByIdTest() throws ApiException {
         UUID id = null;
+        VrfRouteUpdateInput vrfRouteUpdateInput = null;
         List<String> include = null;
         List<String> exclude = null;
-        VrfRoute response = api.updateVrfRouteById(id, include, exclude);
+        VrfRoute response = api.updateVrfRouteById(id, vrfRouteUpdateInput, include, exclude);
         // TODO: test validations
     }
 
