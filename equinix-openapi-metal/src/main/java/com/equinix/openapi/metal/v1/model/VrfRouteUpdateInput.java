@@ -44,62 +44,62 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * BgpDynamicNeighborCreateInput
+ * VrfRouteUpdateInput
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class BgpDynamicNeighborCreateInput {
-  public static final String SERIALIZED_NAME_BGP_NEIGHBOR_RANGE = "bgp_neighbor_range";
-  @SerializedName(SERIALIZED_NAME_BGP_NEIGHBOR_RANGE)
-  private String bgpNeighborRange;
+public class VrfRouteUpdateInput {
+  public static final String SERIALIZED_NAME_PREFIX = "prefix";
+  @SerializedName(SERIALIZED_NAME_PREFIX)
+  private String prefix;
 
-  public static final String SERIALIZED_NAME_BGP_NEIGHBOR_ASN = "bgp_neighbor_asn";
-  @SerializedName(SERIALIZED_NAME_BGP_NEIGHBOR_ASN)
-  private Integer bgpNeighborAsn;
+  public static final String SERIALIZED_NAME_NEXT_HOP = "next_hop";
+  @SerializedName(SERIALIZED_NAME_NEXT_HOP)
+  private String nextHop;
 
-  public BgpDynamicNeighborCreateInput() {
+  public VrfRouteUpdateInput() {
   }
 
-  public BgpDynamicNeighborCreateInput bgpNeighborRange(String bgpNeighborRange) {
+  public VrfRouteUpdateInput prefix(String prefix) {
     
-    this.bgpNeighborRange = bgpNeighborRange;
+    this.prefix = prefix;
     return this;
   }
 
    /**
-   * Network range of the dynamic BGP neighbor in CIDR format
-   * @return bgpNeighborRange
+   * The IPv4 prefix for the route, in CIDR-style notation. For a static default route, this will always be \&quot;0.0.0.0/0\&quot;
+   * @return prefix
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public String getBgpNeighborRange() {
-    return bgpNeighborRange;
+  public String getPrefix() {
+    return prefix;
   }
 
 
-  public void setBgpNeighborRange(String bgpNeighborRange) {
-    this.bgpNeighborRange = bgpNeighborRange;
+  public void setPrefix(String prefix) {
+    this.prefix = prefix;
   }
 
 
-  public BgpDynamicNeighborCreateInput bgpNeighborAsn(Integer bgpNeighborAsn) {
+  public VrfRouteUpdateInput nextHop(String nextHop) {
     
-    this.bgpNeighborAsn = bgpNeighborAsn;
+    this.nextHop = nextHop;
     return this;
   }
 
    /**
-   * The ASN of the dynamic BGP neighbor
-   * @return bgpNeighborAsn
+   * The IPv4 address within the VRF of the host that will handle this route
+   * @return nextHop
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public Integer getBgpNeighborAsn() {
-    return bgpNeighborAsn;
+  public String getNextHop() {
+    return nextHop;
   }
 
 
-  public void setBgpNeighborAsn(Integer bgpNeighborAsn) {
-    this.bgpNeighborAsn = bgpNeighborAsn;
+  public void setNextHop(String nextHop) {
+    this.nextHop = nextHop;
   }
 
   /**
@@ -115,9 +115,9 @@ public class BgpDynamicNeighborCreateInput {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the BgpDynamicNeighborCreateInput instance itself
+   * @return the VrfRouteUpdateInput instance itself
    */
-  public BgpDynamicNeighborCreateInput putAdditionalProperty(String key, Object value) {
+  public VrfRouteUpdateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -156,23 +156,23 @@ public class BgpDynamicNeighborCreateInput {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput = (BgpDynamicNeighborCreateInput) o;
-    return Objects.equals(this.bgpNeighborRange, bgpDynamicNeighborCreateInput.bgpNeighborRange) &&
-        Objects.equals(this.bgpNeighborAsn, bgpDynamicNeighborCreateInput.bgpNeighborAsn)&&
-        Objects.equals(this.additionalProperties, bgpDynamicNeighborCreateInput.additionalProperties);
+    VrfRouteUpdateInput vrfRouteUpdateInput = (VrfRouteUpdateInput) o;
+    return Objects.equals(this.prefix, vrfRouteUpdateInput.prefix) &&
+        Objects.equals(this.nextHop, vrfRouteUpdateInput.nextHop)&&
+        Objects.equals(this.additionalProperties, vrfRouteUpdateInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bgpNeighborRange, bgpNeighborAsn, additionalProperties);
+    return Objects.hash(prefix, nextHop, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BgpDynamicNeighborCreateInput {\n");
-    sb.append("    bgpNeighborRange: ").append(toIndentedString(bgpNeighborRange)).append("\n");
-    sb.append("    bgpNeighborAsn: ").append(toIndentedString(bgpNeighborAsn)).append("\n");
+    sb.append("class VrfRouteUpdateInput {\n");
+    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
+    sb.append("    nextHop: ").append(toIndentedString(nextHop)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -196,36 +196,30 @@ public class BgpDynamicNeighborCreateInput {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("bgp_neighbor_range");
-    openapiFields.add("bgp_neighbor_asn");
+    openapiFields.add("prefix");
+    openapiFields.add("next_hop");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("bgp_neighbor_range");
-    openapiRequiredFields.add("bgp_neighbor_asn");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to BgpDynamicNeighborCreateInput
+  * @throws IOException if the JSON Object is invalid with respect to VrfRouteUpdateInput
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!BgpDynamicNeighborCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in BgpDynamicNeighborCreateInput is not found in the empty JSON string", BgpDynamicNeighborCreateInput.openapiRequiredFields.toString()));
+        if (!VrfRouteUpdateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfRouteUpdateInput is not found in the empty JSON string", VrfRouteUpdateInput.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : BgpDynamicNeighborCreateInput.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
+      if ((jsonObj.get("prefix") != null && !jsonObj.get("prefix").isJsonNull()) && !jsonObj.get("prefix").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `prefix` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prefix").toString()));
       }
-      if (!jsonObj.get("bgp_neighbor_range").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `bgp_neighbor_range` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bgp_neighbor_range").toString()));
+      if ((jsonObj.get("next_hop") != null && !jsonObj.get("next_hop").isJsonNull()) && !jsonObj.get("next_hop").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `next_hop` to be a primitive type in the JSON string but got `%s`", jsonObj.get("next_hop").toString()));
       }
   }
 
@@ -233,16 +227,16 @@ public class BgpDynamicNeighborCreateInput {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!BgpDynamicNeighborCreateInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'BgpDynamicNeighborCreateInput' and its subtypes
+       if (!VrfRouteUpdateInput.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'VrfRouteUpdateInput' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<BgpDynamicNeighborCreateInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(BgpDynamicNeighborCreateInput.class));
+       final TypeAdapter<VrfRouteUpdateInput> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(VrfRouteUpdateInput.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<BgpDynamicNeighborCreateInput>() {
+       return (TypeAdapter<T>) new TypeAdapter<VrfRouteUpdateInput>() {
            @Override
-           public void write(JsonWriter out, BgpDynamicNeighborCreateInput value) throws IOException {
+           public void write(JsonWriter out, VrfRouteUpdateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -265,11 +259,11 @@ public class BgpDynamicNeighborCreateInput {
            }
 
            @Override
-           public BgpDynamicNeighborCreateInput read(JsonReader in) throws IOException {
+           public VrfRouteUpdateInput read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             BgpDynamicNeighborCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
+             VrfRouteUpdateInput instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -296,18 +290,18 @@ public class BgpDynamicNeighborCreateInput {
   }
 
  /**
-  * Create an instance of BgpDynamicNeighborCreateInput given an JSON string
+  * Create an instance of VrfRouteUpdateInput given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of BgpDynamicNeighborCreateInput
-  * @throws IOException if the JSON string is invalid with respect to BgpDynamicNeighborCreateInput
+  * @return An instance of VrfRouteUpdateInput
+  * @throws IOException if the JSON string is invalid with respect to VrfRouteUpdateInput
   */
-  public static BgpDynamicNeighborCreateInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, BgpDynamicNeighborCreateInput.class);
+  public static VrfRouteUpdateInput fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VrfRouteUpdateInput.class);
   }
 
  /**
-  * Convert an instance of BgpDynamicNeighborCreateInput to an JSON string
+  * Convert an instance of VrfRouteUpdateInput to an JSON string
   *
   * @return JSON string
   */
