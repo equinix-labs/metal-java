@@ -4,8 +4,11 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**bgpDynamicNeighborsIdGet**](VrfsApi.md#bgpDynamicNeighborsIdGet) | **GET** /bgp-dynamic-neighbors/{id} | Retrieve a BGP Dynamic Neighbor |
+| [**createBgpDynamicNeighbor**](VrfsApi.md#createBgpDynamicNeighbor) | **POST** /metal-gateways/{id}/bgp-dynamic-neighbors | Create a VRF BGP Dynamic Neighbor range |
 | [**createVrf**](VrfsApi.md#createVrf) | **POST** /projects/{id}/vrfs | Create a new VRF in the specified project |
 | [**createVrfRoute**](VrfsApi.md#createVrfRoute) | **POST** /vrfs/{id}/routes | Create a VRF route |
+| [**deleteBgpDynamicNeighborById**](VrfsApi.md#deleteBgpDynamicNeighborById) | **DELETE** /bgp-dynamic-neighbors/{id} | Delete a VRF BGP Dynamic Neighbor |
 | [**deleteVrf**](VrfsApi.md#deleteVrf) | **DELETE** /vrfs/{id} | Delete the VRF |
 | [**deleteVrfRouteById**](VrfsApi.md#deleteVrfRouteById) | **DELETE** /routes/{id} | Delete a VRF Route |
 | [**findVrfById**](VrfsApi.md#findVrfById) | **GET** /vrfs/{id} | Retrieve a VRF |
@@ -13,10 +16,161 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findVrfIpReservations**](VrfsApi.md#findVrfIpReservations) | **GET** /vrfs/{id}/ips | Retrieve all VRF IP Reservations in the VRF |
 | [**findVrfRouteById**](VrfsApi.md#findVrfRouteById) | **GET** /routes/{id} | Retrieve a VRF Route |
 | [**findVrfs**](VrfsApi.md#findVrfs) | **GET** /projects/{id}/vrfs | Retrieve all VRFs in the project |
+| [**getBgpDynamicNeighbors**](VrfsApi.md#getBgpDynamicNeighbors) | **GET** /metal-gateways/{id}/bgp-dynamic-neighbors | List BGP Dynamic Neighbors |
 | [**getVrfRoutes**](VrfsApi.md#getVrfRoutes) | **GET** /vrfs/{id}/routes | Retrieve all routes in the VRF |
 | [**updateVrf**](VrfsApi.md#updateVrf) | **PUT** /vrfs/{id} | Update the VRF |
 | [**updateVrfRouteById**](VrfsApi.md#updateVrfRouteById) | **PUT** /routes/{id} | Update a VRF Route |
 
+
+<a name="bgpDynamicNeighborsIdGet"></a>
+# **bgpDynamicNeighborsIdGet**
+> BgpDynamicNeighbor bgpDynamicNeighborsIdGet(id, include, exclude)
+
+Retrieve a BGP Dynamic Neighbor
+
+Return a single BGP Dynamic Neighbor resource
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.VrfsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    VrfsApi apiInstance = new VrfsApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | BGP Dynamic Neighbor UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
+    try {
+      BgpDynamicNeighbor result = apiInstance.bgpDynamicNeighborsIdGet(id, include, exclude);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VrfsApi#bgpDynamicNeighborsIdGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| BGP Dynamic Neighbor UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
+
+### Return type
+
+[**BgpDynamicNeighbor**](BgpDynamicNeighbor.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+
+<a name="createBgpDynamicNeighbor"></a>
+# **createBgpDynamicNeighbor**
+> BgpDynamicNeighbor createBgpDynamicNeighbor(id, bgpDynamicNeighborCreateInput)
+
+Create a VRF BGP Dynamic Neighbor range
+
+Create a VRF BGP Dynamic Neighbor range.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.VrfsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    VrfsApi apiInstance = new VrfsApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | Metal Gateway UUID
+    BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput = new BgpDynamicNeighborCreateInput(); // BgpDynamicNeighborCreateInput | 
+    try {
+      BgpDynamicNeighbor result = apiInstance.createBgpDynamicNeighbor(id, bgpDynamicNeighborCreateInput);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VrfsApi#createBgpDynamicNeighbor");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| Metal Gateway UUID | |
+| **bgpDynamicNeighborCreateInput** | [**BgpDynamicNeighborCreateInput**](BgpDynamicNeighborCreateInput.md)|  | |
+
+### Return type
+
+[**BgpDynamicNeighbor**](BgpDynamicNeighbor.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **422** | Unprocessable entity |  -  |
 
 <a name="createVrf"></a>
 # **createVrf**
@@ -166,6 +320,82 @@ public class Example {
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 | **422** | Unprocessable entity |  -  |
+
+<a name="deleteBgpDynamicNeighborById"></a>
+# **deleteBgpDynamicNeighborById**
+> BgpDynamicNeighbor deleteBgpDynamicNeighborById(id, include, exclude)
+
+Delete a VRF BGP Dynamic Neighbor
+
+Trigger the removal of a BGP Neighbor range from a VRF
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.VrfsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    VrfsApi apiInstance = new VrfsApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | BGP Dynamic Neighbor UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
+    try {
+      BgpDynamicNeighbor result = apiInstance.deleteBgpDynamicNeighborById(id, include, exclude);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VrfsApi#deleteBgpDynamicNeighborById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| BGP Dynamic Neighbor UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
+
+### Return type
+
+[**BgpDynamicNeighbor**](BgpDynamicNeighbor.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **202** | Accepted |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
 
 <a name="deleteVrf"></a>
 # **deleteVrf**
@@ -694,6 +924,81 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
+<a name="getBgpDynamicNeighbors"></a>
+# **getBgpDynamicNeighbors**
+> BgpDynamicNeighborList getBgpDynamicNeighbors(id, include, exclude)
+
+List BGP Dynamic Neighbors
+
+Returns the list of VRF BGP Dynamic Neighbors for this Metal Gateway
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.VrfsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    VrfsApi apiInstance = new VrfsApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | Metal Gateway UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
+    try {
+      BgpDynamicNeighborList result = apiInstance.getBgpDynamicNeighbors(id, include, exclude);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VrfsApi#getBgpDynamicNeighbors");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| Metal Gateway UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
+
+### Return type
+
+[**BgpDynamicNeighborList**](BgpDynamicNeighborList.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+
 <a name="getVrfRoutes"></a>
 # **getVrfRoutes**
 > VrfRouteList getVrfRoutes(id, include, exclude)
@@ -846,7 +1151,7 @@ public class Example {
 
 <a name="updateVrfRouteById"></a>
 # **updateVrfRouteById**
-> VrfRoute updateVrfRouteById(id, include, exclude)
+> VrfRoute updateVrfRouteById(id, vrfRouteUpdateInput, include, exclude)
 
 Update a VRF Route
 
@@ -875,10 +1180,11 @@ public class Example {
 
     VrfsApi apiInstance = new VrfsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | VRF Route UUID
+    VrfRouteUpdateInput vrfRouteUpdateInput = new VrfRouteUpdateInput(); // VrfRouteUpdateInput | 
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      VrfRoute result = apiInstance.updateVrfRouteById(id, include, exclude);
+      VrfRoute result = apiInstance.updateVrfRouteById(id, vrfRouteUpdateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VrfsApi#updateVrfRouteById");
@@ -896,6 +1202,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| VRF Route UUID | |
+| **vrfRouteUpdateInput** | [**VrfRouteUpdateInput**](VrfRouteUpdateInput.md)|  | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 | **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
@@ -909,7 +1216,7 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

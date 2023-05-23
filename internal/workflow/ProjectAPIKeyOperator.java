@@ -12,22 +12,18 @@ import java.util.AbstractMap.SimpleEntry;
 import java.util.UUID;
 
 public class ProjectAPIKeyOperator {
-    private final AuthenticationApi authApi;
-    private final ProjectsApi projectsApi;
+    private AuthenticationApi authApi;
+    private ProjectsApi projectsApi;
+    private ApiClient apiClient;
 
-    public ProjectAPIKeyOperator(String apiKey) {
-        ApiClient client = new ApiClient();
-        client.setApiKey(apiKey);
-        this.authApi = new AuthenticationApi(client);
-        this.projectsApi = new ProjectsApi(client);
+    public void initializeApiClient(String apiKey) {
+        apiClient = new ApiClient();
+        apiClient.setApiKey(apiKey);
+        authApi = new AuthenticationApi(apiClient);
+        projectsApi = new ProjectsApi(apiClient);
     }
 
-    public ProjectAPIKeyOperator(ApiClient client) {
-        this.authApi = new AuthenticationApi(client);
-        this.projectsApi = new ProjectsApi(client);
-    }
-
-    public UUID createProjectAPIKey(UUID projectId, String description) throws Exception {
+    public AuthToken createProjectAPIKey(UUID projectId, String description) throws Exception {
         AuthTokenInput authTokenInput = new AuthTokenInput();
         authTokenInput.setDescription(description);
 
@@ -55,7 +51,7 @@ public class ProjectAPIKeyOperator {
         authApi.deleteAPIKey(apiKeyId);
     }
 
-    public String rotateProjectKey(String authToken) {
+    public AuthToken rotateProjectKey(String authToken) {
         try {
             SimpleEntry<AuthToken, UUID> result = getProjectAuthTokenByToken(authToken);
             AuthToken oldAuthToken = result.getKey();
@@ -66,7 +62,11 @@ public class ProjectAPIKeyOperator {
             }
 
             AuthToken newAuthToken = createProjectAPIKey(projectId, "rotated-api-key");
-            deleteAPIKey(newAuthToken.getId());
+
+            // Update the API client with the new API key
+            initializeApiClient(newAuthToken.getToken());
+
+            deleteAPIKey(oldAuthToken.getId());
 
             return newAuthToken;
         } catch (Exception e) {

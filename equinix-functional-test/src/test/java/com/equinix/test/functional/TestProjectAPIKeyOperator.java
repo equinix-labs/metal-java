@@ -28,7 +28,8 @@ public class TestProjectAPIKeyOperator {
         // Configure API key authorization: x_auth_token
         ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
         x_auth_token.setApiKey(token);
-        projectAPIKeyOperator = new ProjectAPIKeyOperator(defaultClient);
+        projectAPIKeyOperator = new ProjectAPIKeyOperator();
+        projectAPIKeyOperator.initializeApiClient(token);
     }
 
     @Test

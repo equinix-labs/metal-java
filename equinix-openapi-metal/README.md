@@ -253,7 +253,8 @@ Class | Method | HTTP request | Description
 *EventsApi* | [**findInterconnectionPortEvents**](docs/EventsApi.md#findInterconnectionPortEvents) | **GET** /connections/{connection_id}/ports/{id}/events | Retrieve interconnection port events
 *EventsApi* | [**findOrganizationEvents**](docs/EventsApi.md#findOrganizationEvents) | **GET** /organizations/{id}/events | Retrieve organization&#39;s events
 *EventsApi* | [**findProjectEvents**](docs/EventsApi.md#findProjectEvents) | **GET** /projects/{id}/events | Retrieve project&#39;s events
-*EventsApi* | [**findVirtualCircuitEvents**](docs/EventsApi.md#findVirtualCircuitEvents) | **GET** /virtual-circuits/{id}/events | Retrieve interconnection events
+*EventsApi* | [**findVirtualCircuitEvents**](docs/EventsApi.md#findVirtualCircuitEvents) | **GET** /virtual-circuits/{id}/events | Retrieve virtual circuit events
+*EventsApi* | [**findVrfRouteEvents**](docs/EventsApi.md#findVrfRouteEvents) | **GET** /routes/{id}/events | Retrieve VRF route events
 *FacilitiesApi* | [**findFacilities**](docs/FacilitiesApi.md#findFacilities) | **GET** /facilities | Retrieve all facilities
 *FacilitiesApi* | [**findFacilitiesByOrganization**](docs/FacilitiesApi.md#findFacilitiesByOrganization) | **GET** /organizations/{id}/facilities | Retrieve all facilities visible by the organization
 *FacilitiesApi* | [**findFacilitiesByProject**](docs/FacilitiesApi.md#findFacilitiesByProject) | **GET** /projects/{id}/facilities | Retrieve all facilities visible by the project
@@ -400,8 +401,11 @@ Class | Method | HTTP request | Description
 *VlansApi* | [**deleteVirtualNetwork**](docs/VlansApi.md#deleteVirtualNetwork) | **DELETE** /virtual-networks/{id} | Delete a virtual network
 *VlansApi* | [**findVirtualNetworks**](docs/VlansApi.md#findVirtualNetworks) | **GET** /projects/{id}/virtual-networks | Retrieve all virtual networks
 *VlansApi* | [**getVirtualNetwork**](docs/VlansApi.md#getVirtualNetwork) | **GET** /virtual-networks/{id} | Get a virtual network
+*VrfsApi* | [**bgpDynamicNeighborsIdGet**](docs/VrfsApi.md#bgpDynamicNeighborsIdGet) | **GET** /bgp-dynamic-neighbors/{id} | Retrieve a BGP Dynamic Neighbor
+*VrfsApi* | [**createBgpDynamicNeighbor**](docs/VrfsApi.md#createBgpDynamicNeighbor) | **POST** /metal-gateways/{id}/bgp-dynamic-neighbors | Create a VRF BGP Dynamic Neighbor range
 *VrfsApi* | [**createVrf**](docs/VrfsApi.md#createVrf) | **POST** /projects/{id}/vrfs | Create a new VRF in the specified project
 *VrfsApi* | [**createVrfRoute**](docs/VrfsApi.md#createVrfRoute) | **POST** /vrfs/{id}/routes | Create a VRF route
+*VrfsApi* | [**deleteBgpDynamicNeighborById**](docs/VrfsApi.md#deleteBgpDynamicNeighborById) | **DELETE** /bgp-dynamic-neighbors/{id} | Delete a VRF BGP Dynamic Neighbor
 *VrfsApi* | [**deleteVrf**](docs/VrfsApi.md#deleteVrf) | **DELETE** /vrfs/{id} | Delete the VRF
 *VrfsApi* | [**deleteVrfRouteById**](docs/VrfsApi.md#deleteVrfRouteById) | **DELETE** /routes/{id} | Delete a VRF Route
 *VrfsApi* | [**findVrfById**](docs/VrfsApi.md#findVrfById) | **GET** /vrfs/{id} | Retrieve a VRF
@@ -409,6 +413,7 @@ Class | Method | HTTP request | Description
 *VrfsApi* | [**findVrfIpReservations**](docs/VrfsApi.md#findVrfIpReservations) | **GET** /vrfs/{id}/ips | Retrieve all VRF IP Reservations in the VRF
 *VrfsApi* | [**findVrfRouteById**](docs/VrfsApi.md#findVrfRouteById) | **GET** /routes/{id} | Retrieve a VRF Route
 *VrfsApi* | [**findVrfs**](docs/VrfsApi.md#findVrfs) | **GET** /projects/{id}/vrfs | Retrieve all VRFs in the project
+*VrfsApi* | [**getBgpDynamicNeighbors**](docs/VrfsApi.md#getBgpDynamicNeighbors) | **GET** /metal-gateways/{id}/bgp-dynamic-neighbors | List BGP Dynamic Neighbors
 *VrfsApi* | [**getVrfRoutes**](docs/VrfsApi.md#getVrfRoutes) | **GET** /vrfs/{id}/routes | Retrieve all routes in the VRF
 *VrfsApi* | [**updateVrf**](docs/VrfsApi.md#updateVrf) | **PUT** /vrfs/{id} | Update the VRF
 *VrfsApi* | [**updateVrfRouteById**](docs/VrfsApi.md#updateVrfRouteById) | **PUT** /routes/{id} | Update a VRF Route
@@ -648,6 +653,7 @@ Class | Method | HTTP request | Description
  - [VrfRouteCreateInput](docs/VrfRouteCreateInput.md)
  - [VrfRouteList](docs/VrfRouteList.md)
  - [VrfRouteMetalGateway](docs/VrfRouteMetalGateway.md)
+ - [VrfRouteUpdateInput](docs/VrfRouteUpdateInput.md)
  - [VrfRouteVirtualNetwork](docs/VrfRouteVirtualNetwork.md)
  - [VrfRouteVrf](docs/VrfRouteVrf.md)
  - [VrfUpdateInput](docs/VrfUpdateInput.md)
