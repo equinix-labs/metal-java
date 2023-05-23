@@ -481,6 +481,8 @@ components:
       $ref: './components/schemas/VrfRoute.yaml'
     VrfRouteCreateInput:
       $ref: './components/schemas/VrfRouteCreateInput.yaml'
+    VrfRouteUpdateInput:
+      $ref: './components/schemas/VrfRouteUpdateInput.yaml'
     VrfRouteList:
       $ref: './components/schemas/VrfRouteList.yaml'
     VrfUpdateInput:
@@ -506,6 +508,8 @@ paths:
     $ref: ./paths/batches/id.yaml
   /bgp/sessions/{id}:
     $ref: ./paths/bgp/sessions/id.yaml
+  /bgp-dynamic-neighbors/{id}:
+    $ref: ./paths/bgp-dynamic-neighbors/id.yaml
   /capacity:
     $ref: ./paths/capacity.yaml
   /capacity/metros:
@@ -598,6 +602,8 @@ paths:
     $ref: ./paths/memberships/id.yaml
   /metal-gateways/{id}:
     $ref: ./paths/metal-gateways/id.yaml
+  /metal-gateways/{id}/bgp-dynamic-neighbors:
+    $ref: ./paths/metal-gateways/id/bgp-dynamic-neighbors.yaml
   /metal-gateways/{id}/ips.yaml:
     $ref: ./paths/metal-gateways/id/ips.yaml
   /operating-system-versions:
@@ -728,6 +734,8 @@ paths:
     $ref: ./paths/reset-password.yaml
   /routes/{id}:
     $ref: ./paths/routes/id.yaml
+  /routes/{id}/events:
+    $ref: ./paths/routes/id/events.yaml
   /spot-market-requests/{id}:
     $ref: ./paths/spot-market-requests/id.yaml
   /ssh-keys:

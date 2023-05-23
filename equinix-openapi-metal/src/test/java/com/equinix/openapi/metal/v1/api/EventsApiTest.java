@@ -159,7 +159,7 @@ public class EventsApiTest {
     }
 
     /**
-     * Retrieve interconnection events
+     * Retrieve virtual circuit events
      *
      * Returns a list of the virtual circuit events
      *
@@ -173,6 +173,24 @@ public class EventsApiTest {
         Integer page = null;
         Integer perPage = null;
         Event response = api.findVirtualCircuitEvents(id, include, exclude, page, perPage);
+        // TODO: test validations
+    }
+
+    /**
+     * Retrieve VRF route events
+     *
+     * Returns a list of the VRF route events
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void findVrfRouteEventsTest() throws ApiException {
+        UUID id = null;
+        List<String> include = null;
+        List<String> exclude = null;
+        Integer page = null;
+        Integer perPage = null;
+        Event response = api.findVrfRouteEvents(id, include, exclude, page, perPage);
         // TODO: test validations
     }
 
