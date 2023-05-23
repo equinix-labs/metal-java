@@ -32,8 +32,7 @@ public class ProjectAPIKeyOperator {
         authTokenInput.setDescription(description);
 
         AuthToken newAuthToken = authApi.createProjectAPIKey(projectId, authTokenInput);
-        UUID newApiKeyId = newAuthToken.getId();
-        return newApiKeyId;
+        return newAuthToken;
     }
 
     public SimpleEntry<AuthToken, UUID> getProjectAuthTokenByToken(String token) throws Exception {
@@ -66,10 +65,10 @@ public class ProjectAPIKeyOperator {
                 throw new Exception("Cannot rotate API key. The current API key is not associated with a project.");
             }
 
-            UUID newApiKeyId = createProjectAPIKey(projectId, "rotated-api-key");
-            deleteAPIKey(oldAuthToken.getId());
+            AuthToken newAuthToken = createProjectAPIKey(projectId, "rotated-api-key");
+            deleteAPIKey(newAuthToken.getId());
 
-            return newApiKeyId.toString();
+            return newAuthToken;
         } catch (Exception e) {
             throw new RuntimeException("Failed to rotate the API key: " + e.getMessage(), e);
         }
