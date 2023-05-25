@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import com.equinix.openapi.ApiClient;
 import com.equinix.openapi.Configuration;
 import com.equinix.openapi.auth.ApiKeyAuth;
+import com.equinix.workflow.AuthToken;
 import com.equinix.workflow.ProjectAPIKeyOperator;
 
 public class TestProjectAPIKeyOperator {
@@ -27,7 +28,8 @@ public class TestProjectAPIKeyOperator {
         // Configure API key authorization: x_auth_token
         ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
         x_auth_token.setApiKey(token);
-        projectAPIKeyOperator = new ProjectAPIKeyOperator(defaultClient);
+        projectAPIKeyOperator = new ProjectAPIKeyOperator();
+        projectAPIKeyOperator.initializeApiClient(token);
     }
 
     @Test
@@ -36,9 +38,9 @@ public class TestProjectAPIKeyOperator {
         String oldApiKey = System.getenv(sysTokenKey);
 
         try {
-            String newApiKey = projectAPIKeyOperator.rotateProjectKey(oldApiKey);
-            Assert.assertNotNull(newApiKey);
-            logger.info(String.format("Successfully rotated old API key. New API Key: %s", newApiKey));
+            AuthToken newAuthToken = projectAPIKeyOperator.rotateProjectKey(oldApiKey);
+            Assert.assertNotNull(newAuthToken);
+            logger.info("Successfully rotated old API key. New API Key: " + newAuthToken.getToken());
         } catch (Exception e) {
             Assert.fail("Error: " + e.getMessage());
         }
