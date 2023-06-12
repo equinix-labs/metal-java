@@ -98,7 +98,9 @@ public class VirtualNetworkCreateInput {
    /**
    * The UUID (or facility code) for the Facility in which to create this Virtual network.
    * @return facility
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
 
   public String getFacility() {

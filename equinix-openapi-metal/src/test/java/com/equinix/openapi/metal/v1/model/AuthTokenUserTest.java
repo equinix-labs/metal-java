@@ -75,6 +75,22 @@ public class AuthTokenUserTest {
     }
 
     /**
+     * Test the property 'defaultOrganizationId'
+     */
+    @Test
+    public void defaultOrganizationIdTest() {
+        // TODO: test defaultOrganizationId
+    }
+
+    /**
+     * Test the property 'defaultProjectId'
+     */
+    @Test
+    public void defaultProjectIdTest() {
+        // TODO: test defaultProjectId
+    }
+
+    /**
      * Test the property 'email'
      */
     @Test

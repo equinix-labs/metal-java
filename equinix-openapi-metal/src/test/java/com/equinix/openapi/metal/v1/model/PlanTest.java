@@ -62,6 +62,14 @@ public class PlanTest {
     }
 
     /**
+     * Test the property 'categories'
+     */
+    @Test
+    public void categoriesTest() {
+        // TODO: test categories
+    }
+
+    /**
      * Test the property 'propertyClass'
      */
     @Test

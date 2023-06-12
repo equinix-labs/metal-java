@@ -773,6 +773,7 @@ paths:
       - Capacity
       x-accepts: application/json
     post:
+      deprecated: true
       description: Validates if a deploy can be fulfilled.
       operationId: checkCapacityForFacility
       requestBody:
@@ -2734,6 +2735,7 @@ paths:
       x-accepts: application/json
   /facilities:
     get:
+      deprecated: true
       description: Provides a listing of available datacenters where you can provision
         Packet devices.
       operationId: findFacilities
@@ -4368,6 +4370,8 @@ paths:
       description: |
         Create a VRF BGP Dynamic Neighbor range.
 
+        BGP Dynamic Neighbor records are limited to 2 per Virtual Network.
+
         Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information.
       operationId: createBgpDynamicNeighbor
       parameters:
@@ -4380,6 +4384,32 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -4422,7 +4452,7 @@ paths:
       - VRFs
       x-content-type: application/json
       x-accepts: application/json
-  /metal-gateways/{id}/ips.yaml:
+  /metal-gateways/{id}/ips:
     get:
       description: Returns the list of Elastic IPs assigned to this Metal Gateway
       operationId: getMetalGatewayElasticIps
@@ -5011,6 +5041,20 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Filter by plan category
+        explode: true
+        in: query
+        name: categories
+        required: false
+        schema:
+          items:
+            enum:
+            - compute
+            - storage
+            example: compute
+            type: string
+          type: array
+        style: form
       - description: Filter by device facility
         explode: true
         in: query
@@ -5027,7 +5071,8 @@ paths:
         schema:
           type: string
         style: form
-      - description: Filter only reserved instances
+      - description: "Filter only reserved instances. When set to true, only include\
+          \ reserved instances. When set to false, only include on-demand instances."
         explode: true
         in: query
         name: reserved
@@ -5050,6 +5095,16 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - description: "Filter only instances marked for termination. When set to true,\
+          \ only include instances that have a termination time. When set to false,\
+          \ only include instances that do not have a termination time."
+        explode: true
+        in: query
+        name: has_termination_time
+        required: false
+        schema:
+          type: boolean
         style: form
       - description: |-
           Nested attributes to include. Included objects will return their full
@@ -5225,6 +5280,7 @@ paths:
       x-accepts: application/json
   /organizations/{id}/facilities:
     get:
+      deprecated: true
       description: Returns a listing of available datacenters for the given organization
       operationId: findFacilitiesByOrganization
       parameters:
@@ -6198,6 +6254,20 @@ paths:
         on.
       operationId: findPlans
       parameters:
+      - description: Filter plans by its category
+        explode: true
+        in: query
+        name: categories
+        required: false
+        schema:
+          items:
+            enum:
+            - compute
+            - storage
+            example: compute
+            type: string
+          type: array
+        style: form
       - description: Filter plans by its plan type
         explode: true
         in: query
@@ -7745,6 +7815,20 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Filter by plan category
+        explode: true
+        in: query
+        name: categories
+        required: false
+        schema:
+          items:
+            enum:
+            - compute
+            - storage
+            example: compute
+            type: string
+          type: array
+        style: form
       - description: Filter by device facility
         explode: true
         in: query
@@ -7761,7 +7845,8 @@ paths:
         schema:
           type: string
         style: form
-      - description: Filter only reserved instances
+      - description: "Filter only reserved instances. When set to true, only include\
+          \ reserved instances. When set to false, only include on-demand instances."
         explode: true
         in: query
         name: reserved
@@ -7784,6 +7869,16 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - description: "Filter only instances marked for termination. When set to true,\
+          \ only include instances that have a termination time. When set to false,\
+          \ only include instances that do not have a termination time."
+        explode: true
+        in: query
+        name: has_termination_time
+        required: false
+        schema:
+          type: boolean
         style: form
       - description: |-
           Nested attributes to include. Included objects will return their full
@@ -8075,6 +8170,7 @@ paths:
       x-accepts: application/json
   /projects/{id}/facilities:
     get:
+      deprecated: true
       description: Returns a listing of available datacenters for the given project
       operationId: findFacilitiesByProject
       parameters:
@@ -9902,6 +9998,20 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Filter reservations by items category
+        explode: true
+        in: query
+        name: categories
+        required: false
+        schema:
+          items:
+            enum:
+            - compute
+            - storage
+            example: compute
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -12928,6 +13038,7 @@ components:
               last_login_at: 2000-01-23T04:56:07.000+00:00
               max_projects: 7
               timezone: timezone
+              default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               last_name: last_name
               short_id: short_id
@@ -12935,6 +13046,7 @@ components:
               emails:
               - href: href
               - href: href
+              default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               full_name: full_name
               avatar_url: avatar_url
               updated_at: 2000-01-23T04:56:07.000+00:00
@@ -13213,6 +13325,7 @@ components:
                 last_login_at: 2000-01-23T04:56:07.000+00:00
                 max_projects: 7
                 timezone: timezone
+                default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 created_at: 2000-01-23T04:56:07.000+00:00
                 last_name: last_name
                 short_id: short_id
@@ -13220,6 +13333,7 @@ components:
                 emails:
                 - href: href
                 - href: href
+                default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 full_name: full_name
                 avatar_url: avatar_url
                 updated_at: 2000-01-23T04:56:07.000+00:00
@@ -13424,6 +13538,7 @@ components:
                 last_login_at: 2000-01-23T04:56:07.000+00:00
                 max_projects: 7
                 timezone: timezone
+                default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 created_at: 2000-01-23T04:56:07.000+00:00
                 last_name: last_name
                 short_id: short_id
@@ -13431,6 +13546,7 @@ components:
                 emails:
                 - href: href
                 - href: href
+                default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 full_name: full_name
                 avatar_url: avatar_url
                 updated_at: 2000-01-23T04:56:07.000+00:00
@@ -14436,6 +14552,9 @@ components:
           - on_demand
           - on_demand
           name: name
+          categories:
+          - categories
+          - categories
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           class: m3.large.x86
           pricing: "{}"
@@ -14448,7 +14567,7 @@ components:
         - href: href
         project_lite: null
         short_id: short_id
-        termination_time: 2000-01-23T04:56:07.000+00:00
+        termination_time: 2021-09-03T16:32:00+03:00
         created_by: null
         tags:
         - tags
@@ -14571,6 +14690,9 @@ components:
             - on_demand
             - on_demand
             name: name
+            categories:
+            - categories
+            - categories
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             class: m3.large.x86
             pricing: "{}"
@@ -14651,6 +14773,7 @@ components:
         iqn:
           type: string
         locked:
+          description: Prevents accidental deletion of this resource when set to true.
           type: boolean
         metro:
           $ref: '#/components/schemas/Device_metro'
@@ -14729,13 +14852,16 @@ components:
           type: array
         termination_time:
           description: |-
-            When the device will be terminated. This is commonly set in advance for
+            When the device will be terminated. If you don't supply timezone info, the timestamp is assumed to be in UTC.
+
+            This is commonly set in advance for
             ephemeral spot market instances but this field may also be set with
             on-demand and reservation instances to automatically delete the resource
             at a given time. The termination time can also be used to release a
             hardware reservation instance at a given time, keeping the reservation
             open for other uses.  On a spot market device, the termination time will
             be set automatically when outbid.
+          example: 2021-09-03T16:32:00+03:00
           format: date-time
           type: string
         updated_at:
@@ -14918,6 +15044,17 @@ components:
             type: string
           type: array
         termination_time:
+          description: |
+            When the device will be terminated. If you don't supply timezone info, the timestamp is assumed to be in UTC.
+
+            This is commonly set in advance for
+            ephemeral spot market instances but this field may also be set with
+            on-demand and reservation instances to automatically delete the resource
+            at a given time. The termination time can also be used to release a
+            hardware reservation instance at a given time, keeping the reservation
+            open for other uses.  On a spot market device, the termination time will
+            be set automatically when outbid.
+          example: 2021-09-03T16:32:00+03:00
           format: date-time
           type: string
         user_ssh_keys:
@@ -15206,6 +15343,9 @@ components:
             - on_demand
             - on_demand
             name: name
+            categories:
+            - categories
+            - categories
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             class: m3.large.x86
             pricing: "{}"
@@ -15218,7 +15358,7 @@ components:
           - href: href
           project_lite: null
           short_id: short_id
-          termination_time: 2000-01-23T04:56:07.000+00:00
+          termination_time: 2021-09-03T16:32:00+03:00
           created_by: null
           tags:
           - tags
@@ -15341,6 +15481,9 @@ components:
               - on_demand
               - on_demand
               name: name
+              categories:
+              - categories
+              - categories
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               class: m3.large.x86
               pricing: "{}"
@@ -15628,6 +15771,9 @@ components:
             - on_demand
             - on_demand
             name: name
+            categories:
+            - categories
+            - categories
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             class: m3.large.x86
             pricing: "{}"
@@ -15640,7 +15786,7 @@ components:
           - href: href
           project_lite: null
           short_id: short_id
-          termination_time: 2000-01-23T04:56:07.000+00:00
+          termination_time: 2021-09-03T16:32:00+03:00
           created_by: null
           tags:
           - tags
@@ -15763,6 +15909,9 @@ components:
               - on_demand
               - on_demand
               name: name
+              categories:
+              - categories
+              - categories
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               class: m3.large.x86
               pricing: "{}"
@@ -15857,6 +16006,8 @@ components:
         ipxe_script_url:
           type: string
         locked:
+          description: "Whether the device should be locked, preventing accidental\
+            \ deletion."
           type: boolean
         network_frozen:
           description: "If true, this instance can not be converted to a different\
@@ -16191,6 +16342,7 @@ components:
     FacilityInput:
       properties:
         facility:
+          deprecated: true
           description: |-
             The datacenter where the device should be created.
 
@@ -16419,6 +16571,9 @@ components:
           - on_demand
           - on_demand
           name: name
+          categories:
+          - categories
+          - categories
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           class: m3.large.x86
           pricing: "{}"
@@ -16605,6 +16760,9 @@ components:
             - on_demand
             - on_demand
             name: name
+            categories:
+            - categories
+            - categories
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             class: m3.large.x86
             pricing: "{}"
@@ -16727,6 +16885,9 @@ components:
             - on_demand
             - on_demand
             name: name
+            categories:
+            - categories
+            - categories
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             class: m3.large.x86
             pricing: "{}"
@@ -17669,6 +17830,9 @@ components:
             - on_demand
             - on_demand
             name: name
+            categories:
+            - categories
+            - categories
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             class: m3.large.x86
             pricing: "{}"
@@ -17728,6 +17892,9 @@ components:
             - on_demand
             - on_demand
             name: name
+            categories:
+            - categories
+            - categories
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             class: m3.large.x86
             pricing: "{}"
@@ -17847,6 +18014,9 @@ components:
               - on_demand
               - on_demand
               name: name
+              categories:
+              - categories
+              - categories
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               class: m3.large.x86
               pricing: "{}"
@@ -17906,6 +18076,9 @@ components:
               - on_demand
               - on_demand
               name: name
+              categories:
+              - categories
+              - categories
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               class: m3.large.x86
               pricing: "{}"
@@ -17981,6 +18154,9 @@ components:
               - on_demand
               - on_demand
               name: name
+              categories:
+              - categories
+              - categories
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               class: m3.large.x86
               pricing: "{}"
@@ -18040,6 +18216,9 @@ components:
               - on_demand
               - on_demand
               name: name
+              categories:
+              - categories
+              - categories
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               class: m3.large.x86
               pricing: "{}"
@@ -18181,6 +18360,9 @@ components:
           - on_demand
           - on_demand
           name: name
+          categories:
+          - categories
+          - categories
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           class: m3.large.x86
           pricing: "{}"
@@ -20013,6 +20195,9 @@ components:
         - on_demand
         - on_demand
         name: name
+        categories:
+        - categories
+        - categories
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         class: m3.large.x86
         pricing: "{}"
@@ -20029,6 +20214,12 @@ components:
             \ price if it is different from the default price."
           items:
             $ref: '#/components/schemas/Plan_available_in_metros_inner'
+          type: array
+        categories:
+          description: "Categories of the plan, like compute or storage. A Plan can\
+            \ belong to multiple categories."
+          items:
+            type: string
           type: array
         class:
           example: m3.large.x86
@@ -20121,6 +20312,9 @@ components:
           - on_demand
           - on_demand
           name: name
+          categories:
+          - categories
+          - categories
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           class: m3.large.x86
           pricing: "{}"
@@ -20173,6 +20367,9 @@ components:
           - on_demand
           - on_demand
           name: name
+          categories:
+          - categories
+          - categories
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           class: m3.large.x86
           pricing: "{}"
@@ -21053,6 +21250,9 @@ components:
         metro_name: metro_name
         term: term
         id: id
+        plan_categories:
+        - plan_categories
+        - plan_categories
         plan_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plan_name: plan_name
       properties:
@@ -21075,6 +21275,10 @@ components:
           type: string
         plan_slug:
           type: string
+        plan_categories:
+          items:
+            type: string
+          type: array
         quantity:
           type: integer
         term:
@@ -21092,6 +21296,9 @@ components:
             metro_name: metro_name
             term: term
             id: id
+            plan_categories:
+            - plan_categories
+            - plan_categories
             plan_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             plan_name: plan_name
           - plan_slug: plan_slug
@@ -21102,6 +21309,9 @@ components:
             metro_name: metro_name
             term: term
             id: id
+            plan_categories:
+            - plan_categories
+            - plan_categories
             plan_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             plan_name: plan_name
           period:
@@ -21125,6 +21335,9 @@ components:
             metro_name: metro_name
             term: term
             id: id
+            plan_categories:
+            - plan_categories
+            - plan_categories
             plan_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             plan_name: plan_name
           - plan_slug: plan_slug
@@ -21135,6 +21348,9 @@ components:
             metro_name: metro_name
             term: term
             id: id
+            plan_categories:
+            - plan_categories
+            - plan_categories
             plan_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             plan_name: plan_name
           period:
@@ -21166,6 +21382,9 @@ components:
           metro_name: metro_name
           term: term
           id: id
+          plan_categories:
+          - plan_categories
+          - plan_categories
           plan_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plan_name: plan_name
         - plan_slug: plan_slug
@@ -21176,6 +21395,9 @@ components:
           metro_name: metro_name
           term: term
           id: id
+          plan_categories:
+          - plan_categories
+          - plan_categories
           plan_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plan_name: plan_name
         period:
@@ -21227,6 +21449,7 @@ components:
         plan: plan
       properties:
         facility:
+          deprecated: true
           type: string
         plan:
           type: string
@@ -21729,6 +21952,7 @@ components:
           format: date-time
           type: string
         facilities:
+          deprecated: true
           items:
             format: uuid
             type: string
@@ -22099,6 +22323,7 @@ components:
         last_login_at: 2000-01-23T04:56:07.000+00:00
         max_projects: 7
         timezone: timezone
+        default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         created_at: 2000-01-23T04:56:07.000+00:00
         last_name: last_name
         short_id: short_id
@@ -22106,6 +22331,7 @@ components:
         emails:
         - href: href
         - href: href
+        default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         full_name: full_name
         avatar_url: avatar_url
         updated_at: 2000-01-23T04:56:07.000+00:00
@@ -22127,6 +22353,12 @@ components:
           type: string
         customdata:
           type: object
+        default_organization_id:
+          format: uuid
+          type: string
+        default_project_id:
+          format: uuid
+          type: string
         email:
           type: string
         emails:
@@ -22186,7 +22418,6 @@ components:
         company_url: company_url
         phone_number: phone_number
         customdata: "{}"
-        locked: true
         first_name: first_name
         two_factor_auth: two_factor_auth
       properties:
@@ -22209,8 +22440,6 @@ components:
           type: string
         level:
           type: string
-        locked:
-          type: boolean
         password:
           type: string
         phone_number:
@@ -22291,6 +22520,7 @@ components:
           last_login_at: 2000-01-23T04:56:07.000+00:00
           max_projects: 7
           timezone: timezone
+          default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           created_at: 2000-01-23T04:56:07.000+00:00
           last_name: last_name
           short_id: short_id
@@ -22298,6 +22528,7 @@ components:
           emails:
           - href: href
           - href: href
+          default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           full_name: full_name
           avatar_url: avatar_url
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -22313,6 +22544,7 @@ components:
           last_login_at: 2000-01-23T04:56:07.000+00:00
           max_projects: 7
           timezone: timezone
+          default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           created_at: 2000-01-23T04:56:07.000+00:00
           last_name: last_name
           short_id: short_id
@@ -22320,6 +22552,7 @@ components:
           emails:
           - href: href
           - href: href
+          default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           full_name: full_name
           avatar_url: avatar_url
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -22513,6 +22746,7 @@ components:
         description:
           type: string
         facility:
+          deprecated: true
           description: The UUID (or facility code) for the Facility in which to create
             this Virtual network.
           type: string
@@ -22790,6 +23024,7 @@ components:
           last_login_at: 2000-01-23T04:56:07.000+00:00
           max_projects: 7
           timezone: timezone
+          default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           created_at: 2000-01-23T04:56:07.000+00:00
           last_name: last_name
           short_id: short_id
@@ -22797,6 +23032,7 @@ components:
           emails:
           - href: href
           - href: href
+          default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           full_name: full_name
           avatar_url: avatar_url
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -23120,6 +23356,7 @@ components:
             last_login_at: 2000-01-23T04:56:07.000+00:00
             max_projects: 7
             timezone: timezone
+            default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             created_at: 2000-01-23T04:56:07.000+00:00
             last_name: last_name
             short_id: short_id
@@ -23127,6 +23364,7 @@ components:
             emails:
             - href: href
             - href: href
+            default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             full_name: full_name
             avatar_url: avatar_url
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -23445,6 +23683,7 @@ components:
               last_login_at: 2000-01-23T04:56:07.000+00:00
               max_projects: 7
               timezone: timezone
+              default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               last_name: last_name
               short_id: short_id
@@ -23452,6 +23691,7 @@ components:
               emails:
               - href: href
               - href: href
+              default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               full_name: full_name
               avatar_url: avatar_url
               updated_at: 2000-01-23T04:56:07.000+00:00
@@ -23674,6 +23914,7 @@ components:
               last_login_at: 2000-01-23T04:56:07.000+00:00
               max_projects: 7
               timezone: timezone
+              default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               last_name: last_name
               short_id: short_id
@@ -23681,6 +23922,7 @@ components:
               emails:
               - href: href
               - href: href
+              default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               full_name: full_name
               avatar_url: avatar_url
               updated_at: 2000-01-23T04:56:07.000+00:00
@@ -23836,6 +24078,7 @@ components:
             last_login_at: 2000-01-23T04:56:07.000+00:00
             max_projects: 7
             timezone: timezone
+            default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             created_at: 2000-01-23T04:56:07.000+00:00
             last_name: last_name
             short_id: short_id
@@ -23843,6 +24086,7 @@ components:
             emails:
             - href: href
             - href: href
+            default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             full_name: full_name
             avatar_url: avatar_url
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -23957,6 +24201,7 @@ components:
             last_login_at: 2000-01-23T04:56:07.000+00:00
             max_projects: 7
             timezone: timezone
+            default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             created_at: 2000-01-23T04:56:07.000+00:00
             last_name: last_name
             short_id: short_id
@@ -23964,6 +24209,7 @@ components:
             emails:
             - href: href
             - href: href
+            default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             full_name: full_name
             avatar_url: avatar_url
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -24160,6 +24406,7 @@ components:
             last_login_at: 2000-01-23T04:56:07.000+00:00
             max_projects: 7
             timezone: timezone
+            default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             created_at: 2000-01-23T04:56:07.000+00:00
             last_name: last_name
             short_id: short_id
@@ -24167,6 +24414,7 @@ components:
             emails:
             - href: href
             - href: href
+            default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             full_name: full_name
             avatar_url: avatar_url
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -25310,6 +25558,8 @@ components:
             type: string
           type: array
         locked:
+          description: "Whether the device should be locked, preventing accidental\
+            \ deletion."
           type: boolean
         no_ssh_keys:
           type: boolean

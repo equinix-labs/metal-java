@@ -108,14 +108,6 @@ public class UserCreateInputTest {
     }
 
     /**
-     * Test the property 'locked'
-     */
-    @Test
-    public void lockedTest() {
-        // TODO: test locked
-    }
-
-    /**
      * Test the property 'password'
      */
     @Test

@@ -21,6 +21,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import com.google.gson.Gson;
@@ -80,6 +82,10 @@ public class SelfServiceReservationItemResponse {
   public static final String SERIALIZED_NAME_PLAN_SLUG = "plan_slug";
   @SerializedName(SERIALIZED_NAME_PLAN_SLUG)
   private String planSlug;
+
+  public static final String SERIALIZED_NAME_PLAN_CATEGORIES = "plan_categories";
+  @SerializedName(SERIALIZED_NAME_PLAN_CATEGORIES)
+  private List<String> planCategories = null;
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
@@ -268,6 +274,36 @@ public class SelfServiceReservationItemResponse {
   }
 
 
+  public SelfServiceReservationItemResponse planCategories(List<String> planCategories) {
+    
+    this.planCategories = planCategories;
+    return this;
+  }
+
+  public SelfServiceReservationItemResponse addPlanCategoriesItem(String planCategoriesItem) {
+    if (this.planCategories == null) {
+      this.planCategories = new ArrayList<>();
+    }
+    this.planCategories.add(planCategoriesItem);
+    return this;
+  }
+
+   /**
+   * Get planCategories
+   * @return planCategories
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getPlanCategories() {
+    return planCategories;
+  }
+
+
+  public void setPlanCategories(List<String> planCategories) {
+    this.planCategories = planCategories;
+  }
+
+
   public SelfServiceReservationItemResponse quantity(Integer quantity) {
     
     this.quantity = quantity;
@@ -374,6 +410,7 @@ public class SelfServiceReservationItemResponse {
         Objects.equals(this.planId, selfServiceReservationItemResponse.planId) &&
         Objects.equals(this.planName, selfServiceReservationItemResponse.planName) &&
         Objects.equals(this.planSlug, selfServiceReservationItemResponse.planSlug) &&
+        Objects.equals(this.planCategories, selfServiceReservationItemResponse.planCategories) &&
         Objects.equals(this.quantity, selfServiceReservationItemResponse.quantity) &&
         Objects.equals(this.term, selfServiceReservationItemResponse.term)&&
         Objects.equals(this.additionalProperties, selfServiceReservationItemResponse.additionalProperties);
@@ -381,7 +418,7 @@ public class SelfServiceReservationItemResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, id, metroCode, metroId, metroName, planId, planName, planSlug, quantity, term, additionalProperties);
+    return Objects.hash(amount, id, metroCode, metroId, metroName, planId, planName, planSlug, planCategories, quantity, term, additionalProperties);
   }
 
   @Override
@@ -396,6 +433,7 @@ public class SelfServiceReservationItemResponse {
     sb.append("    planId: ").append(toIndentedString(planId)).append("\n");
     sb.append("    planName: ").append(toIndentedString(planName)).append("\n");
     sb.append("    planSlug: ").append(toIndentedString(planSlug)).append("\n");
+    sb.append("    planCategories: ").append(toIndentedString(planCategories)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    term: ").append(toIndentedString(term)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -429,6 +467,7 @@ public class SelfServiceReservationItemResponse {
     openapiFields.add("plan_id");
     openapiFields.add("plan_name");
     openapiFields.add("plan_slug");
+    openapiFields.add("plan_categories");
     openapiFields.add("quantity");
     openapiFields.add("term");
 
@@ -468,6 +507,10 @@ public class SelfServiceReservationItemResponse {
       }
       if ((jsonObj.get("plan_slug") != null && !jsonObj.get("plan_slug").isJsonNull()) && !jsonObj.get("plan_slug").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `plan_slug` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan_slug").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("plan_categories") != null && !jsonObj.get("plan_categories").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `plan_categories` to be an array in the JSON string but got `%s`", jsonObj.get("plan_categories").toString()));
       }
       if ((jsonObj.get("term") != null && !jsonObj.get("term").isJsonNull()) && !jsonObj.get("term").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `term` to be a primitive type in the JSON string but got `%s`", jsonObj.get("term").toString()));

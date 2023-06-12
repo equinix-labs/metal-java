@@ -291,7 +291,7 @@ public class MetalGatewaysApi {
         Object localVarPostBody = metalGatewayElasticIpCreateInput;
 
         // create path and map variables
-        String localVarPath = "/metal-gateways/{id}/ips.yaml"
+        String localVarPath = "/metal-gateways/{id}/ips"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -896,7 +896,7 @@ public class MetalGatewaysApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/metal-gateways/{id}/ips.yaml"
+        String localVarPath = "/metal-gateways/{id}/ips"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

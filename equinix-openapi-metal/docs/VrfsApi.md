@@ -99,11 +99,11 @@ public class Example {
 
 <a name="createBgpDynamicNeighbor"></a>
 # **createBgpDynamicNeighbor**
-> BgpDynamicNeighbor createBgpDynamicNeighbor(id, bgpDynamicNeighborCreateInput)
+> BgpDynamicNeighbor createBgpDynamicNeighbor(id, bgpDynamicNeighborCreateInput, include, exclude)
 
 Create a VRF BGP Dynamic Neighbor range
 
-Create a VRF BGP Dynamic Neighbor range.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+Create a VRF BGP Dynamic Neighbor range.  BGP Dynamic Neighbor records are limited to 2 per Virtual Network.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
 
 ### Example
 ```java
@@ -129,8 +129,10 @@ public class Example {
     VrfsApi apiInstance = new VrfsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Metal Gateway UUID
     BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput = new BgpDynamicNeighborCreateInput(); // BgpDynamicNeighborCreateInput | 
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      BgpDynamicNeighbor result = apiInstance.createBgpDynamicNeighbor(id, bgpDynamicNeighborCreateInput);
+      BgpDynamicNeighbor result = apiInstance.createBgpDynamicNeighbor(id, bgpDynamicNeighborCreateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VrfsApi#createBgpDynamicNeighbor");
@@ -149,6 +151,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Metal Gateway UUID | |
 | **bgpDynamicNeighborCreateInput** | [**BgpDynamicNeighborCreateInput**](BgpDynamicNeighborCreateInput.md)|  | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

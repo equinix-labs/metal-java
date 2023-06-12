@@ -15,7 +15,6 @@
 |**firstName** | **String** |  |  |
 |**lastName** | **String** |  |  |
 |**level** | **String** |  |  [optional] |
-|**locked** | **Boolean** |  |  [optional] |
 |**password** | **String** |  |  [optional] |
 |**phoneNumber** | **String** |  |  [optional] |
 |**socialAccounts** | **Object** |  |  [optional] |

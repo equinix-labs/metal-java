@@ -723,7 +723,7 @@ public class DeviceCreateInMetroInput {
   }
 
    /**
-   * Get terminationTime
+   * When the device will be terminated. If you don&#39;t supply timezone info, the timestamp is assumed to be in UTC.  This is commonly set in advance for ephemeral spot market instances but this field may also be set with on-demand and reservation instances to automatically delete the resource at a given time. The termination time can also be used to release a hardware reservation instance at a given time, keeping the reservation open for other uses.  On a spot market device, the termination time will be set automatically when outbid. 
    * @return terminationTime
   **/
   @javax.annotation.Nullable

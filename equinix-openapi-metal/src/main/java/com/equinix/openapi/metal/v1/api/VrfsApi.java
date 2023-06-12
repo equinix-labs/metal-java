@@ -238,6 +238,8 @@ public class VrfsApi {
      * Build call for createBgpDynamicNeighbor
      * @param id Metal Gateway UUID (required)
      * @param bgpDynamicNeighborCreateInput  (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -251,7 +253,7 @@ public class VrfsApi {
         <tr><td> 422 </td><td> Unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createBgpDynamicNeighborCall(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createBgpDynamicNeighborCall(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -277,6 +279,14 @@ public class VrfsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -298,7 +308,7 @@ public class VrfsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createBgpDynamicNeighborValidateBeforeCall(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createBgpDynamicNeighborValidateBeforeCall(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createBgpDynamicNeighbor(Async)");
@@ -309,15 +319,17 @@ public class VrfsApi {
             throw new ApiException("Missing the required parameter 'bgpDynamicNeighborCreateInput' when calling createBgpDynamicNeighbor(Async)");
         }
 
-        return createBgpDynamicNeighborCall(id, bgpDynamicNeighborCreateInput, _callback);
+        return createBgpDynamicNeighborCall(id, bgpDynamicNeighborCreateInput, include, exclude, _callback);
 
     }
 
     /**
      * Create a VRF BGP Dynamic Neighbor range
-     * Create a VRF BGP Dynamic Neighbor range.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+     * Create a VRF BGP Dynamic Neighbor range.  BGP Dynamic Neighbor records are limited to 2 per Virtual Network.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
      * @param id Metal Gateway UUID (required)
      * @param bgpDynamicNeighborCreateInput  (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return BgpDynamicNeighbor
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -330,16 +342,18 @@ public class VrfsApi {
         <tr><td> 422 </td><td> Unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public BgpDynamicNeighbor createBgpDynamicNeighbor(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput) throws ApiException {
-        ApiResponse<BgpDynamicNeighbor> localVarResp = createBgpDynamicNeighborWithHttpInfo(id, bgpDynamicNeighborCreateInput);
+    public BgpDynamicNeighbor createBgpDynamicNeighbor(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<BgpDynamicNeighbor> localVarResp = createBgpDynamicNeighborWithHttpInfo(id, bgpDynamicNeighborCreateInput, include, exclude);
         return localVarResp.getData();
     }
 
     /**
      * Create a VRF BGP Dynamic Neighbor range
-     * Create a VRF BGP Dynamic Neighbor range.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+     * Create a VRF BGP Dynamic Neighbor range.  BGP Dynamic Neighbor records are limited to 2 per Virtual Network.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
      * @param id Metal Gateway UUID (required)
      * @param bgpDynamicNeighborCreateInput  (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;BgpDynamicNeighbor&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -352,17 +366,19 @@ public class VrfsApi {
         <tr><td> 422 </td><td> Unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BgpDynamicNeighbor> createBgpDynamicNeighborWithHttpInfo(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput) throws ApiException {
-        okhttp3.Call localVarCall = createBgpDynamicNeighborValidateBeforeCall(id, bgpDynamicNeighborCreateInput, null);
+    public ApiResponse<BgpDynamicNeighbor> createBgpDynamicNeighborWithHttpInfo(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = createBgpDynamicNeighborValidateBeforeCall(id, bgpDynamicNeighborCreateInput, include, exclude, null);
         Type localVarReturnType = new TypeToken<BgpDynamicNeighbor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Create a VRF BGP Dynamic Neighbor range (asynchronously)
-     * Create a VRF BGP Dynamic Neighbor range.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+     * Create a VRF BGP Dynamic Neighbor range.  BGP Dynamic Neighbor records are limited to 2 per Virtual Network.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
      * @param id Metal Gateway UUID (required)
      * @param bgpDynamicNeighborCreateInput  (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -376,9 +392,9 @@ public class VrfsApi {
         <tr><td> 422 </td><td> Unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createBgpDynamicNeighborAsync(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput, final ApiCallback<BgpDynamicNeighbor> _callback) throws ApiException {
+    public okhttp3.Call createBgpDynamicNeighborAsync(UUID id, BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput, List<String> include, List<String> exclude, final ApiCallback<BgpDynamicNeighbor> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createBgpDynamicNeighborValidateBeforeCall(id, bgpDynamicNeighborCreateInput, _callback);
+        okhttp3.Call localVarCall = createBgpDynamicNeighborValidateBeforeCall(id, bgpDynamicNeighborCreateInput, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<BgpDynamicNeighbor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

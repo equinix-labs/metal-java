@@ -167,7 +167,9 @@ public class SpotMarketRequestCreateInput {
    /**
    * Get facilities
    * @return facilities
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
 
   public List<UUID> getFacilities() {
