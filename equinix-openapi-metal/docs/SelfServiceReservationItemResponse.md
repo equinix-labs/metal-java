@@ -15,6 +15,7 @@
 |**planId** | **UUID** |  |  [optional] |
 |**planName** | **String** |  |  [optional] |
 |**planSlug** | **String** |  |  [optional] |
+|**planCategories** | **List&lt;String&gt;** |  |  [optional] |
 |**quantity** | **Integer** |  |  [optional] |
 |**term** | **String** |  |  [optional] |
 

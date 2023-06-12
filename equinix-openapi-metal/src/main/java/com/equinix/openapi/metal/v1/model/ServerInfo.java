@@ -72,7 +72,9 @@ public class ServerInfo {
    /**
    * Get facility
    * @return facility
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
 
   public String getFacility() {

@@ -19,6 +19,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -100,6 +102,14 @@ public class SelfServiceReservationItemResponseTest {
     @Test
     public void planSlugTest() {
         // TODO: test planSlug
+    }
+
+    /**
+     * Test the property 'planCategories'
+     */
+    @Test
+    public void planCategoriesTest() {
+        // TODO: test planCategories
     }
 
     /**

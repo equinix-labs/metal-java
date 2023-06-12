@@ -1798,11 +1798,13 @@ public class DevicesApi {
     /**
      * Build call for findOrganizationDevices
      * @param id Organization UUID (required)
+     * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
-     * @param reserved Filter only reserved instances (optional)
+     * @param reserved Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. (optional)
      * @param tag Filter by device tag (optional)
      * @param type Filter by instance type (ondemand,spot,reserved) (optional)
+     * @param hasTerminationTime Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
@@ -1819,7 +1821,7 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findOrganizationDevicesCall(UUID id, String facility, String hostname, Boolean reserved, String tag, String type, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findOrganizationDevicesCall(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1845,6 +1847,10 @@ public class DevicesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (categories != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "categories", categories));
+        }
+
         if (facility != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("facility", facility));
         }
@@ -1863,6 +1869,10 @@ public class DevicesApi {
 
         if (type != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
+        }
+
+        if (hasTerminationTime != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("has_termination_time", hasTerminationTime));
         }
 
         if (include != null) {
@@ -1901,13 +1911,13 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findOrganizationDevicesValidateBeforeCall(UUID id, String facility, String hostname, Boolean reserved, String tag, String type, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findOrganizationDevicesValidateBeforeCall(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOrganizationDevices(Async)");
         }
 
-        return findOrganizationDevicesCall(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage, _callback);
+        return findOrganizationDevicesCall(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
 
     }
 
@@ -1915,11 +1925,13 @@ public class DevicesApi {
      * Retrieve all devices of an organization
      * Provides a collection of devices for a given organization.
      * @param id Organization UUID (required)
+     * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
-     * @param reserved Filter only reserved instances (optional)
+     * @param reserved Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. (optional)
      * @param tag Filter by device tag (optional)
      * @param type Filter by instance type (ondemand,spot,reserved) (optional)
+     * @param hasTerminationTime Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
@@ -1935,8 +1947,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public DeviceList findOrganizationDevices(UUID id, String facility, String hostname, Boolean reserved, String tag, String type, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<DeviceList> localVarResp = findOrganizationDevicesWithHttpInfo(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage);
+    public DeviceList findOrganizationDevices(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<DeviceList> localVarResp = findOrganizationDevicesWithHttpInfo(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
         return localVarResp.getData();
     }
 
@@ -1944,11 +1956,13 @@ public class DevicesApi {
      * Retrieve all devices of an organization
      * Provides a collection of devices for a given organization.
      * @param id Organization UUID (required)
+     * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
-     * @param reserved Filter only reserved instances (optional)
+     * @param reserved Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. (optional)
      * @param tag Filter by device tag (optional)
      * @param type Filter by instance type (ondemand,spot,reserved) (optional)
+     * @param hasTerminationTime Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
@@ -1964,8 +1978,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeviceList> findOrganizationDevicesWithHttpInfo(UUID id, String facility, String hostname, Boolean reserved, String tag, String type, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = findOrganizationDevicesValidateBeforeCall(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage, null);
+    public ApiResponse<DeviceList> findOrganizationDevicesWithHttpInfo(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = findOrganizationDevicesValidateBeforeCall(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, null);
         Type localVarReturnType = new TypeToken<DeviceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1974,11 +1988,13 @@ public class DevicesApi {
      * Retrieve all devices of an organization (asynchronously)
      * Provides a collection of devices for a given organization.
      * @param id Organization UUID (required)
+     * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
-     * @param reserved Filter only reserved instances (optional)
+     * @param reserved Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. (optional)
      * @param tag Filter by device tag (optional)
      * @param type Filter by instance type (ondemand,spot,reserved) (optional)
+     * @param hasTerminationTime Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
@@ -1995,9 +2011,9 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findOrganizationDevicesAsync(UUID id, String facility, String hostname, Boolean reserved, String tag, String type, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<DeviceList> _callback) throws ApiException {
+    public okhttp3.Call findOrganizationDevicesAsync(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<DeviceList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findOrganizationDevicesValidateBeforeCall(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage, _callback);
+        okhttp3.Call localVarCall = findOrganizationDevicesValidateBeforeCall(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<DeviceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2005,11 +2021,13 @@ public class DevicesApi {
     /**
      * Build call for findProjectDevices
      * @param id Project UUID (required)
+     * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
-     * @param reserved Filter only reserved instances (optional)
+     * @param reserved Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. (optional)
      * @param tag Filter by device tag (optional)
      * @param type Filter by instance type (ondemand,spot,reserved) (optional)
+     * @param hasTerminationTime Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
@@ -2026,7 +2044,7 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectDevicesCall(UUID id, String facility, String hostname, Boolean reserved, String tag, String type, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findProjectDevicesCall(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2052,6 +2070,10 @@ public class DevicesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (categories != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "categories", categories));
+        }
+
         if (facility != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("facility", facility));
         }
@@ -2070,6 +2092,10 @@ public class DevicesApi {
 
         if (type != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
+        }
+
+        if (hasTerminationTime != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("has_termination_time", hasTerminationTime));
         }
 
         if (include != null) {
@@ -2108,13 +2134,13 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findProjectDevicesValidateBeforeCall(UUID id, String facility, String hostname, Boolean reserved, String tag, String type, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findProjectDevicesValidateBeforeCall(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findProjectDevices(Async)");
         }
 
-        return findProjectDevicesCall(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage, _callback);
+        return findProjectDevicesCall(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
 
     }
 
@@ -2122,11 +2148,13 @@ public class DevicesApi {
      * Retrieve all devices of a project
      * Provides a collection of devices for a given project.
      * @param id Project UUID (required)
+     * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
-     * @param reserved Filter only reserved instances (optional)
+     * @param reserved Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. (optional)
      * @param tag Filter by device tag (optional)
      * @param type Filter by instance type (ondemand,spot,reserved) (optional)
+     * @param hasTerminationTime Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
@@ -2142,8 +2170,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public DeviceList findProjectDevices(UUID id, String facility, String hostname, Boolean reserved, String tag, String type, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<DeviceList> localVarResp = findProjectDevicesWithHttpInfo(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage);
+    public DeviceList findProjectDevices(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<DeviceList> localVarResp = findProjectDevicesWithHttpInfo(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
         return localVarResp.getData();
     }
 
@@ -2151,11 +2179,13 @@ public class DevicesApi {
      * Retrieve all devices of a project
      * Provides a collection of devices for a given project.
      * @param id Project UUID (required)
+     * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
-     * @param reserved Filter only reserved instances (optional)
+     * @param reserved Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. (optional)
      * @param tag Filter by device tag (optional)
      * @param type Filter by instance type (ondemand,spot,reserved) (optional)
+     * @param hasTerminationTime Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
@@ -2171,8 +2201,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeviceList> findProjectDevicesWithHttpInfo(UUID id, String facility, String hostname, Boolean reserved, String tag, String type, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = findProjectDevicesValidateBeforeCall(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage, null);
+    public ApiResponse<DeviceList> findProjectDevicesWithHttpInfo(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = findProjectDevicesValidateBeforeCall(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, null);
         Type localVarReturnType = new TypeToken<DeviceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2181,11 +2211,13 @@ public class DevicesApi {
      * Retrieve all devices of a project (asynchronously)
      * Provides a collection of devices for a given project.
      * @param id Project UUID (required)
+     * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
-     * @param reserved Filter only reserved instances (optional)
+     * @param reserved Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. (optional)
      * @param tag Filter by device tag (optional)
      * @param type Filter by instance type (ondemand,spot,reserved) (optional)
+     * @param hasTerminationTime Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
@@ -2202,9 +2234,9 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectDevicesAsync(UUID id, String facility, String hostname, Boolean reserved, String tag, String type, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<DeviceList> _callback) throws ApiException {
+    public okhttp3.Call findProjectDevicesAsync(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<DeviceList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findProjectDevicesValidateBeforeCall(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage, _callback);
+        okhttp3.Call localVarCall = findProjectDevicesValidateBeforeCall(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<DeviceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

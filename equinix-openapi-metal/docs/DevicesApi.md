@@ -907,7 +907,7 @@ null (empty response body)
 
 <a name="findOrganizationDevices"></a>
 # **findOrganizationDevices**
-> DeviceList findOrganizationDevices(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage)
+> DeviceList findOrganizationDevices(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage)
 
 Retrieve all devices of an organization
 
@@ -936,17 +936,19 @@ public class Example {
 
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Organization UUID
+    List<String> categories = Arrays.asList(); // List<String> | Filter by plan category
     String facility = "facility_example"; // String | Filter by device facility
     String hostname = "hostname_example"; // String | Filter by partial hostname
-    Boolean reserved = true; // Boolean | Filter only reserved instances
+    Boolean reserved = true; // Boolean | Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances.
     String tag = "tag_example"; // String | Filter by device tag
     String type = "type_example"; // String | Filter by instance type (ondemand,spot,reserved)
+    Boolean hasTerminationTime = true; // Boolean | Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time.
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      DeviceList result = apiInstance.findOrganizationDevices(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage);
+      DeviceList result = apiInstance.findOrganizationDevices(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#findOrganizationDevices");
@@ -964,11 +966,13 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Organization UUID | |
+| **categories** | [**List&lt;String&gt;**](String.md)| Filter by plan category | [optional] [enum: compute, storage] |
 | **facility** | **String**| Filter by device facility | [optional] |
 | **hostname** | **String**| Filter by partial hostname | [optional] |
-| **reserved** | **Boolean**| Filter only reserved instances | [optional] |
+| **reserved** | **Boolean**| Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. | [optional] |
 | **tag** | **String**| Filter by device tag | [optional] |
 | **type** | **String**| Filter by instance type (ondemand,spot,reserved) | [optional] |
+| **hasTerminationTime** | **Boolean**| Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time. | [optional] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 | **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 | **page** | **Integer**| Page to return | [optional] [default to 1] |
@@ -997,7 +1001,7 @@ public class Example {
 
 <a name="findProjectDevices"></a>
 # **findProjectDevices**
-> DeviceList findProjectDevices(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage)
+> DeviceList findProjectDevices(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage)
 
 Retrieve all devices of a project
 
@@ -1026,17 +1030,19 @@ public class Example {
 
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
+    List<String> categories = Arrays.asList(); // List<String> | Filter by plan category
     String facility = "facility_example"; // String | Filter by device facility
     String hostname = "hostname_example"; // String | Filter by partial hostname
-    Boolean reserved = true; // Boolean | Filter only reserved instances
+    Boolean reserved = true; // Boolean | Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances.
     String tag = "tag_example"; // String | Filter by device tag
     String type = "type_example"; // String | Filter by instance type (ondemand,spot,reserved)
+    Boolean hasTerminationTime = true; // Boolean | Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time.
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      DeviceList result = apiInstance.findProjectDevices(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage);
+      DeviceList result = apiInstance.findProjectDevices(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#findProjectDevices");
@@ -1054,11 +1060,13 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
+| **categories** | [**List&lt;String&gt;**](String.md)| Filter by plan category | [optional] [enum: compute, storage] |
 | **facility** | **String**| Filter by device facility | [optional] |
 | **hostname** | **String**| Filter by partial hostname | [optional] |
-| **reserved** | **Boolean**| Filter only reserved instances | [optional] |
+| **reserved** | **Boolean**| Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. | [optional] |
 | **tag** | **String**| Filter by device tag | [optional] |
 | **type** | **String**| Filter by instance type (ondemand,spot,reserved) | [optional] |
+| **hasTerminationTime** | **Boolean**| Filter only instances marked for termination. When set to true, only include instances that have a termination time. When set to false, only include instances that do not have a termination time. | [optional] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 | **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 | **page** | **Integer**| Page to return | [optional] [default to 1] |

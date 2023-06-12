@@ -88,7 +88,9 @@ public class FacilitiesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call findFacilitiesCall(List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -141,6 +143,7 @@ public class FacilitiesApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findFacilitiesValidateBeforeCall(List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         return findFacilitiesCall(include, exclude, _callback);
@@ -160,7 +163,9 @@ public class FacilitiesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public FacilityList findFacilities(List<String> include, List<String> exclude) throws ApiException {
         ApiResponse<FacilityList> localVarResp = findFacilitiesWithHttpInfo(include, exclude);
         return localVarResp.getData();
@@ -179,7 +184,9 @@ public class FacilitiesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<FacilityList> findFacilitiesWithHttpInfo(List<String> include, List<String> exclude) throws ApiException {
         okhttp3.Call localVarCall = findFacilitiesValidateBeforeCall(include, exclude, null);
         Type localVarReturnType = new TypeToken<FacilityList>(){}.getType();
@@ -200,7 +207,9 @@ public class FacilitiesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call findFacilitiesAsync(List<String> include, List<String> exclude, final ApiCallback<FacilityList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = findFacilitiesValidateBeforeCall(include, exclude, _callback);
@@ -224,7 +233,9 @@ public class FacilitiesApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call findFacilitiesByOrganizationCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -278,6 +289,7 @@ public class FacilitiesApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findFacilitiesByOrganizationValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
@@ -305,7 +317,9 @@ public class FacilitiesApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public FacilityList findFacilitiesByOrganization(UUID id, List<String> include, List<String> exclude) throws ApiException {
         ApiResponse<FacilityList> localVarResp = findFacilitiesByOrganizationWithHttpInfo(id, include, exclude);
         return localVarResp.getData();
@@ -327,7 +341,9 @@ public class FacilitiesApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<FacilityList> findFacilitiesByOrganizationWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
         okhttp3.Call localVarCall = findFacilitiesByOrganizationValidateBeforeCall(id, include, exclude, null);
         Type localVarReturnType = new TypeToken<FacilityList>(){}.getType();
@@ -351,7 +367,9 @@ public class FacilitiesApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call findFacilitiesByOrganizationAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<FacilityList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = findFacilitiesByOrganizationValidateBeforeCall(id, include, exclude, _callback);
@@ -375,7 +393,9 @@ public class FacilitiesApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call findFacilitiesByProjectCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -429,6 +449,7 @@ public class FacilitiesApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call findFacilitiesByProjectValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
@@ -456,7 +477,9 @@ public class FacilitiesApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public FacilityList findFacilitiesByProject(UUID id, List<String> include, List<String> exclude) throws ApiException {
         ApiResponse<FacilityList> localVarResp = findFacilitiesByProjectWithHttpInfo(id, include, exclude);
         return localVarResp.getData();
@@ -478,7 +501,9 @@ public class FacilitiesApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<FacilityList> findFacilitiesByProjectWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
         okhttp3.Call localVarCall = findFacilitiesByProjectValidateBeforeCall(id, include, exclude, null);
         Type localVarReturnType = new TypeToken<FacilityList>(){}.getType();
@@ -502,7 +527,9 @@ public class FacilitiesApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call findFacilitiesByProjectAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<FacilityList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = findFacilitiesByProjectValidateBeforeCall(id, include, exclude, _callback);

@@ -11,6 +11,8 @@
 |**avatarUrl** | **String** |  |  [optional] |
 |**createdAt** | **OffsetDateTime** |  |  [optional] |
 |**customdata** | **Object** |  |  [optional] |
+|**defaultOrganizationId** | **UUID** |  |  [optional] |
+|**defaultProjectId** | **UUID** |  |  [optional] |
 |**email** | **String** |  |  [optional] |
 |**emails** | [**List&lt;Href&gt;**](Href.md) |  |  [optional] |
 |**firstName** | **String** |  |  [optional] |

@@ -299,11 +299,11 @@ Class | Method | HTTP request | Description
 *MembershipsApi* | [**findMembershipById**](docs/MembershipsApi.md#findMembershipById) | **GET** /memberships/{id} | Retrieve a membership
 *MembershipsApi* | [**updateMembership**](docs/MembershipsApi.md#updateMembership) | **PUT** /memberships/{id} | Update the membership
 *MetalGatewaysApi* | [**createMetalGateway**](docs/MetalGatewaysApi.md#createMetalGateway) | **POST** /projects/{project_id}/metal-gateways | Create a metal gateway
-*MetalGatewaysApi* | [**createMetalGatewayElasticIp**](docs/MetalGatewaysApi.md#createMetalGatewayElasticIp) | **POST** /metal-gateways/{id}/ips.yaml | Create a Metal Gateway Elastic IP
+*MetalGatewaysApi* | [**createMetalGatewayElasticIp**](docs/MetalGatewaysApi.md#createMetalGatewayElasticIp) | **POST** /metal-gateways/{id}/ips | Create a Metal Gateway Elastic IP
 *MetalGatewaysApi* | [**deleteMetalGateway**](docs/MetalGatewaysApi.md#deleteMetalGateway) | **DELETE** /metal-gateways/{id} | Deletes the metal gateway
 *MetalGatewaysApi* | [**findMetalGatewayById**](docs/MetalGatewaysApi.md#findMetalGatewayById) | **GET** /metal-gateways/{id} | Returns the metal gateway
 *MetalGatewaysApi* | [**findMetalGatewaysByProject**](docs/MetalGatewaysApi.md#findMetalGatewaysByProject) | **GET** /projects/{project_id}/metal-gateways | Returns all metal gateways for a project
-*MetalGatewaysApi* | [**getMetalGatewayElasticIps**](docs/MetalGatewaysApi.md#getMetalGatewayElasticIps) | **GET** /metal-gateways/{id}/ips.yaml | List Metal Gateway Elastic IPs
+*MetalGatewaysApi* | [**getMetalGatewayElasticIps**](docs/MetalGatewaysApi.md#getMetalGatewayElasticIps) | **GET** /metal-gateways/{id}/ips | List Metal Gateway Elastic IPs
 *MetrosApi* | [**findMetros**](docs/MetrosApi.md#findMetros) | **GET** /locations/metros | Retrieve all metros
 *MetrosApi* | [**getMetro**](docs/MetrosApi.md#getMetro) | **GET** /locations/metros/{id} | Retrieve a specific Metro&#39;s details
 *OperatingSystemsApi* | [**findOperatingSystemVersion**](docs/OperatingSystemsApi.md#findOperatingSystemVersion) | **GET** /operating-system-versions | Retrieve all operating system versions

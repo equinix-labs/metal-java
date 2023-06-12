@@ -10,7 +10,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="findPlans"></a>
 # **findPlans**
-> PlanList findPlans(type, include, exclude)
+> PlanList findPlans(categories, type, include, exclude)
 
 Retrieve all plans
 
@@ -38,11 +38,12 @@ public class Example {
     //x_auth_token.setApiKeyPrefix("Token");
 
     PlansApi apiInstance = new PlansApi(defaultClient);
+    List<String> categories = Arrays.asList(); // List<String> | Filter plans by its category
     String type = "standard"; // String | Filter plans by its plan type
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      PlanList result = apiInstance.findPlans(type, include, exclude);
+      PlanList result = apiInstance.findPlans(categories, type, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PlansApi#findPlans");
@@ -59,6 +60,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **categories** | [**List&lt;String&gt;**](String.md)| Filter plans by its category | [optional] [enum: compute, storage] |
 | **type** | **String**| Filter plans by its plan type | [optional] [enum: standard, workload_optimized, custom] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 | **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |

@@ -64,7 +64,7 @@ public class VrfsApiTest {
     /**
      * Create a VRF BGP Dynamic Neighbor range
      *
-     * Create a VRF BGP Dynamic Neighbor range.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
+     * Create a VRF BGP Dynamic Neighbor range.  BGP Dynamic Neighbor records are limited to 2 per Virtual Network.  Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information. 
      *
      * @throws ApiException if the Api call fails
      */
@@ -72,7 +72,9 @@ public class VrfsApiTest {
     public void createBgpDynamicNeighborTest() throws ApiException {
         UUID id = null;
         BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput = null;
-        BgpDynamicNeighbor response = api.createBgpDynamicNeighbor(id, bgpDynamicNeighborCreateInput);
+        List<String> include = null;
+        List<String> exclude = null;
+        BgpDynamicNeighbor response = api.createBgpDynamicNeighbor(id, bgpDynamicNeighborCreateInput, include, exclude);
         // TODO: test validations
     }
 

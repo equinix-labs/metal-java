@@ -77,7 +77,8 @@ public class SelfServiceReservationsApiTest {
         UUID projectId = null;
         Integer page = null;
         Integer perPage = null;
-        SelfServiceReservationList response = api.findSelfServiceReservations(projectId, page, perPage);
+        List<String> categories = null;
+        SelfServiceReservationList response = api.findSelfServiceReservations(projectId, page, perPage, categories);
         // TODO: test validations
     }
 

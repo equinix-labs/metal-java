@@ -93,7 +93,9 @@ public class CapacityApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call checkCapacityForFacilityCall(CapacityInput capacityInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -139,6 +141,7 @@ public class CapacityApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call checkCapacityForFacilityValidateBeforeCall(CapacityInput capacityInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'capacityInput' is set
@@ -163,7 +166,9 @@ public class CapacityApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CapacityCheckPerFacilityList checkCapacityForFacility(CapacityInput capacityInput) throws ApiException {
         ApiResponse<CapacityCheckPerFacilityList> localVarResp = checkCapacityForFacilityWithHttpInfo(capacityInput);
         return localVarResp.getData();
@@ -182,7 +187,9 @@ public class CapacityApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CapacityCheckPerFacilityList> checkCapacityForFacilityWithHttpInfo(CapacityInput capacityInput) throws ApiException {
         okhttp3.Call localVarCall = checkCapacityForFacilityValidateBeforeCall(capacityInput, null);
         Type localVarReturnType = new TypeToken<CapacityCheckPerFacilityList>(){}.getType();
@@ -203,7 +210,9 @@ public class CapacityApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call checkCapacityForFacilityAsync(CapacityInput capacityInput, final ApiCallback<CapacityCheckPerFacilityList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = checkCapacityForFacilityValidateBeforeCall(capacityInput, _callback);

@@ -14,7 +14,7 @@
 |**features** | **List&lt;String&gt;** |  |  [optional] |
 |**hostname** | **String** |  |  [optional] |
 |**hostnames** | **List&lt;String&gt;** |  |  [optional] |
-|**locked** | **Boolean** |  |  [optional] |
+|**locked** | **Boolean** | Whether the device should be locked, preventing accidental deletion. |  [optional] |
 |**noSshKeys** | **Boolean** |  |  [optional] |
 |**operatingSystem** | **String** |  |  [optional] |
 |**plan** | **String** |  |  [optional] |

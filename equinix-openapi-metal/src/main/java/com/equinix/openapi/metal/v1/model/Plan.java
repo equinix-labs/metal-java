@@ -64,6 +64,10 @@ public class Plan {
   @SerializedName(SERIALIZED_NAME_AVAILABLE_IN_METROS)
   private List<PlanAvailableInMetrosInner> availableInMetros = null;
 
+  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
+  @SerializedName(SERIALIZED_NAME_CATEGORIES)
+  private List<String> categories = null;
+
   public static final String SERIALIZED_NAME_PROPERTY_CLASS = "class";
   @SerializedName(SERIALIZED_NAME_PROPERTY_CLASS)
   private String propertyClass;
@@ -264,6 +268,36 @@ public class Plan {
 
   public void setAvailableInMetros(List<PlanAvailableInMetrosInner> availableInMetros) {
     this.availableInMetros = availableInMetros;
+  }
+
+
+  public Plan categories(List<String> categories) {
+    
+    this.categories = categories;
+    return this;
+  }
+
+  public Plan addCategoriesItem(String categoriesItem) {
+    if (this.categories == null) {
+      this.categories = new ArrayList<>();
+    }
+    this.categories.add(categoriesItem);
+    return this;
+  }
+
+   /**
+   * Categories of the plan, like compute or storage. A Plan can belong to multiple categories.
+   * @return categories
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getCategories() {
+    return categories;
+  }
+
+
+  public void setCategories(List<String> categories) {
+    this.categories = categories;
   }
 
 
@@ -573,6 +607,7 @@ public class Plan {
     Plan plan = (Plan) o;
     return Objects.equals(this.availableIn, plan.availableIn) &&
         Objects.equals(this.availableInMetros, plan.availableInMetros) &&
+        Objects.equals(this.categories, plan.categories) &&
         Objects.equals(this.propertyClass, plan.propertyClass) &&
         Objects.equals(this.description, plan.description) &&
         Objects.equals(this.deploymentTypes, plan.deploymentTypes) &&
@@ -589,7 +624,7 @@ public class Plan {
 
   @Override
   public int hashCode() {
-    return Objects.hash(availableIn, availableInMetros, propertyClass, description, deploymentTypes, id, legacy, line, name, pricing, slug, specs, type, additionalProperties);
+    return Objects.hash(availableIn, availableInMetros, categories, propertyClass, description, deploymentTypes, id, legacy, line, name, pricing, slug, specs, type, additionalProperties);
   }
 
   @Override
@@ -598,6 +633,7 @@ public class Plan {
     sb.append("class Plan {\n");
     sb.append("    availableIn: ").append(toIndentedString(availableIn)).append("\n");
     sb.append("    availableInMetros: ").append(toIndentedString(availableInMetros)).append("\n");
+    sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
     sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    deploymentTypes: ").append(toIndentedString(deploymentTypes)).append("\n");
@@ -634,6 +670,7 @@ public class Plan {
     openapiFields = new HashSet<String>();
     openapiFields.add("available_in");
     openapiFields.add("available_in_metros");
+    openapiFields.add("categories");
     openapiFields.add("class");
     openapiFields.add("description");
     openapiFields.add("deployment_types");
@@ -689,6 +726,10 @@ public class Plan {
             PlanAvailableInMetrosInner.validateJsonObject(jsonArrayavailableInMetros.get(i).getAsJsonObject());
           };
         }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
       }
       if ((jsonObj.get("class") != null && !jsonObj.get("class").isJsonNull()) && !jsonObj.get("class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("class").toString()));

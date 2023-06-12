@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**availableIn** | [**List&lt;PlanAvailableInInner&gt;**](PlanAvailableInInner.md) | Shows which facilities the plan is available in, and the facility-based price if it is different from the default price. |  [optional] |
 |**availableInMetros** | [**List&lt;PlanAvailableInMetrosInner&gt;**](PlanAvailableInMetrosInner.md) | Shows which metros the plan is available in, and the metro-based price if it is different from the default price. |  [optional] |
+|**categories** | **List&lt;String&gt;** | Categories of the plan, like compute or storage. A Plan can belong to multiple categories. |  [optional] |
 |**propertyClass** | **String** |  |  [optional] |
 |**description** | **String** |  |  [optional] |
 |**deploymentTypes** | [**Set&lt;DeploymentTypesEnum&gt;**](#Set&lt;DeploymentTypesEnum&gt;) |  |  [optional] |

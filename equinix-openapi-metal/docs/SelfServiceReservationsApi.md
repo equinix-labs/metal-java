@@ -157,7 +157,7 @@ public class Example {
 
 <a name="findSelfServiceReservations"></a>
 # **findSelfServiceReservations**
-> SelfServiceReservationList findSelfServiceReservations(projectId, page, perPage)
+> SelfServiceReservationList findSelfServiceReservations(projectId, page, perPage, categories)
 
 Retrieve all reservations
 
@@ -188,8 +188,9 @@ public class Example {
     UUID projectId = UUID.randomUUID(); // UUID | Project UUID
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
+    List<String> categories = Arrays.asList(); // List<String> | Filter reservations by items category
     try {
-      SelfServiceReservationList result = apiInstance.findSelfServiceReservations(projectId, page, perPage);
+      SelfServiceReservationList result = apiInstance.findSelfServiceReservations(projectId, page, perPage, categories);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SelfServiceReservationsApi#findSelfServiceReservations");
@@ -209,6 +210,7 @@ public class Example {
 | **projectId** | **UUID**| Project UUID | |
 | **page** | **Integer**| Page to return | [optional] [default to 1] |
 | **perPage** | **Integer**| Items returned per page | [optional] [default to 10] |
+| **categories** | [**List&lt;String&gt;**](String.md)| Filter reservations by items category | [optional] [enum: compute, storage] |
 
 ### Return type
 

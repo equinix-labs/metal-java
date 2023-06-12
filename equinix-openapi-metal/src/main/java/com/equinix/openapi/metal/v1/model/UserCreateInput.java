@@ -86,10 +86,6 @@ public class UserCreateInput {
   @SerializedName(SERIALIZED_NAME_LEVEL)
   private String level;
 
-  public static final String SERIALIZED_NAME_LOCKED = "locked";
-  @SerializedName(SERIALIZED_NAME_LOCKED)
-  private Boolean locked;
-
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)
   private String password;
@@ -307,28 +303,6 @@ public class UserCreateInput {
 
   public void setLevel(String level) {
     this.level = level;
-  }
-
-
-  public UserCreateInput locked(Boolean locked) {
-    
-    this.locked = locked;
-    return this;
-  }
-
-   /**
-   * Get locked
-   * @return locked
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getLocked() {
-    return locked;
-  }
-
-
-  public void setLocked(Boolean locked) {
-    this.locked = locked;
   }
 
 
@@ -592,7 +566,6 @@ public class UserCreateInput {
         Objects.equals(this.firstName, userCreateInput.firstName) &&
         Objects.equals(this.lastName, userCreateInput.lastName) &&
         Objects.equals(this.level, userCreateInput.level) &&
-        Objects.equals(this.locked, userCreateInput.locked) &&
         Objects.equals(this.password, userCreateInput.password) &&
         Objects.equals(this.phoneNumber, userCreateInput.phoneNumber) &&
         Objects.equals(this.socialAccounts, userCreateInput.socialAccounts) &&
@@ -607,7 +580,7 @@ public class UserCreateInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(avatar, companyName, companyUrl, customdata, emails, firstName, lastName, level, locked, password, phoneNumber, socialAccounts, timezone, title, twoFactorAuth, verifiedAt, invitationId, nonce, additionalProperties);
+    return Objects.hash(avatar, companyName, companyUrl, customdata, emails, firstName, lastName, level, password, phoneNumber, socialAccounts, timezone, title, twoFactorAuth, verifiedAt, invitationId, nonce, additionalProperties);
   }
 
   @Override
@@ -622,7 +595,6 @@ public class UserCreateInput {
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
-    sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    socialAccounts: ").append(toIndentedString(socialAccounts)).append("\n");
@@ -663,7 +635,6 @@ public class UserCreateInput {
     openapiFields.add("first_name");
     openapiFields.add("last_name");
     openapiFields.add("level");
-    openapiFields.add("locked");
     openapiFields.add("password");
     openapiFields.add("phone_number");
     openapiFields.add("social_accounts");

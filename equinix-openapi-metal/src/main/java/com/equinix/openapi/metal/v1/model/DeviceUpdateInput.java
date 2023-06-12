@@ -246,7 +246,7 @@ public class DeviceUpdateInput {
   }
 
    /**
-   * Get locked
+   * Whether the device should be locked, preventing accidental deletion.
    * @return locked
   **/
   @javax.annotation.Nullable

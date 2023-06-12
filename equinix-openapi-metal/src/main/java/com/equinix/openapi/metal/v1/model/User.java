@@ -69,6 +69,14 @@ public class User {
   @SerializedName(SERIALIZED_NAME_CUSTOMDATA)
   private Object customdata;
 
+  public static final String SERIALIZED_NAME_DEFAULT_ORGANIZATION_ID = "default_organization_id";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_ORGANIZATION_ID)
+  private UUID defaultOrganizationId;
+
+  public static final String SERIALIZED_NAME_DEFAULT_PROJECT_ID = "default_project_id";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_PROJECT_ID)
+  private UUID defaultProjectId;
+
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
   private String email;
@@ -221,6 +229,50 @@ public class User {
 
   public void setCustomdata(Object customdata) {
     this.customdata = customdata;
+  }
+
+
+  public User defaultOrganizationId(UUID defaultOrganizationId) {
+    
+    this.defaultOrganizationId = defaultOrganizationId;
+    return this;
+  }
+
+   /**
+   * Get defaultOrganizationId
+   * @return defaultOrganizationId
+  **/
+  @javax.annotation.Nullable
+
+  public UUID getDefaultOrganizationId() {
+    return defaultOrganizationId;
+  }
+
+
+  public void setDefaultOrganizationId(UUID defaultOrganizationId) {
+    this.defaultOrganizationId = defaultOrganizationId;
+  }
+
+
+  public User defaultProjectId(UUID defaultProjectId) {
+    
+    this.defaultProjectId = defaultProjectId;
+    return this;
+  }
+
+   /**
+   * Get defaultProjectId
+   * @return defaultProjectId
+  **/
+  @javax.annotation.Nullable
+
+  public UUID getDefaultProjectId() {
+    return defaultProjectId;
+  }
+
+
+  public void setDefaultProjectId(UUID defaultProjectId) {
+    this.defaultProjectId = defaultProjectId;
   }
 
 
@@ -642,6 +694,8 @@ public class User {
         Objects.equals(this.avatarUrl, user.avatarUrl) &&
         Objects.equals(this.createdAt, user.createdAt) &&
         Objects.equals(this.customdata, user.customdata) &&
+        Objects.equals(this.defaultOrganizationId, user.defaultOrganizationId) &&
+        Objects.equals(this.defaultProjectId, user.defaultProjectId) &&
         Objects.equals(this.email, user.email) &&
         Objects.equals(this.emails, user.emails) &&
         Objects.equals(this.firstName, user.firstName) &&
@@ -663,7 +717,7 @@ public class User {
 
   @Override
   public int hashCode() {
-    return Objects.hash(avatarThumbUrl, avatarUrl, createdAt, customdata, email, emails, firstName, fraudScore, fullName, href, id, lastLoginAt, lastName, maxOrganizations, maxProjects, phoneNumber, shortId, timezone, twoFactorAuth, updatedAt, additionalProperties);
+    return Objects.hash(avatarThumbUrl, avatarUrl, createdAt, customdata, defaultOrganizationId, defaultProjectId, email, emails, firstName, fraudScore, fullName, href, id, lastLoginAt, lastName, maxOrganizations, maxProjects, phoneNumber, shortId, timezone, twoFactorAuth, updatedAt, additionalProperties);
   }
 
   @Override
@@ -674,6 +728,8 @@ public class User {
     sb.append("    avatarUrl: ").append(toIndentedString(avatarUrl)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    customdata: ").append(toIndentedString(customdata)).append("\n");
+    sb.append("    defaultOrganizationId: ").append(toIndentedString(defaultOrganizationId)).append("\n");
+    sb.append("    defaultProjectId: ").append(toIndentedString(defaultProjectId)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    emails: ").append(toIndentedString(emails)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
@@ -717,6 +773,8 @@ public class User {
     openapiFields.add("avatar_url");
     openapiFields.add("created_at");
     openapiFields.add("customdata");
+    openapiFields.add("default_organization_id");
+    openapiFields.add("default_project_id");
     openapiFields.add("email");
     openapiFields.add("emails");
     openapiFields.add("first_name");
@@ -755,6 +813,12 @@ public class User {
       }
       if ((jsonObj.get("avatar_url") != null && !jsonObj.get("avatar_url").isJsonNull()) && !jsonObj.get("avatar_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `avatar_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_url").toString()));
+      }
+      if ((jsonObj.get("default_organization_id") != null && !jsonObj.get("default_organization_id").isJsonNull()) && !jsonObj.get("default_organization_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `default_organization_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_organization_id").toString()));
+      }
+      if ((jsonObj.get("default_project_id") != null && !jsonObj.get("default_project_id").isJsonNull()) && !jsonObj.get("default_project_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `default_project_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_project_id").toString()));
       }
       if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));

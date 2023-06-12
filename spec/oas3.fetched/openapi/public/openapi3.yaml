@@ -604,7 +604,7 @@ paths:
     $ref: ./paths/metal-gateways/id.yaml
   /metal-gateways/{id}/bgp-dynamic-neighbors:
     $ref: ./paths/metal-gateways/id/bgp-dynamic-neighbors.yaml
-  /metal-gateways/{id}/ips.yaml:
+  /metal-gateways/{id}/ips:
     $ref: ./paths/metal-gateways/id/ips.yaml
   /operating-system-versions:
     $ref: ./paths/operating-system-versions.yaml

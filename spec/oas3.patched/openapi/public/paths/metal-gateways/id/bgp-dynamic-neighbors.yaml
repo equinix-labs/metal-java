@@ -3,6 +3,8 @@ post:
   description: |
     Create a VRF BGP Dynamic Neighbor range.
 
+    BGP Dynamic Neighbor records are limited to 2 per Virtual Network.
+
     Notice: VRFs are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information.
   operationId: createBgpDynamicNeighbor
   parameters:
@@ -13,6 +15,8 @@ post:
       schema:
         format: uuid
         type: string
+    - $ref: '../../../components/parameters/Include.yaml'
+    - $ref: '../../../components/parameters/Exclude.yaml'
   requestBody:
     content:
       application/json:

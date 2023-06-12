@@ -787,7 +787,7 @@ public class InstancesBatchCreateInputBatchesInner {
   }
 
    /**
-   * Get terminationTime
+   * When the device will be terminated. If you don&#39;t supply timezone info, the timestamp is assumed to be in UTC.  This is commonly set in advance for ephemeral spot market instances but this field may also be set with on-demand and reservation instances to automatically delete the resource at a given time. The termination time can also be used to release a hardware reservation instance at a given time, keeping the reservation open for other uses.  On a spot market device, the termination time will be set automatically when outbid. 
    * @return terminationTime
   **/
   @javax.annotation.Nullable
@@ -868,7 +868,9 @@ public class InstancesBatchCreateInputBatchesInner {
    /**
    * The datacenter where the device should be created.  Either metro or facility must be provided.  The API will accept either a single facility &#x60;{ \&quot;facility\&quot;: \&quot;f1\&quot; }&#x60;, or it can be instructed to create the device in the best available datacenter &#x60;{ \&quot;facility\&quot;: \&quot;any\&quot; }&#x60;.  Additionally it is possible to set a prioritized location selection. For example &#x60;{ \&quot;facility\&quot;: [\&quot;f3\&quot;, \&quot;f2\&quot;, \&quot;any\&quot;] }&#x60; can be used to prioritize &#x60;f3&#x60; and then &#x60;f2&#x60; before accepting &#x60;any&#x60; facility. If none of the facilities provided have availability for the requested device the request will fail.
    * @return facility
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nonnull
 
   public List<String> getFacility() {

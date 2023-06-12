@@ -364,6 +364,7 @@ public class SelfServiceReservationsApi {
      * @param projectId Project UUID (required)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
+     * @param categories Filter reservations by items category (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -374,7 +375,7 @@ public class SelfServiceReservationsApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findSelfServiceReservationsCall(UUID projectId, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findSelfServiceReservationsCall(UUID projectId, Integer page, Integer perPage, List<String> categories, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -408,6 +409,10 @@ public class SelfServiceReservationsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
         }
 
+        if (categories != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "categories", categories));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -428,13 +433,13 @@ public class SelfServiceReservationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findSelfServiceReservationsValidateBeforeCall(UUID projectId, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findSelfServiceReservationsValidateBeforeCall(UUID projectId, Integer page, Integer perPage, List<String> categories, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling findSelfServiceReservations(Async)");
         }
 
-        return findSelfServiceReservationsCall(projectId, page, perPage, _callback);
+        return findSelfServiceReservationsCall(projectId, page, perPage, categories, _callback);
 
     }
 
@@ -444,6 +449,7 @@ public class SelfServiceReservationsApi {
      * @param projectId Project UUID (required)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
+     * @param categories Filter reservations by items category (optional)
      * @return SelfServiceReservationList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -453,8 +459,8 @@ public class SelfServiceReservationsApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public SelfServiceReservationList findSelfServiceReservations(UUID projectId, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<SelfServiceReservationList> localVarResp = findSelfServiceReservationsWithHttpInfo(projectId, page, perPage);
+    public SelfServiceReservationList findSelfServiceReservations(UUID projectId, Integer page, Integer perPage, List<String> categories) throws ApiException {
+        ApiResponse<SelfServiceReservationList> localVarResp = findSelfServiceReservationsWithHttpInfo(projectId, page, perPage, categories);
         return localVarResp.getData();
     }
 
@@ -464,6 +470,7 @@ public class SelfServiceReservationsApi {
      * @param projectId Project UUID (required)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
+     * @param categories Filter reservations by items category (optional)
      * @return ApiResponse&lt;SelfServiceReservationList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -473,8 +480,8 @@ public class SelfServiceReservationsApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SelfServiceReservationList> findSelfServiceReservationsWithHttpInfo(UUID projectId, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = findSelfServiceReservationsValidateBeforeCall(projectId, page, perPage, null);
+    public ApiResponse<SelfServiceReservationList> findSelfServiceReservationsWithHttpInfo(UUID projectId, Integer page, Integer perPage, List<String> categories) throws ApiException {
+        okhttp3.Call localVarCall = findSelfServiceReservationsValidateBeforeCall(projectId, page, perPage, categories, null);
         Type localVarReturnType = new TypeToken<SelfServiceReservationList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -485,6 +492,7 @@ public class SelfServiceReservationsApi {
      * @param projectId Project UUID (required)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
+     * @param categories Filter reservations by items category (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -495,9 +503,9 @@ public class SelfServiceReservationsApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findSelfServiceReservationsAsync(UUID projectId, Integer page, Integer perPage, final ApiCallback<SelfServiceReservationList> _callback) throws ApiException {
+    public okhttp3.Call findSelfServiceReservationsAsync(UUID projectId, Integer page, Integer perPage, List<String> categories, final ApiCallback<SelfServiceReservationList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findSelfServiceReservationsValidateBeforeCall(projectId, page, perPage, _callback);
+        okhttp3.Call localVarCall = findSelfServiceReservationsValidateBeforeCall(projectId, page, perPage, categories, _callback);
         Type localVarReturnType = new TypeToken<SelfServiceReservationList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

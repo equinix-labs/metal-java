@@ -236,16 +236,18 @@ public class DevicesApiTest {
     @Test
     public void findOrganizationDevicesTest() throws ApiException {
         UUID id = null;
+        List<String> categories = null;
         String facility = null;
         String hostname = null;
         Boolean reserved = null;
         String tag = null;
         String type = null;
+        Boolean hasTerminationTime = null;
         List<String> include = null;
         List<String> exclude = null;
         Integer page = null;
         Integer perPage = null;
-        DeviceList response = api.findOrganizationDevices(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage);
+        DeviceList response = api.findOrganizationDevices(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
         // TODO: test validations
     }
 
@@ -259,16 +261,18 @@ public class DevicesApiTest {
     @Test
     public void findProjectDevicesTest() throws ApiException {
         UUID id = null;
+        List<String> categories = null;
         String facility = null;
         String hostname = null;
         Boolean reserved = null;
         String tag = null;
         String type = null;
+        Boolean hasTerminationTime = null;
         List<String> include = null;
         List<String> exclude = null;
         Integer page = null;
         Integer perPage = null;
-        DeviceList response = api.findProjectDevices(id, facility, hostname, reserved, tag, type, include, exclude, page, perPage);
+        DeviceList response = api.findProjectDevices(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
         // TODO: test validations
     }
 
