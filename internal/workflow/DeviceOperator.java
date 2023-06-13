@@ -32,7 +32,7 @@ public class DeviceOperator {
    }
 
    public Device createDeviceAndPoll(CreateDeviceRequest createDeviceRequest, UUID project, int retries, Duration wait) throws ApiException, InterruptedException {
-      Device device = deviceApiInstance.createDevice(project, createDeviceRequest);
+      Device device = deviceApiInstance.createDevice(project, createDeviceRequest, null, null);
 
       return deviceAndPoll(device, retries, wait);
    }

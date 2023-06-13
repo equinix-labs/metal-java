@@ -87,6 +87,8 @@ public class ProjectsApi {
     /**
      * Build call for createProject
      * @param projectCreateFromRootInput Project to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -98,7 +100,7 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createProjectCall(ProjectCreateFromRootInput projectCreateFromRootInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createProjectCall(ProjectCreateFromRootInput projectCreateFromRootInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,6 +125,14 @@ public class ProjectsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -144,13 +154,13 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createProjectValidateBeforeCall(ProjectCreateFromRootInput projectCreateFromRootInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createProjectValidateBeforeCall(ProjectCreateFromRootInput projectCreateFromRootInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectCreateFromRootInput' is set
         if (projectCreateFromRootInput == null) {
             throw new ApiException("Missing the required parameter 'projectCreateFromRootInput' when calling createProject(Async)");
         }
 
-        return createProjectCall(projectCreateFromRootInput, _callback);
+        return createProjectCall(projectCreateFromRootInput, include, exclude, _callback);
 
     }
 
@@ -158,6 +168,8 @@ public class ProjectsApi {
      * Create a project
      * Creates a new project for the user default organization. If the user don&#39;t have an organization, a new one will be created.
      * @param projectCreateFromRootInput Project to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Project
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -168,8 +180,8 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Project createProject(ProjectCreateFromRootInput projectCreateFromRootInput) throws ApiException {
-        ApiResponse<Project> localVarResp = createProjectWithHttpInfo(projectCreateFromRootInput);
+    public Project createProject(ProjectCreateFromRootInput projectCreateFromRootInput, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<Project> localVarResp = createProjectWithHttpInfo(projectCreateFromRootInput, include, exclude);
         return localVarResp.getData();
     }
 
@@ -177,6 +189,8 @@ public class ProjectsApi {
      * Create a project
      * Creates a new project for the user default organization. If the user don&#39;t have an organization, a new one will be created.
      * @param projectCreateFromRootInput Project to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Project&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -187,8 +201,8 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Project> createProjectWithHttpInfo(ProjectCreateFromRootInput projectCreateFromRootInput) throws ApiException {
-        okhttp3.Call localVarCall = createProjectValidateBeforeCall(projectCreateFromRootInput, null);
+    public ApiResponse<Project> createProjectWithHttpInfo(ProjectCreateFromRootInput projectCreateFromRootInput, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = createProjectValidateBeforeCall(projectCreateFromRootInput, include, exclude, null);
         Type localVarReturnType = new TypeToken<Project>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -197,6 +211,8 @@ public class ProjectsApi {
      * Create a project (asynchronously)
      * Creates a new project for the user default organization. If the user don&#39;t have an organization, a new one will be created.
      * @param projectCreateFromRootInput Project to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -208,9 +224,9 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createProjectAsync(ProjectCreateFromRootInput projectCreateFromRootInput, final ApiCallback<Project> _callback) throws ApiException {
+    public okhttp3.Call createProjectAsync(ProjectCreateFromRootInput projectCreateFromRootInput, List<String> include, List<String> exclude, final ApiCallback<Project> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createProjectValidateBeforeCall(projectCreateFromRootInput, _callback);
+        okhttp3.Call localVarCall = createProjectValidateBeforeCall(projectCreateFromRootInput, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<Project>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

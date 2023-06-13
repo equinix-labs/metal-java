@@ -19,7 +19,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="createProject"></a>
 # **createProject**
-> Project createProject(projectCreateFromRootInput)
+> Project createProject(projectCreateFromRootInput, include, exclude)
 
 Create a project
 
@@ -48,8 +48,10 @@ public class Example {
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
     ProjectCreateFromRootInput projectCreateFromRootInput = new ProjectCreateFromRootInput(); // ProjectCreateFromRootInput | Project to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Project result = apiInstance.createProject(projectCreateFromRootInput);
+      Project result = apiInstance.createProject(projectCreateFromRootInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ProjectsApi#createProject");
@@ -67,6 +69,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **projectCreateFromRootInput** | [**ProjectCreateFromRootInput**](ProjectCreateFromRootInput.md)| Project to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

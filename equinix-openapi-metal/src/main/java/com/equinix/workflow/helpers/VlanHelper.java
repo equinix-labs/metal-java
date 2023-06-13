@@ -43,7 +43,7 @@ public class VlanHelper {
         VirtualNetworkCreateInput vlanInput=new VirtualNetworkCreateInput()
                 .metro(metro)
                 .vxlan(vxlan);
-        return vlansApi.createVirtualNetwork(projectId, vlanInput);
+        return vlansApi.createVirtualNetwork(projectId, vlanInput, null, null);
     }
 
     // Delete vlan by id

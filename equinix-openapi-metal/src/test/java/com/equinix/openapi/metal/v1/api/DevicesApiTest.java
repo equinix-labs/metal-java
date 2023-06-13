@@ -73,7 +73,9 @@ public class DevicesApiTest {
     public void createDeviceTest() throws ApiException {
         UUID id = null;
         CreateDeviceRequest createDeviceRequest = null;
-        Device response = api.createDevice(id, createDeviceRequest);
+        List<String> include = null;
+        List<String> exclude = null;
+        Device response = api.createDevice(id, createDeviceRequest, include, exclude);
         // TODO: test validations
     }
 
@@ -88,7 +90,9 @@ public class DevicesApiTest {
     public void createIPAssignmentTest() throws ApiException {
         UUID id = null;
         IPAssignmentInput ipAssignmentInput = null;
-        IPAssignment response = api.createIPAssignment(id, ipAssignmentInput);
+        List<String> include = null;
+        List<String> exclude = null;
+        IPAssignment response = api.createIPAssignment(id, ipAssignmentInput, include, exclude);
         // TODO: test validations
     }
 

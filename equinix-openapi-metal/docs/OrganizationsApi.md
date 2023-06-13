@@ -23,7 +23,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="createOrganization"></a>
 # **createOrganization**
-> Organization createOrganization(organizationInput)
+> Organization createOrganization(organizationInput, include, exclude)
 
 Create an organization
 
@@ -52,8 +52,10 @@ public class Example {
 
     OrganizationsApi apiInstance = new OrganizationsApi(defaultClient);
     OrganizationInput organizationInput = new OrganizationInput(); // OrganizationInput | Organization to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Organization result = apiInstance.createOrganization(organizationInput);
+      Organization result = apiInstance.createOrganization(organizationInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OrganizationsApi#createOrganization");
@@ -71,6 +73,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **organizationInput** | [**OrganizationInput**](OrganizationInput.md)| Organization to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

@@ -16,7 +16,7 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.ProjectOrganization;
+import com.equinix.openapi.metal.v1.model.Organization;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -98,6 +98,10 @@ public class Project {
   @SerializedName(SERIALIZED_NAME_NETWORK_STATUS)
   private Object networkStatus;
 
+  public static final String SERIALIZED_NAME_ORGANIZATION = "organization";
+  @SerializedName(SERIALIZED_NAME_ORGANIZATION)
+  private Organization organization;
+
   public static final String SERIALIZED_NAME_PAYMENT_METHOD = "payment_method";
   @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD)
   private Href paymentMethod;
@@ -113,10 +117,6 @@ public class Project {
   public static final String SERIALIZED_NAME_VOLUMES = "volumes";
   @SerializedName(SERIALIZED_NAME_VOLUMES)
   private List<Href> volumes = null;
-
-  public static final String SERIALIZED_NAME_ORGANIZATION = "organization";
-  @SerializedName(SERIALIZED_NAME_ORGANIZATION)
-  private ProjectOrganization organization;
 
   public Project() {
   }
@@ -395,6 +395,28 @@ public class Project {
   }
 
 
+  public Project organization(Organization organization) {
+    
+    this.organization = organization;
+    return this;
+  }
+
+   /**
+   * Get organization
+   * @return organization
+  **/
+  @javax.annotation.Nullable
+
+  public Organization getOrganization() {
+    return organization;
+  }
+
+
+  public void setOrganization(Organization organization) {
+    this.organization = organization;
+  }
+
+
   public Project paymentMethod(Href paymentMethod) {
     
     this.paymentMethod = paymentMethod;
@@ -498,28 +520,6 @@ public class Project {
     this.volumes = volumes;
   }
 
-
-  public Project organization(ProjectOrganization organization) {
-    
-    this.organization = organization;
-    return this;
-  }
-
-   /**
-   * Get organization
-   * @return organization
-  **/
-  @javax.annotation.Nullable
-
-  public ProjectOrganization getOrganization() {
-    return organization;
-  }
-
-
-  public void setOrganization(ProjectOrganization organization) {
-    this.organization = organization;
-  }
-
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -586,17 +586,17 @@ public class Project {
         Objects.equals(this.memberships, project.memberships) &&
         Objects.equals(this.name, project.name) &&
         Objects.equals(this.networkStatus, project.networkStatus) &&
+        Objects.equals(this.organization, project.organization) &&
         Objects.equals(this.paymentMethod, project.paymentMethod) &&
         Objects.equals(this.sshKeys, project.sshKeys) &&
         Objects.equals(this.updatedAt, project.updatedAt) &&
-        Objects.equals(this.volumes, project.volumes) &&
-        Objects.equals(this.organization, project.organization)&&
+        Objects.equals(this.volumes, project.volumes)&&
         Objects.equals(this.additionalProperties, project.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bgpConfig, createdAt, customdata, devices, id, invitations, maxDevices, members, memberships, name, networkStatus, paymentMethod, sshKeys, updatedAt, volumes, organization, additionalProperties);
+    return Objects.hash(bgpConfig, createdAt, customdata, devices, id, invitations, maxDevices, members, memberships, name, networkStatus, organization, paymentMethod, sshKeys, updatedAt, volumes, additionalProperties);
   }
 
   @Override
@@ -614,11 +614,11 @@ public class Project {
     sb.append("    memberships: ").append(toIndentedString(memberships)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    networkStatus: ").append(toIndentedString(networkStatus)).append("\n");
+    sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
     sb.append("    paymentMethod: ").append(toIndentedString(paymentMethod)).append("\n");
     sb.append("    sshKeys: ").append(toIndentedString(sshKeys)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    volumes: ").append(toIndentedString(volumes)).append("\n");
-    sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -653,11 +653,11 @@ public class Project {
     openapiFields.add("memberships");
     openapiFields.add("name");
     openapiFields.add("network_status");
+    openapiFields.add("organization");
     openapiFields.add("payment_method");
     openapiFields.add("ssh_keys");
     openapiFields.add("updated_at");
     openapiFields.add("volumes");
-    openapiFields.add("organization");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -741,6 +741,10 @@ public class Project {
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
+      // validate the optional field `organization`
+      if (jsonObj.get("organization") != null && !jsonObj.get("organization").isJsonNull()) {
+        Organization.validateJsonObject(jsonObj.getAsJsonObject("organization"));
+      }
       // validate the optional field `payment_method`
       if (jsonObj.get("payment_method") != null && !jsonObj.get("payment_method").isJsonNull()) {
         Href.validateJsonObject(jsonObj.getAsJsonObject("payment_method"));
@@ -772,10 +776,6 @@ public class Project {
             Href.validateJsonObject(jsonArrayvolumes.get(i).getAsJsonObject());
           };
         }
-      }
-      // validate the optional field `organization`
-      if (jsonObj.get("organization") != null && !jsonObj.get("organization").isJsonNull()) {
-        ProjectOrganization.validateJsonObject(jsonObj.getAsJsonObject("organization"));
       }
   }
 

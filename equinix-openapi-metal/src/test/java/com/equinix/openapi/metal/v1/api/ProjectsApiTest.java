@@ -52,7 +52,9 @@ public class ProjectsApiTest {
     @Test
     public void createProjectTest() throws ApiException {
         ProjectCreateFromRootInput projectCreateFromRootInput = null;
-        Project response = api.createProject(projectCreateFromRootInput);
+        List<String> include = null;
+        List<String> exclude = null;
+        Project response = api.createProject(projectCreateFromRootInput, include, exclude);
         // TODO: test validations
     }
 

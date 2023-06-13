@@ -238,6 +238,8 @@ public class DevicesApi {
      * Build call for createDevice
      * @param id Project UUID (required)
      * @param createDeviceRequest Device to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -251,7 +253,7 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createDeviceCall(UUID id, CreateDeviceRequest createDeviceRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createDeviceCall(UUID id, CreateDeviceRequest createDeviceRequest, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -277,6 +279,14 @@ public class DevicesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -298,7 +308,7 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDeviceValidateBeforeCall(UUID id, CreateDeviceRequest createDeviceRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDeviceValidateBeforeCall(UUID id, CreateDeviceRequest createDeviceRequest, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createDevice(Async)");
@@ -309,7 +319,7 @@ public class DevicesApi {
             throw new ApiException("Missing the required parameter 'createDeviceRequest' when calling createDevice(Async)");
         }
 
-        return createDeviceCall(id, createDeviceRequest, _callback);
+        return createDeviceCall(id, createDeviceRequest, include, exclude, _callback);
 
     }
 
@@ -318,6 +328,8 @@ public class DevicesApi {
      * Creates a new device and provisions it in the specified location.  Device type-specific options are accepted.  For example, &#x60;baremetal&#x60; devices accept &#x60;operating_system&#x60;, &#x60;hostname&#x60;, and &#x60;plan&#x60;. These parameters may not be accepted for other device types. The default device type is &#x60;baremetal&#x60;.
      * @param id Project UUID (required)
      * @param createDeviceRequest Device to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Device
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -330,8 +342,8 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Device createDevice(UUID id, CreateDeviceRequest createDeviceRequest) throws ApiException {
-        ApiResponse<Device> localVarResp = createDeviceWithHttpInfo(id, createDeviceRequest);
+    public Device createDevice(UUID id, CreateDeviceRequest createDeviceRequest, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<Device> localVarResp = createDeviceWithHttpInfo(id, createDeviceRequest, include, exclude);
         return localVarResp.getData();
     }
 
@@ -340,6 +352,8 @@ public class DevicesApi {
      * Creates a new device and provisions it in the specified location.  Device type-specific options are accepted.  For example, &#x60;baremetal&#x60; devices accept &#x60;operating_system&#x60;, &#x60;hostname&#x60;, and &#x60;plan&#x60;. These parameters may not be accepted for other device types. The default device type is &#x60;baremetal&#x60;.
      * @param id Project UUID (required)
      * @param createDeviceRequest Device to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Device&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -352,8 +366,8 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Device> createDeviceWithHttpInfo(UUID id, CreateDeviceRequest createDeviceRequest) throws ApiException {
-        okhttp3.Call localVarCall = createDeviceValidateBeforeCall(id, createDeviceRequest, null);
+    public ApiResponse<Device> createDeviceWithHttpInfo(UUID id, CreateDeviceRequest createDeviceRequest, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = createDeviceValidateBeforeCall(id, createDeviceRequest, include, exclude, null);
         Type localVarReturnType = new TypeToken<Device>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -363,6 +377,8 @@ public class DevicesApi {
      * Creates a new device and provisions it in the specified location.  Device type-specific options are accepted.  For example, &#x60;baremetal&#x60; devices accept &#x60;operating_system&#x60;, &#x60;hostname&#x60;, and &#x60;plan&#x60;. These parameters may not be accepted for other device types. The default device type is &#x60;baremetal&#x60;.
      * @param id Project UUID (required)
      * @param createDeviceRequest Device to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -376,9 +392,9 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createDeviceAsync(UUID id, CreateDeviceRequest createDeviceRequest, final ApiCallback<Device> _callback) throws ApiException {
+    public okhttp3.Call createDeviceAsync(UUID id, CreateDeviceRequest createDeviceRequest, List<String> include, List<String> exclude, final ApiCallback<Device> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createDeviceValidateBeforeCall(id, createDeviceRequest, _callback);
+        okhttp3.Call localVarCall = createDeviceValidateBeforeCall(id, createDeviceRequest, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<Device>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -387,6 +403,8 @@ public class DevicesApi {
      * Build call for createIPAssignment
      * @param id Device UUID (required)
      * @param ipAssignmentInput IPAssignment to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -399,7 +417,7 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createIPAssignmentCall(UUID id, IPAssignmentInput ipAssignmentInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createIPAssignmentCall(UUID id, IPAssignmentInput ipAssignmentInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -425,6 +443,14 @@ public class DevicesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -446,7 +472,7 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createIPAssignmentValidateBeforeCall(UUID id, IPAssignmentInput ipAssignmentInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createIPAssignmentValidateBeforeCall(UUID id, IPAssignmentInput ipAssignmentInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createIPAssignment(Async)");
@@ -457,7 +483,7 @@ public class DevicesApi {
             throw new ApiException("Missing the required parameter 'ipAssignmentInput' when calling createIPAssignment(Async)");
         }
 
-        return createIPAssignmentCall(id, ipAssignmentInput, _callback);
+        return createIPAssignmentCall(id, ipAssignmentInput, include, exclude, _callback);
 
     }
 
@@ -466,6 +492,8 @@ public class DevicesApi {
      * Creates an ip assignment for a device.
      * @param id Device UUID (required)
      * @param ipAssignmentInput IPAssignment to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return IPAssignment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -477,8 +505,8 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public IPAssignment createIPAssignment(UUID id, IPAssignmentInput ipAssignmentInput) throws ApiException {
-        ApiResponse<IPAssignment> localVarResp = createIPAssignmentWithHttpInfo(id, ipAssignmentInput);
+    public IPAssignment createIPAssignment(UUID id, IPAssignmentInput ipAssignmentInput, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<IPAssignment> localVarResp = createIPAssignmentWithHttpInfo(id, ipAssignmentInput, include, exclude);
         return localVarResp.getData();
     }
 
@@ -487,6 +515,8 @@ public class DevicesApi {
      * Creates an ip assignment for a device.
      * @param id Device UUID (required)
      * @param ipAssignmentInput IPAssignment to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;IPAssignment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -498,8 +528,8 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IPAssignment> createIPAssignmentWithHttpInfo(UUID id, IPAssignmentInput ipAssignmentInput) throws ApiException {
-        okhttp3.Call localVarCall = createIPAssignmentValidateBeforeCall(id, ipAssignmentInput, null);
+    public ApiResponse<IPAssignment> createIPAssignmentWithHttpInfo(UUID id, IPAssignmentInput ipAssignmentInput, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = createIPAssignmentValidateBeforeCall(id, ipAssignmentInput, include, exclude, null);
         Type localVarReturnType = new TypeToken<IPAssignment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -509,6 +539,8 @@ public class DevicesApi {
      * Creates an ip assignment for a device.
      * @param id Device UUID (required)
      * @param ipAssignmentInput IPAssignment to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -521,9 +553,9 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createIPAssignmentAsync(UUID id, IPAssignmentInput ipAssignmentInput, final ApiCallback<IPAssignment> _callback) throws ApiException {
+    public okhttp3.Call createIPAssignmentAsync(UUID id, IPAssignmentInput ipAssignmentInput, List<String> include, List<String> exclude, final ApiCallback<IPAssignment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createIPAssignmentValidateBeforeCall(id, ipAssignmentInput, _callback);
+        okhttp3.Call localVarCall = createIPAssignmentValidateBeforeCall(id, ipAssignmentInput, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<IPAssignment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

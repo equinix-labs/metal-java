@@ -57,7 +57,9 @@ public class OrganizationsApiTest {
     @Test
     public void createOrganizationTest() throws ApiException {
         OrganizationInput organizationInput = null;
-        Organization response = api.createOrganization(organizationInput);
+        List<String> include = null;
+        List<String> exclude = null;
+        Organization response = api.createOrganization(organizationInput, include, exclude);
         // TODO: test validations
     }
 
