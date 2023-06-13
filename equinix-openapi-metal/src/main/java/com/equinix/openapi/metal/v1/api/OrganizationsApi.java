@@ -92,6 +92,8 @@ public class OrganizationsApi {
     /**
      * Build call for createOrganization
      * @param organizationInput Organization to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -104,7 +106,7 @@ public class OrganizationsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createOrganizationCall(OrganizationInput organizationInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createOrganizationCall(OrganizationInput organizationInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,6 +131,14 @@ public class OrganizationsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -150,13 +160,13 @@ public class OrganizationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createOrganizationValidateBeforeCall(OrganizationInput organizationInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createOrganizationValidateBeforeCall(OrganizationInput organizationInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'organizationInput' is set
         if (organizationInput == null) {
             throw new ApiException("Missing the required parameter 'organizationInput' when calling createOrganization(Async)");
         }
 
-        return createOrganizationCall(organizationInput, _callback);
+        return createOrganizationCall(organizationInput, include, exclude, _callback);
 
     }
 
@@ -164,6 +174,8 @@ public class OrganizationsApi {
      * Create an organization
      * Creates an organization.
      * @param organizationInput Organization to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Organization
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -175,8 +187,8 @@ public class OrganizationsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Organization createOrganization(OrganizationInput organizationInput) throws ApiException {
-        ApiResponse<Organization> localVarResp = createOrganizationWithHttpInfo(organizationInput);
+    public Organization createOrganization(OrganizationInput organizationInput, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<Organization> localVarResp = createOrganizationWithHttpInfo(organizationInput, include, exclude);
         return localVarResp.getData();
     }
 
@@ -184,6 +196,8 @@ public class OrganizationsApi {
      * Create an organization
      * Creates an organization.
      * @param organizationInput Organization to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Organization&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -195,8 +209,8 @@ public class OrganizationsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Organization> createOrganizationWithHttpInfo(OrganizationInput organizationInput) throws ApiException {
-        okhttp3.Call localVarCall = createOrganizationValidateBeforeCall(organizationInput, null);
+    public ApiResponse<Organization> createOrganizationWithHttpInfo(OrganizationInput organizationInput, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = createOrganizationValidateBeforeCall(organizationInput, include, exclude, null);
         Type localVarReturnType = new TypeToken<Organization>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -205,6 +219,8 @@ public class OrganizationsApi {
      * Create an organization (asynchronously)
      * Creates an organization.
      * @param organizationInput Organization to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -217,9 +233,9 @@ public class OrganizationsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createOrganizationAsync(OrganizationInput organizationInput, final ApiCallback<Organization> _callback) throws ApiException {
+    public okhttp3.Call createOrganizationAsync(OrganizationInput organizationInput, List<String> include, List<String> exclude, final ApiCallback<Organization> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createOrganizationValidateBeforeCall(organizationInput, _callback);
+        okhttp3.Call localVarCall = createOrganizationValidateBeforeCall(organizationInput, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<Organization>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

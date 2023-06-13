@@ -178,7 +178,7 @@ public class Example {
 
 <a name="createVrf"></a>
 # **createVrf**
-> Vrf createVrf(id, vrfCreateInput)
+> Vrf createVrf(id, vrfCreateInput, include, exclude)
 
 Create a new VRF in the specified project
 
@@ -208,8 +208,10 @@ public class Example {
     VrfsApi apiInstance = new VrfsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     VrfCreateInput vrfCreateInput = new VrfCreateInput(); // VrfCreateInput | VRF to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Vrf result = apiInstance.createVrf(id, vrfCreateInput);
+      Vrf result = apiInstance.createVrf(id, vrfCreateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VrfsApi#createVrf");
@@ -228,6 +230,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
 | **vrfCreateInput** | [**VrfCreateInput**](VrfCreateInput.md)| VRF to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -252,7 +256,7 @@ public class Example {
 
 <a name="createVrfRoute"></a>
 # **createVrfRoute**
-> VrfRoute createVrfRoute(id, vrfRouteCreateInput)
+> VrfRoute createVrfRoute(id, vrfRouteCreateInput, include, exclude)
 
 Create a VRF route
 
@@ -282,8 +286,10 @@ public class Example {
     VrfsApi apiInstance = new VrfsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | VRF UUID
     VrfRouteCreateInput vrfRouteCreateInput = new VrfRouteCreateInput(); // VrfRouteCreateInput | 
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      VrfRoute result = apiInstance.createVrfRoute(id, vrfRouteCreateInput);
+      VrfRoute result = apiInstance.createVrfRoute(id, vrfRouteCreateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VrfsApi#createVrfRoute");
@@ -302,6 +308,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| VRF UUID | |
 | **vrfRouteCreateInput** | [**VrfRouteCreateInput**](VrfRouteCreateInput.md)|  | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

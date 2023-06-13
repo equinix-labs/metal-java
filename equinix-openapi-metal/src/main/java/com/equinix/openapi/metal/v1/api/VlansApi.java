@@ -81,6 +81,8 @@ public class VlansApi {
      * Build call for createVirtualNetwork
      * @param id Project UUID (required)
      * @param virtualNetworkCreateInput Virtual Network to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -94,7 +96,7 @@ public class VlansApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createVirtualNetworkCall(UUID id, VirtualNetworkCreateInput virtualNetworkCreateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createVirtualNetworkCall(UUID id, VirtualNetworkCreateInput virtualNetworkCreateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -120,6 +122,14 @@ public class VlansApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -141,7 +151,7 @@ public class VlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createVirtualNetworkValidateBeforeCall(UUID id, VirtualNetworkCreateInput virtualNetworkCreateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createVirtualNetworkValidateBeforeCall(UUID id, VirtualNetworkCreateInput virtualNetworkCreateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createVirtualNetwork(Async)");
@@ -152,7 +162,7 @@ public class VlansApi {
             throw new ApiException("Missing the required parameter 'virtualNetworkCreateInput' when calling createVirtualNetwork(Async)");
         }
 
-        return createVirtualNetworkCall(id, virtualNetworkCreateInput, _callback);
+        return createVirtualNetworkCall(id, virtualNetworkCreateInput, include, exclude, _callback);
 
     }
 
@@ -161,6 +171,8 @@ public class VlansApi {
      * Creates an virtual network.
      * @param id Project UUID (required)
      * @param virtualNetworkCreateInput Virtual Network to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return VirtualNetwork
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -173,8 +185,8 @@ public class VlansApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public VirtualNetwork createVirtualNetwork(UUID id, VirtualNetworkCreateInput virtualNetworkCreateInput) throws ApiException {
-        ApiResponse<VirtualNetwork> localVarResp = createVirtualNetworkWithHttpInfo(id, virtualNetworkCreateInput);
+    public VirtualNetwork createVirtualNetwork(UUID id, VirtualNetworkCreateInput virtualNetworkCreateInput, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<VirtualNetwork> localVarResp = createVirtualNetworkWithHttpInfo(id, virtualNetworkCreateInput, include, exclude);
         return localVarResp.getData();
     }
 
@@ -183,6 +195,8 @@ public class VlansApi {
      * Creates an virtual network.
      * @param id Project UUID (required)
      * @param virtualNetworkCreateInput Virtual Network to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;VirtualNetwork&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -195,8 +209,8 @@ public class VlansApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VirtualNetwork> createVirtualNetworkWithHttpInfo(UUID id, VirtualNetworkCreateInput virtualNetworkCreateInput) throws ApiException {
-        okhttp3.Call localVarCall = createVirtualNetworkValidateBeforeCall(id, virtualNetworkCreateInput, null);
+    public ApiResponse<VirtualNetwork> createVirtualNetworkWithHttpInfo(UUID id, VirtualNetworkCreateInput virtualNetworkCreateInput, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = createVirtualNetworkValidateBeforeCall(id, virtualNetworkCreateInput, include, exclude, null);
         Type localVarReturnType = new TypeToken<VirtualNetwork>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -206,6 +220,8 @@ public class VlansApi {
      * Creates an virtual network.
      * @param id Project UUID (required)
      * @param virtualNetworkCreateInput Virtual Network to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -219,9 +235,9 @@ public class VlansApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createVirtualNetworkAsync(UUID id, VirtualNetworkCreateInput virtualNetworkCreateInput, final ApiCallback<VirtualNetwork> _callback) throws ApiException {
+    public okhttp3.Call createVirtualNetworkAsync(UUID id, VirtualNetworkCreateInput virtualNetworkCreateInput, List<String> include, List<String> exclude, final ApiCallback<VirtualNetwork> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createVirtualNetworkValidateBeforeCall(id, virtualNetworkCreateInput, _callback);
+        okhttp3.Call localVarCall = createVirtualNetworkValidateBeforeCall(id, virtualNetworkCreateInput, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<VirtualNetwork>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

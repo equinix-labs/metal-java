@@ -89,7 +89,9 @@ public class VrfsApiTest {
     public void createVrfTest() throws ApiException {
         UUID id = null;
         VrfCreateInput vrfCreateInput = null;
-        Vrf response = api.createVrf(id, vrfCreateInput);
+        List<String> include = null;
+        List<String> exclude = null;
+        Vrf response = api.createVrf(id, vrfCreateInput, include, exclude);
         // TODO: test validations
     }
 
@@ -104,7 +106,9 @@ public class VrfsApiTest {
     public void createVrfRouteTest() throws ApiException {
         UUID id = null;
         VrfRouteCreateInput vrfRouteCreateInput = null;
-        VrfRoute response = api.createVrfRoute(id, vrfRouteCreateInput);
+        List<String> include = null;
+        List<String> exclude = null;
+        VrfRoute response = api.createVrfRoute(id, vrfRouteCreateInput, include, exclude);
         // TODO: test validations
     }
 

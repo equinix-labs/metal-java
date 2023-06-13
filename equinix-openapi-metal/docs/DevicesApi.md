@@ -100,7 +100,7 @@ public class Example {
 
 <a name="createDevice"></a>
 # **createDevice**
-> Device createDevice(id, createDeviceRequest)
+> Device createDevice(id, createDeviceRequest, include, exclude)
 
 Create a device
 
@@ -130,8 +130,10 @@ public class Example {
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     CreateDeviceRequest createDeviceRequest = new CreateDeviceRequest(); // CreateDeviceRequest | Device to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Device result = apiInstance.createDevice(id, createDeviceRequest);
+      Device result = apiInstance.createDevice(id, createDeviceRequest, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#createDevice");
@@ -150,6 +152,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
 | **createDeviceRequest** | [**CreateDeviceRequest**](CreateDeviceRequest.md)| Device to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -175,7 +179,7 @@ public class Example {
 
 <a name="createIPAssignment"></a>
 # **createIPAssignment**
-> IPAssignment createIPAssignment(id, ipAssignmentInput)
+> IPAssignment createIPAssignment(id, ipAssignmentInput, include, exclude)
 
 Create an ip assignment
 
@@ -205,8 +209,10 @@ public class Example {
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Device UUID
     IPAssignmentInput ipAssignmentInput = new IPAssignmentInput(); // IPAssignmentInput | IPAssignment to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      IPAssignment result = apiInstance.createIPAssignment(id, ipAssignmentInput);
+      IPAssignment result = apiInstance.createIPAssignment(id, ipAssignmentInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#createIPAssignment");
@@ -225,6 +231,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Device UUID | |
 | **ipAssignmentInput** | [**IPAssignmentInput**](IPAssignmentInput.md)| IPAssignment to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

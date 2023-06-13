@@ -12,7 +12,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="createVirtualNetwork"></a>
 # **createVirtualNetwork**
-> VirtualNetwork createVirtualNetwork(id, virtualNetworkCreateInput)
+> VirtualNetwork createVirtualNetwork(id, virtualNetworkCreateInput, include, exclude)
 
 Create a virtual network
 
@@ -42,8 +42,10 @@ public class Example {
     VlansApi apiInstance = new VlansApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     VirtualNetworkCreateInput virtualNetworkCreateInput = new VirtualNetworkCreateInput(); // VirtualNetworkCreateInput | Virtual Network to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      VirtualNetwork result = apiInstance.createVirtualNetwork(id, virtualNetworkCreateInput);
+      VirtualNetwork result = apiInstance.createVirtualNetwork(id, virtualNetworkCreateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VlansApi#createVirtualNetwork");
@@ -62,6 +64,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
 | **virtualNetworkCreateInput** | [**VirtualNetworkCreateInput**](VirtualNetworkCreateInput.md)| Virtual Network to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

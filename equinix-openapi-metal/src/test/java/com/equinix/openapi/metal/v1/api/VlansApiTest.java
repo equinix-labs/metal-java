@@ -46,7 +46,9 @@ public class VlansApiTest {
     public void createVirtualNetworkTest() throws ApiException {
         UUID id = null;
         VirtualNetworkCreateInput virtualNetworkCreateInput = null;
-        VirtualNetwork response = api.createVirtualNetwork(id, virtualNetworkCreateInput);
+        List<String> include = null;
+        List<String> exclude = null;
+        VirtualNetwork response = api.createVirtualNetwork(id, virtualNetworkCreateInput, include, exclude);
         // TODO: test validations
     }
 
