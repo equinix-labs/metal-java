@@ -22,7 +22,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import java.io.File;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -89,7 +88,7 @@ public class Organization {
 
   public static final String SERIALIZED_NAME_LOGO = "logo";
   @SerializedName(SERIALIZED_NAME_LOGO)
-  private File logo;
+  private String logo;
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
@@ -302,7 +301,7 @@ public class Organization {
   }
 
 
-  public Organization logo(File logo) {
+  public Organization logo(String logo) {
     
     this.logo = logo;
     return this;
@@ -314,12 +313,12 @@ public class Organization {
   **/
   @javax.annotation.Nullable
 
-  public File getLogo() {
+  public String getLogo() {
     return logo;
   }
 
 
-  public void setLogo(File logo) {
+  public void setLogo(String logo) {
     this.logo = logo;
   }
 
@@ -694,6 +693,9 @@ public class Organization {
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("logo") != null && !jsonObj.get("logo").isJsonNull()) && !jsonObj.get("logo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `logo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logo").toString()));
       }
       if (jsonObj.get("members") != null && !jsonObj.get("members").isJsonNull()) {
         JsonArray jsonArraymembers = jsonObj.getAsJsonArray("members");

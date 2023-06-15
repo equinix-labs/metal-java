@@ -273,10 +273,7 @@ docs/VrfMetalGatewayCreateInput.md
 docs/VrfRoute.md
 docs/VrfRouteCreateInput.md
 docs/VrfRouteList.md
-docs/VrfRouteMetalGateway.md
 docs/VrfRouteUpdateInput.md
-docs/VrfRouteVirtualNetwork.md
-docs/VrfRouteVrf.md
 docs/VrfUpdateInput.md
 docs/VrfVirtualCircuit.md
 docs/VrfVirtualCircuitCreateInput.md
@@ -577,10 +574,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/VrfMetalGatewayCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfRoute.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfRouteCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfRouteList.java
-src/main/java/com/equinix/openapi/metal/v1/model/VrfRouteMetalGateway.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfRouteUpdateInput.java
-src/main/java/com/equinix/openapi/metal/v1/model/VrfRouteVirtualNetwork.java
-src/main/java/com/equinix/openapi/metal/v1/model/VrfRouteVrf.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuit.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitCreateInput.java
@@ -851,11 +845,8 @@ src/test/java/com/equinix/openapi/metal/v1/model/VrfMetalGatewayCreateInputTest.
 src/test/java/com/equinix/openapi/metal/v1/model/VrfMetalGatewayTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteListTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteMetalGatewayTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteUpdateInputTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteVirtualNetworkTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/VrfRouteVrfTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfUpdateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitCreateInputTest.java

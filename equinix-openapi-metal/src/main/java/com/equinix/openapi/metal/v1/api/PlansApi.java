@@ -79,6 +79,7 @@ public class PlansApi {
      * Build call for findPlans
      * @param categories Filter plans by its category (optional)
      * @param type Filter plans by its plan type (optional)
+     * @param slug Filter plans by slug (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
@@ -91,7 +92,7 @@ public class PlansApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findPlansCall(List<String> categories, String type, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findPlansCall(List<String> categories, String type, String slug, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -124,6 +125,10 @@ public class PlansApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("type", type));
         }
 
+        if (slug != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("slug", slug));
+        }
+
         if (include != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
@@ -152,8 +157,8 @@ public class PlansApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findPlansValidateBeforeCall(List<String> categories, String type, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        return findPlansCall(categories, type, include, exclude, _callback);
+    private okhttp3.Call findPlansValidateBeforeCall(List<String> categories, String type, String slug, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+        return findPlansCall(categories, type, slug, include, exclude, _callback);
 
     }
 
@@ -162,6 +167,7 @@ public class PlansApi {
      * Provides a listing of available plans to provision your device on.
      * @param categories Filter plans by its category (optional)
      * @param type Filter plans by its plan type (optional)
+     * @param slug Filter plans by slug (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return PlanList
@@ -173,8 +179,8 @@ public class PlansApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public PlanList findPlans(List<String> categories, String type, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<PlanList> localVarResp = findPlansWithHttpInfo(categories, type, include, exclude);
+    public PlanList findPlans(List<String> categories, String type, String slug, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<PlanList> localVarResp = findPlansWithHttpInfo(categories, type, slug, include, exclude);
         return localVarResp.getData();
     }
 
@@ -183,6 +189,7 @@ public class PlansApi {
      * Provides a listing of available plans to provision your device on.
      * @param categories Filter plans by its category (optional)
      * @param type Filter plans by its plan type (optional)
+     * @param slug Filter plans by slug (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;PlanList&gt;
@@ -194,8 +201,8 @@ public class PlansApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanList> findPlansWithHttpInfo(List<String> categories, String type, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = findPlansValidateBeforeCall(categories, type, include, exclude, null);
+    public ApiResponse<PlanList> findPlansWithHttpInfo(List<String> categories, String type, String slug, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = findPlansValidateBeforeCall(categories, type, slug, include, exclude, null);
         Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -205,6 +212,7 @@ public class PlansApi {
      * Provides a listing of available plans to provision your device on.
      * @param categories Filter plans by its category (optional)
      * @param type Filter plans by its plan type (optional)
+     * @param slug Filter plans by slug (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -217,9 +225,9 @@ public class PlansApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findPlansAsync(List<String> categories, String type, List<String> include, List<String> exclude, final ApiCallback<PlanList> _callback) throws ApiException {
+    public okhttp3.Call findPlansAsync(List<String> categories, String type, String slug, List<String> include, List<String> exclude, final ApiCallback<PlanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findPlansValidateBeforeCall(categories, type, include, exclude, _callback);
+        okhttp3.Call localVarCall = findPlansValidateBeforeCall(categories, type, slug, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -5772,6 +5772,12 @@ paths:
           - custom
           example: standard
           type: string
+      - description: Filter plans by slug
+        in: query
+        name: slug
+        schema:
+          example: c3.small.x86
+          type: string
       - description: |-
           Nested attributes to include. Included objects will return their full
           attributes. Attribute names can be dotted (up to 3 levels) to included deeply
@@ -13911,7 +13917,6 @@ components:
           format: uuid
           type: string
         logo:
-          format: binary
           type: string
         members:
           items:
@@ -15538,11 +15543,11 @@ components:
           readOnly: true
           type: string
         metal_gateway:
-          $ref: '#/components/schemas/VrfRoute_metal_gateway'
+          $ref: '#/components/schemas/VrfMetalGateway'
         virtual_network:
-          $ref: '#/components/schemas/VrfRoute_virtual_network'
+          $ref: '#/components/schemas/VirtualNetwork'
         vrf:
-          $ref: '#/components/schemas/VrfRoute_vrf'
+          $ref: '#/components/schemas/Vrf'
         href:
           example: /routes/e1ff9c2b-051a-4688-965f-153e274f77e0
           readOnly: true
@@ -16294,25 +16299,6 @@ components:
         userdata:
           type: string
       type: object
-    VrfRoute_metal_gateway:
-      description: A link to the Metal Gateway to which this VRF Route is associated
-      oneOf:
-      - $ref: '#/components/schemas/Href'
-      - $ref: '#/components/schemas/MetalGateway'
-      readOnly: true
-    VrfRoute_virtual_network:
-      description: "A link to the Virtual Network to which this VRF Route is associated,\
-        \ through the Metal Gateway"
-      oneOf:
-      - $ref: '#/components/schemas/Href'
-      - $ref: '#/components/schemas/VirtualNetwork'
-      readOnly: true
-    VrfRoute_vrf:
-      description: A link to the VRF within which this route exists
-      oneOf:
-      - $ref: '#/components/schemas/Href'
-      - $ref: '#/components/schemas/Vrf'
-      readOnly: true
   securitySchemes:
     x_auth_token:
       description: |
