@@ -15,9 +15,9 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.VrfRouteMetalGateway;
-import com.equinix.openapi.metal.v1.model.VrfRouteVirtualNetwork;
-import com.equinix.openapi.metal.v1.model.VrfRouteVrf;
+import com.equinix.openapi.metal.v1.model.VirtualNetwork;
+import com.equinix.openapi.metal.v1.model.Vrf;
+import com.equinix.openapi.metal.v1.model.VrfMetalGateway;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -179,15 +179,15 @@ public class VrfRoute {
 
   public static final String SERIALIZED_NAME_METAL_GATEWAY = "metal_gateway";
   @SerializedName(SERIALIZED_NAME_METAL_GATEWAY)
-  private VrfRouteMetalGateway metalGateway;
+  private VrfMetalGateway metalGateway;
 
   public static final String SERIALIZED_NAME_VIRTUAL_NETWORK = "virtual_network";
   @SerializedName(SERIALIZED_NAME_VIRTUAL_NETWORK)
-  private VrfRouteVirtualNetwork virtualNetwork;
+  private VirtualNetwork virtualNetwork;
 
   public static final String SERIALIZED_NAME_VRF = "vrf";
   @SerializedName(SERIALIZED_NAME_VRF)
-  private VrfRouteVrf vrf;
+  private Vrf vrf;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -323,7 +323,7 @@ public class VrfRoute {
 
 
 
-  public VrfRoute metalGateway(VrfRouteMetalGateway metalGateway) {
+  public VrfRoute metalGateway(VrfMetalGateway metalGateway) {
     
     this.metalGateway = metalGateway;
     return this;
@@ -335,17 +335,17 @@ public class VrfRoute {
   **/
   @javax.annotation.Nullable
 
-  public VrfRouteMetalGateway getMetalGateway() {
+  public VrfMetalGateway getMetalGateway() {
     return metalGateway;
   }
 
 
-  public void setMetalGateway(VrfRouteMetalGateway metalGateway) {
+  public void setMetalGateway(VrfMetalGateway metalGateway) {
     this.metalGateway = metalGateway;
   }
 
 
-  public VrfRoute virtualNetwork(VrfRouteVirtualNetwork virtualNetwork) {
+  public VrfRoute virtualNetwork(VirtualNetwork virtualNetwork) {
     
     this.virtualNetwork = virtualNetwork;
     return this;
@@ -357,17 +357,17 @@ public class VrfRoute {
   **/
   @javax.annotation.Nullable
 
-  public VrfRouteVirtualNetwork getVirtualNetwork() {
+  public VirtualNetwork getVirtualNetwork() {
     return virtualNetwork;
   }
 
 
-  public void setVirtualNetwork(VrfRouteVirtualNetwork virtualNetwork) {
+  public void setVirtualNetwork(VirtualNetwork virtualNetwork) {
     this.virtualNetwork = virtualNetwork;
   }
 
 
-  public VrfRoute vrf(VrfRouteVrf vrf) {
+  public VrfRoute vrf(Vrf vrf) {
     
     this.vrf = vrf;
     return this;
@@ -379,12 +379,12 @@ public class VrfRoute {
   **/
   @javax.annotation.Nullable
 
-  public VrfRouteVrf getVrf() {
+  public Vrf getVrf() {
     return vrf;
   }
 
 
-  public void setVrf(VrfRouteVrf vrf) {
+  public void setVrf(Vrf vrf) {
     this.vrf = vrf;
   }
 
@@ -558,15 +558,15 @@ public class VrfRoute {
       }
       // validate the optional field `metal_gateway`
       if (jsonObj.get("metal_gateway") != null && !jsonObj.get("metal_gateway").isJsonNull()) {
-        VrfRouteMetalGateway.validateJsonObject(jsonObj.getAsJsonObject("metal_gateway"));
+        VrfMetalGateway.validateJsonObject(jsonObj.getAsJsonObject("metal_gateway"));
       }
       // validate the optional field `virtual_network`
       if (jsonObj.get("virtual_network") != null && !jsonObj.get("virtual_network").isJsonNull()) {
-        VrfRouteVirtualNetwork.validateJsonObject(jsonObj.getAsJsonObject("virtual_network"));
+        VirtualNetwork.validateJsonObject(jsonObj.getAsJsonObject("virtual_network"));
       }
       // validate the optional field `vrf`
       if (jsonObj.get("vrf") != null && !jsonObj.get("vrf").isJsonNull()) {
-        VrfRouteVrf.validateJsonObject(jsonObj.getAsJsonObject("vrf"));
+        Vrf.validateJsonObject(jsonObj.getAsJsonObject("vrf"));
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));

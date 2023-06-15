@@ -13,9 +13,9 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.VrfRouteMetalGateway;
-import com.equinix.openapi.metal.v1.model.VrfRouteVirtualNetwork;
-import com.equinix.openapi.metal.v1.model.VrfRouteVrf;
+import com.equinix.openapi.metal.v1.model.VirtualNetwork;
+import com.equinix.openapi.metal.v1.model.Vrf;
+import com.equinix.openapi.metal.v1.model.VrfMetalGateway;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;

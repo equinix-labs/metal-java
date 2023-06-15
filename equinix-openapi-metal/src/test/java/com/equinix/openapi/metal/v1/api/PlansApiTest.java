@@ -44,9 +44,10 @@ public class PlansApiTest {
     public void findPlansTest() throws ApiException {
         List<String> categories = null;
         String type = null;
+        String slug = null;
         List<String> include = null;
         List<String> exclude = null;
-        PlanList response = api.findPlans(categories, type, include, exclude);
+        PlanList response = api.findPlans(categories, type, slug, include, exclude);
         // TODO: test validations
     }
 

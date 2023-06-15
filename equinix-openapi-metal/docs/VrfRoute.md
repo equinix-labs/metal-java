@@ -14,9 +14,9 @@
 |**type** | [**TypeEnum**](#TypeEnum) | VRF route type, like &#39;bgp&#39;, &#39;connected&#39;, and &#39;static&#39;. Currently, only static routes are supported |  [optional] [readonly] |
 |**createdAt** | **OffsetDateTime** |  |  [optional] [readonly] |
 |**updatedAt** | **OffsetDateTime** |  |  [optional] [readonly] |
-|**metalGateway** | [**VrfRouteMetalGateway**](VrfRouteMetalGateway.md) |  |  [optional] |
-|**virtualNetwork** | [**VrfRouteVirtualNetwork**](VrfRouteVirtualNetwork.md) |  |  [optional] |
-|**vrf** | [**VrfRouteVrf**](VrfRouteVrf.md) |  |  [optional] |
+|**metalGateway** | [**VrfMetalGateway**](VrfMetalGateway.md) |  |  [optional] |
+|**virtualNetwork** | [**VirtualNetwork**](VirtualNetwork.md) |  |  [optional] |
+|**vrf** | [**Vrf**](Vrf.md) |  |  [optional] |
 |**href** | **String** |  |  [optional] [readonly] |
 
 

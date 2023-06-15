@@ -6334,6 +6334,15 @@ paths:
           example: standard
           type: string
         style: form
+      - description: Filter plans by slug
+        explode: true
+        in: query
+        name: slug
+        required: false
+        schema:
+          example: c3.small.x86
+          type: string
+        style: form
       - description: |-
           Nested attributes to include. Included objects will return their full
           attributes. Attribute names can be dotted (up to 3 levels) to included deeply
@@ -13198,7 +13207,7 @@ components:
               - href: href
               - href: href
               name: name
-              logo: ""
+              logo: logo
               customdata: "{}"
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -13280,7 +13289,7 @@ components:
                 - href: href
                 - href: href
                 name: name
-                logo: ""
+                logo: logo
                 customdata: "{}"
                 id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
@@ -13557,7 +13566,7 @@ components:
                 - href: href
                 - href: href
                 name: name
-                logo: ""
+                logo: logo
                 customdata: "{}"
                 id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
@@ -13639,7 +13648,7 @@ components:
                   - href: href
                   - href: href
                   name: name
-                  logo: ""
+                  logo: logo
                   customdata: "{}"
                   id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
@@ -13842,7 +13851,7 @@ components:
                 - href: href
                 - href: href
                 name: name
-                logo: ""
+                logo: logo
                 customdata: "{}"
                 id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
@@ -13924,7 +13933,7 @@ components:
                   - href: href
                   - href: href
                   name: name
-                  logo: ""
+                  logo: logo
                   customdata: "{}"
                   id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
@@ -15039,7 +15048,7 @@ components:
               - href: href
               - href: href
               name: name
-              logo: ""
+              logo: logo
               customdata: "{}"
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -15866,7 +15875,7 @@ components:
                 - href: href
                 - href: href
                 name: name
-                logo: ""
+                logo: logo
                 customdata: "{}"
                 id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
@@ -16330,7 +16339,7 @@ components:
                 - href: href
                 - href: href
                 name: name
-                logo: ""
+                logo: logo
                 customdata: "{}"
                 id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
@@ -17028,7 +17037,7 @@ components:
             - href: href
             - href: href
             name: name
-            logo: ""
+            logo: logo
             customdata: "{}"
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -17253,7 +17262,7 @@ components:
               - href: href
               - href: href
               name: name
-              logo: ""
+              logo: logo
               customdata: "{}"
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -17414,7 +17423,7 @@ components:
               - href: href
               - href: href
               name: name
-              logo: ""
+              logo: logo
               customdata: "{}"
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -20368,7 +20377,7 @@ components:
         - href: href
         - href: href
         name: name
-        logo: ""
+        logo: logo
         customdata: "{}"
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -20395,7 +20404,6 @@ components:
           format: uuid
           type: string
         logo:
-          format: binary
           type: string
         members:
           items:
@@ -20529,7 +20537,7 @@ components:
           - href: href
           - href: href
           name: name
-          logo: ""
+          logo: logo
           customdata: "{}"
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - website: website
@@ -20570,7 +20578,7 @@ components:
           - href: href
           - href: href
           name: name
-          logo: ""
+          logo: logo
           customdata: "{}"
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -21495,7 +21503,7 @@ components:
           - href: href
           - href: href
           name: name
-          logo: ""
+          logo: logo
           customdata: "{}"
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
@@ -21665,7 +21673,7 @@ components:
             - href: href
             - href: href
             name: name
-            logo: ""
+            logo: logo
             customdata: "{}"
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -21736,7 +21744,7 @@ components:
             - href: href
             - href: href
             name: name
-            logo: ""
+            logo: logo
             customdata: "{}"
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -23770,7 +23778,7 @@ components:
             - href: href
             - href: href
             name: name
-            logo: ""
+            logo: logo
             customdata: "{}"
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -24058,7 +24066,7 @@ components:
             - href: href
             - href: href
             name: name
-            logo: ""
+            logo: logo
             customdata: "{}"
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -24131,7 +24139,7 @@ components:
             - href: href
             - href: href
             name: name
-            logo: ""
+            logo: logo
             customdata: "{}"
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -24210,7 +24218,7 @@ components:
               - href: href
               - href: href
               name: name
-              logo: ""
+              logo: logo
               customdata: "{}"
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -24493,7 +24501,7 @@ components:
               - href: href
               - href: href
               name: name
-              logo: ""
+              logo: logo
               customdata: "{}"
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -24566,7 +24574,7 @@ components:
               - href: href
               - href: href
               name: name
-              logo: ""
+              logo: logo
               customdata: "{}"
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -24645,7 +24653,7 @@ components:
                 - href: href
                 - href: href
                 name: name
-                logo: ""
+                logo: logo
                 customdata: "{}"
                 id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
@@ -24832,7 +24840,7 @@ components:
               - href: href
               - href: href
               name: name
-              logo: ""
+              logo: logo
               customdata: "{}"
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -24905,7 +24913,7 @@ components:
               - href: href
               - href: href
               name: name
-              logo: ""
+              logo: logo
               customdata: "{}"
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -24984,7 +24992,7 @@ components:
                 - href: href
                 - href: href
                 name: name
-                logo: ""
+                logo: logo
                 customdata: "{}"
                 id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
@@ -25184,7 +25192,7 @@ components:
               - href: href
               - href: href
               name: name
-              logo: ""
+              logo: logo
               customdata: "{}"
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -25343,7 +25351,7 @@ components:
               - href: href
               - href: href
               name: name
-              logo: ""
+              logo: logo
               customdata: "{}"
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -25538,7 +25546,7 @@ components:
             - href: href
             - href: href
             name: name
-            logo: ""
+            logo: logo
             customdata: "{}"
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -25620,7 +25628,7 @@ components:
               - href: href
               - href: href
               name: name
-              logo: ""
+              logo: logo
               customdata: "{}"
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -25771,14 +25779,474 @@ components:
       type: object
     VrfRoute:
       example:
-        metal_gateway: null
-        virtual_network: null
+        metal_gateway:
+          virtual_network:
+            vxlan: 1
+            metal_gateways:
+            - gateway_address: 10.1.2.1/27
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              vlan: 1001
+              created_at: 2000-01-23T04:56:07.000+00:00
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              state: ready
+            - gateway_address: 10.1.2.1/27
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              vlan: 1001
+              created_at: 2000-01-23T04:56:07.000+00:00
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              state: ready
+            metro_code: metro_code
+            instances:
+            - href: href
+            - href: href
+            metro:
+              href: href
+            description: description
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            facility:
+              href: href
+            assigned_to_virtual_circuit: true
+            assigned_to:
+              href: href
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          ip_reservation: null
+          created_at: 2000-01-23T04:56:07.000+00:00
+          project:
+            devices:
+            - href: href
+            - href: href
+            volumes:
+            - href: href
+            - href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            memberships:
+            - href: href
+            - href: href
+            bgp_config:
+              href: href
+            max_devices: "{}"
+            ssh_keys:
+            - href: href
+            - href: href
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            invitations:
+            - href: href
+            - href: href
+            members:
+            - href: href
+            - href: href
+            organization:
+              website: website
+              address:
+                country: country
+                address: address
+                address2: address2
+                city: city
+                coordinates:
+                  latitude: latitude
+                  longitude: longitude
+                state: state
+                zip_code: zip_code
+              projects:
+              - href: href
+              - href: href
+              credit_amount: 0.8008282
+              created_at: 2000-01-23T04:56:07.000+00:00
+              description: description
+              billing_address:
+                country: country
+                address: address
+                address2: address2
+                city: city
+                coordinates:
+                  latitude: latitude
+                  longitude: longitude
+                state: state
+                zip_code: zip_code
+              memberships:
+              - href: href
+              - href: href
+              enforce_2fa_at: 2000-01-23T04:56:07.000+00:00
+              twitter: twitter
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              terms: 6
+              members:
+              - href: href
+              - href: href
+              name: name
+              logo: logo
+              customdata: "{}"
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            network_status: "{}"
+            customdata: "{}"
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            payment_method:
+              href: href
+          href: href
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: ready
+          vrf:
+            bgp_dynamic_neighbors_export_route_map: true
+            bgp_dynamic_neighbors_bfd_enabled: true
+            local_asn: 5
+            description: description
+            bill: false
+            bgp_dynamic_neighbors_enabled: true
+            project:
+              devices:
+              - href: href
+              - href: href
+              volumes:
+              - href: href
+              - href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              memberships:
+              - href: href
+              - href: href
+              bgp_config:
+                href: href
+              max_devices: "{}"
+              ssh_keys:
+              - href: href
+              - href: href
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              invitations:
+              - href: href
+              - href: href
+              members:
+              - href: href
+              - href: href
+              organization:
+                website: website
+                address:
+                  country: country
+                  address: address
+                  address2: address2
+                  city: city
+                  coordinates:
+                    latitude: latitude
+                    longitude: longitude
+                  state: state
+                  zip_code: zip_code
+                projects:
+                - href: href
+                - href: href
+                credit_amount: 0.8008282
+                created_at: 2000-01-23T04:56:07.000+00:00
+                description: description
+                billing_address:
+                  country: country
+                  address: address
+                  address2: address2
+                  city: city
+                  coordinates:
+                    latitude: latitude
+                    longitude: longitude
+                  state: state
+                  zip_code: zip_code
+                memberships:
+                - href: href
+                - href: href
+                enforce_2fa_at: 2000-01-23T04:56:07.000+00:00
+                twitter: twitter
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                terms: 6
+                members:
+                - href: href
+                - href: href
+                name: name
+                logo: logo
+                customdata: "{}"
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+              network_status: "{}"
+              customdata: "{}"
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              payment_method:
+                href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            created_by:
+              avatar_thumb_url: avatar_thumb_url
+              last_login_at: 2000-01-23T04:56:07.000+00:00
+              max_projects: 3
+              timezone: timezone
+              default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              created_at: 2000-01-23T04:56:07.000+00:00
+              last_name: last_name
+              short_id: short_id
+              fraud_score: fraud_score
+              emails:
+              - href: href
+              - href: href
+              default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              full_name: full_name
+              avatar_url: avatar_url
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              phone_number: phone_number
+              customdata: "{}"
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              first_name: first_name
+              max_organizations: 9
+              two_factor_auth: two_factor_auth
+              email: email
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            virtual_circuits:
+            - subnet: 12.0.0.0/30
+              customer_ip: 12.0.0.2
+              description: description
+              project:
+                href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              vrf: null
+              metal_ip: 12.0.0.1
+              speed: 7
+              tags:
+              - tags
+              - tags
+              nni_vlan: 5
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              port:
+                href: href
+              name: name
+              peer_asn: 2
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              md5: md5
+              status: status
+            - subnet: 12.0.0.0/30
+              customer_ip: 12.0.0.2
+              description: description
+              project:
+                href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              vrf: null
+              metal_ip: 12.0.0.1
+              speed: 7
+              tags:
+              - tags
+              - tags
+              nni_vlan: 5
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              port:
+                href: href
+              name: name
+              peer_asn: 2
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              md5: md5
+              status: status
+            ip_ranges:
+            - ip_ranges
+            - ip_ranges
+            metro:
+              country: country
+              code: code
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href: href
+          created_by:
+            href: href
+        virtual_network:
+          vxlan: 1
+          metal_gateways:
+          - gateway_address: 10.1.2.1/27
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            vlan: 1001
+            created_at: 2000-01-23T04:56:07.000+00:00
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: ready
+          - gateway_address: 10.1.2.1/27
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            vlan: 1001
+            created_at: 2000-01-23T04:56:07.000+00:00
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: ready
+          metro_code: metro_code
+          instances:
+          - href: href
+          - href: href
+          metro:
+            href: href
+          description: description
+          href: href
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          facility:
+            href: href
+          assigned_to_virtual_circuit: true
+          assigned_to:
+            href: href
         updated_at: 2000-01-23T04:56:07.000+00:00
         prefix: 0.0.0.0/0
         next_hop: 192.168.1.254
         created_at: 2000-01-23T04:56:07.000+00:00
         id: e1ff9c2b-051a-4688-965f-153e274f77e0
-        vrf: null
+        vrf:
+          bgp_dynamic_neighbors_export_route_map: true
+          bgp_dynamic_neighbors_bfd_enabled: true
+          local_asn: 5
+          description: description
+          bill: false
+          bgp_dynamic_neighbors_enabled: true
+          project:
+            devices:
+            - href: href
+            - href: href
+            volumes:
+            - href: href
+            - href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            memberships:
+            - href: href
+            - href: href
+            bgp_config:
+              href: href
+            max_devices: "{}"
+            ssh_keys:
+            - href: href
+            - href: href
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            invitations:
+            - href: href
+            - href: href
+            members:
+            - href: href
+            - href: href
+            organization:
+              website: website
+              address:
+                country: country
+                address: address
+                address2: address2
+                city: city
+                coordinates:
+                  latitude: latitude
+                  longitude: longitude
+                state: state
+                zip_code: zip_code
+              projects:
+              - href: href
+              - href: href
+              credit_amount: 0.8008282
+              created_at: 2000-01-23T04:56:07.000+00:00
+              description: description
+              billing_address:
+                country: country
+                address: address
+                address2: address2
+                city: city
+                coordinates:
+                  latitude: latitude
+                  longitude: longitude
+                state: state
+                zip_code: zip_code
+              memberships:
+              - href: href
+              - href: href
+              enforce_2fa_at: 2000-01-23T04:56:07.000+00:00
+              twitter: twitter
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              terms: 6
+              members:
+              - href: href
+              - href: href
+              name: name
+              logo: logo
+              customdata: "{}"
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            network_status: "{}"
+            customdata: "{}"
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            payment_method:
+              href: href
+          created_at: 2000-01-23T04:56:07.000+00:00
+          created_by:
+            avatar_thumb_url: avatar_thumb_url
+            last_login_at: 2000-01-23T04:56:07.000+00:00
+            max_projects: 3
+            timezone: timezone
+            default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            created_at: 2000-01-23T04:56:07.000+00:00
+            last_name: last_name
+            short_id: short_id
+            fraud_score: fraud_score
+            emails:
+            - href: href
+            - href: href
+            default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            full_name: full_name
+            avatar_url: avatar_url
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            phone_number: phone_number
+            customdata: "{}"
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            first_name: first_name
+            max_organizations: 9
+            two_factor_auth: two_factor_auth
+            email: email
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          virtual_circuits:
+          - subnet: 12.0.0.0/30
+            customer_ip: 12.0.0.2
+            description: description
+            project:
+              href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            vrf: null
+            metal_ip: 12.0.0.1
+            speed: 7
+            tags:
+            - tags
+            - tags
+            nni_vlan: 5
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            port:
+              href: href
+            name: name
+            peer_asn: 2
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            md5: md5
+            status: status
+          - subnet: 12.0.0.0/30
+            customer_ip: 12.0.0.2
+            description: description
+            project:
+              href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            vrf: null
+            metal_ip: 12.0.0.1
+            speed: 7
+            tags:
+            - tags
+            - tags
+            nni_vlan: 5
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            port:
+              href: href
+            name: name
+            peer_asn: 2
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            md5: md5
+            status: status
+          ip_ranges:
+          - ip_ranges
+          - ip_ranges
+          metro:
+            country: country
+            code: code
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          href: href
         href: /routes/e1ff9c2b-051a-4688-965f-153e274f77e0
         type: static
         status: active
@@ -25828,11 +26296,11 @@ components:
           readOnly: true
           type: string
         metal_gateway:
-          $ref: '#/components/schemas/VrfRoute_metal_gateway'
+          $ref: '#/components/schemas/VrfMetalGateway'
         virtual_network:
-          $ref: '#/components/schemas/VrfRoute_virtual_network'
+          $ref: '#/components/schemas/VirtualNetwork'
         vrf:
-          $ref: '#/components/schemas/VrfRoute_vrf'
+          $ref: '#/components/schemas/Vrf'
         href:
           example: /routes/e1ff9c2b-051a-4688-965f-153e274f77e0
           readOnly: true
@@ -25878,25 +26346,945 @@ components:
     VrfRouteList:
       example:
         routes:
-        - metal_gateway: null
-          virtual_network: null
+        - metal_gateway:
+            virtual_network:
+              vxlan: 1
+              metal_gateways:
+              - gateway_address: 10.1.2.1/27
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                vlan: 1001
+                created_at: 2000-01-23T04:56:07.000+00:00
+                href: href
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                state: ready
+              - gateway_address: 10.1.2.1/27
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                vlan: 1001
+                created_at: 2000-01-23T04:56:07.000+00:00
+                href: href
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                state: ready
+              metro_code: metro_code
+              instances:
+              - href: href
+              - href: href
+              metro:
+                href: href
+              description: description
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              facility:
+                href: href
+              assigned_to_virtual_circuit: true
+              assigned_to:
+                href: href
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            ip_reservation: null
+            created_at: 2000-01-23T04:56:07.000+00:00
+            project:
+              devices:
+              - href: href
+              - href: href
+              volumes:
+              - href: href
+              - href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              memberships:
+              - href: href
+              - href: href
+              bgp_config:
+                href: href
+              max_devices: "{}"
+              ssh_keys:
+              - href: href
+              - href: href
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              invitations:
+              - href: href
+              - href: href
+              members:
+              - href: href
+              - href: href
+              organization:
+                website: website
+                address:
+                  country: country
+                  address: address
+                  address2: address2
+                  city: city
+                  coordinates:
+                    latitude: latitude
+                    longitude: longitude
+                  state: state
+                  zip_code: zip_code
+                projects:
+                - href: href
+                - href: href
+                credit_amount: 0.8008282
+                created_at: 2000-01-23T04:56:07.000+00:00
+                description: description
+                billing_address:
+                  country: country
+                  address: address
+                  address2: address2
+                  city: city
+                  coordinates:
+                    latitude: latitude
+                    longitude: longitude
+                  state: state
+                  zip_code: zip_code
+                memberships:
+                - href: href
+                - href: href
+                enforce_2fa_at: 2000-01-23T04:56:07.000+00:00
+                twitter: twitter
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                terms: 6
+                members:
+                - href: href
+                - href: href
+                name: name
+                logo: logo
+                customdata: "{}"
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+              network_status: "{}"
+              customdata: "{}"
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              payment_method:
+                href: href
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: ready
+            vrf:
+              bgp_dynamic_neighbors_export_route_map: true
+              bgp_dynamic_neighbors_bfd_enabled: true
+              local_asn: 5
+              description: description
+              bill: false
+              bgp_dynamic_neighbors_enabled: true
+              project:
+                devices:
+                - href: href
+                - href: href
+                volumes:
+                - href: href
+                - href: href
+                created_at: 2000-01-23T04:56:07.000+00:00
+                memberships:
+                - href: href
+                - href: href
+                bgp_config:
+                  href: href
+                max_devices: "{}"
+                ssh_keys:
+                - href: href
+                - href: href
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                invitations:
+                - href: href
+                - href: href
+                members:
+                - href: href
+                - href: href
+                organization:
+                  website: website
+                  address:
+                    country: country
+                    address: address
+                    address2: address2
+                    city: city
+                    coordinates:
+                      latitude: latitude
+                      longitude: longitude
+                    state: state
+                    zip_code: zip_code
+                  projects:
+                  - href: href
+                  - href: href
+                  credit_amount: 0.8008282
+                  created_at: 2000-01-23T04:56:07.000+00:00
+                  description: description
+                  billing_address:
+                    country: country
+                    address: address
+                    address2: address2
+                    city: city
+                    coordinates:
+                      latitude: latitude
+                      longitude: longitude
+                    state: state
+                    zip_code: zip_code
+                  memberships:
+                  - href: href
+                  - href: href
+                  enforce_2fa_at: 2000-01-23T04:56:07.000+00:00
+                  twitter: twitter
+                  updated_at: 2000-01-23T04:56:07.000+00:00
+                  terms: 6
+                  members:
+                  - href: href
+                  - href: href
+                  name: name
+                  logo: logo
+                  customdata: "{}"
+                  id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+                network_status: "{}"
+                customdata: "{}"
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                payment_method:
+                  href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              created_by:
+                avatar_thumb_url: avatar_thumb_url
+                last_login_at: 2000-01-23T04:56:07.000+00:00
+                max_projects: 3
+                timezone: timezone
+                default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                created_at: 2000-01-23T04:56:07.000+00:00
+                last_name: last_name
+                short_id: short_id
+                fraud_score: fraud_score
+                emails:
+                - href: href
+                - href: href
+                default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                full_name: full_name
+                avatar_url: avatar_url
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                phone_number: phone_number
+                customdata: "{}"
+                href: href
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                first_name: first_name
+                max_organizations: 9
+                two_factor_auth: two_factor_auth
+                email: email
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              virtual_circuits:
+              - subnet: 12.0.0.0/30
+                customer_ip: 12.0.0.2
+                description: description
+                project:
+                  href: href
+                created_at: 2000-01-23T04:56:07.000+00:00
+                vrf: null
+                metal_ip: 12.0.0.1
+                speed: 7
+                tags:
+                - tags
+                - tags
+                nni_vlan: 5
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                port:
+                  href: href
+                name: name
+                peer_asn: 2
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                md5: md5
+                status: status
+              - subnet: 12.0.0.0/30
+                customer_ip: 12.0.0.2
+                description: description
+                project:
+                  href: href
+                created_at: 2000-01-23T04:56:07.000+00:00
+                vrf: null
+                metal_ip: 12.0.0.1
+                speed: 7
+                tags:
+                - tags
+                - tags
+                nni_vlan: 5
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                port:
+                  href: href
+                name: name
+                peer_asn: 2
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                md5: md5
+                status: status
+              ip_ranges:
+              - ip_ranges
+              - ip_ranges
+              metro:
+                country: country
+                code: code
+                name: name
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              href: href
+            created_by:
+              href: href
+          virtual_network:
+            vxlan: 1
+            metal_gateways:
+            - gateway_address: 10.1.2.1/27
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              vlan: 1001
+              created_at: 2000-01-23T04:56:07.000+00:00
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              state: ready
+            - gateway_address: 10.1.2.1/27
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              vlan: 1001
+              created_at: 2000-01-23T04:56:07.000+00:00
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              state: ready
+            metro_code: metro_code
+            instances:
+            - href: href
+            - href: href
+            metro:
+              href: href
+            description: description
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            facility:
+              href: href
+            assigned_to_virtual_circuit: true
+            assigned_to:
+              href: href
           updated_at: 2000-01-23T04:56:07.000+00:00
           prefix: 0.0.0.0/0
           next_hop: 192.168.1.254
           created_at: 2000-01-23T04:56:07.000+00:00
           id: e1ff9c2b-051a-4688-965f-153e274f77e0
-          vrf: null
+          vrf:
+            bgp_dynamic_neighbors_export_route_map: true
+            bgp_dynamic_neighbors_bfd_enabled: true
+            local_asn: 5
+            description: description
+            bill: false
+            bgp_dynamic_neighbors_enabled: true
+            project:
+              devices:
+              - href: href
+              - href: href
+              volumes:
+              - href: href
+              - href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              memberships:
+              - href: href
+              - href: href
+              bgp_config:
+                href: href
+              max_devices: "{}"
+              ssh_keys:
+              - href: href
+              - href: href
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              invitations:
+              - href: href
+              - href: href
+              members:
+              - href: href
+              - href: href
+              organization:
+                website: website
+                address:
+                  country: country
+                  address: address
+                  address2: address2
+                  city: city
+                  coordinates:
+                    latitude: latitude
+                    longitude: longitude
+                  state: state
+                  zip_code: zip_code
+                projects:
+                - href: href
+                - href: href
+                credit_amount: 0.8008282
+                created_at: 2000-01-23T04:56:07.000+00:00
+                description: description
+                billing_address:
+                  country: country
+                  address: address
+                  address2: address2
+                  city: city
+                  coordinates:
+                    latitude: latitude
+                    longitude: longitude
+                  state: state
+                  zip_code: zip_code
+                memberships:
+                - href: href
+                - href: href
+                enforce_2fa_at: 2000-01-23T04:56:07.000+00:00
+                twitter: twitter
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                terms: 6
+                members:
+                - href: href
+                - href: href
+                name: name
+                logo: logo
+                customdata: "{}"
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+              network_status: "{}"
+              customdata: "{}"
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              payment_method:
+                href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            created_by:
+              avatar_thumb_url: avatar_thumb_url
+              last_login_at: 2000-01-23T04:56:07.000+00:00
+              max_projects: 3
+              timezone: timezone
+              default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              created_at: 2000-01-23T04:56:07.000+00:00
+              last_name: last_name
+              short_id: short_id
+              fraud_score: fraud_score
+              emails:
+              - href: href
+              - href: href
+              default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              full_name: full_name
+              avatar_url: avatar_url
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              phone_number: phone_number
+              customdata: "{}"
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              first_name: first_name
+              max_organizations: 9
+              two_factor_auth: two_factor_auth
+              email: email
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            virtual_circuits:
+            - subnet: 12.0.0.0/30
+              customer_ip: 12.0.0.2
+              description: description
+              project:
+                href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              vrf: null
+              metal_ip: 12.0.0.1
+              speed: 7
+              tags:
+              - tags
+              - tags
+              nni_vlan: 5
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              port:
+                href: href
+              name: name
+              peer_asn: 2
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              md5: md5
+              status: status
+            - subnet: 12.0.0.0/30
+              customer_ip: 12.0.0.2
+              description: description
+              project:
+                href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              vrf: null
+              metal_ip: 12.0.0.1
+              speed: 7
+              tags:
+              - tags
+              - tags
+              nni_vlan: 5
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              port:
+                href: href
+              name: name
+              peer_asn: 2
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              md5: md5
+              status: status
+            ip_ranges:
+            - ip_ranges
+            - ip_ranges
+            metro:
+              country: country
+              code: code
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href: href
           href: /routes/e1ff9c2b-051a-4688-965f-153e274f77e0
           type: static
           status: active
-        - metal_gateway: null
-          virtual_network: null
+        - metal_gateway:
+            virtual_network:
+              vxlan: 1
+              metal_gateways:
+              - gateway_address: 10.1.2.1/27
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                vlan: 1001
+                created_at: 2000-01-23T04:56:07.000+00:00
+                href: href
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                state: ready
+              - gateway_address: 10.1.2.1/27
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                vlan: 1001
+                created_at: 2000-01-23T04:56:07.000+00:00
+                href: href
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                state: ready
+              metro_code: metro_code
+              instances:
+              - href: href
+              - href: href
+              metro:
+                href: href
+              description: description
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              facility:
+                href: href
+              assigned_to_virtual_circuit: true
+              assigned_to:
+                href: href
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            ip_reservation: null
+            created_at: 2000-01-23T04:56:07.000+00:00
+            project:
+              devices:
+              - href: href
+              - href: href
+              volumes:
+              - href: href
+              - href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              memberships:
+              - href: href
+              - href: href
+              bgp_config:
+                href: href
+              max_devices: "{}"
+              ssh_keys:
+              - href: href
+              - href: href
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              invitations:
+              - href: href
+              - href: href
+              members:
+              - href: href
+              - href: href
+              organization:
+                website: website
+                address:
+                  country: country
+                  address: address
+                  address2: address2
+                  city: city
+                  coordinates:
+                    latitude: latitude
+                    longitude: longitude
+                  state: state
+                  zip_code: zip_code
+                projects:
+                - href: href
+                - href: href
+                credit_amount: 0.8008282
+                created_at: 2000-01-23T04:56:07.000+00:00
+                description: description
+                billing_address:
+                  country: country
+                  address: address
+                  address2: address2
+                  city: city
+                  coordinates:
+                    latitude: latitude
+                    longitude: longitude
+                  state: state
+                  zip_code: zip_code
+                memberships:
+                - href: href
+                - href: href
+                enforce_2fa_at: 2000-01-23T04:56:07.000+00:00
+                twitter: twitter
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                terms: 6
+                members:
+                - href: href
+                - href: href
+                name: name
+                logo: logo
+                customdata: "{}"
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+              network_status: "{}"
+              customdata: "{}"
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              payment_method:
+                href: href
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: ready
+            vrf:
+              bgp_dynamic_neighbors_export_route_map: true
+              bgp_dynamic_neighbors_bfd_enabled: true
+              local_asn: 5
+              description: description
+              bill: false
+              bgp_dynamic_neighbors_enabled: true
+              project:
+                devices:
+                - href: href
+                - href: href
+                volumes:
+                - href: href
+                - href: href
+                created_at: 2000-01-23T04:56:07.000+00:00
+                memberships:
+                - href: href
+                - href: href
+                bgp_config:
+                  href: href
+                max_devices: "{}"
+                ssh_keys:
+                - href: href
+                - href: href
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                invitations:
+                - href: href
+                - href: href
+                members:
+                - href: href
+                - href: href
+                organization:
+                  website: website
+                  address:
+                    country: country
+                    address: address
+                    address2: address2
+                    city: city
+                    coordinates:
+                      latitude: latitude
+                      longitude: longitude
+                    state: state
+                    zip_code: zip_code
+                  projects:
+                  - href: href
+                  - href: href
+                  credit_amount: 0.8008282
+                  created_at: 2000-01-23T04:56:07.000+00:00
+                  description: description
+                  billing_address:
+                    country: country
+                    address: address
+                    address2: address2
+                    city: city
+                    coordinates:
+                      latitude: latitude
+                      longitude: longitude
+                    state: state
+                    zip_code: zip_code
+                  memberships:
+                  - href: href
+                  - href: href
+                  enforce_2fa_at: 2000-01-23T04:56:07.000+00:00
+                  twitter: twitter
+                  updated_at: 2000-01-23T04:56:07.000+00:00
+                  terms: 6
+                  members:
+                  - href: href
+                  - href: href
+                  name: name
+                  logo: logo
+                  customdata: "{}"
+                  id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+                network_status: "{}"
+                customdata: "{}"
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                payment_method:
+                  href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              created_by:
+                avatar_thumb_url: avatar_thumb_url
+                last_login_at: 2000-01-23T04:56:07.000+00:00
+                max_projects: 3
+                timezone: timezone
+                default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                created_at: 2000-01-23T04:56:07.000+00:00
+                last_name: last_name
+                short_id: short_id
+                fraud_score: fraud_score
+                emails:
+                - href: href
+                - href: href
+                default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                full_name: full_name
+                avatar_url: avatar_url
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                phone_number: phone_number
+                customdata: "{}"
+                href: href
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                first_name: first_name
+                max_organizations: 9
+                two_factor_auth: two_factor_auth
+                email: email
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              virtual_circuits:
+              - subnet: 12.0.0.0/30
+                customer_ip: 12.0.0.2
+                description: description
+                project:
+                  href: href
+                created_at: 2000-01-23T04:56:07.000+00:00
+                vrf: null
+                metal_ip: 12.0.0.1
+                speed: 7
+                tags:
+                - tags
+                - tags
+                nni_vlan: 5
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                port:
+                  href: href
+                name: name
+                peer_asn: 2
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                md5: md5
+                status: status
+              - subnet: 12.0.0.0/30
+                customer_ip: 12.0.0.2
+                description: description
+                project:
+                  href: href
+                created_at: 2000-01-23T04:56:07.000+00:00
+                vrf: null
+                metal_ip: 12.0.0.1
+                speed: 7
+                tags:
+                - tags
+                - tags
+                nni_vlan: 5
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                port:
+                  href: href
+                name: name
+                peer_asn: 2
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                md5: md5
+                status: status
+              ip_ranges:
+              - ip_ranges
+              - ip_ranges
+              metro:
+                country: country
+                code: code
+                name: name
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              href: href
+            created_by:
+              href: href
+          virtual_network:
+            vxlan: 1
+            metal_gateways:
+            - gateway_address: 10.1.2.1/27
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              vlan: 1001
+              created_at: 2000-01-23T04:56:07.000+00:00
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              state: ready
+            - gateway_address: 10.1.2.1/27
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              vlan: 1001
+              created_at: 2000-01-23T04:56:07.000+00:00
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              state: ready
+            metro_code: metro_code
+            instances:
+            - href: href
+            - href: href
+            metro:
+              href: href
+            description: description
+            href: href
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            facility:
+              href: href
+            assigned_to_virtual_circuit: true
+            assigned_to:
+              href: href
           updated_at: 2000-01-23T04:56:07.000+00:00
           prefix: 0.0.0.0/0
           next_hop: 192.168.1.254
           created_at: 2000-01-23T04:56:07.000+00:00
           id: e1ff9c2b-051a-4688-965f-153e274f77e0
-          vrf: null
+          vrf:
+            bgp_dynamic_neighbors_export_route_map: true
+            bgp_dynamic_neighbors_bfd_enabled: true
+            local_asn: 5
+            description: description
+            bill: false
+            bgp_dynamic_neighbors_enabled: true
+            project:
+              devices:
+              - href: href
+              - href: href
+              volumes:
+              - href: href
+              - href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              memberships:
+              - href: href
+              - href: href
+              bgp_config:
+                href: href
+              max_devices: "{}"
+              ssh_keys:
+              - href: href
+              - href: href
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              invitations:
+              - href: href
+              - href: href
+              members:
+              - href: href
+              - href: href
+              organization:
+                website: website
+                address:
+                  country: country
+                  address: address
+                  address2: address2
+                  city: city
+                  coordinates:
+                    latitude: latitude
+                    longitude: longitude
+                  state: state
+                  zip_code: zip_code
+                projects:
+                - href: href
+                - href: href
+                credit_amount: 0.8008282
+                created_at: 2000-01-23T04:56:07.000+00:00
+                description: description
+                billing_address:
+                  country: country
+                  address: address
+                  address2: address2
+                  city: city
+                  coordinates:
+                    latitude: latitude
+                    longitude: longitude
+                  state: state
+                  zip_code: zip_code
+                memberships:
+                - href: href
+                - href: href
+                enforce_2fa_at: 2000-01-23T04:56:07.000+00:00
+                twitter: twitter
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                terms: 6
+                members:
+                - href: href
+                - href: href
+                name: name
+                logo: logo
+                customdata: "{}"
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+              network_status: "{}"
+              customdata: "{}"
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              payment_method:
+                href: href
+            created_at: 2000-01-23T04:56:07.000+00:00
+            created_by:
+              avatar_thumb_url: avatar_thumb_url
+              last_login_at: 2000-01-23T04:56:07.000+00:00
+              max_projects: 3
+              timezone: timezone
+              default_project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              created_at: 2000-01-23T04:56:07.000+00:00
+              last_name: last_name
+              short_id: short_id
+              fraud_score: fraud_score
+              emails:
+              - href: href
+              - href: href
+              default_organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              full_name: full_name
+              avatar_url: avatar_url
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              phone_number: phone_number
+              customdata: "{}"
+              href: href
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              first_name: first_name
+              max_organizations: 9
+              two_factor_auth: two_factor_auth
+              email: email
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            virtual_circuits:
+            - subnet: 12.0.0.0/30
+              customer_ip: 12.0.0.2
+              description: description
+              project:
+                href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              vrf: null
+              metal_ip: 12.0.0.1
+              speed: 7
+              tags:
+              - tags
+              - tags
+              nni_vlan: 5
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              port:
+                href: href
+              name: name
+              peer_asn: 2
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              md5: md5
+              status: status
+            - subnet: 12.0.0.0/30
+              customer_ip: 12.0.0.2
+              description: description
+              project:
+                href: href
+              created_at: 2000-01-23T04:56:07.000+00:00
+              vrf: null
+              metal_ip: 12.0.0.1
+              speed: 7
+              tags:
+              - tags
+              - tags
+              nni_vlan: 5
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              port:
+                href: href
+              name: name
+              peer_asn: 2
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              md5: md5
+              status: status
+            ip_ranges:
+            - ip_ranges
+            - ip_ranges
+            metro:
+              country: country
+              code: code
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            href: href
           href: /routes/e1ff9c2b-051a-4688-965f-153e274f77e0
           type: static
           status: active
@@ -26800,25 +28188,6 @@ components:
         userdata:
           type: string
       type: object
-    VrfRoute_metal_gateway:
-      description: A link to the Metal Gateway to which this VRF Route is associated
-      oneOf:
-      - $ref: '#/components/schemas/Href'
-      - $ref: '#/components/schemas/MetalGateway'
-      readOnly: true
-    VrfRoute_virtual_network:
-      description: "A link to the Virtual Network to which this VRF Route is associated,\
-        \ through the Metal Gateway"
-      oneOf:
-      - $ref: '#/components/schemas/Href'
-      - $ref: '#/components/schemas/VirtualNetwork'
-      readOnly: true
-    VrfRoute_vrf:
-      description: A link to the VRF within which this route exists
-      oneOf:
-      - $ref: '#/components/schemas/Href'
-      - $ref: '#/components/schemas/Vrf'
-      readOnly: true
   securitySchemes:
     x_auth_token:
       description: |
