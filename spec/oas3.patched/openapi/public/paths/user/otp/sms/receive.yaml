@@ -30,4 +30,4 @@ post:
       description: internal server error
   summary: Receive an OTP per sms
   tags:
-  - Otps
+  - OTPs
