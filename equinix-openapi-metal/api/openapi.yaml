@@ -15388,6 +15388,13 @@ components:
             may be used on multiple devices within a project.
           type: string
         ip_addresses:
+          default:
+          - address_family: 4
+            public: true
+          - address_family: 4
+            public: false
+          - address_family: 6
+            public: true
           description: |-
             The `ip_addresses attribute will allow you to specify the addresses you want created with your device.
 
