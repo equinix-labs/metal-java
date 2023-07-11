@@ -91,7 +91,19 @@ public class OperatingSystem {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private String version;
 
+  public static final String SERIALIZED_NAME_DEFAULT_OPERATING_SYSTEM = "default_operating_system";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_OPERATING_SYSTEM)
+  private Boolean defaultOperatingSystem;
+
   public OperatingSystem() {
+  }
+
+  
+  public OperatingSystem(
+     Boolean defaultOperatingSystem
+  ) {
+    this();
+    this.defaultOperatingSystem = defaultOperatingSystem;
   }
 
   public OperatingSystem distro(String distro) {
@@ -321,6 +333,19 @@ public class OperatingSystem {
     this.version = version;
   }
 
+
+   /**
+   * Default operating system for the distro.
+   * @return defaultOperatingSystem
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getDefaultOperatingSystem() {
+    return defaultOperatingSystem;
+  }
+
+
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -385,13 +410,14 @@ public class OperatingSystem {
         Objects.equals(this.pricing, operatingSystem.pricing) &&
         Objects.equals(this.provisionableOn, operatingSystem.provisionableOn) &&
         Objects.equals(this.slug, operatingSystem.slug) &&
-        Objects.equals(this.version, operatingSystem.version)&&
+        Objects.equals(this.version, operatingSystem.version) &&
+        Objects.equals(this.defaultOperatingSystem, operatingSystem.defaultOperatingSystem)&&
         Objects.equals(this.additionalProperties, operatingSystem.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(distro, distroLabel, id, licensed, name, preinstallable, pricing, provisionableOn, slug, version, additionalProperties);
+    return Objects.hash(distro, distroLabel, id, licensed, name, preinstallable, pricing, provisionableOn, slug, version, defaultOperatingSystem, additionalProperties);
   }
 
   @Override
@@ -408,6 +434,7 @@ public class OperatingSystem {
     sb.append("    provisionableOn: ").append(toIndentedString(provisionableOn)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    defaultOperatingSystem: ").append(toIndentedString(defaultOperatingSystem)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -441,6 +468,7 @@ public class OperatingSystem {
     openapiFields.add("provisionable_on");
     openapiFields.add("slug");
     openapiFields.add("version");
+    openapiFields.add("default_operating_system");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

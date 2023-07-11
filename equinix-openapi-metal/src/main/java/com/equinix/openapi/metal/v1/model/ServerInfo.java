@@ -52,6 +52,10 @@ public class ServerInfo {
   @SerializedName(SERIALIZED_NAME_FACILITY)
   private String facility;
 
+  public static final String SERIALIZED_NAME_METRO = "metro";
+  @SerializedName(SERIALIZED_NAME_METRO)
+  private String metro;
+
   public static final String SERIALIZED_NAME_PLAN = "plan";
   @SerializedName(SERIALIZED_NAME_PLAN)
   private String plan;
@@ -87,6 +91,28 @@ public class ServerInfo {
   }
 
 
+  public ServerInfo metro(String metro) {
+    
+    this.metro = metro;
+    return this;
+  }
+
+   /**
+   * The metro ID or code to check the capacity in.
+   * @return metro
+  **/
+  @javax.annotation.Nullable
+
+  public String getMetro() {
+    return metro;
+  }
+
+
+  public void setMetro(String metro) {
+    this.metro = metro;
+  }
+
+
   public ServerInfo plan(String plan) {
     
     this.plan = plan;
@@ -94,7 +120,7 @@ public class ServerInfo {
   }
 
    /**
-   * Get plan
+   * The plan ID or slug to check the capacity of.
    * @return plan
   **/
   @javax.annotation.Nullable
@@ -116,7 +142,7 @@ public class ServerInfo {
   }
 
    /**
-   * Get quantity
+   * The number of servers to check the capacity of.
    * @return quantity
   **/
   @javax.annotation.Nullable
@@ -186,6 +212,7 @@ public class ServerInfo {
     }
     ServerInfo serverInfo = (ServerInfo) o;
     return Objects.equals(this.facility, serverInfo.facility) &&
+        Objects.equals(this.metro, serverInfo.metro) &&
         Objects.equals(this.plan, serverInfo.plan) &&
         Objects.equals(this.quantity, serverInfo.quantity)&&
         Objects.equals(this.additionalProperties, serverInfo.additionalProperties);
@@ -193,7 +220,7 @@ public class ServerInfo {
 
   @Override
   public int hashCode() {
-    return Objects.hash(facility, plan, quantity, additionalProperties);
+    return Objects.hash(facility, metro, plan, quantity, additionalProperties);
   }
 
   @Override
@@ -201,6 +228,7 @@ public class ServerInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class ServerInfo {\n");
     sb.append("    facility: ").append(toIndentedString(facility)).append("\n");
+    sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
     sb.append("    plan: ").append(toIndentedString(plan)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -227,6 +255,7 @@ public class ServerInfo {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("facility");
+    openapiFields.add("metro");
     openapiFields.add("plan");
     openapiFields.add("quantity");
 
@@ -248,6 +277,9 @@ public class ServerInfo {
       }
       if ((jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonNull()) && !jsonObj.get("facility").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `facility` to be a primitive type in the JSON string but got `%s`", jsonObj.get("facility").toString()));
+      }
+      if ((jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) && !jsonObj.get("metro").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `metro` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metro").toString()));
       }
       if ((jsonObj.get("plan") != null && !jsonObj.get("plan").isJsonNull()) && !jsonObj.get("plan").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `plan` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan").toString()));

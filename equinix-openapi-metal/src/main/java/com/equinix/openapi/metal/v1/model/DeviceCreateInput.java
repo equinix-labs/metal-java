@@ -147,6 +147,10 @@ public class DeviceCreateInput {
   @SerializedName(SERIALIZED_NAME_LOCKED)
   private Boolean locked = false;
 
+  public static final String SERIALIZED_NAME_NETWORK_FROZEN = "network_frozen";
+  @SerializedName(SERIALIZED_NAME_NETWORK_FROZEN)
+  private Boolean networkFrozen;
+
   public static final String SERIALIZED_NAME_NO_SSH_KEYS = "no_ssh_keys";
   @SerializedName(SERIALIZED_NAME_NO_SSH_KEYS)
   private Boolean noSshKeys = false;
@@ -443,6 +447,28 @@ public class DeviceCreateInput {
 
   public void setLocked(Boolean locked) {
     this.locked = locked;
+  }
+
+
+  public DeviceCreateInput networkFrozen(Boolean networkFrozen) {
+    
+    this.networkFrozen = networkFrozen;
+    return this;
+  }
+
+   /**
+   * If true, this instance can not be converted to a different network type.
+   * @return networkFrozen
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getNetworkFrozen() {
+    return networkFrozen;
+  }
+
+
+  public void setNetworkFrozen(Boolean networkFrozen) {
+    this.networkFrozen = networkFrozen;
   }
 
 
@@ -828,6 +854,7 @@ public class DeviceCreateInput {
         Objects.equals(this.ipAddresses, deviceCreateInput.ipAddresses) &&
         Objects.equals(this.ipxeScriptUrl, deviceCreateInput.ipxeScriptUrl) &&
         Objects.equals(this.locked, deviceCreateInput.locked) &&
+        Objects.equals(this.networkFrozen, deviceCreateInput.networkFrozen) &&
         Objects.equals(this.noSshKeys, deviceCreateInput.noSshKeys) &&
         Objects.equals(this.operatingSystem, deviceCreateInput.operatingSystem) &&
         Objects.equals(this.plan, deviceCreateInput.plan) &&
@@ -846,7 +873,7 @@ public class DeviceCreateInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(alwaysPxe, billingCycle, customdata, description, features, hardwareReservationId, hostname, ipAddresses, ipxeScriptUrl, locked, noSshKeys, operatingSystem, plan, privateIpv4SubnetSize, projectSshKeys, publicIpv4SubnetSize, spotInstance, spotPriceMax, sshKeys, tags, terminationTime, userSshKeys, userdata, additionalProperties);
+    return Objects.hash(alwaysPxe, billingCycle, customdata, description, features, hardwareReservationId, hostname, ipAddresses, ipxeScriptUrl, locked, networkFrozen, noSshKeys, operatingSystem, plan, privateIpv4SubnetSize, projectSshKeys, publicIpv4SubnetSize, spotInstance, spotPriceMax, sshKeys, tags, terminationTime, userSshKeys, userdata, additionalProperties);
   }
 
   @Override
@@ -863,6 +890,7 @@ public class DeviceCreateInput {
     sb.append("    ipAddresses: ").append(toIndentedString(ipAddresses)).append("\n");
     sb.append("    ipxeScriptUrl: ").append(toIndentedString(ipxeScriptUrl)).append("\n");
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
+    sb.append("    networkFrozen: ").append(toIndentedString(networkFrozen)).append("\n");
     sb.append("    noSshKeys: ").append(toIndentedString(noSshKeys)).append("\n");
     sb.append("    operatingSystem: ").append(toIndentedString(operatingSystem)).append("\n");
     sb.append("    plan: ").append(toIndentedString(plan)).append("\n");
@@ -909,6 +937,7 @@ public class DeviceCreateInput {
     openapiFields.add("ip_addresses");
     openapiFields.add("ipxe_script_url");
     openapiFields.add("locked");
+    openapiFields.add("network_frozen");
     openapiFields.add("no_ssh_keys");
     openapiFields.add("operating_system");
     openapiFields.add("plan");

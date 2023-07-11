@@ -21,7 +21,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import java.io.File;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 
@@ -73,7 +72,7 @@ public class OrganizationInput {
 
   public static final String SERIALIZED_NAME_LOGO = "logo";
   @SerializedName(SERIALIZED_NAME_LOGO)
-  private File logo;
+  private byte[] logo;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -200,24 +199,24 @@ public class OrganizationInput {
   }
 
 
-  public OrganizationInput logo(File logo) {
+  public OrganizationInput logo(byte[] logo) {
     
     this.logo = logo;
     return this;
   }
 
    /**
-   * Get logo
+   * The logo for the organization; must be base64-encoded image data
    * @return logo
   **/
   @javax.annotation.Nullable
 
-  public File getLogo() {
+  public byte[] getLogo() {
     return logo;
   }
 
 
-  public void setLogo(File logo) {
+  public void setLogo(byte[] logo) {
     this.logo = logo;
   }
 
@@ -347,7 +346,7 @@ public class OrganizationInput {
         Objects.equals(this.customdata, organizationInput.customdata) &&
         Objects.equals(this.description, organizationInput.description) &&
         Objects.equals(this.enforce2faAt, organizationInput.enforce2faAt) &&
-        Objects.equals(this.logo, organizationInput.logo) &&
+        Arrays.equals(this.logo, organizationInput.logo) &&
         Objects.equals(this.name, organizationInput.name) &&
         Objects.equals(this.twitter, organizationInput.twitter) &&
         Objects.equals(this.website, organizationInput.website)&&
@@ -356,7 +355,7 @@ public class OrganizationInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, billingAddress, customdata, description, enforce2faAt, logo, name, twitter, website, additionalProperties);
+    return Objects.hash(address, billingAddress, customdata, description, enforce2faAt, Arrays.hashCode(logo), name, twitter, website, additionalProperties);
   }
 
   @Override

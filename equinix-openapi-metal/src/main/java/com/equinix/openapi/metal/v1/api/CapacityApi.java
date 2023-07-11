@@ -31,9 +31,7 @@ import com.equinix.openapi.metal.v1.model.CapacityCheckPerFacilityList;
 import com.equinix.openapi.metal.v1.model.CapacityCheckPerMetroList;
 import com.equinix.openapi.metal.v1.model.CapacityInput;
 import com.equinix.openapi.metal.v1.model.CapacityList;
-import com.equinix.openapi.metal.v1.model.CapacityPerMetroInput;
 import com.equinix.openapi.metal.v1.model.Error;
-import com.equinix.openapi.metal.v1.model.MetroCapacityList;
 import java.util.UUID;
 
 import java.lang.reflect.Type;
@@ -222,7 +220,7 @@ public class CapacityApi {
     }
     /**
      * Build call for checkCapacityForMetro
-     * @param capacityPerMetroInput Metro to check capacity in (required)
+     * @param capacityInput Metro to check capacity in (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -234,7 +232,7 @@ public class CapacityApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkCapacityForMetroCall(CapacityPerMetroInput capacityPerMetroInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkCapacityForMetroCall(CapacityInput capacityInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -248,7 +246,7 @@ public class CapacityApi {
             basePath = null;
         }
 
-        Object localVarPostBody = capacityPerMetroInput;
+        Object localVarPostBody = capacityInput;
 
         // create path and map variables
         String localVarPath = "/capacity/metros";
@@ -280,20 +278,20 @@ public class CapacityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkCapacityForMetroValidateBeforeCall(CapacityPerMetroInput capacityPerMetroInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'capacityPerMetroInput' is set
-        if (capacityPerMetroInput == null) {
-            throw new ApiException("Missing the required parameter 'capacityPerMetroInput' when calling checkCapacityForMetro(Async)");
+    private okhttp3.Call checkCapacityForMetroValidateBeforeCall(CapacityInput capacityInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'capacityInput' is set
+        if (capacityInput == null) {
+            throw new ApiException("Missing the required parameter 'capacityInput' when calling checkCapacityForMetro(Async)");
         }
 
-        return checkCapacityForMetroCall(capacityPerMetroInput, _callback);
+        return checkCapacityForMetroCall(capacityInput, _callback);
 
     }
 
     /**
      * Check capacity for a metro
      * Validates if a deploy can be fulfilled in a metro.
-     * @param capacityPerMetroInput Metro to check capacity in (required)
+     * @param capacityInput Metro to check capacity in (required)
      * @return CapacityCheckPerMetroList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -304,15 +302,15 @@ public class CapacityApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public CapacityCheckPerMetroList checkCapacityForMetro(CapacityPerMetroInput capacityPerMetroInput) throws ApiException {
-        ApiResponse<CapacityCheckPerMetroList> localVarResp = checkCapacityForMetroWithHttpInfo(capacityPerMetroInput);
+    public CapacityCheckPerMetroList checkCapacityForMetro(CapacityInput capacityInput) throws ApiException {
+        ApiResponse<CapacityCheckPerMetroList> localVarResp = checkCapacityForMetroWithHttpInfo(capacityInput);
         return localVarResp.getData();
     }
 
     /**
      * Check capacity for a metro
      * Validates if a deploy can be fulfilled in a metro.
-     * @param capacityPerMetroInput Metro to check capacity in (required)
+     * @param capacityInput Metro to check capacity in (required)
      * @return ApiResponse&lt;CapacityCheckPerMetroList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -323,8 +321,8 @@ public class CapacityApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CapacityCheckPerMetroList> checkCapacityForMetroWithHttpInfo(CapacityPerMetroInput capacityPerMetroInput) throws ApiException {
-        okhttp3.Call localVarCall = checkCapacityForMetroValidateBeforeCall(capacityPerMetroInput, null);
+    public ApiResponse<CapacityCheckPerMetroList> checkCapacityForMetroWithHttpInfo(CapacityInput capacityInput) throws ApiException {
+        okhttp3.Call localVarCall = checkCapacityForMetroValidateBeforeCall(capacityInput, null);
         Type localVarReturnType = new TypeToken<CapacityCheckPerMetroList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -332,7 +330,7 @@ public class CapacityApi {
     /**
      * Check capacity for a metro (asynchronously)
      * Validates if a deploy can be fulfilled in a metro.
-     * @param capacityPerMetroInput Metro to check capacity in (required)
+     * @param capacityInput Metro to check capacity in (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -344,9 +342,9 @@ public class CapacityApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call checkCapacityForMetroAsync(CapacityPerMetroInput capacityPerMetroInput, final ApiCallback<CapacityCheckPerMetroList> _callback) throws ApiException {
+    public okhttp3.Call checkCapacityForMetroAsync(CapacityInput capacityInput, final ApiCallback<CapacityCheckPerMetroList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = checkCapacityForMetroValidateBeforeCall(capacityPerMetroInput, _callback);
+        okhttp3.Call localVarCall = checkCapacityForMetroValidateBeforeCall(capacityInput, _callback);
         Type localVarReturnType = new TypeToken<CapacityCheckPerMetroList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -533,7 +531,7 @@ public class CapacityApi {
     /**
      * View capacity for metros
      * Returns a list of metros and plans with their current capacity.
-     * @return MetroCapacityList
+     * @return CapacityList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -542,15 +540,15 @@ public class CapacityApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public MetroCapacityList findCapacityForMetro() throws ApiException {
-        ApiResponse<MetroCapacityList> localVarResp = findCapacityForMetroWithHttpInfo();
+    public CapacityList findCapacityForMetro() throws ApiException {
+        ApiResponse<CapacityList> localVarResp = findCapacityForMetroWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * View capacity for metros
      * Returns a list of metros and plans with their current capacity.
-     * @return ApiResponse&lt;MetroCapacityList&gt;
+     * @return ApiResponse&lt;CapacityList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -559,9 +557,9 @@ public class CapacityApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MetroCapacityList> findCapacityForMetroWithHttpInfo() throws ApiException {
+    public ApiResponse<CapacityList> findCapacityForMetroWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = findCapacityForMetroValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<MetroCapacityList>(){}.getType();
+        Type localVarReturnType = new TypeToken<CapacityList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -578,10 +576,10 @@ public class CapacityApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findCapacityForMetroAsync(final ApiCallback<MetroCapacityList> _callback) throws ApiException {
+    public okhttp3.Call findCapacityForMetroAsync(final ApiCallback<CapacityList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = findCapacityForMetroValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<MetroCapacityList>(){}.getType();
+        Type localVarReturnType = new TypeToken<CapacityList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -790,7 +788,7 @@ public class CapacityApi {
      * View available hardware plans per Metro for given organization
      * Returns a list of metros and plans with their current capacity.
      * @param id Organization UUID (required)
-     * @return MetroCapacityList
+     * @return CapacityList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -800,8 +798,8 @@ public class CapacityApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public MetroCapacityList findOrganizationCapacityPerMetro(UUID id) throws ApiException {
-        ApiResponse<MetroCapacityList> localVarResp = findOrganizationCapacityPerMetroWithHttpInfo(id);
+    public CapacityList findOrganizationCapacityPerMetro(UUID id) throws ApiException {
+        ApiResponse<CapacityList> localVarResp = findOrganizationCapacityPerMetroWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -809,7 +807,7 @@ public class CapacityApi {
      * View available hardware plans per Metro for given organization
      * Returns a list of metros and plans with their current capacity.
      * @param id Organization UUID (required)
-     * @return ApiResponse&lt;MetroCapacityList&gt;
+     * @return ApiResponse&lt;CapacityList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -819,9 +817,9 @@ public class CapacityApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MetroCapacityList> findOrganizationCapacityPerMetroWithHttpInfo(UUID id) throws ApiException {
+    public ApiResponse<CapacityList> findOrganizationCapacityPerMetroWithHttpInfo(UUID id) throws ApiException {
         okhttp3.Call localVarCall = findOrganizationCapacityPerMetroValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<MetroCapacityList>(){}.getType();
+        Type localVarReturnType = new TypeToken<CapacityList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -840,10 +838,10 @@ public class CapacityApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findOrganizationCapacityPerMetroAsync(UUID id, final ApiCallback<MetroCapacityList> _callback) throws ApiException {
+    public okhttp3.Call findOrganizationCapacityPerMetroAsync(UUID id, final ApiCallback<CapacityList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = findOrganizationCapacityPerMetroValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<MetroCapacityList>(){}.getType();
+        Type localVarReturnType = new TypeToken<CapacityList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

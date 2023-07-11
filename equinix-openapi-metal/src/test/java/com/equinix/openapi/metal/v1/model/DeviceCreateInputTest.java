@@ -126,6 +126,14 @@ public class DeviceCreateInputTest {
     }
 
     /**
+     * Test the property 'networkFrozen'
+     */
+    @Test
+    public void networkFrozenTest() {
+        // TODO: test networkFrozen
+    }
+
+    /**
      * Test the property 'noSshKeys'
      */
     @Test

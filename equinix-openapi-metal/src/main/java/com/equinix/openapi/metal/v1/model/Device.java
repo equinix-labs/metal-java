@@ -139,6 +139,10 @@ public class Device {
   @SerializedName(SERIALIZED_NAME_METRO)
   private DeviceMetro metro;
 
+  public static final String SERIALIZED_NAME_NETWORK_FROZEN = "network_frozen";
+  @SerializedName(SERIALIZED_NAME_NETWORK_FROZEN)
+  private Boolean networkFrozen;
+
   public static final String SERIALIZED_NAME_NETWORK_PORTS = "network_ports";
   @SerializedName(SERIALIZED_NAME_NETWORK_PORTS)
   private List<Port> networkPorts = null;
@@ -704,6 +708,28 @@ public class Device {
 
   public void setMetro(DeviceMetro metro) {
     this.metro = metro;
+  }
+
+
+  public Device networkFrozen(Boolean networkFrozen) {
+    
+    this.networkFrozen = networkFrozen;
+    return this;
+  }
+
+   /**
+   * Whether network mode changes such as converting to/from Layer2 or Layer3 networking, bonding or disbonding network interfaces are permitted for the device.
+   * @return networkFrozen
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getNetworkFrozen() {
+    return networkFrozen;
+  }
+
+
+  public void setNetworkFrozen(Boolean networkFrozen) {
+    this.networkFrozen = networkFrozen;
   }
 
 
@@ -1311,6 +1337,7 @@ public class Device {
         Objects.equals(this.iqn, device.iqn) &&
         Objects.equals(this.locked, device.locked) &&
         Objects.equals(this.metro, device.metro) &&
+        Objects.equals(this.networkFrozen, device.networkFrozen) &&
         Objects.equals(this.networkPorts, device.networkPorts) &&
         Objects.equals(this.operatingSystem, device.operatingSystem) &&
         Objects.equals(this.actions, device.actions) &&
@@ -1338,7 +1365,7 @@ public class Device {
 
   @Override
   public int hashCode() {
-    return Objects.hash(alwaysPxe, billingCycle, bondingMode, createdAt, createdBy, customdata, description, facility, hardwareReservation, hostname, href, id, imageUrl, ipAddresses, ipxeScriptUrl, iqn, locked, metro, networkPorts, operatingSystem, actions, plan, project, projectLite, provisioningEvents, provisioningPercentage, rootPassword, shortId, spotInstance, spotPriceMax, sshKeys, state, switchUuid, tags, terminationTime, updatedAt, user, userdata, volumes, sos, additionalProperties);
+    return Objects.hash(alwaysPxe, billingCycle, bondingMode, createdAt, createdBy, customdata, description, facility, hardwareReservation, hostname, href, id, imageUrl, ipAddresses, ipxeScriptUrl, iqn, locked, metro, networkFrozen, networkPorts, operatingSystem, actions, plan, project, projectLite, provisioningEvents, provisioningPercentage, rootPassword, shortId, spotInstance, spotPriceMax, sshKeys, state, switchUuid, tags, terminationTime, updatedAt, user, userdata, volumes, sos, additionalProperties);
   }
 
   @Override
@@ -1363,6 +1390,7 @@ public class Device {
     sb.append("    iqn: ").append(toIndentedString(iqn)).append("\n");
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
     sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
+    sb.append("    networkFrozen: ").append(toIndentedString(networkFrozen)).append("\n");
     sb.append("    networkPorts: ").append(toIndentedString(networkPorts)).append("\n");
     sb.append("    operatingSystem: ").append(toIndentedString(operatingSystem)).append("\n");
     sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
@@ -1426,6 +1454,7 @@ public class Device {
     openapiFields.add("iqn");
     openapiFields.add("locked");
     openapiFields.add("metro");
+    openapiFields.add("network_frozen");
     openapiFields.add("network_ports");
     openapiFields.add("operating_system");
     openapiFields.add("actions");

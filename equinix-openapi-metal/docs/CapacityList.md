@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**capacity** | [**CapacityReport**](CapacityReport.md) |  |  [optional] |
+|**capacity** | **Map&lt;String, Map&lt;String, CapacityLevelPerBaremetal&gt;&gt;** |  |  [optional] |
 
 
 

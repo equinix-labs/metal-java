@@ -15,13 +15,15 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.CapacityReport;
+import com.equinix.openapi.metal.v1.model.CapacityLevelPerBaremetal;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,14 +53,22 @@ import com.equinix.openapi.JSON;
 public class CapacityList {
   public static final String SERIALIZED_NAME_CAPACITY = "capacity";
   @SerializedName(SERIALIZED_NAME_CAPACITY)
-  private CapacityReport capacity;
+  private Map<String, Map<String, CapacityLevelPerBaremetal>> capacity = null;
 
   public CapacityList() {
   }
 
-  public CapacityList capacity(CapacityReport capacity) {
+  public CapacityList capacity(Map<String, Map<String, CapacityLevelPerBaremetal>> capacity) {
     
     this.capacity = capacity;
+    return this;
+  }
+
+  public CapacityList putCapacityItem(String key, Map<String, CapacityLevelPerBaremetal> capacityItem) {
+    if (this.capacity == null) {
+      this.capacity = new HashMap<>();
+    }
+    this.capacity.put(key, capacityItem);
     return this;
   }
 
@@ -68,12 +78,12 @@ public class CapacityList {
   **/
   @javax.annotation.Nullable
 
-  public CapacityReport getCapacity() {
+  public Map<String, Map<String, CapacityLevelPerBaremetal>> getCapacity() {
     return capacity;
   }
 
 
-  public void setCapacity(CapacityReport capacity) {
+  public void setCapacity(Map<String, Map<String, CapacityLevelPerBaremetal>> capacity) {
     this.capacity = capacity;
   }
 
@@ -186,10 +196,6 @@ public class CapacityList {
         if (!CapacityList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CapacityList is not found in the empty JSON string", CapacityList.openapiRequiredFields.toString()));
         }
-      }
-      // validate the optional field `capacity`
-      if (jsonObj.get("capacity") != null && !jsonObj.get("capacity").isJsonNull()) {
-        CapacityReport.validateJsonObject(jsonObj.getAsJsonObject("capacity"));
       }
   }
 

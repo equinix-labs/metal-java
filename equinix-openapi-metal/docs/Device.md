@@ -25,6 +25,7 @@
 |**iqn** | **String** |  |  [optional] |
 |**locked** | **Boolean** | Prevents accidental deletion of this resource when set to true. |  [optional] |
 |**metro** | [**DeviceMetro**](DeviceMetro.md) |  |  [optional] |
+|**networkFrozen** | **Boolean** | Whether network mode changes such as converting to/from Layer2 or Layer3 networking, bonding or disbonding network interfaces are permitted for the device. |  [optional] |
 |**networkPorts** | [**List&lt;Port&gt;**](Port.md) | By default, servers at Equinix Metal are configured in a “bonded” mode using LACP (Link Aggregation Control Protocol). Each 2-NIC server is configured with a single bond (namely bond0) with both interfaces eth0 and eth1 as members of the bond in a default Layer 3 mode. Some device plans may have a different number of ports and bonds available. |  [optional] |
 |**operatingSystem** | [**OperatingSystem**](OperatingSystem.md) |  |  [optional] |
 |**actions** | [**List&lt;DeviceActionsInner&gt;**](DeviceActionsInner.md) | Actions supported by the device instance. |  [optional] |

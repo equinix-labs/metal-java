@@ -18,9 +18,7 @@ import com.equinix.openapi.metal.v1.model.CapacityCheckPerFacilityList;
 import com.equinix.openapi.metal.v1.model.CapacityCheckPerMetroList;
 import com.equinix.openapi.metal.v1.model.CapacityInput;
 import com.equinix.openapi.metal.v1.model.CapacityList;
-import com.equinix.openapi.metal.v1.model.CapacityPerMetroInput;
 import com.equinix.openapi.metal.v1.model.Error;
-import com.equinix.openapi.metal.v1.model.MetroCapacityList;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -61,8 +59,8 @@ public class CapacityApiTest {
      */
     @Test
     public void checkCapacityForMetroTest() throws ApiException {
-        CapacityPerMetroInput capacityPerMetroInput = null;
-        CapacityCheckPerMetroList response = api.checkCapacityForMetro(capacityPerMetroInput);
+        CapacityInput capacityInput = null;
+        CapacityCheckPerMetroList response = api.checkCapacityForMetro(capacityInput);
         // TODO: test validations
     }
 
@@ -88,7 +86,7 @@ public class CapacityApiTest {
      */
     @Test
     public void findCapacityForMetroTest() throws ApiException {
-        MetroCapacityList response = api.findCapacityForMetro();
+        CapacityList response = api.findCapacityForMetro();
         // TODO: test validations
     }
 
@@ -116,7 +114,7 @@ public class CapacityApiTest {
     @Test
     public void findOrganizationCapacityPerMetroTest() throws ApiException {
         UUID id = null;
-        MetroCapacityList response = api.findOrganizationCapacityPerMetro(id);
+        CapacityList response = api.findOrganizationCapacityPerMetro(id);
         // TODO: test validations
     }
 

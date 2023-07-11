@@ -201,6 +201,14 @@ public class DeviceTest {
     }
 
     /**
+     * Test the property 'networkFrozen'
+     */
+    @Test
+    public void networkFrozenTest() {
+        // TODO: test networkFrozen
+    }
+
+    /**
      * Test the property 'networkPorts'
      */
     @Test
