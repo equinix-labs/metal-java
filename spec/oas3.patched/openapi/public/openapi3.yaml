@@ -952,7 +952,7 @@ tags:
       OTP Management. Check out the product docs to learn more about [OTP](https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/).
     externalDocs:
       url: https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/
-    name: Otps
+    name: OTPs
   - description: >
       Password Reset Token Management
     name: PasswordResetTokens
@@ -1058,7 +1058,7 @@ x-tagGroups:
       - Invitations
       - Memberships
       - Organizations
-      - Otps
+      - OTPs
       - PasswordResetTokens
       - PaymentMethods
       - Projects

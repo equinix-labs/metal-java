@@ -26,4 +26,4 @@ post:
       description: unauthorized
   summary: Verify user by providing an OTP
   tags:
-  - Otps
+  - OTPs

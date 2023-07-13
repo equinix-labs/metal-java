@@ -237,7 +237,7 @@ tags:
     OTP Management. Check out the product docs to learn more about [OTP](https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/).
   externalDocs:
     url: https://metal.equinix.com/developers/docs/accounts/two-factor-authentication/
-  name: Otps
+  name: OTPs
 - description: |
     Password Reset Token Management
   externalDocs:
@@ -11490,7 +11490,7 @@ paths:
           description: unprocessable entity
       summary: Retrieve my recovery codes
       tags:
-      - Otps
+      - OTPs
       x-accepts: application/json
     post:
       description: Generate a new set of recovery codes.
@@ -11522,7 +11522,7 @@ paths:
           description: unprocessable entity
       summary: Generate new recovery codes
       tags:
-      - Otps
+      - OTPs
       x-accepts: application/json
   /user/otp/sms:
     delete:
@@ -11596,7 +11596,7 @@ paths:
           description: internal server error
       summary: Receive an OTP per sms
       tags:
-      - Otps
+      - OTPs
       x-accepts: application/json
   /user/otp/verify/{otp}:
     post:
@@ -11629,7 +11629,7 @@ paths:
           description: unauthorized
       summary: Verify user by providing an OTP
       tags:
-      - Otps
+      - OTPs
       x-accepts: application/json
   /userdata/validate:
     post:
@@ -28211,7 +28211,7 @@ x-tagGroups:
   - Invitations
   - Memberships
   - Organizations
-  - Otps
+  - OTPs
   - PasswordResetTokens
   - PaymentMethods
   - Projects

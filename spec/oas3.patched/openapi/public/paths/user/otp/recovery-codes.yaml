@@ -28,7 +28,7 @@ get:
       description: unprocessable entity
   summary: Retrieve my recovery codes
   tags:
-  - Otps
+  - OTPs
 post:
   description: Generate a new set of recovery codes.
   operationId: regenerateCodes
@@ -59,4 +59,4 @@ post:
       description: unprocessable entity
   summary: Generate new recovery codes
   tags:
-  - Otps
+  - OTPs
