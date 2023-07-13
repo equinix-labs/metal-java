@@ -120,4 +120,12 @@ public class OperatingSystemTest {
         // TODO: test version
     }
 
+    /**
+     * Test the property 'defaultOperatingSystem'
+     */
+    @Test
+    public void defaultOperatingSystemTest() {
+        // TODO: test defaultOperatingSystem
+    }
+
 }

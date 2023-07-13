@@ -46,6 +46,14 @@ public class ServerInfoTest {
     }
 
     /**
+     * Test the property 'metro'
+     */
+    @Test
+    public void metroTest() {
+        // TODO: test metro
+    }
+
+    /**
      * Test the property 'plan'
      */
     @Test

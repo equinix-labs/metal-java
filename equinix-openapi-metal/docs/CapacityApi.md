@@ -85,7 +85,7 @@ public class Example {
 
 <a name="checkCapacityForMetro"></a>
 # **checkCapacityForMetro**
-> CapacityCheckPerMetroList checkCapacityForMetro(capacityPerMetroInput)
+> CapacityCheckPerMetroList checkCapacityForMetro(capacityInput)
 
 Check capacity for a metro
 
@@ -113,9 +113,9 @@ public class Example {
     //x_auth_token.setApiKeyPrefix("Token");
 
     CapacityApi apiInstance = new CapacityApi(defaultClient);
-    CapacityPerMetroInput capacityPerMetroInput = new CapacityPerMetroInput(); // CapacityPerMetroInput | Metro to check capacity in
+    CapacityInput capacityInput = new CapacityInput(); // CapacityInput | Metro to check capacity in
     try {
-      CapacityCheckPerMetroList result = apiInstance.checkCapacityForMetro(capacityPerMetroInput);
+      CapacityCheckPerMetroList result = apiInstance.checkCapacityForMetro(capacityInput);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CapacityApi#checkCapacityForMetro");
@@ -132,7 +132,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **capacityPerMetroInput** | [**CapacityPerMetroInput**](CapacityPerMetroInput.md)| Metro to check capacity in | |
+| **capacityInput** | [**CapacityInput**](CapacityInput.md)| Metro to check capacity in | |
 
 ### Return type
 
@@ -222,7 +222,7 @@ This endpoint does not need any parameter.
 
 <a name="findCapacityForMetro"></a>
 # **findCapacityForMetro**
-> MetroCapacityList findCapacityForMetro()
+> CapacityList findCapacityForMetro()
 
 View capacity for metros
 
@@ -251,7 +251,7 @@ public class Example {
 
     CapacityApi apiInstance = new CapacityApi(defaultClient);
     try {
-      MetroCapacityList result = apiInstance.findCapacityForMetro();
+      CapacityList result = apiInstance.findCapacityForMetro();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CapacityApi#findCapacityForMetro");
@@ -269,7 +269,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MetroCapacityList**](MetroCapacityList.md)
+[**CapacityList**](CapacityList.md)
 
 ### Authorization
 
@@ -359,7 +359,7 @@ public class Example {
 
 <a name="findOrganizationCapacityPerMetro"></a>
 # **findOrganizationCapacityPerMetro**
-> MetroCapacityList findOrganizationCapacityPerMetro(id)
+> CapacityList findOrganizationCapacityPerMetro(id)
 
 View available hardware plans per Metro for given organization
 
@@ -389,7 +389,7 @@ public class Example {
     CapacityApi apiInstance = new CapacityApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Organization UUID
     try {
-      MetroCapacityList result = apiInstance.findOrganizationCapacityPerMetro(id);
+      CapacityList result = apiInstance.findOrganizationCapacityPerMetro(id);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CapacityApi#findOrganizationCapacityPerMetro");
@@ -410,7 +410,7 @@ public class Example {
 
 ### Return type
 
-[**MetroCapacityList**](MetroCapacityList.md)
+[**CapacityList**](CapacityList.md)
 
 ### Authorization
 

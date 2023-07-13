@@ -17,6 +17,7 @@
 |**provisionableOn** | **List&lt;String&gt;** |  |  [optional] |
 |**slug** | **String** |  |  [optional] |
 |**version** | **String** |  |  [optional] |
+|**defaultOperatingSystem** | **Boolean** | Default operating system for the distro. |  [optional] [readonly] |
 
 
 
