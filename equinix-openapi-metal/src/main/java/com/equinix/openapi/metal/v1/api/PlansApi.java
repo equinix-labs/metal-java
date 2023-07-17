@@ -118,7 +118,7 @@ public class PlansApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         if (categories != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "categories", categories));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "categories", categories));
         }
 
         if (type != null) {

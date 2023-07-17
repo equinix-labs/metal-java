@@ -410,7 +410,7 @@ public class SelfServiceReservationsApi {
         }
 
         if (categories != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "categories", categories));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "categories", categories));
         }
 
         final String[] localVarAccepts = {

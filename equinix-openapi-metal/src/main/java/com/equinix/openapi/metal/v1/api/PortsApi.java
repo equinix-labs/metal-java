@@ -1739,11 +1739,11 @@ public class PortsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         if (include != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "include", include));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
 
         if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "exclude", exclude));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
         }
 
         final String[] localVarAccepts = {
@@ -1898,11 +1898,11 @@ public class PortsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         if (include != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "include", include));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
 
         if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "exclude", exclude));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
         }
 
         final String[] localVarAccepts = {
