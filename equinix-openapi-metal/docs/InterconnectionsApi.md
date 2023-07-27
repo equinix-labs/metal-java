@@ -98,7 +98,7 @@ public class Example {
 
 <a name="createOrganizationInterconnection"></a>
 # **createOrganizationInterconnection**
-> Interconnection createOrganizationInterconnection(organizationId, interconnectionCreateInput)
+> Interconnection createOrganizationInterconnection(organizationId, interconnectionCreateInput, include, exclude)
 
 Request a new interconnection for the organization
 
@@ -128,8 +128,10 @@ public class Example {
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID organizationId = UUID.randomUUID(); // UUID | UUID of the organization
     InterconnectionCreateInput interconnectionCreateInput = new InterconnectionCreateInput(); // InterconnectionCreateInput | Interconnection details
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Interconnection result = apiInstance.createOrganizationInterconnection(organizationId, interconnectionCreateInput);
+      Interconnection result = apiInstance.createOrganizationInterconnection(organizationId, interconnectionCreateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#createOrganizationInterconnection");
@@ -148,6 +150,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **organizationId** | **UUID**| UUID of the organization | |
 | **interconnectionCreateInput** | [**InterconnectionCreateInput**](InterconnectionCreateInput.md)| Interconnection details | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -172,7 +176,7 @@ public class Example {
 
 <a name="createProjectInterconnection"></a>
 # **createProjectInterconnection**
-> Interconnection createProjectInterconnection(projectId, interconnectionCreateInput)
+> Interconnection createProjectInterconnection(projectId, interconnectionCreateInput, include, exclude)
 
 Request a new interconnection for the project&#39;s organization
 
@@ -202,8 +206,10 @@ public class Example {
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID projectId = UUID.randomUUID(); // UUID | UUID of the project
     InterconnectionCreateInput interconnectionCreateInput = new InterconnectionCreateInput(); // InterconnectionCreateInput | Interconnection details
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Interconnection result = apiInstance.createProjectInterconnection(projectId, interconnectionCreateInput);
+      Interconnection result = apiInstance.createProjectInterconnection(projectId, interconnectionCreateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#createProjectInterconnection");
@@ -222,6 +228,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | **UUID**| UUID of the project | |
 | **interconnectionCreateInput** | [**InterconnectionCreateInput**](InterconnectionCreateInput.md)| Interconnection details | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -245,7 +253,7 @@ public class Example {
 
 <a name="deleteInterconnection"></a>
 # **deleteInterconnection**
-> Interconnection deleteInterconnection(connectionId)
+> Interconnection deleteInterconnection(connectionId, include, exclude)
 
 Delete interconnection
 
@@ -274,8 +282,10 @@ public class Example {
 
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID connectionId = UUID.randomUUID(); // UUID | Interconnection UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Interconnection result = apiInstance.deleteInterconnection(connectionId);
+      Interconnection result = apiInstance.deleteInterconnection(connectionId, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#deleteInterconnection");
@@ -293,6 +303,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **connectionId** | **UUID**| Interconnection UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -316,7 +328,7 @@ public class Example {
 
 <a name="deleteVirtualCircuit"></a>
 # **deleteVirtualCircuit**
-> VirtualCircuit deleteVirtualCircuit(id)
+> VirtualCircuit deleteVirtualCircuit(id, include, exclude)
 
 Delete a virtual circuit
 
@@ -345,8 +357,10 @@ public class Example {
 
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Virtual Circuit UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      VirtualCircuit result = apiInstance.deleteVirtualCircuit(id);
+      VirtualCircuit result = apiInstance.deleteVirtualCircuit(id, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#deleteVirtualCircuit");
@@ -364,6 +378,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Virtual Circuit UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -387,7 +403,7 @@ public class Example {
 
 <a name="getInterconnection"></a>
 # **getInterconnection**
-> Interconnection getInterconnection(connectionId)
+> Interconnection getInterconnection(connectionId, include, exclude)
 
 Get interconnection
 
@@ -416,8 +432,10 @@ public class Example {
 
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID connectionId = UUID.randomUUID(); // UUID | Interconnection UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Interconnection result = apiInstance.getInterconnection(connectionId);
+      Interconnection result = apiInstance.getInterconnection(connectionId, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#getInterconnection");
@@ -435,6 +453,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **connectionId** | **UUID**| Interconnection UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -458,7 +478,7 @@ public class Example {
 
 <a name="getInterconnectionPort"></a>
 # **getInterconnectionPort**
-> InterconnectionPort getInterconnectionPort(connectionId, id)
+> InterconnectionPort getInterconnectionPort(connectionId, id, include, exclude)
 
 Get a interconnection port
 
@@ -488,8 +508,10 @@ public class Example {
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID connectionId = UUID.randomUUID(); // UUID | UUID of the interconnection
     UUID id = UUID.randomUUID(); // UUID | Port UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      InterconnectionPort result = apiInstance.getInterconnectionPort(connectionId, id);
+      InterconnectionPort result = apiInstance.getInterconnectionPort(connectionId, id, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#getInterconnectionPort");
@@ -508,6 +530,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **connectionId** | **UUID**| UUID of the interconnection | |
 | **id** | **UUID**| Port UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -531,7 +555,7 @@ public class Example {
 
 <a name="getVirtualCircuit"></a>
 # **getVirtualCircuit**
-> VirtualCircuit getVirtualCircuit(id)
+> VirtualCircuit getVirtualCircuit(id, include, exclude)
 
 Get a virtual circuit
 
@@ -560,8 +584,10 @@ public class Example {
 
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Virtual Circuit UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      VirtualCircuit result = apiInstance.getVirtualCircuit(id);
+      VirtualCircuit result = apiInstance.getVirtualCircuit(id, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#getVirtualCircuit");
@@ -579,6 +605,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Virtual Circuit UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -602,7 +630,7 @@ public class Example {
 
 <a name="listInterconnectionPortVirtualCircuits"></a>
 # **listInterconnectionPortVirtualCircuits**
-> VirtualCircuitList listInterconnectionPortVirtualCircuits(connectionId, portId)
+> VirtualCircuitList listInterconnectionPortVirtualCircuits(connectionId, portId, include, exclude)
 
 List a interconnection port&#39;s virtual circuits
 
@@ -632,8 +660,10 @@ public class Example {
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID connectionId = UUID.randomUUID(); // UUID | UUID of the interconnection
     UUID portId = UUID.randomUUID(); // UUID | UUID of the interconnection port
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      VirtualCircuitList result = apiInstance.listInterconnectionPortVirtualCircuits(connectionId, portId);
+      VirtualCircuitList result = apiInstance.listInterconnectionPortVirtualCircuits(connectionId, portId, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#listInterconnectionPortVirtualCircuits");
@@ -652,6 +682,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **connectionId** | **UUID**| UUID of the interconnection | |
 | **portId** | **UUID**| UUID of the interconnection port | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -817,7 +849,7 @@ public class Example {
 
 <a name="organizationListInterconnections"></a>
 # **organizationListInterconnections**
-> InterconnectionList organizationListInterconnections(organizationId)
+> InterconnectionList organizationListInterconnections(organizationId, include, exclude)
 
 List organization connections
 
@@ -846,8 +878,10 @@ public class Example {
 
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID organizationId = UUID.randomUUID(); // UUID | UUID of the organization
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      InterconnectionList result = apiInstance.organizationListInterconnections(organizationId);
+      InterconnectionList result = apiInstance.organizationListInterconnections(organizationId, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#organizationListInterconnections");
@@ -865,6 +899,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **organizationId** | **UUID**| UUID of the organization | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -967,7 +1003,7 @@ public class Example {
 
 <a name="updateInterconnection"></a>
 # **updateInterconnection**
-> Interconnection updateInterconnection(connectionId, interconnectionUpdateInput)
+> Interconnection updateInterconnection(connectionId, interconnectionUpdateInput, include, exclude)
 
 Update interconnection
 
@@ -997,8 +1033,10 @@ public class Example {
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID connectionId = UUID.randomUUID(); // UUID | Interconnection UUID
     InterconnectionUpdateInput interconnectionUpdateInput = new InterconnectionUpdateInput(); // InterconnectionUpdateInput | Updated interconnection details
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Interconnection result = apiInstance.updateInterconnection(connectionId, interconnectionUpdateInput);
+      Interconnection result = apiInstance.updateInterconnection(connectionId, interconnectionUpdateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#updateInterconnection");
@@ -1017,6 +1055,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **connectionId** | **UUID**| Interconnection UUID | |
 | **interconnectionUpdateInput** | [**InterconnectionUpdateInput**](InterconnectionUpdateInput.md)| Updated interconnection details | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -1040,7 +1080,7 @@ public class Example {
 
 <a name="updateVirtualCircuit"></a>
 # **updateVirtualCircuit**
-> VirtualCircuit updateVirtualCircuit(id, virtualCircuitUpdateInput)
+> VirtualCircuit updateVirtualCircuit(id, virtualCircuitUpdateInput, include, exclude)
 
 Update a virtual circuit
 
@@ -1070,8 +1110,10 @@ public class Example {
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Virtual Circuit UUID
     VirtualCircuitUpdateInput virtualCircuitUpdateInput = new VirtualCircuitUpdateInput(); // VirtualCircuitUpdateInput | Updated Virtual Circuit details
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      VirtualCircuit result = apiInstance.updateVirtualCircuit(id, virtualCircuitUpdateInput);
+      VirtualCircuit result = apiInstance.updateVirtualCircuit(id, virtualCircuitUpdateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#updateVirtualCircuit");
@@ -1090,6 +1132,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Virtual Circuit UUID | |
 | **virtualCircuitUpdateInput** | [**VirtualCircuitUpdateInput**](VirtualCircuitUpdateInput.md)| Updated Virtual Circuit details | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

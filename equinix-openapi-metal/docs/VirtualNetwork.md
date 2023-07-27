@@ -18,6 +18,7 @@
 |**metro** | [**Href**](Href.md) |  |  [optional] |
 |**metroCode** | **String** | The Metro code of the metro in which this Virtual Network is defined. |  [optional] |
 |**vxlan** | **Integer** |  |  [optional] |
+|**tags** | **List&lt;String&gt;** |  |  [optional] |
 
 
 

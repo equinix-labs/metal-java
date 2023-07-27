@@ -387,7 +387,7 @@ public class Example {
 
 <a name="findSpotMarketRequestById"></a>
 # **findSpotMarketRequestById**
-> SpotMarketRequest findSpotMarketRequestById(id, include, exclude)
+> SpotMarketRequest findSpotMarketRequestById(id, include)
 
 Retrieve a spot market request
 
@@ -417,9 +417,8 @@ public class Example {
     SpotMarketApi apiInstance = new SpotMarketApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | SpotMarketRequest UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      SpotMarketRequest result = apiInstance.findSpotMarketRequestById(id, include, exclude);
+      SpotMarketRequest result = apiInstance.findSpotMarketRequestById(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SpotMarketApi#findSpotMarketRequestById");
@@ -438,7 +437,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| SpotMarketRequest UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

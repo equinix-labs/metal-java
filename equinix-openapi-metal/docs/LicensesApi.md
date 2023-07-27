@@ -13,7 +13,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="createLicense"></a>
 # **createLicense**
-> License createLicense(id, licenseCreateInput)
+> License createLicense(id, licenseCreateInput, include, exclude)
 
 Create a License
 
@@ -43,8 +43,10 @@ public class Example {
     LicensesApi apiInstance = new LicensesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     LicenseCreateInput licenseCreateInput = new LicenseCreateInput(); // LicenseCreateInput | License to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      License result = apiInstance.createLicense(id, licenseCreateInput);
+      License result = apiInstance.createLicense(id, licenseCreateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LicensesApi#createLicense");
@@ -63,6 +65,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
 | **licenseCreateInput** | [**LicenseCreateInput**](LicenseCreateInput.md)| License to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -315,7 +319,7 @@ public class Example {
 
 <a name="updateLicense"></a>
 # **updateLicense**
-> License updateLicense(id, licenseUpdateInput)
+> License updateLicense(id, licenseUpdateInput, include, exclude)
 
 Update the license
 
@@ -345,8 +349,10 @@ public class Example {
     LicensesApi apiInstance = new LicensesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | License UUID
     LicenseUpdateInput licenseUpdateInput = new LicenseUpdateInput(); // LicenseUpdateInput | License to update
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      License result = apiInstance.updateLicense(id, licenseUpdateInput);
+      License result = apiInstance.updateLicense(id, licenseUpdateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LicensesApi#updateLicense");
@@ -365,6 +371,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| License UUID | |
 | **licenseUpdateInput** | [**LicenseUpdateInput**](LicenseUpdateInput.md)| License to update | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

@@ -1,6 +1,6 @@
 /*
  * Metal API
- * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. Currently the search parameter is only available on devices, ssh_keys, api_keys and memberships endpoints.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -82,6 +82,7 @@ public class SshKeysApi {
      * Build call for createProjectSSHKey
      * @param id Project UUID (required)
      * @param ssHKeyCreateInput ssh key to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -93,7 +94,7 @@ public class SshKeysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createProjectSSHKeyCall(UUID id, SSHKeyCreateInput ssHKeyCreateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createProjectSSHKeyCall(UUID id, SSHKeyCreateInput ssHKeyCreateInput, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -119,6 +120,10 @@ public class SshKeysApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -140,7 +145,7 @@ public class SshKeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createProjectSSHKeyValidateBeforeCall(UUID id, SSHKeyCreateInput ssHKeyCreateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createProjectSSHKeyValidateBeforeCall(UUID id, SSHKeyCreateInput ssHKeyCreateInput, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createProjectSSHKey(Async)");
@@ -151,7 +156,7 @@ public class SshKeysApi {
             throw new ApiException("Missing the required parameter 'ssHKeyCreateInput' when calling createProjectSSHKey(Async)");
         }
 
-        return createProjectSSHKeyCall(id, ssHKeyCreateInput, _callback);
+        return createProjectSSHKeyCall(id, ssHKeyCreateInput, include, _callback);
 
     }
 
@@ -160,6 +165,7 @@ public class SshKeysApi {
      * Creates a ssh key.
      * @param id Project UUID (required)
      * @param ssHKeyCreateInput ssh key to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return SSHKey
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -170,8 +176,8 @@ public class SshKeysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public SSHKey createProjectSSHKey(UUID id, SSHKeyCreateInput ssHKeyCreateInput) throws ApiException {
-        ApiResponse<SSHKey> localVarResp = createProjectSSHKeyWithHttpInfo(id, ssHKeyCreateInput);
+    public SSHKey createProjectSSHKey(UUID id, SSHKeyCreateInput ssHKeyCreateInput, List<String> include) throws ApiException {
+        ApiResponse<SSHKey> localVarResp = createProjectSSHKeyWithHttpInfo(id, ssHKeyCreateInput, include);
         return localVarResp.getData();
     }
 
@@ -180,6 +186,7 @@ public class SshKeysApi {
      * Creates a ssh key.
      * @param id Project UUID (required)
      * @param ssHKeyCreateInput ssh key to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;SSHKey&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -190,8 +197,8 @@ public class SshKeysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SSHKey> createProjectSSHKeyWithHttpInfo(UUID id, SSHKeyCreateInput ssHKeyCreateInput) throws ApiException {
-        okhttp3.Call localVarCall = createProjectSSHKeyValidateBeforeCall(id, ssHKeyCreateInput, null);
+    public ApiResponse<SSHKey> createProjectSSHKeyWithHttpInfo(UUID id, SSHKeyCreateInput ssHKeyCreateInput, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = createProjectSSHKeyValidateBeforeCall(id, ssHKeyCreateInput, include, null);
         Type localVarReturnType = new TypeToken<SSHKey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -201,6 +208,7 @@ public class SshKeysApi {
      * Creates a ssh key.
      * @param id Project UUID (required)
      * @param ssHKeyCreateInput ssh key to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -212,9 +220,9 @@ public class SshKeysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createProjectSSHKeyAsync(UUID id, SSHKeyCreateInput ssHKeyCreateInput, final ApiCallback<SSHKey> _callback) throws ApiException {
+    public okhttp3.Call createProjectSSHKeyAsync(UUID id, SSHKeyCreateInput ssHKeyCreateInput, List<String> include, final ApiCallback<SSHKey> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createProjectSSHKeyValidateBeforeCall(id, ssHKeyCreateInput, _callback);
+        okhttp3.Call localVarCall = createProjectSSHKeyValidateBeforeCall(id, ssHKeyCreateInput, include, _callback);
         Type localVarReturnType = new TypeToken<SSHKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -222,6 +230,7 @@ public class SshKeysApi {
     /**
      * Build call for createSSHKey
      * @param ssHKeyCreateInput ssh key to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -233,7 +242,7 @@ public class SshKeysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createSSHKeyCall(SSHKeyCreateInput ssHKeyCreateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createSSHKeyCall(SSHKeyCreateInput ssHKeyCreateInput, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -258,6 +267,10 @@ public class SshKeysApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -279,13 +292,13 @@ public class SshKeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createSSHKeyValidateBeforeCall(SSHKeyCreateInput ssHKeyCreateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createSSHKeyValidateBeforeCall(SSHKeyCreateInput ssHKeyCreateInput, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'ssHKeyCreateInput' is set
         if (ssHKeyCreateInput == null) {
             throw new ApiException("Missing the required parameter 'ssHKeyCreateInput' when calling createSSHKey(Async)");
         }
 
-        return createSSHKeyCall(ssHKeyCreateInput, _callback);
+        return createSSHKeyCall(ssHKeyCreateInput, include, _callback);
 
     }
 
@@ -293,6 +306,7 @@ public class SshKeysApi {
      * Create a ssh key for the current user
      * Creates a ssh key.
      * @param ssHKeyCreateInput ssh key to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return SSHKey
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -303,8 +317,8 @@ public class SshKeysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public SSHKey createSSHKey(SSHKeyCreateInput ssHKeyCreateInput) throws ApiException {
-        ApiResponse<SSHKey> localVarResp = createSSHKeyWithHttpInfo(ssHKeyCreateInput);
+    public SSHKey createSSHKey(SSHKeyCreateInput ssHKeyCreateInput, List<String> include) throws ApiException {
+        ApiResponse<SSHKey> localVarResp = createSSHKeyWithHttpInfo(ssHKeyCreateInput, include);
         return localVarResp.getData();
     }
 
@@ -312,6 +326,7 @@ public class SshKeysApi {
      * Create a ssh key for the current user
      * Creates a ssh key.
      * @param ssHKeyCreateInput ssh key to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;SSHKey&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -322,8 +337,8 @@ public class SshKeysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SSHKey> createSSHKeyWithHttpInfo(SSHKeyCreateInput ssHKeyCreateInput) throws ApiException {
-        okhttp3.Call localVarCall = createSSHKeyValidateBeforeCall(ssHKeyCreateInput, null);
+    public ApiResponse<SSHKey> createSSHKeyWithHttpInfo(SSHKeyCreateInput ssHKeyCreateInput, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = createSSHKeyValidateBeforeCall(ssHKeyCreateInput, include, null);
         Type localVarReturnType = new TypeToken<SSHKey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -332,6 +347,7 @@ public class SshKeysApi {
      * Create a ssh key for the current user (asynchronously)
      * Creates a ssh key.
      * @param ssHKeyCreateInput ssh key to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -343,9 +359,9 @@ public class SshKeysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createSSHKeyAsync(SSHKeyCreateInput ssHKeyCreateInput, final ApiCallback<SSHKey> _callback) throws ApiException {
+    public okhttp3.Call createSSHKeyAsync(SSHKeyCreateInput ssHKeyCreateInput, List<String> include, final ApiCallback<SSHKey> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createSSHKeyValidateBeforeCall(ssHKeyCreateInput, _callback);
+        okhttp3.Call localVarCall = createSSHKeyValidateBeforeCall(ssHKeyCreateInput, include, _callback);
         Type localVarReturnType = new TypeToken<SSHKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -486,7 +502,6 @@ public class SshKeysApi {
      * @param id Project UUID (required)
      * @param searchString Search by key, label, or fingerprint (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -497,7 +512,7 @@ public class SshKeysApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findDeviceSSHKeysCall(UUID id, String searchString, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findDeviceSSHKeysCall(UUID id, String searchString, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -531,10 +546,6 @@ public class SshKeysApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
 
-        if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -555,13 +566,13 @@ public class SshKeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findDeviceSSHKeysValidateBeforeCall(UUID id, String searchString, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findDeviceSSHKeysValidateBeforeCall(UUID id, String searchString, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findDeviceSSHKeys(Async)");
         }
 
-        return findDeviceSSHKeysCall(id, searchString, include, exclude, _callback);
+        return findDeviceSSHKeysCall(id, searchString, include, _callback);
 
     }
 
@@ -571,7 +582,6 @@ public class SshKeysApi {
      * @param id Project UUID (required)
      * @param searchString Search by key, label, or fingerprint (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return SSHKeyList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -581,8 +591,8 @@ public class SshKeysApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public SSHKeyList findDeviceSSHKeys(UUID id, String searchString, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<SSHKeyList> localVarResp = findDeviceSSHKeysWithHttpInfo(id, searchString, include, exclude);
+    public SSHKeyList findDeviceSSHKeys(UUID id, String searchString, List<String> include) throws ApiException {
+        ApiResponse<SSHKeyList> localVarResp = findDeviceSSHKeysWithHttpInfo(id, searchString, include);
         return localVarResp.getData();
     }
 
@@ -592,7 +602,6 @@ public class SshKeysApi {
      * @param id Project UUID (required)
      * @param searchString Search by key, label, or fingerprint (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;SSHKeyList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -602,8 +611,8 @@ public class SshKeysApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SSHKeyList> findDeviceSSHKeysWithHttpInfo(UUID id, String searchString, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = findDeviceSSHKeysValidateBeforeCall(id, searchString, include, exclude, null);
+    public ApiResponse<SSHKeyList> findDeviceSSHKeysWithHttpInfo(UUID id, String searchString, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = findDeviceSSHKeysValidateBeforeCall(id, searchString, include, null);
         Type localVarReturnType = new TypeToken<SSHKeyList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -614,7 +623,6 @@ public class SshKeysApi {
      * @param id Project UUID (required)
      * @param searchString Search by key, label, or fingerprint (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -625,9 +633,9 @@ public class SshKeysApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findDeviceSSHKeysAsync(UUID id, String searchString, List<String> include, List<String> exclude, final ApiCallback<SSHKeyList> _callback) throws ApiException {
+    public okhttp3.Call findDeviceSSHKeysAsync(UUID id, String searchString, List<String> include, final ApiCallback<SSHKeyList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findDeviceSSHKeysValidateBeforeCall(id, searchString, include, exclude, _callback);
+        okhttp3.Call localVarCall = findDeviceSSHKeysValidateBeforeCall(id, searchString, include, _callback);
         Type localVarReturnType = new TypeToken<SSHKeyList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -637,7 +645,6 @@ public class SshKeysApi {
      * @param id Project UUID (required)
      * @param query Search by key, label, or fingerprint (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -648,7 +655,7 @@ public class SshKeysApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectSSHKeysCall(UUID id, String query, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findProjectSSHKeysCall(UUID id, String query, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -682,10 +689,6 @@ public class SshKeysApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
 
-        if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -706,13 +709,13 @@ public class SshKeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findProjectSSHKeysValidateBeforeCall(UUID id, String query, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findProjectSSHKeysValidateBeforeCall(UUID id, String query, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findProjectSSHKeys(Async)");
         }
 
-        return findProjectSSHKeysCall(id, query, include, exclude, _callback);
+        return findProjectSSHKeysCall(id, query, include, _callback);
 
     }
 
@@ -722,7 +725,6 @@ public class SshKeysApi {
      * @param id Project UUID (required)
      * @param query Search by key, label, or fingerprint (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return SSHKeyList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -732,8 +734,8 @@ public class SshKeysApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public SSHKeyList findProjectSSHKeys(UUID id, String query, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<SSHKeyList> localVarResp = findProjectSSHKeysWithHttpInfo(id, query, include, exclude);
+    public SSHKeyList findProjectSSHKeys(UUID id, String query, List<String> include) throws ApiException {
+        ApiResponse<SSHKeyList> localVarResp = findProjectSSHKeysWithHttpInfo(id, query, include);
         return localVarResp.getData();
     }
 
@@ -743,7 +745,6 @@ public class SshKeysApi {
      * @param id Project UUID (required)
      * @param query Search by key, label, or fingerprint (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;SSHKeyList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -753,8 +754,8 @@ public class SshKeysApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SSHKeyList> findProjectSSHKeysWithHttpInfo(UUID id, String query, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = findProjectSSHKeysValidateBeforeCall(id, query, include, exclude, null);
+    public ApiResponse<SSHKeyList> findProjectSSHKeysWithHttpInfo(UUID id, String query, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = findProjectSSHKeysValidateBeforeCall(id, query, include, null);
         Type localVarReturnType = new TypeToken<SSHKeyList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -765,7 +766,6 @@ public class SshKeysApi {
      * @param id Project UUID (required)
      * @param query Search by key, label, or fingerprint (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -776,9 +776,9 @@ public class SshKeysApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectSSHKeysAsync(UUID id, String query, List<String> include, List<String> exclude, final ApiCallback<SSHKeyList> _callback) throws ApiException {
+    public okhttp3.Call findProjectSSHKeysAsync(UUID id, String query, List<String> include, final ApiCallback<SSHKeyList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findProjectSSHKeysValidateBeforeCall(id, query, include, exclude, _callback);
+        okhttp3.Call localVarCall = findProjectSSHKeysValidateBeforeCall(id, query, include, _callback);
         Type localVarReturnType = new TypeToken<SSHKeyList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -787,7 +787,6 @@ public class SshKeysApi {
      * Build call for findSSHKeyById
      * @param id SSH Key UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -800,7 +799,7 @@ public class SshKeysApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findSSHKeyByIdCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findSSHKeyByIdCall(UUID id, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -830,10 +829,6 @@ public class SshKeysApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
 
-        if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -854,13 +849,13 @@ public class SshKeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findSSHKeyByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findSSHKeyByIdValidateBeforeCall(UUID id, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findSSHKeyById(Async)");
         }
 
-        return findSSHKeyByIdCall(id, include, exclude, _callback);
+        return findSSHKeyByIdCall(id, include, _callback);
 
     }
 
@@ -869,7 +864,6 @@ public class SshKeysApi {
      * Returns a single ssh key if the user has access
      * @param id SSH Key UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return SSHKey
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -881,8 +875,8 @@ public class SshKeysApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public SSHKey findSSHKeyById(UUID id, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<SSHKey> localVarResp = findSSHKeyByIdWithHttpInfo(id, include, exclude);
+    public SSHKey findSSHKeyById(UUID id, List<String> include) throws ApiException {
+        ApiResponse<SSHKey> localVarResp = findSSHKeyByIdWithHttpInfo(id, include);
         return localVarResp.getData();
     }
 
@@ -891,7 +885,6 @@ public class SshKeysApi {
      * Returns a single ssh key if the user has access
      * @param id SSH Key UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;SSHKey&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -903,8 +896,8 @@ public class SshKeysApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SSHKey> findSSHKeyByIdWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = findSSHKeyByIdValidateBeforeCall(id, include, exclude, null);
+    public ApiResponse<SSHKey> findSSHKeyByIdWithHttpInfo(UUID id, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = findSSHKeyByIdValidateBeforeCall(id, include, null);
         Type localVarReturnType = new TypeToken<SSHKey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -914,7 +907,6 @@ public class SshKeysApi {
      * Returns a single ssh key if the user has access
      * @param id SSH Key UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -927,18 +919,17 @@ public class SshKeysApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findSSHKeyByIdAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<SSHKey> _callback) throws ApiException {
+    public okhttp3.Call findSSHKeyByIdAsync(UUID id, List<String> include, final ApiCallback<SSHKey> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findSSHKeyByIdValidateBeforeCall(id, include, exclude, _callback);
+        okhttp3.Call localVarCall = findSSHKeyByIdValidateBeforeCall(id, include, _callback);
         Type localVarReturnType = new TypeToken<SSHKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for findSSHKeys
-     * @param searchString Search by key, label, or fingerprint (optional)
+     * @param search Search by key, label, or fingerprint (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -949,7 +940,7 @@ public class SshKeysApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findSSHKeysCall(String searchString, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findSSHKeysCall(String search, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -974,16 +965,12 @@ public class SshKeysApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (searchString != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("Search string", searchString));
+        if (search != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
         }
 
         if (include != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
-        }
-
-        if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
         }
 
         final String[] localVarAccepts = {
@@ -1006,17 +993,16 @@ public class SshKeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findSSHKeysValidateBeforeCall(String searchString, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
-        return findSSHKeysCall(searchString, include, exclude, _callback);
+    private okhttp3.Call findSSHKeysValidateBeforeCall(String search, List<String> include, final ApiCallback _callback) throws ApiException {
+        return findSSHKeysCall(search, include, _callback);
 
     }
 
     /**
      * Retrieve all ssh keys
      * Returns a collection of the user’s ssh keys.
-     * @param searchString Search by key, label, or fingerprint (optional)
+     * @param search Search by key, label, or fingerprint (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return SSHKeyList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1026,17 +1012,16 @@ public class SshKeysApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public SSHKeyList findSSHKeys(String searchString, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<SSHKeyList> localVarResp = findSSHKeysWithHttpInfo(searchString, include, exclude);
+    public SSHKeyList findSSHKeys(String search, List<String> include) throws ApiException {
+        ApiResponse<SSHKeyList> localVarResp = findSSHKeysWithHttpInfo(search, include);
         return localVarResp.getData();
     }
 
     /**
      * Retrieve all ssh keys
      * Returns a collection of the user’s ssh keys.
-     * @param searchString Search by key, label, or fingerprint (optional)
+     * @param search Search by key, label, or fingerprint (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;SSHKeyList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1046,8 +1031,8 @@ public class SshKeysApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SSHKeyList> findSSHKeysWithHttpInfo(String searchString, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = findSSHKeysValidateBeforeCall(searchString, include, exclude, null);
+    public ApiResponse<SSHKeyList> findSSHKeysWithHttpInfo(String search, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = findSSHKeysValidateBeforeCall(search, include, null);
         Type localVarReturnType = new TypeToken<SSHKeyList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1055,9 +1040,8 @@ public class SshKeysApi {
     /**
      * Retrieve all ssh keys (asynchronously)
      * Returns a collection of the user’s ssh keys.
-     * @param searchString Search by key, label, or fingerprint (optional)
+     * @param search Search by key, label, or fingerprint (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1068,9 +1052,9 @@ public class SshKeysApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findSSHKeysAsync(String searchString, List<String> include, List<String> exclude, final ApiCallback<SSHKeyList> _callback) throws ApiException {
+    public okhttp3.Call findSSHKeysAsync(String search, List<String> include, final ApiCallback<SSHKeyList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findSSHKeysValidateBeforeCall(searchString, include, exclude, _callback);
+        okhttp3.Call localVarCall = findSSHKeysValidateBeforeCall(search, include, _callback);
         Type localVarReturnType = new TypeToken<SSHKeyList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1079,6 +1063,7 @@ public class SshKeysApi {
      * Build call for updateSSHKey
      * @param id SSH Key UUID (required)
      * @param ssHKeyInput ssh key to update (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1092,7 +1077,7 @@ public class SshKeysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateSSHKeyCall(UUID id, SSHKeyInput ssHKeyInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateSSHKeyCall(UUID id, SSHKeyInput ssHKeyInput, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1118,6 +1103,10 @@ public class SshKeysApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1139,7 +1128,7 @@ public class SshKeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateSSHKeyValidateBeforeCall(UUID id, SSHKeyInput ssHKeyInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateSSHKeyValidateBeforeCall(UUID id, SSHKeyInput ssHKeyInput, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateSSHKey(Async)");
@@ -1150,7 +1139,7 @@ public class SshKeysApi {
             throw new ApiException("Missing the required parameter 'ssHKeyInput' when calling updateSSHKey(Async)");
         }
 
-        return updateSSHKeyCall(id, ssHKeyInput, _callback);
+        return updateSSHKeyCall(id, ssHKeyInput, include, _callback);
 
     }
 
@@ -1159,6 +1148,7 @@ public class SshKeysApi {
      * Updates the ssh key.
      * @param id SSH Key UUID (required)
      * @param ssHKeyInput ssh key to update (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return SSHKey
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1171,8 +1161,8 @@ public class SshKeysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public SSHKey updateSSHKey(UUID id, SSHKeyInput ssHKeyInput) throws ApiException {
-        ApiResponse<SSHKey> localVarResp = updateSSHKeyWithHttpInfo(id, ssHKeyInput);
+    public SSHKey updateSSHKey(UUID id, SSHKeyInput ssHKeyInput, List<String> include) throws ApiException {
+        ApiResponse<SSHKey> localVarResp = updateSSHKeyWithHttpInfo(id, ssHKeyInput, include);
         return localVarResp.getData();
     }
 
@@ -1181,6 +1171,7 @@ public class SshKeysApi {
      * Updates the ssh key.
      * @param id SSH Key UUID (required)
      * @param ssHKeyInput ssh key to update (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;SSHKey&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1193,8 +1184,8 @@ public class SshKeysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SSHKey> updateSSHKeyWithHttpInfo(UUID id, SSHKeyInput ssHKeyInput) throws ApiException {
-        okhttp3.Call localVarCall = updateSSHKeyValidateBeforeCall(id, ssHKeyInput, null);
+    public ApiResponse<SSHKey> updateSSHKeyWithHttpInfo(UUID id, SSHKeyInput ssHKeyInput, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = updateSSHKeyValidateBeforeCall(id, ssHKeyInput, include, null);
         Type localVarReturnType = new TypeToken<SSHKey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1204,6 +1195,7 @@ public class SshKeysApi {
      * Updates the ssh key.
      * @param id SSH Key UUID (required)
      * @param ssHKeyInput ssh key to update (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1217,9 +1209,9 @@ public class SshKeysApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateSSHKeyAsync(UUID id, SSHKeyInput ssHKeyInput, final ApiCallback<SSHKey> _callback) throws ApiException {
+    public okhttp3.Call updateSSHKeyAsync(UUID id, SSHKeyInput ssHKeyInput, List<String> include, final ApiCallback<SSHKey> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateSSHKeyValidateBeforeCall(id, ssHKeyInput, _callback);
+        okhttp3.Call localVarCall = updateSSHKeyValidateBeforeCall(id, ssHKeyInput, include, _callback);
         Type localVarReturnType = new TypeToken<SSHKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

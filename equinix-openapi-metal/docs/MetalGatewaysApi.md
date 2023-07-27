@@ -96,7 +96,7 @@ public class Example {
 
 <a name="createMetalGatewayElasticIp"></a>
 # **createMetalGatewayElasticIp**
-> IPAssignment createMetalGatewayElasticIp(id, metalGatewayElasticIpCreateInput)
+> IPAssignment createMetalGatewayElasticIp(id, metalGatewayElasticIpCreateInput, include, exclude)
 
 Create a Metal Gateway Elastic IP
 
@@ -126,8 +126,10 @@ public class Example {
     MetalGatewaysApi apiInstance = new MetalGatewaysApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Metal Gateway UUID
     MetalGatewayElasticIpCreateInput metalGatewayElasticIpCreateInput = new MetalGatewayElasticIpCreateInput(); // MetalGatewayElasticIpCreateInput | 
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      IPAssignment result = apiInstance.createMetalGatewayElasticIp(id, metalGatewayElasticIpCreateInput);
+      IPAssignment result = apiInstance.createMetalGatewayElasticIp(id, metalGatewayElasticIpCreateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MetalGatewaysApi#createMetalGatewayElasticIp");
@@ -146,6 +148,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Metal Gateway UUID | |
 | **metalGatewayElasticIpCreateInput** | [**MetalGatewayElasticIpCreateInput**](MetalGatewayElasticIpCreateInput.md)|  | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

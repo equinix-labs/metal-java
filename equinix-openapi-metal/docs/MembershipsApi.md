@@ -82,7 +82,7 @@ null (empty response body)
 
 <a name="findMembershipById"></a>
 # **findMembershipById**
-> Membership findMembershipById(id, include, exclude)
+> Membership findMembershipById(id, include)
 
 Retrieve a membership
 
@@ -112,9 +112,8 @@ public class Example {
     MembershipsApi apiInstance = new MembershipsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Membership UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Membership result = apiInstance.findMembershipById(id, include, exclude);
+      Membership result = apiInstance.findMembershipById(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MembershipsApi#findMembershipById");
@@ -133,7 +132,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Membership UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -158,7 +156,7 @@ public class Example {
 
 <a name="updateMembership"></a>
 # **updateMembership**
-> Membership updateMembership(id, membershipInput)
+> Membership updateMembership(id, membershipInput, include)
 
 Update the membership
 
@@ -188,8 +186,9 @@ public class Example {
     MembershipsApi apiInstance = new MembershipsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Membership UUID
     MembershipInput membershipInput = new MembershipInput(); // MembershipInput | Membership to update
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      Membership result = apiInstance.updateMembership(id, membershipInput);
+      Membership result = apiInstance.updateMembership(id, membershipInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MembershipsApi#updateMembership");
@@ -208,6 +207,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Membership UUID | |
 | **membershipInput** | [**MembershipInput**](MembershipInput.md)| Membership to update | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 

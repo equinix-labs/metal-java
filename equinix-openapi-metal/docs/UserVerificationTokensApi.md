@@ -10,7 +10,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="consumeVerificationRequest"></a>
 # **consumeVerificationRequest**
-> consumeVerificationRequest(verifyEmail)
+> consumeVerificationRequest(verifyEmail, include)
 
 Verify a user using an email verification token
 
@@ -39,8 +39,9 @@ public class Example {
 
     UserVerificationTokensApi apiInstance = new UserVerificationTokensApi(defaultClient);
     VerifyEmail verifyEmail = new VerifyEmail(); // VerifyEmail | Email to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      apiInstance.consumeVerificationRequest(verifyEmail);
+      apiInstance.consumeVerificationRequest(verifyEmail, include);
     } catch (ApiException e) {
       System.err.println("Exception when calling UserVerificationTokensApi#consumeVerificationRequest");
       System.err.println("Status code: " + e.getCode());
@@ -57,6 +58,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **verifyEmail** | [**VerifyEmail**](VerifyEmail.md)| Email to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -80,7 +82,7 @@ null (empty response body)
 
 <a name="createValidationRequest"></a>
 # **createValidationRequest**
-> createValidationRequest(login)
+> createValidationRequest(login, include)
 
 Create an email verification request
 
@@ -109,8 +111,9 @@ public class Example {
 
     UserVerificationTokensApi apiInstance = new UserVerificationTokensApi(defaultClient);
     String login = "login_example"; // String | Email for verification request
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      apiInstance.createValidationRequest(login);
+      apiInstance.createValidationRequest(login, include);
     } catch (ApiException e) {
       System.err.println("Exception when calling UserVerificationTokensApi#createValidationRequest");
       System.err.println("Status code: " + e.getCode());
@@ -127,6 +130,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **login** | **String**| Email for verification request | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 

@@ -1088,7 +1088,7 @@ public class Example {
 
 <a name="updateVrf"></a>
 # **updateVrf**
-> Vrf updateVrf(id, vrfUpdateInput)
+> Vrf updateVrf(id, vrfUpdateInput, include, exclude)
 
 Update the VRF
 
@@ -1118,8 +1118,10 @@ public class Example {
     VrfsApi apiInstance = new VrfsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | VRF UUID
     VrfUpdateInput vrfUpdateInput = new VrfUpdateInput(); // VrfUpdateInput | VRF to update
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Vrf result = apiInstance.updateVrf(id, vrfUpdateInput);
+      Vrf result = apiInstance.updateVrf(id, vrfUpdateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VrfsApi#updateVrf");
@@ -1138,6 +1140,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| VRF UUID | |
 | **vrfUpdateInput** | [**VrfUpdateInput**](VrfUpdateInput.md)| VRF to update | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

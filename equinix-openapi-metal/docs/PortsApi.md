@@ -22,7 +22,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="assignNativeVlan"></a>
 # **assignNativeVlan**
-> Port assignNativeVlan(id, vnid)
+> Port assignNativeVlan(id, vnid, include)
 
 Assign a native VLAN
 
@@ -52,8 +52,9 @@ public class Example {
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
     String vnid = "vnid_example"; // String | Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: '1001').
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      Port result = apiInstance.assignNativeVlan(id, vnid);
+      Port result = apiInstance.assignNativeVlan(id, vnid, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#assignNativeVlan");
@@ -72,6 +73,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
 | **vnid** | **String**| Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -96,7 +98,7 @@ public class Example {
 
 <a name="assignPort"></a>
 # **assignPort**
-> Port assignPort(id, portAssignInput)
+> Port assignPort(id, portAssignInput, include)
 
 Assign a port to virtual network
 
@@ -126,8 +128,9 @@ public class Example {
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
     PortAssignInput portAssignInput = new PortAssignInput(); // PortAssignInput | Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: '1001').
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      Port result = apiInstance.assignPort(id, portAssignInput);
+      Port result = apiInstance.assignPort(id, portAssignInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#assignPort");
@@ -146,6 +149,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
 | **portAssignInput** | [**PortAssignInput**](PortAssignInput.md)| Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -171,7 +175,7 @@ public class Example {
 
 <a name="bondPort"></a>
 # **bondPort**
-> Port bondPort(id, bulkEnable)
+> Port bondPort(id, bulkEnable, include)
 
 Enabling bonding
 
@@ -201,8 +205,9 @@ public class Example {
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
     Boolean bulkEnable = true; // Boolean | enable both ports
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      Port result = apiInstance.bondPort(id, bulkEnable);
+      Port result = apiInstance.bondPort(id, bulkEnable, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#bondPort");
@@ -221,6 +226,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
 | **bulkEnable** | **Boolean**| enable both ports | [optional] |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -246,7 +252,7 @@ public class Example {
 
 <a name="convertLayer2"></a>
 # **convertLayer2**
-> Port convertLayer2(id, portAssignInput)
+> Port convertLayer2(id, portAssignInput, include)
 
 Convert to Layer 2
 
@@ -276,8 +282,9 @@ public class Example {
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
     PortAssignInput portAssignInput = new PortAssignInput(); // PortAssignInput | Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: '1001').
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      Port result = apiInstance.convertLayer2(id, portAssignInput);
+      Port result = apiInstance.convertLayer2(id, portAssignInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#convertLayer2");
@@ -296,6 +303,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
 | **portAssignInput** | [**PortAssignInput**](PortAssignInput.md)| Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -321,7 +329,7 @@ public class Example {
 
 <a name="convertLayer3"></a>
 # **convertLayer3**
-> Port convertLayer3(id, portConvertLayer3Input)
+> Port convertLayer3(id, include, portConvertLayer3Input)
 
 Convert to Layer 3
 
@@ -350,9 +358,10 @@ public class Example {
 
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     PortConvertLayer3Input portConvertLayer3Input = new PortConvertLayer3Input(); // PortConvertLayer3Input | IPs to request
     try {
-      Port result = apiInstance.convertLayer3(id, portConvertLayer3Input);
+      Port result = apiInstance.convertLayer3(id, include, portConvertLayer3Input);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#convertLayer3");
@@ -370,6 +379,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 | **portConvertLayer3Input** | [**PortConvertLayer3Input**](PortConvertLayer3Input.md)| IPs to request | [optional] |
 
 ### Return type
@@ -396,7 +406,7 @@ public class Example {
 
 <a name="createPortVlanAssignmentBatch"></a>
 # **createPortVlanAssignmentBatch**
-> PortVlanAssignmentBatch createPortVlanAssignmentBatch(id, portVlanAssignmentBatchCreateInput)
+> PortVlanAssignmentBatch createPortVlanAssignmentBatch(id, portVlanAssignmentBatchCreateInput, include)
 
 Create a new Port-VLAN Assignment management batch
 
@@ -426,8 +436,9 @@ public class Example {
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
     PortVlanAssignmentBatchCreateInput portVlanAssignmentBatchCreateInput = new PortVlanAssignmentBatchCreateInput(); // PortVlanAssignmentBatchCreateInput | VLAN Assignment batch details
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      PortVlanAssignmentBatch result = apiInstance.createPortVlanAssignmentBatch(id, portVlanAssignmentBatchCreateInput);
+      PortVlanAssignmentBatch result = apiInstance.createPortVlanAssignmentBatch(id, portVlanAssignmentBatchCreateInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#createPortVlanAssignmentBatch");
@@ -446,6 +457,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
 | **portVlanAssignmentBatchCreateInput** | [**PortVlanAssignmentBatchCreateInput**](PortVlanAssignmentBatchCreateInput.md)| VLAN Assignment batch details | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -471,7 +483,7 @@ public class Example {
 
 <a name="deleteNativeVlan"></a>
 # **deleteNativeVlan**
-> Port deleteNativeVlan(id)
+> Port deleteNativeVlan(id, include)
 
 Remove native VLAN
 
@@ -500,8 +512,9 @@ public class Example {
 
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      Port result = apiInstance.deleteNativeVlan(id);
+      Port result = apiInstance.deleteNativeVlan(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#deleteNativeVlan");
@@ -519,6 +532,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -543,7 +557,7 @@ public class Example {
 
 <a name="disbondPort"></a>
 # **disbondPort**
-> Port disbondPort(id, bulkDisable)
+> Port disbondPort(id, bulkDisable, include)
 
 Disabling bonding
 
@@ -573,8 +587,9 @@ public class Example {
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
     Boolean bulkDisable = true; // Boolean | disable both ports
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      Port result = apiInstance.disbondPort(id, bulkDisable);
+      Port result = apiInstance.disbondPort(id, bulkDisable, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#disbondPort");
@@ -593,6 +608,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
 | **bulkDisable** | **Boolean**| disable both ports | [optional] |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -618,7 +634,7 @@ public class Example {
 
 <a name="findPortById"></a>
 # **findPortById**
-> Port findPortById(id, include, exclude)
+> Port findPortById(id, include)
 
 Retrieve a port
 
@@ -648,9 +664,8 @@ public class Example {
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Port result = apiInstance.findPortById(id, include, exclude);
+      Port result = apiInstance.findPortById(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#findPortById");
@@ -669,7 +684,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -693,7 +707,7 @@ public class Example {
 
 <a name="findPortVlanAssignmentBatchByPortIdAndBatchId"></a>
 # **findPortVlanAssignmentBatchByPortIdAndBatchId**
-> PortVlanAssignmentBatch findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId, include, exclude)
+> PortVlanAssignmentBatch findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId, include)
 
 Retrieve a VLAN Assignment Batch&#39;s details
 
@@ -724,9 +738,8 @@ public class Example {
     UUID id = UUID.randomUUID(); // UUID | Port UUID
     UUID batchId = UUID.randomUUID(); // UUID | Batch ID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      PortVlanAssignmentBatch result = apiInstance.findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId, include, exclude);
+      PortVlanAssignmentBatch result = apiInstance.findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#findPortVlanAssignmentBatchByPortIdAndBatchId");
@@ -746,7 +759,6 @@ public class Example {
 | **id** | **UUID**| Port UUID | |
 | **batchId** | **UUID**| Batch ID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -843,7 +855,7 @@ public class Example {
 
 <a name="findPortVlanAssignmentByPortIdAndAssignmentId"></a>
 # **findPortVlanAssignmentByPortIdAndAssignmentId**
-> PortVlanAssignment findPortVlanAssignmentByPortIdAndAssignmentId(id, assignmentId, include, exclude)
+> PortVlanAssignment findPortVlanAssignmentByPortIdAndAssignmentId(id, assignmentId, include)
 
 Show a particular Port VLAN assignment&#39;s details
 
@@ -874,9 +886,8 @@ public class Example {
     UUID id = UUID.randomUUID(); // UUID | Port UUID
     UUID assignmentId = UUID.randomUUID(); // UUID | Assignment ID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      PortVlanAssignment result = apiInstance.findPortVlanAssignmentByPortIdAndAssignmentId(id, assignmentId, include, exclude);
+      PortVlanAssignment result = apiInstance.findPortVlanAssignmentByPortIdAndAssignmentId(id, assignmentId, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#findPortVlanAssignmentByPortIdAndAssignmentId");
@@ -896,7 +907,6 @@ public class Example {
 | **id** | **UUID**| Port UUID | |
 | **assignmentId** | **UUID**| Assignment ID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -921,7 +931,7 @@ public class Example {
 
 <a name="findPortVlanAssignments"></a>
 # **findPortVlanAssignments**
-> PortVlanAssignmentList findPortVlanAssignments(id, include, exclude)
+> PortVlanAssignmentList findPortVlanAssignments(id, include)
 
 List Current VLAN assignments for a port
 
@@ -951,9 +961,8 @@ public class Example {
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      PortVlanAssignmentList result = apiInstance.findPortVlanAssignments(id, include, exclude);
+      PortVlanAssignmentList result = apiInstance.findPortVlanAssignments(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#findPortVlanAssignments");
@@ -972,7 +981,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -997,7 +1005,7 @@ public class Example {
 
 <a name="unassignPort"></a>
 # **unassignPort**
-> Port unassignPort(id, portAssignInput)
+> Port unassignPort(id, portAssignInput, include)
 
 Unassign a port
 
@@ -1027,8 +1035,9 @@ public class Example {
     PortsApi apiInstance = new PortsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Port UUID
     PortAssignInput portAssignInput = new PortAssignInput(); // PortAssignInput | Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: '1001').
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      Port result = apiInstance.unassignPort(id, portAssignInput);
+      Port result = apiInstance.unassignPort(id, portAssignInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortsApi#unassignPort");
@@ -1047,6 +1056,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Port UUID | |
 | **portAssignInput** | [**PortAssignInput**](PortAssignInput.md)| Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 

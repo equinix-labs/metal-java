@@ -86,7 +86,7 @@ null (empty response body)
 
 <a name="findBgpConfigByProject"></a>
 # **findBgpConfigByProject**
-> BgpConfig findBgpConfigByProject(id, include, exclude)
+> BgpConfig findBgpConfigByProject(id, include)
 
 Retrieve a bgp config
 
@@ -116,9 +116,8 @@ public class Example {
     BgpApi apiInstance = new BgpApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      BgpConfig result = apiInstance.findBgpConfigByProject(id, include, exclude);
+      BgpConfig result = apiInstance.findBgpConfigByProject(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BgpApi#findBgpConfigByProject");
@@ -137,7 +136,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -162,7 +160,7 @@ public class Example {
 
 <a name="findBgpSessionById"></a>
 # **findBgpSessionById**
-> BgpSession findBgpSessionById(id, include, exclude)
+> BgpSession findBgpSessionById(id, include)
 
 Retrieve a BGP session
 
@@ -192,9 +190,8 @@ public class Example {
     BgpApi apiInstance = new BgpApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | BGP session UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      BgpSession result = apiInstance.findBgpSessionById(id, include, exclude);
+      BgpSession result = apiInstance.findBgpSessionById(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BgpApi#findBgpSessionById");
@@ -213,7 +210,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| BGP session UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -381,7 +377,7 @@ public class Example {
 
 <a name="requestBgpConfig"></a>
 # **requestBgpConfig**
-> requestBgpConfig(id, bgpConfigRequestInput)
+> requestBgpConfig(id, bgpConfigRequestInput, include)
 
 Requesting bgp config
 
@@ -411,8 +407,9 @@ public class Example {
     BgpApi apiInstance = new BgpApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     BgpConfigRequestInput bgpConfigRequestInput = new BgpConfigRequestInput(); // BgpConfigRequestInput | BGP config Request to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      apiInstance.requestBgpConfig(id, bgpConfigRequestInput);
+      apiInstance.requestBgpConfig(id, bgpConfigRequestInput, include);
     } catch (ApiException e) {
       System.err.println("Exception when calling BgpApi#requestBgpConfig");
       System.err.println("Status code: " + e.getCode());
@@ -430,6 +427,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
 | **bgpConfigRequestInput** | [**BgpConfigRequestInput**](BgpConfigRequestInput.md)| BGP config Request to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 

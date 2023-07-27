@@ -14,7 +14,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="createAPIKey"></a>
 # **createAPIKey**
-> AuthToken createAPIKey(authTokenInput)
+> AuthToken createAPIKey(authTokenInput, include)
 
 Create an API key
 
@@ -43,8 +43,9 @@ public class Example {
 
     AuthenticationApi apiInstance = new AuthenticationApi(defaultClient);
     AuthTokenInput authTokenInput = new AuthTokenInput(); // AuthTokenInput | API key to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      AuthToken result = apiInstance.createAPIKey(authTokenInput);
+      AuthToken result = apiInstance.createAPIKey(authTokenInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthenticationApi#createAPIKey");
@@ -62,6 +63,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **authTokenInput** | [**AuthTokenInput**](AuthTokenInput.md)| API key to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -86,7 +88,7 @@ public class Example {
 
 <a name="createProjectAPIKey"></a>
 # **createProjectAPIKey**
-> AuthToken createProjectAPIKey(id, authTokenInput)
+> AuthToken createProjectAPIKey(id, authTokenInput, include)
 
 Create an API key for a project.
 
@@ -116,8 +118,9 @@ public class Example {
     AuthenticationApi apiInstance = new AuthenticationApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     AuthTokenInput authTokenInput = new AuthTokenInput(); // AuthTokenInput | API Key to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      AuthToken result = apiInstance.createProjectAPIKey(id, authTokenInput);
+      AuthToken result = apiInstance.createProjectAPIKey(id, authTokenInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthenticationApi#createProjectAPIKey");
@@ -136,6 +139,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
 | **authTokenInput** | [**AuthTokenInput**](AuthTokenInput.md)| API Key to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -300,7 +304,7 @@ null (empty response body)
 
 <a name="findAPIKeys"></a>
 # **findAPIKeys**
-> AuthTokenList findAPIKeys(include, exclude)
+> AuthTokenList findAPIKeys(search, include)
 
 Retrieve all user API keys
 
@@ -328,10 +332,10 @@ public class Example {
     //x_auth_token.setApiKeyPrefix("Token");
 
     AuthenticationApi apiInstance = new AuthenticationApi(defaultClient);
+    String search = "search_example"; // String | Search by description
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      AuthTokenList result = apiInstance.findAPIKeys(include, exclude);
+      AuthTokenList result = apiInstance.findAPIKeys(search, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthenticationApi#findAPIKeys");
@@ -348,8 +352,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **search** | **String**| Search by description | [optional] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -373,7 +377,7 @@ public class Example {
 
 <a name="findProjectAPIKeys"></a>
 # **findProjectAPIKeys**
-> AuthTokenList findProjectAPIKeys(id, include, exclude)
+> AuthTokenList findProjectAPIKeys(id, include)
 
 Retrieve all API keys for the project.
 
@@ -403,9 +407,8 @@ public class Example {
     AuthenticationApi apiInstance = new AuthenticationApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      AuthTokenList result = apiInstance.findProjectAPIKeys(id, include, exclude);
+      AuthTokenList result = apiInstance.findProjectAPIKeys(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthenticationApi#findProjectAPIKeys");
@@ -424,7 +427,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
