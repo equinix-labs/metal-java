@@ -687,7 +687,7 @@ public class IpAddressesApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         if (types != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "types", types));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "types", types));
         }
 
         if (include != null) {

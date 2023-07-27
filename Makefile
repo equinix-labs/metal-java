@@ -25,7 +25,6 @@ PATCHED_SPEC_ENTRY_POINT=spec/oas3.patched/openapi/public/${SPEC_ROOT_FILE}
 PATCHED_SPEC_OUTPUT_DIR=spec/oas3.stitched/
 
 SPEC_FETCHER=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/workdir --entrypoint sh mikefarah/yq:4.30.8 script/download_spec.sh
-SPEC_PATCHED_FILE=oas3.stitched.metal.yaml
 
 SPEC_DIR_FETCHED_FILE=spec/oas3.fetched/
 SPEC_DIR_PATCHED_FILE=spec/oas3.patched/
@@ -41,26 +40,19 @@ OPENAPI_CODEGEN_SHA=sha256:be8c2ef6be22f695410c2cc13d0ec7fdf2533fc88a7f17288ad75
 OPENAPI_CODEGEN_IMAGE=openapitools/openapi-generator-cli@${OPENAPI_CODEGEN_SHA}
 DOCKER_OPENAPI=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/local ${OPENAPI_CODEGEN_IMAGE}
 
-docker_run: clean pre-spec-patch-dir pull docker_generate_spec docker_generate move-workflow build_client
+docker_run: clean patch pull docker_generate move-workflow build_client
 
 pull:
 	${CRI} pull ${OPENAPI_CODEGEN_IMAGE}
 
 docker_generate:
 	${DOCKER_OPENAPI} generate \
-		-i /local/${PATCHED_SPEC_OUTPUT_DIR}/${SPEC_PATCHED_FILE} \
+		-i /local/${PATCHED_SPEC_ENTRY_POINT} \
 		-g java \
 		-c /local/${OPENAPI_CONFIG} \
 		-o /local/${OPENAPI_GENERATED_CLIENT} \
 		--git-repo-id ${GIT_REPO} \
 		--git-user-id ${GIT_ORG}
-
-docker_generate_spec:
-	${DOCKER_OPENAPI} generate \
-		-i /local/${PATCHED_SPEC_ENTRY_POINT} \
-		-g openapi-yaml \
-		-p skipOperationExample=true -p outputFile=oas3.stitched.metal.yaml \
-		-o /local/${PATCHED_SPEC_OUTPUT_DIR}
 
 ##
 # Utility functions
@@ -70,10 +62,9 @@ fetch:
 
 clean:
 	rm -rf ${OPENAPI_GENERATED_CLIENT}
-	rm -rf ${OPENAPI_GIT_DIR}
 
 # executing patch apply shell script
-pre-spec-patch-dir:
+patch:
 	rm -rf ${SPEC_DIR_PATCHED_FILE}
 	cp -r ${SPEC_DIR_FETCHED_FILE} ${SPEC_DIR_PATCHED_FILE}
 

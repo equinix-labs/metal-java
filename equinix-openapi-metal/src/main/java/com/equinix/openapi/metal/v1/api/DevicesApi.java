@@ -1880,7 +1880,7 @@ public class DevicesApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         if (categories != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "categories", categories));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "categories", categories));
         }
 
         if (facility != null) {
@@ -2103,7 +2103,7 @@ public class DevicesApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         if (categories != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "categories", categories));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "categories", categories));
         }
 
         if (facility != null) {
