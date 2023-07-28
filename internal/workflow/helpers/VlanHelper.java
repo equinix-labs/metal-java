@@ -21,7 +21,7 @@ public class VlanHelper {
 
     // Returns the vlan queried by its id
     public VirtualNetwork getVlan(UUID vlanId) throws ApiException {
-        return vlansApi.getVirtualNetwork(vlanId);
+        return vlansApi.getVirtualNetwork(vlanId, null, null);
     }
 
     // Returns a vlan in a project metro by its vxlan identifier
@@ -48,7 +48,7 @@ public class VlanHelper {
 
     // Delete vlan by id
     public void deleteVlan(UUID vlanId) throws ApiException {
-        vlansApi.deleteVirtualNetwork(vlanId);
+        vlansApi.deleteVirtualNetwork(vlanId, null, null);
     }
 
 }
