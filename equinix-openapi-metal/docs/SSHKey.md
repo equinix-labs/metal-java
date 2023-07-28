@@ -15,6 +15,7 @@
 |**key** | **String** |  |  [optional] |
 |**label** | **String** |  |  [optional] |
 |**updatedAt** | **OffsetDateTime** |  |  [optional] |
+|**tags** | **List&lt;String&gt;** |  |  [optional] |
 
 
 

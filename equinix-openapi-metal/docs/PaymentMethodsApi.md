@@ -81,7 +81,7 @@ null (empty response body)
 
 <a name="findPaymentMethodById"></a>
 # **findPaymentMethodById**
-> PaymentMethod findPaymentMethodById(id, include, exclude)
+> PaymentMethod findPaymentMethodById(id, include)
 
 Retrieve a payment method
 
@@ -111,9 +111,8 @@ public class Example {
     PaymentMethodsApi apiInstance = new PaymentMethodsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Payment Method UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      PaymentMethod result = apiInstance.findPaymentMethodById(id, include, exclude);
+      PaymentMethod result = apiInstance.findPaymentMethodById(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PaymentMethodsApi#findPaymentMethodById");
@@ -132,7 +131,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Payment Method UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -156,7 +154,7 @@ public class Example {
 
 <a name="updatePaymentMethod"></a>
 # **updatePaymentMethod**
-> PaymentMethod updatePaymentMethod(id, paymentMethodUpdateInput)
+> PaymentMethod updatePaymentMethod(id, paymentMethodUpdateInput, include)
 
 Update the payment method
 
@@ -186,8 +184,9 @@ public class Example {
     PaymentMethodsApi apiInstance = new PaymentMethodsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Payment Method UUID
     PaymentMethodUpdateInput paymentMethodUpdateInput = new PaymentMethodUpdateInput(); // PaymentMethodUpdateInput | Payment Method to update
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      PaymentMethod result = apiInstance.updatePaymentMethod(id, paymentMethodUpdateInput);
+      PaymentMethod result = apiInstance.updatePaymentMethod(id, paymentMethodUpdateInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PaymentMethodsApi#updatePaymentMethod");
@@ -206,6 +205,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Payment Method UUID | |
 | **paymentMethodUpdateInput** | [**PaymentMethodUpdateInput**](PaymentMethodUpdateInput.md)| Payment Method to update | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 

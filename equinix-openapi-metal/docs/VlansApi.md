@@ -91,7 +91,7 @@ public class Example {
 
 <a name="deleteVirtualNetwork"></a>
 # **deleteVirtualNetwork**
-> VirtualNetwork deleteVirtualNetwork(id)
+> VirtualNetwork deleteVirtualNetwork(id, include, exclude)
 
 Delete a virtual network
 
@@ -120,8 +120,10 @@ public class Example {
 
     VlansApi apiInstance = new VlansApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Virtual Network UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      VirtualNetwork result = apiInstance.deleteVirtualNetwork(id);
+      VirtualNetwork result = apiInstance.deleteVirtualNetwork(id, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VlansApi#deleteVirtualNetwork");
@@ -139,6 +141,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Virtual Network UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -244,7 +248,7 @@ public class Example {
 
 <a name="getVirtualNetwork"></a>
 # **getVirtualNetwork**
-> VirtualNetwork getVirtualNetwork(id)
+> VirtualNetwork getVirtualNetwork(id, include, exclude)
 
 Get a virtual network
 
@@ -273,8 +277,10 @@ public class Example {
 
     VlansApi apiInstance = new VlansApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Virtual Network UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      VirtualNetwork result = apiInstance.getVirtualNetwork(id);
+      VirtualNetwork result = apiInstance.getVirtualNetwork(id, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VlansApi#getVirtualNetwork");
@@ -292,6 +298,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Virtual Network UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

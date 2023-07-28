@@ -42,7 +42,7 @@ info:
 
     ## Searching
 
-    Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.
+    Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. Currently the search parameter is only available on devices, ssh_keys, api_keys and memberships endpoints.
 
     To search resources you can use the `search` query parameter.
 
@@ -415,18 +415,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -505,18 +493,6 @@ paths:
         explode: false
         in: query
         name: include
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
         schema:
           items:
             type: string
@@ -881,6 +857,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "202":
           content:
@@ -915,6 +915,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -949,6 +973,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -1153,6 +1201,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -1286,6 +1358,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -1487,6 +1583,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -1633,6 +1753,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -1674,6 +1806,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -1708,6 +1852,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -2066,18 +2222,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -2387,30 +2531,6 @@ paths:
         schema:
           format: uuid
           type: string
-      - description: |-
-          Nested attributes to include. Included objects will return their full
-          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
-          nested objects.
-        explode: false
-        in: query
-        name: include
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -2752,6 +2872,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -2801,6 +2945,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -2892,18 +3060,6 @@ paths:
         explode: false
         in: query
         name: include
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
         schema:
           items:
             type: string
@@ -3017,18 +3173,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -3069,6 +3213,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -3254,6 +3410,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -3596,6 +3776,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -3885,18 +4089,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -3937,6 +4129,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -4314,6 +4518,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -4654,6 +4882,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -4850,6 +5102,13 @@ paths:
         required: true
         schema:
           format: uuid
+          type: string
+      - description: "Search by hostname, description, short_id, reservation short_id,\
+          \ tags, plan name, plan slug, facility code, facility name, operating system\
+          \ name, operating system slug, IP addresses."
+        in: query
+        name: search
+        schema:
           type: string
       - description: Filter by plan category
         in: query
@@ -5132,18 +5391,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       - description: Page to return
         in: query
         name: page
@@ -5211,6 +5458,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/InvitationInput'
       responses:
@@ -5324,18 +5583,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -5384,18 +5631,6 @@ paths:
         explode: false
         in: query
         name: include
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
         schema:
           items:
             type: string
@@ -5453,6 +5688,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -5567,6 +5814,11 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: Filter results by name.
+        in: query
+        name: name
+        schema:
+          type: string
       - description: |-
           Nested attributes to include. Included objects will return their full
           attributes. Attribute names can be dotted (up to 3 levels) to included deeply
@@ -5637,6 +5889,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -5693,18 +5969,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -5740,6 +6004,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -5775,6 +6063,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/InterconnectionCreateInput'
       responses:
@@ -5861,18 +6173,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -5907,6 +6207,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -6042,18 +6354,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -6089,6 +6389,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/PortAssignInput'
       responses:
@@ -6144,6 +6456,18 @@ paths:
         name: bulk_enable
         schema:
           type: boolean
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -6192,6 +6516,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/PortAssignInput'
       responses:
@@ -6242,6 +6578,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -6301,6 +6649,18 @@ paths:
         name: bulk_disable
         schema:
           type: boolean
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -6348,6 +6708,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -6397,6 +6769,18 @@ paths:
         required: true
         schema:
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -6438,6 +6822,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/PortAssignInput'
       responses:
@@ -6503,16 +6899,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: Nested attributes to exclude. Excluded objects will return only
-          the href attribute. Attribute names can be dotted (up to 3 levels) to exclude
-          deeply nested objects.
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -6571,16 +6957,6 @@ paths:
           default:
           - port
           - virtual_network
-          items:
-            type: string
-          type: array
-        style: form
-      - description: Nested attributes to exclude. Excluded objects will return only
-          the href attribute. Attribute names can be dotted (up to 3 levels) to exclude
-          deeply nested objects.
-        in: query
-        name: exclude
-        schema:
           items:
             type: string
           type: array
@@ -6668,6 +7044,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -6744,18 +7132,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -6791,6 +7167,11 @@ paths:
         of.
       operationId: findProjects
       parameters:
+      - description: Filter results by name.
+        in: query
+        name: name
+        schema:
+          type: string
       - description: |-
           Nested attributes to include. Included objects will return their full
           attributes. Attribute names can be dotted (up to 3 levels) to included deeply
@@ -7022,6 +7403,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -7089,18 +7494,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -7135,6 +7528,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -7196,18 +7601,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -7261,18 +7654,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -7321,6 +7702,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -7443,6 +7836,13 @@ paths:
         required: true
         schema:
           format: uuid
+          type: string
+      - description: "Search by hostname, description, short_id, reservation short_id,\
+          \ tags, plan name, plan slug, facility code, facility name, operating system\
+          \ name, operating system slug, IP addresses."
+        in: query
+        name: search
+        schema:
           type: string
       - description: Filter by plan category
         in: query
@@ -8095,6 +8495,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -8232,6 +8656,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -8461,18 +8909,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -8501,6 +8937,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -8544,6 +8992,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -9012,6 +9472,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/InterconnectionCreateInput'
       responses:
@@ -9050,18 +9534,6 @@ paths:
         explode: false
         in: query
         name: include
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
         schema:
           items:
             type: string
@@ -9132,6 +9604,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/InvitationInput'
       responses:
@@ -9220,6 +9704,11 @@ paths:
       description: Returns all memberships in a project.
       operationId: findProjectMemberships
       parameters:
+      - description: "Search by member full name, id and email."
+        in: query
+        name: search
+        schema:
+          type: string
       - description: |-
           Nested attributes to include. Included objects will return their full
           attributes. Attribute names can be dotted (up to 3 levels) to included deeply
@@ -9227,18 +9716,6 @@ paths:
         explode: false
         in: query
         name: include
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
         schema:
           items:
             type: string
@@ -10021,18 +10498,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -10069,7 +10534,7 @@ paths:
       parameters:
       - description: "Search by key, label, or fingerprint"
         in: query
-        name: Search string
+        name: search
         schema:
           type: string
       - description: |-
@@ -10079,18 +10544,6 @@ paths:
         explode: false
         in: query
         name: include
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
         schema:
           items:
             type: string
@@ -10116,6 +10569,19 @@ paths:
     post:
       description: Creates a ssh key.
       operationId: createSSHKey
+      parameters:
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/SSHKeyCreateInput'
       responses:
@@ -10202,18 +10668,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -10254,6 +10708,18 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -10400,18 +10866,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -10526,6 +10980,31 @@ paths:
     put:
       description: Updates the currently logged-in user.
       operationId: updateCurrentUser
+      parameters:
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -10562,6 +11041,11 @@ paths:
       description: Returns all API keys for the current user.
       operationId: findAPIKeys
       parameters:
+      - description: Search by description
+        in: query
+        name: search
+        schema:
+          type: string
       - description: |-
           Nested attributes to include. Included objects will return their full
           attributes. Attribute names can be dotted (up to 3 levels) to included deeply
@@ -10569,18 +11053,6 @@ paths:
         explode: false
         in: query
         name: include
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - description: |-
-          Nested attributes to exclude. Excluded objects will return only the href
-          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
-          nested objects.
-        explode: false
-        in: query
-        name: exclude
         schema:
           items:
             type: string
@@ -10612,6 +11084,19 @@ paths:
     post:
       description: Creates a API key for the current user.
       operationId: createAPIKey
+      parameters:
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -10986,6 +11471,31 @@ paths:
     post:
       description: Creates a user.
       operationId: createUser
+      parameters:
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -11133,6 +11643,18 @@ paths:
         required: true
         schema:
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "201":
           description: created
@@ -11156,6 +11678,19 @@ paths:
       description: Consumes an email verification token and verifies the user associated
         with it.
       operationId: consumeVerificationRequest
+      parameters:
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -11278,6 +11813,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "202":
           content:
@@ -11312,6 +11871,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -11346,6 +11929,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -11395,6 +12002,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -11441,6 +12072,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -11588,6 +12243,30 @@ paths:
         schema:
           format: uuid
           type: string
+      - description: |-
+          Nested attributes to include. Included objects will return their full
+          attributes. Attribute names can be dotted (up to 3 levels) to included deeply
+          nested objects.
+        explode: false
+        in: query
+        name: include
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: |-
+          Nested attributes to exclude. Excluded objects will return only the href
+          attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply
+          nested objects.
+        explode: false
+        in: query
+        name: exclude
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
       requestBody:
         content:
           application/json:
@@ -11889,6 +12568,20 @@ paths:
       x-accepts: application/json
 components:
   parameters:
+    DeviceSearch:
+      description: "Search by hostname, description, short_id, reservation short_id,\
+        \ tags, plan name, plan slug, facility code, facility name, operating system\
+        \ name, operating system slug, IP addresses."
+      in: query
+      name: search
+      schema:
+        type: string
+    ProjectName:
+      description: Filter results by name.
+      in: query
+      name: name
+      schema:
+        type: string
     Page:
       description: Page to return
       in: query
@@ -12272,17 +12965,34 @@ components:
     BgpConfigRequestInput:
       example:
         use_case: use_case
-        deployment_type: deployment_type
-        asn: 0
+        deployment_type: local
+        asn: 65000
         md5: md5
       properties:
         asn:
+          description: Autonomous System Number for local BGP deployment.
+          example: 65000
           type: integer
         deployment_type:
+          description: Wether the BGP deployment is local or global. Local deployments
+            are configured immediately. Global deployments will need to be reviewed
+            by Equinix Metal engineers.
+          enum:
+          - local
+          - global
+          example: local
           type: string
         md5:
+          description: |
+            The plaintext password to share between BGP neighbors as an MD5 checksum:
+            * must be 10-20 characters long
+            * may not include punctuation
+            * must be a combination of numbers and letters
+            * must contain at least one lowercase, uppercase, and digit character
+          pattern: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{10,20}$"
           type: string
         use_case:
+          description: A use case explanation (necessary for global BGP request review).
           type: string
       required:
       - asn
@@ -12322,6 +13032,9 @@ components:
             assigned_to_virtual_circuit: true
             assigned_to:
               href: href
+            tags:
+            - tags
+            - tags
           updated_at: 2000-01-23T04:56:07.000+00:00
           ip_reservation: null
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -12338,6 +13051,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -12420,6 +13136,9 @@ components:
               - href: href
               bgp_config:
                 href: href
+              tags:
+              - tags
+              - tags
               max_devices: "{}"
               ssh_keys:
               - href: href
@@ -12681,6 +13400,9 @@ components:
               assigned_to_virtual_circuit: true
               assigned_to:
                 href: href
+              tags:
+              - tags
+              - tags
             updated_at: 2000-01-23T04:56:07.000+00:00
             ip_reservation: null
             created_at: 2000-01-23T04:56:07.000+00:00
@@ -12697,6 +13419,9 @@ components:
               - href: href
               bgp_config:
                 href: href
+              tags:
+              - tags
+              - tags
               max_devices: "{}"
               ssh_keys:
               - href: href
@@ -12779,6 +13504,9 @@ components:
                 - href: href
                 bgp_config:
                   href: href
+                tags:
+                - tags
+                - tags
                 max_devices: "{}"
                 ssh_keys:
                 - href: href
@@ -12966,6 +13694,9 @@ components:
               assigned_to_virtual_circuit: true
               assigned_to:
                 href: href
+              tags:
+              - tags
+              - tags
             updated_at: 2000-01-23T04:56:07.000+00:00
             ip_reservation: null
             created_at: 2000-01-23T04:56:07.000+00:00
@@ -12982,6 +13713,9 @@ components:
               - href: href
               bgp_config:
                 href: href
+              tags:
+              - tags
+              - tags
               max_devices: "{}"
               ssh_keys:
               - href: href
@@ -13064,6 +13798,9 @@ components:
                 - href: href
                 bgp_config:
                   href: href
+                tags:
+                - tags
+                - tags
                 max_devices: "{}"
                 ssh_keys:
                 - href: href
@@ -13658,6 +14395,52 @@ components:
         description: description
         project: null
         switch_uuid: switch_uuid
+        storage:
+          disks:
+          - partitions:
+            - number: 3
+              size: size
+              label: label
+            - number: 3
+              size: size
+              label: label
+            wipeTable: true
+            device: device
+          - partitions:
+            - number: 3
+              size: size
+              label: label
+            - number: 3
+              size: size
+              label: label
+            wipeTable: true
+            device: device
+          filesystems:
+          - mount:
+              format: format
+              options:
+              - options
+              - options
+              device: device
+              point: point
+          - mount:
+              format: format
+              options:
+              - options
+              - options
+              device: device
+              point: point
+          raid:
+          - devices:
+            - devices
+            - devices
+            level: level
+            name: name
+          - devices:
+            - devices
+            - devices
+            level: level
+            name: name
         bonding_mode: 0
         provisioning_events:
         - interpolated: interpolated
@@ -13716,6 +14499,9 @@ components:
             assigned_to_virtual_circuit: true
             assigned_to:
               href: href
+            tags:
+            - tags
+            - tags
           disbond_operation_supported: true
           data:
             bonded: true
@@ -13762,6 +14548,9 @@ components:
             assigned_to_virtual_circuit: true
             assigned_to:
               href: href
+            tags:
+            - tags
+            - tags
           disbond_operation_supported: true
           data:
             bonded: true
@@ -13800,7 +14589,7 @@ components:
           key: ""
         href: href
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        state: active
+        state: queued
         locked: true
         spot_price_max: 9.301444
         plan:
@@ -13889,6 +14678,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -14170,19 +14962,35 @@ components:
             $ref: '#/components/schemas/Href'
           type: array
         state:
+          description: "The current state the instance is in.\n\n* When an instance\
+            \ is initially created it will be in the `queued` state until it is picked\
+            \ up by the provisioner.\n* Once provisioning has begun on the instance\
+            \ it's state will move to `provisioning`.\n* When an instance is deleted,\
+            \ it will move to `deprovisioning` state until the deprovision is completed\
+            \ and the instance state moves to `deleted`.\n* If an instance fails to\
+            \ provision or deprovision it will move to `failed` state.\n* Once an\
+            \ instance has completed provisioning it will move to `active` state.\n\
+            * If an instance is currently powering off or powering on it will move\
+            \ to `powering_off` or `powering_on` states respectively. \n* When the\
+            \ instance is powered off completely it will move to the `inactive` state.\n\
+            * When an instance is powered on completely it will move to the `active`\
+            \ state.\n* Using the reinstall action to install a new OS on the instance\
+            \ will cause the instance state to change to `reinstalling`.\n* When the\
+            \ reinstall action is complete the instance will move to `active` state."
           enum:
-          - active
-          - deleted
-          - deprovisioning
-          - failed
-          - inactive
           - queued
+          - provisioning
+          - deprovisioning
           - reinstalling
-          - post_provisioning
+          - active
+          - inactive
+          - failed
           - powering_on
           - powering_off
-          - provisioning
+          - deleted
           type: string
+        storage:
+          $ref: '#/components/schemas/Storage'
         switch_uuid:
           description: |-
             Switch short id. This can be used to determine if two devices are
@@ -14392,6 +15200,8 @@ components:
           items:
             $ref: '#/components/schemas/SSHKeyInput'
           type: array
+        storage:
+          $ref: '#/components/schemas/Storage'
         tags:
           items:
             type: string
@@ -14503,6 +15313,52 @@ components:
           description: description
           project: null
           switch_uuid: switch_uuid
+          storage:
+            disks:
+            - partitions:
+              - number: 3
+                size: size
+                label: label
+              - number: 3
+                size: size
+                label: label
+              wipeTable: true
+              device: device
+            - partitions:
+              - number: 3
+                size: size
+                label: label
+              - number: 3
+                size: size
+                label: label
+              wipeTable: true
+              device: device
+            filesystems:
+            - mount:
+                format: format
+                options:
+                - options
+                - options
+                device: device
+                point: point
+            - mount:
+                format: format
+                options:
+                - options
+                - options
+                device: device
+                point: point
+            raid:
+            - devices:
+              - devices
+              - devices
+              level: level
+              name: name
+            - devices:
+              - devices
+              - devices
+              level: level
+              name: name
           bonding_mode: 0
           provisioning_events:
           - interpolated: interpolated
@@ -14561,6 +15417,9 @@ components:
               assigned_to_virtual_circuit: true
               assigned_to:
                 href: href
+              tags:
+              - tags
+              - tags
             disbond_operation_supported: true
             data:
               bonded: true
@@ -14607,6 +15466,9 @@ components:
               assigned_to_virtual_circuit: true
               assigned_to:
                 href: href
+              tags:
+              - tags
+              - tags
             disbond_operation_supported: true
             data:
               bonded: true
@@ -14645,7 +15507,7 @@ components:
             key: ""
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: active
+          state: queued
           locked: true
           spot_price_max: 9.301444
           plan:
@@ -14734,6 +15596,9 @@ components:
               - href: href
               bgp_config:
                 href: href
+              tags:
+              - tags
+              - tags
               max_devices: "{}"
               ssh_keys:
               - href: href
@@ -14969,6 +15834,52 @@ components:
           description: description
           project: null
           switch_uuid: switch_uuid
+          storage:
+            disks:
+            - partitions:
+              - number: 3
+                size: size
+                label: label
+              - number: 3
+                size: size
+                label: label
+              wipeTable: true
+              device: device
+            - partitions:
+              - number: 3
+                size: size
+                label: label
+              - number: 3
+                size: size
+                label: label
+              wipeTable: true
+              device: device
+            filesystems:
+            - mount:
+                format: format
+                options:
+                - options
+                - options
+                device: device
+                point: point
+            - mount:
+                format: format
+                options:
+                - options
+                - options
+                device: device
+                point: point
+            raid:
+            - devices:
+              - devices
+              - devices
+              level: level
+              name: name
+            - devices:
+              - devices
+              - devices
+              level: level
+              name: name
           bonding_mode: 0
           provisioning_events:
           - interpolated: interpolated
@@ -15027,6 +15938,9 @@ components:
               assigned_to_virtual_circuit: true
               assigned_to:
                 href: href
+              tags:
+              - tags
+              - tags
             disbond_operation_supported: true
             data:
               bonded: true
@@ -15073,6 +15987,9 @@ components:
               assigned_to_virtual_circuit: true
               assigned_to:
                 href: href
+              tags:
+              - tags
+              - tags
             disbond_operation_supported: true
             data:
               bonded: true
@@ -15111,7 +16028,7 @@ components:
             key: ""
           href: href
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: active
+          state: queued
           locked: true
           spot_price_max: 9.301444
           plan:
@@ -15200,6 +16117,9 @@ components:
               - href: href
               bgp_config:
                 href: href
+              tags:
+              - tags
+              - tags
               max_devices: "{}"
               ssh_keys:
               - href: href
@@ -15898,6 +16818,9 @@ components:
           - href: href
           bgp_config:
             href: href
+          tags:
+          - tags
+          - tags
           max_devices: "{}"
           ssh_keys:
           - href: href
@@ -16123,6 +17046,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -16284,6 +17210,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -16768,8 +17697,32 @@ components:
         description: description
         created_at: 2000-01-23T04:56:07.000+00:00
         ports:
-        - null
-        - null
+        - role: primary
+          virtual_circuits:
+          - null
+          - null
+          organization:
+            href: href
+          name: name
+          link_status: link_status
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          switch_id: switch_id
+          href: href
+          speed: 0
+          status: requested
+        - role: primary
+          virtual_circuits:
+          - null
+          - null
+          organization:
+            href: href
+          name: name
+          link_status: link_status
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          switch_id: switch_id
+          href: href
+          speed: 0
+          status: requested
         type: shared
         speed: 10000000000
         contact_email: contact_email
@@ -17038,8 +17991,32 @@ components:
         - description: description
           created_at: 2000-01-23T04:56:07.000+00:00
           ports:
-          - null
-          - null
+          - role: primary
+            virtual_circuits:
+            - null
+            - null
+            organization:
+              href: href
+            name: name
+            link_status: link_status
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            switch_id: switch_id
+            href: href
+            speed: 0
+            status: requested
+          - role: primary
+            virtual_circuits:
+            - null
+            - null
+            organization:
+              href: href
+            name: name
+            link_status: link_status
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            switch_id: switch_id
+            href: href
+            speed: 0
+            status: requested
           type: shared
           speed: 10000000000
           contact_email: contact_email
@@ -17076,8 +18053,32 @@ components:
         - description: description
           created_at: 2000-01-23T04:56:07.000+00:00
           ports:
-          - null
-          - null
+          - role: primary
+            virtual_circuits:
+            - null
+            - null
+            organization:
+              href: href
+            name: name
+            link_status: link_status
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            switch_id: switch_id
+            href: href
+            speed: 0
+            status: requested
+          - role: primary
+            virtual_circuits:
+            - null
+            - null
+            organization:
+              href: href
+            name: name
+            link_status: link_status
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            switch_id: switch_id
+            href: href
+            speed: 0
+            status: requested
           type: shared
           speed: 10000000000
           contact_email: contact_email
@@ -17120,14 +18121,90 @@ components:
           $ref: '#/components/schemas/Meta'
       type: object
     InterconnectionPort:
-      allOf:
-      - $ref: '#/components/schemas/VirtualCircuitList'
-      - $ref: '#/components/schemas/InterconnectionPortCore'
+      example:
+        role: primary
+        virtual_circuits:
+        - null
+        - null
+        organization:
+          href: href
+        name: name
+        link_status: link_status
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        switch_id: switch_id
+        href: href
+        speed: 0
+        status: requested
+      properties:
+        id:
+          format: uuid
+          type: string
+        organization:
+          $ref: '#/components/schemas/Href'
+        role:
+          description: Either 'primary' or 'secondary'.
+          enum:
+          - primary
+          - secondary
+          type: string
+        status:
+          description: "For both Fabric VCs and Dedicated Ports, this will be 'requested'\
+            \ on creation and 'deleting' on deletion. Once the Fabric VC has found\
+            \ its corresponding Fabric connection, this will turn to 'active'. For\
+            \ Dedicated Ports, once the dedicated port is associated, this will also\
+            \ turn to 'active'. For Fabric VCs, this can turn into an 'expired' state\
+            \ if the service token associated is expired."
+          enum:
+          - requested
+          - active
+          - deleting
+          - expired
+          type: string
+        switch_id:
+          description: A switch 'short ID'
+          type: string
+        virtual_circuits:
+          items:
+            $ref: '#/components/schemas/VirtualCircuit'
+          type: array
+        name:
+          type: string
+        speed:
+          type: integer
+        link_status:
+          type: string
+        href:
+          type: string
+      type: object
     InterconnectionPortList:
       example:
         ports:
-        - null
-        - null
+        - role: primary
+          virtual_circuits:
+          - null
+          - null
+          organization:
+            href: href
+          name: name
+          link_status: link_status
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          switch_id: switch_id
+          href: href
+          speed: 0
+          status: requested
+        - role: primary
+          virtual_circuits:
+          - null
+          - null
+          organization:
+            href: href
+          name: name
+          link_status: link_status
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          switch_id: switch_id
+          href: href
+          speed: 0
+          status: requested
       properties:
         ports:
           items:
@@ -18067,6 +19144,7 @@ components:
         customdata:
           key: ""
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        state: queued
         class: class
         facility: facility
         plan: plan
@@ -18112,6 +19190,34 @@ components:
             type: string
           type: array
         switch_short_id:
+          type: string
+        state:
+          description: "The current state the instance is in.\n\n* When an instance\
+            \ is initially created it will be in the `queued` state until it is picked\
+            \ up by the provisioner.\n* Once provisioning has begun on the instance\
+            \ it's state will move to `provisioning`.\n* When an instance is deleted,\
+            \ it will move to `deprovisioning` state until the deprovision is completed\
+            \ and the instance state moves to `deleted`.\n* If an instance fails to\
+            \ provision or deprovision it will move to `failed` state.\n* Once an\
+            \ instance has completed provisioning it will move to `active` state.\n\
+            * If an instance is currently powering off or powering on it will move\
+            \ to `powering_off` or `powering_on` states respectively. \n* When the\
+            \ instance is powered off completely it will move to the `inactive` state.\n\
+            * When an instance is powered on completely it will move to the `active`\
+            \ state.\n* Using the reinstall action to install a new OS on the instance\
+            \ will cause the instance state to change to `reinstalling`.\n* When the\
+            \ reinstall action is complete the instance will move to `active` state."
+          enum:
+          - queued
+          - provisioning
+          - deprovisioning
+          - reinstalling
+          - active
+          - inactive
+          - failed
+          - powering_on
+          - powering_off
+          - deleted
           type: string
         tags:
           items:
@@ -19133,6 +20239,9 @@ components:
           assigned_to_virtual_circuit: true
           assigned_to:
             href: href
+          tags:
+          - tags
+          - tags
         disbond_operation_supported: true
         data:
           bonded: true
@@ -19283,6 +20392,9 @@ components:
             assigned_to_virtual_circuit: true
             assigned_to:
               href: href
+            tags:
+            - tags
+            - tags
           disbond_operation_supported: true
           data:
             bonded: true
@@ -19399,6 +20511,9 @@ components:
               assigned_to_virtual_circuit: true
               assigned_to:
                 href: href
+              tags:
+              - tags
+              - tags
             disbond_operation_supported: true
             data:
               bonded: true
@@ -19465,6 +20580,9 @@ components:
               assigned_to_virtual_circuit: true
               assigned_to:
                 href: href
+              tags:
+              - tags
+              - tags
             disbond_operation_supported: true
             data:
               bonded: true
@@ -19546,6 +20664,9 @@ components:
         - href: href
         bgp_config:
           href: href
+        tags:
+        - tags
+        - tags
         max_devices: "{}"
         ssh_keys:
         - href: href
@@ -19635,6 +20756,10 @@ components:
             $ref: '#/components/schemas/Href'
           type: array
         name:
+          description: The name of the project. Cannot contain characters encoded
+            in greater than 3 bytes such as emojis.
+          maxLength: 80
+          minLength: 1
           type: string
         network_status:
           type: object
@@ -19653,6 +20778,10 @@ components:
           items:
             $ref: '#/components/schemas/Href'
           type: array
+        tags:
+          items:
+            type: string
+          type: array
       type: object
     ProjectCreateFromRootInput:
       example:
@@ -19664,6 +20793,10 @@ components:
         customdata:
           type: object
         name:
+          description: The name of the project. Cannot contain characters encoded
+            in greater than 3 bytes such as emojis.
+          maxLength: 80
+          minLength: 1
           type: string
         organization_id:
           format: uuid
@@ -19683,6 +20816,10 @@ components:
         customdata:
           type: object
         name:
+          description: The name of the project. Cannot contain characters encoded
+            in greater than 3 bytes such as emojis.
+          maxLength: 80
+          minLength: 1
           type: string
         payment_method_id:
           format: uuid
@@ -19716,6 +20853,9 @@ components:
           - href: href
           bgp_config:
             href: href
+          tags:
+          - tags
+          - tags
           max_devices: "{}"
           ssh_keys:
           - href: href
@@ -19787,6 +20927,9 @@ components:
           - href: href
           bgp_config:
             href: href
+          tags:
+          - tags
+          - tags
           max_devices: "{}"
           ssh_keys:
           - href: href
@@ -19880,6 +21023,10 @@ components:
         customdata:
           type: object
         name:
+          description: The name of the project. Cannot contain characters encoded
+            in greater than 3 bytes such as emojis.
+          maxLength: 80
+          minLength: 1
           type: string
         payment_method_id:
           format: uuid
@@ -19965,6 +21112,9 @@ components:
         entity:
           href: href
         key: key
+        tags:
+        - tags
+        - tags
       properties:
         created_at:
           format: date-time
@@ -19985,6 +21135,10 @@ components:
         updated_at:
           format: date-time
           type: string
+        tags:
+          items:
+            type: string
+          type: array
       type: object
     SSHKeyCreateInput:
       example:
@@ -19993,6 +21147,9 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         key: key
+        tags:
+        - tags
+        - tags
       properties:
         instances_ids:
           description: |-
@@ -20006,16 +21163,27 @@ components:
           type: string
         label:
           type: string
+        tags:
+          items:
+            type: string
+          type: array
       type: object
     SSHKeyInput:
       example:
         label: label
         key: key
+        tags:
+        - tags
+        - tags
       properties:
         key:
           type: string
         label:
           type: string
+        tags:
+          items:
+            type: string
+          type: array
       type: object
     SSHKeyList:
       example:
@@ -20029,6 +21197,9 @@ components:
           entity:
             href: href
           key: key
+          tags:
+          - tags
+          - tags
         - updated_at: 2000-01-23T04:56:07.000+00:00
           fingerprint: fingerprint
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -20038,6 +21209,9 @@ components:
           entity:
             href: href
           key: key
+          tags:
+          - tags
+          - tags
       properties:
         ssh_keys:
           items:
@@ -21531,6 +22705,9 @@ components:
         assigned_to_virtual_circuit: true
         assigned_to:
           href: href
+        tags:
+        - tags
+        - tags
       properties:
         assigned_to:
           $ref: '#/components/schemas/Href'
@@ -21567,6 +22744,10 @@ components:
           type: string
         vxlan:
           type: integer
+        tags:
+          items:
+            type: string
+          type: array
       type: object
     VirtualNetworkCreateInput:
       example:
@@ -21574,6 +22755,9 @@ components:
         metro: metro
         description: description
         facility: facility
+        tags:
+        - tags
+        - tags
       properties:
         description:
           type: string
@@ -21593,6 +22777,10 @@ components:
             \ be automatically selected."
           example: 1099
           type: integer
+        tags:
+          items:
+            type: string
+          type: array
       type: object
     VirtualNetworkList:
       example:
@@ -21627,6 +22815,9 @@ components:
           assigned_to_virtual_circuit: true
           assigned_to:
             href: href
+          tags:
+          - tags
+          - tags
         - vxlan: 1
           metal_gateways:
           - gateway_address: 10.1.2.1/27
@@ -21657,6 +22848,9 @@ components:
           assigned_to_virtual_circuit: true
           assigned_to:
             href: href
+          tags:
+          - tags
+          - tags
       properties:
         virtual_networks:
           items:
@@ -21827,6 +23021,9 @@ components:
           - href: href
           bgp_config:
             href: href
+          tags:
+          - tags
+          - tags
           max_devices: "{}"
           ssh_keys:
           - href: href
@@ -22115,6 +23312,9 @@ components:
           - href: href
           bgp_config:
             href: href
+          tags:
+          - tags
+          - tags
           max_devices: "{}"
           ssh_keys:
           - href: href
@@ -22188,6 +23388,9 @@ components:
           - href: href
           bgp_config:
             href: href
+          tags:
+          - tags
+          - tags
           max_devices: "{}"
           ssh_keys:
           - href: href
@@ -22267,6 +23470,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -22550,6 +23756,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -22623,6 +23832,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -22702,6 +23914,9 @@ components:
               - href: href
               bgp_config:
                 href: href
+              tags:
+              - tags
+              - tags
               max_devices: "{}"
               ssh_keys:
               - href: href
@@ -22889,6 +24104,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -22962,6 +24180,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -23041,6 +24262,9 @@ components:
               - href: href
               bgp_config:
                 href: href
+              tags:
+              - tags
+              - tags
               max_devices: "{}"
               ssh_keys:
               - href: href
@@ -23241,6 +24465,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -23400,6 +24627,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -23579,6 +24809,9 @@ components:
           assigned_to_virtual_circuit: true
           assigned_to:
             href: href
+          tags:
+          - tags
+          - tags
         updated_at: 2000-01-23T04:56:07.000+00:00
         ip_reservation: null
         created_at: 2000-01-23T04:56:07.000+00:00
@@ -23595,6 +24828,9 @@ components:
           - href: href
           bgp_config:
             href: href
+          tags:
+          - tags
+          - tags
           max_devices: "{}"
           ssh_keys:
           - href: href
@@ -23677,6 +24913,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -23910,6 +25149,9 @@ components:
             assigned_to_virtual_circuit: true
             assigned_to:
               href: href
+            tags:
+            - tags
+            - tags
           updated_at: 2000-01-23T04:56:07.000+00:00
           ip_reservation: null
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -23926,6 +25168,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -24008,6 +25253,9 @@ components:
               - href: href
               bgp_config:
                 href: href
+              tags:
+              - tags
+              - tags
               max_devices: "{}"
               ssh_keys:
               - href: href
@@ -24181,6 +25429,9 @@ components:
           assigned_to_virtual_circuit: true
           assigned_to:
             href: href
+          tags:
+          - tags
+          - tags
         updated_at: 2000-01-23T04:56:07.000+00:00
         prefix: 0.0.0.0/0
         next_hop: 192.168.1.254
@@ -24206,6 +25457,9 @@ components:
             - href: href
             bgp_config:
               href: href
+            tags:
+            - tags
+            - tags
             max_devices: "{}"
             ssh_keys:
             - href: href
@@ -24477,6 +25731,9 @@ components:
               assigned_to_virtual_circuit: true
               assigned_to:
                 href: href
+              tags:
+              - tags
+              - tags
             updated_at: 2000-01-23T04:56:07.000+00:00
             ip_reservation: null
             created_at: 2000-01-23T04:56:07.000+00:00
@@ -24493,6 +25750,9 @@ components:
               - href: href
               bgp_config:
                 href: href
+              tags:
+              - tags
+              - tags
               max_devices: "{}"
               ssh_keys:
               - href: href
@@ -24575,6 +25835,9 @@ components:
                 - href: href
                 bgp_config:
                   href: href
+                tags:
+                - tags
+                - tags
                 max_devices: "{}"
                 ssh_keys:
                 - href: href
@@ -24748,6 +26011,9 @@ components:
             assigned_to_virtual_circuit: true
             assigned_to:
               href: href
+            tags:
+            - tags
+            - tags
           updated_at: 2000-01-23T04:56:07.000+00:00
           prefix: 0.0.0.0/0
           next_hop: 192.168.1.254
@@ -24773,6 +26039,9 @@ components:
               - href: href
               bgp_config:
                 href: href
+              tags:
+              - tags
+              - tags
               max_devices: "{}"
               ssh_keys:
               - href: href
@@ -24948,6 +26217,9 @@ components:
               assigned_to_virtual_circuit: true
               assigned_to:
                 href: href
+              tags:
+              - tags
+              - tags
             updated_at: 2000-01-23T04:56:07.000+00:00
             ip_reservation: null
             created_at: 2000-01-23T04:56:07.000+00:00
@@ -24964,6 +26236,9 @@ components:
               - href: href
               bgp_config:
                 href: href
+              tags:
+              - tags
+              - tags
               max_devices: "{}"
               ssh_keys:
               - href: href
@@ -25046,6 +26321,9 @@ components:
                 - href: href
                 bgp_config:
                   href: href
+                tags:
+                - tags
+                - tags
                 max_devices: "{}"
                 ssh_keys:
                 - href: href
@@ -25219,6 +26497,9 @@ components:
             assigned_to_virtual_circuit: true
             assigned_to:
               href: href
+            tags:
+            - tags
+            - tags
           updated_at: 2000-01-23T04:56:07.000+00:00
           prefix: 0.0.0.0/0
           next_hop: 192.168.1.254
@@ -25244,6 +26525,9 @@ components:
               - href: href
               bgp_config:
                 href: href
+              tags:
+              - tags
+              - tags
               max_devices: "{}"
               ssh_keys:
               - href: href
@@ -25556,8 +26840,14 @@ components:
         description:
           type: string
         md5:
-          description: The MD5 password for the BGP peering in plaintext (not a checksum).
+          description: |
+            The plaintext BGP peering password shared by neighbors as an MD5 checksum:
+            * must be 10-20 characters long
+            * may not include punctuation
+            * must be a combination of numbers and letters
+            * must contain at least one lowercase, uppercase, and digit character
           nullable: true
+          pattern: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{10,20}$"
           type: string
         metal_ip:
           description: "An IP address from the subnet that will be used on the Metal\
@@ -25621,7 +26911,13 @@ components:
         description:
           type: string
         md5:
-          description: The MD5 password for the BGP peering in plaintext (not a checksum).
+          description: |
+            The plaintext BGP peering password shared by neighbors as an MD5 checksum:
+            * must be 10-20 characters long
+            * may not include punctuation
+            * must be a combination of numbers and letters
+            * must contain at least one lowercase, uppercase, and digit character
+          pattern: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{10,20}$"
           type: string
         metal_ip:
           description: "An IP address from the subnet that will be used on the Metal\
@@ -25712,43 +27008,66 @@ components:
             type: string
           type: array
       type: object
-    InterconnectionPortCore:
+    Storage:
+      example:
+        disks:
+        - partitions:
+          - number: 3
+            size: size
+            label: label
+          - number: 3
+            size: size
+            label: label
+          wipeTable: true
+          device: device
+        - partitions:
+          - number: 3
+            size: size
+            label: label
+          - number: 3
+            size: size
+            label: label
+          wipeTable: true
+          device: device
+        filesystems:
+        - mount:
+            format: format
+            options:
+            - options
+            - options
+            device: device
+            point: point
+        - mount:
+            format: format
+            options:
+            - options
+            - options
+            device: device
+            point: point
+        raid:
+        - devices:
+          - devices
+          - devices
+          level: level
+          name: name
+        - devices:
+          - devices
+          - devices
+          level: level
+          name: name
       properties:
-        id:
-          format: uuid
-          type: string
-        organization:
-          $ref: '#/components/schemas/Href'
-        role:
-          description: Either 'primary' or 'secondary'.
-          enum:
-          - primary
-          - secondary
-          type: string
-        status:
-          description: "For both Fabric VCs and Dedicated Ports, this will be 'requested'\
-            \ on creation and 'deleting' on deletion. Once the Fabric VC has found\
-            \ its corresponding Fabric connection, this will turn to 'active'. For\
-            \ Dedicated Ports, once the dedicated port is associated, this will also\
-            \ turn to 'active'. For Fabric VCs, this can turn into an 'expired' state\
-            \ if the service token associated is expired."
-          enum:
-          - requested
-          - active
-          - deleting
-          - expired
-          type: string
-        switch_id:
-          description: A switch 'short ID'
-          type: string
-        name:
-          type: string
-        speed:
-          type: integer
-        link_status:
-          type: string
-        href:
-          type: string
+        disks:
+          items:
+            $ref: '#/components/schemas/Disk'
+          type: array
+        raid:
+          items:
+            $ref: '#/components/schemas/Raid'
+          type: array
+        filesystems:
+          items:
+            $ref: '#/components/schemas/Filesystem'
+          type: array
       type: object
     IPReservationOrHref:
       anyOf:
@@ -25791,6 +27110,91 @@ components:
         route:
           example: 10.32.16.0/31
           type: string
+      type: object
+    Disk:
+      example:
+        partitions:
+        - number: 3
+          size: size
+          label: label
+        - number: 3
+          size: size
+          label: label
+        wipeTable: true
+        device: device
+      properties:
+        device:
+          type: string
+        wipeTable:
+          type: boolean
+        partitions:
+          items:
+            $ref: '#/components/schemas/Partition'
+          type: array
+      type: object
+    Raid:
+      example:
+        devices:
+        - devices
+        - devices
+        level: level
+        name: name
+      properties:
+        devices:
+          items:
+            type: string
+          type: array
+        level:
+          type: string
+        name:
+          type: string
+      type: object
+    Filesystem:
+      example:
+        mount:
+          format: format
+          options:
+          - options
+          - options
+          device: device
+          point: point
+      properties:
+        mount:
+          $ref: '#/components/schemas/Mount'
+      type: object
+    Partition:
+      example:
+        number: 3
+        size: size
+        label: label
+      properties:
+        label:
+          type: string
+        number:
+          format: int32
+          type: integer
+        size:
+          type: string
+      type: object
+    Mount:
+      example:
+        format: format
+        options:
+        - options
+        - options
+        device: device
+        point: point
+      properties:
+        device:
+          type: string
+        format:
+          type: string
+        point:
+          type: string
+        options:
+          items:
+            type: string
+          type: array
       type: object
     findTraffic_timeframe_parameter:
       properties:

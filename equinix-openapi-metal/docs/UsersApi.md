@@ -15,7 +15,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="createUser"></a>
 # **createUser**
-> User createUser(userCreateInput)
+> User createUser(userCreateInput, include, exclude)
 
 Create a user
 
@@ -44,8 +44,10 @@ public class Example {
 
     UsersApi apiInstance = new UsersApi(defaultClient);
     UserCreateInput userCreateInput = new UserCreateInput(); // UserCreateInput | User to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      User result = apiInstance.createUser(userCreateInput);
+      User result = apiInstance.createUser(userCreateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UsersApi#createUser");
@@ -63,6 +65,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **userCreateInput** | [**UserCreateInput**](UserCreateInput.md)| User to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -158,7 +162,7 @@ public class Example {
 
 <a name="findInvitations"></a>
 # **findInvitations**
-> InvitationList findInvitations(include, exclude, page, perPage)
+> InvitationList findInvitations(include, page, perPage)
 
 Retrieve current user invitations
 
@@ -187,11 +191,10 @@ public class Example {
 
     UsersApi apiInstance = new UsersApi(defaultClient);
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      InvitationList result = apiInstance.findInvitations(include, exclude, page, perPage);
+      InvitationList result = apiInstance.findInvitations(include, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UsersApi#findInvitations");
@@ -209,7 +212,6 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 | **page** | **Integer**| Page to return | [optional] [default to 1] |
 | **perPage** | **Integer**| Items returned per page | [optional] [default to 10] |
 
@@ -459,7 +461,7 @@ public class Example {
 
 <a name="updateCurrentUser"></a>
 # **updateCurrentUser**
-> User updateCurrentUser(userUpdateInput)
+> User updateCurrentUser(userUpdateInput, include, exclude)
 
 Update the current user
 
@@ -488,8 +490,10 @@ public class Example {
 
     UsersApi apiInstance = new UsersApi(defaultClient);
     UserUpdateInput userUpdateInput = new UserUpdateInput(); // UserUpdateInput | User to update
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      User result = apiInstance.updateCurrentUser(userUpdateInput);
+      User result = apiInstance.updateCurrentUser(userUpdateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UsersApi#updateCurrentUser");
@@ -507,6 +511,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **userUpdateInput** | [**UserUpdateInput**](UserUpdateInput.md)| User to update | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

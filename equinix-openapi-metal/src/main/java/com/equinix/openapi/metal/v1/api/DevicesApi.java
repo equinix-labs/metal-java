@@ -1,6 +1,6 @@
 /*
  * Metal API
- * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. Currently the search parameter is only available on devices, ssh_keys, api_keys and memberships endpoints.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -93,6 +93,7 @@ public class DevicesApi {
      * Build call for createBgpSession
      * @param id Device UUID (required)
      * @param bgPSessionInput BGP session to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -105,7 +106,7 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createBgpSessionCall(UUID id, BGPSessionInput bgPSessionInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createBgpSessionCall(UUID id, BGPSessionInput bgPSessionInput, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -131,6 +132,10 @@ public class DevicesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -152,7 +157,7 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createBgpSessionValidateBeforeCall(UUID id, BGPSessionInput bgPSessionInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createBgpSessionValidateBeforeCall(UUID id, BGPSessionInput bgPSessionInput, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createBgpSession(Async)");
@@ -163,7 +168,7 @@ public class DevicesApi {
             throw new ApiException("Missing the required parameter 'bgPSessionInput' when calling createBgpSession(Async)");
         }
 
-        return createBgpSessionCall(id, bgPSessionInput, _callback);
+        return createBgpSessionCall(id, bgPSessionInput, include, _callback);
 
     }
 
@@ -172,6 +177,7 @@ public class DevicesApi {
      * Creates a BGP session.
      * @param id Device UUID (required)
      * @param bgPSessionInput BGP session to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return BgpSession
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -183,8 +189,8 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public BgpSession createBgpSession(UUID id, BGPSessionInput bgPSessionInput) throws ApiException {
-        ApiResponse<BgpSession> localVarResp = createBgpSessionWithHttpInfo(id, bgPSessionInput);
+    public BgpSession createBgpSession(UUID id, BGPSessionInput bgPSessionInput, List<String> include) throws ApiException {
+        ApiResponse<BgpSession> localVarResp = createBgpSessionWithHttpInfo(id, bgPSessionInput, include);
         return localVarResp.getData();
     }
 
@@ -193,6 +199,7 @@ public class DevicesApi {
      * Creates a BGP session.
      * @param id Device UUID (required)
      * @param bgPSessionInput BGP session to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;BgpSession&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -204,8 +211,8 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BgpSession> createBgpSessionWithHttpInfo(UUID id, BGPSessionInput bgPSessionInput) throws ApiException {
-        okhttp3.Call localVarCall = createBgpSessionValidateBeforeCall(id, bgPSessionInput, null);
+    public ApiResponse<BgpSession> createBgpSessionWithHttpInfo(UUID id, BGPSessionInput bgPSessionInput, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = createBgpSessionValidateBeforeCall(id, bgPSessionInput, include, null);
         Type localVarReturnType = new TypeToken<BgpSession>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -215,6 +222,7 @@ public class DevicesApi {
      * Creates a BGP session.
      * @param id Device UUID (required)
      * @param bgPSessionInput BGP session to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -227,9 +235,9 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createBgpSessionAsync(UUID id, BGPSessionInput bgPSessionInput, final ApiCallback<BgpSession> _callback) throws ApiException {
+    public okhttp3.Call createBgpSessionAsync(UUID id, BGPSessionInput bgPSessionInput, List<String> include, final ApiCallback<BgpSession> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createBgpSessionValidateBeforeCall(id, bgPSessionInput, _callback);
+        okhttp3.Call localVarCall = createBgpSessionValidateBeforeCall(id, bgPSessionInput, include, _callback);
         Type localVarReturnType = new TypeToken<BgpSession>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -706,6 +714,7 @@ public class DevicesApi {
     /**
      * Build call for findBgpSessions
      * @param id Device UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -717,7 +726,7 @@ public class DevicesApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findBgpSessionsCall(UUID id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findBgpSessionsCall(UUID id, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -743,6 +752,10 @@ public class DevicesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -763,13 +776,13 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findBgpSessionsValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findBgpSessionsValidateBeforeCall(UUID id, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findBgpSessions(Async)");
         }
 
-        return findBgpSessionsCall(id, _callback);
+        return findBgpSessionsCall(id, include, _callback);
 
     }
 
@@ -777,6 +790,7 @@ public class DevicesApi {
      * Retrieve all BGP sessions
      * Provides a listing of available BGP sessions for the device.
      * @param id Device UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return BgpSessionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -787,8 +801,8 @@ public class DevicesApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public BgpSessionList findBgpSessions(UUID id) throws ApiException {
-        ApiResponse<BgpSessionList> localVarResp = findBgpSessionsWithHttpInfo(id);
+    public BgpSessionList findBgpSessions(UUID id, List<String> include) throws ApiException {
+        ApiResponse<BgpSessionList> localVarResp = findBgpSessionsWithHttpInfo(id, include);
         return localVarResp.getData();
     }
 
@@ -796,6 +810,7 @@ public class DevicesApi {
      * Retrieve all BGP sessions
      * Provides a listing of available BGP sessions for the device.
      * @param id Device UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;BgpSessionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -806,8 +821,8 @@ public class DevicesApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BgpSessionList> findBgpSessionsWithHttpInfo(UUID id) throws ApiException {
-        okhttp3.Call localVarCall = findBgpSessionsValidateBeforeCall(id, null);
+    public ApiResponse<BgpSessionList> findBgpSessionsWithHttpInfo(UUID id, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = findBgpSessionsValidateBeforeCall(id, include, null);
         Type localVarReturnType = new TypeToken<BgpSessionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -816,6 +831,7 @@ public class DevicesApi {
      * Retrieve all BGP sessions (asynchronously)
      * Provides a listing of available BGP sessions for the device.
      * @param id Device UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -827,9 +843,9 @@ public class DevicesApi {
         <tr><td> 403 </td><td> forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findBgpSessionsAsync(UUID id, final ApiCallback<BgpSessionList> _callback) throws ApiException {
+    public okhttp3.Call findBgpSessionsAsync(UUID id, List<String> include, final ApiCallback<BgpSessionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findBgpSessionsValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = findBgpSessionsValidateBeforeCall(id, include, _callback);
         Type localVarReturnType = new TypeToken<BgpSessionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1830,6 +1846,7 @@ public class DevicesApi {
     /**
      * Build call for findOrganizationDevices
      * @param id Organization UUID (required)
+     * @param search Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. (optional)
      * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
@@ -1853,7 +1870,7 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findOrganizationDevicesCall(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findOrganizationDevicesCall(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1879,6 +1896,10 @@ public class DevicesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (search != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
+        }
+
         if (categories != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "categories", categories));
         }
@@ -1943,13 +1964,13 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findOrganizationDevicesValidateBeforeCall(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findOrganizationDevicesValidateBeforeCall(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findOrganizationDevices(Async)");
         }
 
-        return findOrganizationDevicesCall(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
+        return findOrganizationDevicesCall(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
 
     }
 
@@ -1957,6 +1978,7 @@ public class DevicesApi {
      * Retrieve all devices of an organization
      * Provides a collection of devices for a given organization.
      * @param id Organization UUID (required)
+     * @param search Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. (optional)
      * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
@@ -1979,8 +2001,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public DeviceList findOrganizationDevices(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<DeviceList> localVarResp = findOrganizationDevicesWithHttpInfo(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
+    public DeviceList findOrganizationDevices(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<DeviceList> localVarResp = findOrganizationDevicesWithHttpInfo(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
         return localVarResp.getData();
     }
 
@@ -1988,6 +2010,7 @@ public class DevicesApi {
      * Retrieve all devices of an organization
      * Provides a collection of devices for a given organization.
      * @param id Organization UUID (required)
+     * @param search Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. (optional)
      * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
@@ -2010,8 +2033,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeviceList> findOrganizationDevicesWithHttpInfo(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = findOrganizationDevicesValidateBeforeCall(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, null);
+    public ApiResponse<DeviceList> findOrganizationDevicesWithHttpInfo(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = findOrganizationDevicesValidateBeforeCall(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, null);
         Type localVarReturnType = new TypeToken<DeviceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2020,6 +2043,7 @@ public class DevicesApi {
      * Retrieve all devices of an organization (asynchronously)
      * Provides a collection of devices for a given organization.
      * @param id Organization UUID (required)
+     * @param search Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. (optional)
      * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
@@ -2043,9 +2067,9 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findOrganizationDevicesAsync(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<DeviceList> _callback) throws ApiException {
+    public okhttp3.Call findOrganizationDevicesAsync(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<DeviceList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findOrganizationDevicesValidateBeforeCall(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
+        okhttp3.Call localVarCall = findOrganizationDevicesValidateBeforeCall(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<DeviceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2053,6 +2077,7 @@ public class DevicesApi {
     /**
      * Build call for findProjectDevices
      * @param id Project UUID (required)
+     * @param search Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. (optional)
      * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
@@ -2076,7 +2101,7 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectDevicesCall(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findProjectDevicesCall(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2102,6 +2127,10 @@ public class DevicesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (search != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
+        }
+
         if (categories != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "categories", categories));
         }
@@ -2166,13 +2195,13 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findProjectDevicesValidateBeforeCall(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findProjectDevicesValidateBeforeCall(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findProjectDevices(Async)");
         }
 
-        return findProjectDevicesCall(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
+        return findProjectDevicesCall(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
 
     }
 
@@ -2180,6 +2209,7 @@ public class DevicesApi {
      * Retrieve all devices of a project
      * Provides a collection of devices for a given project.
      * @param id Project UUID (required)
+     * @param search Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. (optional)
      * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
@@ -2202,8 +2232,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public DeviceList findProjectDevices(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<DeviceList> localVarResp = findProjectDevicesWithHttpInfo(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
+    public DeviceList findProjectDevices(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<DeviceList> localVarResp = findProjectDevicesWithHttpInfo(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
         return localVarResp.getData();
     }
 
@@ -2211,6 +2241,7 @@ public class DevicesApi {
      * Retrieve all devices of a project
      * Provides a collection of devices for a given project.
      * @param id Project UUID (required)
+     * @param search Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. (optional)
      * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
@@ -2233,8 +2264,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeviceList> findProjectDevicesWithHttpInfo(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = findProjectDevicesValidateBeforeCall(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, null);
+    public ApiResponse<DeviceList> findProjectDevicesWithHttpInfo(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = findProjectDevicesValidateBeforeCall(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, null);
         Type localVarReturnType = new TypeToken<DeviceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2243,6 +2274,7 @@ public class DevicesApi {
      * Retrieve all devices of a project (asynchronously)
      * Provides a collection of devices for a given project.
      * @param id Project UUID (required)
+     * @param search Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. (optional)
      * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
      * @param hostname Filter by partial hostname (optional)
@@ -2266,9 +2298,9 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectDevicesAsync(UUID id, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<DeviceList> _callback) throws ApiException {
+    public okhttp3.Call findProjectDevicesAsync(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<DeviceList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findProjectDevicesValidateBeforeCall(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
+        okhttp3.Call localVarCall = findProjectDevicesValidateBeforeCall(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<DeviceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2444,6 +2476,7 @@ public class DevicesApi {
     /**
      * Build call for getBgpNeighborData
      * @param id Device UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2456,7 +2489,7 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBgpNeighborDataCall(UUID id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBgpNeighborDataCall(UUID id, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2482,6 +2515,10 @@ public class DevicesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -2502,13 +2539,13 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBgpNeighborDataValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBgpNeighborDataValidateBeforeCall(UUID id, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getBgpNeighborData(Async)");
         }
 
-        return getBgpNeighborDataCall(id, _callback);
+        return getBgpNeighborDataCall(id, include, _callback);
 
     }
 
@@ -2516,6 +2553,7 @@ public class DevicesApi {
      * Retrieve BGP neighbor data for this device
      * Provides a summary of the BGP neighbor data associated to the BGP sessions for this device.
      * @param id Device UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return BgpSessionNeighbors
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2527,8 +2565,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public BgpSessionNeighbors getBgpNeighborData(UUID id) throws ApiException {
-        ApiResponse<BgpSessionNeighbors> localVarResp = getBgpNeighborDataWithHttpInfo(id);
+    public BgpSessionNeighbors getBgpNeighborData(UUID id, List<String> include) throws ApiException {
+        ApiResponse<BgpSessionNeighbors> localVarResp = getBgpNeighborDataWithHttpInfo(id, include);
         return localVarResp.getData();
     }
 
@@ -2536,6 +2574,7 @@ public class DevicesApi {
      * Retrieve BGP neighbor data for this device
      * Provides a summary of the BGP neighbor data associated to the BGP sessions for this device.
      * @param id Device UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;BgpSessionNeighbors&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2547,8 +2586,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BgpSessionNeighbors> getBgpNeighborDataWithHttpInfo(UUID id) throws ApiException {
-        okhttp3.Call localVarCall = getBgpNeighborDataValidateBeforeCall(id, null);
+    public ApiResponse<BgpSessionNeighbors> getBgpNeighborDataWithHttpInfo(UUID id, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = getBgpNeighborDataValidateBeforeCall(id, include, null);
         Type localVarReturnType = new TypeToken<BgpSessionNeighbors>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2557,6 +2596,7 @@ public class DevicesApi {
      * Retrieve BGP neighbor data for this device (asynchronously)
      * Provides a summary of the BGP neighbor data associated to the BGP sessions for this device.
      * @param id Device UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2569,9 +2609,9 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBgpNeighborDataAsync(UUID id, final ApiCallback<BgpSessionNeighbors> _callback) throws ApiException {
+    public okhttp3.Call getBgpNeighborDataAsync(UUID id, List<String> include, final ApiCallback<BgpSessionNeighbors> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBgpNeighborDataValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getBgpNeighborDataValidateBeforeCall(id, include, _callback);
         Type localVarReturnType = new TypeToken<BgpSessionNeighbors>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2721,6 +2761,8 @@ public class DevicesApi {
      * Build call for updateDevice
      * @param id Device UUID (required)
      * @param deviceUpdateInput Facility to update (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2734,7 +2776,7 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateDeviceCall(UUID id, DeviceUpdateInput deviceUpdateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateDeviceCall(UUID id, DeviceUpdateInput deviceUpdateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2760,6 +2802,14 @@ public class DevicesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -2781,7 +2831,7 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateDeviceValidateBeforeCall(UUID id, DeviceUpdateInput deviceUpdateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateDeviceValidateBeforeCall(UUID id, DeviceUpdateInput deviceUpdateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateDevice(Async)");
@@ -2792,7 +2842,7 @@ public class DevicesApi {
             throw new ApiException("Missing the required parameter 'deviceUpdateInput' when calling updateDevice(Async)");
         }
 
-        return updateDeviceCall(id, deviceUpdateInput, _callback);
+        return updateDeviceCall(id, deviceUpdateInput, include, exclude, _callback);
 
     }
 
@@ -2801,6 +2851,8 @@ public class DevicesApi {
      * Updates the device.
      * @param id Device UUID (required)
      * @param deviceUpdateInput Facility to update (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Device
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2813,8 +2865,8 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Device updateDevice(UUID id, DeviceUpdateInput deviceUpdateInput) throws ApiException {
-        ApiResponse<Device> localVarResp = updateDeviceWithHttpInfo(id, deviceUpdateInput);
+    public Device updateDevice(UUID id, DeviceUpdateInput deviceUpdateInput, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<Device> localVarResp = updateDeviceWithHttpInfo(id, deviceUpdateInput, include, exclude);
         return localVarResp.getData();
     }
 
@@ -2823,6 +2875,8 @@ public class DevicesApi {
      * Updates the device.
      * @param id Device UUID (required)
      * @param deviceUpdateInput Facility to update (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Device&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2835,8 +2889,8 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Device> updateDeviceWithHttpInfo(UUID id, DeviceUpdateInput deviceUpdateInput) throws ApiException {
-        okhttp3.Call localVarCall = updateDeviceValidateBeforeCall(id, deviceUpdateInput, null);
+    public ApiResponse<Device> updateDeviceWithHttpInfo(UUID id, DeviceUpdateInput deviceUpdateInput, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = updateDeviceValidateBeforeCall(id, deviceUpdateInput, include, exclude, null);
         Type localVarReturnType = new TypeToken<Device>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2846,6 +2900,8 @@ public class DevicesApi {
      * Updates the device.
      * @param id Device UUID (required)
      * @param deviceUpdateInput Facility to update (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2859,9 +2915,9 @@ public class DevicesApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateDeviceAsync(UUID id, DeviceUpdateInput deviceUpdateInput, final ApiCallback<Device> _callback) throws ApiException {
+    public okhttp3.Call updateDeviceAsync(UUID id, DeviceUpdateInput deviceUpdateInput, List<String> include, List<String> exclude, final ApiCallback<Device> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateDeviceValidateBeforeCall(id, deviceUpdateInput, _callback);
+        okhttp3.Call localVarCall = updateDeviceValidateBeforeCall(id, deviceUpdateInput, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<Device>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

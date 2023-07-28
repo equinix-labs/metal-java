@@ -11,7 +11,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="acceptInvitation"></a>
 # **acceptInvitation**
-> Membership acceptInvitation(id)
+> Membership acceptInvitation(id, include)
 
 Accept an invitation
 
@@ -40,8 +40,9 @@ public class Example {
 
     InvitationsApi apiInstance = new InvitationsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Invitation UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      Membership result = apiInstance.acceptInvitation(id);
+      Membership result = apiInstance.acceptInvitation(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InvitationsApi#acceptInvitation");
@@ -59,6 +60,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Invitation UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -154,7 +156,7 @@ null (empty response body)
 
 <a name="findInvitationById"></a>
 # **findInvitationById**
-> Invitation findInvitationById(id, include, exclude)
+> Invitation findInvitationById(id, include)
 
 View an invitation
 
@@ -184,9 +186,8 @@ public class Example {
     InvitationsApi apiInstance = new InvitationsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Invitation UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Invitation result = apiInstance.findInvitationById(id, include, exclude);
+      Invitation result = apiInstance.findInvitationById(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InvitationsApi#findInvitationById");
@@ -205,7 +206,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Invitation UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

@@ -94,7 +94,7 @@ public class Example {
 
 <a name="createProjectInvitation"></a>
 # **createProjectInvitation**
-> Invitation createProjectInvitation(projectId, invitationInput)
+> Invitation createProjectInvitation(projectId, invitationInput, include)
 
 Create an invitation for a project
 
@@ -124,8 +124,9 @@ public class Example {
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
     UUID projectId = UUID.randomUUID(); // UUID | Project UUID
     InvitationInput invitationInput = new InvitationInput(); // InvitationInput | Invitation to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      Invitation result = apiInstance.createProjectInvitation(projectId, invitationInput);
+      Invitation result = apiInstance.createProjectInvitation(projectId, invitationInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ProjectsApi#createProjectInvitation");
@@ -144,6 +145,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | **UUID**| Project UUID | |
 | **invitationInput** | [**InvitationInput**](InvitationInput.md)| Invitation to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -169,7 +171,7 @@ public class Example {
 
 <a name="createTransferRequest"></a>
 # **createTransferRequest**
-> TransferRequest createTransferRequest(id, transferRequestInput)
+> TransferRequest createTransferRequest(id, transferRequestInput, include)
 
 Create a transfer request
 
@@ -199,8 +201,9 @@ public class Example {
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | UUID of the project to be transferred
     TransferRequestInput transferRequestInput = new TransferRequestInput(); // TransferRequestInput | Transfer Request to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      TransferRequest result = apiInstance.createTransferRequest(id, transferRequestInput);
+      TransferRequest result = apiInstance.createTransferRequest(id, transferRequestInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ProjectsApi#createTransferRequest");
@@ -219,6 +222,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| UUID of the project to be transferred | |
 | **transferRequestInput** | [**TransferRequestInput**](TransferRequestInput.md)| Transfer Request to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -535,7 +539,7 @@ null (empty response body)
 
 <a name="findProjectInvitations"></a>
 # **findProjectInvitations**
-> InvitationList findProjectInvitations(projectId, include, exclude, page, perPage)
+> InvitationList findProjectInvitations(projectId, include, page, perPage)
 
 Retrieve project invitations
 
@@ -565,11 +569,10 @@ public class Example {
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
     UUID projectId = UUID.randomUUID(); // UUID | Project UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      InvitationList result = apiInstance.findProjectInvitations(projectId, include, exclude, page, perPage);
+      InvitationList result = apiInstance.findProjectInvitations(projectId, include, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ProjectsApi#findProjectInvitations");
@@ -588,7 +591,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | **UUID**| Project UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 | **page** | **Integer**| Page to return | [optional] [default to 1] |
 | **perPage** | **Integer**| Items returned per page | [optional] [default to 10] |
 
@@ -615,7 +617,7 @@ public class Example {
 
 <a name="findProjectMemberships"></a>
 # **findProjectMemberships**
-> MembershipList findProjectMemberships(projectId, include, exclude, page, perPage)
+> MembershipList findProjectMemberships(projectId, search, include, page, perPage)
 
 Retrieve project memberships
 
@@ -644,12 +646,12 @@ public class Example {
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
     UUID projectId = UUID.randomUUID(); // UUID | Project UUID
+    String search = "search_example"; // String | Search by member full name, id and email.
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      MembershipList result = apiInstance.findProjectMemberships(projectId, include, exclude, page, perPage);
+      MembershipList result = apiInstance.findProjectMemberships(projectId, search, include, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ProjectsApi#findProjectMemberships");
@@ -667,8 +669,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | **UUID**| Project UUID | |
+| **search** | **String**| Search by member full name, id and email. | [optional] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 | **page** | **Integer**| Page to return | [optional] [default to 1] |
 | **perPage** | **Integer**| Items returned per page | [optional] [default to 10] |
 
@@ -695,7 +697,7 @@ public class Example {
 
 <a name="findProjects"></a>
 # **findProjects**
-> ProjectList findProjects(include, exclude, page, perPage)
+> ProjectList findProjects(name, include, exclude, page, perPage)
 
 Retrieve all projects
 
@@ -723,12 +725,13 @@ public class Example {
     //x_auth_token.setApiKeyPrefix("Token");
 
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
+    String name = "name_example"; // String | Filter results by name.
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      ProjectList result = apiInstance.findProjects(include, exclude, page, perPage);
+      ProjectList result = apiInstance.findProjects(name, include, exclude, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ProjectsApi#findProjects");
@@ -745,6 +748,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **name** | **String**| Filter results by name. | [optional] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 | **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 | **page** | **Integer**| Page to return | [optional] [default to 1] |
@@ -771,7 +775,7 @@ public class Example {
 
 <a name="updateProject"></a>
 # **updateProject**
-> Project updateProject(id, projectUpdateInput)
+> Project updateProject(id, projectUpdateInput, include, exclude)
 
 Update the project
 
@@ -801,8 +805,10 @@ public class Example {
     ProjectsApi apiInstance = new ProjectsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     ProjectUpdateInput projectUpdateInput = new ProjectUpdateInput(); // ProjectUpdateInput | Project to update
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Project result = apiInstance.updateProject(id, projectUpdateInput);
+      Project result = apiInstance.updateProject(id, projectUpdateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ProjectsApi#updateProject");
@@ -821,6 +827,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
 | **projectUpdateInput** | [**ProjectUpdateInput**](ProjectUpdateInput.md)| Project to update | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

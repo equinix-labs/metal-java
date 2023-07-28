@@ -12,7 +12,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="activateHardwareReservation"></a>
 # **activateHardwareReservation**
-> HardwareReservation activateHardwareReservation(id, activateHardwareReservationRequest)
+> HardwareReservation activateHardwareReservation(id, include, exclude, activateHardwareReservationRequest)
 
 Activate a spare hardware reservation
 
@@ -41,9 +41,11 @@ public class Example {
 
     HardwareReservationsApi apiInstance = new HardwareReservationsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Hardware Reservation UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     ActivateHardwareReservationRequest activateHardwareReservationRequest = new ActivateHardwareReservationRequest(); // ActivateHardwareReservationRequest | Note to attach to the reservation
     try {
-      HardwareReservation result = apiInstance.activateHardwareReservation(id, activateHardwareReservationRequest);
+      HardwareReservation result = apiInstance.activateHardwareReservation(id, include, exclude, activateHardwareReservationRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling HardwareReservationsApi#activateHardwareReservation");
@@ -61,6 +63,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Hardware Reservation UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 | **activateHardwareReservationRequest** | [**ActivateHardwareReservationRequest**](ActivateHardwareReservationRequest.md)| Note to attach to the reservation | [optional] |
 
 ### Return type
@@ -248,7 +252,7 @@ public class Example {
 
 <a name="moveHardwareReservation"></a>
 # **moveHardwareReservation**
-> HardwareReservation moveHardwareReservation(id, moveHardwareReservationRequest)
+> HardwareReservation moveHardwareReservation(id, moveHardwareReservationRequest, include, exclude)
 
 Move a hardware reservation
 
@@ -278,8 +282,10 @@ public class Example {
     HardwareReservationsApi apiInstance = new HardwareReservationsApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Hardware Reservation UUID
     MoveHardwareReservationRequest moveHardwareReservationRequest = new MoveHardwareReservationRequest(); // MoveHardwareReservationRequest | Destination Project UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      HardwareReservation result = apiInstance.moveHardwareReservation(id, moveHardwareReservationRequest);
+      HardwareReservation result = apiInstance.moveHardwareReservation(id, moveHardwareReservationRequest, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling HardwareReservationsApi#moveHardwareReservation");
@@ -298,6 +304,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Hardware Reservation UUID | |
 | **moveHardwareReservationRequest** | [**MoveHardwareReservationRequest**](MoveHardwareReservationRequest.md)| Destination Project UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

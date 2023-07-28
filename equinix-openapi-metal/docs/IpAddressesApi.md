@@ -387,7 +387,7 @@ public class Example {
 
 <a name="requestIPReservation"></a>
 # **requestIPReservation**
-> RequestIPReservation201Response requestIPReservation(id, requestIPReservationRequest)
+> RequestIPReservation201Response requestIPReservation(id, requestIPReservationRequest, include, exclude)
 
 Requesting IP reservations
 
@@ -417,8 +417,10 @@ public class Example {
     IpAddressesApi apiInstance = new IpAddressesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     RequestIPReservationRequest requestIPReservationRequest = new RequestIPReservationRequest(); // RequestIPReservationRequest | IP Reservation Request to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      RequestIPReservation201Response result = apiInstance.requestIPReservation(id, requestIPReservationRequest);
+      RequestIPReservation201Response result = apiInstance.requestIPReservation(id, requestIPReservationRequest, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IpAddressesApi#requestIPReservation");
@@ -437,6 +439,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
 | **requestIPReservationRequest** | [**RequestIPReservationRequest**](RequestIPReservationRequest.md)| IP Reservation Request to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -462,7 +466,7 @@ public class Example {
 
 <a name="updateIPAddress"></a>
 # **updateIPAddress**
-> FindIPAddressById200Response updateIPAddress(id, ipAssignmentUpdateInput)
+> FindIPAddressById200Response updateIPAddress(id, include, exclude, ipAssignmentUpdateInput)
 
 Update an ip address
 
@@ -491,9 +495,11 @@ public class Example {
 
     IpAddressesApi apiInstance = new IpAddressesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | IP Address UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     IPAssignmentUpdateInput ipAssignmentUpdateInput = new IPAssignmentUpdateInput(); // IPAssignmentUpdateInput | 
     try {
-      FindIPAddressById200Response result = apiInstance.updateIPAddress(id, ipAssignmentUpdateInput);
+      FindIPAddressById200Response result = apiInstance.updateIPAddress(id, include, exclude, ipAssignmentUpdateInput);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IpAddressesApi#updateIPAddress");
@@ -511,6 +517,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| IP Address UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 | **ipAssignmentUpdateInput** | [**IPAssignmentUpdateInput**](IPAssignmentUpdateInput.md)|  | [optional] |
 
 ### Return type

@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**key** | **String** |  |  [optional] |
 |**label** | **String** |  |  [optional] |
+|**tags** | **List&lt;String&gt;** |  |  [optional] |
 
 
 

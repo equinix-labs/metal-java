@@ -59,6 +59,7 @@ docs/DeviceUpdateInput.md
 docs/DeviceUsage.md
 docs/DeviceUsageList.md
 docs/DevicesApi.md
+docs/Disk.md
 docs/Email.md
 docs/EmailInput.md
 docs/EmailsApi.md
@@ -72,6 +73,7 @@ docs/FacilitiesApi.md
 docs/Facility.md
 docs/FacilityInput.md
 docs/FacilityList.md
+docs/Filesystem.md
 docs/FindIPAddressById200Response.md
 docs/FindMetalGatewayById200Response.md
 docs/FindTrafficTimeframeParameter.md
@@ -104,7 +106,6 @@ docs/InterconnectionCreateInput.md
 docs/InterconnectionList.md
 docs/InterconnectionMetro.md
 docs/InterconnectionPort.md
-docs/InterconnectionPortCore.md
 docs/InterconnectionPortList.md
 docs/InterconnectionUpdateInput.md
 docs/InterconnectionsApi.md
@@ -142,6 +143,7 @@ docs/Metro.md
 docs/MetroInput.md
 docs/MetroList.md
 docs/MetrosApi.md
+docs/Mount.md
 docs/MoveHardwareReservationRequest.md
 docs/NewPassword.md
 docs/OperatingSystem.md
@@ -153,6 +155,7 @@ docs/OrganizationList.md
 docs/OrganizationsApi.md
 docs/OtpsApi.md
 docs/ParentBlock.md
+docs/Partition.md
 docs/PasswordResetTokensApi.md
 docs/PaymentMethod.md
 docs/PaymentMethodBillingAddress.md
@@ -194,6 +197,7 @@ docs/ProjectUpdateInput.md
 docs/ProjectUsage.md
 docs/ProjectUsageList.md
 docs/ProjectsApi.md
+docs/Raid.md
 docs/RecoveryCodeList.md
 docs/RequestIPReservation201Response.md
 docs/RequestIPReservationRequest.md
@@ -223,6 +227,7 @@ docs/SpotPricesPerFacility.md
 docs/SpotPricesPerNewFacility.md
 docs/SpotPricesReport.md
 docs/SshKeysApi.md
+docs/Storage.md
 docs/SupportRequestApi.md
 docs/SupportRequestInput.md
 docs/TransferRequest.md
@@ -385,6 +390,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/DeviceProjectLite.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceUsage.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceUsageList.java
+src/main/java/com/equinix/openapi/metal/v1/model/Disk.java
 src/main/java/com/equinix/openapi/metal/v1/model/Email.java
 src/main/java/com/equinix/openapi/metal/v1/model/EmailInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/Entitlement.java
@@ -395,6 +401,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/FabricServiceToken.java
 src/main/java/com/equinix/openapi/metal/v1/model/Facility.java
 src/main/java/com/equinix/openapi/metal/v1/model/FacilityInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/FacilityList.java
+src/main/java/com/equinix/openapi/metal/v1/model/Filesystem.java
 src/main/java/com/equinix/openapi/metal/v1/model/FindIPAddressById200Response.java
 src/main/java/com/equinix/openapi/metal/v1/model/FindMetalGatewayById200Response.java
 src/main/java/com/equinix/openapi/metal/v1/model/FindTrafficTimeframeParameter.java
@@ -425,7 +432,6 @@ src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionList.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionMetro.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionPort.java
-src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionPortCore.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionPortList.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/Invitation.java
@@ -455,6 +461,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/MetalGatewayLite.java
 src/main/java/com/equinix/openapi/metal/v1/model/Metro.java
 src/main/java/com/equinix/openapi/metal/v1/model/MetroInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/MetroList.java
+src/main/java/com/equinix/openapi/metal/v1/model/Mount.java
 src/main/java/com/equinix/openapi/metal/v1/model/MoveHardwareReservationRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/NewPassword.java
 src/main/java/com/equinix/openapi/metal/v1/model/OperatingSystem.java
@@ -463,6 +470,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/Organization.java
 src/main/java/com/equinix/openapi/metal/v1/model/OrganizationInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/OrganizationList.java
 src/main/java/com/equinix/openapi/metal/v1/model/ParentBlock.java
+src/main/java/com/equinix/openapi/metal/v1/model/Partition.java
 src/main/java/com/equinix/openapi/metal/v1/model/PaymentMethod.java
 src/main/java/com/equinix/openapi/metal/v1/model/PaymentMethodBillingAddress.java
 src/main/java/com/equinix/openapi/metal/v1/model/PaymentMethodCreateInput.java
@@ -499,6 +507,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/ProjectList.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectUsage.java
 src/main/java/com/equinix/openapi/metal/v1/model/ProjectUsageList.java
+src/main/java/com/equinix/openapi/metal/v1/model/Raid.java
 src/main/java/com/equinix/openapi/metal/v1/model/RecoveryCodeList.java
 src/main/java/com/equinix/openapi/metal/v1/model/RequestIPReservation201Response.java
 src/main/java/com/equinix/openapi/metal/v1/model/RequestIPReservationRequest.java
@@ -525,6 +534,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/SpotPricesPerBaremetal.java
 src/main/java/com/equinix/openapi/metal/v1/model/SpotPricesPerFacility.java
 src/main/java/com/equinix/openapi/metal/v1/model/SpotPricesPerNewFacility.java
 src/main/java/com/equinix/openapi/metal/v1/model/SpotPricesReport.java
+src/main/java/com/equinix/openapi/metal/v1/model/Storage.java
 src/main/java/com/equinix/openapi/metal/v1/model/SupportRequestInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/TransferRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/TransferRequestInput.java
@@ -651,6 +661,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/DeviceTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceUpdateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceUsageListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceUsageTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/DiskTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/EmailInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/EmailTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/EntitlementTest.java
@@ -661,6 +672,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/FabricServiceTokenTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/FacilityInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/FacilityListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/FacilityTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/FilesystemTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/FindIPAddressById200ResponseTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/FindMetalGatewayById200ResponseTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/FindTrafficTimeframeParameterTest.java
@@ -689,7 +701,6 @@ src/test/java/com/equinix/openapi/metal/v1/model/InstancesBatchCreateInputTest.j
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionMetroTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionPortCoreTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionPortListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionPortTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionTest.java
@@ -721,6 +732,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/MetalGatewayTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MetroInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MetroListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MetroTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/MountTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/MoveHardwareReservationRequestTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/NewPasswordTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/OperatingSystemListTest.java
@@ -729,6 +741,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/OrganizationInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/OrganizationListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/OrganizationTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ParentBlockTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/PartitionTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/PaymentMethodBillingAddressTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/PaymentMethodCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/PaymentMethodListTest.java
@@ -765,6 +778,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/ProjectTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectUpdateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectUsageListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ProjectUsageTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/RaidTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/RecoveryCodeListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/RequestIPReservation201ResponseTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/RequestIPReservationRequestTest.java
@@ -791,6 +805,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/SpotPricesPerBaremetalTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/SpotPricesPerFacilityTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/SpotPricesPerNewFacilityTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/SpotPricesReportTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/StorageTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/SupportRequestInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/TransferRequestInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/TransferRequestListTest.java

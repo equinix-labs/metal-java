@@ -1,6 +1,6 @@
 /*
  * Metal API
- * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. Currently the search parameter is only available on devices, ssh_keys, api_keys and memberships endpoints.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -235,6 +235,7 @@ public class ProjectsApi {
      * Build call for createProjectInvitation
      * @param projectId Project UUID (required)
      * @param invitationInput Invitation to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -248,7 +249,7 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createProjectInvitationCall(UUID projectId, InvitationInput invitationInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createProjectInvitationCall(UUID projectId, InvitationInput invitationInput, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -274,6 +275,10 @@ public class ProjectsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -295,7 +300,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createProjectInvitationValidateBeforeCall(UUID projectId, InvitationInput invitationInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createProjectInvitationValidateBeforeCall(UUID projectId, InvitationInput invitationInput, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling createProjectInvitation(Async)");
@@ -306,7 +311,7 @@ public class ProjectsApi {
             throw new ApiException("Missing the required parameter 'invitationInput' when calling createProjectInvitation(Async)");
         }
 
-        return createProjectInvitationCall(projectId, invitationInput, _callback);
+        return createProjectInvitationCall(projectId, invitationInput, include, _callback);
 
     }
 
@@ -315,6 +320,7 @@ public class ProjectsApi {
      * In order to add a user to a project, they must first be invited.
      * @param projectId Project UUID (required)
      * @param invitationInput Invitation to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return Invitation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -327,8 +333,8 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Invitation createProjectInvitation(UUID projectId, InvitationInput invitationInput) throws ApiException {
-        ApiResponse<Invitation> localVarResp = createProjectInvitationWithHttpInfo(projectId, invitationInput);
+    public Invitation createProjectInvitation(UUID projectId, InvitationInput invitationInput, List<String> include) throws ApiException {
+        ApiResponse<Invitation> localVarResp = createProjectInvitationWithHttpInfo(projectId, invitationInput, include);
         return localVarResp.getData();
     }
 
@@ -337,6 +343,7 @@ public class ProjectsApi {
      * In order to add a user to a project, they must first be invited.
      * @param projectId Project UUID (required)
      * @param invitationInput Invitation to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;Invitation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -349,8 +356,8 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Invitation> createProjectInvitationWithHttpInfo(UUID projectId, InvitationInput invitationInput) throws ApiException {
-        okhttp3.Call localVarCall = createProjectInvitationValidateBeforeCall(projectId, invitationInput, null);
+    public ApiResponse<Invitation> createProjectInvitationWithHttpInfo(UUID projectId, InvitationInput invitationInput, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = createProjectInvitationValidateBeforeCall(projectId, invitationInput, include, null);
         Type localVarReturnType = new TypeToken<Invitation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -360,6 +367,7 @@ public class ProjectsApi {
      * In order to add a user to a project, they must first be invited.
      * @param projectId Project UUID (required)
      * @param invitationInput Invitation to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -373,9 +381,9 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createProjectInvitationAsync(UUID projectId, InvitationInput invitationInput, final ApiCallback<Invitation> _callback) throws ApiException {
+    public okhttp3.Call createProjectInvitationAsync(UUID projectId, InvitationInput invitationInput, List<String> include, final ApiCallback<Invitation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createProjectInvitationValidateBeforeCall(projectId, invitationInput, _callback);
+        okhttp3.Call localVarCall = createProjectInvitationValidateBeforeCall(projectId, invitationInput, include, _callback);
         Type localVarReturnType = new TypeToken<Invitation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -384,6 +392,7 @@ public class ProjectsApi {
      * Build call for createTransferRequest
      * @param id UUID of the project to be transferred (required)
      * @param transferRequestInput Transfer Request to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -397,7 +406,7 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createTransferRequestCall(UUID id, TransferRequestInput transferRequestInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createTransferRequestCall(UUID id, TransferRequestInput transferRequestInput, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -423,6 +432,10 @@ public class ProjectsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -444,7 +457,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createTransferRequestValidateBeforeCall(UUID id, TransferRequestInput transferRequestInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createTransferRequestValidateBeforeCall(UUID id, TransferRequestInput transferRequestInput, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createTransferRequest(Async)");
@@ -455,7 +468,7 @@ public class ProjectsApi {
             throw new ApiException("Missing the required parameter 'transferRequestInput' when calling createTransferRequest(Async)");
         }
 
-        return createTransferRequestCall(id, transferRequestInput, _callback);
+        return createTransferRequestCall(id, transferRequestInput, include, _callback);
 
     }
 
@@ -464,6 +477,7 @@ public class ProjectsApi {
      * Organization owners can transfer their projects to other organizations.
      * @param id UUID of the project to be transferred (required)
      * @param transferRequestInput Transfer Request to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return TransferRequest
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -476,8 +490,8 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public TransferRequest createTransferRequest(UUID id, TransferRequestInput transferRequestInput) throws ApiException {
-        ApiResponse<TransferRequest> localVarResp = createTransferRequestWithHttpInfo(id, transferRequestInput);
+    public TransferRequest createTransferRequest(UUID id, TransferRequestInput transferRequestInput, List<String> include) throws ApiException {
+        ApiResponse<TransferRequest> localVarResp = createTransferRequestWithHttpInfo(id, transferRequestInput, include);
         return localVarResp.getData();
     }
 
@@ -486,6 +500,7 @@ public class ProjectsApi {
      * Organization owners can transfer their projects to other organizations.
      * @param id UUID of the project to be transferred (required)
      * @param transferRequestInput Transfer Request to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;TransferRequest&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -498,8 +513,8 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TransferRequest> createTransferRequestWithHttpInfo(UUID id, TransferRequestInput transferRequestInput) throws ApiException {
-        okhttp3.Call localVarCall = createTransferRequestValidateBeforeCall(id, transferRequestInput, null);
+    public ApiResponse<TransferRequest> createTransferRequestWithHttpInfo(UUID id, TransferRequestInput transferRequestInput, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = createTransferRequestValidateBeforeCall(id, transferRequestInput, include, null);
         Type localVarReturnType = new TypeToken<TransferRequest>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -509,6 +524,7 @@ public class ProjectsApi {
      * Organization owners can transfer their projects to other organizations.
      * @param id UUID of the project to be transferred (required)
      * @param transferRequestInput Transfer Request to create (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -522,9 +538,9 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createTransferRequestAsync(UUID id, TransferRequestInput transferRequestInput, final ApiCallback<TransferRequest> _callback) throws ApiException {
+    public okhttp3.Call createTransferRequestAsync(UUID id, TransferRequestInput transferRequestInput, List<String> include, final ApiCallback<TransferRequest> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createTransferRequestValidateBeforeCall(id, transferRequestInput, _callback);
+        okhttp3.Call localVarCall = createTransferRequestValidateBeforeCall(id, transferRequestInput, include, _callback);
         Type localVarReturnType = new TypeToken<TransferRequest>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1087,7 +1103,6 @@ public class ProjectsApi {
      * Build call for findProjectInvitations
      * @param projectId Project UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
      * @param _callback Callback for upload/download progress
@@ -1102,7 +1117,7 @@ public class ProjectsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectInvitationsCall(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findProjectInvitationsCall(UUID projectId, List<String> include, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1132,10 +1147,6 @@ public class ProjectsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
 
-        if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
-        }
-
         if (page != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
@@ -1164,13 +1175,13 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findProjectInvitationsValidateBeforeCall(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findProjectInvitationsValidateBeforeCall(UUID projectId, List<String> include, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling findProjectInvitations(Async)");
         }
 
-        return findProjectInvitationsCall(projectId, include, exclude, page, perPage, _callback);
+        return findProjectInvitationsCall(projectId, include, page, perPage, _callback);
 
     }
 
@@ -1179,7 +1190,6 @@ public class ProjectsApi {
      * Returns all invitations in a project.
      * @param projectId Project UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
      * @return InvitationList
@@ -1193,8 +1203,8 @@ public class ProjectsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public InvitationList findProjectInvitations(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<InvitationList> localVarResp = findProjectInvitationsWithHttpInfo(projectId, include, exclude, page, perPage);
+    public InvitationList findProjectInvitations(UUID projectId, List<String> include, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<InvitationList> localVarResp = findProjectInvitationsWithHttpInfo(projectId, include, page, perPage);
         return localVarResp.getData();
     }
 
@@ -1203,7 +1213,6 @@ public class ProjectsApi {
      * Returns all invitations in a project.
      * @param projectId Project UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
      * @return ApiResponse&lt;InvitationList&gt;
@@ -1217,8 +1226,8 @@ public class ProjectsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InvitationList> findProjectInvitationsWithHttpInfo(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = findProjectInvitationsValidateBeforeCall(projectId, include, exclude, page, perPage, null);
+    public ApiResponse<InvitationList> findProjectInvitationsWithHttpInfo(UUID projectId, List<String> include, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = findProjectInvitationsValidateBeforeCall(projectId, include, page, perPage, null);
         Type localVarReturnType = new TypeToken<InvitationList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1228,7 +1237,6 @@ public class ProjectsApi {
      * Returns all invitations in a project.
      * @param projectId Project UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
@@ -1243,9 +1251,9 @@ public class ProjectsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectInvitationsAsync(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<InvitationList> _callback) throws ApiException {
+    public okhttp3.Call findProjectInvitationsAsync(UUID projectId, List<String> include, Integer page, Integer perPage, final ApiCallback<InvitationList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findProjectInvitationsValidateBeforeCall(projectId, include, exclude, page, perPage, _callback);
+        okhttp3.Call localVarCall = findProjectInvitationsValidateBeforeCall(projectId, include, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<InvitationList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1253,8 +1261,8 @@ public class ProjectsApi {
     /**
      * Build call for findProjectMemberships
      * @param projectId Project UUID (required)
+     * @param search Search by member full name, id and email. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
      * @param _callback Callback for upload/download progress
@@ -1269,7 +1277,7 @@ public class ProjectsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectMembershipsCall(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findProjectMembershipsCall(UUID projectId, String search, List<String> include, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1295,12 +1303,12 @@ public class ProjectsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (include != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        if (search != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
         }
 
-        if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
 
         if (page != null) {
@@ -1331,13 +1339,13 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findProjectMembershipsValidateBeforeCall(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findProjectMembershipsValidateBeforeCall(UUID projectId, String search, List<String> include, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling findProjectMemberships(Async)");
         }
 
-        return findProjectMembershipsCall(projectId, include, exclude, page, perPage, _callback);
+        return findProjectMembershipsCall(projectId, search, include, page, perPage, _callback);
 
     }
 
@@ -1345,8 +1353,8 @@ public class ProjectsApi {
      * Retrieve project memberships
      * Returns all memberships in a project.
      * @param projectId Project UUID (required)
+     * @param search Search by member full name, id and email. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
      * @return MembershipList
@@ -1360,8 +1368,8 @@ public class ProjectsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public MembershipList findProjectMemberships(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<MembershipList> localVarResp = findProjectMembershipsWithHttpInfo(projectId, include, exclude, page, perPage);
+    public MembershipList findProjectMemberships(UUID projectId, String search, List<String> include, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<MembershipList> localVarResp = findProjectMembershipsWithHttpInfo(projectId, search, include, page, perPage);
         return localVarResp.getData();
     }
 
@@ -1369,8 +1377,8 @@ public class ProjectsApi {
      * Retrieve project memberships
      * Returns all memberships in a project.
      * @param projectId Project UUID (required)
+     * @param search Search by member full name, id and email. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
      * @return ApiResponse&lt;MembershipList&gt;
@@ -1384,8 +1392,8 @@ public class ProjectsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MembershipList> findProjectMembershipsWithHttpInfo(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = findProjectMembershipsValidateBeforeCall(projectId, include, exclude, page, perPage, null);
+    public ApiResponse<MembershipList> findProjectMembershipsWithHttpInfo(UUID projectId, String search, List<String> include, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = findProjectMembershipsValidateBeforeCall(projectId, search, include, page, perPage, null);
         Type localVarReturnType = new TypeToken<MembershipList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1394,8 +1402,8 @@ public class ProjectsApi {
      * Retrieve project memberships (asynchronously)
      * Returns all memberships in a project.
      * @param projectId Project UUID (required)
+     * @param search Search by member full name, id and email. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
      * @param perPage Items returned per page (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
@@ -1410,15 +1418,16 @@ public class ProjectsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectMembershipsAsync(UUID projectId, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<MembershipList> _callback) throws ApiException {
+    public okhttp3.Call findProjectMembershipsAsync(UUID projectId, String search, List<String> include, Integer page, Integer perPage, final ApiCallback<MembershipList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findProjectMembershipsValidateBeforeCall(projectId, include, exclude, page, perPage, _callback);
+        okhttp3.Call localVarCall = findProjectMembershipsValidateBeforeCall(projectId, search, include, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<MembershipList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for findProjects
+     * @param name Filter results by name. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
@@ -1433,7 +1442,7 @@ public class ProjectsApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectsCall(List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findProjectsCall(String name, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1458,6 +1467,10 @@ public class ProjectsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (name != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
+        }
+
         if (include != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
@@ -1494,14 +1507,15 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findProjectsValidateBeforeCall(List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
-        return findProjectsCall(include, exclude, page, perPage, _callback);
+    private okhttp3.Call findProjectsValidateBeforeCall(String name, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+        return findProjectsCall(name, include, exclude, page, perPage, _callback);
 
     }
 
     /**
      * Retrieve all projects
      * Returns a collection of projects that the current user is a member of.
+     * @param name Filter results by name. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
@@ -1515,14 +1529,15 @@ public class ProjectsApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectList findProjects(List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<ProjectList> localVarResp = findProjectsWithHttpInfo(include, exclude, page, perPage);
+    public ProjectList findProjects(String name, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<ProjectList> localVarResp = findProjectsWithHttpInfo(name, include, exclude, page, perPage);
         return localVarResp.getData();
     }
 
     /**
      * Retrieve all projects
      * Returns a collection of projects that the current user is a member of.
+     * @param name Filter results by name. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
@@ -1536,8 +1551,8 @@ public class ProjectsApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectList> findProjectsWithHttpInfo(List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = findProjectsValidateBeforeCall(include, exclude, page, perPage, null);
+    public ApiResponse<ProjectList> findProjectsWithHttpInfo(String name, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = findProjectsValidateBeforeCall(name, include, exclude, page, perPage, null);
         Type localVarReturnType = new TypeToken<ProjectList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1545,6 +1560,7 @@ public class ProjectsApi {
     /**
      * Retrieve all projects (asynchronously)
      * Returns a collection of projects that the current user is a member of.
+     * @param name Filter results by name. (optional)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param page Page to return (optional, default to 1)
@@ -1559,9 +1575,9 @@ public class ProjectsApi {
         <tr><td> 401 </td><td> unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectsAsync(List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<ProjectList> _callback) throws ApiException {
+    public okhttp3.Call findProjectsAsync(String name, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<ProjectList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findProjectsValidateBeforeCall(include, exclude, page, perPage, _callback);
+        okhttp3.Call localVarCall = findProjectsValidateBeforeCall(name, include, exclude, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<ProjectList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1570,6 +1586,8 @@ public class ProjectsApi {
      * Build call for updateProject
      * @param id Project UUID (required)
      * @param projectUpdateInput Project to update (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1583,7 +1601,7 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateProjectCall(UUID id, ProjectUpdateInput projectUpdateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateProjectCall(UUID id, ProjectUpdateInput projectUpdateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1609,6 +1627,14 @@ public class ProjectsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1630,7 +1656,7 @@ public class ProjectsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateProjectValidateBeforeCall(UUID id, ProjectUpdateInput projectUpdateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateProjectValidateBeforeCall(UUID id, ProjectUpdateInput projectUpdateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateProject(Async)");
@@ -1641,7 +1667,7 @@ public class ProjectsApi {
             throw new ApiException("Missing the required parameter 'projectUpdateInput' when calling updateProject(Async)");
         }
 
-        return updateProjectCall(id, projectUpdateInput, _callback);
+        return updateProjectCall(id, projectUpdateInput, include, exclude, _callback);
 
     }
 
@@ -1650,6 +1676,8 @@ public class ProjectsApi {
      * Updates the project.
      * @param id Project UUID (required)
      * @param projectUpdateInput Project to update (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Project
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1662,8 +1690,8 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Project updateProject(UUID id, ProjectUpdateInput projectUpdateInput) throws ApiException {
-        ApiResponse<Project> localVarResp = updateProjectWithHttpInfo(id, projectUpdateInput);
+    public Project updateProject(UUID id, ProjectUpdateInput projectUpdateInput, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<Project> localVarResp = updateProjectWithHttpInfo(id, projectUpdateInput, include, exclude);
         return localVarResp.getData();
     }
 
@@ -1672,6 +1700,8 @@ public class ProjectsApi {
      * Updates the project.
      * @param id Project UUID (required)
      * @param projectUpdateInput Project to update (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Project&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1684,8 +1714,8 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Project> updateProjectWithHttpInfo(UUID id, ProjectUpdateInput projectUpdateInput) throws ApiException {
-        okhttp3.Call localVarCall = updateProjectValidateBeforeCall(id, projectUpdateInput, null);
+    public ApiResponse<Project> updateProjectWithHttpInfo(UUID id, ProjectUpdateInput projectUpdateInput, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = updateProjectValidateBeforeCall(id, projectUpdateInput, include, exclude, null);
         Type localVarReturnType = new TypeToken<Project>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1695,6 +1725,8 @@ public class ProjectsApi {
      * Updates the project.
      * @param id Project UUID (required)
      * @param projectUpdateInput Project to update (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1708,9 +1740,9 @@ public class ProjectsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateProjectAsync(UUID id, ProjectUpdateInput projectUpdateInput, final ApiCallback<Project> _callback) throws ApiException {
+    public okhttp3.Call updateProjectAsync(UUID id, ProjectUpdateInput projectUpdateInput, List<String> include, List<String> exclude, final ApiCallback<Project> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateProjectValidateBeforeCall(id, projectUpdateInput, _callback);
+        okhttp3.Call localVarCall = updateProjectValidateBeforeCall(id, projectUpdateInput, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<Project>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

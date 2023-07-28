@@ -26,7 +26,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="createBgpSession"></a>
 # **createBgpSession**
-> BgpSession createBgpSession(id, bgPSessionInput)
+> BgpSession createBgpSession(id, bgPSessionInput, include)
 
 Create a BGP session
 
@@ -56,8 +56,9 @@ public class Example {
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Device UUID
     BGPSessionInput bgPSessionInput = new BGPSessionInput(); // BGPSessionInput | BGP session to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      BgpSession result = apiInstance.createBgpSession(id, bgPSessionInput);
+      BgpSession result = apiInstance.createBgpSession(id, bgPSessionInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#createBgpSession");
@@ -76,6 +77,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Device UUID | |
 | **bgPSessionInput** | [**BGPSessionInput**](BGPSessionInput.md)| BGP session to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -331,7 +333,7 @@ null (empty response body)
 
 <a name="findBgpSessions"></a>
 # **findBgpSessions**
-> BgpSessionList findBgpSessions(id)
+> BgpSessionList findBgpSessions(id, include)
 
 Retrieve all BGP sessions
 
@@ -360,8 +362,9 @@ public class Example {
 
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Device UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      BgpSessionList result = apiInstance.findBgpSessions(id);
+      BgpSessionList result = apiInstance.findBgpSessions(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#findBgpSessions");
@@ -379,6 +382,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Device UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -915,7 +919,7 @@ null (empty response body)
 
 <a name="findOrganizationDevices"></a>
 # **findOrganizationDevices**
-> DeviceList findOrganizationDevices(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage)
+> DeviceList findOrganizationDevices(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage)
 
 Retrieve all devices of an organization
 
@@ -944,6 +948,7 @@ public class Example {
 
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Organization UUID
+    String search = "search_example"; // String | Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses.
     List<String> categories = Arrays.asList(); // List<String> | Filter by plan category
     String facility = "facility_example"; // String | Filter by device facility
     String hostname = "hostname_example"; // String | Filter by partial hostname
@@ -956,7 +961,7 @@ public class Example {
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      DeviceList result = apiInstance.findOrganizationDevices(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
+      DeviceList result = apiInstance.findOrganizationDevices(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#findOrganizationDevices");
@@ -974,6 +979,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Organization UUID | |
+| **search** | **String**| Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. | [optional] |
 | **categories** | [**List&lt;String&gt;**](String.md)| Filter by plan category | [optional] [enum: compute, storage] |
 | **facility** | **String**| Filter by device facility | [optional] |
 | **hostname** | **String**| Filter by partial hostname | [optional] |
@@ -1009,7 +1015,7 @@ public class Example {
 
 <a name="findProjectDevices"></a>
 # **findProjectDevices**
-> DeviceList findProjectDevices(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage)
+> DeviceList findProjectDevices(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage)
 
 Retrieve all devices of a project
 
@@ -1038,6 +1044,7 @@ public class Example {
 
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
+    String search = "search_example"; // String | Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses.
     List<String> categories = Arrays.asList(); // List<String> | Filter by plan category
     String facility = "facility_example"; // String | Filter by device facility
     String hostname = "hostname_example"; // String | Filter by partial hostname
@@ -1050,7 +1057,7 @@ public class Example {
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      DeviceList result = apiInstance.findProjectDevices(id, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
+      DeviceList result = apiInstance.findProjectDevices(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#findProjectDevices");
@@ -1068,6 +1075,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
+| **search** | **String**| Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. | [optional] |
 | **categories** | [**List&lt;String&gt;**](String.md)| Filter by plan category | [optional] [enum: compute, storage] |
 | **facility** | **String**| Filter by device facility | [optional] |
 | **hostname** | **String**| Filter by partial hostname | [optional] |
@@ -1182,7 +1190,7 @@ null (empty response body)
 
 <a name="getBgpNeighborData"></a>
 # **getBgpNeighborData**
-> BgpSessionNeighbors getBgpNeighborData(id)
+> BgpSessionNeighbors getBgpNeighborData(id, include)
 
 Retrieve BGP neighbor data for this device
 
@@ -1211,8 +1219,9 @@ public class Example {
 
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Device UUID
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      BgpSessionNeighbors result = apiInstance.getBgpNeighborData(id);
+      BgpSessionNeighbors result = apiInstance.getBgpNeighborData(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#getBgpNeighborData");
@@ -1230,6 +1239,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Device UUID | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -1327,7 +1337,7 @@ null (empty response body)
 
 <a name="updateDevice"></a>
 # **updateDevice**
-> Device updateDevice(id, deviceUpdateInput)
+> Device updateDevice(id, deviceUpdateInput, include, exclude)
 
 Update the device
 
@@ -1357,8 +1367,10 @@ public class Example {
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Device UUID
     DeviceUpdateInput deviceUpdateInput = new DeviceUpdateInput(); // DeviceUpdateInput | Facility to update
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
+    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Device result = apiInstance.updateDevice(id, deviceUpdateInput);
+      Device result = apiInstance.updateDevice(id, deviceUpdateInput, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#updateDevice");
@@ -1377,6 +1389,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Device UUID | |
 | **deviceUpdateInput** | [**DeviceUpdateInput**](DeviceUpdateInput.md)| Facility to update | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
+| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

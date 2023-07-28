@@ -1,6 +1,6 @@
 /*
  * Metal API
- * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. Currently the search parameter is only available on devices, ssh_keys, api_keys and memberships endpoints.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -239,6 +239,8 @@ public class InterconnectionsApi {
      * Build call for createOrganizationInterconnection
      * @param organizationId UUID of the organization (required)
      * @param interconnectionCreateInput Interconnection details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -251,7 +253,7 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createOrganizationInterconnectionCall(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createOrganizationInterconnectionCall(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -277,6 +279,14 @@ public class InterconnectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -298,7 +308,7 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createOrganizationInterconnectionValidateBeforeCall(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createOrganizationInterconnectionValidateBeforeCall(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'organizationId' is set
         if (organizationId == null) {
             throw new ApiException("Missing the required parameter 'organizationId' when calling createOrganizationInterconnection(Async)");
@@ -309,7 +319,7 @@ public class InterconnectionsApi {
             throw new ApiException("Missing the required parameter 'interconnectionCreateInput' when calling createOrganizationInterconnection(Async)");
         }
 
-        return createOrganizationInterconnectionCall(organizationId, interconnectionCreateInput, _callback);
+        return createOrganizationInterconnectionCall(organizationId, interconnectionCreateInput, include, exclude, _callback);
 
     }
 
@@ -318,6 +328,8 @@ public class InterconnectionsApi {
      * Creates a new interconnection request. A Project ID must be specified in the request body for connections on shared ports.
      * @param organizationId UUID of the organization (required)
      * @param interconnectionCreateInput Interconnection details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Interconnection
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -329,8 +341,8 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Interconnection createOrganizationInterconnection(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput) throws ApiException {
-        ApiResponse<Interconnection> localVarResp = createOrganizationInterconnectionWithHttpInfo(organizationId, interconnectionCreateInput);
+    public Interconnection createOrganizationInterconnection(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<Interconnection> localVarResp = createOrganizationInterconnectionWithHttpInfo(organizationId, interconnectionCreateInput, include, exclude);
         return localVarResp.getData();
     }
 
@@ -339,6 +351,8 @@ public class InterconnectionsApi {
      * Creates a new interconnection request. A Project ID must be specified in the request body for connections on shared ports.
      * @param organizationId UUID of the organization (required)
      * @param interconnectionCreateInput Interconnection details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Interconnection&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -350,8 +364,8 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Interconnection> createOrganizationInterconnectionWithHttpInfo(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput) throws ApiException {
-        okhttp3.Call localVarCall = createOrganizationInterconnectionValidateBeforeCall(organizationId, interconnectionCreateInput, null);
+    public ApiResponse<Interconnection> createOrganizationInterconnectionWithHttpInfo(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = createOrganizationInterconnectionValidateBeforeCall(organizationId, interconnectionCreateInput, include, exclude, null);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -361,6 +375,8 @@ public class InterconnectionsApi {
      * Creates a new interconnection request. A Project ID must be specified in the request body for connections on shared ports.
      * @param organizationId UUID of the organization (required)
      * @param interconnectionCreateInput Interconnection details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -373,9 +389,9 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createOrganizationInterconnectionAsync(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, final ApiCallback<Interconnection> _callback) throws ApiException {
+    public okhttp3.Call createOrganizationInterconnectionAsync(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude, final ApiCallback<Interconnection> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createOrganizationInterconnectionValidateBeforeCall(organizationId, interconnectionCreateInput, _callback);
+        okhttp3.Call localVarCall = createOrganizationInterconnectionValidateBeforeCall(organizationId, interconnectionCreateInput, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -384,6 +400,8 @@ public class InterconnectionsApi {
      * Build call for createProjectInterconnection
      * @param projectId UUID of the project (required)
      * @param interconnectionCreateInput Interconnection details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -395,7 +413,7 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createProjectInterconnectionCall(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createProjectInterconnectionCall(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -421,6 +439,14 @@ public class InterconnectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -442,7 +468,7 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createProjectInterconnectionValidateBeforeCall(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createProjectInterconnectionValidateBeforeCall(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling createProjectInterconnection(Async)");
@@ -453,7 +479,7 @@ public class InterconnectionsApi {
             throw new ApiException("Missing the required parameter 'interconnectionCreateInput' when calling createProjectInterconnection(Async)");
         }
 
-        return createProjectInterconnectionCall(projectId, interconnectionCreateInput, _callback);
+        return createProjectInterconnectionCall(projectId, interconnectionCreateInput, include, exclude, _callback);
 
     }
 
@@ -462,6 +488,8 @@ public class InterconnectionsApi {
      * Creates a new interconnection request
      * @param projectId UUID of the project (required)
      * @param interconnectionCreateInput Interconnection details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Interconnection
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -472,8 +500,8 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Interconnection createProjectInterconnection(UUID projectId, InterconnectionCreateInput interconnectionCreateInput) throws ApiException {
-        ApiResponse<Interconnection> localVarResp = createProjectInterconnectionWithHttpInfo(projectId, interconnectionCreateInput);
+    public Interconnection createProjectInterconnection(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<Interconnection> localVarResp = createProjectInterconnectionWithHttpInfo(projectId, interconnectionCreateInput, include, exclude);
         return localVarResp.getData();
     }
 
@@ -482,6 +510,8 @@ public class InterconnectionsApi {
      * Creates a new interconnection request
      * @param projectId UUID of the project (required)
      * @param interconnectionCreateInput Interconnection details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Interconnection&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -492,8 +522,8 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Interconnection> createProjectInterconnectionWithHttpInfo(UUID projectId, InterconnectionCreateInput interconnectionCreateInput) throws ApiException {
-        okhttp3.Call localVarCall = createProjectInterconnectionValidateBeforeCall(projectId, interconnectionCreateInput, null);
+    public ApiResponse<Interconnection> createProjectInterconnectionWithHttpInfo(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = createProjectInterconnectionValidateBeforeCall(projectId, interconnectionCreateInput, include, exclude, null);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -503,6 +533,8 @@ public class InterconnectionsApi {
      * Creates a new interconnection request
      * @param projectId UUID of the project (required)
      * @param interconnectionCreateInput Interconnection details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -514,9 +546,9 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createProjectInterconnectionAsync(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, final ApiCallback<Interconnection> _callback) throws ApiException {
+    public okhttp3.Call createProjectInterconnectionAsync(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude, final ApiCallback<Interconnection> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createProjectInterconnectionValidateBeforeCall(projectId, interconnectionCreateInput, _callback);
+        okhttp3.Call localVarCall = createProjectInterconnectionValidateBeforeCall(projectId, interconnectionCreateInput, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -524,6 +556,8 @@ public class InterconnectionsApi {
     /**
      * Build call for deleteInterconnection
      * @param connectionId Interconnection UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -535,7 +569,7 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteInterconnectionCall(UUID connectionId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteInterconnectionCall(UUID connectionId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -561,6 +595,14 @@ public class InterconnectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -581,13 +623,13 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteInterconnectionValidateBeforeCall(UUID connectionId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteInterconnectionValidateBeforeCall(UUID connectionId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling deleteInterconnection(Async)");
         }
 
-        return deleteInterconnectionCall(connectionId, _callback);
+        return deleteInterconnectionCall(connectionId, include, exclude, _callback);
 
     }
 
@@ -595,6 +637,8 @@ public class InterconnectionsApi {
      * Delete interconnection
      * Delete a interconnection, its associated ports and virtual circuits.
      * @param connectionId Interconnection UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Interconnection
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -605,8 +649,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public Interconnection deleteInterconnection(UUID connectionId) throws ApiException {
-        ApiResponse<Interconnection> localVarResp = deleteInterconnectionWithHttpInfo(connectionId);
+    public Interconnection deleteInterconnection(UUID connectionId, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<Interconnection> localVarResp = deleteInterconnectionWithHttpInfo(connectionId, include, exclude);
         return localVarResp.getData();
     }
 
@@ -614,6 +658,8 @@ public class InterconnectionsApi {
      * Delete interconnection
      * Delete a interconnection, its associated ports and virtual circuits.
      * @param connectionId Interconnection UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Interconnection&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -624,8 +670,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Interconnection> deleteInterconnectionWithHttpInfo(UUID connectionId) throws ApiException {
-        okhttp3.Call localVarCall = deleteInterconnectionValidateBeforeCall(connectionId, null);
+    public ApiResponse<Interconnection> deleteInterconnectionWithHttpInfo(UUID connectionId, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = deleteInterconnectionValidateBeforeCall(connectionId, include, exclude, null);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -634,6 +680,8 @@ public class InterconnectionsApi {
      * Delete interconnection (asynchronously)
      * Delete a interconnection, its associated ports and virtual circuits.
      * @param connectionId Interconnection UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -645,9 +693,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteInterconnectionAsync(UUID connectionId, final ApiCallback<Interconnection> _callback) throws ApiException {
+    public okhttp3.Call deleteInterconnectionAsync(UUID connectionId, List<String> include, List<String> exclude, final ApiCallback<Interconnection> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteInterconnectionValidateBeforeCall(connectionId, _callback);
+        okhttp3.Call localVarCall = deleteInterconnectionValidateBeforeCall(connectionId, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -655,6 +703,8 @@ public class InterconnectionsApi {
     /**
      * Build call for deleteVirtualCircuit
      * @param id Virtual Circuit UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -666,7 +716,7 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteVirtualCircuitCall(UUID id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteVirtualCircuitCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -692,6 +742,14 @@ public class InterconnectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -712,13 +770,13 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteVirtualCircuitValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteVirtualCircuitValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteVirtualCircuit(Async)");
         }
 
-        return deleteVirtualCircuitCall(id, _callback);
+        return deleteVirtualCircuitCall(id, include, exclude, _callback);
 
     }
 
@@ -726,6 +784,8 @@ public class InterconnectionsApi {
      * Delete a virtual circuit
      * Delete a virtual circuit from a Dedicated Port.
      * @param id Virtual Circuit UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return VirtualCircuit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -736,8 +796,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public VirtualCircuit deleteVirtualCircuit(UUID id) throws ApiException {
-        ApiResponse<VirtualCircuit> localVarResp = deleteVirtualCircuitWithHttpInfo(id);
+    public VirtualCircuit deleteVirtualCircuit(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<VirtualCircuit> localVarResp = deleteVirtualCircuitWithHttpInfo(id, include, exclude);
         return localVarResp.getData();
     }
 
@@ -745,6 +805,8 @@ public class InterconnectionsApi {
      * Delete a virtual circuit
      * Delete a virtual circuit from a Dedicated Port.
      * @param id Virtual Circuit UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;VirtualCircuit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -755,8 +817,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VirtualCircuit> deleteVirtualCircuitWithHttpInfo(UUID id) throws ApiException {
-        okhttp3.Call localVarCall = deleteVirtualCircuitValidateBeforeCall(id, null);
+    public ApiResponse<VirtualCircuit> deleteVirtualCircuitWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = deleteVirtualCircuitValidateBeforeCall(id, include, exclude, null);
         Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -765,6 +827,8 @@ public class InterconnectionsApi {
      * Delete a virtual circuit (asynchronously)
      * Delete a virtual circuit from a Dedicated Port.
      * @param id Virtual Circuit UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -776,9 +840,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteVirtualCircuitAsync(UUID id, final ApiCallback<VirtualCircuit> _callback) throws ApiException {
+    public okhttp3.Call deleteVirtualCircuitAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<VirtualCircuit> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteVirtualCircuitValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteVirtualCircuitValidateBeforeCall(id, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -786,6 +850,8 @@ public class InterconnectionsApi {
     /**
      * Build call for getInterconnection
      * @param connectionId Interconnection UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -797,7 +863,7 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInterconnectionCall(UUID connectionId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getInterconnectionCall(UUID connectionId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -823,6 +889,14 @@ public class InterconnectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -843,13 +917,13 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInterconnectionValidateBeforeCall(UUID connectionId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInterconnectionValidateBeforeCall(UUID connectionId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling getInterconnection(Async)");
         }
 
-        return getInterconnectionCall(connectionId, _callback);
+        return getInterconnectionCall(connectionId, include, exclude, _callback);
 
     }
 
@@ -857,6 +931,8 @@ public class InterconnectionsApi {
      * Get interconnection
      * Get the details of a interconnection
      * @param connectionId Interconnection UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Interconnection
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -867,8 +943,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public Interconnection getInterconnection(UUID connectionId) throws ApiException {
-        ApiResponse<Interconnection> localVarResp = getInterconnectionWithHttpInfo(connectionId);
+    public Interconnection getInterconnection(UUID connectionId, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<Interconnection> localVarResp = getInterconnectionWithHttpInfo(connectionId, include, exclude);
         return localVarResp.getData();
     }
 
@@ -876,6 +952,8 @@ public class InterconnectionsApi {
      * Get interconnection
      * Get the details of a interconnection
      * @param connectionId Interconnection UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Interconnection&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -886,8 +964,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Interconnection> getInterconnectionWithHttpInfo(UUID connectionId) throws ApiException {
-        okhttp3.Call localVarCall = getInterconnectionValidateBeforeCall(connectionId, null);
+    public ApiResponse<Interconnection> getInterconnectionWithHttpInfo(UUID connectionId, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = getInterconnectionValidateBeforeCall(connectionId, include, exclude, null);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -896,6 +974,8 @@ public class InterconnectionsApi {
      * Get interconnection (asynchronously)
      * Get the details of a interconnection
      * @param connectionId Interconnection UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -907,9 +987,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInterconnectionAsync(UUID connectionId, final ApiCallback<Interconnection> _callback) throws ApiException {
+    public okhttp3.Call getInterconnectionAsync(UUID connectionId, List<String> include, List<String> exclude, final ApiCallback<Interconnection> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInterconnectionValidateBeforeCall(connectionId, _callback);
+        okhttp3.Call localVarCall = getInterconnectionValidateBeforeCall(connectionId, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -918,6 +998,8 @@ public class InterconnectionsApi {
      * Build call for getInterconnectionPort
      * @param connectionId UUID of the interconnection (required)
      * @param id Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -929,7 +1011,7 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInterconnectionPortCall(UUID connectionId, UUID id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getInterconnectionPortCall(UUID connectionId, UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -956,6 +1038,14 @@ public class InterconnectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -976,7 +1066,7 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInterconnectionPortValidateBeforeCall(UUID connectionId, UUID id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInterconnectionPortValidateBeforeCall(UUID connectionId, UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling getInterconnectionPort(Async)");
@@ -987,7 +1077,7 @@ public class InterconnectionsApi {
             throw new ApiException("Missing the required parameter 'id' when calling getInterconnectionPort(Async)");
         }
 
-        return getInterconnectionPortCall(connectionId, id, _callback);
+        return getInterconnectionPortCall(connectionId, id, include, exclude, _callback);
 
     }
 
@@ -996,6 +1086,8 @@ public class InterconnectionsApi {
      * Get the details of an interconnection port.
      * @param connectionId UUID of the interconnection (required)
      * @param id Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return InterconnectionPort
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1006,8 +1098,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public InterconnectionPort getInterconnectionPort(UUID connectionId, UUID id) throws ApiException {
-        ApiResponse<InterconnectionPort> localVarResp = getInterconnectionPortWithHttpInfo(connectionId, id);
+    public InterconnectionPort getInterconnectionPort(UUID connectionId, UUID id, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<InterconnectionPort> localVarResp = getInterconnectionPortWithHttpInfo(connectionId, id, include, exclude);
         return localVarResp.getData();
     }
 
@@ -1016,6 +1108,8 @@ public class InterconnectionsApi {
      * Get the details of an interconnection port.
      * @param connectionId UUID of the interconnection (required)
      * @param id Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;InterconnectionPort&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1026,8 +1120,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InterconnectionPort> getInterconnectionPortWithHttpInfo(UUID connectionId, UUID id) throws ApiException {
-        okhttp3.Call localVarCall = getInterconnectionPortValidateBeforeCall(connectionId, id, null);
+    public ApiResponse<InterconnectionPort> getInterconnectionPortWithHttpInfo(UUID connectionId, UUID id, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = getInterconnectionPortValidateBeforeCall(connectionId, id, include, exclude, null);
         Type localVarReturnType = new TypeToken<InterconnectionPort>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1037,6 +1131,8 @@ public class InterconnectionsApi {
      * Get the details of an interconnection port.
      * @param connectionId UUID of the interconnection (required)
      * @param id Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1048,9 +1144,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInterconnectionPortAsync(UUID connectionId, UUID id, final ApiCallback<InterconnectionPort> _callback) throws ApiException {
+    public okhttp3.Call getInterconnectionPortAsync(UUID connectionId, UUID id, List<String> include, List<String> exclude, final ApiCallback<InterconnectionPort> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInterconnectionPortValidateBeforeCall(connectionId, id, _callback);
+        okhttp3.Call localVarCall = getInterconnectionPortValidateBeforeCall(connectionId, id, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<InterconnectionPort>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1058,6 +1154,8 @@ public class InterconnectionsApi {
     /**
      * Build call for getVirtualCircuit
      * @param id Virtual Circuit UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1069,7 +1167,7 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getVirtualCircuitCall(UUID id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVirtualCircuitCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1095,6 +1193,14 @@ public class InterconnectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1115,13 +1221,13 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getVirtualCircuitValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getVirtualCircuitValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getVirtualCircuit(Async)");
         }
 
-        return getVirtualCircuitCall(id, _callback);
+        return getVirtualCircuitCall(id, include, exclude, _callback);
 
     }
 
@@ -1129,6 +1235,8 @@ public class InterconnectionsApi {
      * Get a virtual circuit
      * Get the details of a virtual circuit
      * @param id Virtual Circuit UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return VirtualCircuit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1139,8 +1247,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public VirtualCircuit getVirtualCircuit(UUID id) throws ApiException {
-        ApiResponse<VirtualCircuit> localVarResp = getVirtualCircuitWithHttpInfo(id);
+    public VirtualCircuit getVirtualCircuit(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<VirtualCircuit> localVarResp = getVirtualCircuitWithHttpInfo(id, include, exclude);
         return localVarResp.getData();
     }
 
@@ -1148,6 +1256,8 @@ public class InterconnectionsApi {
      * Get a virtual circuit
      * Get the details of a virtual circuit
      * @param id Virtual Circuit UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;VirtualCircuit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1158,8 +1268,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VirtualCircuit> getVirtualCircuitWithHttpInfo(UUID id) throws ApiException {
-        okhttp3.Call localVarCall = getVirtualCircuitValidateBeforeCall(id, null);
+    public ApiResponse<VirtualCircuit> getVirtualCircuitWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = getVirtualCircuitValidateBeforeCall(id, include, exclude, null);
         Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1168,6 +1278,8 @@ public class InterconnectionsApi {
      * Get a virtual circuit (asynchronously)
      * Get the details of a virtual circuit
      * @param id Virtual Circuit UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1179,9 +1291,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getVirtualCircuitAsync(UUID id, final ApiCallback<VirtualCircuit> _callback) throws ApiException {
+    public okhttp3.Call getVirtualCircuitAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<VirtualCircuit> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getVirtualCircuitValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getVirtualCircuitValidateBeforeCall(id, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1190,6 +1302,8 @@ public class InterconnectionsApi {
      * Build call for listInterconnectionPortVirtualCircuits
      * @param connectionId UUID of the interconnection (required)
      * @param portId UUID of the interconnection port (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1201,7 +1315,7 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listInterconnectionPortVirtualCircuitsCall(UUID connectionId, UUID portId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listInterconnectionPortVirtualCircuitsCall(UUID connectionId, UUID portId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1228,6 +1342,14 @@ public class InterconnectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1248,7 +1370,7 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listInterconnectionPortVirtualCircuitsValidateBeforeCall(UUID connectionId, UUID portId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listInterconnectionPortVirtualCircuitsValidateBeforeCall(UUID connectionId, UUID portId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling listInterconnectionPortVirtualCircuits(Async)");
@@ -1259,7 +1381,7 @@ public class InterconnectionsApi {
             throw new ApiException("Missing the required parameter 'portId' when calling listInterconnectionPortVirtualCircuits(Async)");
         }
 
-        return listInterconnectionPortVirtualCircuitsCall(connectionId, portId, _callback);
+        return listInterconnectionPortVirtualCircuitsCall(connectionId, portId, include, exclude, _callback);
 
     }
 
@@ -1268,6 +1390,8 @@ public class InterconnectionsApi {
      * List the virtual circuit record(s) associatiated with a particular interconnection port.
      * @param connectionId UUID of the interconnection (required)
      * @param portId UUID of the interconnection port (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return VirtualCircuitList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1278,8 +1402,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public VirtualCircuitList listInterconnectionPortVirtualCircuits(UUID connectionId, UUID portId) throws ApiException {
-        ApiResponse<VirtualCircuitList> localVarResp = listInterconnectionPortVirtualCircuitsWithHttpInfo(connectionId, portId);
+    public VirtualCircuitList listInterconnectionPortVirtualCircuits(UUID connectionId, UUID portId, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<VirtualCircuitList> localVarResp = listInterconnectionPortVirtualCircuitsWithHttpInfo(connectionId, portId, include, exclude);
         return localVarResp.getData();
     }
 
@@ -1288,6 +1412,8 @@ public class InterconnectionsApi {
      * List the virtual circuit record(s) associatiated with a particular interconnection port.
      * @param connectionId UUID of the interconnection (required)
      * @param portId UUID of the interconnection port (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;VirtualCircuitList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1298,8 +1424,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VirtualCircuitList> listInterconnectionPortVirtualCircuitsWithHttpInfo(UUID connectionId, UUID portId) throws ApiException {
-        okhttp3.Call localVarCall = listInterconnectionPortVirtualCircuitsValidateBeforeCall(connectionId, portId, null);
+    public ApiResponse<VirtualCircuitList> listInterconnectionPortVirtualCircuitsWithHttpInfo(UUID connectionId, UUID portId, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = listInterconnectionPortVirtualCircuitsValidateBeforeCall(connectionId, portId, include, exclude, null);
         Type localVarReturnType = new TypeToken<VirtualCircuitList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1309,6 +1435,8 @@ public class InterconnectionsApi {
      * List the virtual circuit record(s) associatiated with a particular interconnection port.
      * @param connectionId UUID of the interconnection (required)
      * @param portId UUID of the interconnection port (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1320,9 +1448,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listInterconnectionPortVirtualCircuitsAsync(UUID connectionId, UUID portId, final ApiCallback<VirtualCircuitList> _callback) throws ApiException {
+    public okhttp3.Call listInterconnectionPortVirtualCircuitsAsync(UUID connectionId, UUID portId, List<String> include, List<String> exclude, final ApiCallback<VirtualCircuitList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listInterconnectionPortVirtualCircuitsValidateBeforeCall(connectionId, portId, _callback);
+        okhttp3.Call localVarCall = listInterconnectionPortVirtualCircuitsValidateBeforeCall(connectionId, portId, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<VirtualCircuitList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1592,6 +1720,8 @@ public class InterconnectionsApi {
     /**
      * Build call for organizationListInterconnections
      * @param organizationId UUID of the organization (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1603,7 +1733,7 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call organizationListInterconnectionsCall(UUID organizationId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call organizationListInterconnectionsCall(UUID organizationId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1629,6 +1759,14 @@ public class InterconnectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1649,13 +1787,13 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call organizationListInterconnectionsValidateBeforeCall(UUID organizationId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call organizationListInterconnectionsValidateBeforeCall(UUID organizationId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'organizationId' is set
         if (organizationId == null) {
             throw new ApiException("Missing the required parameter 'organizationId' when calling organizationListInterconnections(Async)");
         }
 
-        return organizationListInterconnectionsCall(organizationId, _callback);
+        return organizationListInterconnectionsCall(organizationId, include, exclude, _callback);
 
     }
 
@@ -1663,6 +1801,8 @@ public class InterconnectionsApi {
      * List organization connections
      * List the connections belonging to the organization
      * @param organizationId UUID of the organization (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return InterconnectionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1673,8 +1813,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public InterconnectionList organizationListInterconnections(UUID organizationId) throws ApiException {
-        ApiResponse<InterconnectionList> localVarResp = organizationListInterconnectionsWithHttpInfo(organizationId);
+    public InterconnectionList organizationListInterconnections(UUID organizationId, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<InterconnectionList> localVarResp = organizationListInterconnectionsWithHttpInfo(organizationId, include, exclude);
         return localVarResp.getData();
     }
 
@@ -1682,6 +1822,8 @@ public class InterconnectionsApi {
      * List organization connections
      * List the connections belonging to the organization
      * @param organizationId UUID of the organization (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;InterconnectionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1692,8 +1834,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InterconnectionList> organizationListInterconnectionsWithHttpInfo(UUID organizationId) throws ApiException {
-        okhttp3.Call localVarCall = organizationListInterconnectionsValidateBeforeCall(organizationId, null);
+    public ApiResponse<InterconnectionList> organizationListInterconnectionsWithHttpInfo(UUID organizationId, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = organizationListInterconnectionsValidateBeforeCall(organizationId, include, exclude, null);
         Type localVarReturnType = new TypeToken<InterconnectionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1702,6 +1844,8 @@ public class InterconnectionsApi {
      * List organization connections (asynchronously)
      * List the connections belonging to the organization
      * @param organizationId UUID of the organization (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1713,9 +1857,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call organizationListInterconnectionsAsync(UUID organizationId, final ApiCallback<InterconnectionList> _callback) throws ApiException {
+    public okhttp3.Call organizationListInterconnectionsAsync(UUID organizationId, List<String> include, List<String> exclude, final ApiCallback<InterconnectionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = organizationListInterconnectionsValidateBeforeCall(organizationId, _callback);
+        okhttp3.Call localVarCall = organizationListInterconnectionsValidateBeforeCall(organizationId, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<InterconnectionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1887,6 +2031,8 @@ public class InterconnectionsApi {
      * Build call for updateInterconnection
      * @param connectionId Interconnection UUID (required)
      * @param interconnectionUpdateInput Updated interconnection details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1898,7 +2044,7 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateInterconnectionCall(UUID connectionId, InterconnectionUpdateInput interconnectionUpdateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateInterconnectionCall(UUID connectionId, InterconnectionUpdateInput interconnectionUpdateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1924,6 +2070,14 @@ public class InterconnectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1945,7 +2099,7 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateInterconnectionValidateBeforeCall(UUID connectionId, InterconnectionUpdateInput interconnectionUpdateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateInterconnectionValidateBeforeCall(UUID connectionId, InterconnectionUpdateInput interconnectionUpdateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'connectionId' is set
         if (connectionId == null) {
             throw new ApiException("Missing the required parameter 'connectionId' when calling updateInterconnection(Async)");
@@ -1956,7 +2110,7 @@ public class InterconnectionsApi {
             throw new ApiException("Missing the required parameter 'interconnectionUpdateInput' when calling updateInterconnection(Async)");
         }
 
-        return updateInterconnectionCall(connectionId, interconnectionUpdateInput, _callback);
+        return updateInterconnectionCall(connectionId, interconnectionUpdateInput, include, exclude, _callback);
 
     }
 
@@ -1965,6 +2119,8 @@ public class InterconnectionsApi {
      * Update the details of a interconnection
      * @param connectionId Interconnection UUID (required)
      * @param interconnectionUpdateInput Updated interconnection details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Interconnection
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1975,8 +2131,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public Interconnection updateInterconnection(UUID connectionId, InterconnectionUpdateInput interconnectionUpdateInput) throws ApiException {
-        ApiResponse<Interconnection> localVarResp = updateInterconnectionWithHttpInfo(connectionId, interconnectionUpdateInput);
+    public Interconnection updateInterconnection(UUID connectionId, InterconnectionUpdateInput interconnectionUpdateInput, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<Interconnection> localVarResp = updateInterconnectionWithHttpInfo(connectionId, interconnectionUpdateInput, include, exclude);
         return localVarResp.getData();
     }
 
@@ -1985,6 +2141,8 @@ public class InterconnectionsApi {
      * Update the details of a interconnection
      * @param connectionId Interconnection UUID (required)
      * @param interconnectionUpdateInput Updated interconnection details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Interconnection&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1995,8 +2153,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Interconnection> updateInterconnectionWithHttpInfo(UUID connectionId, InterconnectionUpdateInput interconnectionUpdateInput) throws ApiException {
-        okhttp3.Call localVarCall = updateInterconnectionValidateBeforeCall(connectionId, interconnectionUpdateInput, null);
+    public ApiResponse<Interconnection> updateInterconnectionWithHttpInfo(UUID connectionId, InterconnectionUpdateInput interconnectionUpdateInput, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = updateInterconnectionValidateBeforeCall(connectionId, interconnectionUpdateInput, include, exclude, null);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2006,6 +2164,8 @@ public class InterconnectionsApi {
      * Update the details of a interconnection
      * @param connectionId Interconnection UUID (required)
      * @param interconnectionUpdateInput Updated interconnection details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2017,9 +2177,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateInterconnectionAsync(UUID connectionId, InterconnectionUpdateInput interconnectionUpdateInput, final ApiCallback<Interconnection> _callback) throws ApiException {
+    public okhttp3.Call updateInterconnectionAsync(UUID connectionId, InterconnectionUpdateInput interconnectionUpdateInput, List<String> include, List<String> exclude, final ApiCallback<Interconnection> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateInterconnectionValidateBeforeCall(connectionId, interconnectionUpdateInput, _callback);
+        okhttp3.Call localVarCall = updateInterconnectionValidateBeforeCall(connectionId, interconnectionUpdateInput, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2028,6 +2188,8 @@ public class InterconnectionsApi {
      * Build call for updateVirtualCircuit
      * @param id Virtual Circuit UUID (required)
      * @param virtualCircuitUpdateInput Updated Virtual Circuit details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2040,7 +2202,7 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateVirtualCircuitCall(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateVirtualCircuitCall(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2066,6 +2228,14 @@ public class InterconnectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
+        if (exclude != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -2087,7 +2257,7 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateVirtualCircuitValidateBeforeCall(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateVirtualCircuitValidateBeforeCall(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling updateVirtualCircuit(Async)");
@@ -2098,7 +2268,7 @@ public class InterconnectionsApi {
             throw new ApiException("Missing the required parameter 'virtualCircuitUpdateInput' when calling updateVirtualCircuit(Async)");
         }
 
-        return updateVirtualCircuitCall(id, virtualCircuitUpdateInput, _callback);
+        return updateVirtualCircuitCall(id, virtualCircuitUpdateInput, include, exclude, _callback);
 
     }
 
@@ -2107,6 +2277,8 @@ public class InterconnectionsApi {
      * Update the details of a virtual circuit.
      * @param id Virtual Circuit UUID (required)
      * @param virtualCircuitUpdateInput Updated Virtual Circuit details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return VirtualCircuit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2118,8 +2290,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public VirtualCircuit updateVirtualCircuit(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput) throws ApiException {
-        ApiResponse<VirtualCircuit> localVarResp = updateVirtualCircuitWithHttpInfo(id, virtualCircuitUpdateInput);
+    public VirtualCircuit updateVirtualCircuit(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<VirtualCircuit> localVarResp = updateVirtualCircuitWithHttpInfo(id, virtualCircuitUpdateInput, include, exclude);
         return localVarResp.getData();
     }
 
@@ -2128,6 +2300,8 @@ public class InterconnectionsApi {
      * Update the details of a virtual circuit.
      * @param id Virtual Circuit UUID (required)
      * @param virtualCircuitUpdateInput Updated Virtual Circuit details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;VirtualCircuit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2139,8 +2313,8 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VirtualCircuit> updateVirtualCircuitWithHttpInfo(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput) throws ApiException {
-        okhttp3.Call localVarCall = updateVirtualCircuitValidateBeforeCall(id, virtualCircuitUpdateInput, null);
+    public ApiResponse<VirtualCircuit> updateVirtualCircuitWithHttpInfo(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = updateVirtualCircuitValidateBeforeCall(id, virtualCircuitUpdateInput, include, exclude, null);
         Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2150,6 +2324,8 @@ public class InterconnectionsApi {
      * Update the details of a virtual circuit.
      * @param id Virtual Circuit UUID (required)
      * @param virtualCircuitUpdateInput Updated Virtual Circuit details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
+     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2162,9 +2338,9 @@ public class InterconnectionsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateVirtualCircuitAsync(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput, final ApiCallback<VirtualCircuit> _callback) throws ApiException {
+    public okhttp3.Call updateVirtualCircuitAsync(UUID id, VirtualCircuitUpdateInput virtualCircuitUpdateInput, List<String> include, List<String> exclude, final ApiCallback<VirtualCircuit> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateVirtualCircuitValidateBeforeCall(id, virtualCircuitUpdateInput, _callback);
+        okhttp3.Call localVarCall = updateVirtualCircuitValidateBeforeCall(id, virtualCircuitUpdateInput, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<VirtualCircuit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

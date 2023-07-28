@@ -1,6 +1,6 @@
 /*
  * Metal API
- * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. Currently the search parameter is only available on devices, ssh_keys, api_keys and memberships endpoints.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -28,6 +28,7 @@ import com.equinix.openapi.metal.v1.model.IPAssignment;
 import com.equinix.openapi.metal.v1.model.OperatingSystem;
 import com.equinix.openapi.metal.v1.model.Plan;
 import com.equinix.openapi.metal.v1.model.Port;
+import com.equinix.openapi.metal.v1.model.Storage;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -196,31 +197,29 @@ public class Device {
   private List<Href> sshKeys = null;
 
   /**
-   * Gets or Sets state
+   * The current state the instance is in.  * When an instance is initially created it will be in the &#x60;queued&#x60; state until it is picked up by the provisioner. * Once provisioning has begun on the instance it&#39;s state will move to &#x60;provisioning&#x60;. * When an instance is deleted, it will move to &#x60;deprovisioning&#x60; state until the deprovision is completed and the instance state moves to &#x60;deleted&#x60;. * If an instance fails to provision or deprovision it will move to &#x60;failed&#x60; state. * Once an instance has completed provisioning it will move to &#x60;active&#x60; state. * If an instance is currently powering off or powering on it will move to &#x60;powering_off&#x60; or &#x60;powering_on&#x60; states respectively.  * When the instance is powered off completely it will move to the &#x60;inactive&#x60; state. * When an instance is powered on completely it will move to the &#x60;active&#x60; state. * Using the reinstall action to install a new OS on the instance will cause the instance state to change to &#x60;reinstalling&#x60;. * When the reinstall action is complete the instance will move to &#x60;active&#x60; state.
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
-    ACTIVE("active"),
+    QUEUED("queued"),
     
-    DELETED("deleted"),
+    PROVISIONING("provisioning"),
     
     DEPROVISIONING("deprovisioning"),
     
-    FAILED("failed"),
+    REINSTALLING("reinstalling"),
+    
+    ACTIVE("active"),
     
     INACTIVE("inactive"),
     
-    QUEUED("queued"),
-    
-    REINSTALLING("reinstalling"),
-    
-    POST_PROVISIONING("post_provisioning"),
+    FAILED("failed"),
     
     POWERING_ON("powering_on"),
     
     POWERING_OFF("powering_off"),
     
-    PROVISIONING("provisioning");
+    DELETED("deleted");
 
     private String value;
 
@@ -263,6 +262,10 @@ public class Device {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
   private StateEnum state;
+
+  public static final String SERIALIZED_NAME_STORAGE = "storage";
+  @SerializedName(SERIALIZED_NAME_STORAGE)
+  private Storage storage;
 
   public static final String SERIALIZED_NAME_SWITCH_UUID = "switch_uuid";
   @SerializedName(SERIALIZED_NAME_SWITCH_UUID)
@@ -1058,7 +1061,7 @@ public class Device {
   }
 
    /**
-   * Get state
+   * The current state the instance is in.  * When an instance is initially created it will be in the &#x60;queued&#x60; state until it is picked up by the provisioner. * Once provisioning has begun on the instance it&#39;s state will move to &#x60;provisioning&#x60;. * When an instance is deleted, it will move to &#x60;deprovisioning&#x60; state until the deprovision is completed and the instance state moves to &#x60;deleted&#x60;. * If an instance fails to provision or deprovision it will move to &#x60;failed&#x60; state. * Once an instance has completed provisioning it will move to &#x60;active&#x60; state. * If an instance is currently powering off or powering on it will move to &#x60;powering_off&#x60; or &#x60;powering_on&#x60; states respectively.  * When the instance is powered off completely it will move to the &#x60;inactive&#x60; state. * When an instance is powered on completely it will move to the &#x60;active&#x60; state. * Using the reinstall action to install a new OS on the instance will cause the instance state to change to &#x60;reinstalling&#x60;. * When the reinstall action is complete the instance will move to &#x60;active&#x60; state.
    * @return state
   **/
   @javax.annotation.Nullable
@@ -1070,6 +1073,28 @@ public class Device {
 
   public void setState(StateEnum state) {
     this.state = state;
+  }
+
+
+  public Device storage(Storage storage) {
+    
+    this.storage = storage;
+    return this;
+  }
+
+   /**
+   * Get storage
+   * @return storage
+  **/
+  @javax.annotation.Nullable
+
+  public Storage getStorage() {
+    return storage;
+  }
+
+
+  public void setStorage(Storage storage) {
+    this.storage = storage;
   }
 
 
@@ -1352,6 +1377,7 @@ public class Device {
         Objects.equals(this.spotPriceMax, device.spotPriceMax) &&
         Objects.equals(this.sshKeys, device.sshKeys) &&
         Objects.equals(this.state, device.state) &&
+        Objects.equals(this.storage, device.storage) &&
         Objects.equals(this.switchUuid, device.switchUuid) &&
         Objects.equals(this.tags, device.tags) &&
         Objects.equals(this.terminationTime, device.terminationTime) &&
@@ -1365,7 +1391,7 @@ public class Device {
 
   @Override
   public int hashCode() {
-    return Objects.hash(alwaysPxe, billingCycle, bondingMode, createdAt, createdBy, customdata, description, facility, hardwareReservation, hostname, href, id, imageUrl, ipAddresses, ipxeScriptUrl, iqn, locked, metro, networkFrozen, networkPorts, operatingSystem, actions, plan, project, projectLite, provisioningEvents, provisioningPercentage, rootPassword, shortId, spotInstance, spotPriceMax, sshKeys, state, switchUuid, tags, terminationTime, updatedAt, user, userdata, volumes, sos, additionalProperties);
+    return Objects.hash(alwaysPxe, billingCycle, bondingMode, createdAt, createdBy, customdata, description, facility, hardwareReservation, hostname, href, id, imageUrl, ipAddresses, ipxeScriptUrl, iqn, locked, metro, networkFrozen, networkPorts, operatingSystem, actions, plan, project, projectLite, provisioningEvents, provisioningPercentage, rootPassword, shortId, spotInstance, spotPriceMax, sshKeys, state, storage, switchUuid, tags, terminationTime, updatedAt, user, userdata, volumes, sos, additionalProperties);
   }
 
   @Override
@@ -1405,6 +1431,7 @@ public class Device {
     sb.append("    spotPriceMax: ").append(toIndentedString(spotPriceMax)).append("\n");
     sb.append("    sshKeys: ").append(toIndentedString(sshKeys)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
+    sb.append("    storage: ").append(toIndentedString(storage)).append("\n");
     sb.append("    switchUuid: ").append(toIndentedString(switchUuid)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    terminationTime: ").append(toIndentedString(terminationTime)).append("\n");
@@ -1469,6 +1496,7 @@ public class Device {
     openapiFields.add("spot_price_max");
     openapiFields.add("ssh_keys");
     openapiFields.add("state");
+    openapiFields.add("storage");
     openapiFields.add("switch_uuid");
     openapiFields.add("tags");
     openapiFields.add("termination_time");
@@ -1628,6 +1656,10 @@ public class Device {
       }
       if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
+      }
+      // validate the optional field `storage`
+      if (jsonObj.get("storage") != null && !jsonObj.get("storage").isJsonNull()) {
+        Storage.validateJsonObject(jsonObj.getAsJsonObject("storage"));
       }
       if ((jsonObj.get("switch_uuid") != null && !jsonObj.get("switch_uuid").isJsonNull()) && !jsonObj.get("switch_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `switch_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("switch_uuid").toString()));

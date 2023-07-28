@@ -1,6 +1,6 @@
 /*
  * Metal API
- * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
+ * # Introduction Equinix Metal provides a RESTful HTTP API which can be reached at <https://api.equinix.com/metal/v1>. This document describes the API and how to use it.  The API allows you to programmatically interact with all of your Equinix Metal resources, including devices, networks, addresses, organizations, projects, and your user account. Every feature of the Equinix Metal web interface is accessible through the API.  The API docs are generated from the Equinix Metal OpenAPI specification and are officially hosted at <https://metal.equinix.com/developers/api>.  # Common Parameters  The Equinix Metal API uses a few methods to minimize network traffic and improve throughput. These parameters are not used in all API calls, but are used often enough to warrant their own section. Look for these parameters in the documentation for the API calls that support them.  ## Pagination  Pagination is used to limit the number of results returned in a single request. The API will return a maximum of 100 results per page. To retrieve additional results, you can use the `page` and `per_page` query parameters.  The `page` parameter is used to specify the page number. The first page is `1`. The `per_page` parameter is used to specify the number of results per page. The maximum number of results differs by resource type.  ## Sorting  Where offered, the API allows you to sort results by a specific field. To sort results use the `sort_by` query parameter with the root level field name as the value. The `sort_direction` parameter is used to specify the sort direction, either either `asc` (ascending) or `desc` (descending).  ## Filtering  Filtering is used to limit the results returned in a single request. The API supports filtering by certain fields in the response. To filter results, you can use the field as a query parameter.  For example, to filter the IP list to only return public IPv4 addresses, you can filter by the `type` field, as in the following request:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/projects/id/ips?type=public_ipv4 ```  Only IP addresses with the `type` field set to `public_ipv4` will be returned.  ## Searching  Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. Currently the search parameter is only available on devices, ssh_keys, api_keys and memberships endpoints.  To search resources you can use the `search` query parameter.  ## Include and Exclude  For resources that contain references to other resources, sucha as a Device that refers to the Project it resides in, the Equinix Metal API will returns `href` values (API links) to the associated resource.  ```json {   ...   \"project\": {     \"href\": \"/metal/v1/projects/f3f131c8-f302-49ef-8c44-9405022dc6dd\"   } } ```  If you're going need the project details, you can avoid a second API request.  Specify the contained `href` resources and collections that you'd like to have included in the response using the `include` query parameter.  For example:  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=projects ```  The `include` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests where `href` resources are presented.  To have multiple resources include, use a comma-separated list (e.g. `?include=emails,projects,memberships`).  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=emails,projects,memberships ```  You may also include nested associations up to three levels deep using dot notation (`?include=memberships.projects`):  ```sh curl -H 'X-Auth-Token: my_authentication_token' \\   https://api.equinix.com/metal/v1/user?include=memberships.projects ```  To exclude resources, and optimize response delivery, use the `exclude` query parameter. The `exclude` parameter is generally accepted in `GET`, `POST`, `PUT`, and `PATCH` requests for fields with nested object responses. When excluded, these fields will be replaced with an object that contains only an `href` field. 
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@equinixmetal.com
@@ -86,6 +86,7 @@ public class PortsApi {
      * Build call for assignNativeVlan
      * @param id Port UUID (required)
      * @param vnid Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -98,7 +99,7 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call assignNativeVlanCall(UUID id, String vnid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call assignNativeVlanCall(UUID id, String vnid, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -128,6 +129,10 @@ public class PortsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("vnid", vnid));
         }
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -148,7 +153,7 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call assignNativeVlanValidateBeforeCall(UUID id, String vnid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call assignNativeVlanValidateBeforeCall(UUID id, String vnid, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling assignNativeVlan(Async)");
@@ -159,7 +164,7 @@ public class PortsApi {
             throw new ApiException("Missing the required parameter 'vnid' when calling assignNativeVlan(Async)");
         }
 
-        return assignNativeVlanCall(id, vnid, _callback);
+        return assignNativeVlanCall(id, vnid, include, _callback);
 
     }
 
@@ -168,6 +173,7 @@ public class PortsApi {
      * Sets a virtual network on this port as a \&quot;native VLAN\&quot;. The VLAN must have already been assigned using the using the \&quot;Assign a port to a virtual network\&quot; operation.
      * @param id Port UUID (required)
      * @param vnid Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return Port
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -179,8 +185,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Port assignNativeVlan(UUID id, String vnid) throws ApiException {
-        ApiResponse<Port> localVarResp = assignNativeVlanWithHttpInfo(id, vnid);
+    public Port assignNativeVlan(UUID id, String vnid, List<String> include) throws ApiException {
+        ApiResponse<Port> localVarResp = assignNativeVlanWithHttpInfo(id, vnid, include);
         return localVarResp.getData();
     }
 
@@ -189,6 +195,7 @@ public class PortsApi {
      * Sets a virtual network on this port as a \&quot;native VLAN\&quot;. The VLAN must have already been assigned using the using the \&quot;Assign a port to a virtual network\&quot; operation.
      * @param id Port UUID (required)
      * @param vnid Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;Port&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -200,8 +207,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Port> assignNativeVlanWithHttpInfo(UUID id, String vnid) throws ApiException {
-        okhttp3.Call localVarCall = assignNativeVlanValidateBeforeCall(id, vnid, null);
+    public ApiResponse<Port> assignNativeVlanWithHttpInfo(UUID id, String vnid, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = assignNativeVlanValidateBeforeCall(id, vnid, include, null);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -211,6 +218,7 @@ public class PortsApi {
      * Sets a virtual network on this port as a \&quot;native VLAN\&quot;. The VLAN must have already been assigned using the using the \&quot;Assign a port to a virtual network\&quot; operation.
      * @param id Port UUID (required)
      * @param vnid Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -223,9 +231,9 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call assignNativeVlanAsync(UUID id, String vnid, final ApiCallback<Port> _callback) throws ApiException {
+    public okhttp3.Call assignNativeVlanAsync(UUID id, String vnid, List<String> include, final ApiCallback<Port> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = assignNativeVlanValidateBeforeCall(id, vnid, _callback);
+        okhttp3.Call localVarCall = assignNativeVlanValidateBeforeCall(id, vnid, include, _callback);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -234,6 +242,7 @@ public class PortsApi {
      * Build call for assignPort
      * @param id Port UUID (required)
      * @param portAssignInput Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -247,7 +256,7 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call assignPortCall(UUID id, PortAssignInput portAssignInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call assignPortCall(UUID id, PortAssignInput portAssignInput, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -273,6 +282,10 @@ public class PortsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -294,7 +307,7 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call assignPortValidateBeforeCall(UUID id, PortAssignInput portAssignInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call assignPortValidateBeforeCall(UUID id, PortAssignInput portAssignInput, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling assignPort(Async)");
@@ -305,7 +318,7 @@ public class PortsApi {
             throw new ApiException("Missing the required parameter 'portAssignInput' when calling assignPort(Async)");
         }
 
-        return assignPortCall(id, portAssignInput, _callback);
+        return assignPortCall(id, portAssignInput, include, _callback);
 
     }
 
@@ -314,6 +327,7 @@ public class PortsApi {
      * Assign a hardware port to a virtual network.
      * @param id Port UUID (required)
      * @param portAssignInput Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return Port
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -326,8 +340,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Port assignPort(UUID id, PortAssignInput portAssignInput) throws ApiException {
-        ApiResponse<Port> localVarResp = assignPortWithHttpInfo(id, portAssignInput);
+    public Port assignPort(UUID id, PortAssignInput portAssignInput, List<String> include) throws ApiException {
+        ApiResponse<Port> localVarResp = assignPortWithHttpInfo(id, portAssignInput, include);
         return localVarResp.getData();
     }
 
@@ -336,6 +350,7 @@ public class PortsApi {
      * Assign a hardware port to a virtual network.
      * @param id Port UUID (required)
      * @param portAssignInput Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;Port&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -348,8 +363,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Port> assignPortWithHttpInfo(UUID id, PortAssignInput portAssignInput) throws ApiException {
-        okhttp3.Call localVarCall = assignPortValidateBeforeCall(id, portAssignInput, null);
+    public ApiResponse<Port> assignPortWithHttpInfo(UUID id, PortAssignInput portAssignInput, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = assignPortValidateBeforeCall(id, portAssignInput, include, null);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -359,6 +374,7 @@ public class PortsApi {
      * Assign a hardware port to a virtual network.
      * @param id Port UUID (required)
      * @param portAssignInput Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -372,9 +388,9 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call assignPortAsync(UUID id, PortAssignInput portAssignInput, final ApiCallback<Port> _callback) throws ApiException {
+    public okhttp3.Call assignPortAsync(UUID id, PortAssignInput portAssignInput, List<String> include, final ApiCallback<Port> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = assignPortValidateBeforeCall(id, portAssignInput, _callback);
+        okhttp3.Call localVarCall = assignPortValidateBeforeCall(id, portAssignInput, include, _callback);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -383,6 +399,7 @@ public class PortsApi {
      * Build call for bondPort
      * @param id Port UUID (required)
      * @param bulkEnable enable both ports (optional)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -396,7 +413,7 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bondPortCall(UUID id, Boolean bulkEnable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call bondPortCall(UUID id, Boolean bulkEnable, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -426,6 +443,10 @@ public class PortsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("bulk_enable", bulkEnable));
         }
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -446,13 +467,13 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bondPortValidateBeforeCall(UUID id, Boolean bulkEnable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call bondPortValidateBeforeCall(UUID id, Boolean bulkEnable, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling bondPort(Async)");
         }
 
-        return bondPortCall(id, bulkEnable, _callback);
+        return bondPortCall(id, bulkEnable, include, _callback);
 
     }
 
@@ -461,6 +482,7 @@ public class PortsApi {
      * Enabling bonding for one or all ports
      * @param id Port UUID (required)
      * @param bulkEnable enable both ports (optional)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return Port
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -473,8 +495,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Port bondPort(UUID id, Boolean bulkEnable) throws ApiException {
-        ApiResponse<Port> localVarResp = bondPortWithHttpInfo(id, bulkEnable);
+    public Port bondPort(UUID id, Boolean bulkEnable, List<String> include) throws ApiException {
+        ApiResponse<Port> localVarResp = bondPortWithHttpInfo(id, bulkEnable, include);
         return localVarResp.getData();
     }
 
@@ -483,6 +505,7 @@ public class PortsApi {
      * Enabling bonding for one or all ports
      * @param id Port UUID (required)
      * @param bulkEnable enable both ports (optional)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;Port&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -495,8 +518,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Port> bondPortWithHttpInfo(UUID id, Boolean bulkEnable) throws ApiException {
-        okhttp3.Call localVarCall = bondPortValidateBeforeCall(id, bulkEnable, null);
+    public ApiResponse<Port> bondPortWithHttpInfo(UUID id, Boolean bulkEnable, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = bondPortValidateBeforeCall(id, bulkEnable, include, null);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -506,6 +529,7 @@ public class PortsApi {
      * Enabling bonding for one or all ports
      * @param id Port UUID (required)
      * @param bulkEnable enable both ports (optional)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -519,9 +543,9 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bondPortAsync(UUID id, Boolean bulkEnable, final ApiCallback<Port> _callback) throws ApiException {
+    public okhttp3.Call bondPortAsync(UUID id, Boolean bulkEnable, List<String> include, final ApiCallback<Port> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bondPortValidateBeforeCall(id, bulkEnable, _callback);
+        okhttp3.Call localVarCall = bondPortValidateBeforeCall(id, bulkEnable, include, _callback);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -530,6 +554,7 @@ public class PortsApi {
      * Build call for convertLayer2
      * @param id Port UUID (required)
      * @param portAssignInput Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -543,7 +568,7 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call convertLayer2Call(UUID id, PortAssignInput portAssignInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call convertLayer2Call(UUID id, PortAssignInput portAssignInput, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -569,6 +594,10 @@ public class PortsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -590,7 +619,7 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call convertLayer2ValidateBeforeCall(UUID id, PortAssignInput portAssignInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call convertLayer2ValidateBeforeCall(UUID id, PortAssignInput portAssignInput, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling convertLayer2(Async)");
@@ -601,7 +630,7 @@ public class PortsApi {
             throw new ApiException("Missing the required parameter 'portAssignInput' when calling convertLayer2(Async)");
         }
 
-        return convertLayer2Call(id, portAssignInput, _callback);
+        return convertLayer2Call(id, portAssignInput, include, _callback);
 
     }
 
@@ -610,6 +639,7 @@ public class PortsApi {
      * Converts a bond port to Layer 2. IP assignments of the port will be removed.
      * @param id Port UUID (required)
      * @param portAssignInput Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return Port
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -622,8 +652,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Port convertLayer2(UUID id, PortAssignInput portAssignInput) throws ApiException {
-        ApiResponse<Port> localVarResp = convertLayer2WithHttpInfo(id, portAssignInput);
+    public Port convertLayer2(UUID id, PortAssignInput portAssignInput, List<String> include) throws ApiException {
+        ApiResponse<Port> localVarResp = convertLayer2WithHttpInfo(id, portAssignInput, include);
         return localVarResp.getData();
     }
 
@@ -632,6 +662,7 @@ public class PortsApi {
      * Converts a bond port to Layer 2. IP assignments of the port will be removed.
      * @param id Port UUID (required)
      * @param portAssignInput Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;Port&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -644,8 +675,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Port> convertLayer2WithHttpInfo(UUID id, PortAssignInput portAssignInput) throws ApiException {
-        okhttp3.Call localVarCall = convertLayer2ValidateBeforeCall(id, portAssignInput, null);
+    public ApiResponse<Port> convertLayer2WithHttpInfo(UUID id, PortAssignInput portAssignInput, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = convertLayer2ValidateBeforeCall(id, portAssignInput, include, null);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -655,6 +686,7 @@ public class PortsApi {
      * Converts a bond port to Layer 2. IP assignments of the port will be removed.
      * @param id Port UUID (required)
      * @param portAssignInput Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -668,9 +700,9 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call convertLayer2Async(UUID id, PortAssignInput portAssignInput, final ApiCallback<Port> _callback) throws ApiException {
+    public okhttp3.Call convertLayer2Async(UUID id, PortAssignInput portAssignInput, List<String> include, final ApiCallback<Port> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = convertLayer2ValidateBeforeCall(id, portAssignInput, _callback);
+        okhttp3.Call localVarCall = convertLayer2ValidateBeforeCall(id, portAssignInput, include, _callback);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -678,6 +710,7 @@ public class PortsApi {
     /**
      * Build call for convertLayer3
      * @param id Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param portConvertLayer3Input IPs to request (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -692,7 +725,7 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call convertLayer3Call(UUID id, PortConvertLayer3Input portConvertLayer3Input, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call convertLayer3Call(UUID id, List<String> include, PortConvertLayer3Input portConvertLayer3Input, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -718,6 +751,10 @@ public class PortsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -739,13 +776,13 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call convertLayer3ValidateBeforeCall(UUID id, PortConvertLayer3Input portConvertLayer3Input, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call convertLayer3ValidateBeforeCall(UUID id, List<String> include, PortConvertLayer3Input portConvertLayer3Input, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling convertLayer3(Async)");
         }
 
-        return convertLayer3Call(id, portConvertLayer3Input, _callback);
+        return convertLayer3Call(id, include, portConvertLayer3Input, _callback);
 
     }
 
@@ -753,6 +790,7 @@ public class PortsApi {
      * Convert to Layer 3
      * Converts a bond port to Layer 3. VLANs must first be unassigned.
      * @param id Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param portConvertLayer3Input IPs to request (optional)
      * @return Port
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -766,8 +804,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Port convertLayer3(UUID id, PortConvertLayer3Input portConvertLayer3Input) throws ApiException {
-        ApiResponse<Port> localVarResp = convertLayer3WithHttpInfo(id, portConvertLayer3Input);
+    public Port convertLayer3(UUID id, List<String> include, PortConvertLayer3Input portConvertLayer3Input) throws ApiException {
+        ApiResponse<Port> localVarResp = convertLayer3WithHttpInfo(id, include, portConvertLayer3Input);
         return localVarResp.getData();
     }
 
@@ -775,6 +813,7 @@ public class PortsApi {
      * Convert to Layer 3
      * Converts a bond port to Layer 3. VLANs must first be unassigned.
      * @param id Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param portConvertLayer3Input IPs to request (optional)
      * @return ApiResponse&lt;Port&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -788,8 +827,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Port> convertLayer3WithHttpInfo(UUID id, PortConvertLayer3Input portConvertLayer3Input) throws ApiException {
-        okhttp3.Call localVarCall = convertLayer3ValidateBeforeCall(id, portConvertLayer3Input, null);
+    public ApiResponse<Port> convertLayer3WithHttpInfo(UUID id, List<String> include, PortConvertLayer3Input portConvertLayer3Input) throws ApiException {
+        okhttp3.Call localVarCall = convertLayer3ValidateBeforeCall(id, include, portConvertLayer3Input, null);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -798,6 +837,7 @@ public class PortsApi {
      * Convert to Layer 3 (asynchronously)
      * Converts a bond port to Layer 3. VLANs must first be unassigned.
      * @param id Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param portConvertLayer3Input IPs to request (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -812,9 +852,9 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call convertLayer3Async(UUID id, PortConvertLayer3Input portConvertLayer3Input, final ApiCallback<Port> _callback) throws ApiException {
+    public okhttp3.Call convertLayer3Async(UUID id, List<String> include, PortConvertLayer3Input portConvertLayer3Input, final ApiCallback<Port> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = convertLayer3ValidateBeforeCall(id, portConvertLayer3Input, _callback);
+        okhttp3.Call localVarCall = convertLayer3ValidateBeforeCall(id, include, portConvertLayer3Input, _callback);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -823,6 +863,7 @@ public class PortsApi {
      * Build call for createPortVlanAssignmentBatch
      * @param id Port UUID (required)
      * @param portVlanAssignmentBatchCreateInput VLAN Assignment batch details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -836,7 +877,7 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createPortVlanAssignmentBatchCall(UUID id, PortVlanAssignmentBatchCreateInput portVlanAssignmentBatchCreateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createPortVlanAssignmentBatchCall(UUID id, PortVlanAssignmentBatchCreateInput portVlanAssignmentBatchCreateInput, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -862,6 +903,10 @@ public class PortsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -883,7 +928,7 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createPortVlanAssignmentBatchValidateBeforeCall(UUID id, PortVlanAssignmentBatchCreateInput portVlanAssignmentBatchCreateInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createPortVlanAssignmentBatchValidateBeforeCall(UUID id, PortVlanAssignmentBatchCreateInput portVlanAssignmentBatchCreateInput, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling createPortVlanAssignmentBatch(Async)");
@@ -894,7 +939,7 @@ public class PortsApi {
             throw new ApiException("Missing the required parameter 'portVlanAssignmentBatchCreateInput' when calling createPortVlanAssignmentBatch(Async)");
         }
 
-        return createPortVlanAssignmentBatchCall(id, portVlanAssignmentBatchCreateInput, _callback);
+        return createPortVlanAssignmentBatchCall(id, portVlanAssignmentBatchCreateInput, include, _callback);
 
     }
 
@@ -903,6 +948,7 @@ public class PortsApi {
      * Create a new asynchronous batch request which handles adding and/or removing the VLANs to which the port is assigned.
      * @param id Port UUID (required)
      * @param portVlanAssignmentBatchCreateInput VLAN Assignment batch details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return PortVlanAssignmentBatch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -915,8 +961,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public PortVlanAssignmentBatch createPortVlanAssignmentBatch(UUID id, PortVlanAssignmentBatchCreateInput portVlanAssignmentBatchCreateInput) throws ApiException {
-        ApiResponse<PortVlanAssignmentBatch> localVarResp = createPortVlanAssignmentBatchWithHttpInfo(id, portVlanAssignmentBatchCreateInput);
+    public PortVlanAssignmentBatch createPortVlanAssignmentBatch(UUID id, PortVlanAssignmentBatchCreateInput portVlanAssignmentBatchCreateInput, List<String> include) throws ApiException {
+        ApiResponse<PortVlanAssignmentBatch> localVarResp = createPortVlanAssignmentBatchWithHttpInfo(id, portVlanAssignmentBatchCreateInput, include);
         return localVarResp.getData();
     }
 
@@ -925,6 +971,7 @@ public class PortsApi {
      * Create a new asynchronous batch request which handles adding and/or removing the VLANs to which the port is assigned.
      * @param id Port UUID (required)
      * @param portVlanAssignmentBatchCreateInput VLAN Assignment batch details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;PortVlanAssignmentBatch&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -937,8 +984,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PortVlanAssignmentBatch> createPortVlanAssignmentBatchWithHttpInfo(UUID id, PortVlanAssignmentBatchCreateInput portVlanAssignmentBatchCreateInput) throws ApiException {
-        okhttp3.Call localVarCall = createPortVlanAssignmentBatchValidateBeforeCall(id, portVlanAssignmentBatchCreateInput, null);
+    public ApiResponse<PortVlanAssignmentBatch> createPortVlanAssignmentBatchWithHttpInfo(UUID id, PortVlanAssignmentBatchCreateInput portVlanAssignmentBatchCreateInput, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = createPortVlanAssignmentBatchValidateBeforeCall(id, portVlanAssignmentBatchCreateInput, include, null);
         Type localVarReturnType = new TypeToken<PortVlanAssignmentBatch>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -948,6 +995,7 @@ public class PortsApi {
      * Create a new asynchronous batch request which handles adding and/or removing the VLANs to which the port is assigned.
      * @param id Port UUID (required)
      * @param portVlanAssignmentBatchCreateInput VLAN Assignment batch details (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -961,9 +1009,9 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createPortVlanAssignmentBatchAsync(UUID id, PortVlanAssignmentBatchCreateInput portVlanAssignmentBatchCreateInput, final ApiCallback<PortVlanAssignmentBatch> _callback) throws ApiException {
+    public okhttp3.Call createPortVlanAssignmentBatchAsync(UUID id, PortVlanAssignmentBatchCreateInput portVlanAssignmentBatchCreateInput, List<String> include, final ApiCallback<PortVlanAssignmentBatch> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createPortVlanAssignmentBatchValidateBeforeCall(id, portVlanAssignmentBatchCreateInput, _callback);
+        okhttp3.Call localVarCall = createPortVlanAssignmentBatchValidateBeforeCall(id, portVlanAssignmentBatchCreateInput, include, _callback);
         Type localVarReturnType = new TypeToken<PortVlanAssignmentBatch>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -971,6 +1019,7 @@ public class PortsApi {
     /**
      * Build call for deleteNativeVlan
      * @param id Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -983,7 +1032,7 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteNativeVlanCall(UUID id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteNativeVlanCall(UUID id, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1009,6 +1058,10 @@ public class PortsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1029,13 +1082,13 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteNativeVlanValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteNativeVlanValidateBeforeCall(UUID id, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteNativeVlan(Async)");
         }
 
-        return deleteNativeVlanCall(id, _callback);
+        return deleteNativeVlanCall(id, include, _callback);
 
     }
 
@@ -1043,6 +1096,7 @@ public class PortsApi {
      * Remove native VLAN
      * Removes the native VLAN from this port
      * @param id Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return Port
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1054,8 +1108,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Port deleteNativeVlan(UUID id) throws ApiException {
-        ApiResponse<Port> localVarResp = deleteNativeVlanWithHttpInfo(id);
+    public Port deleteNativeVlan(UUID id, List<String> include) throws ApiException {
+        ApiResponse<Port> localVarResp = deleteNativeVlanWithHttpInfo(id, include);
         return localVarResp.getData();
     }
 
@@ -1063,6 +1117,7 @@ public class PortsApi {
      * Remove native VLAN
      * Removes the native VLAN from this port
      * @param id Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;Port&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1074,8 +1129,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Port> deleteNativeVlanWithHttpInfo(UUID id) throws ApiException {
-        okhttp3.Call localVarCall = deleteNativeVlanValidateBeforeCall(id, null);
+    public ApiResponse<Port> deleteNativeVlanWithHttpInfo(UUID id, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = deleteNativeVlanValidateBeforeCall(id, include, null);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1084,6 +1139,7 @@ public class PortsApi {
      * Remove native VLAN (asynchronously)
      * Removes the native VLAN from this port
      * @param id Port UUID (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1096,9 +1152,9 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteNativeVlanAsync(UUID id, final ApiCallback<Port> _callback) throws ApiException {
+    public okhttp3.Call deleteNativeVlanAsync(UUID id, List<String> include, final ApiCallback<Port> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteNativeVlanValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteNativeVlanValidateBeforeCall(id, include, _callback);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1107,6 +1163,7 @@ public class PortsApi {
      * Build call for disbondPort
      * @param id Port UUID (required)
      * @param bulkDisable disable both ports (optional)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1120,7 +1177,7 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call disbondPortCall(UUID id, Boolean bulkDisable, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call disbondPortCall(UUID id, Boolean bulkDisable, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1150,6 +1207,10 @@ public class PortsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("bulk_disable", bulkDisable));
         }
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1170,13 +1231,13 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call disbondPortValidateBeforeCall(UUID id, Boolean bulkDisable, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call disbondPortValidateBeforeCall(UUID id, Boolean bulkDisable, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling disbondPort(Async)");
         }
 
-        return disbondPortCall(id, bulkDisable, _callback);
+        return disbondPortCall(id, bulkDisable, include, _callback);
 
     }
 
@@ -1185,6 +1246,7 @@ public class PortsApi {
      * Disabling bonding for one or all ports
      * @param id Port UUID (required)
      * @param bulkDisable disable both ports (optional)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return Port
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1197,8 +1259,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Port disbondPort(UUID id, Boolean bulkDisable) throws ApiException {
-        ApiResponse<Port> localVarResp = disbondPortWithHttpInfo(id, bulkDisable);
+    public Port disbondPort(UUID id, Boolean bulkDisable, List<String> include) throws ApiException {
+        ApiResponse<Port> localVarResp = disbondPortWithHttpInfo(id, bulkDisable, include);
         return localVarResp.getData();
     }
 
@@ -1207,6 +1269,7 @@ public class PortsApi {
      * Disabling bonding for one or all ports
      * @param id Port UUID (required)
      * @param bulkDisable disable both ports (optional)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;Port&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1219,8 +1282,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Port> disbondPortWithHttpInfo(UUID id, Boolean bulkDisable) throws ApiException {
-        okhttp3.Call localVarCall = disbondPortValidateBeforeCall(id, bulkDisable, null);
+    public ApiResponse<Port> disbondPortWithHttpInfo(UUID id, Boolean bulkDisable, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = disbondPortValidateBeforeCall(id, bulkDisable, include, null);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1230,6 +1293,7 @@ public class PortsApi {
      * Disabling bonding for one or all ports
      * @param id Port UUID (required)
      * @param bulkDisable disable both ports (optional)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1243,9 +1307,9 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call disbondPortAsync(UUID id, Boolean bulkDisable, final ApiCallback<Port> _callback) throws ApiException {
+    public okhttp3.Call disbondPortAsync(UUID id, Boolean bulkDisable, List<String> include, final ApiCallback<Port> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = disbondPortValidateBeforeCall(id, bulkDisable, _callback);
+        okhttp3.Call localVarCall = disbondPortValidateBeforeCall(id, bulkDisable, include, _callback);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1254,7 +1318,6 @@ public class PortsApi {
      * Build call for findPortById
      * @param id Port UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1266,7 +1329,7 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findPortByIdCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findPortByIdCall(UUID id, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1296,10 +1359,6 @@ public class PortsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
 
-        if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1320,13 +1379,13 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findPortByIdValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findPortByIdValidateBeforeCall(UUID id, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findPortById(Async)");
         }
 
-        return findPortByIdCall(id, include, exclude, _callback);
+        return findPortByIdCall(id, include, _callback);
 
     }
 
@@ -1335,7 +1394,6 @@ public class PortsApi {
      * Returns a port
      * @param id Port UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Port
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1346,8 +1404,8 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public Port findPortById(UUID id, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<Port> localVarResp = findPortByIdWithHttpInfo(id, include, exclude);
+    public Port findPortById(UUID id, List<String> include) throws ApiException {
+        ApiResponse<Port> localVarResp = findPortByIdWithHttpInfo(id, include);
         return localVarResp.getData();
     }
 
@@ -1356,7 +1414,6 @@ public class PortsApi {
      * Returns a port
      * @param id Port UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Port&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1367,8 +1424,8 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Port> findPortByIdWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = findPortByIdValidateBeforeCall(id, include, exclude, null);
+    public ApiResponse<Port> findPortByIdWithHttpInfo(UUID id, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = findPortByIdValidateBeforeCall(id, include, null);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1378,7 +1435,6 @@ public class PortsApi {
      * Returns a port
      * @param id Port UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1390,9 +1446,9 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findPortByIdAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<Port> _callback) throws ApiException {
+    public okhttp3.Call findPortByIdAsync(UUID id, List<String> include, final ApiCallback<Port> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findPortByIdValidateBeforeCall(id, include, exclude, _callback);
+        okhttp3.Call localVarCall = findPortByIdValidateBeforeCall(id, include, _callback);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1402,7 +1458,6 @@ public class PortsApi {
      * @param id Port UUID (required)
      * @param batchId Batch ID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1415,7 +1470,7 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findPortVlanAssignmentBatchByPortIdAndBatchIdCall(UUID id, UUID batchId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findPortVlanAssignmentBatchByPortIdAndBatchIdCall(UUID id, UUID batchId, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1446,10 +1501,6 @@ public class PortsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
 
-        if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1470,7 +1521,7 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findPortVlanAssignmentBatchByPortIdAndBatchIdValidateBeforeCall(UUID id, UUID batchId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findPortVlanAssignmentBatchByPortIdAndBatchIdValidateBeforeCall(UUID id, UUID batchId, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findPortVlanAssignmentBatchByPortIdAndBatchId(Async)");
@@ -1481,7 +1532,7 @@ public class PortsApi {
             throw new ApiException("Missing the required parameter 'batchId' when calling findPortVlanAssignmentBatchByPortIdAndBatchId(Async)");
         }
 
-        return findPortVlanAssignmentBatchByPortIdAndBatchIdCall(id, batchId, include, exclude, _callback);
+        return findPortVlanAssignmentBatchByPortIdAndBatchIdCall(id, batchId, include, _callback);
 
     }
 
@@ -1491,7 +1542,6 @@ public class PortsApi {
      * @param id Port UUID (required)
      * @param batchId Batch ID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return PortVlanAssignmentBatch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1503,8 +1553,8 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public PortVlanAssignmentBatch findPortVlanAssignmentBatchByPortIdAndBatchId(UUID id, UUID batchId, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<PortVlanAssignmentBatch> localVarResp = findPortVlanAssignmentBatchByPortIdAndBatchIdWithHttpInfo(id, batchId, include, exclude);
+    public PortVlanAssignmentBatch findPortVlanAssignmentBatchByPortIdAndBatchId(UUID id, UUID batchId, List<String> include) throws ApiException {
+        ApiResponse<PortVlanAssignmentBatch> localVarResp = findPortVlanAssignmentBatchByPortIdAndBatchIdWithHttpInfo(id, batchId, include);
         return localVarResp.getData();
     }
 
@@ -1514,7 +1564,6 @@ public class PortsApi {
      * @param id Port UUID (required)
      * @param batchId Batch ID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;PortVlanAssignmentBatch&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1526,8 +1575,8 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PortVlanAssignmentBatch> findPortVlanAssignmentBatchByPortIdAndBatchIdWithHttpInfo(UUID id, UUID batchId, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = findPortVlanAssignmentBatchByPortIdAndBatchIdValidateBeforeCall(id, batchId, include, exclude, null);
+    public ApiResponse<PortVlanAssignmentBatch> findPortVlanAssignmentBatchByPortIdAndBatchIdWithHttpInfo(UUID id, UUID batchId, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = findPortVlanAssignmentBatchByPortIdAndBatchIdValidateBeforeCall(id, batchId, include, null);
         Type localVarReturnType = new TypeToken<PortVlanAssignmentBatch>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1538,7 +1587,6 @@ public class PortsApi {
      * @param id Port UUID (required)
      * @param batchId Batch ID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1551,9 +1599,9 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findPortVlanAssignmentBatchByPortIdAndBatchIdAsync(UUID id, UUID batchId, List<String> include, List<String> exclude, final ApiCallback<PortVlanAssignmentBatch> _callback) throws ApiException {
+    public okhttp3.Call findPortVlanAssignmentBatchByPortIdAndBatchIdAsync(UUID id, UUID batchId, List<String> include, final ApiCallback<PortVlanAssignmentBatch> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findPortVlanAssignmentBatchByPortIdAndBatchIdValidateBeforeCall(id, batchId, include, exclude, _callback);
+        okhttp3.Call localVarCall = findPortVlanAssignmentBatchByPortIdAndBatchIdValidateBeforeCall(id, batchId, include, _callback);
         Type localVarReturnType = new TypeToken<PortVlanAssignmentBatch>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1698,7 +1746,6 @@ public class PortsApi {
      * @param id Port UUID (required)
      * @param assignmentId Assignment ID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1711,7 +1758,7 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findPortVlanAssignmentByPortIdAndAssignmentIdCall(UUID id, UUID assignmentId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findPortVlanAssignmentByPortIdAndAssignmentIdCall(UUID id, UUID assignmentId, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1742,10 +1789,6 @@ public class PortsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
 
-        if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1766,7 +1809,7 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findPortVlanAssignmentByPortIdAndAssignmentIdValidateBeforeCall(UUID id, UUID assignmentId, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findPortVlanAssignmentByPortIdAndAssignmentIdValidateBeforeCall(UUID id, UUID assignmentId, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findPortVlanAssignmentByPortIdAndAssignmentId(Async)");
@@ -1777,7 +1820,7 @@ public class PortsApi {
             throw new ApiException("Missing the required parameter 'assignmentId' when calling findPortVlanAssignmentByPortIdAndAssignmentId(Async)");
         }
 
-        return findPortVlanAssignmentByPortIdAndAssignmentIdCall(id, assignmentId, include, exclude, _callback);
+        return findPortVlanAssignmentByPortIdAndAssignmentIdCall(id, assignmentId, include, _callback);
 
     }
 
@@ -1787,7 +1830,6 @@ public class PortsApi {
      * @param id Port UUID (required)
      * @param assignmentId Assignment ID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return PortVlanAssignment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1799,8 +1841,8 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public PortVlanAssignment findPortVlanAssignmentByPortIdAndAssignmentId(UUID id, UUID assignmentId, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<PortVlanAssignment> localVarResp = findPortVlanAssignmentByPortIdAndAssignmentIdWithHttpInfo(id, assignmentId, include, exclude);
+    public PortVlanAssignment findPortVlanAssignmentByPortIdAndAssignmentId(UUID id, UUID assignmentId, List<String> include) throws ApiException {
+        ApiResponse<PortVlanAssignment> localVarResp = findPortVlanAssignmentByPortIdAndAssignmentIdWithHttpInfo(id, assignmentId, include);
         return localVarResp.getData();
     }
 
@@ -1810,7 +1852,6 @@ public class PortsApi {
      * @param id Port UUID (required)
      * @param assignmentId Assignment ID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;PortVlanAssignment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1822,8 +1863,8 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PortVlanAssignment> findPortVlanAssignmentByPortIdAndAssignmentIdWithHttpInfo(UUID id, UUID assignmentId, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = findPortVlanAssignmentByPortIdAndAssignmentIdValidateBeforeCall(id, assignmentId, include, exclude, null);
+    public ApiResponse<PortVlanAssignment> findPortVlanAssignmentByPortIdAndAssignmentIdWithHttpInfo(UUID id, UUID assignmentId, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = findPortVlanAssignmentByPortIdAndAssignmentIdValidateBeforeCall(id, assignmentId, include, null);
         Type localVarReturnType = new TypeToken<PortVlanAssignment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1834,7 +1875,6 @@ public class PortsApi {
      * @param id Port UUID (required)
      * @param assignmentId Assignment ID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1847,9 +1887,9 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findPortVlanAssignmentByPortIdAndAssignmentIdAsync(UUID id, UUID assignmentId, List<String> include, List<String> exclude, final ApiCallback<PortVlanAssignment> _callback) throws ApiException {
+    public okhttp3.Call findPortVlanAssignmentByPortIdAndAssignmentIdAsync(UUID id, UUID assignmentId, List<String> include, final ApiCallback<PortVlanAssignment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findPortVlanAssignmentByPortIdAndAssignmentIdValidateBeforeCall(id, assignmentId, include, exclude, _callback);
+        okhttp3.Call localVarCall = findPortVlanAssignmentByPortIdAndAssignmentIdValidateBeforeCall(id, assignmentId, include, _callback);
         Type localVarReturnType = new TypeToken<PortVlanAssignment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1858,7 +1898,6 @@ public class PortsApi {
      * Build call for findPortVlanAssignments
      * @param id Port UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1871,7 +1910,7 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findPortVlanAssignmentsCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findPortVlanAssignmentsCall(UUID id, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1901,10 +1940,6 @@ public class PortsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
         }
 
-        if (exclude != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "exclude", exclude));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -1925,13 +1960,13 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findPortVlanAssignmentsValidateBeforeCall(UUID id, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findPortVlanAssignmentsValidateBeforeCall(UUID id, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findPortVlanAssignments(Async)");
         }
 
-        return findPortVlanAssignmentsCall(id, include, exclude, _callback);
+        return findPortVlanAssignmentsCall(id, include, _callback);
 
     }
 
@@ -1940,7 +1975,6 @@ public class PortsApi {
      * Show the port&#39;s current VLAN assignments, including if this VLAN is set as native, and the current state of the assignment (ex. &#39;assigned&#39; or &#39;unassigning&#39;)
      * @param id Port UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return PortVlanAssignmentList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1952,8 +1986,8 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public PortVlanAssignmentList findPortVlanAssignments(UUID id, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<PortVlanAssignmentList> localVarResp = findPortVlanAssignmentsWithHttpInfo(id, include, exclude);
+    public PortVlanAssignmentList findPortVlanAssignments(UUID id, List<String> include) throws ApiException {
+        ApiResponse<PortVlanAssignmentList> localVarResp = findPortVlanAssignmentsWithHttpInfo(id, include);
         return localVarResp.getData();
     }
 
@@ -1962,7 +1996,6 @@ public class PortsApi {
      * Show the port&#39;s current VLAN assignments, including if this VLAN is set as native, and the current state of the assignment (ex. &#39;assigned&#39; or &#39;unassigning&#39;)
      * @param id Port UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;PortVlanAssignmentList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1974,8 +2007,8 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PortVlanAssignmentList> findPortVlanAssignmentsWithHttpInfo(UUID id, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = findPortVlanAssignmentsValidateBeforeCall(id, include, exclude, null);
+    public ApiResponse<PortVlanAssignmentList> findPortVlanAssignmentsWithHttpInfo(UUID id, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = findPortVlanAssignmentsValidateBeforeCall(id, include, null);
         Type localVarReturnType = new TypeToken<PortVlanAssignmentList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1985,7 +2018,6 @@ public class PortsApi {
      * Show the port&#39;s current VLAN assignments, including if this VLAN is set as native, and the current state of the assignment (ex. &#39;assigned&#39; or &#39;unassigning&#39;)
      * @param id Port UUID (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
-     * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1998,9 +2030,9 @@ public class PortsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findPortVlanAssignmentsAsync(UUID id, List<String> include, List<String> exclude, final ApiCallback<PortVlanAssignmentList> _callback) throws ApiException {
+    public okhttp3.Call findPortVlanAssignmentsAsync(UUID id, List<String> include, final ApiCallback<PortVlanAssignmentList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findPortVlanAssignmentsValidateBeforeCall(id, include, exclude, _callback);
+        okhttp3.Call localVarCall = findPortVlanAssignmentsValidateBeforeCall(id, include, _callback);
         Type localVarReturnType = new TypeToken<PortVlanAssignmentList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2009,6 +2041,7 @@ public class PortsApi {
      * Build call for unassignPort
      * @param id Port UUID (required)
      * @param portAssignInput Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2022,7 +2055,7 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call unassignPortCall(UUID id, PortAssignInput portAssignInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call unassignPortCall(UUID id, PortAssignInput portAssignInput, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2048,6 +2081,10 @@ public class PortsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (include != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "include", include));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -2069,7 +2106,7 @@ public class PortsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call unassignPortValidateBeforeCall(UUID id, PortAssignInput portAssignInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call unassignPortValidateBeforeCall(UUID id, PortAssignInput portAssignInput, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling unassignPort(Async)");
@@ -2080,7 +2117,7 @@ public class PortsApi {
             throw new ApiException("Missing the required parameter 'portAssignInput' when calling unassignPort(Async)");
         }
 
-        return unassignPortCall(id, portAssignInput, _callback);
+        return unassignPortCall(id, portAssignInput, include, _callback);
 
     }
 
@@ -2089,6 +2126,7 @@ public class PortsApi {
      * Unassign a port for a hardware.
      * @param id Port UUID (required)
      * @param portAssignInput Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return Port
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2101,8 +2139,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Port unassignPort(UUID id, PortAssignInput portAssignInput) throws ApiException {
-        ApiResponse<Port> localVarResp = unassignPortWithHttpInfo(id, portAssignInput);
+    public Port unassignPort(UUID id, PortAssignInput portAssignInput, List<String> include) throws ApiException {
+        ApiResponse<Port> localVarResp = unassignPortWithHttpInfo(id, portAssignInput, include);
         return localVarResp.getData();
     }
 
@@ -2111,6 +2149,7 @@ public class PortsApi {
      * Unassign a port for a hardware.
      * @param id Port UUID (required)
      * @param portAssignInput Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @return ApiResponse&lt;Port&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2123,8 +2162,8 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Port> unassignPortWithHttpInfo(UUID id, PortAssignInput portAssignInput) throws ApiException {
-        okhttp3.Call localVarCall = unassignPortValidateBeforeCall(id, portAssignInput, null);
+    public ApiResponse<Port> unassignPortWithHttpInfo(UUID id, PortAssignInput portAssignInput, List<String> include) throws ApiException {
+        okhttp3.Call localVarCall = unassignPortValidateBeforeCall(id, portAssignInput, include, null);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2134,6 +2173,7 @@ public class PortsApi {
      * Unassign a port for a hardware.
      * @param id Port UUID (required)
      * @param portAssignInput Virtual Network ID. May be the UUID of the Virtual Network record, or the VLAN value itself (ex: &#39;1001&#39;). (required)
+     * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2147,9 +2187,9 @@ public class PortsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call unassignPortAsync(UUID id, PortAssignInput portAssignInput, final ApiCallback<Port> _callback) throws ApiException {
+    public okhttp3.Call unassignPortAsync(UUID id, PortAssignInput portAssignInput, List<String> include, final ApiCallback<Port> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = unassignPortValidateBeforeCall(id, portAssignInput, _callback);
+        okhttp3.Call localVarCall = unassignPortValidateBeforeCall(id, portAssignInput, include, _callback);
         Type localVarReturnType = new TypeToken<Port>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

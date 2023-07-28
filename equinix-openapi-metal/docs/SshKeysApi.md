@@ -16,7 +16,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 
 <a name="createProjectSSHKey"></a>
 # **createProjectSSHKey**
-> SSHKey createProjectSSHKey(id, ssHKeyCreateInput)
+> SSHKey createProjectSSHKey(id, ssHKeyCreateInput, include)
 
 Create a ssh key for the given project
 
@@ -46,8 +46,9 @@ public class Example {
     SshKeysApi apiInstance = new SshKeysApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     SSHKeyCreateInput ssHKeyCreateInput = new SSHKeyCreateInput(); // SSHKeyCreateInput | ssh key to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      SSHKey result = apiInstance.createProjectSSHKey(id, ssHKeyCreateInput);
+      SSHKey result = apiInstance.createProjectSSHKey(id, ssHKeyCreateInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SshKeysApi#createProjectSSHKey");
@@ -66,6 +67,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
 | **ssHKeyCreateInput** | [**SSHKeyCreateInput**](SSHKeyCreateInput.md)| ssh key to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -89,7 +91,7 @@ public class Example {
 
 <a name="createSSHKey"></a>
 # **createSSHKey**
-> SSHKey createSSHKey(ssHKeyCreateInput)
+> SSHKey createSSHKey(ssHKeyCreateInput, include)
 
 Create a ssh key for the current user
 
@@ -118,8 +120,9 @@ public class Example {
 
     SshKeysApi apiInstance = new SshKeysApi(defaultClient);
     SSHKeyCreateInput ssHKeyCreateInput = new SSHKeyCreateInput(); // SSHKeyCreateInput | ssh key to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      SSHKey result = apiInstance.createSSHKey(ssHKeyCreateInput);
+      SSHKey result = apiInstance.createSSHKey(ssHKeyCreateInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SshKeysApi#createSSHKey");
@@ -137,6 +140,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ssHKeyCreateInput** | [**SSHKeyCreateInput**](SSHKeyCreateInput.md)| ssh key to create | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -231,7 +235,7 @@ null (empty response body)
 
 <a name="findDeviceSSHKeys"></a>
 # **findDeviceSSHKeys**
-> SSHKeyList findDeviceSSHKeys(id, searchString, include, exclude)
+> SSHKeyList findDeviceSSHKeys(id, searchString, include)
 
 Retrieve a device&#39;s ssh keys
 
@@ -262,9 +266,8 @@ public class Example {
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     String searchString = "searchString_example"; // String | Search by key, label, or fingerprint
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      SSHKeyList result = apiInstance.findDeviceSSHKeys(id, searchString, include, exclude);
+      SSHKeyList result = apiInstance.findDeviceSSHKeys(id, searchString, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SshKeysApi#findDeviceSSHKeys");
@@ -284,7 +287,6 @@ public class Example {
 | **id** | **UUID**| Project UUID | |
 | **searchString** | **String**| Search by key, label, or fingerprint | [optional] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -307,7 +309,7 @@ public class Example {
 
 <a name="findProjectSSHKeys"></a>
 # **findProjectSSHKeys**
-> SSHKeyList findProjectSSHKeys(id, query, include, exclude)
+> SSHKeyList findProjectSSHKeys(id, query, include)
 
 Retrieve a project&#39;s ssh keys
 
@@ -338,9 +340,8 @@ public class Example {
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     String query = "query_example"; // String | Search by key, label, or fingerprint
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      SSHKeyList result = apiInstance.findProjectSSHKeys(id, query, include, exclude);
+      SSHKeyList result = apiInstance.findProjectSSHKeys(id, query, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SshKeysApi#findProjectSSHKeys");
@@ -360,7 +361,6 @@ public class Example {
 | **id** | **UUID**| Project UUID | |
 | **query** | **String**| Search by key, label, or fingerprint | [optional] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -383,7 +383,7 @@ public class Example {
 
 <a name="findSSHKeyById"></a>
 # **findSSHKeyById**
-> SSHKey findSSHKeyById(id, include, exclude)
+> SSHKey findSSHKeyById(id, include)
 
 Retrieve a ssh key
 
@@ -413,9 +413,8 @@ public class Example {
     SshKeysApi apiInstance = new SshKeysApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | SSH Key UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      SSHKey result = apiInstance.findSSHKeyById(id, include, exclude);
+      SSHKey result = apiInstance.findSSHKeyById(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SshKeysApi#findSSHKeyById");
@@ -434,7 +433,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| SSH Key UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -459,7 +457,7 @@ public class Example {
 
 <a name="findSSHKeys"></a>
 # **findSSHKeys**
-> SSHKeyList findSSHKeys(searchString, include, exclude)
+> SSHKeyList findSSHKeys(search, include)
 
 Retrieve all ssh keys
 
@@ -487,11 +485,10 @@ public class Example {
     //x_auth_token.setApiKeyPrefix("Token");
 
     SshKeysApi apiInstance = new SshKeysApi(defaultClient);
-    String searchString = "searchString_example"; // String | Search by key, label, or fingerprint
+    String search = "search_example"; // String | Search by key, label, or fingerprint
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      SSHKeyList result = apiInstance.findSSHKeys(searchString, include, exclude);
+      SSHKeyList result = apiInstance.findSSHKeys(search, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SshKeysApi#findSSHKeys");
@@ -508,9 +505,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **searchString** | **String**| Search by key, label, or fingerprint | [optional] |
+| **search** | **String**| Search by key, label, or fingerprint | [optional] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -533,7 +529,7 @@ public class Example {
 
 <a name="updateSSHKey"></a>
 # **updateSSHKey**
-> SSHKey updateSSHKey(id, ssHKeyInput)
+> SSHKey updateSSHKey(id, ssHKeyInput, include)
 
 Update the ssh key
 
@@ -563,8 +559,9 @@ public class Example {
     SshKeysApi apiInstance = new SshKeysApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | SSH Key UUID
     SSHKeyInput ssHKeyInput = new SSHKeyInput(); // SSHKeyInput | ssh key to update
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      SSHKey result = apiInstance.updateSSHKey(id, ssHKeyInput);
+      SSHKey result = apiInstance.updateSSHKey(id, ssHKeyInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SshKeysApi#updateSSHKey");
@@ -583,6 +580,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| SSH Key UUID | |
 | **ssHKeyInput** | [**SSHKeyInput**](SSHKeyInput.md)| ssh key to update | |
+| **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 
 ### Return type
 

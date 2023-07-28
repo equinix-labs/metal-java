@@ -27,18 +27,18 @@ public class ProjectAPIKeyOperator {
         AuthTokenInput authTokenInput = new AuthTokenInput();
         authTokenInput.setDescription(description);
 
-        AuthToken newAuthToken = authApi.createProjectAPIKey(projectId, authTokenInput);
+        AuthToken newAuthToken = authApi.createProjectAPIKey(projectId, authTokenInput, null);
         return newAuthToken;
     }
 
     public SimpleEntry<AuthToken, UUID> getProjectAuthTokenByToken(String token) throws Exception {
-        ProjectList projectList = projectsApi.findProjects(null, null, null, null);
+        ProjectList projectList = projectsApi.findProjects(null, null, null, null, null);
         if (projectList.getProjects().size() != 1) {
             throw new Exception("Expected only one project to be associated with the token");
         }
         UUID projectId = projectList.getProjects().get(0).getId();
 
-        AuthTokenList tokenList = authApi.findProjectAPIKeys(projectId, null, null);
+        AuthTokenList tokenList = authApi.findProjectAPIKeys(projectId, null);
         for (AuthToken authToken : tokenList.getApiKeys()) {
             if (authToken.getToken().equals(token)) {
                 return new SimpleEntry<>(authToken, projectId);

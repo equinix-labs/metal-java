@@ -159,7 +159,7 @@ null (empty response body)
 
 <a name="findBatchById"></a>
 # **findBatchById**
-> Batch findBatchById(id, include, exclude)
+> Batch findBatchById(id, include)
 
 Retrieve a Batch
 
@@ -189,9 +189,8 @@ public class Example {
     BatchesApi apiInstance = new BatchesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Batch UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Batch result = apiInstance.findBatchById(id, include, exclude);
+      Batch result = apiInstance.findBatchById(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BatchesApi#findBatchById");
@@ -210,7 +209,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Batch UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 
@@ -234,7 +232,7 @@ public class Example {
 
 <a name="findBatchesByProject"></a>
 # **findBatchesByProject**
-> BatchesList findBatchesByProject(id, include, exclude)
+> BatchesList findBatchesByProject(id, include)
 
 Retrieve all batches by project
 
@@ -264,9 +262,8 @@ public class Example {
     BatchesApi apiInstance = new BatchesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Project UUID
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
-    List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      BatchesList result = apiInstance.findBatchesByProject(id, include, exclude);
+      BatchesList result = apiInstance.findBatchesByProject(id, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BatchesApi#findBatchesByProject");
@@ -285,7 +282,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Project UUID | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
-| **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
 ### Return type
 

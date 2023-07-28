@@ -41,7 +41,7 @@ Only IP addresses with the `type` field set to `public_ipv4` will be returned.
 
 ## Searching
 
-Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. The fields available for search differ by resource, as does the search strategy.
+Searching is used to find matching resources using multiple field comparissons. The API supports searching in resources that define this behavior. Currently the search parameter is only available on devices, ssh_keys, api_keys and memberships endpoints.
 
 To search resources you can use the `search` query parameter.
 
@@ -180,8 +180,9 @@ public class Example {
 
     AuthenticationApi apiInstance = new AuthenticationApi(defaultClient);
     AuthTokenInput authTokenInput = new AuthTokenInput(); // AuthTokenInput | API key to create
+    List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     try {
-      AuthToken result = apiInstance.createAPIKey(authTokenInput);
+      AuthToken result = apiInstance.createAPIKey(authTokenInput, include);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthenticationApi#createAPIKey");
@@ -469,6 +470,7 @@ Class | Method | HTTP request | Description
  - [DeviceUpdateInput](docs/DeviceUpdateInput.md)
  - [DeviceUsage](docs/DeviceUsage.md)
  - [DeviceUsageList](docs/DeviceUsageList.md)
+ - [Disk](docs/Disk.md)
  - [Email](docs/Email.md)
  - [EmailInput](docs/EmailInput.md)
  - [Entitlement](docs/Entitlement.md)
@@ -479,6 +481,7 @@ Class | Method | HTTP request | Description
  - [Facility](docs/Facility.md)
  - [FacilityInput](docs/FacilityInput.md)
  - [FacilityList](docs/FacilityList.md)
+ - [Filesystem](docs/Filesystem.md)
  - [FindIPAddressById200Response](docs/FindIPAddressById200Response.md)
  - [FindMetalGatewayById200Response](docs/FindMetalGatewayById200Response.md)
  - [FindTrafficTimeframeParameter](docs/FindTrafficTimeframeParameter.md)
@@ -509,7 +512,6 @@ Class | Method | HTTP request | Description
  - [InterconnectionList](docs/InterconnectionList.md)
  - [InterconnectionMetro](docs/InterconnectionMetro.md)
  - [InterconnectionPort](docs/InterconnectionPort.md)
- - [InterconnectionPortCore](docs/InterconnectionPortCore.md)
  - [InterconnectionPortList](docs/InterconnectionPortList.md)
  - [InterconnectionUpdateInput](docs/InterconnectionUpdateInput.md)
  - [Invitation](docs/Invitation.md)
@@ -539,6 +541,7 @@ Class | Method | HTTP request | Description
  - [Metro](docs/Metro.md)
  - [MetroInput](docs/MetroInput.md)
  - [MetroList](docs/MetroList.md)
+ - [Mount](docs/Mount.md)
  - [MoveHardwareReservationRequest](docs/MoveHardwareReservationRequest.md)
  - [NewPassword](docs/NewPassword.md)
  - [OperatingSystem](docs/OperatingSystem.md)
@@ -547,6 +550,7 @@ Class | Method | HTTP request | Description
  - [OrganizationInput](docs/OrganizationInput.md)
  - [OrganizationList](docs/OrganizationList.md)
  - [ParentBlock](docs/ParentBlock.md)
+ - [Partition](docs/Partition.md)
  - [PaymentMethod](docs/PaymentMethod.md)
  - [PaymentMethodBillingAddress](docs/PaymentMethodBillingAddress.md)
  - [PaymentMethodCreateInput](docs/PaymentMethodCreateInput.md)
@@ -583,6 +587,7 @@ Class | Method | HTTP request | Description
  - [ProjectUpdateInput](docs/ProjectUpdateInput.md)
  - [ProjectUsage](docs/ProjectUsage.md)
  - [ProjectUsageList](docs/ProjectUsageList.md)
+ - [Raid](docs/Raid.md)
  - [RecoveryCodeList](docs/RecoveryCodeList.md)
  - [RequestIPReservation201Response](docs/RequestIPReservation201Response.md)
  - [RequestIPReservationRequest](docs/RequestIPReservationRequest.md)
@@ -609,6 +614,7 @@ Class | Method | HTTP request | Description
  - [SpotPricesPerFacility](docs/SpotPricesPerFacility.md)
  - [SpotPricesPerNewFacility](docs/SpotPricesPerNewFacility.md)
  - [SpotPricesReport](docs/SpotPricesReport.md)
+ - [Storage](docs/Storage.md)
  - [SupportRequestInput](docs/SupportRequestInput.md)
  - [TransferRequest](docs/TransferRequest.md)
  - [TransferRequestInput](docs/TransferRequestInput.md)
