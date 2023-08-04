@@ -27,7 +27,8 @@
       [
         "@semantic-release/exec",
         {
-          "prepareCmd": "echo -n '${nextRelease.version}' > version && make generate"
+          "prepareCmd": "echo -n '${nextRelease.version}' > version && make generate",
+          "publishCmd": "mvn -f equinix-openapi-metal -B package && mvn -f equinix-openapi-metal deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/equinix-labs/metal-java"
         }
       ],
       [
