@@ -1,0 +1,30 @@
+diff --git a/equinix-openapi-metal/src/test/java/com/equinix/openapi/metal/v1/api/InterconnectionsApiTest.java b/equinix-openapi-metal/src/test/java/com/equinix/openapi/metal/v1/api/InterconnectionsApiTest.java
+index e31bff3..ae57926 100644
+--- a/equinix-openapi-metal/src/test/java/com/equinix/openapi/metal/v1/api/InterconnectionsApiTest.java
++++ b/equinix-openapi-metal/src/test/java/com/equinix/openapi/metal/v1/api/InterconnectionsApiTest.java
+@@ -14,6 +14,7 @@
+ package com.equinix.openapi.metal.v1.api;
+ 
+ import com.equinix.openapi.ApiException;
++import com.equinix.openapi.metal.v1.model.CreateOrganizationInterconnectionRequest;
+ import com.equinix.openapi.metal.v1.model.Error;
+ import com.equinix.openapi.metal.v1.model.Interconnection;
+ import com.equinix.openapi.metal.v1.model.InterconnectionCreateInput;
+@@ -68,7 +69,7 @@ public class InterconnectionsApiTest {
+     @Test
+     public void createOrganizationInterconnectionTest() throws ApiException {
+         UUID organizationId = null;
+-        InterconnectionCreateInput interconnectionCreateInput = null;
++        CreateOrganizationInterconnectionRequest interconnectionCreateInput = null;
+         List<String> include = null;
+         List<String> exclude = null;
+         Interconnection response = api.createOrganizationInterconnection(organizationId, interconnectionCreateInput, include, exclude);
+@@ -85,7 +86,7 @@ public class InterconnectionsApiTest {
+     @Test
+     public void createProjectInterconnectionTest() throws ApiException {
+         UUID projectId = null;
+-        InterconnectionCreateInput interconnectionCreateInput = null;
++        CreateOrganizationInterconnectionRequest interconnectionCreateInput = null;
+         List<String> include = null;
+         List<String> exclude = null;
+         Interconnection response = api.createProjectInterconnection(projectId, interconnectionCreateInput, include, exclude);
