@@ -98,7 +98,7 @@ public class Example {
 
 <a name="createOrganizationInterconnection"></a>
 # **createOrganizationInterconnection**
-> Interconnection createOrganizationInterconnection(organizationId, interconnectionCreateInput, include, exclude)
+> Interconnection createOrganizationInterconnection(organizationId, createOrganizationInterconnectionRequest, include, exclude)
 
 Request a new interconnection for the organization
 
@@ -127,11 +127,11 @@ public class Example {
 
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID organizationId = UUID.randomUUID(); // UUID | UUID of the organization
-    InterconnectionCreateInput interconnectionCreateInput = new InterconnectionCreateInput(); // InterconnectionCreateInput | Interconnection details
+    CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest = new CreateOrganizationInterconnectionRequest(); // CreateOrganizationInterconnectionRequest | Dedicated port or shared interconnection (also known as Fabric VC) creation request
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Interconnection result = apiInstance.createOrganizationInterconnection(organizationId, interconnectionCreateInput, include, exclude);
+      Interconnection result = apiInstance.createOrganizationInterconnection(organizationId, createOrganizationInterconnectionRequest, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#createOrganizationInterconnection");
@@ -149,7 +149,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **organizationId** | **UUID**| UUID of the organization | |
-| **interconnectionCreateInput** | [**InterconnectionCreateInput**](InterconnectionCreateInput.md)| Interconnection details | |
+| **createOrganizationInterconnectionRequest** | [**CreateOrganizationInterconnectionRequest**](CreateOrganizationInterconnectionRequest.md)| Dedicated port or shared interconnection (also known as Fabric VC) creation request | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 | **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 
@@ -176,7 +176,7 @@ public class Example {
 
 <a name="createProjectInterconnection"></a>
 # **createProjectInterconnection**
-> Interconnection createProjectInterconnection(projectId, interconnectionCreateInput, include, exclude)
+> Interconnection createProjectInterconnection(projectId, createOrganizationInterconnectionRequest, include, exclude)
 
 Request a new interconnection for the project&#39;s organization
 
@@ -205,11 +205,11 @@ public class Example {
 
     InterconnectionsApi apiInstance = new InterconnectionsApi(defaultClient);
     UUID projectId = UUID.randomUUID(); // UUID | UUID of the project
-    InterconnectionCreateInput interconnectionCreateInput = new InterconnectionCreateInput(); // InterconnectionCreateInput | Interconnection details
+    CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest = new CreateOrganizationInterconnectionRequest(); // CreateOrganizationInterconnectionRequest | Dedicated port or shared interconnection (also known as Fabric VC) creation request
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
-      Interconnection result = apiInstance.createProjectInterconnection(projectId, interconnectionCreateInput, include, exclude);
+      Interconnection result = apiInstance.createProjectInterconnection(projectId, createOrganizationInterconnectionRequest, include, exclude);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InterconnectionsApi#createProjectInterconnection");
@@ -227,7 +227,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **projectId** | **UUID**| UUID of the project | |
-| **interconnectionCreateInput** | [**InterconnectionCreateInput**](InterconnectionCreateInput.md)| Interconnection details | |
+| **createOrganizationInterconnectionRequest** | [**CreateOrganizationInterconnectionRequest**](CreateOrganizationInterconnectionRequest.md)| Dedicated port or shared interconnection (also known as Fabric VC) creation request | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 | **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 

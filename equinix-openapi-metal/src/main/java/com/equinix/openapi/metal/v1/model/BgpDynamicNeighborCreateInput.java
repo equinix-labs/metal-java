@@ -21,6 +21,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,6 +57,10 @@ public class BgpDynamicNeighborCreateInput {
   public static final String SERIALIZED_NAME_BGP_NEIGHBOR_ASN = "bgp_neighbor_asn";
   @SerializedName(SERIALIZED_NAME_BGP_NEIGHBOR_ASN)
   private Integer bgpNeighborAsn;
+
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  private List<String> tags = null;
 
   public BgpDynamicNeighborCreateInput() {
   }
@@ -100,6 +106,36 @@ public class BgpDynamicNeighborCreateInput {
 
   public void setBgpNeighborAsn(Integer bgpNeighborAsn) {
     this.bgpNeighborAsn = bgpNeighborAsn;
+  }
+
+
+  public BgpDynamicNeighborCreateInput tags(List<String> tags) {
+    
+    this.tags = tags;
+    return this;
+  }
+
+  public BgpDynamicNeighborCreateInput addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
   }
 
   /**
@@ -158,13 +194,14 @@ public class BgpDynamicNeighborCreateInput {
     }
     BgpDynamicNeighborCreateInput bgpDynamicNeighborCreateInput = (BgpDynamicNeighborCreateInput) o;
     return Objects.equals(this.bgpNeighborRange, bgpDynamicNeighborCreateInput.bgpNeighborRange) &&
-        Objects.equals(this.bgpNeighborAsn, bgpDynamicNeighborCreateInput.bgpNeighborAsn)&&
+        Objects.equals(this.bgpNeighborAsn, bgpDynamicNeighborCreateInput.bgpNeighborAsn) &&
+        Objects.equals(this.tags, bgpDynamicNeighborCreateInput.tags)&&
         Objects.equals(this.additionalProperties, bgpDynamicNeighborCreateInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bgpNeighborRange, bgpNeighborAsn, additionalProperties);
+    return Objects.hash(bgpNeighborRange, bgpNeighborAsn, tags, additionalProperties);
   }
 
   @Override
@@ -173,6 +210,7 @@ public class BgpDynamicNeighborCreateInput {
     sb.append("class BgpDynamicNeighborCreateInput {\n");
     sb.append("    bgpNeighborRange: ").append(toIndentedString(bgpNeighborRange)).append("\n");
     sb.append("    bgpNeighborAsn: ").append(toIndentedString(bgpNeighborAsn)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -198,6 +236,7 @@ public class BgpDynamicNeighborCreateInput {
     openapiFields = new HashSet<String>();
     openapiFields.add("bgp_neighbor_range");
     openapiFields.add("bgp_neighbor_asn");
+    openapiFields.add("tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -226,6 +265,10 @@ public class BgpDynamicNeighborCreateInput {
       }
       if (!jsonObj.get("bgp_neighbor_range").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bgp_neighbor_range` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bgp_neighbor_range").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
   }
 

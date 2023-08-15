@@ -18,6 +18,7 @@
 |**virtualNetwork** | [**VirtualNetwork**](VirtualNetwork.md) |  |  [optional] |
 |**vrf** | [**Vrf**](Vrf.md) |  |  [optional] |
 |**href** | **String** |  |  [optional] [readonly] |
+|**tags** | **List&lt;String&gt;** |  |  [optional] |
 
 
 
