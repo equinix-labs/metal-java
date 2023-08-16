@@ -78,6 +78,10 @@ public class VrfUpdateInput {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  private List<String> tags = null;
+
   public VrfUpdateInput() {
   }
 
@@ -242,6 +246,36 @@ public class VrfUpdateInput {
     this.name = name;
   }
 
+
+  public VrfUpdateInput tags(List<String> tags) {
+    
+    this.tags = tags;
+    return this;
+  }
+
+  public VrfUpdateInput addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -303,13 +337,14 @@ public class VrfUpdateInput {
         Objects.equals(this.description, vrfUpdateInput.description) &&
         Objects.equals(this.ipRanges, vrfUpdateInput.ipRanges) &&
         Objects.equals(this.localAsn, vrfUpdateInput.localAsn) &&
-        Objects.equals(this.name, vrfUpdateInput.name)&&
+        Objects.equals(this.name, vrfUpdateInput.name) &&
+        Objects.equals(this.tags, vrfUpdateInput.tags)&&
         Objects.equals(this.additionalProperties, vrfUpdateInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bgpDynamicNeighborsEnabled, bgpDynamicNeighborsExportRouteMap, bgpDynamicNeighborsBfdEnabled, description, ipRanges, localAsn, name, additionalProperties);
+    return Objects.hash(bgpDynamicNeighborsEnabled, bgpDynamicNeighborsExportRouteMap, bgpDynamicNeighborsBfdEnabled, description, ipRanges, localAsn, name, tags, additionalProperties);
   }
 
   @Override
@@ -323,6 +358,7 @@ public class VrfUpdateInput {
     sb.append("    ipRanges: ").append(toIndentedString(ipRanges)).append("\n");
     sb.append("    localAsn: ").append(toIndentedString(localAsn)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -353,6 +389,7 @@ public class VrfUpdateInput {
     openapiFields.add("ip_ranges");
     openapiFields.add("local_asn");
     openapiFields.add("name");
+    openapiFields.add("tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -379,6 +416,10 @@ public class VrfUpdateInput {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
   }
 

@@ -98,9 +98,76 @@ public class VrfVirtualCircuit {
   @SerializedName(SERIALIZED_NAME_SPEED)
   private Integer speed;
 
+  /**
+   * The status changes of a VRF virtual circuit are generally the same as Virtual Circuits that aren&#39;t in a VRF. However, for VRF Virtual Circuits on Fabric VCs, the status will change to &#39;waiting_on_peering_details&#39; once the Fabric service token associated with the virtual circuit has been redeemed on Fabric, and Metal has found the associated Fabric connection. At this point, users can update the subnet, MD5 password, customer IP and/or metal IP accordingly. For VRF Virtual Circuits on Dedicated Ports, we require all peering details to be set on creation of a VRF Virtual Circuit. The status will change to &#x60;changing_peering_details&#x60; whenever an active VRF Virtual Circuit has any of its peering details updated.
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    PENDING("pending"),
+    
+    WAITING_ON_PEERING_DETAILS("waiting_on_peering_details"),
+    
+    ACTIVATING("activating"),
+    
+    CHANGING_PEERING_DETAILS("changing_peering_details"),
+    
+    DEACTIVATING("deactivating"),
+    
+    DELETING("deleting"),
+    
+    ACTIVE("active"),
+    
+    EXPIRED("expired"),
+    
+    ACTIVATION_FAILED("activation_failed"),
+    
+    CHANGING_PEERING_DETAILS_FAILED("changing_peering_details_failed"),
+    
+    DEACTIVATION_FAILED("deactivation_failed"),
+    
+    DELETE_FAILED("delete_failed");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StatusEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
+  private StatusEnum status;
 
   public static final String SERIALIZED_NAME_SUBNET = "subnet";
   @SerializedName(SERIALIZED_NAME_SUBNET)
@@ -367,24 +434,24 @@ public class VrfVirtualCircuit {
   }
 
 
-  public VrfVirtualCircuit status(String status) {
+  public VrfVirtualCircuit status(StatusEnum status) {
     
     this.status = status;
     return this;
   }
 
    /**
-   * Get status
+   * The status changes of a VRF virtual circuit are generally the same as Virtual Circuits that aren&#39;t in a VRF. However, for VRF Virtual Circuits on Fabric VCs, the status will change to &#39;waiting_on_peering_details&#39; once the Fabric service token associated with the virtual circuit has been redeemed on Fabric, and Metal has found the associated Fabric connection. At this point, users can update the subnet, MD5 password, customer IP and/or metal IP accordingly. For VRF Virtual Circuits on Dedicated Ports, we require all peering details to be set on creation of a VRF Virtual Circuit. The status will change to &#x60;changing_peering_details&#x60; whenever an active VRF Virtual Circuit has any of its peering details updated.
    * @return status
   **/
   @javax.annotation.Nullable
 
-  public String getStatus() {
+  public StatusEnum getStatus() {
     return status;
   }
 
 
-  public void setStatus(String status) {
+  public void setStatus(StatusEnum status) {
     this.status = status;
   }
 
