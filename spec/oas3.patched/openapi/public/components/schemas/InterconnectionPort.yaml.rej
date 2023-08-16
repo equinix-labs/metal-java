@@ -1,0 +1,10 @@
+--- spec/oas3.patched/openapi/public/components/schemas/InterconnectionPort.yaml
++++ spec/oas3.patched/openapi/public/components/schemas/InterconnectionPort.yaml
+@@ -20,6 +20,7 @@ properties:
+     - active
+     - deleting
+     - expired
++    - delete_failed
+   switch_id:
+     description: A switch 'short ID'
+     type: string
