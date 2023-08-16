@@ -23,6 +23,7 @@
 |**href** | **String** |  |  [optional] |
 |**createdAt** | **OffsetDateTime** |  |  [optional] |
 |**updatedAt** | **OffsetDateTime** |  |  [optional] |
+|**tags** | **List&lt;String&gt;** |  |  [optional] |
 
 
 

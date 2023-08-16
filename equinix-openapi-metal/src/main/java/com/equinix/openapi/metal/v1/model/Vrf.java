@@ -120,6 +120,10 @@ public class Vrf {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  private List<String> tags = null;
+
   public Vrf() {
   }
 
@@ -490,6 +494,36 @@ public class Vrf {
     this.updatedAt = updatedAt;
   }
 
+
+  public Vrf tags(List<String> tags) {
+    
+    this.tags = tags;
+    return this;
+  }
+
+  public Vrf addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -560,13 +594,14 @@ public class Vrf {
         Objects.equals(this.createdBy, vrf.createdBy) &&
         Objects.equals(this.href, vrf.href) &&
         Objects.equals(this.createdAt, vrf.createdAt) &&
-        Objects.equals(this.updatedAt, vrf.updatedAt)&&
+        Objects.equals(this.updatedAt, vrf.updatedAt) &&
+        Objects.equals(this.tags, vrf.tags)&&
         Objects.equals(this.additionalProperties, vrf.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, bill, bgpDynamicNeighborsEnabled, bgpDynamicNeighborsExportRouteMap, bgpDynamicNeighborsBfdEnabled, localAsn, virtualCircuits, ipRanges, project, metro, createdBy, href, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(id, name, description, bill, bgpDynamicNeighborsEnabled, bgpDynamicNeighborsExportRouteMap, bgpDynamicNeighborsBfdEnabled, localAsn, virtualCircuits, ipRanges, project, metro, createdBy, href, createdAt, updatedAt, tags, additionalProperties);
   }
 
   @Override
@@ -589,6 +624,7 @@ public class Vrf {
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -628,6 +664,7 @@ public class Vrf {
     openapiFields.add("href");
     openapiFields.add("created_at");
     openapiFields.add("updated_at");
+    openapiFields.add("tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -686,6 +723,10 @@ public class Vrf {
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
   }
 

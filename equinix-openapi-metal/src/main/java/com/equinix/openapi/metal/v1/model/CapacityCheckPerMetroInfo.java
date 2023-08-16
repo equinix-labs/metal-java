@@ -62,7 +62,7 @@ public class CapacityCheckPerMetroInfo {
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private String quantity;
+  private Integer quantity;
 
   public CapacityCheckPerMetroInfo() {
   }
@@ -133,7 +133,7 @@ public class CapacityCheckPerMetroInfo {
   }
 
 
-  public CapacityCheckPerMetroInfo quantity(String quantity) {
+  public CapacityCheckPerMetroInfo quantity(Integer quantity) {
     
     this.quantity = quantity;
     return this;
@@ -145,12 +145,12 @@ public class CapacityCheckPerMetroInfo {
   **/
   @javax.annotation.Nullable
 
-  public String getQuantity() {
+  public Integer getQuantity() {
     return quantity;
   }
 
 
-  public void setQuantity(String quantity) {
+  public void setQuantity(Integer quantity) {
     this.quantity = quantity;
   }
 
@@ -278,9 +278,6 @@ public class CapacityCheckPerMetroInfo {
       }
       if ((jsonObj.get("plan") != null && !jsonObj.get("plan").isJsonNull()) && !jsonObj.get("plan").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `plan` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan").toString()));
-      }
-      if ((jsonObj.get("quantity") != null && !jsonObj.get("quantity").isJsonNull()) && !jsonObj.get("quantity").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `quantity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("quantity").toString()));
       }
   }
 

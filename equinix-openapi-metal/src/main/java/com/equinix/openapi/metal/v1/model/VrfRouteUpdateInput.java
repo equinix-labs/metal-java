@@ -21,6 +21,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,6 +57,10 @@ public class VrfRouteUpdateInput {
   public static final String SERIALIZED_NAME_NEXT_HOP = "next_hop";
   @SerializedName(SERIALIZED_NAME_NEXT_HOP)
   private String nextHop;
+
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  private List<String> tags = null;
 
   public VrfRouteUpdateInput() {
   }
@@ -100,6 +106,36 @@ public class VrfRouteUpdateInput {
 
   public void setNextHop(String nextHop) {
     this.nextHop = nextHop;
+  }
+
+
+  public VrfRouteUpdateInput tags(List<String> tags) {
+    
+    this.tags = tags;
+    return this;
+  }
+
+  public VrfRouteUpdateInput addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
   }
 
   /**
@@ -158,13 +194,14 @@ public class VrfRouteUpdateInput {
     }
     VrfRouteUpdateInput vrfRouteUpdateInput = (VrfRouteUpdateInput) o;
     return Objects.equals(this.prefix, vrfRouteUpdateInput.prefix) &&
-        Objects.equals(this.nextHop, vrfRouteUpdateInput.nextHop)&&
+        Objects.equals(this.nextHop, vrfRouteUpdateInput.nextHop) &&
+        Objects.equals(this.tags, vrfRouteUpdateInput.tags)&&
         Objects.equals(this.additionalProperties, vrfRouteUpdateInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(prefix, nextHop, additionalProperties);
+    return Objects.hash(prefix, nextHop, tags, additionalProperties);
   }
 
   @Override
@@ -173,6 +210,7 @@ public class VrfRouteUpdateInput {
     sb.append("class VrfRouteUpdateInput {\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    nextHop: ").append(toIndentedString(nextHop)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -198,6 +236,7 @@ public class VrfRouteUpdateInput {
     openapiFields = new HashSet<String>();
     openapiFields.add("prefix");
     openapiFields.add("next_hop");
+    openapiFields.add("tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -220,6 +259,10 @@ public class VrfRouteUpdateInput {
       }
       if ((jsonObj.get("next_hop") != null && !jsonObj.get("next_hop").isJsonNull()) && !jsonObj.get("next_hop").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `next_hop` to be a primitive type in the JSON string but got `%s`", jsonObj.get("next_hop").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
   }
 
