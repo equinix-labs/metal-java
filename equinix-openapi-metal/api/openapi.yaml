@@ -18159,6 +18159,7 @@ components:
           - active
           - deleting
           - expired
+          - delete_failed
           type: string
         switch_id:
           description: A switch 'short ID'
