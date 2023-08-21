@@ -20,6 +20,9 @@ jobs:
         # https://api.github.com/users/github-actions[bot]
         git config user.name 'github-actions[bot]'
         git config user.email 'bot@equinix.noreply.github.com'
+    - name: Clean
+      id: clean
+      run: make clean
     - name: Fetch latest spec
       id: fetch
       run: |
