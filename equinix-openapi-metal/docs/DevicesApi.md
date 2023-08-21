@@ -24,7 +24,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updateDevice**](DevicesApi.md#updateDevice) | **PUT** /devices/{id} | Update the device |
 
 
-<a name="createBgpSession"></a>
+<a id="createBgpSession"></a>
 # **createBgpSession**
 > BgpSession createBgpSession(id, bgPSessionInput, include)
 
@@ -100,7 +100,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createDevice"></a>
+<a id="createDevice"></a>
 # **createDevice**
 > Device createDevice(id, createDeviceRequest, include, exclude)
 
@@ -179,7 +179,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createIPAssignment"></a>
+<a id="createIPAssignment"></a>
 # **createIPAssignment**
 > IPAssignment createIPAssignment(id, ipAssignmentInput, include, exclude)
 
@@ -257,7 +257,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="deleteDevice"></a>
+<a id="deleteDevice"></a>
 # **deleteDevice**
 > deleteDevice(id, forceDelete)
 
@@ -331,7 +331,7 @@ null (empty response body)
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="findBgpSessions"></a>
+<a id="findBgpSessions"></a>
 # **findBgpSessions**
 > BgpSessionList findBgpSessions(id, include)
 
@@ -404,7 +404,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **403** | forbidden |  -  |
 
-<a name="findDeviceById"></a>
+<a id="findDeviceById"></a>
 # **findDeviceById**
 > Device findDeviceById(id, include, exclude)
 
@@ -480,7 +480,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findDeviceCustomdata"></a>
+<a id="findDeviceCustomdata"></a>
 # **findDeviceCustomdata**
 > findDeviceCustomdata(id)
 
@@ -551,7 +551,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findDeviceMetadataByID"></a>
+<a id="findDeviceMetadataByID"></a>
 # **findDeviceMetadataByID**
 > Metadata findDeviceMetadataByID(id)
 
@@ -623,7 +623,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="findDeviceUserdataByID"></a>
+<a id="findDeviceUserdataByID"></a>
 # **findDeviceUserdataByID**
 > Userdata findDeviceUserdataByID(id)
 
@@ -695,7 +695,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="findIPAssignmentCustomdata"></a>
+<a id="findIPAssignmentCustomdata"></a>
 # **findIPAssignmentCustomdata**
 > findIPAssignmentCustomdata(instanceId, id)
 
@@ -768,7 +768,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findIPAssignments"></a>
+<a id="findIPAssignments"></a>
 # **findIPAssignments**
 > IPAssignmentList findIPAssignments(id, include, exclude)
 
@@ -843,7 +843,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="findInstanceBandwidth"></a>
+<a id="findInstanceBandwidth"></a>
 # **findInstanceBandwidth**
 > findInstanceBandwidth(id, from, until)
 
@@ -917,7 +917,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findOrganizationDevices"></a>
+<a id="findOrganizationDevices"></a>
 # **findOrganizationDevices**
 > DeviceList findOrganizationDevices(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage)
 
@@ -1013,7 +1013,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findProjectDevices"></a>
+<a id="findProjectDevices"></a>
 # **findProjectDevices**
 > DeviceList findProjectDevices(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage)
 
@@ -1109,7 +1109,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findTraffic"></a>
+<a id="findTraffic"></a>
 # **findTraffic**
 > findTraffic(id, direction, interval, bucket, timeframe)
 
@@ -1188,7 +1188,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="getBgpNeighborData"></a>
+<a id="getBgpNeighborData"></a>
 # **getBgpNeighborData**
 > BgpSessionNeighbors getBgpNeighborData(id, include)
 
@@ -1262,7 +1262,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="performAction"></a>
+<a id="performAction"></a>
 # **performAction**
 > performAction(id, deviceActionInput)
 
@@ -1335,7 +1335,7 @@ null (empty response body)
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="updateDevice"></a>
+<a id="updateDevice"></a>
 # **updateDevice**
 > Device updateDevice(id, deviceUpdateInput, include, exclude)
 

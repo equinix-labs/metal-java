@@ -36,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -98,7 +102,6 @@ public class AuthToken {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -120,7 +123,6 @@ public class AuthToken {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -142,7 +144,6 @@ public class AuthToken {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -164,7 +165,6 @@ public class AuthToken {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public AuthTokenProject getProject() {
     return project;
   }
@@ -186,7 +186,6 @@ public class AuthToken {
    * @return readOnly
   **/
   @javax.annotation.Nullable
-
   public Boolean getReadOnly() {
     return readOnly;
   }
@@ -208,7 +207,6 @@ public class AuthToken {
    * @return token
   **/
   @javax.annotation.Nullable
-
   public String getToken() {
     return token;
   }
@@ -230,7 +228,6 @@ public class AuthToken {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -252,7 +249,6 @@ public class AuthToken {
    * @return user
   **/
   @javax.annotation.Nullable
-
   public AuthTokenUser getUser() {
     return user;
   }

@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -107,7 +111,7 @@ public class IPAddress {
 
   public static final String SERIALIZED_NAME_IP_RESERVATIONS = "ip_reservations";
   @SerializedName(SERIALIZED_NAME_IP_RESERVATIONS)
-  private List<String> ipReservations = null;
+  private List<String> ipReservations;
 
   public static final String SERIALIZED_NAME_PUBLIC = "public";
   @SerializedName(SERIALIZED_NAME_PUBLIC)
@@ -127,7 +131,6 @@ public class IPAddress {
    * @return addressFamily
   **/
   @javax.annotation.Nullable
-
   public AddressFamilyEnum getAddressFamily() {
     return addressFamily;
   }
@@ -149,7 +152,6 @@ public class IPAddress {
    * @return cidr
   **/
   @javax.annotation.Nullable
-
   public Integer getCidr() {
     return cidr;
   }
@@ -179,7 +181,6 @@ public class IPAddress {
    * @return ipReservations
   **/
   @javax.annotation.Nullable
-
   public List<String> getIpReservations() {
     return ipReservations;
   }
@@ -201,7 +202,6 @@ public class IPAddress {
    * @return _public
   **/
   @javax.annotation.Nullable
-
   public Boolean getPublic() {
     return _public;
   }

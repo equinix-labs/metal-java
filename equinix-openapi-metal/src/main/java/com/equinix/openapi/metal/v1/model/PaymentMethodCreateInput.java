@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -74,7 +78,6 @@ public class PaymentMethodCreateInput {
    * @return _default
   **/
   @javax.annotation.Nullable
-
   public Boolean getDefault() {
     return _default;
   }
@@ -96,7 +99,6 @@ public class PaymentMethodCreateInput {
    * @return name
   **/
   @javax.annotation.Nonnull
-
   public String getName() {
     return name;
   }
@@ -118,7 +120,6 @@ public class PaymentMethodCreateInput {
    * @return nonce
   **/
   @javax.annotation.Nonnull
-
   public String getNonce() {
     return nonce;
   }

@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -68,7 +72,7 @@ public class VrfUpdateInput {
 
   public static final String SERIALIZED_NAME_IP_RANGES = "ip_ranges";
   @SerializedName(SERIALIZED_NAME_IP_RANGES)
-  private List<String> ipRanges = null;
+  private List<String> ipRanges;
 
   public static final String SERIALIZED_NAME_LOCAL_ASN = "local_asn";
   @SerializedName(SERIALIZED_NAME_LOCAL_ASN)
@@ -80,7 +84,7 @@ public class VrfUpdateInput {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public VrfUpdateInput() {
   }
@@ -96,7 +100,6 @@ public class VrfUpdateInput {
    * @return bgpDynamicNeighborsEnabled
   **/
   @javax.annotation.Nullable
-
   public Boolean getBgpDynamicNeighborsEnabled() {
     return bgpDynamicNeighborsEnabled;
   }
@@ -118,7 +121,6 @@ public class VrfUpdateInput {
    * @return bgpDynamicNeighborsExportRouteMap
   **/
   @javax.annotation.Nullable
-
   public Boolean getBgpDynamicNeighborsExportRouteMap() {
     return bgpDynamicNeighborsExportRouteMap;
   }
@@ -140,7 +142,6 @@ public class VrfUpdateInput {
    * @return bgpDynamicNeighborsBfdEnabled
   **/
   @javax.annotation.Nullable
-
   public Boolean getBgpDynamicNeighborsBfdEnabled() {
     return bgpDynamicNeighborsBfdEnabled;
   }
@@ -162,7 +163,6 @@ public class VrfUpdateInput {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -192,7 +192,6 @@ public class VrfUpdateInput {
    * @return ipRanges
   **/
   @javax.annotation.Nullable
-
   public List<String> getIpRanges() {
     return ipRanges;
   }
@@ -214,7 +213,6 @@ public class VrfUpdateInput {
    * @return localAsn
   **/
   @javax.annotation.Nullable
-
   public Integer getLocalAsn() {
     return localAsn;
   }
@@ -236,7 +234,6 @@ public class VrfUpdateInput {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -266,7 +263,6 @@ public class VrfUpdateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

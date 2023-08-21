@@ -36,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -70,7 +74,7 @@ public class SpotMarketRequestCreateInputInstanceParameters {
 
   public static final String SERIALIZED_NAME_FEATURES = "features";
   @SerializedName(SERIALIZED_NAME_FEATURES)
-  private List<String> features = null;
+  private List<String> features;
 
   public static final String SERIALIZED_NAME_HOSTNAME = "hostname";
   @SerializedName(SERIALIZED_NAME_HOSTNAME)
@@ -78,7 +82,7 @@ public class SpotMarketRequestCreateInputInstanceParameters {
 
   public static final String SERIALIZED_NAME_HOSTNAMES = "hostnames";
   @SerializedName(SERIALIZED_NAME_HOSTNAMES)
-  private List<String> hostnames = null;
+  private List<String> hostnames;
 
   public static final String SERIALIZED_NAME_LOCKED = "locked";
   @SerializedName(SERIALIZED_NAME_LOCKED)
@@ -102,7 +106,7 @@ public class SpotMarketRequestCreateInputInstanceParameters {
 
   public static final String SERIALIZED_NAME_PROJECT_SSH_KEYS = "project_ssh_keys";
   @SerializedName(SERIALIZED_NAME_PROJECT_SSH_KEYS)
-  private List<UUID> projectSshKeys = null;
+  private List<UUID> projectSshKeys;
 
   public static final String SERIALIZED_NAME_PUBLIC_IPV4_SUBNET_SIZE = "public_ipv4_subnet_size";
   @SerializedName(SERIALIZED_NAME_PUBLIC_IPV4_SUBNET_SIZE)
@@ -110,7 +114,7 @@ public class SpotMarketRequestCreateInputInstanceParameters {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_TERMINATION_TIME = "termination_time";
   @SerializedName(SERIALIZED_NAME_TERMINATION_TIME)
@@ -118,7 +122,7 @@ public class SpotMarketRequestCreateInputInstanceParameters {
 
   public static final String SERIALIZED_NAME_USER_SSH_KEYS = "user_ssh_keys";
   @SerializedName(SERIALIZED_NAME_USER_SSH_KEYS)
-  private List<UUID> userSshKeys = null;
+  private List<UUID> userSshKeys;
 
   public static final String SERIALIZED_NAME_USERDATA = "userdata";
   @SerializedName(SERIALIZED_NAME_USERDATA)
@@ -138,7 +142,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return alwaysPxe
   **/
   @javax.annotation.Nullable
-
   public Boolean getAlwaysPxe() {
     return alwaysPxe;
   }
@@ -160,7 +163,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return billingCycle
   **/
   @javax.annotation.Nullable
-
   public String getBillingCycle() {
     return billingCycle;
   }
@@ -182,7 +184,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Object getCustomdata() {
     return customdata;
   }
@@ -204,7 +205,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -234,7 +234,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return features
   **/
   @javax.annotation.Nullable
-
   public List<String> getFeatures() {
     return features;
   }
@@ -256,7 +255,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return hostname
   **/
   @javax.annotation.Nullable
-
   public String getHostname() {
     return hostname;
   }
@@ -286,7 +284,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return hostnames
   **/
   @javax.annotation.Nullable
-
   public List<String> getHostnames() {
     return hostnames;
   }
@@ -308,7 +305,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return locked
   **/
   @javax.annotation.Nullable
-
   public Boolean getLocked() {
     return locked;
   }
@@ -330,7 +326,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return noSshKeys
   **/
   @javax.annotation.Nullable
-
   public Boolean getNoSshKeys() {
     return noSshKeys;
   }
@@ -352,7 +347,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return operatingSystem
   **/
   @javax.annotation.Nullable
-
   public String getOperatingSystem() {
     return operatingSystem;
   }
@@ -374,7 +368,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return plan
   **/
   @javax.annotation.Nullable
-
   public String getPlan() {
     return plan;
   }
@@ -396,7 +389,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return privateIpv4SubnetSize
   **/
   @javax.annotation.Nullable
-
   public Integer getPrivateIpv4SubnetSize() {
     return privateIpv4SubnetSize;
   }
@@ -426,7 +418,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return projectSshKeys
   **/
   @javax.annotation.Nullable
-
   public List<UUID> getProjectSshKeys() {
     return projectSshKeys;
   }
@@ -448,7 +439,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return publicIpv4SubnetSize
   **/
   @javax.annotation.Nullable
-
   public Integer getPublicIpv4SubnetSize() {
     return publicIpv4SubnetSize;
   }
@@ -478,7 +468,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }
@@ -500,7 +489,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return terminationTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getTerminationTime() {
     return terminationTime;
   }
@@ -530,7 +518,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return userSshKeys
   **/
   @javax.annotation.Nullable
-
   public List<UUID> getUserSshKeys() {
     return userSshKeys;
   }
@@ -552,7 +539,6 @@ public class SpotMarketRequestCreateInputInstanceParameters {
    * @return userdata
   **/
   @javax.annotation.Nullable
-
   public String getUserdata() {
     return userdata;
   }

@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -53,7 +57,7 @@ import com.equinix.openapi.JSON;
 public class GlobalBgpRangeList {
   public static final String SERIALIZED_NAME_GLOBAL_BGP_RANGES = "global_bgp_ranges";
   @SerializedName(SERIALIZED_NAME_GLOBAL_BGP_RANGES)
-  private List<GlobalBgpRange> globalBgpRanges = null;
+  private List<GlobalBgpRange> globalBgpRanges;
 
   public GlobalBgpRangeList() {
   }
@@ -77,7 +81,6 @@ public class GlobalBgpRangeList {
    * @return globalBgpRanges
   **/
   @javax.annotation.Nullable
-
   public List<GlobalBgpRange> getGlobalBgpRanges() {
     return globalBgpRanges;
   }

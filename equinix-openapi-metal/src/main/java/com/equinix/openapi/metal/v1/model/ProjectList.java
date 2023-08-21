@@ -36,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -58,7 +62,7 @@ public class ProjectList {
 
   public static final String SERIALIZED_NAME_PROJECTS = "projects";
   @SerializedName(SERIALIZED_NAME_PROJECTS)
-  private List<Project> projects = null;
+  private List<Project> projects;
 
   public ProjectList() {
   }
@@ -74,7 +78,6 @@ public class ProjectList {
    * @return meta
   **/
   @javax.annotation.Nullable
-
   public Meta getMeta() {
     return meta;
   }
@@ -104,7 +107,6 @@ public class ProjectList {
    * @return projects
   **/
   @javax.annotation.Nullable
-
   public List<Project> getProjects() {
     return projects;
   }

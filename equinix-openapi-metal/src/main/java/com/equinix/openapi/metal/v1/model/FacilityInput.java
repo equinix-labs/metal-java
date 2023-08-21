@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -51,12 +55,14 @@ import com.equinix.openapi.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FacilityInput {
   public static final String SERIALIZED_NAME_FACILITY = "facility";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_FACILITY)
   private List<String> facility = new ArrayList<>();
 
   public FacilityInput() {
   }
 
+  @Deprecated
   public FacilityInput facility(List<String> facility) {
     
     this.facility = facility;
@@ -64,6 +70,9 @@ public class FacilityInput {
   }
 
   public FacilityInput addFacilityItem(String facilityItem) {
+    if (this.facility == null) {
+      this.facility = new ArrayList<>();
+    }
     this.facility.add(facilityItem);
     return this;
   }
@@ -75,12 +84,12 @@ public class FacilityInput {
   **/
   @Deprecated
   @javax.annotation.Nonnull
-
   public List<String> getFacility() {
     return facility;
   }
 
 
+  @Deprecated
   public void setFacility(List<String> facility) {
     this.facility = facility;
   }

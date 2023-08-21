@@ -9,7 +9,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findSelfServiceReservations**](SelfServiceReservationsApi.md#findSelfServiceReservations) | **GET** /projects/{project_id}/self-service/reservations | Retrieve all reservations |
 
 
-<a name="createSelfServiceReservation"></a>
+<a id="createSelfServiceReservation"></a>
 # **createSelfServiceReservation**
 > SelfServiceReservationResponse createSelfServiceReservation(projectId, createSelfServiceReservationRequest)
 
@@ -82,7 +82,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="findSelfServiceReservation"></a>
+<a id="findSelfServiceReservation"></a>
 # **findSelfServiceReservation**
 > SelfServiceReservationResponse findSelfServiceReservation(id, projectId)
 
@@ -155,7 +155,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="findSelfServiceReservations"></a>
+<a id="findSelfServiceReservations"></a>
 # **findSelfServiceReservations**
 > SelfServiceReservationList findSelfServiceReservations(projectId, page, perPage, categories)
 

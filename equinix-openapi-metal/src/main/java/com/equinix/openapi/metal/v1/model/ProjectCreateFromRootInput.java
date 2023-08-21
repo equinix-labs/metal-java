@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -69,7 +73,7 @@ public class ProjectCreateFromRootInput {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public ProjectCreateFromRootInput() {
   }
@@ -85,7 +89,6 @@ public class ProjectCreateFromRootInput {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Object getCustomdata() {
     return customdata;
   }
@@ -107,7 +110,6 @@ public class ProjectCreateFromRootInput {
    * @return name
   **/
   @javax.annotation.Nonnull
-
   public String getName() {
     return name;
   }
@@ -129,7 +131,6 @@ public class ProjectCreateFromRootInput {
    * @return organizationId
   **/
   @javax.annotation.Nullable
-
   public UUID getOrganizationId() {
     return organizationId;
   }
@@ -151,7 +152,6 @@ public class ProjectCreateFromRootInput {
    * @return paymentMethodId
   **/
   @javax.annotation.Nullable
-
   public UUID getPaymentMethodId() {
     return paymentMethodId;
   }
@@ -181,7 +181,6 @@ public class ProjectCreateFromRootInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

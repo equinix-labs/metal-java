@@ -33,6 +33,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -83,7 +87,6 @@ public class SelfServiceReservationItemRequest {
    * @return amount
   **/
   @javax.annotation.Nullable
-
   public Float getAmount() {
     return amount;
   }
@@ -105,7 +108,6 @@ public class SelfServiceReservationItemRequest {
    * @return metroId
   **/
   @javax.annotation.Nullable
-
   public UUID getMetroId() {
     return metroId;
   }
@@ -127,7 +129,6 @@ public class SelfServiceReservationItemRequest {
    * @return planId
   **/
   @javax.annotation.Nullable
-
   public UUID getPlanId() {
     return planId;
   }
@@ -149,7 +150,6 @@ public class SelfServiceReservationItemRequest {
    * @return quantity
   **/
   @javax.annotation.Nullable
-
   public Integer getQuantity() {
     return quantity;
   }
@@ -171,7 +171,6 @@ public class SelfServiceReservationItemRequest {
    * @return term
   **/
   @javax.annotation.Nullable
-
   public String getTerm() {
     return term;
   }

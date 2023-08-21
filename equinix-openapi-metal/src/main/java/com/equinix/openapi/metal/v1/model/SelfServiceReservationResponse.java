@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -60,7 +64,7 @@ public class SelfServiceReservationResponse {
 
   public static final String SERIALIZED_NAME_ITEM = "item";
   @SerializedName(SERIALIZED_NAME_ITEM)
-  private List<SelfServiceReservationItemResponse> item = null;
+  private List<SelfServiceReservationItemResponse> item;
 
   public static final String SERIALIZED_NAME_NOTES = "notes";
   @SerializedName(SERIALIZED_NAME_NOTES)
@@ -112,7 +116,6 @@ public class SelfServiceReservationResponse {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -142,7 +145,6 @@ public class SelfServiceReservationResponse {
    * @return item
   **/
   @javax.annotation.Nullable
-
   public List<SelfServiceReservationItemResponse> getItem() {
     return item;
   }
@@ -164,7 +166,6 @@ public class SelfServiceReservationResponse {
    * @return notes
   **/
   @javax.annotation.Nullable
-
   public String getNotes() {
     return notes;
   }
@@ -186,7 +187,6 @@ public class SelfServiceReservationResponse {
    * @return organization
   **/
   @javax.annotation.Nullable
-
   public String getOrganization() {
     return organization;
   }
@@ -208,7 +208,6 @@ public class SelfServiceReservationResponse {
    * @return organizationId
   **/
   @javax.annotation.Nullable
-
   public UUID getOrganizationId() {
     return organizationId;
   }
@@ -230,7 +229,6 @@ public class SelfServiceReservationResponse {
    * @return period
   **/
   @javax.annotation.Nullable
-
   public CreateSelfServiceReservationRequestPeriod getPeriod() {
     return period;
   }
@@ -252,7 +250,6 @@ public class SelfServiceReservationResponse {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public String getProject() {
     return project;
   }
@@ -274,7 +271,6 @@ public class SelfServiceReservationResponse {
    * @return projectId
   **/
   @javax.annotation.Nullable
-
   public UUID getProjectId() {
     return projectId;
   }
@@ -296,7 +292,6 @@ public class SelfServiceReservationResponse {
    * @return startDate
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -318,7 +313,6 @@ public class SelfServiceReservationResponse {
    * @return status
   **/
   @javax.annotation.Nullable
-
   public String getStatus() {
     return status;
   }
@@ -340,7 +334,6 @@ public class SelfServiceReservationResponse {
    * @return totalCost
   **/
   @javax.annotation.Nullable
-
   public Integer getTotalCost() {
     return totalCost;
   }

@@ -33,6 +33,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -79,7 +83,6 @@ public class IPAssignmentMetro {
    * @return code
   **/
   @javax.annotation.Nullable
-
   public String getCode() {
     return code;
   }
@@ -101,7 +104,6 @@ public class IPAssignmentMetro {
    * @return country
   **/
   @javax.annotation.Nullable
-
   public String getCountry() {
     return country;
   }
@@ -123,7 +125,6 @@ public class IPAssignmentMetro {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -145,7 +146,6 @@ public class IPAssignmentMetro {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }

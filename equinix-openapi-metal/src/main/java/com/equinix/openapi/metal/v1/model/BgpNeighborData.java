@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -81,15 +85,15 @@ public class BgpNeighborData {
 
   public static final String SERIALIZED_NAME_PEER_IPS = "peer_ips";
   @SerializedName(SERIALIZED_NAME_PEER_IPS)
-  private List<String> peerIps = null;
+  private List<String> peerIps;
 
   public static final String SERIALIZED_NAME_ROUTES_IN = "routes_in";
   @SerializedName(SERIALIZED_NAME_ROUTES_IN)
-  private List<BgpRoute> routesIn = null;
+  private List<BgpRoute> routesIn;
 
   public static final String SERIALIZED_NAME_ROUTES_OUT = "routes_out";
   @SerializedName(SERIALIZED_NAME_ROUTES_OUT)
-  private List<BgpRoute> routesOut = null;
+  private List<BgpRoute> routesOut;
 
   public BgpNeighborData() {
   }
@@ -105,7 +109,6 @@ public class BgpNeighborData {
    * @return addressFamily
   **/
   @javax.annotation.Nullable
-
   public Integer getAddressFamily() {
     return addressFamily;
   }
@@ -127,7 +130,6 @@ public class BgpNeighborData {
    * @return customerAs
   **/
   @javax.annotation.Nullable
-
   public Integer getCustomerAs() {
     return customerAs;
   }
@@ -149,7 +151,6 @@ public class BgpNeighborData {
    * @return customerIp
   **/
   @javax.annotation.Nullable
-
   public String getCustomerIp() {
     return customerIp;
   }
@@ -171,7 +172,6 @@ public class BgpNeighborData {
    * @return md5Enabled
   **/
   @javax.annotation.Nullable
-
   public Boolean getMd5Enabled() {
     return md5Enabled;
   }
@@ -193,7 +193,6 @@ public class BgpNeighborData {
    * @return md5Password
   **/
   @javax.annotation.Nullable
-
   public String getMd5Password() {
     return md5Password;
   }
@@ -215,7 +214,6 @@ public class BgpNeighborData {
    * @return multihop
   **/
   @javax.annotation.Nullable
-
   public Boolean getMultihop() {
     return multihop;
   }
@@ -237,7 +235,6 @@ public class BgpNeighborData {
    * @return peerAs
   **/
   @javax.annotation.Nullable
-
   public Integer getPeerAs() {
     return peerAs;
   }
@@ -267,7 +264,6 @@ public class BgpNeighborData {
    * @return peerIps
   **/
   @javax.annotation.Nullable
-
   public List<String> getPeerIps() {
     return peerIps;
   }
@@ -297,7 +293,6 @@ public class BgpNeighborData {
    * @return routesIn
   **/
   @javax.annotation.Nullable
-
   public List<BgpRoute> getRoutesIn() {
     return routesIn;
   }
@@ -327,7 +322,6 @@ public class BgpNeighborData {
    * @return routesOut
   **/
   @javax.annotation.Nullable
-
   public List<BgpRoute> getRoutesOut() {
     return routesOut;
   }

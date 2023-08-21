@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -87,7 +91,7 @@ public class Invitation {
 
   public static final String SERIALIZED_NAME_PROJECTS = "projects";
   @SerializedName(SERIALIZED_NAME_PROJECTS)
-  private List<Href> projects = null;
+  private List<Href> projects;
 
   /**
    * Gets or Sets roles
@@ -142,7 +146,7 @@ public class Invitation {
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
-  private List<RolesEnum> roles = null;
+  private List<RolesEnum> roles;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -162,7 +166,6 @@ public class Invitation {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -184,7 +187,6 @@ public class Invitation {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -206,7 +208,6 @@ public class Invitation {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -228,7 +229,6 @@ public class Invitation {
    * @return invitation
   **/
   @javax.annotation.Nullable
-
   public Href getInvitation() {
     return invitation;
   }
@@ -250,7 +250,6 @@ public class Invitation {
    * @return invitedBy
   **/
   @javax.annotation.Nullable
-
   public Href getInvitedBy() {
     return invitedBy;
   }
@@ -272,7 +271,6 @@ public class Invitation {
    * @return invitee
   **/
   @javax.annotation.Nullable
-
   public String getInvitee() {
     return invitee;
   }
@@ -294,7 +292,6 @@ public class Invitation {
    * @return nonce
   **/
   @javax.annotation.Nullable
-
   public String getNonce() {
     return nonce;
   }
@@ -316,7 +313,6 @@ public class Invitation {
    * @return organization
   **/
   @javax.annotation.Nullable
-
   public Href getOrganization() {
     return organization;
   }
@@ -346,7 +342,6 @@ public class Invitation {
    * @return projects
   **/
   @javax.annotation.Nullable
-
   public List<Href> getProjects() {
     return projects;
   }
@@ -376,7 +371,6 @@ public class Invitation {
    * @return roles
   **/
   @javax.annotation.Nullable
-
   public List<RolesEnum> getRoles() {
     return roles;
   }
@@ -398,7 +392,6 @@ public class Invitation {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }

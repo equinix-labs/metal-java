@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -64,7 +68,7 @@ public class Mount {
 
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
-  private List<String> options = null;
+  private List<String> options;
 
   public Mount() {
   }
@@ -80,7 +84,6 @@ public class Mount {
    * @return device
   **/
   @javax.annotation.Nullable
-
   public String getDevice() {
     return device;
   }
@@ -102,7 +105,6 @@ public class Mount {
    * @return format
   **/
   @javax.annotation.Nullable
-
   public String getFormat() {
     return format;
   }
@@ -124,7 +126,6 @@ public class Mount {
    * @return point
   **/
   @javax.annotation.Nullable
-
   public String getPoint() {
     return point;
   }
@@ -154,7 +155,6 @@ public class Mount {
    * @return options
   **/
   @javax.annotation.Nullable
-
   public List<String> getOptions() {
     return options;
   }

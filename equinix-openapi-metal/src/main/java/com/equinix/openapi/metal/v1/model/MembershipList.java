@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -53,7 +57,7 @@ import com.equinix.openapi.JSON;
 public class MembershipList {
   public static final String SERIALIZED_NAME_MEMBERSHIPS = "memberships";
   @SerializedName(SERIALIZED_NAME_MEMBERSHIPS)
-  private List<Membership> memberships = null;
+  private List<Membership> memberships;
 
   public MembershipList() {
   }
@@ -77,7 +81,6 @@ public class MembershipList {
    * @return memberships
   **/
   @javax.annotation.Nullable
-
   public List<Membership> getMemberships() {
     return memberships;
   }

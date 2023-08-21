@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -70,7 +74,6 @@ public class BgpRoute {
    * @return exact
   **/
   @javax.annotation.Nullable
-
   public Boolean getExact() {
     return exact;
   }
@@ -92,7 +95,6 @@ public class BgpRoute {
    * @return route
   **/
   @javax.annotation.Nullable
-
   public String getRoute() {
     return route;
   }

@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -104,7 +108,7 @@ public class PaymentMethod {
 
   public static final String SERIALIZED_NAME_PROJECTS = "projects";
   @SerializedName(SERIALIZED_NAME_PROJECTS)
-  private List<Href> projects = null;
+  private List<Href> projects;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -128,7 +132,6 @@ public class PaymentMethod {
    * @return billingAddress
   **/
   @javax.annotation.Nullable
-
   public PaymentMethodBillingAddress getBillingAddress() {
     return billingAddress;
   }
@@ -150,7 +153,6 @@ public class PaymentMethod {
    * @return cardType
   **/
   @javax.annotation.Nullable
-
   public String getCardType() {
     return cardType;
   }
@@ -172,7 +174,6 @@ public class PaymentMethod {
    * @return cardholderName
   **/
   @javax.annotation.Nullable
-
   public String getCardholderName() {
     return cardholderName;
   }
@@ -194,7 +195,6 @@ public class PaymentMethod {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -216,7 +216,6 @@ public class PaymentMethod {
    * @return createdByUser
   **/
   @javax.annotation.Nullable
-
   public Href getCreatedByUser() {
     return createdByUser;
   }
@@ -238,7 +237,6 @@ public class PaymentMethod {
    * @return _default
   **/
   @javax.annotation.Nullable
-
   public Boolean getDefault() {
     return _default;
   }
@@ -260,7 +258,6 @@ public class PaymentMethod {
    * @return email
   **/
   @javax.annotation.Nullable
-
   public String getEmail() {
     return email;
   }
@@ -282,7 +279,6 @@ public class PaymentMethod {
    * @return expirationMonth
   **/
   @javax.annotation.Nullable
-
   public String getExpirationMonth() {
     return expirationMonth;
   }
@@ -304,7 +300,6 @@ public class PaymentMethod {
    * @return expirationYear
   **/
   @javax.annotation.Nullable
-
   public String getExpirationYear() {
     return expirationYear;
   }
@@ -326,7 +321,6 @@ public class PaymentMethod {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -348,7 +342,6 @@ public class PaymentMethod {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -370,7 +363,6 @@ public class PaymentMethod {
    * @return organization
   **/
   @javax.annotation.Nullable
-
   public Href getOrganization() {
     return organization;
   }
@@ -400,7 +392,6 @@ public class PaymentMethod {
    * @return projects
   **/
   @javax.annotation.Nullable
-
   public List<Href> getProjects() {
     return projects;
   }
@@ -422,7 +413,6 @@ public class PaymentMethod {
    * @return type
   **/
   @javax.annotation.Nullable
-
   public String getType() {
     return type;
   }
@@ -444,7 +434,6 @@ public class PaymentMethod {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }

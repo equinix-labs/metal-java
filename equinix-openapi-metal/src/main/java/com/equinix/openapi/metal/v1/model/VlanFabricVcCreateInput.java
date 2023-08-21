@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -131,7 +135,7 @@ public class VlanFabricVcCreateInput {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   /**
    * When requesting for a Fabric VC, the value of this field should be &#39;shared&#39;.
@@ -184,7 +188,7 @@ public class VlanFabricVcCreateInput {
 
   public static final String SERIALIZED_NAME_VLANS = "vlans";
   @SerializedName(SERIALIZED_NAME_VLANS)
-  private List<Integer> vlans = null;
+  private List<Integer> vlans;
 
   public VlanFabricVcCreateInput() {
   }
@@ -200,7 +204,6 @@ public class VlanFabricVcCreateInput {
    * @return contactEmail
   **/
   @javax.annotation.Nullable
-
   public String getContactEmail() {
     return contactEmail;
   }
@@ -222,7 +225,6 @@ public class VlanFabricVcCreateInput {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -244,7 +246,6 @@ public class VlanFabricVcCreateInput {
    * @return metro
   **/
   @javax.annotation.Nonnull
-
   public String getMetro() {
     return metro;
   }
@@ -266,7 +267,6 @@ public class VlanFabricVcCreateInput {
    * @return name
   **/
   @javax.annotation.Nonnull
-
   public String getName() {
     return name;
   }
@@ -288,7 +288,6 @@ public class VlanFabricVcCreateInput {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public String getProject() {
     return project;
   }
@@ -310,7 +309,6 @@ public class VlanFabricVcCreateInput {
    * @return redundancy
   **/
   @javax.annotation.Nonnull
-
   public String getRedundancy() {
     return redundancy;
   }
@@ -332,7 +330,6 @@ public class VlanFabricVcCreateInput {
    * @return serviceTokenType
   **/
   @javax.annotation.Nonnull
-
   public ServiceTokenTypeEnum getServiceTokenType() {
     return serviceTokenType;
   }
@@ -354,7 +351,6 @@ public class VlanFabricVcCreateInput {
    * @return speed
   **/
   @javax.annotation.Nullable
-
   public Integer getSpeed() {
     return speed;
   }
@@ -384,7 +380,6 @@ public class VlanFabricVcCreateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }
@@ -406,7 +401,6 @@ public class VlanFabricVcCreateInput {
    * @return type
   **/
   @javax.annotation.Nonnull
-
   public TypeEnum getType() {
     return type;
   }
@@ -436,7 +430,6 @@ public class VlanFabricVcCreateInput {
    * @return vlans
   **/
   @javax.annotation.Nullable
-
   public List<Integer> getVlans() {
     return vlans;
   }

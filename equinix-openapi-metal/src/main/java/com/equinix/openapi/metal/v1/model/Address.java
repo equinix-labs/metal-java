@@ -33,6 +33,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -91,7 +95,6 @@ public class Address {
    * @return address
   **/
   @javax.annotation.Nonnull
-
   public String getAddress() {
     return address;
   }
@@ -113,7 +116,6 @@ public class Address {
    * @return address2
   **/
   @javax.annotation.Nullable
-
   public String getAddress2() {
     return address2;
   }
@@ -135,7 +137,6 @@ public class Address {
    * @return city
   **/
   @javax.annotation.Nullable
-
   public String getCity() {
     return city;
   }
@@ -157,7 +158,6 @@ public class Address {
    * @return coordinates
   **/
   @javax.annotation.Nullable
-
   public Coordinates getCoordinates() {
     return coordinates;
   }
@@ -179,7 +179,6 @@ public class Address {
    * @return country
   **/
   @javax.annotation.Nonnull
-
   public String getCountry() {
     return country;
   }
@@ -201,7 +200,6 @@ public class Address {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public String getState() {
     return state;
   }
@@ -223,7 +221,6 @@ public class Address {
    * @return zipCode
   **/
   @javax.annotation.Nonnull
-
   public String getZipCode() {
     return zipCode;
   }

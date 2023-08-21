@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -55,15 +59,15 @@ import com.equinix.openapi.JSON;
 public class Storage {
   public static final String SERIALIZED_NAME_DISKS = "disks";
   @SerializedName(SERIALIZED_NAME_DISKS)
-  private List<Disk> disks = null;
+  private List<Disk> disks;
 
   public static final String SERIALIZED_NAME_RAID = "raid";
   @SerializedName(SERIALIZED_NAME_RAID)
-  private List<Raid> raid = null;
+  private List<Raid> raid;
 
   public static final String SERIALIZED_NAME_FILESYSTEMS = "filesystems";
   @SerializedName(SERIALIZED_NAME_FILESYSTEMS)
-  private List<Filesystem> filesystems = null;
+  private List<Filesystem> filesystems;
 
   public Storage() {
   }
@@ -87,7 +91,6 @@ public class Storage {
    * @return disks
   **/
   @javax.annotation.Nullable
-
   public List<Disk> getDisks() {
     return disks;
   }
@@ -117,7 +120,6 @@ public class Storage {
    * @return raid
   **/
   @javax.annotation.Nullable
-
   public List<Raid> getRaid() {
     return raid;
   }
@@ -147,7 +149,6 @@ public class Storage {
    * @return filesystems
   **/
   @javax.annotation.Nullable
-
   public List<Filesystem> getFilesystems() {
     return filesystems;
   }

@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -126,7 +130,7 @@ public class BgpSession {
 
   public static final String SERIALIZED_NAME_LEARNED_ROUTES = "learned_routes";
   @SerializedName(SERIALIZED_NAME_LEARNED_ROUTES)
-  private List<String> learnedRoutes = null;
+  private List<String> learnedRoutes;
 
   /**
    *  The status of the BGP Session. Multiple status values may be reported when the device is connected to multiple switches, one value per switch. Each status will start with \&quot;unknown\&quot; and progress to \&quot;up\&quot; or \&quot;down\&quot; depending on the connected device. Subsequent \&quot;unknown\&quot; values indicate a problem acquiring status from the switch. 
@@ -199,7 +203,6 @@ public class BgpSession {
    * @return addressFamily
   **/
   @javax.annotation.Nonnull
-
   public AddressFamilyEnum getAddressFamily() {
     return addressFamily;
   }
@@ -221,7 +224,6 @@ public class BgpSession {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -243,7 +245,6 @@ public class BgpSession {
    * @return defaultRoute
   **/
   @javax.annotation.Nullable
-
   public Boolean getDefaultRoute() {
     return defaultRoute;
   }
@@ -265,7 +266,6 @@ public class BgpSession {
    * @return device
   **/
   @javax.annotation.Nullable
-
   public Href getDevice() {
     return device;
   }
@@ -287,7 +287,6 @@ public class BgpSession {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -309,7 +308,6 @@ public class BgpSession {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -339,7 +337,6 @@ public class BgpSession {
    * @return learnedRoutes
   **/
   @javax.annotation.Nullable
-
   public List<String> getLearnedRoutes() {
     return learnedRoutes;
   }
@@ -361,7 +358,6 @@ public class BgpSession {
    * @return status
   **/
   @javax.annotation.Nullable
-
   public StatusEnum getStatus() {
     return status;
   }
@@ -383,7 +379,6 @@ public class BgpSession {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }

@@ -33,6 +33,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -126,7 +130,6 @@ public class PortVlanAssignmentBatchVlanAssignmentsInner {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -148,7 +151,6 @@ public class PortVlanAssignmentBatchVlanAssignmentsInner {
    * @return _native
   **/
   @javax.annotation.Nullable
-
   public Boolean getNative() {
     return _native;
   }
@@ -170,7 +172,6 @@ public class PortVlanAssignmentBatchVlanAssignmentsInner {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public StateEnum getState() {
     return state;
   }
@@ -192,7 +193,6 @@ public class PortVlanAssignmentBatchVlanAssignmentsInner {
    * @return vlan
   **/
   @javax.annotation.Nullable
-
   public Integer getVlan() {
     return vlan;
   }

@@ -15,7 +15,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findVrfRouteEvents**](EventsApi.md#findVrfRouteEvents) | **GET** /routes/{id}/events | Retrieve VRF route events |
 
 
-<a name="findDeviceEvents"></a>
+<a id="findDeviceEvents"></a>
 # **findDeviceEvents**
 > EventList findDeviceEvents(id, include, exclude, page, perPage)
 
@@ -95,7 +95,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findEventById"></a>
+<a id="findEventById"></a>
 # **findEventById**
 > Event findEventById(id, include, exclude)
 
@@ -171,7 +171,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findEvents"></a>
+<a id="findEvents"></a>
 # **findEvents**
 > EventList findEvents(include, exclude, page, perPage)
 
@@ -247,7 +247,7 @@ public class Example {
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="findInterconnectionEvents"></a>
+<a id="findInterconnectionEvents"></a>
 # **findInterconnectionEvents**
 > EventList findInterconnectionEvents(connectionId, include, exclude, page, perPage)
 
@@ -327,7 +327,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findInterconnectionPortEvents"></a>
+<a id="findInterconnectionPortEvents"></a>
 # **findInterconnectionPortEvents**
 > Event findInterconnectionPortEvents(connectionId, id, include, exclude, page, perPage)
 
@@ -409,7 +409,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findOrganizationEvents"></a>
+<a id="findOrganizationEvents"></a>
 # **findOrganizationEvents**
 > EventList findOrganizationEvents(id, include, exclude, page, perPage)
 
@@ -489,7 +489,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findProjectEvents"></a>
+<a id="findProjectEvents"></a>
 # **findProjectEvents**
 > EventList findProjectEvents(id, include, exclude, page, perPage)
 
@@ -569,7 +569,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findVirtualCircuitEvents"></a>
+<a id="findVirtualCircuitEvents"></a>
 # **findVirtualCircuitEvents**
 > Event findVirtualCircuitEvents(id, include, exclude, page, perPage)
 
@@ -649,7 +649,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findVrfRouteEvents"></a>
+<a id="findVrfRouteEvents"></a>
 # **findVrfRouteEvents**
 > Event findVrfRouteEvents(id, include, exclude, page, perPage)
 

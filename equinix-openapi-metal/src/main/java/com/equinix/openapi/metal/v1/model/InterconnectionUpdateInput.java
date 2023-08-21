@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -119,7 +123,7 @@ public class InterconnectionUpdateInput {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public InterconnectionUpdateInput() {
   }
@@ -135,7 +139,6 @@ public class InterconnectionUpdateInput {
    * @return contactEmail
   **/
   @javax.annotation.Nullable
-
   public String getContactEmail() {
     return contactEmail;
   }
@@ -157,7 +160,6 @@ public class InterconnectionUpdateInput {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -179,7 +181,6 @@ public class InterconnectionUpdateInput {
    * @return mode
   **/
   @javax.annotation.Nullable
-
   public ModeEnum getMode() {
     return mode;
   }
@@ -201,7 +202,6 @@ public class InterconnectionUpdateInput {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -223,7 +223,6 @@ public class InterconnectionUpdateInput {
    * @return redundancy
   **/
   @javax.annotation.Nullable
-
   public String getRedundancy() {
     return redundancy;
   }
@@ -253,7 +252,6 @@ public class InterconnectionUpdateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

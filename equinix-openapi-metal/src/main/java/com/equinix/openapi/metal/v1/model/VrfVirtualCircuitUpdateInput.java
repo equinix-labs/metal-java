@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -84,7 +88,7 @@ public class VrfVirtualCircuitUpdateInput {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public VrfVirtualCircuitUpdateInput() {
   }
@@ -100,7 +104,6 @@ public class VrfVirtualCircuitUpdateInput {
    * @return customerIp
   **/
   @javax.annotation.Nullable
-
   public String getCustomerIp() {
     return customerIp;
   }
@@ -122,7 +125,6 @@ public class VrfVirtualCircuitUpdateInput {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -144,7 +146,6 @@ public class VrfVirtualCircuitUpdateInput {
    * @return md5
   **/
   @javax.annotation.Nullable
-
   public String getMd5() {
     return md5;
   }
@@ -166,7 +167,6 @@ public class VrfVirtualCircuitUpdateInput {
    * @return metalIp
   **/
   @javax.annotation.Nullable
-
   public String getMetalIp() {
     return metalIp;
   }
@@ -188,7 +188,6 @@ public class VrfVirtualCircuitUpdateInput {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -210,7 +209,6 @@ public class VrfVirtualCircuitUpdateInput {
    * @return peerAsn
   **/
   @javax.annotation.Nullable
-
   public Integer getPeerAsn() {
     return peerAsn;
   }
@@ -232,7 +230,6 @@ public class VrfVirtualCircuitUpdateInput {
    * @return speed
   **/
   @javax.annotation.Nullable
-
   public String getSpeed() {
     return speed;
   }
@@ -254,7 +251,6 @@ public class VrfVirtualCircuitUpdateInput {
    * @return subnet
   **/
   @javax.annotation.Nullable
-
   public String getSubnet() {
     return subnet;
   }
@@ -284,7 +280,6 @@ public class VrfVirtualCircuitUpdateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

@@ -12,7 +12,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findOrganizationCapacityPerMetro**](CapacityApi.md#findOrganizationCapacityPerMetro) | **GET** /organizations/{id}/capacity/metros | View available hardware plans per Metro for given organization |
 
 
-<a name="checkCapacityForFacility"></a>
+<a id="checkCapacityForFacility"></a>
 # **checkCapacityForFacility**
 > CapacityCheckPerFacilityList checkCapacityForFacility(capacityInput)
 
@@ -83,7 +83,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="checkCapacityForMetro"></a>
+<a id="checkCapacityForMetro"></a>
 # **checkCapacityForMetro**
 > CapacityCheckPerMetroList checkCapacityForMetro(capacityInput)
 
@@ -154,7 +154,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="findCapacityForFacility"></a>
+<a id="findCapacityForFacility"></a>
 # **findCapacityForFacility**
 > CapacityList findCapacityForFacility()
 
@@ -220,7 +220,7 @@ This endpoint does not need any parameter.
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="findCapacityForMetro"></a>
+<a id="findCapacityForMetro"></a>
 # **findCapacityForMetro**
 > CapacityList findCapacityForMetro()
 
@@ -286,7 +286,7 @@ This endpoint does not need any parameter.
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="findOrganizationCapacityPerFacility"></a>
+<a id="findOrganizationCapacityPerFacility"></a>
 # **findOrganizationCapacityPerFacility**
 > CapacityList findOrganizationCapacityPerFacility(id)
 
@@ -357,7 +357,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **403** | forbidden |  -  |
 
-<a name="findOrganizationCapacityPerMetro"></a>
+<a id="findOrganizationCapacityPerMetro"></a>
 # **findOrganizationCapacityPerMetro**
 > CapacityList findOrganizationCapacityPerMetro(id)
 

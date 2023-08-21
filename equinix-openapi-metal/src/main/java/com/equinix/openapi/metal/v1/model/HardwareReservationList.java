@@ -36,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -54,7 +58,7 @@ import com.equinix.openapi.JSON;
 public class HardwareReservationList {
   public static final String SERIALIZED_NAME_HARDWARE_RESERVATIONS = "hardware_reservations";
   @SerializedName(SERIALIZED_NAME_HARDWARE_RESERVATIONS)
-  private List<HardwareReservation> hardwareReservations = null;
+  private List<HardwareReservation> hardwareReservations;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -82,7 +86,6 @@ public class HardwareReservationList {
    * @return hardwareReservations
   **/
   @javax.annotation.Nullable
-
   public List<HardwareReservation> getHardwareReservations() {
     return hardwareReservations;
   }
@@ -104,7 +107,6 @@ public class HardwareReservationList {
    * @return meta
   **/
   @javax.annotation.Nullable
-
   public Meta getMeta() {
     return meta;
   }

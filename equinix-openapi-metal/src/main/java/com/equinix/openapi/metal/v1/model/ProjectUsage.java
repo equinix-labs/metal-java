@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -98,7 +102,6 @@ public class ProjectUsage {
    * @return facility
   **/
   @javax.annotation.Nullable
-
   public String getFacility() {
     return facility;
   }
@@ -120,7 +123,6 @@ public class ProjectUsage {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -142,7 +144,6 @@ public class ProjectUsage {
    * @return plan
   **/
   @javax.annotation.Nullable
-
   public String getPlan() {
     return plan;
   }
@@ -164,7 +165,6 @@ public class ProjectUsage {
    * @return planVersion
   **/
   @javax.annotation.Nullable
-
   public String getPlanVersion() {
     return planVersion;
   }
@@ -186,7 +186,6 @@ public class ProjectUsage {
    * @return price
   **/
   @javax.annotation.Nullable
-
   public String getPrice() {
     return price;
   }
@@ -208,7 +207,6 @@ public class ProjectUsage {
    * @return quantity
   **/
   @javax.annotation.Nullable
-
   public String getQuantity() {
     return quantity;
   }
@@ -230,7 +228,6 @@ public class ProjectUsage {
    * @return total
   **/
   @javax.annotation.Nullable
-
   public String getTotal() {
     return total;
   }
@@ -252,7 +249,6 @@ public class ProjectUsage {
    * @return type
   **/
   @javax.annotation.Nullable
-
   public String getType() {
     return type;
   }
@@ -274,7 +270,6 @@ public class ProjectUsage {
    * @return unit
   **/
   @javax.annotation.Nullable
-
   public String getUnit() {
     return unit;
   }

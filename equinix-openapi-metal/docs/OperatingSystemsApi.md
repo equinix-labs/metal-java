@@ -8,7 +8,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findOperatingSystems**](OperatingSystemsApi.md#findOperatingSystems) | **GET** /operating-systems | Retrieve all operating systems |
 
 
-<a name="findOperatingSystemVersion"></a>
+<a id="findOperatingSystemVersion"></a>
 # **findOperatingSystemVersion**
 > OperatingSystemList findOperatingSystemVersion()
 
@@ -74,7 +74,7 @@ This endpoint does not need any parameter.
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="findOperatingSystems"></a>
+<a id="findOperatingSystems"></a>
 # **findOperatingSystems**
 > OperatingSystemList findOperatingSystems()
 

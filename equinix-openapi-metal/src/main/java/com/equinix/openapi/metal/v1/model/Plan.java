@@ -40,6 +40,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -58,15 +62,15 @@ import com.equinix.openapi.JSON;
 public class Plan {
   public static final String SERIALIZED_NAME_AVAILABLE_IN = "available_in";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_IN)
-  private List<PlanAvailableInInner> availableIn = null;
+  private List<PlanAvailableInInner> availableIn;
 
   public static final String SERIALIZED_NAME_AVAILABLE_IN_METROS = "available_in_metros";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_IN_METROS)
-  private List<PlanAvailableInMetrosInner> availableInMetros = null;
+  private List<PlanAvailableInMetrosInner> availableInMetros;
 
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
-  private List<String> categories = null;
+  private List<String> categories;
 
   public static final String SERIALIZED_NAME_PROPERTY_CLASS = "class";
   @SerializedName(SERIALIZED_NAME_PROPERTY_CLASS)
@@ -125,7 +129,7 @@ public class Plan {
 
   public static final String SERIALIZED_NAME_DEPLOYMENT_TYPES = "deployment_types";
   @SerializedName(SERIALIZED_NAME_DEPLOYMENT_TYPES)
-  private Set<DeploymentTypesEnum> deploymentTypes = null;
+  private Set<DeploymentTypesEnum> deploymentTypes;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -230,7 +234,6 @@ public class Plan {
    * @return availableIn
   **/
   @javax.annotation.Nullable
-
   public List<PlanAvailableInInner> getAvailableIn() {
     return availableIn;
   }
@@ -260,7 +263,6 @@ public class Plan {
    * @return availableInMetros
   **/
   @javax.annotation.Nullable
-
   public List<PlanAvailableInMetrosInner> getAvailableInMetros() {
     return availableInMetros;
   }
@@ -290,7 +292,6 @@ public class Plan {
    * @return categories
   **/
   @javax.annotation.Nullable
-
   public List<String> getCategories() {
     return categories;
   }
@@ -312,7 +313,6 @@ public class Plan {
    * @return propertyClass
   **/
   @javax.annotation.Nullable
-
   public String getPropertyClass() {
     return propertyClass;
   }
@@ -334,7 +334,6 @@ public class Plan {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -364,7 +363,6 @@ public class Plan {
    * @return deploymentTypes
   **/
   @javax.annotation.Nullable
-
   public Set<DeploymentTypesEnum> getDeploymentTypes() {
     return deploymentTypes;
   }
@@ -386,7 +384,6 @@ public class Plan {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -408,7 +405,6 @@ public class Plan {
    * @return legacy
   **/
   @javax.annotation.Nullable
-
   public Boolean getLegacy() {
     return legacy;
   }
@@ -430,7 +426,6 @@ public class Plan {
    * @return line
   **/
   @javax.annotation.Nullable
-
   public String getLine() {
     return line;
   }
@@ -452,7 +447,6 @@ public class Plan {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -474,7 +468,6 @@ public class Plan {
    * @return pricing
   **/
   @javax.annotation.Nullable
-
   public Object getPricing() {
     return pricing;
   }
@@ -496,7 +489,6 @@ public class Plan {
    * @return slug
   **/
   @javax.annotation.Nullable
-
   public String getSlug() {
     return slug;
   }
@@ -518,7 +510,6 @@ public class Plan {
    * @return specs
   **/
   @javax.annotation.Nullable
-
   public PlanSpecs getSpecs() {
     return specs;
   }
@@ -540,7 +531,6 @@ public class Plan {
    * @return type
   **/
   @javax.annotation.Nullable
-
   public TypeEnum getType() {
     return type;
   }

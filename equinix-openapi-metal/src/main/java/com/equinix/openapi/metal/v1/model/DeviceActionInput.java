@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -139,7 +143,6 @@ public class DeviceActionInput {
    * @return type
   **/
   @javax.annotation.Nonnull
-
   public TypeEnum getType() {
     return type;
   }
@@ -161,7 +164,6 @@ public class DeviceActionInput {
    * @return forceDelete
   **/
   @javax.annotation.Nullable
-
   public Boolean getForceDelete() {
     return forceDelete;
   }
@@ -183,7 +185,6 @@ public class DeviceActionInput {
    * @return deprovisionFast
   **/
   @javax.annotation.Nullable
-
   public Boolean getDeprovisionFast() {
     return deprovisionFast;
   }
@@ -205,7 +206,6 @@ public class DeviceActionInput {
    * @return preserveData
   **/
   @javax.annotation.Nullable
-
   public Boolean getPreserveData() {
     return preserveData;
   }
@@ -227,7 +227,6 @@ public class DeviceActionInput {
    * @return operatingSystem
   **/
   @javax.annotation.Nullable
-
   public String getOperatingSystem() {
     return operatingSystem;
   }
@@ -249,7 +248,6 @@ public class DeviceActionInput {
    * @return ipxeScriptUrl
   **/
   @javax.annotation.Nullable
-
   public String getIpxeScriptUrl() {
     return ipxeScriptUrl;
   }

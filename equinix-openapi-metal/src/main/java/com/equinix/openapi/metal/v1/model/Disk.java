@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -61,7 +65,7 @@ public class Disk {
 
   public static final String SERIALIZED_NAME_PARTITIONS = "partitions";
   @SerializedName(SERIALIZED_NAME_PARTITIONS)
-  private List<Partition> partitions = null;
+  private List<Partition> partitions;
 
   public Disk() {
   }
@@ -77,7 +81,6 @@ public class Disk {
    * @return device
   **/
   @javax.annotation.Nullable
-
   public String getDevice() {
     return device;
   }
@@ -99,7 +102,6 @@ public class Disk {
    * @return wipeTable
   **/
   @javax.annotation.Nullable
-
   public Boolean getWipeTable() {
     return wipeTable;
   }
@@ -129,7 +131,6 @@ public class Disk {
    * @return partitions
   **/
   @javax.annotation.Nullable
-
   public List<Partition> getPartitions() {
     return partitions;
   }

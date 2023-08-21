@@ -42,6 +42,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -72,7 +76,7 @@ public class IPReservation {
 
   public static final String SERIALIZED_NAME_ASSIGNMENTS = "assignments";
   @SerializedName(SERIALIZED_NAME_ASSIGNMENTS)
-  private List<IPAssignment> assignments = null;
+  private List<IPAssignment> assignments;
 
   public static final String SERIALIZED_NAME_AVAILABLE = "available";
   @SerializedName(SERIALIZED_NAME_AVAILABLE)
@@ -168,7 +172,7 @@ public class IPReservation {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   /**
    * Gets or Sets type
@@ -239,7 +243,6 @@ public class IPReservation {
    * @return addon
   **/
   @javax.annotation.Nullable
-
   public Boolean getAddon() {
     return addon;
   }
@@ -261,7 +264,6 @@ public class IPReservation {
    * @return address
   **/
   @javax.annotation.Nullable
-
   public String getAddress() {
     return address;
   }
@@ -283,7 +285,6 @@ public class IPReservation {
    * @return addressFamily
   **/
   @javax.annotation.Nullable
-
   public Integer getAddressFamily() {
     return addressFamily;
   }
@@ -313,7 +314,6 @@ public class IPReservation {
    * @return assignments
   **/
   @javax.annotation.Nullable
-
   public List<IPAssignment> getAssignments() {
     return assignments;
   }
@@ -335,7 +335,6 @@ public class IPReservation {
    * @return available
   **/
   @javax.annotation.Nullable
-
   public String getAvailable() {
     return available;
   }
@@ -357,7 +356,6 @@ public class IPReservation {
    * @return bill
   **/
   @javax.annotation.Nullable
-
   public Boolean getBill() {
     return bill;
   }
@@ -379,7 +377,6 @@ public class IPReservation {
    * @return cidr
   **/
   @javax.annotation.Nullable
-
   public Integer getCidr() {
     return cidr;
   }
@@ -401,7 +398,6 @@ public class IPReservation {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -423,7 +419,6 @@ public class IPReservation {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Object getCustomdata() {
     return customdata;
   }
@@ -445,7 +440,6 @@ public class IPReservation {
    * @return enabled
   **/
   @javax.annotation.Nullable
-
   public Boolean getEnabled() {
     return enabled;
   }
@@ -467,7 +461,6 @@ public class IPReservation {
    * @return details
   **/
   @javax.annotation.Nullable
-
   public String getDetails() {
     return details;
   }
@@ -489,7 +482,6 @@ public class IPReservation {
    * @return facility
   **/
   @javax.annotation.Nullable
-
   public IPReservationFacility getFacility() {
     return facility;
   }
@@ -511,7 +503,6 @@ public class IPReservation {
    * @return gateway
   **/
   @javax.annotation.Nullable
-
   public String getGateway() {
     return gateway;
   }
@@ -533,7 +524,6 @@ public class IPReservation {
    * @return globalIp
   **/
   @javax.annotation.Nullable
-
   public Boolean getGlobalIp() {
     return globalIp;
   }
@@ -555,7 +545,6 @@ public class IPReservation {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -577,7 +566,6 @@ public class IPReservation {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -599,7 +587,6 @@ public class IPReservation {
    * @return manageable
   **/
   @javax.annotation.Nullable
-
   public Boolean getManageable() {
     return manageable;
   }
@@ -621,7 +608,6 @@ public class IPReservation {
    * @return management
   **/
   @javax.annotation.Nullable
-
   public Boolean getManagement() {
     return management;
   }
@@ -643,7 +629,6 @@ public class IPReservation {
    * @return metalGateway
   **/
   @javax.annotation.Nullable
-
   public MetalGatewayLite getMetalGateway() {
     return metalGateway;
   }
@@ -665,7 +650,6 @@ public class IPReservation {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public IPReservationMetro getMetro() {
     return metro;
   }
@@ -687,7 +671,6 @@ public class IPReservation {
    * @return netmask
   **/
   @javax.annotation.Nullable
-
   public String getNetmask() {
     return netmask;
   }
@@ -709,7 +692,6 @@ public class IPReservation {
    * @return network
   **/
   @javax.annotation.Nullable
-
   public String getNetwork() {
     return network;
   }
@@ -731,7 +713,6 @@ public class IPReservation {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public Project getProject() {
     return project;
   }
@@ -753,7 +734,6 @@ public class IPReservation {
    * @return projectLite
   **/
   @javax.annotation.Nullable
-
   public Href getProjectLite() {
     return projectLite;
   }
@@ -775,7 +755,6 @@ public class IPReservation {
    * @return requestedBy
   **/
   @javax.annotation.Nullable
-
   public Href getRequestedBy() {
     return requestedBy;
   }
@@ -797,7 +776,6 @@ public class IPReservation {
    * @return _public
   **/
   @javax.annotation.Nullable
-
   public Boolean getPublic() {
     return _public;
   }
@@ -819,7 +797,6 @@ public class IPReservation {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public String getState() {
     return state;
   }
@@ -849,7 +826,6 @@ public class IPReservation {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }
@@ -871,7 +847,6 @@ public class IPReservation {
    * @return type
   **/
   @javax.annotation.Nonnull
-
   public TypeEnum getType() {
     return type;
   }

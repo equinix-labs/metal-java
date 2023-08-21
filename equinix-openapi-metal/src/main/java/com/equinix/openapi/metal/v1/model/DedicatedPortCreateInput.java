@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -131,7 +135,7 @@ public class DedicatedPortCreateInput {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   /**
    * When requesting for a dedicated port, the value of this field should be &#39;dedicated&#39;.
@@ -196,7 +200,6 @@ public class DedicatedPortCreateInput {
    * @return contactEmail
   **/
   @javax.annotation.Nullable
-
   public String getContactEmail() {
     return contactEmail;
   }
@@ -218,7 +221,6 @@ public class DedicatedPortCreateInput {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -240,7 +242,6 @@ public class DedicatedPortCreateInput {
    * @return metro
   **/
   @javax.annotation.Nonnull
-
   public String getMetro() {
     return metro;
   }
@@ -262,7 +263,6 @@ public class DedicatedPortCreateInput {
    * @return mode
   **/
   @javax.annotation.Nullable
-
   public ModeEnum getMode() {
     return mode;
   }
@@ -284,7 +284,6 @@ public class DedicatedPortCreateInput {
    * @return name
   **/
   @javax.annotation.Nonnull
-
   public String getName() {
     return name;
   }
@@ -306,7 +305,6 @@ public class DedicatedPortCreateInput {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public String getProject() {
     return project;
   }
@@ -328,7 +326,6 @@ public class DedicatedPortCreateInput {
    * @return redundancy
   **/
   @javax.annotation.Nonnull
-
   public String getRedundancy() {
     return redundancy;
   }
@@ -350,7 +347,6 @@ public class DedicatedPortCreateInput {
    * @return speed
   **/
   @javax.annotation.Nullable
-
   public Integer getSpeed() {
     return speed;
   }
@@ -380,7 +376,6 @@ public class DedicatedPortCreateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }
@@ -402,7 +397,6 @@ public class DedicatedPortCreateInput {
    * @return type
   **/
   @javax.annotation.Nonnull
-
   public TypeEnum getType() {
     return type;
   }

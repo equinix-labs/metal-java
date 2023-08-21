@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -49,6 +53,7 @@ import com.equinix.openapi.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ServerInfo {
   public static final String SERIALIZED_NAME_FACILITY = "facility";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_FACILITY)
   private String facility;
 
@@ -67,6 +72,7 @@ public class ServerInfo {
   public ServerInfo() {
   }
 
+  @Deprecated
   public ServerInfo facility(String facility) {
     
     this.facility = facility;
@@ -80,12 +86,12 @@ public class ServerInfo {
   **/
   @Deprecated
   @javax.annotation.Nullable
-
   public String getFacility() {
     return facility;
   }
 
 
+  @Deprecated
   public void setFacility(String facility) {
     this.facility = facility;
   }
@@ -102,7 +108,6 @@ public class ServerInfo {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public String getMetro() {
     return metro;
   }
@@ -124,7 +129,6 @@ public class ServerInfo {
    * @return plan
   **/
   @javax.annotation.Nullable
-
   public String getPlan() {
     return plan;
   }
@@ -146,7 +150,6 @@ public class ServerInfo {
    * @return quantity
   **/
   @javax.annotation.Nullable
-
   public String getQuantity() {
     return quantity;
   }

@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -136,7 +140,6 @@ public class UserCreateInput {
    * @return avatar
   **/
   @javax.annotation.Nullable
-
   public File getAvatar() {
     return avatar;
   }
@@ -158,7 +161,6 @@ public class UserCreateInput {
    * @return companyName
   **/
   @javax.annotation.Nullable
-
   public String getCompanyName() {
     return companyName;
   }
@@ -180,7 +182,6 @@ public class UserCreateInput {
    * @return companyUrl
   **/
   @javax.annotation.Nullable
-
   public String getCompanyUrl() {
     return companyUrl;
   }
@@ -202,7 +203,6 @@ public class UserCreateInput {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Object getCustomdata() {
     return customdata;
   }
@@ -220,6 +220,9 @@ public class UserCreateInput {
   }
 
   public UserCreateInput addEmailsItem(EmailInput emailsItem) {
+    if (this.emails == null) {
+      this.emails = new ArrayList<>();
+    }
     this.emails.add(emailsItem);
     return this;
   }
@@ -229,7 +232,6 @@ public class UserCreateInput {
    * @return emails
   **/
   @javax.annotation.Nonnull
-
   public List<EmailInput> getEmails() {
     return emails;
   }
@@ -251,7 +253,6 @@ public class UserCreateInput {
    * @return firstName
   **/
   @javax.annotation.Nonnull
-
   public String getFirstName() {
     return firstName;
   }
@@ -273,7 +274,6 @@ public class UserCreateInput {
    * @return lastName
   **/
   @javax.annotation.Nonnull
-
   public String getLastName() {
     return lastName;
   }
@@ -295,7 +295,6 @@ public class UserCreateInput {
    * @return level
   **/
   @javax.annotation.Nullable
-
   public String getLevel() {
     return level;
   }
@@ -317,7 +316,6 @@ public class UserCreateInput {
    * @return password
   **/
   @javax.annotation.Nullable
-
   public String getPassword() {
     return password;
   }
@@ -339,7 +337,6 @@ public class UserCreateInput {
    * @return phoneNumber
   **/
   @javax.annotation.Nullable
-
   public String getPhoneNumber() {
     return phoneNumber;
   }
@@ -361,7 +358,6 @@ public class UserCreateInput {
    * @return socialAccounts
   **/
   @javax.annotation.Nullable
-
   public Object getSocialAccounts() {
     return socialAccounts;
   }
@@ -383,7 +379,6 @@ public class UserCreateInput {
    * @return timezone
   **/
   @javax.annotation.Nullable
-
   public String getTimezone() {
     return timezone;
   }
@@ -405,7 +400,6 @@ public class UserCreateInput {
    * @return title
   **/
   @javax.annotation.Nullable
-
   public String getTitle() {
     return title;
   }
@@ -427,7 +421,6 @@ public class UserCreateInput {
    * @return twoFactorAuth
   **/
   @javax.annotation.Nullable
-
   public String getTwoFactorAuth() {
     return twoFactorAuth;
   }
@@ -449,7 +442,6 @@ public class UserCreateInput {
    * @return verifiedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getVerifiedAt() {
     return verifiedAt;
   }
@@ -471,7 +463,6 @@ public class UserCreateInput {
    * @return invitationId
   **/
   @javax.annotation.Nullable
-
   public UUID getInvitationId() {
     return invitationId;
   }
@@ -493,7 +484,6 @@ public class UserCreateInput {
    * @return nonce
   **/
   @javax.annotation.Nullable
-
   public String getNonce() {
     return nonce;
   }

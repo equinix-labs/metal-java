@@ -40,6 +40,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -137,7 +141,7 @@ public class Interconnection {
 
   public static final String SERIALIZED_NAME_PORTS = "ports";
   @SerializedName(SERIALIZED_NAME_PORTS)
-  private List<InterconnectionPort> ports = null;
+  private List<InterconnectionPort> ports;
 
   /**
    * Either &#39;primary&#39;, meaning a single interconnection, or &#39;redundant&#39;, meaning a redundant interconnection.
@@ -192,7 +196,7 @@ public class Interconnection {
 
   public static final String SERIALIZED_NAME_SERVICE_TOKENS = "service_tokens";
   @SerializedName(SERIALIZED_NAME_SERVICE_TOKENS)
-  private List<FabricServiceToken> serviceTokens = null;
+  private List<FabricServiceToken> serviceTokens;
 
   public static final String SERIALIZED_NAME_SPEED = "speed";
   @SerializedName(SERIALIZED_NAME_SPEED)
@@ -204,7 +208,7 @@ public class Interconnection {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)
@@ -287,7 +291,6 @@ public class Interconnection {
    * @return contactEmail
   **/
   @javax.annotation.Nullable
-
   public String getContactEmail() {
     return contactEmail;
   }
@@ -309,7 +312,6 @@ public class Interconnection {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -331,7 +333,6 @@ public class Interconnection {
    * @return facility
   **/
   @javax.annotation.Nullable
-
   public Href getFacility() {
     return facility;
   }
@@ -353,7 +354,6 @@ public class Interconnection {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -375,7 +375,6 @@ public class Interconnection {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public InterconnectionMetro getMetro() {
     return metro;
   }
@@ -397,7 +396,6 @@ public class Interconnection {
    * @return mode
   **/
   @javax.annotation.Nullable
-
   public ModeEnum getMode() {
     return mode;
   }
@@ -419,7 +417,6 @@ public class Interconnection {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -441,7 +438,6 @@ public class Interconnection {
    * @return organization
   **/
   @javax.annotation.Nullable
-
   public Href getOrganization() {
     return organization;
   }
@@ -471,7 +467,6 @@ public class Interconnection {
    * @return ports
   **/
   @javax.annotation.Nullable
-
   public List<InterconnectionPort> getPorts() {
     return ports;
   }
@@ -493,7 +488,6 @@ public class Interconnection {
    * @return redundancy
   **/
   @javax.annotation.Nullable
-
   public RedundancyEnum getRedundancy() {
     return redundancy;
   }
@@ -523,7 +517,6 @@ public class Interconnection {
    * @return serviceTokens
   **/
   @javax.annotation.Nullable
-
   public List<FabricServiceToken> getServiceTokens() {
     return serviceTokens;
   }
@@ -545,7 +538,6 @@ public class Interconnection {
    * @return speed
   **/
   @javax.annotation.Nullable
-
   public Integer getSpeed() {
     return speed;
   }
@@ -567,7 +559,6 @@ public class Interconnection {
    * @return status
   **/
   @javax.annotation.Nullable
-
   public String getStatus() {
     return status;
   }
@@ -597,7 +588,6 @@ public class Interconnection {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }
@@ -619,7 +609,6 @@ public class Interconnection {
    * @return token
   **/
   @javax.annotation.Nullable
-
   public UUID getToken() {
     return token;
   }
@@ -641,7 +630,6 @@ public class Interconnection {
    * @return type
   **/
   @javax.annotation.Nullable
-
   public TypeEnum getType() {
     return type;
   }
@@ -663,7 +651,6 @@ public class Interconnection {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -685,7 +672,6 @@ public class Interconnection {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -707,7 +693,6 @@ public class Interconnection {
    * @return requestedBy
   **/
   @javax.annotation.Nullable
-
   public Href getRequestedBy() {
     return requestedBy;
   }

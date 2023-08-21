@@ -36,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -62,11 +66,11 @@ public class MetalGatewayElasticIpCreateInput {
 
   public static final String SERIALIZED_NAME_CUSTOMDATA = "customdata";
   @SerializedName(SERIALIZED_NAME_CUSTOMDATA)
-  private Map<String, Object> customdata = null;
+  private Map<String, Object> customdata = new HashMap<>();
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public MetalGatewayElasticIpCreateInput() {
   }
@@ -82,7 +86,6 @@ public class MetalGatewayElasticIpCreateInput {
    * @return address
   **/
   @javax.annotation.Nonnull
-
   public String getAddress() {
     return address;
   }
@@ -104,7 +107,6 @@ public class MetalGatewayElasticIpCreateInput {
    * @return nextHop
   **/
   @javax.annotation.Nonnull
-
   public String getNextHop() {
     return nextHop;
   }
@@ -134,7 +136,6 @@ public class MetalGatewayElasticIpCreateInput {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Map<String, Object> getCustomdata() {
     return customdata;
   }
@@ -164,7 +165,6 @@ public class MetalGatewayElasticIpCreateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

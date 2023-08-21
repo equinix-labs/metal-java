@@ -33,6 +33,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -95,7 +99,6 @@ public class Meta {
    * @return first
   **/
   @javax.annotation.Nullable
-
   public Href getFirst() {
     return first;
   }
@@ -117,7 +120,6 @@ public class Meta {
    * @return last
   **/
   @javax.annotation.Nullable
-
   public Href getLast() {
     return last;
   }
@@ -139,7 +141,6 @@ public class Meta {
    * @return next
   **/
   @javax.annotation.Nullable
-
   public Href getNext() {
     return next;
   }
@@ -161,7 +162,6 @@ public class Meta {
    * @return previous
   **/
   @javax.annotation.Nullable
-
   public Href getPrevious() {
     return previous;
   }
@@ -183,7 +183,6 @@ public class Meta {
    * @return self
   **/
   @javax.annotation.Nullable
-
   public Href getSelf() {
     return self;
   }
@@ -205,7 +204,6 @@ public class Meta {
    * @return total
   **/
   @javax.annotation.Nullable
-
   public Integer getTotal() {
     return total;
   }
@@ -227,7 +225,6 @@ public class Meta {
    * @return currentPage
   **/
   @javax.annotation.Nullable
-
   public Integer getCurrentPage() {
     return currentPage;
   }
@@ -249,7 +246,6 @@ public class Meta {
    * @return lastPage
   **/
   @javax.annotation.Nullable
-
   public Integer getLastPage() {
     return lastPage;
   }

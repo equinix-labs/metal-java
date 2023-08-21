@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -52,7 +56,7 @@ import com.equinix.openapi.JSON;
 public class Raid {
   public static final String SERIALIZED_NAME_DEVICES = "devices";
   @SerializedName(SERIALIZED_NAME_DEVICES)
-  private List<String> devices = null;
+  private List<String> devices;
 
   public static final String SERIALIZED_NAME_LEVEL = "level";
   @SerializedName(SERIALIZED_NAME_LEVEL)
@@ -84,7 +88,6 @@ public class Raid {
    * @return devices
   **/
   @javax.annotation.Nullable
-
   public List<String> getDevices() {
     return devices;
   }
@@ -106,7 +109,6 @@ public class Raid {
    * @return level
   **/
   @javax.annotation.Nullable
-
   public String getLevel() {
     return level;
   }
@@ -128,7 +130,6 @@ public class Raid {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }

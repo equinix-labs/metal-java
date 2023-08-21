@@ -8,7 +8,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**getMetro**](MetrosApi.md#getMetro) | **GET** /locations/metros/{id} | Retrieve a specific Metro&#39;s details |
 
 
-<a name="findMetros"></a>
+<a id="findMetros"></a>
 # **findMetros**
 > MetroList findMetros()
 
@@ -74,7 +74,7 @@ This endpoint does not need any parameter.
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="getMetro"></a>
+<a id="getMetro"></a>
 # **getMetro**
 > Metro getMetro(id)
 

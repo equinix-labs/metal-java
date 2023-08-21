@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -55,6 +59,7 @@ public class VirtualNetworkCreateInput {
   private String description;
 
   public static final String SERIALIZED_NAME_FACILITY = "facility";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_FACILITY)
   private String facility;
 
@@ -68,7 +73,7 @@ public class VirtualNetworkCreateInput {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public VirtualNetworkCreateInput() {
   }
@@ -84,7 +89,6 @@ public class VirtualNetworkCreateInput {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -95,6 +99,7 @@ public class VirtualNetworkCreateInput {
   }
 
 
+  @Deprecated
   public VirtualNetworkCreateInput facility(String facility) {
     
     this.facility = facility;
@@ -108,12 +113,12 @@ public class VirtualNetworkCreateInput {
   **/
   @Deprecated
   @javax.annotation.Nullable
-
   public String getFacility() {
     return facility;
   }
 
 
+  @Deprecated
   public void setFacility(String facility) {
     this.facility = facility;
   }
@@ -130,7 +135,6 @@ public class VirtualNetworkCreateInput {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public String getMetro() {
     return metro;
   }
@@ -152,7 +156,6 @@ public class VirtualNetworkCreateInput {
    * @return vxlan
   **/
   @javax.annotation.Nullable
-
   public Integer getVxlan() {
     return vxlan;
   }
@@ -182,7 +185,6 @@ public class VirtualNetworkCreateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

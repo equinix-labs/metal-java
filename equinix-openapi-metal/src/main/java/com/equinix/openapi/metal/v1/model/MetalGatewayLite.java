@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -141,7 +145,6 @@ public class MetalGatewayLite {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -163,7 +166,6 @@ public class MetalGatewayLite {
    * @return gatewayAddress
   **/
   @javax.annotation.Nullable
-
   public String getGatewayAddress() {
     return gatewayAddress;
   }
@@ -185,7 +187,6 @@ public class MetalGatewayLite {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -207,7 +208,6 @@ public class MetalGatewayLite {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -229,7 +229,6 @@ public class MetalGatewayLite {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public StateEnum getState() {
     return state;
   }
@@ -251,7 +250,6 @@ public class MetalGatewayLite {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -273,7 +271,6 @@ public class MetalGatewayLite {
    * @return vlan
   **/
   @javax.annotation.Nullable
-
   public Integer getVlan() {
     return vlan;
   }

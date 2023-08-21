@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -92,11 +96,11 @@ public class Organization {
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
-  private List<Href> members = null;
+  private List<Href> members;
 
   public static final String SERIALIZED_NAME_MEMBERSHIPS = "memberships";
   @SerializedName(SERIALIZED_NAME_MEMBERSHIPS)
-  private List<Href> memberships = null;
+  private List<Href> memberships;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -104,7 +108,7 @@ public class Organization {
 
   public static final String SERIALIZED_NAME_PROJECTS = "projects";
   @SerializedName(SERIALIZED_NAME_PROJECTS)
-  private List<Href> projects = null;
+  private List<Href> projects;
 
   public static final String SERIALIZED_NAME_TERMS = "terms";
   @SerializedName(SERIALIZED_NAME_TERMS)
@@ -136,7 +140,6 @@ public class Organization {
    * @return address
   **/
   @javax.annotation.Nullable
-
   public Address getAddress() {
     return address;
   }
@@ -158,7 +161,6 @@ public class Organization {
    * @return billingAddress
   **/
   @javax.annotation.Nullable
-
   public Address getBillingAddress() {
     return billingAddress;
   }
@@ -180,7 +182,6 @@ public class Organization {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -202,7 +203,6 @@ public class Organization {
    * @return creditAmount
   **/
   @javax.annotation.Nullable
-
   public Float getCreditAmount() {
     return creditAmount;
   }
@@ -224,7 +224,6 @@ public class Organization {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Object getCustomdata() {
     return customdata;
   }
@@ -246,7 +245,6 @@ public class Organization {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -268,7 +266,6 @@ public class Organization {
    * @return enforce2faAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getEnforce2faAt() {
     return enforce2faAt;
   }
@@ -290,7 +287,6 @@ public class Organization {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -312,7 +308,6 @@ public class Organization {
    * @return logo
   **/
   @javax.annotation.Nullable
-
   public String getLogo() {
     return logo;
   }
@@ -342,7 +337,6 @@ public class Organization {
    * @return members
   **/
   @javax.annotation.Nullable
-
   public List<Href> getMembers() {
     return members;
   }
@@ -372,7 +366,6 @@ public class Organization {
    * @return memberships
   **/
   @javax.annotation.Nullable
-
   public List<Href> getMemberships() {
     return memberships;
   }
@@ -394,7 +387,6 @@ public class Organization {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -424,7 +416,6 @@ public class Organization {
    * @return projects
   **/
   @javax.annotation.Nullable
-
   public List<Href> getProjects() {
     return projects;
   }
@@ -446,7 +437,6 @@ public class Organization {
    * @return terms
   **/
   @javax.annotation.Nullable
-
   public Integer getTerms() {
     return terms;
   }
@@ -468,7 +458,6 @@ public class Organization {
    * @return twitter
   **/
   @javax.annotation.Nullable
-
   public String getTwitter() {
     return twitter;
   }
@@ -490,7 +479,6 @@ public class Organization {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -512,7 +500,6 @@ public class Organization {
    * @return website
   **/
   @javax.annotation.Nullable
-
   public String getWebsite() {
     return website;
   }

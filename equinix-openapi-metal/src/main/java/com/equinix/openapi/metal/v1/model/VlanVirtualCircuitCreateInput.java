@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -73,7 +77,7 @@ public class VlanVirtualCircuitCreateInput {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_VNID = "vnid";
   @SerializedName(SERIALIZED_NAME_VNID)
@@ -93,7 +97,6 @@ public class VlanVirtualCircuitCreateInput {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -115,7 +118,6 @@ public class VlanVirtualCircuitCreateInput {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -139,7 +141,6 @@ public class VlanVirtualCircuitCreateInput {
    * @return nniVlan
   **/
   @javax.annotation.Nullable
-
   public Integer getNniVlan() {
     return nniVlan;
   }
@@ -161,7 +162,6 @@ public class VlanVirtualCircuitCreateInput {
    * @return projectId
   **/
   @javax.annotation.Nonnull
-
   public UUID getProjectId() {
     return projectId;
   }
@@ -183,7 +183,6 @@ public class VlanVirtualCircuitCreateInput {
    * @return speed
   **/
   @javax.annotation.Nullable
-
   public Integer getSpeed() {
     return speed;
   }
@@ -213,7 +212,6 @@ public class VlanVirtualCircuitCreateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }
@@ -235,7 +233,6 @@ public class VlanVirtualCircuitCreateInput {
    * @return vnid
   **/
   @javax.annotation.Nullable
-
   public UUID getVnid() {
     return vnid;
   }

@@ -10,7 +10,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**moveHardwareReservation**](HardwareReservationsApi.md#moveHardwareReservation) | **POST** /hardware-reservations/{id}/move | Move a hardware reservation |
 
 
-<a name="activateHardwareReservation"></a>
+<a id="activateHardwareReservation"></a>
 # **activateHardwareReservation**
 > HardwareReservation activateHardwareReservation(id, include, exclude, activateHardwareReservationRequest)
 
@@ -88,7 +88,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findHardwareReservationById"></a>
+<a id="findHardwareReservationById"></a>
 # **findHardwareReservationById**
 > HardwareReservation findHardwareReservationById(id, include, exclude)
 
@@ -164,7 +164,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findProjectHardwareReservations"></a>
+<a id="findProjectHardwareReservations"></a>
 # **findProjectHardwareReservations**
 > HardwareReservationList findProjectHardwareReservations(id, query, state, provisionable, include, exclude, page, perPage)
 
@@ -250,7 +250,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="moveHardwareReservation"></a>
+<a id="moveHardwareReservation"></a>
 # **moveHardwareReservation**
 > HardwareReservation moveHardwareReservation(id, moveHardwareReservationRequest, include, exclude)
 

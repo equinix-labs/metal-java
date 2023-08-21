@@ -33,6 +33,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -91,7 +95,6 @@ public class LineItem {
    * @return amount
   **/
   @javax.annotation.Nullable
-
   public Float getAmount() {
     return amount;
   }
@@ -113,7 +116,6 @@ public class LineItem {
    * @return currency
   **/
   @javax.annotation.Nullable
-
   public String getCurrency() {
     return currency;
   }
@@ -135,7 +137,6 @@ public class LineItem {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -157,7 +158,6 @@ public class LineItem {
    * @return details
   **/
   @javax.annotation.Nullable
-
   public String getDetails() {
     return details;
   }
@@ -179,7 +179,6 @@ public class LineItem {
    * @return plan
   **/
   @javax.annotation.Nullable
-
   public Plan getPlan() {
     return plan;
   }
@@ -201,7 +200,6 @@ public class LineItem {
    * @return unit
   **/
   @javax.annotation.Nullable
-
   public String getUnit() {
     return unit;
   }
@@ -223,7 +221,6 @@ public class LineItem {
    * @return unitPrice
   **/
   @javax.annotation.Nullable
-
   public Float getUnitPrice() {
     return unitPrice;
   }

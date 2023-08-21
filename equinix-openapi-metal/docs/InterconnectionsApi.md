@@ -21,7 +21,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updateVirtualCircuit**](InterconnectionsApi.md#updateVirtualCircuit) | **PUT** /virtual-circuits/{id} | Update a virtual circuit |
 
 
-<a name="createInterconnectionPortVirtualCircuit"></a>
+<a id="createInterconnectionPortVirtualCircuit"></a>
 # **createInterconnectionPortVirtualCircuit**
 > VirtualCircuit createInterconnectionPortVirtualCircuit(connectionId, portId, virtualCircuitCreateInput)
 
@@ -96,7 +96,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="createOrganizationInterconnection"></a>
+<a id="createOrganizationInterconnection"></a>
 # **createOrganizationInterconnection**
 > Interconnection createOrganizationInterconnection(organizationId, createOrganizationInterconnectionRequest, include, exclude)
 
@@ -174,7 +174,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createProjectInterconnection"></a>
+<a id="createProjectInterconnection"></a>
 # **createProjectInterconnection**
 > Interconnection createProjectInterconnection(projectId, createOrganizationInterconnectionRequest, include, exclude)
 
@@ -251,7 +251,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="deleteInterconnection"></a>
+<a id="deleteInterconnection"></a>
 # **deleteInterconnection**
 > Interconnection deleteInterconnection(connectionId, include, exclude)
 
@@ -326,7 +326,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="deleteVirtualCircuit"></a>
+<a id="deleteVirtualCircuit"></a>
 # **deleteVirtualCircuit**
 > VirtualCircuit deleteVirtualCircuit(id, include, exclude)
 
@@ -401,7 +401,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="getInterconnection"></a>
+<a id="getInterconnection"></a>
 # **getInterconnection**
 > Interconnection getInterconnection(connectionId, include, exclude)
 
@@ -476,7 +476,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="getInterconnectionPort"></a>
+<a id="getInterconnectionPort"></a>
 # **getInterconnectionPort**
 > InterconnectionPort getInterconnectionPort(connectionId, id, include, exclude)
 
@@ -553,7 +553,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="getVirtualCircuit"></a>
+<a id="getVirtualCircuit"></a>
 # **getVirtualCircuit**
 > VirtualCircuit getVirtualCircuit(id, include, exclude)
 
@@ -628,7 +628,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="listInterconnectionPortVirtualCircuits"></a>
+<a id="listInterconnectionPortVirtualCircuits"></a>
 # **listInterconnectionPortVirtualCircuits**
 > VirtualCircuitList listInterconnectionPortVirtualCircuits(connectionId, portId, include, exclude)
 
@@ -705,7 +705,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="listInterconnectionPorts"></a>
+<a id="listInterconnectionPorts"></a>
 # **listInterconnectionPorts**
 > InterconnectionPortList listInterconnectionPorts(connectionId)
 
@@ -776,7 +776,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="listInterconnectionVirtualCircuits"></a>
+<a id="listInterconnectionVirtualCircuits"></a>
 # **listInterconnectionVirtualCircuits**
 > VirtualCircuitList listInterconnectionVirtualCircuits(connectionId)
 
@@ -847,7 +847,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="organizationListInterconnections"></a>
+<a id="organizationListInterconnections"></a>
 # **organizationListInterconnections**
 > InterconnectionList organizationListInterconnections(organizationId, include, exclude)
 
@@ -922,7 +922,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="projectListInterconnections"></a>
+<a id="projectListInterconnections"></a>
 # **projectListInterconnections**
 > InterconnectionList projectListInterconnections(projectId, include, exclude, page, perPage)
 
@@ -1001,7 +1001,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="updateInterconnection"></a>
+<a id="updateInterconnection"></a>
 # **updateInterconnection**
 > Interconnection updateInterconnection(connectionId, interconnectionUpdateInput, include, exclude)
 
@@ -1078,7 +1078,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="updateVirtualCircuit"></a>
+<a id="updateVirtualCircuit"></a>
 # **updateVirtualCircuit**
 > VirtualCircuit updateVirtualCircuit(id, virtualCircuitUpdateInput, include, exclude)
 

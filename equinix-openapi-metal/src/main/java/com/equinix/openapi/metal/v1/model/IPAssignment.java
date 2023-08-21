@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -192,7 +196,6 @@ public class IPAssignment {
    * @return address
   **/
   @javax.annotation.Nullable
-
   public String getAddress() {
     return address;
   }
@@ -214,7 +217,6 @@ public class IPAssignment {
    * @return addressFamily
   **/
   @javax.annotation.Nullable
-
   public Integer getAddressFamily() {
     return addressFamily;
   }
@@ -236,7 +238,6 @@ public class IPAssignment {
    * @return assignedTo
   **/
   @javax.annotation.Nullable
-
   public Href getAssignedTo() {
     return assignedTo;
   }
@@ -258,7 +259,6 @@ public class IPAssignment {
    * @return cidr
   **/
   @javax.annotation.Nullable
-
   public Integer getCidr() {
     return cidr;
   }
@@ -280,7 +280,6 @@ public class IPAssignment {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -302,7 +301,6 @@ public class IPAssignment {
    * @return enabled
   **/
   @javax.annotation.Nullable
-
   public Boolean getEnabled() {
     return enabled;
   }
@@ -324,7 +322,6 @@ public class IPAssignment {
    * @return gateway
   **/
   @javax.annotation.Nullable
-
   public String getGateway() {
     return gateway;
   }
@@ -346,7 +343,6 @@ public class IPAssignment {
    * @return globalIp
   **/
   @javax.annotation.Nullable
-
   public Boolean getGlobalIp() {
     return globalIp;
   }
@@ -368,7 +364,6 @@ public class IPAssignment {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -390,7 +385,6 @@ public class IPAssignment {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -412,7 +406,6 @@ public class IPAssignment {
    * @return manageable
   **/
   @javax.annotation.Nullable
-
   public Boolean getManageable() {
     return manageable;
   }
@@ -434,7 +427,6 @@ public class IPAssignment {
    * @return management
   **/
   @javax.annotation.Nullable
-
   public Boolean getManagement() {
     return management;
   }
@@ -456,7 +448,6 @@ public class IPAssignment {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public IPAssignmentMetro getMetro() {
     return metro;
   }
@@ -478,7 +469,6 @@ public class IPAssignment {
    * @return netmask
   **/
   @javax.annotation.Nullable
-
   public String getNetmask() {
     return netmask;
   }
@@ -500,7 +490,6 @@ public class IPAssignment {
    * @return network
   **/
   @javax.annotation.Nullable
-
   public String getNetwork() {
     return network;
   }
@@ -522,7 +511,6 @@ public class IPAssignment {
    * @return parentBlock
   **/
   @javax.annotation.Nullable
-
   public ParentBlock getParentBlock() {
     return parentBlock;
   }
@@ -544,7 +532,6 @@ public class IPAssignment {
    * @return _public
   **/
   @javax.annotation.Nullable
-
   public Boolean getPublic() {
     return _public;
   }
@@ -566,7 +553,6 @@ public class IPAssignment {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public StateEnum getState() {
     return state;
   }
@@ -588,7 +574,6 @@ public class IPAssignment {
    * @return nextHop
   **/
   @javax.annotation.Nullable
-
   public String getNextHop() {
     return nextHop;
   }

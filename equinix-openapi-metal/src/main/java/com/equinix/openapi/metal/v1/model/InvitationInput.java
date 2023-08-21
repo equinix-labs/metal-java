@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -65,7 +69,7 @@ public class InvitationInput {
 
   public static final String SERIALIZED_NAME_PROJECTS_IDS = "projects_ids";
   @SerializedName(SERIALIZED_NAME_PROJECTS_IDS)
-  private List<UUID> projectsIds = null;
+  private List<UUID> projectsIds;
 
   /**
    * Gets or Sets roles
@@ -120,7 +124,7 @@ public class InvitationInput {
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
-  private List<RolesEnum> roles = null;
+  private List<RolesEnum> roles;
 
   public InvitationInput() {
   }
@@ -136,7 +140,6 @@ public class InvitationInput {
    * @return invitee
   **/
   @javax.annotation.Nonnull
-
   public String getInvitee() {
     return invitee;
   }
@@ -158,7 +161,6 @@ public class InvitationInput {
    * @return message
   **/
   @javax.annotation.Nullable
-
   public String getMessage() {
     return message;
   }
@@ -180,7 +182,6 @@ public class InvitationInput {
    * @return organizationId
   **/
   @javax.annotation.Nullable
-
   public UUID getOrganizationId() {
     return organizationId;
   }
@@ -210,7 +211,6 @@ public class InvitationInput {
    * @return projectsIds
   **/
   @javax.annotation.Nullable
-
   public List<UUID> getProjectsIds() {
     return projectsIds;
   }
@@ -240,7 +240,6 @@ public class InvitationInput {
    * @return roles
   **/
   @javax.annotation.Nullable
-
   public List<RolesEnum> getRoles() {
     return roles;
   }

@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -80,7 +84,7 @@ public class IPReservationRequestInput {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -100,7 +104,6 @@ public class IPReservationRequestInput {
    * @return comments
   **/
   @javax.annotation.Nullable
-
   public String getComments() {
     return comments;
   }
@@ -122,7 +125,6 @@ public class IPReservationRequestInput {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Object getCustomdata() {
     return customdata;
   }
@@ -144,7 +146,6 @@ public class IPReservationRequestInput {
    * @return details
   **/
   @javax.annotation.Nullable
-
   public String getDetails() {
     return details;
   }
@@ -166,7 +167,6 @@ public class IPReservationRequestInput {
    * @return facility
   **/
   @javax.annotation.Nullable
-
   public String getFacility() {
     return facility;
   }
@@ -188,7 +188,6 @@ public class IPReservationRequestInput {
    * @return failOnApprovalRequired
   **/
   @javax.annotation.Nullable
-
   public Boolean getFailOnApprovalRequired() {
     return failOnApprovalRequired;
   }
@@ -210,7 +209,6 @@ public class IPReservationRequestInput {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public String getMetro() {
     return metro;
   }
@@ -232,7 +230,6 @@ public class IPReservationRequestInput {
    * @return quantity
   **/
   @javax.annotation.Nonnull
-
   public Integer getQuantity() {
     return quantity;
   }
@@ -262,7 +259,6 @@ public class IPReservationRequestInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }
@@ -284,7 +280,6 @@ public class IPReservationRequestInput {
    * @return type
   **/
   @javax.annotation.Nonnull
-
   public String getType() {
     return type;
   }

@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -86,7 +90,6 @@ public class UserUpdateInput {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Object getCustomdata() {
     return customdata;
   }
@@ -108,7 +111,6 @@ public class UserUpdateInput {
    * @return firstName
   **/
   @javax.annotation.Nullable
-
   public String getFirstName() {
     return firstName;
   }
@@ -130,7 +132,6 @@ public class UserUpdateInput {
    * @return lastName
   **/
   @javax.annotation.Nullable
-
   public String getLastName() {
     return lastName;
   }
@@ -152,7 +153,6 @@ public class UserUpdateInput {
    * @return password
   **/
   @javax.annotation.Nullable
-
   public String getPassword() {
     return password;
   }
@@ -174,7 +174,6 @@ public class UserUpdateInput {
    * @return phoneNumber
   **/
   @javax.annotation.Nullable
-
   public String getPhoneNumber() {
     return phoneNumber;
   }
@@ -196,7 +195,6 @@ public class UserUpdateInput {
    * @return timezone
   **/
   @javax.annotation.Nullable
-
   public String getTimezone() {
     return timezone;
   }

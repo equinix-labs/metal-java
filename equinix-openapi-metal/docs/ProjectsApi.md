@@ -17,7 +17,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updateProject**](ProjectsApi.md#updateProject) | **PUT** /projects/{id} | Update the project |
 
 
-<a name="createProject"></a>
+<a id="createProject"></a>
 # **createProject**
 > Project createProject(projectCreateFromRootInput, include, exclude)
 
@@ -92,7 +92,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createProjectInvitation"></a>
+<a id="createProjectInvitation"></a>
 # **createProjectInvitation**
 > Invitation createProjectInvitation(projectId, invitationInput, include)
 
@@ -169,7 +169,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createTransferRequest"></a>
+<a id="createTransferRequest"></a>
 # **createTransferRequest**
 > TransferRequest createTransferRequest(id, transferRequestInput, include)
 
@@ -246,7 +246,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="deleteProject"></a>
+<a id="deleteProject"></a>
 # **deleteProject**
 > deleteProject(id)
 
@@ -317,7 +317,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findIPReservationCustomdata"></a>
+<a id="findIPReservationCustomdata"></a>
 # **findIPReservationCustomdata**
 > findIPReservationCustomdata(projectId, id)
 
@@ -390,7 +390,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findProjectById"></a>
+<a id="findProjectById"></a>
 # **findProjectById**
 > Project findProjectById(id, include, exclude)
 
@@ -466,7 +466,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findProjectCustomdata"></a>
+<a id="findProjectCustomdata"></a>
 # **findProjectCustomdata**
 > findProjectCustomdata(id)
 
@@ -537,7 +537,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findProjectInvitations"></a>
+<a id="findProjectInvitations"></a>
 # **findProjectInvitations**
 > InvitationList findProjectInvitations(projectId, include, page, perPage)
 
@@ -615,7 +615,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findProjectMemberships"></a>
+<a id="findProjectMemberships"></a>
 # **findProjectMemberships**
 > MembershipList findProjectMemberships(projectId, search, include, page, perPage)
 
@@ -695,7 +695,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findProjects"></a>
+<a id="findProjects"></a>
 # **findProjects**
 > ProjectList findProjects(name, include, exclude, page, perPage)
 
@@ -773,7 +773,7 @@ public class Example {
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="updateProject"></a>
+<a id="updateProject"></a>
 # **updateProject**
 > Project updateProject(id, projectUpdateInput, include, exclude)
 

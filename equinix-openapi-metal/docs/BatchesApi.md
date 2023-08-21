@@ -10,7 +10,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findBatchesByProject**](BatchesApi.md#findBatchesByProject) | **GET** /projects/{id}/batches | Retrieve all batches by project |
 
 
-<a name="createDeviceBatch"></a>
+<a id="createDeviceBatch"></a>
 # **createDeviceBatch**
 > BatchesList createDeviceBatch(id, instancesBatchCreateInput)
 
@@ -85,7 +85,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="deleteBatch"></a>
+<a id="deleteBatch"></a>
 # **deleteBatch**
 > deleteBatch(id, removeAssociatedInstances)
 
@@ -157,7 +157,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findBatchById"></a>
+<a id="findBatchById"></a>
 # **findBatchById**
 > Batch findBatchById(id, include)
 
@@ -230,7 +230,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="findBatchesByProject"></a>
+<a id="findBatchesByProject"></a>
 # **findBatchesByProject**
 > BatchesList findBatchesByProject(id, include)
 

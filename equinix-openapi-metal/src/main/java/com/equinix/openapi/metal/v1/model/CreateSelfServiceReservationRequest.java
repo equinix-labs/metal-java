@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -55,7 +59,7 @@ import com.equinix.openapi.JSON;
 public class CreateSelfServiceReservationRequest {
   public static final String SERIALIZED_NAME_ITEM = "item";
   @SerializedName(SERIALIZED_NAME_ITEM)
-  private List<SelfServiceReservationItemRequest> item = null;
+  private List<SelfServiceReservationItemRequest> item;
 
   public static final String SERIALIZED_NAME_NOTES = "notes";
   @SerializedName(SERIALIZED_NAME_NOTES)
@@ -91,7 +95,6 @@ public class CreateSelfServiceReservationRequest {
    * @return item
   **/
   @javax.annotation.Nullable
-
   public List<SelfServiceReservationItemRequest> getItem() {
     return item;
   }
@@ -113,7 +116,6 @@ public class CreateSelfServiceReservationRequest {
    * @return notes
   **/
   @javax.annotation.Nullable
-
   public String getNotes() {
     return notes;
   }
@@ -135,7 +137,6 @@ public class CreateSelfServiceReservationRequest {
    * @return period
   **/
   @javax.annotation.Nullable
-
   public CreateSelfServiceReservationRequestPeriod getPeriod() {
     return period;
   }
@@ -157,7 +158,6 @@ public class CreateSelfServiceReservationRequest {
    * @return startDate
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getStartDate() {
     return startDate;
   }

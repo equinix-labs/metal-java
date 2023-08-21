@@ -8,7 +8,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findPlansByProject**](PlansApi.md#findPlansByProject) | **GET** /projects/{id}/plans | Retrieve all plans visible by the project |
 
 
-<a name="findPlans"></a>
+<a id="findPlans"></a>
 # **findPlans**
 > PlanList findPlans(categories, type, slug, include, exclude)
 
@@ -86,7 +86,7 @@ public class Example {
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="findPlansByProject"></a>
+<a id="findPlansByProject"></a>
 # **findPlansByProject**
 > PlanList findPlansByProject(id, include, exclude)
 

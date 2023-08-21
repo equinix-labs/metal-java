@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -81,7 +85,7 @@ public class OperatingSystem {
 
   public static final String SERIALIZED_NAME_PROVISIONABLE_ON = "provisionable_on";
   @SerializedName(SERIALIZED_NAME_PROVISIONABLE_ON)
-  private List<String> provisionableOn = null;
+  private List<String> provisionableOn;
 
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -117,7 +121,6 @@ public class OperatingSystem {
    * @return distro
   **/
   @javax.annotation.Nullable
-
   public String getDistro() {
     return distro;
   }
@@ -139,7 +142,6 @@ public class OperatingSystem {
    * @return distroLabel
   **/
   @javax.annotation.Nullable
-
   public String getDistroLabel() {
     return distroLabel;
   }
@@ -161,7 +163,6 @@ public class OperatingSystem {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -183,7 +184,6 @@ public class OperatingSystem {
    * @return licensed
   **/
   @javax.annotation.Nullable
-
   public Boolean getLicensed() {
     return licensed;
   }
@@ -205,7 +205,6 @@ public class OperatingSystem {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -227,7 +226,6 @@ public class OperatingSystem {
    * @return preinstallable
   **/
   @javax.annotation.Nullable
-
   public Boolean getPreinstallable() {
     return preinstallable;
   }
@@ -249,7 +247,6 @@ public class OperatingSystem {
    * @return pricing
   **/
   @javax.annotation.Nullable
-
   public Object getPricing() {
     return pricing;
   }
@@ -279,7 +276,6 @@ public class OperatingSystem {
    * @return provisionableOn
   **/
   @javax.annotation.Nullable
-
   public List<String> getProvisionableOn() {
     return provisionableOn;
   }
@@ -301,7 +297,6 @@ public class OperatingSystem {
    * @return slug
   **/
   @javax.annotation.Nullable
-
   public String getSlug() {
     return slug;
   }
@@ -323,7 +318,6 @@ public class OperatingSystem {
    * @return version
   **/
   @javax.annotation.Nullable
-
   public String getVersion() {
     return version;
   }
@@ -339,7 +333,6 @@ public class OperatingSystem {
    * @return defaultOperatingSystem
   **/
   @javax.annotation.Nullable
-
   public Boolean getDefaultOperatingSystem() {
     return defaultOperatingSystem;
   }

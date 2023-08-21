@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -116,7 +120,7 @@ public class IPReservationFacility {
 
   public static final String SERIALIZED_NAME_FEATURES = "features";
   @SerializedName(SERIALIZED_NAME_FEATURES)
-  private List<FeaturesEnum> features = null;
+  private List<FeaturesEnum> features;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -124,7 +128,7 @@ public class IPReservationFacility {
 
   public static final String SERIALIZED_NAME_IP_RANGES = "ip_ranges";
   @SerializedName(SERIALIZED_NAME_IP_RANGES)
-  private List<String> ipRanges = null;
+  private List<String> ipRanges;
 
   public static final String SERIALIZED_NAME_METRO = "metro";
   @SerializedName(SERIALIZED_NAME_METRO)
@@ -148,7 +152,6 @@ public class IPReservationFacility {
    * @return address
   **/
   @javax.annotation.Nullable
-
   public Address getAddress() {
     return address;
   }
@@ -170,7 +173,6 @@ public class IPReservationFacility {
    * @return code
   **/
   @javax.annotation.Nullable
-
   public String getCode() {
     return code;
   }
@@ -200,7 +202,6 @@ public class IPReservationFacility {
    * @return features
   **/
   @javax.annotation.Nullable
-
   public List<FeaturesEnum> getFeatures() {
     return features;
   }
@@ -222,7 +223,6 @@ public class IPReservationFacility {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -252,7 +252,6 @@ public class IPReservationFacility {
    * @return ipRanges
   **/
   @javax.annotation.Nullable
-
   public List<String> getIpRanges() {
     return ipRanges;
   }
@@ -274,7 +273,6 @@ public class IPReservationFacility {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public DeviceMetro getMetro() {
     return metro;
   }
@@ -296,7 +294,6 @@ public class IPReservationFacility {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }

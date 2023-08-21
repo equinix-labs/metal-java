@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -132,7 +136,7 @@ public class VrfFabricVcCreateInput {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   /**
    * When requesting for a Fabric VC, the value of this field should be &#39;shared&#39;.
@@ -201,7 +205,6 @@ public class VrfFabricVcCreateInput {
    * @return contactEmail
   **/
   @javax.annotation.Nullable
-
   public String getContactEmail() {
     return contactEmail;
   }
@@ -223,7 +226,6 @@ public class VrfFabricVcCreateInput {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -245,7 +247,6 @@ public class VrfFabricVcCreateInput {
    * @return metro
   **/
   @javax.annotation.Nonnull
-
   public String getMetro() {
     return metro;
   }
@@ -267,7 +268,6 @@ public class VrfFabricVcCreateInput {
    * @return name
   **/
   @javax.annotation.Nonnull
-
   public String getName() {
     return name;
   }
@@ -289,7 +289,6 @@ public class VrfFabricVcCreateInput {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public String getProject() {
     return project;
   }
@@ -311,7 +310,6 @@ public class VrfFabricVcCreateInput {
    * @return redundancy
   **/
   @javax.annotation.Nonnull
-
   public String getRedundancy() {
     return redundancy;
   }
@@ -333,7 +331,6 @@ public class VrfFabricVcCreateInput {
    * @return serviceTokenType
   **/
   @javax.annotation.Nonnull
-
   public ServiceTokenTypeEnum getServiceTokenType() {
     return serviceTokenType;
   }
@@ -355,7 +352,6 @@ public class VrfFabricVcCreateInput {
    * @return speed
   **/
   @javax.annotation.Nullable
-
   public Integer getSpeed() {
     return speed;
   }
@@ -385,7 +381,6 @@ public class VrfFabricVcCreateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }
@@ -407,7 +402,6 @@ public class VrfFabricVcCreateInput {
    * @return type
   **/
   @javax.annotation.Nonnull
-
   public TypeEnum getType() {
     return type;
   }
@@ -425,6 +419,9 @@ public class VrfFabricVcCreateInput {
   }
 
   public VrfFabricVcCreateInput addVrfsItem(UUID vrfsItem) {
+    if (this.vrfs == null) {
+      this.vrfs = new ArrayList<>();
+    }
     this.vrfs.add(vrfsItem);
     return this;
   }
@@ -434,7 +431,6 @@ public class VrfFabricVcCreateInput {
    * @return vrfs
   **/
   @javax.annotation.Nonnull
-
   public List<UUID> getVrfs() {
     return vrfs;
   }

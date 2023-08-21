@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -66,8 +70,9 @@ public class SpotMarketRequestCreateInput {
   private OffsetDateTime endAt;
 
   public static final String SERIALIZED_NAME_FACILITIES = "facilities";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_FACILITIES)
-  private List<UUID> facilities = null;
+  private List<UUID> facilities;
 
   public static final String SERIALIZED_NAME_INSTANCE_PARAMETERS = "instance_parameters";
   @SerializedName(SERIALIZED_NAME_INSTANCE_PARAMETERS)
@@ -95,7 +100,6 @@ public class SpotMarketRequestCreateInput {
    * @return devicesMax
   **/
   @javax.annotation.Nullable
-
   public Integer getDevicesMax() {
     return devicesMax;
   }
@@ -117,7 +121,6 @@ public class SpotMarketRequestCreateInput {
    * @return devicesMin
   **/
   @javax.annotation.Nullable
-
   public Integer getDevicesMin() {
     return devicesMin;
   }
@@ -139,7 +142,6 @@ public class SpotMarketRequestCreateInput {
    * @return endAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getEndAt() {
     return endAt;
   }
@@ -150,6 +152,7 @@ public class SpotMarketRequestCreateInput {
   }
 
 
+  @Deprecated
   public SpotMarketRequestCreateInput facilities(List<UUID> facilities) {
     
     this.facilities = facilities;
@@ -171,12 +174,12 @@ public class SpotMarketRequestCreateInput {
   **/
   @Deprecated
   @javax.annotation.Nullable
-
   public List<UUID> getFacilities() {
     return facilities;
   }
 
 
+  @Deprecated
   public void setFacilities(List<UUID> facilities) {
     this.facilities = facilities;
   }
@@ -193,7 +196,6 @@ public class SpotMarketRequestCreateInput {
    * @return instanceParameters
   **/
   @javax.annotation.Nullable
-
   public SpotMarketRequestCreateInputInstanceParameters getInstanceParameters() {
     return instanceParameters;
   }
@@ -215,7 +217,6 @@ public class SpotMarketRequestCreateInput {
    * @return maxBidPrice
   **/
   @javax.annotation.Nullable
-
   public Float getMaxBidPrice() {
     return maxBidPrice;
   }
@@ -237,7 +238,6 @@ public class SpotMarketRequestCreateInput {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public String getMetro() {
     return metro;
   }

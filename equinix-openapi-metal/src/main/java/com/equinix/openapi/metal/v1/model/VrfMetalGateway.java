@@ -39,6 +39,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -158,7 +162,6 @@ public class VrfMetalGateway {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -180,7 +183,6 @@ public class VrfMetalGateway {
    * @return createdBy
   **/
   @javax.annotation.Nullable
-
   public Href getCreatedBy() {
     return createdBy;
   }
@@ -202,7 +204,6 @@ public class VrfMetalGateway {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -224,7 +225,6 @@ public class VrfMetalGateway {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -246,7 +246,6 @@ public class VrfMetalGateway {
    * @return ipReservation
   **/
   @javax.annotation.Nullable
-
   public VrfIpReservationOrHref getIpReservation() {
     return ipReservation;
   }
@@ -268,7 +267,6 @@ public class VrfMetalGateway {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public Project getProject() {
     return project;
   }
@@ -290,7 +288,6 @@ public class VrfMetalGateway {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public StateEnum getState() {
     return state;
   }
@@ -312,7 +309,6 @@ public class VrfMetalGateway {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -334,7 +330,6 @@ public class VrfMetalGateway {
    * @return virtualNetwork
   **/
   @javax.annotation.Nullable
-
   public VirtualNetwork getVirtualNetwork() {
     return virtualNetwork;
   }
@@ -356,7 +351,6 @@ public class VrfMetalGateway {
    * @return vrf
   **/
   @javax.annotation.Nonnull
-
   public Vrf getVrf() {
     return vrf;
   }

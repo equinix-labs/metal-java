@@ -660,9 +660,12 @@ Class | Method | HTTP request | Description
  - [VrfVirtualCircuitUpdateInput](docs/VrfVirtualCircuitUpdateInput.md)
 
 
+<a id="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
+
 Authentication schemes defined for the API:
+<a id="x_auth_token"></a>
 ### x_auth_token
 
 - **Type**: API key

@@ -36,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -58,7 +62,7 @@ public class UserList {
 
   public static final String SERIALIZED_NAME_USERS = "users";
   @SerializedName(SERIALIZED_NAME_USERS)
-  private List<User> users = null;
+  private List<User> users;
 
   public UserList() {
   }
@@ -74,7 +78,6 @@ public class UserList {
    * @return meta
   **/
   @javax.annotation.Nullable
-
   public Meta getMeta() {
     return meta;
   }
@@ -104,7 +107,6 @@ public class UserList {
    * @return users
   **/
   @javax.annotation.Nullable
-
   public List<User> getUsers() {
     return users;
   }

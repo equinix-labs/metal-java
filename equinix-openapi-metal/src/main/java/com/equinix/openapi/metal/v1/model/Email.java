@@ -33,6 +33,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -83,7 +87,6 @@ public class Email {
    * @return address
   **/
   @javax.annotation.Nullable
-
   public String getAddress() {
     return address;
   }
@@ -105,7 +108,6 @@ public class Email {
    * @return _default
   **/
   @javax.annotation.Nullable
-
   public Boolean getDefault() {
     return _default;
   }
@@ -127,7 +129,6 @@ public class Email {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -149,7 +150,6 @@ public class Email {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -171,7 +171,6 @@ public class Email {
    * @return verified
   **/
   @javax.annotation.Nullable
-
   public Boolean getVerified() {
     return verified;
   }

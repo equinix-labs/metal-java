@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -85,7 +89,7 @@ public class SelfServiceReservationItemResponse {
 
   public static final String SERIALIZED_NAME_PLAN_CATEGORIES = "plan_categories";
   @SerializedName(SERIALIZED_NAME_PLAN_CATEGORIES)
-  private List<String> planCategories = null;
+  private List<String> planCategories;
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
@@ -109,7 +113,6 @@ public class SelfServiceReservationItemResponse {
    * @return amount
   **/
   @javax.annotation.Nullable
-
   public Float getAmount() {
     return amount;
   }
@@ -131,7 +134,6 @@ public class SelfServiceReservationItemResponse {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public String getId() {
     return id;
   }
@@ -153,7 +155,6 @@ public class SelfServiceReservationItemResponse {
    * @return metroCode
   **/
   @javax.annotation.Nullable
-
   public String getMetroCode() {
     return metroCode;
   }
@@ -175,7 +176,6 @@ public class SelfServiceReservationItemResponse {
    * @return metroId
   **/
   @javax.annotation.Nullable
-
   public UUID getMetroId() {
     return metroId;
   }
@@ -197,7 +197,6 @@ public class SelfServiceReservationItemResponse {
    * @return metroName
   **/
   @javax.annotation.Nullable
-
   public String getMetroName() {
     return metroName;
   }
@@ -219,7 +218,6 @@ public class SelfServiceReservationItemResponse {
    * @return planId
   **/
   @javax.annotation.Nullable
-
   public UUID getPlanId() {
     return planId;
   }
@@ -241,7 +239,6 @@ public class SelfServiceReservationItemResponse {
    * @return planName
   **/
   @javax.annotation.Nullable
-
   public String getPlanName() {
     return planName;
   }
@@ -263,7 +260,6 @@ public class SelfServiceReservationItemResponse {
    * @return planSlug
   **/
   @javax.annotation.Nullable
-
   public String getPlanSlug() {
     return planSlug;
   }
@@ -293,7 +289,6 @@ public class SelfServiceReservationItemResponse {
    * @return planCategories
   **/
   @javax.annotation.Nullable
-
   public List<String> getPlanCategories() {
     return planCategories;
   }
@@ -315,7 +310,6 @@ public class SelfServiceReservationItemResponse {
    * @return quantity
   **/
   @javax.annotation.Nullable
-
   public Integer getQuantity() {
     return quantity;
   }
@@ -337,7 +331,6 @@ public class SelfServiceReservationItemResponse {
    * @return term
   **/
   @javax.annotation.Nullable
-
   public String getTerm() {
     return term;
   }

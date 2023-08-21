@@ -14,7 +14,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updateSSHKey**](SshKeysApi.md#updateSSHKey) | **PUT** /ssh-keys/{id} | Update the ssh key |
 
 
-<a name="createProjectSSHKey"></a>
+<a id="createProjectSSHKey"></a>
 # **createProjectSSHKey**
 > SSHKey createProjectSSHKey(id, ssHKeyCreateInput, include)
 
@@ -89,7 +89,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createSSHKey"></a>
+<a id="createSSHKey"></a>
 # **createSSHKey**
 > SSHKey createSSHKey(ssHKeyCreateInput, include)
 
@@ -162,7 +162,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="deleteSSHKey"></a>
+<a id="deleteSSHKey"></a>
 # **deleteSSHKey**
 > deleteSSHKey(id)
 
@@ -233,7 +233,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findDeviceSSHKeys"></a>
+<a id="findDeviceSSHKeys"></a>
 # **findDeviceSSHKeys**
 > SSHKeyList findDeviceSSHKeys(id, searchString, include)
 
@@ -307,7 +307,7 @@ public class Example {
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="findProjectSSHKeys"></a>
+<a id="findProjectSSHKeys"></a>
 # **findProjectSSHKeys**
 > SSHKeyList findProjectSSHKeys(id, query, include)
 
@@ -381,7 +381,7 @@ public class Example {
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="findSSHKeyById"></a>
+<a id="findSSHKeyById"></a>
 # **findSSHKeyById**
 > SSHKey findSSHKeyById(id, include)
 
@@ -455,7 +455,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findSSHKeys"></a>
+<a id="findSSHKeys"></a>
 # **findSSHKeys**
 > SSHKeyList findSSHKeys(search, include)
 
@@ -527,7 +527,7 @@ public class Example {
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="updateSSHKey"></a>
+<a id="updateSSHKey"></a>
 # **updateSSHKey**
 > SSHKey updateSSHKey(id, ssHKeyInput, include)
 

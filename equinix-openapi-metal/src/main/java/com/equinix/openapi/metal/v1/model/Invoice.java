@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -88,7 +92,7 @@ public class Invoice {
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
-  private List<LineItem> items = null;
+  private List<LineItem> items;
 
   public static final String SERIALIZED_NAME_NUMBER = "number";
   @SerializedName(SERIALIZED_NAME_NUMBER)
@@ -124,7 +128,6 @@ public class Invoice {
    * @return amount
   **/
   @javax.annotation.Nullable
-
   public Float getAmount() {
     return amount;
   }
@@ -146,7 +149,6 @@ public class Invoice {
    * @return balance
   **/
   @javax.annotation.Nullable
-
   public Float getBalance() {
     return balance;
   }
@@ -168,7 +170,6 @@ public class Invoice {
    * @return createdOn
   **/
   @javax.annotation.Nullable
-
   public LocalDate getCreatedOn() {
     return createdOn;
   }
@@ -190,7 +191,6 @@ public class Invoice {
    * @return creditAmount
   **/
   @javax.annotation.Nullable
-
   public Float getCreditAmount() {
     return creditAmount;
   }
@@ -212,7 +212,6 @@ public class Invoice {
    * @return creditsApplied
   **/
   @javax.annotation.Nullable
-
   public Float getCreditsApplied() {
     return creditsApplied;
   }
@@ -234,7 +233,6 @@ public class Invoice {
    * @return currency
   **/
   @javax.annotation.Nullable
-
   public String getCurrency() {
     return currency;
   }
@@ -256,7 +254,6 @@ public class Invoice {
    * @return dueOn
   **/
   @javax.annotation.Nullable
-
   public LocalDate getDueOn() {
     return dueOn;
   }
@@ -278,7 +275,6 @@ public class Invoice {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -308,7 +304,6 @@ public class Invoice {
    * @return items
   **/
   @javax.annotation.Nullable
-
   public List<LineItem> getItems() {
     return items;
   }
@@ -330,7 +325,6 @@ public class Invoice {
    * @return number
   **/
   @javax.annotation.Nullable
-
   public String getNumber() {
     return number;
   }
@@ -352,7 +346,6 @@ public class Invoice {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public ProjectIdName getProject() {
     return project;
   }
@@ -374,7 +367,6 @@ public class Invoice {
    * @return referenceNumber
   **/
   @javax.annotation.Nullable
-
   public String getReferenceNumber() {
     return referenceNumber;
   }
@@ -396,7 +388,6 @@ public class Invoice {
    * @return status
   **/
   @javax.annotation.Nullable
-
   public String getStatus() {
     return status;
   }
@@ -418,7 +409,6 @@ public class Invoice {
    * @return targetDate
   **/
   @javax.annotation.Nullable
-
   public LocalDate getTargetDate() {
     return targetDate;
   }

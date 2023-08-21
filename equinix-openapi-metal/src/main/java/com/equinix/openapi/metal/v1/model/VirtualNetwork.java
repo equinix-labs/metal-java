@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -79,11 +83,11 @@ public class VirtualNetwork {
 
   public static final String SERIALIZED_NAME_INSTANCES = "instances";
   @SerializedName(SERIALIZED_NAME_INSTANCES)
-  private List<Href> instances = null;
+  private List<Href> instances;
 
   public static final String SERIALIZED_NAME_METAL_GATEWAYS = "metal_gateways";
   @SerializedName(SERIALIZED_NAME_METAL_GATEWAYS)
-  private List<MetalGatewayLite> metalGateways = null;
+  private List<MetalGatewayLite> metalGateways;
 
   public static final String SERIALIZED_NAME_METRO = "metro";
   @SerializedName(SERIALIZED_NAME_METRO)
@@ -99,7 +103,7 @@ public class VirtualNetwork {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public VirtualNetwork() {
   }
@@ -115,7 +119,6 @@ public class VirtualNetwork {
    * @return assignedTo
   **/
   @javax.annotation.Nullable
-
   public Href getAssignedTo() {
     return assignedTo;
   }
@@ -137,7 +140,6 @@ public class VirtualNetwork {
    * @return assignedToVirtualCircuit
   **/
   @javax.annotation.Nullable
-
   public Boolean getAssignedToVirtualCircuit() {
     return assignedToVirtualCircuit;
   }
@@ -159,7 +161,6 @@ public class VirtualNetwork {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -181,7 +182,6 @@ public class VirtualNetwork {
    * @return facility
   **/
   @javax.annotation.Nullable
-
   public Href getFacility() {
     return facility;
   }
@@ -203,7 +203,6 @@ public class VirtualNetwork {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -225,7 +224,6 @@ public class VirtualNetwork {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -255,7 +253,6 @@ public class VirtualNetwork {
    * @return instances
   **/
   @javax.annotation.Nullable
-
   public List<Href> getInstances() {
     return instances;
   }
@@ -285,7 +282,6 @@ public class VirtualNetwork {
    * @return metalGateways
   **/
   @javax.annotation.Nullable
-
   public List<MetalGatewayLite> getMetalGateways() {
     return metalGateways;
   }
@@ -307,7 +303,6 @@ public class VirtualNetwork {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public Href getMetro() {
     return metro;
   }
@@ -329,7 +324,6 @@ public class VirtualNetwork {
    * @return metroCode
   **/
   @javax.annotation.Nullable
-
   public String getMetroCode() {
     return metroCode;
   }
@@ -351,7 +345,6 @@ public class VirtualNetwork {
    * @return vxlan
   **/
   @javax.annotation.Nullable
-
   public Integer getVxlan() {
     return vxlan;
   }
@@ -381,7 +374,6 @@ public class VirtualNetwork {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

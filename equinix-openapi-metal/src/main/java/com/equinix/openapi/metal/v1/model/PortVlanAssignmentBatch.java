@@ -39,6 +39,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -61,7 +65,7 @@ public class PortVlanAssignmentBatch {
 
   public static final String SERIALIZED_NAME_ERROR_MESSAGES = "error_messages";
   @SerializedName(SERIALIZED_NAME_ERROR_MESSAGES)
-  private List<String> errorMessages = null;
+  private List<String> errorMessages;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -136,7 +140,7 @@ public class PortVlanAssignmentBatch {
 
   public static final String SERIALIZED_NAME_VLAN_ASSIGNMENTS = "vlan_assignments";
   @SerializedName(SERIALIZED_NAME_VLAN_ASSIGNMENTS)
-  private List<PortVlanAssignmentBatchVlanAssignmentsInner> vlanAssignments = null;
+  private List<PortVlanAssignmentBatchVlanAssignmentsInner> vlanAssignments;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -156,7 +160,6 @@ public class PortVlanAssignmentBatch {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -186,7 +189,6 @@ public class PortVlanAssignmentBatch {
    * @return errorMessages
   **/
   @javax.annotation.Nullable
-
   public List<String> getErrorMessages() {
     return errorMessages;
   }
@@ -208,7 +210,6 @@ public class PortVlanAssignmentBatch {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -230,7 +231,6 @@ public class PortVlanAssignmentBatch {
    * @return port
   **/
   @javax.annotation.Nullable
-
   public Port getPort() {
     return port;
   }
@@ -252,7 +252,6 @@ public class PortVlanAssignmentBatch {
    * @return quantity
   **/
   @javax.annotation.Nullable
-
   public Integer getQuantity() {
     return quantity;
   }
@@ -274,7 +273,6 @@ public class PortVlanAssignmentBatch {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public StateEnum getState() {
     return state;
   }
@@ -296,7 +294,6 @@ public class PortVlanAssignmentBatch {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -326,7 +323,6 @@ public class PortVlanAssignmentBatch {
    * @return vlanAssignments
   **/
   @javax.annotation.Nullable
-
   public List<PortVlanAssignmentBatchVlanAssignmentsInner> getVlanAssignments() {
     return vlanAssignments;
   }
@@ -348,7 +344,6 @@ public class PortVlanAssignmentBatch {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public Href getProject() {
     return project;
   }

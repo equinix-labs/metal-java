@@ -41,6 +41,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -122,7 +126,7 @@ public class DeviceCreateInMetroInput {
 
   public static final String SERIALIZED_NAME_CUSTOMDATA = "customdata";
   @SerializedName(SERIALIZED_NAME_CUSTOMDATA)
-  private Map<String, Object> customdata = null;
+  private Map<String, Object> customdata = new HashMap<>();
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -130,7 +134,7 @@ public class DeviceCreateInMetroInput {
 
   public static final String SERIALIZED_NAME_FEATURES = "features";
   @SerializedName(SERIALIZED_NAME_FEATURES)
-  private List<String> features = null;
+  private List<String> features;
 
   public static final String SERIALIZED_NAME_HARDWARE_RESERVATION_ID = "hardware_reservation_id";
   @SerializedName(SERIALIZED_NAME_HARDWARE_RESERVATION_ID)
@@ -142,7 +146,7 @@ public class DeviceCreateInMetroInput {
 
   public static final String SERIALIZED_NAME_IP_ADDRESSES = "ip_addresses";
   @SerializedName(SERIALIZED_NAME_IP_ADDRESSES)
-  private List<IPAddress> ipAddresses = null;
+  private List<IPAddress> ipAddresses;
 
   public static final String SERIALIZED_NAME_IPXE_SCRIPT_URL = "ipxe_script_url";
   @SerializedName(SERIALIZED_NAME_IPXE_SCRIPT_URL)
@@ -174,7 +178,7 @@ public class DeviceCreateInMetroInput {
 
   public static final String SERIALIZED_NAME_PROJECT_SSH_KEYS = "project_ssh_keys";
   @SerializedName(SERIALIZED_NAME_PROJECT_SSH_KEYS)
-  private List<UUID> projectSshKeys = null;
+  private List<UUID> projectSshKeys;
 
   public static final String SERIALIZED_NAME_PUBLIC_IPV4_SUBNET_SIZE = "public_ipv4_subnet_size";
   @SerializedName(SERIALIZED_NAME_PUBLIC_IPV4_SUBNET_SIZE)
@@ -190,7 +194,7 @@ public class DeviceCreateInMetroInput {
 
   public static final String SERIALIZED_NAME_SSH_KEYS = "ssh_keys";
   @SerializedName(SERIALIZED_NAME_SSH_KEYS)
-  private List<SSHKeyInput> sshKeys = null;
+  private List<SSHKeyInput> sshKeys;
 
   public static final String SERIALIZED_NAME_STORAGE = "storage";
   @SerializedName(SERIALIZED_NAME_STORAGE)
@@ -198,7 +202,7 @@ public class DeviceCreateInMetroInput {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_TERMINATION_TIME = "termination_time";
   @SerializedName(SERIALIZED_NAME_TERMINATION_TIME)
@@ -206,7 +210,7 @@ public class DeviceCreateInMetroInput {
 
   public static final String SERIALIZED_NAME_USER_SSH_KEYS = "user_ssh_keys";
   @SerializedName(SERIALIZED_NAME_USER_SSH_KEYS)
-  private List<UUID> userSshKeys = null;
+  private List<UUID> userSshKeys;
 
   public static final String SERIALIZED_NAME_USERDATA = "userdata";
   @SerializedName(SERIALIZED_NAME_USERDATA)
@@ -226,7 +230,6 @@ public class DeviceCreateInMetroInput {
    * @return metro
   **/
   @javax.annotation.Nonnull
-
   public String getMetro() {
     return metro;
   }
@@ -248,7 +251,6 @@ public class DeviceCreateInMetroInput {
    * @return alwaysPxe
   **/
   @javax.annotation.Nullable
-
   public Boolean getAlwaysPxe() {
     return alwaysPxe;
   }
@@ -270,7 +272,6 @@ public class DeviceCreateInMetroInput {
    * @return billingCycle
   **/
   @javax.annotation.Nullable
-
   public BillingCycleEnum getBillingCycle() {
     return billingCycle;
   }
@@ -300,7 +301,6 @@ public class DeviceCreateInMetroInput {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Map<String, Object> getCustomdata() {
     return customdata;
   }
@@ -322,7 +322,6 @@ public class DeviceCreateInMetroInput {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -352,7 +351,6 @@ public class DeviceCreateInMetroInput {
    * @return features
   **/
   @javax.annotation.Nullable
-
   public List<String> getFeatures() {
     return features;
   }
@@ -374,7 +372,6 @@ public class DeviceCreateInMetroInput {
    * @return hardwareReservationId
   **/
   @javax.annotation.Nullable
-
   public String getHardwareReservationId() {
     return hardwareReservationId;
   }
@@ -396,7 +393,6 @@ public class DeviceCreateInMetroInput {
    * @return hostname
   **/
   @javax.annotation.Nullable
-
   public String getHostname() {
     return hostname;
   }
@@ -426,7 +422,6 @@ public class DeviceCreateInMetroInput {
    * @return ipAddresses
   **/
   @javax.annotation.Nullable
-
   public List<IPAddress> getIpAddresses() {
     return ipAddresses;
   }
@@ -448,7 +443,6 @@ public class DeviceCreateInMetroInput {
    * @return ipxeScriptUrl
   **/
   @javax.annotation.Nullable
-
   public String getIpxeScriptUrl() {
     return ipxeScriptUrl;
   }
@@ -470,7 +464,6 @@ public class DeviceCreateInMetroInput {
    * @return locked
   **/
   @javax.annotation.Nullable
-
   public Boolean getLocked() {
     return locked;
   }
@@ -492,7 +485,6 @@ public class DeviceCreateInMetroInput {
    * @return networkFrozen
   **/
   @javax.annotation.Nullable
-
   public Boolean getNetworkFrozen() {
     return networkFrozen;
   }
@@ -514,7 +506,6 @@ public class DeviceCreateInMetroInput {
    * @return noSshKeys
   **/
   @javax.annotation.Nullable
-
   public Boolean getNoSshKeys() {
     return noSshKeys;
   }
@@ -536,7 +527,6 @@ public class DeviceCreateInMetroInput {
    * @return operatingSystem
   **/
   @javax.annotation.Nonnull
-
   public String getOperatingSystem() {
     return operatingSystem;
   }
@@ -558,7 +548,6 @@ public class DeviceCreateInMetroInput {
    * @return plan
   **/
   @javax.annotation.Nonnull
-
   public String getPlan() {
     return plan;
   }
@@ -580,7 +569,6 @@ public class DeviceCreateInMetroInput {
    * @return privateIpv4SubnetSize
   **/
   @javax.annotation.Nullable
-
   public Integer getPrivateIpv4SubnetSize() {
     return privateIpv4SubnetSize;
   }
@@ -610,7 +598,6 @@ public class DeviceCreateInMetroInput {
    * @return projectSshKeys
   **/
   @javax.annotation.Nullable
-
   public List<UUID> getProjectSshKeys() {
     return projectSshKeys;
   }
@@ -632,7 +619,6 @@ public class DeviceCreateInMetroInput {
    * @return publicIpv4SubnetSize
   **/
   @javax.annotation.Nullable
-
   public Integer getPublicIpv4SubnetSize() {
     return publicIpv4SubnetSize;
   }
@@ -654,7 +640,6 @@ public class DeviceCreateInMetroInput {
    * @return spotInstance
   **/
   @javax.annotation.Nullable
-
   public Boolean getSpotInstance() {
     return spotInstance;
   }
@@ -676,7 +661,6 @@ public class DeviceCreateInMetroInput {
    * @return spotPriceMax
   **/
   @javax.annotation.Nullable
-
   public Float getSpotPriceMax() {
     return spotPriceMax;
   }
@@ -706,7 +690,6 @@ public class DeviceCreateInMetroInput {
    * @return sshKeys
   **/
   @javax.annotation.Nullable
-
   public List<SSHKeyInput> getSshKeys() {
     return sshKeys;
   }
@@ -728,7 +711,6 @@ public class DeviceCreateInMetroInput {
    * @return storage
   **/
   @javax.annotation.Nullable
-
   public Storage getStorage() {
     return storage;
   }
@@ -758,7 +740,6 @@ public class DeviceCreateInMetroInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }
@@ -780,7 +761,6 @@ public class DeviceCreateInMetroInput {
    * @return terminationTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getTerminationTime() {
     return terminationTime;
   }
@@ -810,7 +790,6 @@ public class DeviceCreateInMetroInput {
    * @return userSshKeys
   **/
   @javax.annotation.Nullable
-
   public List<UUID> getUserSshKeys() {
     return userSshKeys;
   }
@@ -832,7 +811,6 @@ public class DeviceCreateInMetroInput {
    * @return userdata
   **/
   @javax.annotation.Nullable
-
   public String getUserdata() {
     return userdata;
   }

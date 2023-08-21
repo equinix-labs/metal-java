@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -53,11 +57,11 @@ import com.equinix.openapi.JSON;
 public class MetadataNetwork {
   public static final String SERIALIZED_NAME_ADDRESSES = "addresses";
   @SerializedName(SERIALIZED_NAME_ADDRESSES)
-  private List<String> addresses = null;
+  private List<String> addresses;
 
   public static final String SERIALIZED_NAME_INTERFACES = "interfaces";
   @SerializedName(SERIALIZED_NAME_INTERFACES)
-  private List<Object> interfaces = null;
+  private List<Object> interfaces;
 
   public static final String SERIALIZED_NAME_NETWORK = "network";
   @SerializedName(SERIALIZED_NAME_NETWORK)
@@ -85,7 +89,6 @@ public class MetadataNetwork {
    * @return addresses
   **/
   @javax.annotation.Nullable
-
   public List<String> getAddresses() {
     return addresses;
   }
@@ -115,7 +118,6 @@ public class MetadataNetwork {
    * @return interfaces
   **/
   @javax.annotation.Nullable
-
   public List<Object> getInterfaces() {
     return interfaces;
   }
@@ -137,7 +139,6 @@ public class MetadataNetwork {
    * @return network
   **/
   @javax.annotation.Nullable
-
   public MetadataNetworkNetwork getNetwork() {
     return network;
   }

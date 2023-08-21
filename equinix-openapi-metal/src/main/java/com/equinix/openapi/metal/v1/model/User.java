@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -83,7 +87,7 @@ public class User {
 
   public static final String SERIALIZED_NAME_EMAILS = "emails";
   @SerializedName(SERIALIZED_NAME_EMAILS)
-  private List<Href> emails = null;
+  private List<Href> emails;
 
   public static final String SERIALIZED_NAME_FIRST_NAME = "first_name";
   @SerializedName(SERIALIZED_NAME_FIRST_NAME)
@@ -155,7 +159,6 @@ public class User {
    * @return avatarThumbUrl
   **/
   @javax.annotation.Nullable
-
   public String getAvatarThumbUrl() {
     return avatarThumbUrl;
   }
@@ -177,7 +180,6 @@ public class User {
    * @return avatarUrl
   **/
   @javax.annotation.Nullable
-
   public String getAvatarUrl() {
     return avatarUrl;
   }
@@ -199,7 +201,6 @@ public class User {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -221,7 +222,6 @@ public class User {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Object getCustomdata() {
     return customdata;
   }
@@ -243,7 +243,6 @@ public class User {
    * @return defaultOrganizationId
   **/
   @javax.annotation.Nullable
-
   public UUID getDefaultOrganizationId() {
     return defaultOrganizationId;
   }
@@ -265,7 +264,6 @@ public class User {
    * @return defaultProjectId
   **/
   @javax.annotation.Nullable
-
   public UUID getDefaultProjectId() {
     return defaultProjectId;
   }
@@ -287,7 +285,6 @@ public class User {
    * @return email
   **/
   @javax.annotation.Nullable
-
   public String getEmail() {
     return email;
   }
@@ -317,7 +314,6 @@ public class User {
    * @return emails
   **/
   @javax.annotation.Nullable
-
   public List<Href> getEmails() {
     return emails;
   }
@@ -339,7 +335,6 @@ public class User {
    * @return firstName
   **/
   @javax.annotation.Nullable
-
   public String getFirstName() {
     return firstName;
   }
@@ -361,7 +356,6 @@ public class User {
    * @return fraudScore
   **/
   @javax.annotation.Nullable
-
   public String getFraudScore() {
     return fraudScore;
   }
@@ -383,7 +377,6 @@ public class User {
    * @return fullName
   **/
   @javax.annotation.Nullable
-
   public String getFullName() {
     return fullName;
   }
@@ -405,7 +398,6 @@ public class User {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -427,7 +419,6 @@ public class User {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -449,7 +440,6 @@ public class User {
    * @return lastLoginAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getLastLoginAt() {
     return lastLoginAt;
   }
@@ -471,7 +461,6 @@ public class User {
    * @return lastName
   **/
   @javax.annotation.Nullable
-
   public String getLastName() {
     return lastName;
   }
@@ -493,7 +482,6 @@ public class User {
    * @return maxOrganizations
   **/
   @javax.annotation.Nullable
-
   public Integer getMaxOrganizations() {
     return maxOrganizations;
   }
@@ -515,7 +503,6 @@ public class User {
    * @return maxProjects
   **/
   @javax.annotation.Nullable
-
   public Integer getMaxProjects() {
     return maxProjects;
   }
@@ -537,7 +524,6 @@ public class User {
    * @return phoneNumber
   **/
   @javax.annotation.Nullable
-
   public String getPhoneNumber() {
     return phoneNumber;
   }
@@ -559,7 +545,6 @@ public class User {
    * @return shortId
   **/
   @javax.annotation.Nullable
-
   public String getShortId() {
     return shortId;
   }
@@ -581,7 +566,6 @@ public class User {
    * @return timezone
   **/
   @javax.annotation.Nullable
-
   public String getTimezone() {
     return timezone;
   }
@@ -603,7 +587,6 @@ public class User {
    * @return twoFactorAuth
   **/
   @javax.annotation.Nullable
-
   public String getTwoFactorAuth() {
     return twoFactorAuth;
   }
@@ -625,7 +608,6 @@ public class User {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }

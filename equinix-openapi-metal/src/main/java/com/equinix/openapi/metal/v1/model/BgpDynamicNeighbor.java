@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -143,7 +147,7 @@ public class BgpDynamicNeighbor {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public BgpDynamicNeighbor() {
   }
@@ -169,7 +173,6 @@ public class BgpDynamicNeighbor {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -188,7 +191,6 @@ public class BgpDynamicNeighbor {
    * @return bgpNeighborAsn
   **/
   @javax.annotation.Nullable
-
   public Integer getBgpNeighborAsn() {
     return bgpNeighborAsn;
   }
@@ -210,7 +212,6 @@ public class BgpDynamicNeighbor {
    * @return bgpNeighborRange
   **/
   @javax.annotation.Nullable
-
   public String getBgpNeighborRange() {
     return bgpNeighborRange;
   }
@@ -232,7 +233,6 @@ public class BgpDynamicNeighbor {
    * @return metalGateway
   **/
   @javax.annotation.Nullable
-
   public VrfMetalGateway getMetalGateway() {
     return metalGateway;
   }
@@ -248,7 +248,6 @@ public class BgpDynamicNeighbor {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public StateEnum getState() {
     return state;
   }
@@ -261,7 +260,6 @@ public class BgpDynamicNeighbor {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -274,7 +272,6 @@ public class BgpDynamicNeighbor {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -293,7 +290,6 @@ public class BgpDynamicNeighbor {
    * @return createdBy
   **/
   @javax.annotation.Nullable
-
   public UserLimited getCreatedBy() {
     return createdBy;
   }
@@ -309,7 +305,6 @@ public class BgpDynamicNeighbor {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -336,7 +331,6 @@ public class BgpDynamicNeighbor {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

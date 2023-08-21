@@ -8,7 +8,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**createValidationRequest**](UserVerificationTokensApi.md#createValidationRequest) | **POST** /verify-email | Create an email verification request |
 
 
-<a name="consumeVerificationRequest"></a>
+<a id="consumeVerificationRequest"></a>
 # **consumeVerificationRequest**
 > consumeVerificationRequest(verifyEmail, include)
 
@@ -80,7 +80,7 @@ null (empty response body)
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createValidationRequest"></a>
+<a id="createValidationRequest"></a>
 # **createValidationRequest**
 > createValidationRequest(login, include)
 

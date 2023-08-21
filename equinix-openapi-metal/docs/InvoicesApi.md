@@ -8,7 +8,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**getInvoiceById**](InvoicesApi.md#getInvoiceById) | **GET** /invoices/{id} | Retrieve an invoice |
 
 
-<a name="findOrganizationInvoices"></a>
+<a id="findOrganizationInvoices"></a>
 # **findOrganizationInvoices**
 > InvoiceList findOrganizationInvoices(id, page, perPage, status)
 
@@ -85,7 +85,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="getInvoiceById"></a>
+<a id="getInvoiceById"></a>
 # **getInvoiceById**
 > Invoice getInvoiceById(id)
 
