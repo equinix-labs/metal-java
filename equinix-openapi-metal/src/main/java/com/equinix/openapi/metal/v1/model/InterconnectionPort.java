@@ -123,9 +123,7 @@ public class InterconnectionPort {
     
     DELETING("deleting"),
     
-    EXPIRED("expired"),
-    
-    DELETE_FAILED("delete_failed");
+    EXPIRED("expired");
 
     private String value;
 

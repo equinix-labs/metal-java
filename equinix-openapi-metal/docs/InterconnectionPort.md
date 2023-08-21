@@ -37,7 +37,6 @@
 | ACTIVE | &quot;active&quot; |
 | DELETING | &quot;deleting&quot; |
 | EXPIRED | &quot;expired&quot; |
-| DELETE_FAILED | &quot;delete_failed&quot; |
 
 
 

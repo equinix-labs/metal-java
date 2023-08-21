@@ -20,7 +20,6 @@ properties:
     - active
     - deleting
     - expired
-    - delete_failed
   switch_id:
     description: A switch 'short ID'
     type: string
