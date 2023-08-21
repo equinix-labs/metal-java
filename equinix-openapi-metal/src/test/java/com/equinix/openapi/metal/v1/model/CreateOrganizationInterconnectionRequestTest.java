@@ -13,6 +13,9 @@
 
 package com.equinix.openapi.metal.v1.model;
 
+import com.equinix.openapi.metal.v1.model.DedicatedPortCreateInput;
+import com.equinix.openapi.metal.v1.model.VlanFabricVcCreateInput;
+import com.equinix.openapi.metal.v1.model.VrfFabricVcCreateInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -27,25 +30,49 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for ProjectCreateFromRootInput
+ * Model tests for CreateOrganizationInterconnectionRequest
  */
-public class ProjectCreateFromRootInputTest {
-    private final ProjectCreateFromRootInput model = new ProjectCreateFromRootInput();
+public class CreateOrganizationInterconnectionRequestTest {
+    private final CreateOrganizationInterconnectionRequest model = new CreateOrganizationInterconnectionRequest();
 
     /**
-     * Model tests for ProjectCreateFromRootInput
+     * Model tests for CreateOrganizationInterconnectionRequest
      */
     @Test
-    public void testProjectCreateFromRootInput() {
-        // TODO: test ProjectCreateFromRootInput
+    public void testCreateOrganizationInterconnectionRequest() {
+        // TODO: test CreateOrganizationInterconnectionRequest
     }
 
     /**
-     * Test the property 'customdata'
+     * Test the property 'contactEmail'
      */
     @Test
-    public void customdataTest() {
-        // TODO: test customdata
+    public void contactEmailTest() {
+        // TODO: test contactEmail
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
+     * Test the property 'metro'
+     */
+    @Test
+    public void metroTest() {
+        // TODO: test metro
+    }
+
+    /**
+     * Test the property 'mode'
+     */
+    @Test
+    public void modeTest() {
+        // TODO: test mode
     }
 
     /**
@@ -57,19 +84,27 @@ public class ProjectCreateFromRootInputTest {
     }
 
     /**
-     * Test the property 'organizationId'
+     * Test the property 'project'
      */
     @Test
-    public void organizationIdTest() {
-        // TODO: test organizationId
+    public void projectTest() {
+        // TODO: test project
     }
 
     /**
-     * Test the property 'paymentMethodId'
+     * Test the property 'redundancy'
      */
     @Test
-    public void paymentMethodIdTest() {
-        // TODO: test paymentMethodId
+    public void redundancyTest() {
+        // TODO: test redundancy
+    }
+
+    /**
+     * Test the property 'speed'
+     */
+    @Test
+    public void speedTest() {
+        // TODO: test speed
     }
 
     /**
@@ -78,6 +113,38 @@ public class ProjectCreateFromRootInputTest {
     @Test
     public void tagsTest() {
         // TODO: test tags
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
+    /**
+     * Test the property 'serviceTokenType'
+     */
+    @Test
+    public void serviceTokenTypeTest() {
+        // TODO: test serviceTokenType
+    }
+
+    /**
+     * Test the property 'vlans'
+     */
+    @Test
+    public void vlansTest() {
+        // TODO: test vlans
+    }
+
+    /**
+     * Test the property 'vrfs'
+     */
+    @Test
+    public void vrfsTest() {
+        // TODO: test vrfs
     }
 
 }

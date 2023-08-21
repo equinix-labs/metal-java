@@ -173,4 +173,12 @@ public class VrfTest {
         // TODO: test updatedAt
     }
 
+    /**
+     * Test the property 'tags'
+     */
+    @Test
+    public void tagsTest() {
+        // TODO: test tags
+    }
+
 }

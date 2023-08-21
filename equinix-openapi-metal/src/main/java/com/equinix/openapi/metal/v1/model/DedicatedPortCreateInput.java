@@ -15,19 +15,14 @@ package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.equinix.openapi.metal.v1.model.VirtualNetwork;
-import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfMetalGateway;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,30 +46,34 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * VrfRoute
+ * DedicatedPortCreateInput
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class VrfRoute {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private UUID id;
+public class DedicatedPortCreateInput {
+  public static final String SERIALIZED_NAME_CONTACT_EMAIL = "contact_email";
+  @SerializedName(SERIALIZED_NAME_CONTACT_EMAIL)
+  private String contactEmail;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_METRO = "metro";
+  @SerializedName(SERIALIZED_NAME_METRO)
+  private String metro;
 
   /**
-   * The status of the route. Potential values are \&quot;pending\&quot;, \&quot;active\&quot;, \&quot;deleting\&quot;, and \&quot;error\&quot;, representing various lifecycle states of the route and whether or not it has been successfully configured on the network
+   * The mode of the interconnection (only relevant to Dedicated Ports). Fabric VCs won&#39;t have this field. Can be either &#39;standard&#39; or &#39;tunnel&#39;.   The default mode of an interconnection on a Dedicated Port is &#39;standard&#39;. The mode can only be changed when there are no associated virtual circuits on the interconnection.   In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.
    */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    PENDING("pending"),
+  @JsonAdapter(ModeEnum.Adapter.class)
+  public enum ModeEnum {
+    STANDARD("standard"),
     
-    ACTIVE("active"),
-    
-    DELETING("deleting"),
-    
-    ERROR("error");
+    TUNNEL("tunnel");
 
     private String value;
 
-    StatusEnum(String value) {
+    ModeEnum(String value) {
       this.value = value;
     }
 
@@ -87,8 +86,8 @@ public class VrfRoute {
       return String.valueOf(value);
     }
 
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
+    public static ModeEnum fromValue(String value) {
+      for (ModeEnum b : ModeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -96,38 +95,50 @@ public class VrfRoute {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<StatusEnum> {
+    public static class Adapter extends TypeAdapter<ModeEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final ModeEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+      public ModeEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
+        return ModeEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
+  public static final String SERIALIZED_NAME_MODE = "mode";
+  @SerializedName(SERIALIZED_NAME_MODE)
+  private ModeEnum mode;
 
-  public static final String SERIALIZED_NAME_PREFIX = "prefix";
-  @SerializedName(SERIALIZED_NAME_PREFIX)
-  private String prefix;
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
-  public static final String SERIALIZED_NAME_NEXT_HOP = "next_hop";
-  @SerializedName(SERIALIZED_NAME_NEXT_HOP)
-  private String nextHop;
+  public static final String SERIALIZED_NAME_PROJECT = "project";
+  @SerializedName(SERIALIZED_NAME_PROJECT)
+  private String project;
+
+  public static final String SERIALIZED_NAME_REDUNDANCY = "redundancy";
+  @SerializedName(SERIALIZED_NAME_REDUNDANCY)
+  private String redundancy;
+
+  public static final String SERIALIZED_NAME_SPEED = "speed";
+  @SerializedName(SERIALIZED_NAME_SPEED)
+  private Integer speed;
+
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  private List<String> tags = null;
 
   /**
-   * VRF route type, like &#39;bgp&#39;, &#39;connected&#39;, and &#39;static&#39;. Currently, only static routes are supported
+   * When requesting for a dedicated port, the value of this field should be &#39;dedicated&#39;.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    STATIC("static");
+    DEDICATED("dedicated");
 
     private String value;
 
@@ -171,250 +182,192 @@ public class VrfRoute {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private OffsetDateTime updatedAt;
-
-  public static final String SERIALIZED_NAME_METAL_GATEWAY = "metal_gateway";
-  @SerializedName(SERIALIZED_NAME_METAL_GATEWAY)
-  private VrfMetalGateway metalGateway;
-
-  public static final String SERIALIZED_NAME_VIRTUAL_NETWORK = "virtual_network";
-  @SerializedName(SERIALIZED_NAME_VIRTUAL_NETWORK)
-  private VirtualNetwork virtualNetwork;
-
-  public static final String SERIALIZED_NAME_VRF = "vrf";
-  @SerializedName(SERIALIZED_NAME_VRF)
-  private Vrf vrf;
-
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private String href;
-
-  public static final String SERIALIZED_NAME_TAGS = "tags";
-  @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
-
-  public VrfRoute() {
+  public DedicatedPortCreateInput() {
   }
 
-  
-  public VrfRoute(
-     UUID id, 
-     StatusEnum status, 
-     TypeEnum type, 
-     OffsetDateTime createdAt, 
-     OffsetDateTime updatedAt, 
-     String href
-  ) {
-    this();
-    this.id = id;
-    this.status = status;
-    this.type = type;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
-    this.href = href;
-  }
-
-   /**
-   * The unique identifier for the newly-created resource
-   * @return id
-  **/
-  @javax.annotation.Nullable
-
-  public UUID getId() {
-    return id;
-  }
-
-
-
-
-   /**
-   * The status of the route. Potential values are \&quot;pending\&quot;, \&quot;active\&quot;, \&quot;deleting\&quot;, and \&quot;error\&quot;, representing various lifecycle states of the route and whether or not it has been successfully configured on the network
-   * @return status
-  **/
-  @javax.annotation.Nullable
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-
-
-  public VrfRoute prefix(String prefix) {
+  public DedicatedPortCreateInput contactEmail(String contactEmail) {
     
-    this.prefix = prefix;
+    this.contactEmail = contactEmail;
     return this;
   }
 
    /**
-   * The IPv4 prefix for the route, in CIDR-style notation
-   * @return prefix
+   * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+   * @return contactEmail
   **/
   @javax.annotation.Nullable
 
-  public String getPrefix() {
-    return prefix;
+  public String getContactEmail() {
+    return contactEmail;
   }
 
 
-  public void setPrefix(String prefix) {
-    this.prefix = prefix;
+  public void setContactEmail(String contactEmail) {
+    this.contactEmail = contactEmail;
   }
 
 
-  public VrfRoute nextHop(String nextHop) {
+  public DedicatedPortCreateInput description(String description) {
     
-    this.nextHop = nextHop;
+    this.description = description;
     return this;
   }
 
    /**
-   * The next-hop IPv4 address for the route
-   * @return nextHop
+   * Get description
+   * @return description
   **/
   @javax.annotation.Nullable
 
-  public String getNextHop() {
-    return nextHop;
+  public String getDescription() {
+    return description;
   }
 
 
-  public void setNextHop(String nextHop) {
-    this.nextHop = nextHop;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
-   /**
-   * VRF route type, like &#39;bgp&#39;, &#39;connected&#39;, and &#39;static&#39;. Currently, only static routes are supported
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public TypeEnum getType() {
-    return type;
-  }
-
-
-
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-
-
-   /**
-   * Get updatedAt
-   * @return updatedAt
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
-  }
-
-
-
-
-  public VrfRoute metalGateway(VrfMetalGateway metalGateway) {
+  public DedicatedPortCreateInput metro(String metro) {
     
-    this.metalGateway = metalGateway;
+    this.metro = metro;
     return this;
   }
 
    /**
-   * Get metalGateway
-   * @return metalGateway
+   * A Metro ID or code. For interconnections with Dedicated Ports, this will be the location of the issued Dedicated Ports.
+   * @return metro
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public VrfMetalGateway getMetalGateway() {
-    return metalGateway;
+  public String getMetro() {
+    return metro;
   }
 
 
-  public void setMetalGateway(VrfMetalGateway metalGateway) {
-    this.metalGateway = metalGateway;
+  public void setMetro(String metro) {
+    this.metro = metro;
   }
 
 
-  public VrfRoute virtualNetwork(VirtualNetwork virtualNetwork) {
+  public DedicatedPortCreateInput mode(ModeEnum mode) {
     
-    this.virtualNetwork = virtualNetwork;
+    this.mode = mode;
     return this;
   }
 
    /**
-   * Get virtualNetwork
-   * @return virtualNetwork
+   * The mode of the interconnection (only relevant to Dedicated Ports). Fabric VCs won&#39;t have this field. Can be either &#39;standard&#39; or &#39;tunnel&#39;.   The default mode of an interconnection on a Dedicated Port is &#39;standard&#39;. The mode can only be changed when there are no associated virtual circuits on the interconnection.   In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.
+   * @return mode
   **/
   @javax.annotation.Nullable
 
-  public VirtualNetwork getVirtualNetwork() {
-    return virtualNetwork;
+  public ModeEnum getMode() {
+    return mode;
   }
 
 
-  public void setVirtualNetwork(VirtualNetwork virtualNetwork) {
-    this.virtualNetwork = virtualNetwork;
+  public void setMode(ModeEnum mode) {
+    this.mode = mode;
   }
 
 
-  public VrfRoute vrf(Vrf vrf) {
+  public DedicatedPortCreateInput name(String name) {
     
-    this.vrf = vrf;
+    this.name = name;
     return this;
   }
 
    /**
-   * Get vrf
-   * @return vrf
+   * Get name
+   * @return name
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public Vrf getVrf() {
-    return vrf;
+  public String getName() {
+    return name;
   }
 
 
-  public void setVrf(Vrf vrf) {
-    this.vrf = vrf;
+  public void setName(String name) {
+    this.name = name;
   }
 
+
+  public DedicatedPortCreateInput project(String project) {
+    
+    this.project = project;
+    return this;
+  }
 
    /**
-   * Get href
-   * @return href
+   * Get project
+   * @return project
   **/
   @javax.annotation.Nullable
 
-  public String getHref() {
-    return href;
+  public String getProject() {
+    return project;
   }
 
 
+  public void setProject(String project) {
+    this.project = project;
+  }
 
 
-  public VrfRoute tags(List<String> tags) {
+  public DedicatedPortCreateInput redundancy(String redundancy) {
+    
+    this.redundancy = redundancy;
+    return this;
+  }
+
+   /**
+   * Either &#39;primary&#39; or &#39;redundant&#39;.
+   * @return redundancy
+  **/
+  @javax.annotation.Nonnull
+
+  public String getRedundancy() {
+    return redundancy;
+  }
+
+
+  public void setRedundancy(String redundancy) {
+    this.redundancy = redundancy;
+  }
+
+
+  public DedicatedPortCreateInput speed(Integer speed) {
+    
+    this.speed = speed;
+    return this;
+  }
+
+   /**
+   * A interconnection speed, in bps, mbps, or gbps. For Dedicated Ports, this can be 10Gbps or 100Gbps.
+   * @return speed
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getSpeed() {
+    return speed;
+  }
+
+
+  public void setSpeed(Integer speed) {
+    this.speed = speed;
+  }
+
+
+  public DedicatedPortCreateInput tags(List<String> tags) {
     
     this.tags = tags;
     return this;
   }
 
-  public VrfRoute addTagsItem(String tagsItem) {
+  public DedicatedPortCreateInput addTagsItem(String tagsItem) {
     if (this.tags == null) {
       this.tags = new ArrayList<>();
     }
@@ -437,6 +390,28 @@ public class VrfRoute {
     this.tags = tags;
   }
 
+
+  public DedicatedPortCreateInput type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * When requesting for a dedicated port, the value of this field should be &#39;dedicated&#39;.
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -450,9 +425,9 @@ public class VrfRoute {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the VrfRoute instance itself
+   * @return the DedicatedPortCreateInput instance itself
    */
-  public VrfRoute putAdditionalProperty(String key, Object value) {
+  public DedicatedPortCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -491,43 +466,39 @@ public class VrfRoute {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VrfRoute vrfRoute = (VrfRoute) o;
-    return Objects.equals(this.id, vrfRoute.id) &&
-        Objects.equals(this.status, vrfRoute.status) &&
-        Objects.equals(this.prefix, vrfRoute.prefix) &&
-        Objects.equals(this.nextHop, vrfRoute.nextHop) &&
-        Objects.equals(this.type, vrfRoute.type) &&
-        Objects.equals(this.createdAt, vrfRoute.createdAt) &&
-        Objects.equals(this.updatedAt, vrfRoute.updatedAt) &&
-        Objects.equals(this.metalGateway, vrfRoute.metalGateway) &&
-        Objects.equals(this.virtualNetwork, vrfRoute.virtualNetwork) &&
-        Objects.equals(this.vrf, vrfRoute.vrf) &&
-        Objects.equals(this.href, vrfRoute.href) &&
-        Objects.equals(this.tags, vrfRoute.tags)&&
-        Objects.equals(this.additionalProperties, vrfRoute.additionalProperties);
+    DedicatedPortCreateInput dedicatedPortCreateInput = (DedicatedPortCreateInput) o;
+    return Objects.equals(this.contactEmail, dedicatedPortCreateInput.contactEmail) &&
+        Objects.equals(this.description, dedicatedPortCreateInput.description) &&
+        Objects.equals(this.metro, dedicatedPortCreateInput.metro) &&
+        Objects.equals(this.mode, dedicatedPortCreateInput.mode) &&
+        Objects.equals(this.name, dedicatedPortCreateInput.name) &&
+        Objects.equals(this.project, dedicatedPortCreateInput.project) &&
+        Objects.equals(this.redundancy, dedicatedPortCreateInput.redundancy) &&
+        Objects.equals(this.speed, dedicatedPortCreateInput.speed) &&
+        Objects.equals(this.tags, dedicatedPortCreateInput.tags) &&
+        Objects.equals(this.type, dedicatedPortCreateInput.type)&&
+        Objects.equals(this.additionalProperties, dedicatedPortCreateInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, prefix, nextHop, type, createdAt, updatedAt, metalGateway, virtualNetwork, vrf, href, tags, additionalProperties);
+    return Objects.hash(contactEmail, description, metro, mode, name, project, redundancy, speed, tags, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VrfRoute {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
-    sb.append("    nextHop: ").append(toIndentedString(nextHop)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    metalGateway: ").append(toIndentedString(metalGateway)).append("\n");
-    sb.append("    virtualNetwork: ").append(toIndentedString(virtualNetwork)).append("\n");
-    sb.append("    vrf: ").append(toIndentedString(vrf)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("class DedicatedPortCreateInput {\n");
+    sb.append("    contactEmail: ").append(toIndentedString(contactEmail)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
+    sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    project: ").append(toIndentedString(project)).append("\n");
+    sb.append("    redundancy: ").append(toIndentedString(redundancy)).append("\n");
+    sb.append("    speed: ").append(toIndentedString(speed)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -551,68 +522,71 @@ public class VrfRoute {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("status");
-    openapiFields.add("prefix");
-    openapiFields.add("next_hop");
-    openapiFields.add("type");
-    openapiFields.add("created_at");
-    openapiFields.add("updated_at");
-    openapiFields.add("metal_gateway");
-    openapiFields.add("virtual_network");
-    openapiFields.add("vrf");
-    openapiFields.add("href");
+    openapiFields.add("contact_email");
+    openapiFields.add("description");
+    openapiFields.add("metro");
+    openapiFields.add("mode");
+    openapiFields.add("name");
+    openapiFields.add("project");
+    openapiFields.add("redundancy");
+    openapiFields.add("speed");
     openapiFields.add("tags");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("metro");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("redundancy");
+    openapiRequiredFields.add("type");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VrfRoute
+  * @throws IOException if the JSON Object is invalid with respect to DedicatedPortCreateInput
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!VrfRoute.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfRoute is not found in the empty JSON string", VrfRoute.openapiRequiredFields.toString()));
+        if (!DedicatedPortCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DedicatedPortCreateInput is not found in the empty JSON string", DedicatedPortCreateInput.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : DedicatedPortCreateInput.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
       }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      if ((jsonObj.get("contact_email") != null && !jsonObj.get("contact_email").isJsonNull()) && !jsonObj.get("contact_email").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `contact_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contact_email").toString()));
       }
-      if ((jsonObj.get("prefix") != null && !jsonObj.get("prefix").isJsonNull()) && !jsonObj.get("prefix").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `prefix` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prefix").toString()));
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("next_hop") != null && !jsonObj.get("next_hop").isJsonNull()) && !jsonObj.get("next_hop").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `next_hop` to be a primitive type in the JSON string but got `%s`", jsonObj.get("next_hop").toString()));
+      if (!jsonObj.get("metro").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `metro` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metro").toString()));
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if ((jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) && !jsonObj.get("mode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
       }
-      // validate the optional field `metal_gateway`
-      if (jsonObj.get("metal_gateway") != null && !jsonObj.get("metal_gateway").isJsonNull()) {
-        VrfMetalGateway.validateJsonObject(jsonObj.getAsJsonObject("metal_gateway"));
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // validate the optional field `virtual_network`
-      if (jsonObj.get("virtual_network") != null && !jsonObj.get("virtual_network").isJsonNull()) {
-        VirtualNetwork.validateJsonObject(jsonObj.getAsJsonObject("virtual_network"));
+      if ((jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) && !jsonObj.get("project").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `project` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project").toString()));
       }
-      // validate the optional field `vrf`
-      if (jsonObj.get("vrf") != null && !jsonObj.get("vrf").isJsonNull()) {
-        Vrf.validateJsonObject(jsonObj.getAsJsonObject("vrf"));
-      }
-      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      if (!jsonObj.get("redundancy").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `redundancy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redundancy").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
+      }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 
@@ -620,16 +594,16 @@ public class VrfRoute {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VrfRoute.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VrfRoute' and its subtypes
+       if (!DedicatedPortCreateInput.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DedicatedPortCreateInput' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VrfRoute> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VrfRoute.class));
+       final TypeAdapter<DedicatedPortCreateInput> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DedicatedPortCreateInput.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<VrfRoute>() {
+       return (TypeAdapter<T>) new TypeAdapter<DedicatedPortCreateInput>() {
            @Override
-           public void write(JsonWriter out, VrfRoute value) throws IOException {
+           public void write(JsonWriter out, DedicatedPortCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -652,11 +626,11 @@ public class VrfRoute {
            }
 
            @Override
-           public VrfRoute read(JsonReader in) throws IOException {
+           public DedicatedPortCreateInput read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             VrfRoute instance = thisAdapter.fromJsonTree(jsonObj);
+             DedicatedPortCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -683,18 +657,18 @@ public class VrfRoute {
   }
 
  /**
-  * Create an instance of VrfRoute given an JSON string
+  * Create an instance of DedicatedPortCreateInput given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of VrfRoute
-  * @throws IOException if the JSON string is invalid with respect to VrfRoute
+  * @return An instance of DedicatedPortCreateInput
+  * @throws IOException if the JSON string is invalid with respect to DedicatedPortCreateInput
   */
-  public static VrfRoute fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VrfRoute.class);
+  public static DedicatedPortCreateInput fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DedicatedPortCreateInput.class);
   }
 
  /**
-  * Convert an instance of VrfRoute to an JSON string
+  * Convert an instance of DedicatedPortCreateInput to an JSON string
   *
   * @return JSON string
   */

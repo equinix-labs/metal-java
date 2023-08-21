@@ -21,6 +21,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import com.google.gson.Gson;
@@ -64,6 +66,10 @@ public class ProjectCreateFromRootInput {
   public static final String SERIALIZED_NAME_PAYMENT_METHOD_ID = "payment_method_id";
   @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD_ID)
   private UUID paymentMethodId;
+
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  private List<String> tags = null;
 
   public ProjectCreateFromRootInput() {
   }
@@ -155,6 +161,36 @@ public class ProjectCreateFromRootInput {
     this.paymentMethodId = paymentMethodId;
   }
 
+
+  public ProjectCreateFromRootInput tags(List<String> tags) {
+    
+    this.tags = tags;
+    return this;
+  }
+
+  public ProjectCreateFromRootInput addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -213,13 +249,14 @@ public class ProjectCreateFromRootInput {
     return Objects.equals(this.customdata, projectCreateFromRootInput.customdata) &&
         Objects.equals(this.name, projectCreateFromRootInput.name) &&
         Objects.equals(this.organizationId, projectCreateFromRootInput.organizationId) &&
-        Objects.equals(this.paymentMethodId, projectCreateFromRootInput.paymentMethodId)&&
+        Objects.equals(this.paymentMethodId, projectCreateFromRootInput.paymentMethodId) &&
+        Objects.equals(this.tags, projectCreateFromRootInput.tags)&&
         Objects.equals(this.additionalProperties, projectCreateFromRootInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customdata, name, organizationId, paymentMethodId, additionalProperties);
+    return Objects.hash(customdata, name, organizationId, paymentMethodId, tags, additionalProperties);
   }
 
   @Override
@@ -230,6 +267,7 @@ public class ProjectCreateFromRootInput {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    paymentMethodId: ").append(toIndentedString(paymentMethodId)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -257,6 +295,7 @@ public class ProjectCreateFromRootInput {
     openapiFields.add("name");
     openapiFields.add("organization_id");
     openapiFields.add("payment_method_id");
+    openapiFields.add("tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -290,6 +329,10 @@ public class ProjectCreateFromRootInput {
       }
       if ((jsonObj.get("payment_method_id") != null && !jsonObj.get("payment_method_id").isJsonNull()) && !jsonObj.get("payment_method_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `payment_method_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payment_method_id").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
   }
 

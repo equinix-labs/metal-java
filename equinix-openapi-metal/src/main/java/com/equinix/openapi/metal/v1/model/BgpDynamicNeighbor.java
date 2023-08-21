@@ -24,6 +24,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import com.google.gson.Gson;
@@ -138,6 +140,10 @@ public class BgpDynamicNeighbor {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
+
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  private List<String> tags = null;
 
   public BgpDynamicNeighbor() {
   }
@@ -310,6 +316,36 @@ public class BgpDynamicNeighbor {
 
 
 
+
+  public BgpDynamicNeighbor tags(List<String> tags) {
+    
+    this.tags = tags;
+    return this;
+  }
+
+  public BgpDynamicNeighbor addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -373,13 +409,14 @@ public class BgpDynamicNeighbor {
         Objects.equals(this.href, bgpDynamicNeighbor.href) &&
         Objects.equals(this.createdAt, bgpDynamicNeighbor.createdAt) &&
         Objects.equals(this.createdBy, bgpDynamicNeighbor.createdBy) &&
-        Objects.equals(this.updatedAt, bgpDynamicNeighbor.updatedAt)&&
+        Objects.equals(this.updatedAt, bgpDynamicNeighbor.updatedAt) &&
+        Objects.equals(this.tags, bgpDynamicNeighbor.tags)&&
         Objects.equals(this.additionalProperties, bgpDynamicNeighbor.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, bgpNeighborAsn, bgpNeighborRange, metalGateway, state, href, createdAt, createdBy, updatedAt, additionalProperties);
+    return Objects.hash(id, bgpNeighborAsn, bgpNeighborRange, metalGateway, state, href, createdAt, createdBy, updatedAt, tags, additionalProperties);
   }
 
   @Override
@@ -395,6 +432,7 @@ public class BgpDynamicNeighbor {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -427,6 +465,7 @@ public class BgpDynamicNeighbor {
     openapiFields.add("created_at");
     openapiFields.add("created_by");
     openapiFields.add("updated_at");
+    openapiFields.add("tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -463,6 +502,10 @@ public class BgpDynamicNeighbor {
       // validate the optional field `created_by`
       if (jsonObj.get("created_by") != null && !jsonObj.get("created_by").isJsonNull()) {
         UserLimited.validateJsonObject(jsonObj.getAsJsonObject("created_by"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
   }
 

@@ -122,6 +122,8 @@ public class BgpConfigRequestInput {
 
    /**
    * Autonomous System Number for local BGP deployment.
+   * minimum: 0
+   * maximum: 4294967295
    * @return asn
   **/
   @javax.annotation.Nonnull

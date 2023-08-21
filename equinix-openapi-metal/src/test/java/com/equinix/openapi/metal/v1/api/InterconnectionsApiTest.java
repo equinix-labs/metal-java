@@ -14,9 +14,9 @@
 package com.equinix.openapi.metal.v1.api;
 
 import com.equinix.openapi.ApiException;
+import com.equinix.openapi.metal.v1.model.CreateOrganizationInterconnectionRequest;
 import com.equinix.openapi.metal.v1.model.Error;
 import com.equinix.openapi.metal.v1.model.Interconnection;
-import com.equinix.openapi.metal.v1.model.InterconnectionCreateInput;
 import com.equinix.openapi.metal.v1.model.InterconnectionList;
 import com.equinix.openapi.metal.v1.model.InterconnectionPort;
 import com.equinix.openapi.metal.v1.model.InterconnectionPortList;
@@ -68,10 +68,10 @@ public class InterconnectionsApiTest {
     @Test
     public void createOrganizationInterconnectionTest() throws ApiException {
         UUID organizationId = null;
-        InterconnectionCreateInput interconnectionCreateInput = null;
+        CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest = null;
         List<String> include = null;
         List<String> exclude = null;
-        Interconnection response = api.createOrganizationInterconnection(organizationId, interconnectionCreateInput, include, exclude);
+        Interconnection response = api.createOrganizationInterconnection(organizationId, createOrganizationInterconnectionRequest, include, exclude);
         // TODO: test validations
     }
 
@@ -85,10 +85,10 @@ public class InterconnectionsApiTest {
     @Test
     public void createProjectInterconnectionTest() throws ApiException {
         UUID projectId = null;
-        InterconnectionCreateInput interconnectionCreateInput = null;
+        CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest = null;
         List<String> include = null;
         List<String> exclude = null;
-        Interconnection response = api.createProjectInterconnection(projectId, interconnectionCreateInput, include, exclude);
+        Interconnection response = api.createProjectInterconnection(projectId, createOrganizationInterconnectionRequest, include, exclude);
         // TODO: test validations
     }
 

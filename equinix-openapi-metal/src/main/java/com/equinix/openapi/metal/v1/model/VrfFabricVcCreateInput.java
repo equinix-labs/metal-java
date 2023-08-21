@@ -47,10 +47,10 @@ import java.util.Set;
 import com.equinix.openapi.JSON;
 
 /**
- * InterconnectionCreateInput
+ * VrfFabricVcCreateInput
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class InterconnectionCreateInput {
+public class VrfFabricVcCreateInput {
   public static final String SERIALIZED_NAME_CONTACT_EMAIL = "contact_email";
   @SerializedName(SERIALIZED_NAME_CONTACT_EMAIL)
   private String contactEmail;
@@ -62,57 +62,6 @@ public class InterconnectionCreateInput {
   public static final String SERIALIZED_NAME_METRO = "metro";
   @SerializedName(SERIALIZED_NAME_METRO)
   private String metro;
-
-  /**
-   * The mode of the interconnection (only relevant to Dedicated Ports). Fabric VCs won&#39;t have this field. Can be either &#39;standard&#39; or &#39;tunnel&#39;.   The default mode of an interconnection on a Dedicated Port is &#39;standard&#39;. The mode can only be changed when there are no associated virtual circuits on the interconnection.   In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.
-   */
-  @JsonAdapter(ModeEnum.Adapter.class)
-  public enum ModeEnum {
-    STANDARD("standard"),
-    
-    TUNNEL("tunnel");
-
-    private String value;
-
-    ModeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ModeEnum fromValue(String value) {
-      for (ModeEnum b : ModeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ModeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ModeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ModeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ModeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_MODE = "mode";
-  @SerializedName(SERIALIZED_NAME_MODE)
-  private ModeEnum mode;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -185,22 +134,63 @@ public class InterconnectionCreateInput {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  /**
+   * When requesting for a Fabric VC, the value of this field should be &#39;shared&#39;.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    SHARED("shared");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
-  public static final String SERIALIZED_NAME_VLANS = "vlans";
-  @SerializedName(SERIALIZED_NAME_VLANS)
-  private List<Integer> vlans = null;
+  private TypeEnum type;
 
   public static final String SERIALIZED_NAME_VRFS = "vrfs";
   @SerializedName(SERIALIZED_NAME_VRFS)
-  private List<UUID> vrfs = null;
+  private List<UUID> vrfs = new ArrayList<>();
 
-  public InterconnectionCreateInput() {
+  public VrfFabricVcCreateInput() {
   }
 
-  public InterconnectionCreateInput contactEmail(String contactEmail) {
+  public VrfFabricVcCreateInput contactEmail(String contactEmail) {
     
     this.contactEmail = contactEmail;
     return this;
@@ -222,7 +212,7 @@ public class InterconnectionCreateInput {
   }
 
 
-  public InterconnectionCreateInput description(String description) {
+  public VrfFabricVcCreateInput description(String description) {
     
     this.description = description;
     return this;
@@ -244,14 +234,14 @@ public class InterconnectionCreateInput {
   }
 
 
-  public InterconnectionCreateInput metro(String metro) {
+  public VrfFabricVcCreateInput metro(String metro) {
     
     this.metro = metro;
     return this;
   }
 
    /**
-   * A Metro ID or code. For interconnections with Dedicated Ports, this will be the location of the issued Dedicated Ports. When creating Fabric VCs (Metal Billed), this is where interconnection will be originating from, as we pre-authorize the use of one of our shared ports as the origin of the interconnection using A-Side service tokens. We only allow local connections for Fabric VCs (Metal Billed), so the destination location must be the same as the origin. For Fabric VCs (Fabric Billed), or shared connections, this will be the destination of the interconnection. We allow remote connections for Fabric VCs (Fabric Billed), so the origin of the interconnection can be a different metro set here.
+   * A Metro ID or code. When creating Fabric VCs (Metal Billed), this is where interconnection will be originating from, as we pre-authorize the use of one of our shared ports as the origin of the interconnection using A-Side service tokens. We only allow local connections for Fabric VCs (Metal Billed), so the destination location must be the same as the origin. For Fabric VCs (Fabric Billed), or shared connections, this will be the destination of the interconnection. We allow remote connections for Fabric VCs (Fabric Billed), so the origin of the interconnection can be a different metro set here.
    * @return metro
   **/
   @javax.annotation.Nonnull
@@ -266,29 +256,7 @@ public class InterconnectionCreateInput {
   }
 
 
-  public InterconnectionCreateInput mode(ModeEnum mode) {
-    
-    this.mode = mode;
-    return this;
-  }
-
-   /**
-   * The mode of the interconnection (only relevant to Dedicated Ports). Fabric VCs won&#39;t have this field. Can be either &#39;standard&#39; or &#39;tunnel&#39;.   The default mode of an interconnection on a Dedicated Port is &#39;standard&#39;. The mode can only be changed when there are no associated virtual circuits on the interconnection.   In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.
-   * @return mode
-  **/
-  @javax.annotation.Nullable
-
-  public ModeEnum getMode() {
-    return mode;
-  }
-
-
-  public void setMode(ModeEnum mode) {
-    this.mode = mode;
-  }
-
-
-  public InterconnectionCreateInput name(String name) {
+  public VrfFabricVcCreateInput name(String name) {
     
     this.name = name;
     return this;
@@ -310,7 +278,7 @@ public class InterconnectionCreateInput {
   }
 
 
-  public InterconnectionCreateInput project(String project) {
+  public VrfFabricVcCreateInput project(String project) {
     
     this.project = project;
     return this;
@@ -332,7 +300,7 @@ public class InterconnectionCreateInput {
   }
 
 
-  public InterconnectionCreateInput redundancy(String redundancy) {
+  public VrfFabricVcCreateInput redundancy(String redundancy) {
     
     this.redundancy = redundancy;
     return this;
@@ -354,7 +322,7 @@ public class InterconnectionCreateInput {
   }
 
 
-  public InterconnectionCreateInput serviceTokenType(ServiceTokenTypeEnum serviceTokenType) {
+  public VrfFabricVcCreateInput serviceTokenType(ServiceTokenTypeEnum serviceTokenType) {
     
     this.serviceTokenType = serviceTokenType;
     return this;
@@ -364,7 +332,7 @@ public class InterconnectionCreateInput {
    * Either &#39;a_side&#39; or &#39;z_side&#39;. Setting this field to &#39;a_side&#39; will create an interconnection with Fabric VCs (Metal Billed). Setting this field to &#39;z_side&#39; will create an interconnection with Fabric VCs (Fabric Billed). This is required when the &#39;type&#39; is &#39;shared&#39;, but this is not applicable when the &#39;type&#39; is &#39;dedicated&#39;. This parameter is included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
    * @return serviceTokenType
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public ServiceTokenTypeEnum getServiceTokenType() {
     return serviceTokenType;
@@ -376,14 +344,14 @@ public class InterconnectionCreateInput {
   }
 
 
-  public InterconnectionCreateInput speed(Integer speed) {
+  public VrfFabricVcCreateInput speed(Integer speed) {
     
     this.speed = speed;
     return this;
   }
 
    /**
-   * A interconnection speed, in bps, mbps, or gbps. For Dedicated Ports, this can be 10Gbps or 100Gbps. For Fabric VCs, this represents the maximum speed of the interconnection. For Fabric VCs (Metal Billed), this can only be one of the following:  &#39;&#39;50mbps&#39;&#39;, &#39;&#39;200mbps&#39;&#39;, &#39;&#39;500mbps&#39;&#39;, &#39;&#39;1gbps&#39;&#39;, &#39;&#39;2gbps&#39;&#39;, &#39;&#39;5gbps&#39;&#39; or &#39;&#39;10gbps&#39;&#39;, and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to &#39;&#39;10gbps&#39;&#39; even if it is not provided. For example, &#39;&#39;500000000&#39;&#39;, &#39;&#39;50m&#39;&#39;, or&#39; &#39;&#39;500mbps&#39;&#39; will all work as valid inputs.
+   * A interconnection speed, in bps, mbps, or gbps. For Fabric VCs, this represents the maximum speed of the interconnection. For Fabric VCs (Metal Billed), this can only be one of the following:  &#39;&#39;50mbps&#39;&#39;, &#39;&#39;200mbps&#39;&#39;, &#39;&#39;500mbps&#39;&#39;, &#39;&#39;1gbps&#39;&#39;, &#39;&#39;2gbps&#39;&#39;, &#39;&#39;5gbps&#39;&#39; or &#39;&#39;10gbps&#39;&#39;, and is required for creation. For Fabric VCs (Fabric Billed), this field will always default to &#39;&#39;10gbps&#39;&#39; even if it is not provided. For example, &#39;&#39;500000000&#39;&#39;, &#39;&#39;50m&#39;&#39;, or&#39; &#39;&#39;500mbps&#39;&#39; will all work as valid inputs.
    * @return speed
   **/
   @javax.annotation.Nullable
@@ -398,13 +366,13 @@ public class InterconnectionCreateInput {
   }
 
 
-  public InterconnectionCreateInput tags(List<String> tags) {
+  public VrfFabricVcCreateInput tags(List<String> tags) {
     
     this.tags = tags;
     return this;
   }
 
-  public InterconnectionCreateInput addTagsItem(String tagsItem) {
+  public VrfFabricVcCreateInput addTagsItem(String tagsItem) {
     if (this.tags == null) {
       this.tags = new ArrayList<>();
     }
@@ -428,77 +396,44 @@ public class InterconnectionCreateInput {
   }
 
 
-  public InterconnectionCreateInput type(String type) {
+  public VrfFabricVcCreateInput type(TypeEnum type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Either &#39;shared&#39; or &#39;dedicated&#39;. The &#39;shared&#39; type represents shared interconnections, or also known as Fabric VCs. The &#39;dedicated&#39; type represents dedicated interconnections, or also known as Dedicated Ports.
+   * When requesting for a Fabric VC, the value of this field should be &#39;shared&#39;.
    * @return type
   **/
   @javax.annotation.Nonnull
 
-  public String getType() {
+  public TypeEnum getType() {
     return type;
   }
 
 
-  public void setType(String type) {
+  public void setType(TypeEnum type) {
     this.type = type;
   }
 
 
-  public InterconnectionCreateInput vlans(List<Integer> vlans) {
-    
-    this.vlans = vlans;
-    return this;
-  }
-
-  public InterconnectionCreateInput addVlansItem(Integer vlansItem) {
-    if (this.vlans == null) {
-      this.vlans = new ArrayList<>();
-    }
-    this.vlans.add(vlansItem);
-    return this;
-  }
-
-   /**
-   * A list of one or two metro-based VLANs that will be set on the virtual circuits of primary and/or secondary (if redundant) interconnections respectively when creating Fabric VCs. VLANs can also be set after the interconnection is created, but are required to fully activate the interconnection. This parameter is included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
-   * @return vlans
-  **/
-  @javax.annotation.Nullable
-
-  public List<Integer> getVlans() {
-    return vlans;
-  }
-
-
-  public void setVlans(List<Integer> vlans) {
-    this.vlans = vlans;
-  }
-
-
-  public InterconnectionCreateInput vrfs(List<UUID> vrfs) {
+  public VrfFabricVcCreateInput vrfs(List<UUID> vrfs) {
     
     this.vrfs = vrfs;
     return this;
   }
 
-  public InterconnectionCreateInput addVrfsItem(UUID vrfsItem) {
-    if (this.vrfs == null) {
-      this.vrfs = new ArrayList<>();
-    }
+  public VrfFabricVcCreateInput addVrfsItem(UUID vrfsItem) {
     this.vrfs.add(vrfsItem);
     return this;
   }
 
    /**
-   * Can only be set when creating Fabric VCs in VRF(s). This field holds a list of VRF UUIDs that will be set automatically on the virtual circuits on creation, and can hold up to two UUIDs. Two UUIDs are required when requesting redundant Fabric VCs. The first UUID will be set on the primary virtual circuit, while the second UUID will be set on the secondary. The two UUIDs can be the same if both the primary and secondary virtual circuits will be in the same VRF. This parameter is included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
+   * This field holds a list of VRF UUIDs that will be set automatically on the virtual circuits of Fabric VCs on creation, and can hold up to two UUIDs. Two UUIDs are required when requesting redundant Fabric VCs. The first UUID will be set on the primary virtual circuit, while the second UUID will be set on the secondary. The two UUIDs can be the same if both the primary and secondary virtual circuits will be in the same VRF. This parameter is included in the specification as a developer preview and is generally unavailable. Please contact our Support team for more details.
    * @return vrfs
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public List<UUID> getVrfs() {
     return vrfs;
@@ -522,9 +457,9 @@ public class InterconnectionCreateInput {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the InterconnectionCreateInput instance itself
+   * @return the VrfFabricVcCreateInput instance itself
    */
-  public InterconnectionCreateInput putAdditionalProperty(String key, Object value) {
+  public VrfFabricVcCreateInput putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -563,36 +498,33 @@ public class InterconnectionCreateInput {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InterconnectionCreateInput interconnectionCreateInput = (InterconnectionCreateInput) o;
-    return Objects.equals(this.contactEmail, interconnectionCreateInput.contactEmail) &&
-        Objects.equals(this.description, interconnectionCreateInput.description) &&
-        Objects.equals(this.metro, interconnectionCreateInput.metro) &&
-        Objects.equals(this.mode, interconnectionCreateInput.mode) &&
-        Objects.equals(this.name, interconnectionCreateInput.name) &&
-        Objects.equals(this.project, interconnectionCreateInput.project) &&
-        Objects.equals(this.redundancy, interconnectionCreateInput.redundancy) &&
-        Objects.equals(this.serviceTokenType, interconnectionCreateInput.serviceTokenType) &&
-        Objects.equals(this.speed, interconnectionCreateInput.speed) &&
-        Objects.equals(this.tags, interconnectionCreateInput.tags) &&
-        Objects.equals(this.type, interconnectionCreateInput.type) &&
-        Objects.equals(this.vlans, interconnectionCreateInput.vlans) &&
-        Objects.equals(this.vrfs, interconnectionCreateInput.vrfs)&&
-        Objects.equals(this.additionalProperties, interconnectionCreateInput.additionalProperties);
+    VrfFabricVcCreateInput vrfFabricVcCreateInput = (VrfFabricVcCreateInput) o;
+    return Objects.equals(this.contactEmail, vrfFabricVcCreateInput.contactEmail) &&
+        Objects.equals(this.description, vrfFabricVcCreateInput.description) &&
+        Objects.equals(this.metro, vrfFabricVcCreateInput.metro) &&
+        Objects.equals(this.name, vrfFabricVcCreateInput.name) &&
+        Objects.equals(this.project, vrfFabricVcCreateInput.project) &&
+        Objects.equals(this.redundancy, vrfFabricVcCreateInput.redundancy) &&
+        Objects.equals(this.serviceTokenType, vrfFabricVcCreateInput.serviceTokenType) &&
+        Objects.equals(this.speed, vrfFabricVcCreateInput.speed) &&
+        Objects.equals(this.tags, vrfFabricVcCreateInput.tags) &&
+        Objects.equals(this.type, vrfFabricVcCreateInput.type) &&
+        Objects.equals(this.vrfs, vrfFabricVcCreateInput.vrfs)&&
+        Objects.equals(this.additionalProperties, vrfFabricVcCreateInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactEmail, description, metro, mode, name, project, redundancy, serviceTokenType, speed, tags, type, vlans, vrfs, additionalProperties);
+    return Objects.hash(contactEmail, description, metro, name, project, redundancy, serviceTokenType, speed, tags, type, vrfs, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InterconnectionCreateInput {\n");
+    sb.append("class VrfFabricVcCreateInput {\n");
     sb.append("    contactEmail: ").append(toIndentedString(contactEmail)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
-    sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    redundancy: ").append(toIndentedString(redundancy)).append("\n");
@@ -600,7 +532,6 @@ public class InterconnectionCreateInput {
     sb.append("    speed: ").append(toIndentedString(speed)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    vlans: ").append(toIndentedString(vlans)).append("\n");
     sb.append("    vrfs: ").append(toIndentedString(vrfs)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -628,7 +559,6 @@ public class InterconnectionCreateInput {
     openapiFields.add("contact_email");
     openapiFields.add("description");
     openapiFields.add("metro");
-    openapiFields.add("mode");
     openapiFields.add("name");
     openapiFields.add("project");
     openapiFields.add("redundancy");
@@ -636,7 +566,6 @@ public class InterconnectionCreateInput {
     openapiFields.add("speed");
     openapiFields.add("tags");
     openapiFields.add("type");
-    openapiFields.add("vlans");
     openapiFields.add("vrfs");
 
     // a set of required properties/fields (JSON key names)
@@ -644,24 +573,26 @@ public class InterconnectionCreateInput {
     openapiRequiredFields.add("metro");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("redundancy");
+    openapiRequiredFields.add("service_token_type");
     openapiRequiredFields.add("type");
+    openapiRequiredFields.add("vrfs");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to InterconnectionCreateInput
+  * @throws IOException if the JSON Object is invalid with respect to VrfFabricVcCreateInput
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!InterconnectionCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in InterconnectionCreateInput is not found in the empty JSON string", InterconnectionCreateInput.openapiRequiredFields.toString()));
+        if (!VrfFabricVcCreateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in VrfFabricVcCreateInput is not found in the empty JSON string", VrfFabricVcCreateInput.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : InterconnectionCreateInput.openapiRequiredFields) {
+      for (String requiredField : VrfFabricVcCreateInput.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
@@ -675,9 +606,6 @@ public class InterconnectionCreateInput {
       if (!jsonObj.get("metro").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `metro` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metro").toString()));
       }
-      if ((jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) && !jsonObj.get("mode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
-      }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -687,7 +615,7 @@ public class InterconnectionCreateInput {
       if (!jsonObj.get("redundancy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redundancy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redundancy").toString()));
       }
-      if ((jsonObj.get("service_token_type") != null && !jsonObj.get("service_token_type").isJsonNull()) && !jsonObj.get("service_token_type").isJsonPrimitive()) {
+      if (!jsonObj.get("service_token_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `service_token_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("service_token_type").toString()));
       }
       // ensure the optional json data is an array if present
@@ -697,12 +625,10 @@ public class InterconnectionCreateInput {
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("vlans") != null && !jsonObj.get("vlans").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `vlans` to be an array in the JSON string but got `%s`", jsonObj.get("vlans").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("vrfs") != null && !jsonObj.get("vrfs").isJsonArray()) {
+      // ensure the required json array is present
+      if (jsonObj.get("vrfs") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("vrfs").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `vrfs` to be an array in the JSON string but got `%s`", jsonObj.get("vrfs").toString()));
       }
   }
@@ -711,16 +637,16 @@ public class InterconnectionCreateInput {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!InterconnectionCreateInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'InterconnectionCreateInput' and its subtypes
+       if (!VrfFabricVcCreateInput.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'VrfFabricVcCreateInput' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<InterconnectionCreateInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(InterconnectionCreateInput.class));
+       final TypeAdapter<VrfFabricVcCreateInput> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(VrfFabricVcCreateInput.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<InterconnectionCreateInput>() {
+       return (TypeAdapter<T>) new TypeAdapter<VrfFabricVcCreateInput>() {
            @Override
-           public void write(JsonWriter out, InterconnectionCreateInput value) throws IOException {
+           public void write(JsonWriter out, VrfFabricVcCreateInput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -743,11 +669,11 @@ public class InterconnectionCreateInput {
            }
 
            @Override
-           public InterconnectionCreateInput read(JsonReader in) throws IOException {
+           public VrfFabricVcCreateInput read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             InterconnectionCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
+             VrfFabricVcCreateInput instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -774,18 +700,18 @@ public class InterconnectionCreateInput {
   }
 
  /**
-  * Create an instance of InterconnectionCreateInput given an JSON string
+  * Create an instance of VrfFabricVcCreateInput given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of InterconnectionCreateInput
-  * @throws IOException if the JSON string is invalid with respect to InterconnectionCreateInput
+  * @return An instance of VrfFabricVcCreateInput
+  * @throws IOException if the JSON string is invalid with respect to VrfFabricVcCreateInput
   */
-  public static InterconnectionCreateInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, InterconnectionCreateInput.class);
+  public static VrfFabricVcCreateInput fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VrfFabricVcCreateInput.class);
   }
 
  /**
-  * Convert an instance of InterconnectionCreateInput to an JSON string
+  * Convert an instance of VrfFabricVcCreateInput to an JSON string
   *
   * @return JSON string
   */
