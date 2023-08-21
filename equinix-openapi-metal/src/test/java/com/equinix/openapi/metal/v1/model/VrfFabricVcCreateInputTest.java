@@ -27,25 +27,41 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for ProjectCreateFromRootInput
+ * Model tests for VrfFabricVcCreateInput
  */
-public class ProjectCreateFromRootInputTest {
-    private final ProjectCreateFromRootInput model = new ProjectCreateFromRootInput();
+public class VrfFabricVcCreateInputTest {
+    private final VrfFabricVcCreateInput model = new VrfFabricVcCreateInput();
 
     /**
-     * Model tests for ProjectCreateFromRootInput
+     * Model tests for VrfFabricVcCreateInput
      */
     @Test
-    public void testProjectCreateFromRootInput() {
-        // TODO: test ProjectCreateFromRootInput
+    public void testVrfFabricVcCreateInput() {
+        // TODO: test VrfFabricVcCreateInput
     }
 
     /**
-     * Test the property 'customdata'
+     * Test the property 'contactEmail'
      */
     @Test
-    public void customdataTest() {
-        // TODO: test customdata
+    public void contactEmailTest() {
+        // TODO: test contactEmail
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
+     * Test the property 'metro'
+     */
+    @Test
+    public void metroTest() {
+        // TODO: test metro
     }
 
     /**
@@ -57,19 +73,35 @@ public class ProjectCreateFromRootInputTest {
     }
 
     /**
-     * Test the property 'organizationId'
+     * Test the property 'project'
      */
     @Test
-    public void organizationIdTest() {
-        // TODO: test organizationId
+    public void projectTest() {
+        // TODO: test project
     }
 
     /**
-     * Test the property 'paymentMethodId'
+     * Test the property 'redundancy'
      */
     @Test
-    public void paymentMethodIdTest() {
-        // TODO: test paymentMethodId
+    public void redundancyTest() {
+        // TODO: test redundancy
+    }
+
+    /**
+     * Test the property 'serviceTokenType'
+     */
+    @Test
+    public void serviceTokenTypeTest() {
+        // TODO: test serviceTokenType
+    }
+
+    /**
+     * Test the property 'speed'
+     */
+    @Test
+    public void speedTest() {
+        // TODO: test speed
     }
 
     /**
@@ -78,6 +110,22 @@ public class ProjectCreateFromRootInputTest {
     @Test
     public void tagsTest() {
         // TODO: test tags
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
+    /**
+     * Test the property 'vrfs'
+     */
+    @Test
+    public void vrfsTest() {
+        // TODO: test vrfs
     }
 
 }

@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**bgpNeighborRange** | **String** | Network range of the dynamic BGP neighbor in CIDR format |  |
 |**bgpNeighborAsn** | **Integer** | The ASN of the dynamic BGP neighbor |  |
+|**tags** | **List&lt;String&gt;** |  |  [optional] |
 
 
 
