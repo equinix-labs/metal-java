@@ -16,6 +16,7 @@
 |**createdAt** | **OffsetDateTime** |  |  [optional] [readonly] |
 |**createdBy** | [**UserLimited**](UserLimited.md) |  |  [optional] |
 |**updatedAt** | **OffsetDateTime** |  |  [optional] [readonly] |
+|**tags** | **List&lt;String&gt;** |  |  [optional] |
 
 
 

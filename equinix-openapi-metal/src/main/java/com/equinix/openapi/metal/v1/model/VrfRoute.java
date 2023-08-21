@@ -25,6 +25,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import com.google.gson.Gson;
@@ -192,6 +194,10 @@ public class VrfRoute {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
   private String href;
+
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  private List<String> tags = null;
 
   public VrfRoute() {
   }
@@ -401,6 +407,36 @@ public class VrfRoute {
 
 
 
+
+  public VrfRoute tags(List<String> tags) {
+    
+    this.tags = tags;
+    return this;
+  }
+
+  public VrfRoute addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -466,13 +502,14 @@ public class VrfRoute {
         Objects.equals(this.metalGateway, vrfRoute.metalGateway) &&
         Objects.equals(this.virtualNetwork, vrfRoute.virtualNetwork) &&
         Objects.equals(this.vrf, vrfRoute.vrf) &&
-        Objects.equals(this.href, vrfRoute.href)&&
+        Objects.equals(this.href, vrfRoute.href) &&
+        Objects.equals(this.tags, vrfRoute.tags)&&
         Objects.equals(this.additionalProperties, vrfRoute.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, prefix, nextHop, type, createdAt, updatedAt, metalGateway, virtualNetwork, vrf, href, additionalProperties);
+    return Objects.hash(id, status, prefix, nextHop, type, createdAt, updatedAt, metalGateway, virtualNetwork, vrf, href, tags, additionalProperties);
   }
 
   @Override
@@ -490,6 +527,7 @@ public class VrfRoute {
     sb.append("    virtualNetwork: ").append(toIndentedString(virtualNetwork)).append("\n");
     sb.append("    vrf: ").append(toIndentedString(vrf)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -524,6 +562,7 @@ public class VrfRoute {
     openapiFields.add("virtual_network");
     openapiFields.add("vrf");
     openapiFields.add("href");
+    openapiFields.add("tags");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -570,6 +609,10 @@ public class VrfRoute {
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
   }
 

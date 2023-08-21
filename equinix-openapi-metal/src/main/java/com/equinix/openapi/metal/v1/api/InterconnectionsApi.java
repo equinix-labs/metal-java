@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.equinix.openapi.metal.v1.model.CreateOrganizationInterconnectionRequest;
 import com.equinix.openapi.metal.v1.model.Error;
 import com.equinix.openapi.metal.v1.model.Interconnection;
-import com.equinix.openapi.metal.v1.model.InterconnectionCreateInput;
 import com.equinix.openapi.metal.v1.model.InterconnectionList;
 import com.equinix.openapi.metal.v1.model.InterconnectionPort;
 import com.equinix.openapi.metal.v1.model.InterconnectionPortList;
@@ -238,7 +238,7 @@ public class InterconnectionsApi {
     /**
      * Build call for createOrganizationInterconnection
      * @param organizationId UUID of the organization (required)
-     * @param interconnectionCreateInput Interconnection details (required)
+     * @param createOrganizationInterconnectionRequest Dedicated port or shared interconnection (also known as Fabric VC) creation request (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
@@ -253,7 +253,7 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createOrganizationInterconnectionCall(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createOrganizationInterconnectionCall(UUID organizationId, CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -267,7 +267,7 @@ public class InterconnectionsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = interconnectionCreateInput;
+        Object localVarPostBody = createOrganizationInterconnectionRequest;
 
         // create path and map variables
         String localVarPath = "/organizations/{organization_id}/connections"
@@ -308,18 +308,18 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createOrganizationInterconnectionValidateBeforeCall(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createOrganizationInterconnectionValidateBeforeCall(UUID organizationId, CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'organizationId' is set
         if (organizationId == null) {
             throw new ApiException("Missing the required parameter 'organizationId' when calling createOrganizationInterconnection(Async)");
         }
 
-        // verify the required parameter 'interconnectionCreateInput' is set
-        if (interconnectionCreateInput == null) {
-            throw new ApiException("Missing the required parameter 'interconnectionCreateInput' when calling createOrganizationInterconnection(Async)");
+        // verify the required parameter 'createOrganizationInterconnectionRequest' is set
+        if (createOrganizationInterconnectionRequest == null) {
+            throw new ApiException("Missing the required parameter 'createOrganizationInterconnectionRequest' when calling createOrganizationInterconnection(Async)");
         }
 
-        return createOrganizationInterconnectionCall(organizationId, interconnectionCreateInput, include, exclude, _callback);
+        return createOrganizationInterconnectionCall(organizationId, createOrganizationInterconnectionRequest, include, exclude, _callback);
 
     }
 
@@ -327,7 +327,7 @@ public class InterconnectionsApi {
      * Request a new interconnection for the organization
      * Creates a new interconnection request. A Project ID must be specified in the request body for connections on shared ports.
      * @param organizationId UUID of the organization (required)
-     * @param interconnectionCreateInput Interconnection details (required)
+     * @param createOrganizationInterconnectionRequest Dedicated port or shared interconnection (also known as Fabric VC) creation request (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Interconnection
@@ -341,8 +341,8 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Interconnection createOrganizationInterconnection(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<Interconnection> localVarResp = createOrganizationInterconnectionWithHttpInfo(organizationId, interconnectionCreateInput, include, exclude);
+    public Interconnection createOrganizationInterconnection(UUID organizationId, CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<Interconnection> localVarResp = createOrganizationInterconnectionWithHttpInfo(organizationId, createOrganizationInterconnectionRequest, include, exclude);
         return localVarResp.getData();
     }
 
@@ -350,7 +350,7 @@ public class InterconnectionsApi {
      * Request a new interconnection for the organization
      * Creates a new interconnection request. A Project ID must be specified in the request body for connections on shared ports.
      * @param organizationId UUID of the organization (required)
-     * @param interconnectionCreateInput Interconnection details (required)
+     * @param createOrganizationInterconnectionRequest Dedicated port or shared interconnection (also known as Fabric VC) creation request (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Interconnection&gt;
@@ -364,8 +364,8 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Interconnection> createOrganizationInterconnectionWithHttpInfo(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = createOrganizationInterconnectionValidateBeforeCall(organizationId, interconnectionCreateInput, include, exclude, null);
+    public ApiResponse<Interconnection> createOrganizationInterconnectionWithHttpInfo(UUID organizationId, CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = createOrganizationInterconnectionValidateBeforeCall(organizationId, createOrganizationInterconnectionRequest, include, exclude, null);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -374,7 +374,7 @@ public class InterconnectionsApi {
      * Request a new interconnection for the organization (asynchronously)
      * Creates a new interconnection request. A Project ID must be specified in the request body for connections on shared ports.
      * @param organizationId UUID of the organization (required)
-     * @param interconnectionCreateInput Interconnection details (required)
+     * @param createOrganizationInterconnectionRequest Dedicated port or shared interconnection (also known as Fabric VC) creation request (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -389,9 +389,9 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createOrganizationInterconnectionAsync(UUID organizationId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude, final ApiCallback<Interconnection> _callback) throws ApiException {
+    public okhttp3.Call createOrganizationInterconnectionAsync(UUID organizationId, CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest, List<String> include, List<String> exclude, final ApiCallback<Interconnection> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createOrganizationInterconnectionValidateBeforeCall(organizationId, interconnectionCreateInput, include, exclude, _callback);
+        okhttp3.Call localVarCall = createOrganizationInterconnectionValidateBeforeCall(organizationId, createOrganizationInterconnectionRequest, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -399,7 +399,7 @@ public class InterconnectionsApi {
     /**
      * Build call for createProjectInterconnection
      * @param projectId UUID of the project (required)
-     * @param interconnectionCreateInput Interconnection details (required)
+     * @param createOrganizationInterconnectionRequest Dedicated port or shared interconnection (also known as Fabric VC) creation request (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
@@ -413,7 +413,7 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createProjectInterconnectionCall(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createProjectInterconnectionCall(UUID projectId, CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -427,7 +427,7 @@ public class InterconnectionsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = interconnectionCreateInput;
+        Object localVarPostBody = createOrganizationInterconnectionRequest;
 
         // create path and map variables
         String localVarPath = "/projects/{project_id}/connections"
@@ -468,18 +468,18 @@ public class InterconnectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createProjectInterconnectionValidateBeforeCall(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createProjectInterconnectionValidateBeforeCall(UUID projectId, CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest, List<String> include, List<String> exclude, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectId' is set
         if (projectId == null) {
             throw new ApiException("Missing the required parameter 'projectId' when calling createProjectInterconnection(Async)");
         }
 
-        // verify the required parameter 'interconnectionCreateInput' is set
-        if (interconnectionCreateInput == null) {
-            throw new ApiException("Missing the required parameter 'interconnectionCreateInput' when calling createProjectInterconnection(Async)");
+        // verify the required parameter 'createOrganizationInterconnectionRequest' is set
+        if (createOrganizationInterconnectionRequest == null) {
+            throw new ApiException("Missing the required parameter 'createOrganizationInterconnectionRequest' when calling createProjectInterconnection(Async)");
         }
 
-        return createProjectInterconnectionCall(projectId, interconnectionCreateInput, include, exclude, _callback);
+        return createProjectInterconnectionCall(projectId, createOrganizationInterconnectionRequest, include, exclude, _callback);
 
     }
 
@@ -487,7 +487,7 @@ public class InterconnectionsApi {
      * Request a new interconnection for the project&#39;s organization
      * Creates a new interconnection request
      * @param projectId UUID of the project (required)
-     * @param interconnectionCreateInput Interconnection details (required)
+     * @param createOrganizationInterconnectionRequest Dedicated port or shared interconnection (also known as Fabric VC) creation request (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Interconnection
@@ -500,8 +500,8 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public Interconnection createProjectInterconnection(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude) throws ApiException {
-        ApiResponse<Interconnection> localVarResp = createProjectInterconnectionWithHttpInfo(projectId, interconnectionCreateInput, include, exclude);
+    public Interconnection createProjectInterconnection(UUID projectId, CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest, List<String> include, List<String> exclude) throws ApiException {
+        ApiResponse<Interconnection> localVarResp = createProjectInterconnectionWithHttpInfo(projectId, createOrganizationInterconnectionRequest, include, exclude);
         return localVarResp.getData();
     }
 
@@ -509,7 +509,7 @@ public class InterconnectionsApi {
      * Request a new interconnection for the project&#39;s organization
      * Creates a new interconnection request
      * @param projectId UUID of the project (required)
-     * @param interconnectionCreateInput Interconnection details (required)
+     * @param createOrganizationInterconnectionRequest Dedicated port or shared interconnection (also known as Fabric VC) creation request (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Interconnection&gt;
@@ -522,8 +522,8 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Interconnection> createProjectInterconnectionWithHttpInfo(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude) throws ApiException {
-        okhttp3.Call localVarCall = createProjectInterconnectionValidateBeforeCall(projectId, interconnectionCreateInput, include, exclude, null);
+    public ApiResponse<Interconnection> createProjectInterconnectionWithHttpInfo(UUID projectId, CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest, List<String> include, List<String> exclude) throws ApiException {
+        okhttp3.Call localVarCall = createProjectInterconnectionValidateBeforeCall(projectId, createOrganizationInterconnectionRequest, include, exclude, null);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -532,7 +532,7 @@ public class InterconnectionsApi {
      * Request a new interconnection for the project&#39;s organization (asynchronously)
      * Creates a new interconnection request
      * @param projectId UUID of the project (required)
-     * @param interconnectionCreateInput Interconnection details (required)
+     * @param createOrganizationInterconnectionRequest Dedicated port or shared interconnection (also known as Fabric VC) creation request (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -546,9 +546,9 @@ public class InterconnectionsApi {
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createProjectInterconnectionAsync(UUID projectId, InterconnectionCreateInput interconnectionCreateInput, List<String> include, List<String> exclude, final ApiCallback<Interconnection> _callback) throws ApiException {
+    public okhttp3.Call createProjectInterconnectionAsync(UUID projectId, CreateOrganizationInterconnectionRequest createOrganizationInterconnectionRequest, List<String> include, List<String> exclude, final ApiCallback<Interconnection> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createProjectInterconnectionValidateBeforeCall(projectId, interconnectionCreateInput, include, exclude, _callback);
+        okhttp3.Call localVarCall = createProjectInterconnectionValidateBeforeCall(projectId, createOrganizationInterconnectionRequest, include, exclude, _callback);
         Type localVarReturnType = new TypeToken<Interconnection>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -21,23 +21,22 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for InterconnectionCreateInput
+ * Model tests for DedicatedPortCreateInput
  */
-public class InterconnectionCreateInputTest {
-    private final InterconnectionCreateInput model = new InterconnectionCreateInput();
+public class DedicatedPortCreateInputTest {
+    private final DedicatedPortCreateInput model = new DedicatedPortCreateInput();
 
     /**
-     * Model tests for InterconnectionCreateInput
+     * Model tests for DedicatedPortCreateInput
      */
     @Test
-    public void testInterconnectionCreateInput() {
-        // TODO: test InterconnectionCreateInput
+    public void testDedicatedPortCreateInput() {
+        // TODO: test DedicatedPortCreateInput
     }
 
     /**
@@ -97,14 +96,6 @@ public class InterconnectionCreateInputTest {
     }
 
     /**
-     * Test the property 'serviceTokenType'
-     */
-    @Test
-    public void serviceTokenTypeTest() {
-        // TODO: test serviceTokenType
-    }
-
-    /**
      * Test the property 'speed'
      */
     @Test
@@ -126,22 +117,6 @@ public class InterconnectionCreateInputTest {
     @Test
     public void typeTest() {
         // TODO: test type
-    }
-
-    /**
-     * Test the property 'vlans'
-     */
-    @Test
-    public void vlansTest() {
-        // TODO: test vlans
-    }
-
-    /**
-     * Test the property 'vrfs'
-     */
-    @Test
-    public void vrfsTest() {
-        // TODO: test vrfs
     }
 
 }
