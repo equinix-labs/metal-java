@@ -7,7 +7,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**validateUserdata**](UserdataApi.md#validateUserdata) | **POST** /userdata/validate | Validate user data |
 
 
-<a name="validateUserdata"></a>
+<a id="validateUserdata"></a>
 # **validateUserdata**
 > validateUserdata(userdata)
 

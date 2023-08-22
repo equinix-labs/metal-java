@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -53,7 +57,7 @@ import com.equinix.openapi.JSON;
 public class CapacityCheckPerFacilityList {
   public static final String SERIALIZED_NAME_SERVERS = "servers";
   @SerializedName(SERIALIZED_NAME_SERVERS)
-  private List<CapacityCheckPerFacilityInfo> servers = null;
+  private List<CapacityCheckPerFacilityInfo> servers;
 
   public CapacityCheckPerFacilityList() {
   }
@@ -77,7 +81,6 @@ public class CapacityCheckPerFacilityList {
    * @return servers
   **/
   @javax.annotation.Nullable
-
   public List<CapacityCheckPerFacilityInfo> getServers() {
     return servers;
   }

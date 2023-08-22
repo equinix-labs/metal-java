@@ -13,7 +13,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updateCurrentUser**](UsersApi.md#updateCurrentUser) | **PUT** /user | Update the current user |
 
 
-<a name="createUser"></a>
+<a id="createUser"></a>
 # **createUser**
 > User createUser(userCreateInput, include, exclude)
 
@@ -88,7 +88,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="findCurrentUser"></a>
+<a id="findCurrentUser"></a>
 # **findCurrentUser**
 > User findCurrentUser(include, exclude)
 
@@ -160,7 +160,7 @@ public class Example {
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="findInvitations"></a>
+<a id="findInvitations"></a>
 # **findInvitations**
 > InvitationList findInvitations(include, page, perPage)
 
@@ -236,7 +236,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findUserById"></a>
+<a id="findUserById"></a>
 # **findUserById**
 > User findUserById(id, include, exclude)
 
@@ -312,7 +312,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findUserCustomdata"></a>
+<a id="findUserCustomdata"></a>
 # **findUserCustomdata**
 > findUserCustomdata(id)
 
@@ -383,7 +383,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findUsers"></a>
+<a id="findUsers"></a>
 # **findUsers**
 > UserList findUsers(include, exclude, page, perPage)
 
@@ -459,7 +459,7 @@ public class Example {
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="updateCurrentUser"></a>
+<a id="updateCurrentUser"></a>
 # **updateCurrentUser**
 > User updateCurrentUser(userUpdateInput, include, exclude)
 

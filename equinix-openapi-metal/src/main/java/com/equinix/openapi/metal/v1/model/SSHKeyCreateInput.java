@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -53,7 +57,7 @@ import com.equinix.openapi.JSON;
 public class SSHKeyCreateInput {
   public static final String SERIALIZED_NAME_INSTANCES_IDS = "instances_ids";
   @SerializedName(SERIALIZED_NAME_INSTANCES_IDS)
-  private List<UUID> instancesIds = null;
+  private List<UUID> instancesIds;
 
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -65,7 +69,7 @@ public class SSHKeyCreateInput {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public SSHKeyCreateInput() {
   }
@@ -89,7 +93,6 @@ public class SSHKeyCreateInput {
    * @return instancesIds
   **/
   @javax.annotation.Nullable
-
   public List<UUID> getInstancesIds() {
     return instancesIds;
   }
@@ -111,7 +114,6 @@ public class SSHKeyCreateInput {
    * @return key
   **/
   @javax.annotation.Nullable
-
   public String getKey() {
     return key;
   }
@@ -133,7 +135,6 @@ public class SSHKeyCreateInput {
    * @return label
   **/
   @javax.annotation.Nullable
-
   public String getLabel() {
     return label;
   }
@@ -163,7 +164,6 @@ public class SSHKeyCreateInput {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

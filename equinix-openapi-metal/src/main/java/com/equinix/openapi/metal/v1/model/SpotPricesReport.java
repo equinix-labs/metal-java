@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -120,7 +124,6 @@ public class SpotPricesReport {
    * @return ams1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerFacility getAms1() {
     return ams1;
   }
@@ -142,7 +145,6 @@ public class SpotPricesReport {
    * @return atl1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerNewFacility getAtl1() {
     return atl1;
   }
@@ -164,7 +166,6 @@ public class SpotPricesReport {
    * @return dfw1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerNewFacility getDfw1() {
     return dfw1;
   }
@@ -186,7 +187,6 @@ public class SpotPricesReport {
    * @return ewr1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerFacility getEwr1() {
     return ewr1;
   }
@@ -208,7 +208,6 @@ public class SpotPricesReport {
    * @return fra1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerNewFacility getFra1() {
     return fra1;
   }
@@ -230,7 +229,6 @@ public class SpotPricesReport {
    * @return iad1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerNewFacility getIad1() {
     return iad1;
   }
@@ -252,7 +250,6 @@ public class SpotPricesReport {
    * @return lax1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerNewFacility getLax1() {
     return lax1;
   }
@@ -274,7 +271,6 @@ public class SpotPricesReport {
    * @return nrt1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerFacility getNrt1() {
     return nrt1;
   }
@@ -296,7 +292,6 @@ public class SpotPricesReport {
    * @return ord1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerNewFacility getOrd1() {
     return ord1;
   }
@@ -318,7 +313,6 @@ public class SpotPricesReport {
    * @return sea1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerNewFacility getSea1() {
     return sea1;
   }
@@ -340,7 +334,6 @@ public class SpotPricesReport {
    * @return sin1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerNewFacility getSin1() {
     return sin1;
   }
@@ -362,7 +355,6 @@ public class SpotPricesReport {
    * @return sjc1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerFacility getSjc1() {
     return sjc1;
   }
@@ -384,7 +376,6 @@ public class SpotPricesReport {
    * @return syd1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerNewFacility getSyd1() {
     return syd1;
   }
@@ -406,7 +397,6 @@ public class SpotPricesReport {
    * @return yyz1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerNewFacility getYyz1() {
     return yyz1;
   }

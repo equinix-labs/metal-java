@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -190,7 +194,6 @@ public class VlanVirtualCircuit {
    * @return bill
   **/
   @javax.annotation.Nonnull
-
   public Boolean getBill() {
     return bill;
   }
@@ -212,7 +215,6 @@ public class VlanVirtualCircuit {
    * @return description
   **/
   @javax.annotation.Nonnull
-
   public String getDescription() {
     return description;
   }
@@ -234,7 +236,6 @@ public class VlanVirtualCircuit {
    * @return id
   **/
   @javax.annotation.Nonnull
-
   public UUID getId() {
     return id;
   }
@@ -256,7 +257,6 @@ public class VlanVirtualCircuit {
    * @return name
   **/
   @javax.annotation.Nonnull
-
   public String getName() {
     return name;
   }
@@ -278,7 +278,6 @@ public class VlanVirtualCircuit {
    * @return nniVlan
   **/
   @javax.annotation.Nonnull
-
   public Integer getNniVlan() {
     return nniVlan;
   }
@@ -300,7 +299,6 @@ public class VlanVirtualCircuit {
    * @return port
   **/
   @javax.annotation.Nonnull
-
   public Href getPort() {
     return port;
   }
@@ -322,7 +320,6 @@ public class VlanVirtualCircuit {
    * @return project
   **/
   @javax.annotation.Nonnull
-
   public Href getProject() {
     return project;
   }
@@ -344,7 +341,6 @@ public class VlanVirtualCircuit {
    * @return speed
   **/
   @javax.annotation.Nullable
-
   public Integer getSpeed() {
     return speed;
   }
@@ -366,7 +362,6 @@ public class VlanVirtualCircuit {
    * @return status
   **/
   @javax.annotation.Nonnull
-
   public StatusEnum getStatus() {
     return status;
   }
@@ -384,6 +379,9 @@ public class VlanVirtualCircuit {
   }
 
   public VlanVirtualCircuit addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
     this.tags.add(tagsItem);
     return this;
   }
@@ -393,7 +391,6 @@ public class VlanVirtualCircuit {
    * @return tags
   **/
   @javax.annotation.Nonnull
-
   public List<String> getTags() {
     return tags;
   }
@@ -415,7 +412,6 @@ public class VlanVirtualCircuit {
    * @return virtualNetwork
   **/
   @javax.annotation.Nonnull
-
   public Href getVirtualNetwork() {
     return virtualNetwork;
   }
@@ -437,7 +433,6 @@ public class VlanVirtualCircuit {
    * @return vnid
   **/
   @javax.annotation.Nonnull
-
   public Integer getVnid() {
     return vnid;
   }
@@ -459,7 +454,6 @@ public class VlanVirtualCircuit {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -481,7 +475,6 @@ public class VlanVirtualCircuit {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }

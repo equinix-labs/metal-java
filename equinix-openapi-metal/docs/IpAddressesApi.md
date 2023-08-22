@@ -13,7 +13,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updateIPAddress**](IpAddressesApi.md#updateIPAddress) | **PATCH** /ips/{id} | Update an ip address |
 
 
-<a name="deleteIPAddress"></a>
+<a id="deleteIPAddress"></a>
 # **deleteIPAddress**
 > deleteIPAddress(id)
 
@@ -84,7 +84,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findIPAddressById"></a>
+<a id="findIPAddressById"></a>
 # **findIPAddressById**
 > FindIPAddressById200Response findIPAddressById(id, include, exclude)
 
@@ -160,7 +160,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findIPAddressCustomdata"></a>
+<a id="findIPAddressCustomdata"></a>
 # **findIPAddressCustomdata**
 > findIPAddressCustomdata(id)
 
@@ -231,7 +231,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findIPAvailabilities"></a>
+<a id="findIPAvailabilities"></a>
 # **findIPAvailabilities**
 > IPAvailabilitiesList findIPAvailabilities(id, cidr)
 
@@ -305,7 +305,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findIPReservations"></a>
+<a id="findIPReservations"></a>
 # **findIPReservations**
 > IPReservationList findIPReservations(id, types, include, exclude, perPage)
 
@@ -385,7 +385,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="requestIPReservation"></a>
+<a id="requestIPReservation"></a>
 # **requestIPReservation**
 > RequestIPReservation201Response requestIPReservation(id, requestIPReservationRequest, include, exclude)
 
@@ -464,7 +464,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="updateIPAddress"></a>
+<a id="updateIPAddress"></a>
 # **updateIPAddress**
 > FindIPAddressById200Response updateIPAddress(id, include, exclude, ipAssignmentUpdateInput)
 

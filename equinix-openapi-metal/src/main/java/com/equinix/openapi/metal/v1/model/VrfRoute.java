@@ -39,6 +39,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -197,7 +201,7 @@ public class VrfRoute {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public VrfRoute() {
   }
@@ -225,7 +229,6 @@ public class VrfRoute {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -238,7 +241,6 @@ public class VrfRoute {
    * @return status
   **/
   @javax.annotation.Nullable
-
   public StatusEnum getStatus() {
     return status;
   }
@@ -257,7 +259,6 @@ public class VrfRoute {
    * @return prefix
   **/
   @javax.annotation.Nullable
-
   public String getPrefix() {
     return prefix;
   }
@@ -279,7 +280,6 @@ public class VrfRoute {
    * @return nextHop
   **/
   @javax.annotation.Nullable
-
   public String getNextHop() {
     return nextHop;
   }
@@ -295,7 +295,6 @@ public class VrfRoute {
    * @return type
   **/
   @javax.annotation.Nullable
-
   public TypeEnum getType() {
     return type;
   }
@@ -308,7 +307,6 @@ public class VrfRoute {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -321,7 +319,6 @@ public class VrfRoute {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -340,7 +337,6 @@ public class VrfRoute {
    * @return metalGateway
   **/
   @javax.annotation.Nullable
-
   public VrfMetalGateway getMetalGateway() {
     return metalGateway;
   }
@@ -362,7 +358,6 @@ public class VrfRoute {
    * @return virtualNetwork
   **/
   @javax.annotation.Nullable
-
   public VirtualNetwork getVirtualNetwork() {
     return virtualNetwork;
   }
@@ -384,7 +379,6 @@ public class VrfRoute {
    * @return vrf
   **/
   @javax.annotation.Nullable
-
   public Vrf getVrf() {
     return vrf;
   }
@@ -400,7 +394,6 @@ public class VrfRoute {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -427,7 +420,6 @@ public class VrfRoute {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

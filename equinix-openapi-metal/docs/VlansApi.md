@@ -10,7 +10,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**getVirtualNetwork**](VlansApi.md#getVirtualNetwork) | **GET** /virtual-networks/{id} | Get a virtual network |
 
 
-<a name="createVirtualNetwork"></a>
+<a id="createVirtualNetwork"></a>
 # **createVirtualNetwork**
 > VirtualNetwork createVirtualNetwork(id, virtualNetworkCreateInput, include, exclude)
 
@@ -89,7 +89,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="deleteVirtualNetwork"></a>
+<a id="deleteVirtualNetwork"></a>
 # **deleteVirtualNetwork**
 > VirtualNetwork deleteVirtualNetwork(id, include, exclude)
 
@@ -166,7 +166,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="findVirtualNetworks"></a>
+<a id="findVirtualNetworks"></a>
 # **findVirtualNetworks**
 > VirtualNetworkList findVirtualNetworks(id, include, exclude, facility, metro)
 
@@ -246,7 +246,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="getVirtualNetwork"></a>
+<a id="getVirtualNetwork"></a>
 # **getVirtualNetwork**
 > VirtualNetwork getVirtualNetwork(id, include, exclude)
 

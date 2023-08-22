@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -87,7 +91,7 @@ public class SSHKey {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public SSHKey() {
   }
@@ -103,7 +107,6 @@ public class SSHKey {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -125,7 +128,6 @@ public class SSHKey {
    * @return entity
   **/
   @javax.annotation.Nullable
-
   public Href getEntity() {
     return entity;
   }
@@ -147,7 +149,6 @@ public class SSHKey {
    * @return fingerprint
   **/
   @javax.annotation.Nullable
-
   public String getFingerprint() {
     return fingerprint;
   }
@@ -169,7 +170,6 @@ public class SSHKey {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -191,7 +191,6 @@ public class SSHKey {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -213,7 +212,6 @@ public class SSHKey {
    * @return key
   **/
   @javax.annotation.Nullable
-
   public String getKey() {
     return key;
   }
@@ -235,7 +233,6 @@ public class SSHKey {
    * @return label
   **/
   @javax.annotation.Nullable
-
   public String getLabel() {
     return label;
   }
@@ -257,7 +254,6 @@ public class SSHKey {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -287,7 +283,6 @@ public class SSHKey {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

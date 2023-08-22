@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -89,7 +93,6 @@ public class License {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -111,7 +114,6 @@ public class License {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -133,7 +135,6 @@ public class License {
    * @return licenseKey
   **/
   @javax.annotation.Nullable
-
   public String getLicenseKey() {
     return licenseKey;
   }
@@ -155,7 +156,6 @@ public class License {
    * @return licenseeProduct
   **/
   @javax.annotation.Nullable
-
   public Href getLicenseeProduct() {
     return licenseeProduct;
   }
@@ -177,7 +177,6 @@ public class License {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public Href getProject() {
     return project;
   }
@@ -199,7 +198,6 @@ public class License {
    * @return size
   **/
   @javax.annotation.Nullable
-
   public BigDecimal getSize() {
     return size;
   }

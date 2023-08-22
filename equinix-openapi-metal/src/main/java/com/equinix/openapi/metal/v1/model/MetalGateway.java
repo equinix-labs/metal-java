@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -153,7 +157,6 @@ public class MetalGateway {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -175,7 +178,6 @@ public class MetalGateway {
    * @return createdBy
   **/
   @javax.annotation.Nullable
-
   public Href getCreatedBy() {
     return createdBy;
   }
@@ -197,7 +199,6 @@ public class MetalGateway {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -219,7 +220,6 @@ public class MetalGateway {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -241,7 +241,6 @@ public class MetalGateway {
    * @return ipReservation
   **/
   @javax.annotation.Nullable
-
   public IPReservationOrHref getIpReservation() {
     return ipReservation;
   }
@@ -263,7 +262,6 @@ public class MetalGateway {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public Project getProject() {
     return project;
   }
@@ -285,7 +283,6 @@ public class MetalGateway {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public StateEnum getState() {
     return state;
   }
@@ -307,7 +304,6 @@ public class MetalGateway {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -329,7 +325,6 @@ public class MetalGateway {
    * @return virtualNetwork
   **/
   @javax.annotation.Nullable
-
   public VirtualNetwork getVirtualNetwork() {
     return virtualNetwork;
   }

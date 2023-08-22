@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -175,7 +179,7 @@ public class InterconnectionPort {
 
   public static final String SERIALIZED_NAME_VIRTUAL_CIRCUITS = "virtual_circuits";
   @SerializedName(SERIALIZED_NAME_VIRTUAL_CIRCUITS)
-  private List<VirtualCircuit> virtualCircuits = null;
+  private List<VirtualCircuit> virtualCircuits;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -207,7 +211,6 @@ public class InterconnectionPort {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -229,7 +232,6 @@ public class InterconnectionPort {
    * @return organization
   **/
   @javax.annotation.Nullable
-
   public Href getOrganization() {
     return organization;
   }
@@ -251,7 +253,6 @@ public class InterconnectionPort {
    * @return role
   **/
   @javax.annotation.Nullable
-
   public RoleEnum getRole() {
     return role;
   }
@@ -273,7 +274,6 @@ public class InterconnectionPort {
    * @return status
   **/
   @javax.annotation.Nullable
-
   public StatusEnum getStatus() {
     return status;
   }
@@ -295,7 +295,6 @@ public class InterconnectionPort {
    * @return switchId
   **/
   @javax.annotation.Nullable
-
   public String getSwitchId() {
     return switchId;
   }
@@ -325,7 +324,6 @@ public class InterconnectionPort {
    * @return virtualCircuits
   **/
   @javax.annotation.Nullable
-
   public List<VirtualCircuit> getVirtualCircuits() {
     return virtualCircuits;
   }
@@ -347,7 +345,6 @@ public class InterconnectionPort {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -369,7 +366,6 @@ public class InterconnectionPort {
    * @return speed
   **/
   @javax.annotation.Nullable
-
   public Integer getSpeed() {
     return speed;
   }
@@ -391,7 +387,6 @@ public class InterconnectionPort {
    * @return linkStatus
   **/
   @javax.annotation.Nullable
-
   public String getLinkStatus() {
     return linkStatus;
   }
@@ -413,7 +408,6 @@ public class InterconnectionPort {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }

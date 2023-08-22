@@ -52,6 +52,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -90,7 +94,7 @@ public class Device {
 
   public static final String SERIALIZED_NAME_CUSTOMDATA = "customdata";
   @SerializedName(SERIALIZED_NAME_CUSTOMDATA)
-  private Map<String, Object> customdata = null;
+  private Map<String, Object> customdata = new HashMap<>();
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -122,7 +126,7 @@ public class Device {
 
   public static final String SERIALIZED_NAME_IP_ADDRESSES = "ip_addresses";
   @SerializedName(SERIALIZED_NAME_IP_ADDRESSES)
-  private List<IPAssignment> ipAddresses = null;
+  private List<IPAssignment> ipAddresses;
 
   public static final String SERIALIZED_NAME_IPXE_SCRIPT_URL = "ipxe_script_url";
   @SerializedName(SERIALIZED_NAME_IPXE_SCRIPT_URL)
@@ -146,7 +150,7 @@ public class Device {
 
   public static final String SERIALIZED_NAME_NETWORK_PORTS = "network_ports";
   @SerializedName(SERIALIZED_NAME_NETWORK_PORTS)
-  private List<Port> networkPorts = null;
+  private List<Port> networkPorts;
 
   public static final String SERIALIZED_NAME_OPERATING_SYSTEM = "operating_system";
   @SerializedName(SERIALIZED_NAME_OPERATING_SYSTEM)
@@ -154,7 +158,7 @@ public class Device {
 
   public static final String SERIALIZED_NAME_ACTIONS = "actions";
   @SerializedName(SERIALIZED_NAME_ACTIONS)
-  private List<DeviceActionsInner> actions = null;
+  private List<DeviceActionsInner> actions;
 
   public static final String SERIALIZED_NAME_PLAN = "plan";
   @SerializedName(SERIALIZED_NAME_PLAN)
@@ -170,7 +174,7 @@ public class Device {
 
   public static final String SERIALIZED_NAME_PROVISIONING_EVENTS = "provisioning_events";
   @SerializedName(SERIALIZED_NAME_PROVISIONING_EVENTS)
-  private List<Event> provisioningEvents = null;
+  private List<Event> provisioningEvents;
 
   public static final String SERIALIZED_NAME_PROVISIONING_PERCENTAGE = "provisioning_percentage";
   @SerializedName(SERIALIZED_NAME_PROVISIONING_PERCENTAGE)
@@ -194,7 +198,7 @@ public class Device {
 
   public static final String SERIALIZED_NAME_SSH_KEYS = "ssh_keys";
   @SerializedName(SERIALIZED_NAME_SSH_KEYS)
-  private List<Href> sshKeys = null;
+  private List<Href> sshKeys;
 
   /**
    * The current state the instance is in.  * When an instance is initially created it will be in the &#x60;queued&#x60; state until it is picked up by the provisioner. * Once provisioning has begun on the instance it&#39;s state will move to &#x60;provisioning&#x60;. * When an instance is deleted, it will move to &#x60;deprovisioning&#x60; state until the deprovision is completed and the instance state moves to &#x60;deleted&#x60;. * If an instance fails to provision or deprovision it will move to &#x60;failed&#x60; state. * Once an instance has completed provisioning it will move to &#x60;active&#x60; state. * If an instance is currently powering off or powering on it will move to &#x60;powering_off&#x60; or &#x60;powering_on&#x60; states respectively.  * When the instance is powered off completely it will move to the &#x60;inactive&#x60; state. * When an instance is powered on completely it will move to the &#x60;active&#x60; state. * Using the reinstall action to install a new OS on the instance will cause the instance state to change to &#x60;reinstalling&#x60;. * When the reinstall action is complete the instance will move to &#x60;active&#x60; state.
@@ -273,7 +277,7 @@ public class Device {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_TERMINATION_TIME = "termination_time";
   @SerializedName(SERIALIZED_NAME_TERMINATION_TIME)
@@ -293,7 +297,7 @@ public class Device {
 
   public static final String SERIALIZED_NAME_VOLUMES = "volumes";
   @SerializedName(SERIALIZED_NAME_VOLUMES)
-  private List<Href> volumes = null;
+  private List<Href> volumes;
 
   public static final String SERIALIZED_NAME_SOS = "sos";
   @SerializedName(SERIALIZED_NAME_SOS)
@@ -313,7 +317,6 @@ public class Device {
    * @return alwaysPxe
   **/
   @javax.annotation.Nullable
-
   public Boolean getAlwaysPxe() {
     return alwaysPxe;
   }
@@ -335,7 +338,6 @@ public class Device {
    * @return billingCycle
   **/
   @javax.annotation.Nullable
-
   public String getBillingCycle() {
     return billingCycle;
   }
@@ -357,7 +359,6 @@ public class Device {
    * @return bondingMode
   **/
   @javax.annotation.Nullable
-
   public Integer getBondingMode() {
     return bondingMode;
   }
@@ -379,7 +380,6 @@ public class Device {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -401,7 +401,6 @@ public class Device {
    * @return createdBy
   **/
   @javax.annotation.Nullable
-
   public DeviceCreatedBy getCreatedBy() {
     return createdBy;
   }
@@ -431,7 +430,6 @@ public class Device {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Map<String, Object> getCustomdata() {
     return customdata;
   }
@@ -453,7 +451,6 @@ public class Device {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -475,7 +472,6 @@ public class Device {
    * @return facility
   **/
   @javax.annotation.Nullable
-
   public Facility getFacility() {
     return facility;
   }
@@ -497,7 +493,6 @@ public class Device {
    * @return hardwareReservation
   **/
   @javax.annotation.Nullable
-
   public HardwareReservation getHardwareReservation() {
     return hardwareReservation;
   }
@@ -519,7 +514,6 @@ public class Device {
    * @return hostname
   **/
   @javax.annotation.Nullable
-
   public String getHostname() {
     return hostname;
   }
@@ -541,7 +535,6 @@ public class Device {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -563,7 +556,6 @@ public class Device {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -585,7 +577,6 @@ public class Device {
    * @return imageUrl
   **/
   @javax.annotation.Nullable
-
   public String getImageUrl() {
     return imageUrl;
   }
@@ -615,7 +606,6 @@ public class Device {
    * @return ipAddresses
   **/
   @javax.annotation.Nullable
-
   public List<IPAssignment> getIpAddresses() {
     return ipAddresses;
   }
@@ -637,7 +627,6 @@ public class Device {
    * @return ipxeScriptUrl
   **/
   @javax.annotation.Nullable
-
   public String getIpxeScriptUrl() {
     return ipxeScriptUrl;
   }
@@ -659,7 +648,6 @@ public class Device {
    * @return iqn
   **/
   @javax.annotation.Nullable
-
   public String getIqn() {
     return iqn;
   }
@@ -681,7 +669,6 @@ public class Device {
    * @return locked
   **/
   @javax.annotation.Nullable
-
   public Boolean getLocked() {
     return locked;
   }
@@ -703,7 +690,6 @@ public class Device {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public DeviceMetro getMetro() {
     return metro;
   }
@@ -725,7 +711,6 @@ public class Device {
    * @return networkFrozen
   **/
   @javax.annotation.Nullable
-
   public Boolean getNetworkFrozen() {
     return networkFrozen;
   }
@@ -755,7 +740,6 @@ public class Device {
    * @return networkPorts
   **/
   @javax.annotation.Nullable
-
   public List<Port> getNetworkPorts() {
     return networkPorts;
   }
@@ -777,7 +761,6 @@ public class Device {
    * @return operatingSystem
   **/
   @javax.annotation.Nullable
-
   public OperatingSystem getOperatingSystem() {
     return operatingSystem;
   }
@@ -807,7 +790,6 @@ public class Device {
    * @return actions
   **/
   @javax.annotation.Nullable
-
   public List<DeviceActionsInner> getActions() {
     return actions;
   }
@@ -829,7 +811,6 @@ public class Device {
    * @return plan
   **/
   @javax.annotation.Nullable
-
   public Plan getPlan() {
     return plan;
   }
@@ -851,7 +832,6 @@ public class Device {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public DeviceProject getProject() {
     return project;
   }
@@ -873,7 +853,6 @@ public class Device {
    * @return projectLite
   **/
   @javax.annotation.Nullable
-
   public DeviceProjectLite getProjectLite() {
     return projectLite;
   }
@@ -903,7 +882,6 @@ public class Device {
    * @return provisioningEvents
   **/
   @javax.annotation.Nullable
-
   public List<Event> getProvisioningEvents() {
     return provisioningEvents;
   }
@@ -925,7 +903,6 @@ public class Device {
    * @return provisioningPercentage
   **/
   @javax.annotation.Nullable
-
   public Float getProvisioningPercentage() {
     return provisioningPercentage;
   }
@@ -947,7 +924,6 @@ public class Device {
    * @return rootPassword
   **/
   @javax.annotation.Nullable
-
   public String getRootPassword() {
     return rootPassword;
   }
@@ -969,7 +945,6 @@ public class Device {
    * @return shortId
   **/
   @javax.annotation.Nullable
-
   public String getShortId() {
     return shortId;
   }
@@ -991,7 +966,6 @@ public class Device {
    * @return spotInstance
   **/
   @javax.annotation.Nullable
-
   public Boolean getSpotInstance() {
     return spotInstance;
   }
@@ -1013,7 +987,6 @@ public class Device {
    * @return spotPriceMax
   **/
   @javax.annotation.Nullable
-
   public Float getSpotPriceMax() {
     return spotPriceMax;
   }
@@ -1043,7 +1016,6 @@ public class Device {
    * @return sshKeys
   **/
   @javax.annotation.Nullable
-
   public List<Href> getSshKeys() {
     return sshKeys;
   }
@@ -1065,7 +1037,6 @@ public class Device {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public StateEnum getState() {
     return state;
   }
@@ -1087,7 +1058,6 @@ public class Device {
    * @return storage
   **/
   @javax.annotation.Nullable
-
   public Storage getStorage() {
     return storage;
   }
@@ -1109,7 +1079,6 @@ public class Device {
    * @return switchUuid
   **/
   @javax.annotation.Nullable
-
   public String getSwitchUuid() {
     return switchUuid;
   }
@@ -1139,7 +1108,6 @@ public class Device {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }
@@ -1161,7 +1129,6 @@ public class Device {
    * @return terminationTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getTerminationTime() {
     return terminationTime;
   }
@@ -1183,7 +1150,6 @@ public class Device {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -1205,7 +1171,6 @@ public class Device {
    * @return user
   **/
   @javax.annotation.Nullable
-
   public String getUser() {
     return user;
   }
@@ -1227,7 +1192,6 @@ public class Device {
    * @return userdata
   **/
   @javax.annotation.Nullable
-
   public String getUserdata() {
     return userdata;
   }
@@ -1257,7 +1221,6 @@ public class Device {
    * @return volumes
   **/
   @javax.annotation.Nullable
-
   public List<Href> getVolumes() {
     return volumes;
   }
@@ -1279,7 +1242,6 @@ public class Device {
    * @return sos
   **/
   @javax.annotation.Nullable
-
   public String getSos() {
     return sos;
   }

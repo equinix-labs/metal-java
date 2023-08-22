@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -68,7 +72,7 @@ public class AuthTokenProject {
 
   public static final String SERIALIZED_NAME_DEVICES = "devices";
   @SerializedName(SERIALIZED_NAME_DEVICES)
-  private List<Href> devices = null;
+  private List<Href> devices;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -76,7 +80,7 @@ public class AuthTokenProject {
 
   public static final String SERIALIZED_NAME_INVITATIONS = "invitations";
   @SerializedName(SERIALIZED_NAME_INVITATIONS)
-  private List<Href> invitations = null;
+  private List<Href> invitations;
 
   public static final String SERIALIZED_NAME_MAX_DEVICES = "max_devices";
   @SerializedName(SERIALIZED_NAME_MAX_DEVICES)
@@ -84,11 +88,11 @@ public class AuthTokenProject {
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
-  private List<Href> members = null;
+  private List<Href> members;
 
   public static final String SERIALIZED_NAME_MEMBERSHIPS = "memberships";
   @SerializedName(SERIALIZED_NAME_MEMBERSHIPS)
-  private List<Href> memberships = null;
+  private List<Href> memberships;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -108,7 +112,7 @@ public class AuthTokenProject {
 
   public static final String SERIALIZED_NAME_SSH_KEYS = "ssh_keys";
   @SerializedName(SERIALIZED_NAME_SSH_KEYS)
-  private List<Href> sshKeys = null;
+  private List<Href> sshKeys;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -116,11 +120,11 @@ public class AuthTokenProject {
 
   public static final String SERIALIZED_NAME_VOLUMES = "volumes";
   @SerializedName(SERIALIZED_NAME_VOLUMES)
-  private List<Href> volumes = null;
+  private List<Href> volumes;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public AuthTokenProject() {
   }
@@ -136,7 +140,6 @@ public class AuthTokenProject {
    * @return bgpConfig
   **/
   @javax.annotation.Nullable
-
   public Href getBgpConfig() {
     return bgpConfig;
   }
@@ -158,7 +161,6 @@ public class AuthTokenProject {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -180,7 +182,6 @@ public class AuthTokenProject {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Object getCustomdata() {
     return customdata;
   }
@@ -210,7 +211,6 @@ public class AuthTokenProject {
    * @return devices
   **/
   @javax.annotation.Nullable
-
   public List<Href> getDevices() {
     return devices;
   }
@@ -232,7 +232,6 @@ public class AuthTokenProject {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -262,7 +261,6 @@ public class AuthTokenProject {
    * @return invitations
   **/
   @javax.annotation.Nullable
-
   public List<Href> getInvitations() {
     return invitations;
   }
@@ -284,7 +282,6 @@ public class AuthTokenProject {
    * @return maxDevices
   **/
   @javax.annotation.Nullable
-
   public Object getMaxDevices() {
     return maxDevices;
   }
@@ -314,7 +311,6 @@ public class AuthTokenProject {
    * @return members
   **/
   @javax.annotation.Nullable
-
   public List<Href> getMembers() {
     return members;
   }
@@ -344,7 +340,6 @@ public class AuthTokenProject {
    * @return memberships
   **/
   @javax.annotation.Nullable
-
   public List<Href> getMemberships() {
     return memberships;
   }
@@ -366,7 +361,6 @@ public class AuthTokenProject {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -388,7 +382,6 @@ public class AuthTokenProject {
    * @return networkStatus
   **/
   @javax.annotation.Nullable
-
   public Object getNetworkStatus() {
     return networkStatus;
   }
@@ -410,7 +403,6 @@ public class AuthTokenProject {
    * @return organization
   **/
   @javax.annotation.Nullable
-
   public Organization getOrganization() {
     return organization;
   }
@@ -432,7 +424,6 @@ public class AuthTokenProject {
    * @return paymentMethod
   **/
   @javax.annotation.Nullable
-
   public Href getPaymentMethod() {
     return paymentMethod;
   }
@@ -462,7 +453,6 @@ public class AuthTokenProject {
    * @return sshKeys
   **/
   @javax.annotation.Nullable
-
   public List<Href> getSshKeys() {
     return sshKeys;
   }
@@ -484,7 +474,6 @@ public class AuthTokenProject {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -514,7 +503,6 @@ public class AuthTokenProject {
    * @return volumes
   **/
   @javax.annotation.Nullable
-
   public List<Href> getVolumes() {
     return volumes;
   }
@@ -544,7 +532,6 @@ public class AuthTokenProject {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

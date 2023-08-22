@@ -9,7 +9,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updateMembership**](MembershipsApi.md#updateMembership) | **PUT** /memberships/{id} | Update the membership |
 
 
-<a name="deleteMembership"></a>
+<a id="deleteMembership"></a>
 # **deleteMembership**
 > deleteMembership(id)
 
@@ -80,7 +80,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findMembershipById"></a>
+<a id="findMembershipById"></a>
 # **findMembershipById**
 > Membership findMembershipById(id, include)
 
@@ -154,7 +154,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="updateMembership"></a>
+<a id="updateMembership"></a>
 # **updateMembership**
 > Membership updateMembership(id, membershipInput, include)
 

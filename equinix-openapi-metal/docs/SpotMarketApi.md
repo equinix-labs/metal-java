@@ -13,7 +13,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**listSpotMarketRequests**](SpotMarketApi.md#listSpotMarketRequests) | **GET** /projects/{id}/spot-market-requests | List spot market requests |
 
 
-<a name="createSpotMarketRequest"></a>
+<a id="createSpotMarketRequest"></a>
 # **createSpotMarketRequest**
 > SpotMarketRequest createSpotMarketRequest(id, spotMarketRequestCreateInput)
 
@@ -87,7 +87,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="deleteSpotMarketRequest"></a>
+<a id="deleteSpotMarketRequest"></a>
 # **deleteSpotMarketRequest**
 > deleteSpotMarketRequest(id, forceTermination)
 
@@ -160,7 +160,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findMetroSpotMarketPrices"></a>
+<a id="findMetroSpotMarketPrices"></a>
 # **findMetroSpotMarketPrices**
 > SpotMarketPricesPerMetroList findMetroSpotMarketPrices(metro, plan)
 
@@ -233,7 +233,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="findSpotMarketPrices"></a>
+<a id="findSpotMarketPrices"></a>
 # **findSpotMarketPrices**
 > SpotMarketPricesList findSpotMarketPrices(facility, plan)
 
@@ -306,7 +306,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="findSpotMarketPricesHistory"></a>
+<a id="findSpotMarketPricesHistory"></a>
 # **findSpotMarketPricesHistory**
 > SpotPricesHistoryReport findSpotMarketPricesHistory(facility, plan, from, until, metro)
 
@@ -385,7 +385,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="findSpotMarketRequestById"></a>
+<a id="findSpotMarketRequestById"></a>
 # **findSpotMarketRequestById**
 > SpotMarketRequest findSpotMarketRequestById(id, include)
 
@@ -459,7 +459,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="listSpotMarketRequests"></a>
+<a id="listSpotMarketRequests"></a>
 # **listSpotMarketRequests**
 > SpotMarketRequestList listSpotMarketRequests(id)
 

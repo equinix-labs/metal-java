@@ -20,7 +20,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**unassignPort**](PortsApi.md#unassignPort) | **POST** /ports/{id}/unassign | Unassign a port |
 
 
-<a name="assignNativeVlan"></a>
+<a id="assignNativeVlan"></a>
 # **assignNativeVlan**
 > Port assignNativeVlan(id, vnid, include)
 
@@ -96,7 +96,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="assignPort"></a>
+<a id="assignPort"></a>
 # **assignPort**
 > Port assignPort(id, portAssignInput, include)
 
@@ -173,7 +173,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="bondPort"></a>
+<a id="bondPort"></a>
 # **bondPort**
 > Port bondPort(id, bulkEnable, include)
 
@@ -250,7 +250,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="convertLayer2"></a>
+<a id="convertLayer2"></a>
 # **convertLayer2**
 > Port convertLayer2(id, portAssignInput, include)
 
@@ -327,7 +327,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="convertLayer3"></a>
+<a id="convertLayer3"></a>
 # **convertLayer3**
 > Port convertLayer3(id, include, portConvertLayer3Input)
 
@@ -404,7 +404,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createPortVlanAssignmentBatch"></a>
+<a id="createPortVlanAssignmentBatch"></a>
 # **createPortVlanAssignmentBatch**
 > PortVlanAssignmentBatch createPortVlanAssignmentBatch(id, portVlanAssignmentBatchCreateInput, include)
 
@@ -481,7 +481,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="deleteNativeVlan"></a>
+<a id="deleteNativeVlan"></a>
 # **deleteNativeVlan**
 > Port deleteNativeVlan(id, include)
 
@@ -555,7 +555,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="disbondPort"></a>
+<a id="disbondPort"></a>
 # **disbondPort**
 > Port disbondPort(id, bulkDisable, include)
 
@@ -632,7 +632,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="findPortById"></a>
+<a id="findPortById"></a>
 # **findPortById**
 > Port findPortById(id, include)
 
@@ -705,7 +705,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="findPortVlanAssignmentBatchByPortIdAndBatchId"></a>
+<a id="findPortVlanAssignmentBatchByPortIdAndBatchId"></a>
 # **findPortVlanAssignmentBatchByPortIdAndBatchId**
 > PortVlanAssignmentBatch findPortVlanAssignmentBatchByPortIdAndBatchId(id, batchId, include)
 
@@ -781,7 +781,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findPortVlanAssignmentBatches"></a>
+<a id="findPortVlanAssignmentBatches"></a>
 # **findPortVlanAssignmentBatches**
 > PortVlanAssignmentBatchList findPortVlanAssignmentBatches(id)
 
@@ -853,7 +853,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findPortVlanAssignmentByPortIdAndAssignmentId"></a>
+<a id="findPortVlanAssignmentByPortIdAndAssignmentId"></a>
 # **findPortVlanAssignmentByPortIdAndAssignmentId**
 > PortVlanAssignment findPortVlanAssignmentByPortIdAndAssignmentId(id, assignmentId, include)
 
@@ -929,7 +929,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findPortVlanAssignments"></a>
+<a id="findPortVlanAssignments"></a>
 # **findPortVlanAssignments**
 > PortVlanAssignmentList findPortVlanAssignments(id, include)
 
@@ -1003,7 +1003,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="unassignPort"></a>
+<a id="unassignPort"></a>
 # **unassignPort**
 > Port unassignPort(id, portAssignInput, include)
 

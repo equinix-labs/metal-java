@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -59,11 +63,11 @@ public class Batch {
 
   public static final String SERIALIZED_NAME_DEVICES = "devices";
   @SerializedName(SERIALIZED_NAME_DEVICES)
-  private List<Href> devices = null;
+  private List<Href> devices;
 
   public static final String SERIALIZED_NAME_ERROR_MESSAGES = "error_messages";
   @SerializedName(SERIALIZED_NAME_ERROR_MESSAGES)
-  private List<String> errorMessages = null;
+  private List<String> errorMessages;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -99,7 +103,6 @@ public class Batch {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -129,7 +132,6 @@ public class Batch {
    * @return devices
   **/
   @javax.annotation.Nullable
-
   public List<Href> getDevices() {
     return devices;
   }
@@ -159,7 +161,6 @@ public class Batch {
    * @return errorMessages
   **/
   @javax.annotation.Nullable
-
   public List<String> getErrorMessages() {
     return errorMessages;
   }
@@ -181,7 +182,6 @@ public class Batch {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -203,7 +203,6 @@ public class Batch {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public Href getProject() {
     return project;
   }
@@ -225,7 +224,6 @@ public class Batch {
    * @return quantity
   **/
   @javax.annotation.Nullable
-
   public Integer getQuantity() {
     return quantity;
   }
@@ -247,7 +245,6 @@ public class Batch {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public String getState() {
     return state;
   }
@@ -269,7 +266,6 @@ public class Batch {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }

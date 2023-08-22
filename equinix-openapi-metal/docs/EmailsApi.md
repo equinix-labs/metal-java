@@ -10,7 +10,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updateEmail**](EmailsApi.md#updateEmail) | **PUT** /emails/{id} | Update the email |
 
 
-<a name="createEmail"></a>
+<a id="createEmail"></a>
 # **createEmail**
 > Email createEmail(createEmailInput)
 
@@ -81,7 +81,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="deleteEmail"></a>
+<a id="deleteEmail"></a>
 # **deleteEmail**
 > deleteEmail(id)
 
@@ -152,7 +152,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findEmailById"></a>
+<a id="findEmailById"></a>
 # **findEmailById**
 > Email findEmailById(id)
 
@@ -224,7 +224,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="updateEmail"></a>
+<a id="updateEmail"></a>
 # **updateEmail**
 > Email updateEmail(id, updateEmailInput)
 

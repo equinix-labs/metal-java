@@ -7,7 +7,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findIncidents**](IncidentsApi.md#findIncidents) | **GET** /incidents | Retrieve the number of incidents |
 
 
-<a name="findIncidents"></a>
+<a id="findIncidents"></a>
 # **findIncidents**
 > findIncidents(include, exclude)
 

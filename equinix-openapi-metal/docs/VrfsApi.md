@@ -22,7 +22,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updateVrfRouteById**](VrfsApi.md#updateVrfRouteById) | **PUT** /routes/{id} | Update a VRF Route |
 
 
-<a name="bgpDynamicNeighborsIdGet"></a>
+<a id="bgpDynamicNeighborsIdGet"></a>
 # **bgpDynamicNeighborsIdGet**
 > BgpDynamicNeighbor bgpDynamicNeighborsIdGet(id, include, exclude)
 
@@ -97,7 +97,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **404** | Not Found |  -  |
 
-<a name="createBgpDynamicNeighbor"></a>
+<a id="createBgpDynamicNeighbor"></a>
 # **createBgpDynamicNeighbor**
 > BgpDynamicNeighbor createBgpDynamicNeighbor(id, bgpDynamicNeighborCreateInput, include, exclude)
 
@@ -176,7 +176,7 @@ public class Example {
 | **404** | Not Found |  -  |
 | **422** | Unprocessable entity |  -  |
 
-<a name="createVrf"></a>
+<a id="createVrf"></a>
 # **createVrf**
 > Vrf createVrf(id, vrfCreateInput, include, exclude)
 
@@ -254,7 +254,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createVrfRoute"></a>
+<a id="createVrfRoute"></a>
 # **createVrfRoute**
 > VrfRoute createVrfRoute(id, vrfRouteCreateInput, include, exclude)
 
@@ -333,7 +333,7 @@ public class Example {
 | **404** | Not Found |  -  |
 | **422** | Unprocessable entity |  -  |
 
-<a name="deleteBgpDynamicNeighborById"></a>
+<a id="deleteBgpDynamicNeighborById"></a>
 # **deleteBgpDynamicNeighborById**
 > BgpDynamicNeighbor deleteBgpDynamicNeighborById(id, include, exclude)
 
@@ -409,7 +409,7 @@ public class Example {
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 
-<a name="deleteVrf"></a>
+<a id="deleteVrf"></a>
 # **deleteVrf**
 > deleteVrf(id)
 
@@ -480,7 +480,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="deleteVrfRouteById"></a>
+<a id="deleteVrfRouteById"></a>
 # **deleteVrfRouteById**
 > VrfRoute deleteVrfRouteById(id, include, exclude)
 
@@ -556,7 +556,7 @@ public class Example {
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 
-<a name="findVrfById"></a>
+<a id="findVrfById"></a>
 # **findVrfById**
 > Vrf findVrfById(id, include, exclude)
 
@@ -632,7 +632,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findVrfIpReservation"></a>
+<a id="findVrfIpReservation"></a>
 # **findVrfIpReservation**
 > VrfIpReservation findVrfIpReservation(vrfId, id, include, exclude)
 
@@ -709,7 +709,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findVrfIpReservations"></a>
+<a id="findVrfIpReservations"></a>
 # **findVrfIpReservations**
 > VrfIpReservationList findVrfIpReservations(id, include, exclude)
 
@@ -784,7 +784,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findVrfRouteById"></a>
+<a id="findVrfRouteById"></a>
 # **findVrfRouteById**
 > VrfRoute findVrfRouteById(id, include, exclude)
 
@@ -859,7 +859,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **404** | Not Found |  -  |
 
-<a name="findVrfs"></a>
+<a id="findVrfs"></a>
 # **findVrfs**
 > VrfList findVrfs(id, include, exclude, metro)
 
@@ -936,7 +936,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="getBgpDynamicNeighbors"></a>
+<a id="getBgpDynamicNeighbors"></a>
 # **getBgpDynamicNeighbors**
 > BgpDynamicNeighborList getBgpDynamicNeighbors(id, include, exclude)
 
@@ -1011,7 +1011,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **404** | Not Found |  -  |
 
-<a name="getVrfRoutes"></a>
+<a id="getVrfRoutes"></a>
 # **getVrfRoutes**
 > VrfRouteList getVrfRoutes(id, include, exclude)
 
@@ -1086,7 +1086,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **404** | Not Found |  -  |
 
-<a name="updateVrf"></a>
+<a id="updateVrf"></a>
 # **updateVrf**
 > Vrf updateVrf(id, vrfUpdateInput, include, exclude)
 
@@ -1165,7 +1165,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="updateVrfRouteById"></a>
+<a id="updateVrfRouteById"></a>
 # **updateVrfRouteById**
 > VrfRoute updateVrfRouteById(id, vrfRouteUpdateInput, include, exclude)
 

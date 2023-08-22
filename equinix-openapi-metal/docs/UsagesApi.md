@@ -8,7 +8,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findProjectUsage**](UsagesApi.md#findProjectUsage) | **GET** /projects/{id}/usages | Retrieve all usages for project |
 
 
-<a name="findDeviceUsages"></a>
+<a id="findDeviceUsages"></a>
 # **findDeviceUsages**
 > DeviceUsageList findDeviceUsages(id, createdAfter, createdBefore)
 
@@ -83,7 +83,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="findProjectUsage"></a>
+<a id="findProjectUsage"></a>
 # **findProjectUsage**
 > ProjectUsageList findProjectUsage(id, createdAfter, createdBefore)
 

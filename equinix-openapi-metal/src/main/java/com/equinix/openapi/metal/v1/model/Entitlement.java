@@ -33,6 +33,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -111,7 +115,6 @@ public class Entitlement {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -133,7 +136,6 @@ public class Entitlement {
    * @return featureAccess
   **/
   @javax.annotation.Nullable
-
   public Object getFeatureAccess() {
     return featureAccess;
   }
@@ -155,7 +157,6 @@ public class Entitlement {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -177,7 +178,6 @@ public class Entitlement {
    * @return id
   **/
   @javax.annotation.Nonnull
-
   public UUID getId() {
     return id;
   }
@@ -199,7 +199,6 @@ public class Entitlement {
    * @return instanceQuota
   **/
   @javax.annotation.Nullable
-
   public Object getInstanceQuota() {
     return instanceQuota;
   }
@@ -221,7 +220,6 @@ public class Entitlement {
    * @return ipQuota
   **/
   @javax.annotation.Nullable
-
   public Object getIpQuota() {
     return ipQuota;
   }
@@ -243,7 +241,6 @@ public class Entitlement {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -265,7 +262,6 @@ public class Entitlement {
    * @return projectQuota
   **/
   @javax.annotation.Nullable
-
   public Integer getProjectQuota() {
     return projectQuota;
   }
@@ -287,7 +283,6 @@ public class Entitlement {
    * @return slug
   **/
   @javax.annotation.Nonnull
-
   public String getSlug() {
     return slug;
   }
@@ -309,7 +304,6 @@ public class Entitlement {
    * @return volumeLimits
   **/
   @javax.annotation.Nullable
-
   public Object getVolumeLimits() {
     return volumeLimits;
   }
@@ -331,7 +325,6 @@ public class Entitlement {
    * @return volumeQuota
   **/
   @javax.annotation.Nullable
-
   public Object getVolumeQuota() {
     return volumeQuota;
   }
@@ -353,7 +346,6 @@ public class Entitlement {
    * @return weight
   **/
   @javax.annotation.Nonnull
-
   public Integer getWeight() {
     return weight;
   }

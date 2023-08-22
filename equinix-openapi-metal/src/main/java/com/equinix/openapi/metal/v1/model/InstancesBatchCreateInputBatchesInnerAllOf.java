@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -52,7 +56,7 @@ import com.equinix.openapi.JSON;
 public class InstancesBatchCreateInputBatchesInnerAllOf {
   public static final String SERIALIZED_NAME_HOSTNAMES = "hostnames";
   @SerializedName(SERIALIZED_NAME_HOSTNAMES)
-  private List<String> hostnames = null;
+  private List<String> hostnames;
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
@@ -80,7 +84,6 @@ public class InstancesBatchCreateInputBatchesInnerAllOf {
    * @return hostnames
   **/
   @javax.annotation.Nullable
-
   public List<String> getHostnames() {
     return hostnames;
   }
@@ -102,7 +105,6 @@ public class InstancesBatchCreateInputBatchesInnerAllOf {
    * @return quantity
   **/
   @javax.annotation.Nullable
-
   public Integer getQuantity() {
     return quantity;
   }

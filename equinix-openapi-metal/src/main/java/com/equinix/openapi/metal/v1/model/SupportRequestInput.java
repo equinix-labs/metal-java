@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -133,7 +137,6 @@ public class SupportRequestInput {
    * @return deviceId
   **/
   @javax.annotation.Nullable
-
   public String getDeviceId() {
     return deviceId;
   }
@@ -155,7 +158,6 @@ public class SupportRequestInput {
    * @return message
   **/
   @javax.annotation.Nonnull
-
   public String getMessage() {
     return message;
   }
@@ -177,7 +179,6 @@ public class SupportRequestInput {
    * @return priority
   **/
   @javax.annotation.Nullable
-
   public PriorityEnum getPriority() {
     return priority;
   }
@@ -199,7 +200,6 @@ public class SupportRequestInput {
    * @return projectId
   **/
   @javax.annotation.Nullable
-
   public String getProjectId() {
     return projectId;
   }
@@ -221,7 +221,6 @@ public class SupportRequestInput {
    * @return subject
   **/
   @javax.annotation.Nonnull
-
   public String getSubject() {
     return subject;
   }

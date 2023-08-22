@@ -21,7 +21,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updateOrganization**](OrganizationsApi.md#updateOrganization) | **PUT** /organizations/{id} | Update the organization |
 
 
-<a name="createOrganization"></a>
+<a id="createOrganization"></a>
 # **createOrganization**
 > Organization createOrganization(organizationInput, include, exclude)
 
@@ -97,7 +97,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createOrganizationInvitation"></a>
+<a id="createOrganizationInvitation"></a>
 # **createOrganizationInvitation**
 > Invitation createOrganizationInvitation(id, invitationInput, include)
 
@@ -174,7 +174,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createOrganizationProject"></a>
+<a id="createOrganizationProject"></a>
 # **createOrganizationProject**
 > Project createOrganizationProject(id, projectCreateInput, include, exclude)
 
@@ -251,7 +251,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createPaymentMethod"></a>
+<a id="createPaymentMethod"></a>
 # **createPaymentMethod**
 > PaymentMethod createPaymentMethod(id, paymentMethodCreateInput, include)
 
@@ -327,7 +327,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="deleteOrganization"></a>
+<a id="deleteOrganization"></a>
 # **deleteOrganization**
 > deleteOrganization(id)
 
@@ -397,7 +397,7 @@ null (empty response body)
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="findOperatingSystemsByOrganization"></a>
+<a id="findOperatingSystemsByOrganization"></a>
 # **findOperatingSystemsByOrganization**
 > OperatingSystemList findOperatingSystemsByOrganization(id, include)
 
@@ -471,7 +471,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findOrganizationById"></a>
+<a id="findOrganizationById"></a>
 # **findOrganizationById**
 > Organization findOrganizationById(id, include, exclude)
 
@@ -547,7 +547,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findOrganizationCustomdata"></a>
+<a id="findOrganizationCustomdata"></a>
 # **findOrganizationCustomdata**
 > findOrganizationCustomdata(id)
 
@@ -618,7 +618,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findOrganizationInvitations"></a>
+<a id="findOrganizationInvitations"></a>
 # **findOrganizationInvitations**
 > InvitationList findOrganizationInvitations(id, include, page, perPage)
 
@@ -696,7 +696,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findOrganizationPaymentMethods"></a>
+<a id="findOrganizationPaymentMethods"></a>
 # **findOrganizationPaymentMethods**
 > PaymentMethodList findOrganizationPaymentMethods(id, include, page, perPage)
 
@@ -773,7 +773,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="findOrganizationProjects"></a>
+<a id="findOrganizationProjects"></a>
 # **findOrganizationProjects**
 > ProjectList findOrganizationProjects(id, name, include, exclude, page, perPage)
 
@@ -853,7 +853,7 @@ public class Example {
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="findOrganizationTransfers"></a>
+<a id="findOrganizationTransfers"></a>
 # **findOrganizationTransfers**
 > TransferRequestList findOrganizationTransfers(id, include)
 
@@ -926,7 +926,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **403** | forbidden |  -  |
 
-<a name="findOrganizations"></a>
+<a id="findOrganizations"></a>
 # **findOrganizations**
 > OrganizationList findOrganizations(personal, withoutProjects, include, exclude, page, perPage)
 
@@ -1006,7 +1006,7 @@ public class Example {
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="findPlansByOrganization"></a>
+<a id="findPlansByOrganization"></a>
 # **findPlansByOrganization**
 > PlanList findPlansByOrganization(id, include, exclude)
 
@@ -1082,7 +1082,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="updateOrganization"></a>
+<a id="updateOrganization"></a>
 # **updateOrganization**
 > Organization updateOrganization(id, organizationInput, include, exclude)
 

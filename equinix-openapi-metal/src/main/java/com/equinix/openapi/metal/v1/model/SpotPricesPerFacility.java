@@ -33,6 +33,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -99,7 +103,6 @@ public class SpotPricesPerFacility {
    * @return baremetal0
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerBaremetal getBaremetal0() {
     return baremetal0;
   }
@@ -121,7 +124,6 @@ public class SpotPricesPerFacility {
    * @return baremetal1
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerBaremetal getBaremetal1() {
     return baremetal1;
   }
@@ -143,7 +145,6 @@ public class SpotPricesPerFacility {
    * @return baremetal2
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerBaremetal getBaremetal2() {
     return baremetal2;
   }
@@ -165,7 +166,6 @@ public class SpotPricesPerFacility {
    * @return baremetal2a
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerBaremetal getBaremetal2a() {
     return baremetal2a;
   }
@@ -187,7 +187,6 @@ public class SpotPricesPerFacility {
    * @return baremetal2a2
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerBaremetal getBaremetal2a2() {
     return baremetal2a2;
   }
@@ -209,7 +208,6 @@ public class SpotPricesPerFacility {
    * @return baremetal3
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerBaremetal getBaremetal3() {
     return baremetal3;
   }
@@ -231,7 +229,6 @@ public class SpotPricesPerFacility {
    * @return baremetalS
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerBaremetal getBaremetalS() {
     return baremetalS;
   }
@@ -253,7 +250,6 @@ public class SpotPricesPerFacility {
    * @return c2MediumX86
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerBaremetal getC2MediumX86() {
     return c2MediumX86;
   }
@@ -275,7 +271,6 @@ public class SpotPricesPerFacility {
    * @return m2XlargeX86
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerBaremetal getM2XlargeX86() {
     return m2XlargeX86;
   }

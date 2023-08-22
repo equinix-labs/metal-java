@@ -7,7 +7,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**requestSuppert**](SupportRequestApi.md#requestSuppert) | **POST** /support-requests | Create a support ticket |
 
 
-<a name="requestSuppert"></a>
+<a id="requestSuppert"></a>
 # **requestSuppert**
 > requestSuppert(supportRequestInput)
 

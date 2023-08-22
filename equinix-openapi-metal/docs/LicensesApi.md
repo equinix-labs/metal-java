@@ -11,7 +11,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updateLicense**](LicensesApi.md#updateLicense) | **PUT** /licenses/{id} | Update the license |
 
 
-<a name="createLicense"></a>
+<a id="createLicense"></a>
 # **createLicense**
 > License createLicense(id, licenseCreateInput, include, exclude)
 
@@ -90,7 +90,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="deleteLicense"></a>
+<a id="deleteLicense"></a>
 # **deleteLicense**
 > deleteLicense(id)
 
@@ -161,7 +161,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findLicenseById"></a>
+<a id="findLicenseById"></a>
 # **findLicenseById**
 > License findLicenseById(id, include, exclude)
 
@@ -237,7 +237,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findProjectLicenses"></a>
+<a id="findProjectLicenses"></a>
 # **findProjectLicenses**
 > LicenseList findProjectLicenses(id, include, exclude, page, perPage)
 
@@ -317,7 +317,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="updateLicense"></a>
+<a id="updateLicense"></a>
 # **updateLicense**
 > License updateLicense(id, licenseUpdateInput, include, exclude)
 

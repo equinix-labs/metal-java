@@ -41,6 +41,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -107,7 +111,7 @@ public class VrfIpReservation {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   /**
    * Gets or Sets type
@@ -212,7 +216,6 @@ public class VrfIpReservation {
    * @return addressFamily
   **/
   @javax.annotation.Nullable
-
   public Integer getAddressFamily() {
     return addressFamily;
   }
@@ -234,7 +237,6 @@ public class VrfIpReservation {
    * @return cidr
   **/
   @javax.annotation.Nullable
-
   public Integer getCidr() {
     return cidr;
   }
@@ -256,7 +258,6 @@ public class VrfIpReservation {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -278,7 +279,6 @@ public class VrfIpReservation {
    * @return createdBy
   **/
   @javax.annotation.Nullable
-
   public Href getCreatedBy() {
     return createdBy;
   }
@@ -300,7 +300,6 @@ public class VrfIpReservation {
    * @return details
   **/
   @javax.annotation.Nullable
-
   public String getDetails() {
     return details;
   }
@@ -322,7 +321,6 @@ public class VrfIpReservation {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -344,7 +342,6 @@ public class VrfIpReservation {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -366,7 +363,6 @@ public class VrfIpReservation {
    * @return metalGateway
   **/
   @javax.annotation.Nullable
-
   public MetalGatewayLite getMetalGateway() {
     return metalGateway;
   }
@@ -388,7 +384,6 @@ public class VrfIpReservation {
    * @return netmask
   **/
   @javax.annotation.Nullable
-
   public String getNetmask() {
     return netmask;
   }
@@ -410,7 +405,6 @@ public class VrfIpReservation {
    * @return network
   **/
   @javax.annotation.Nullable
-
   public String getNetwork() {
     return network;
   }
@@ -432,7 +426,6 @@ public class VrfIpReservation {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public Project getProject() {
     return project;
   }
@@ -454,7 +447,6 @@ public class VrfIpReservation {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public String getState() {
     return state;
   }
@@ -484,7 +476,6 @@ public class VrfIpReservation {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }
@@ -506,7 +497,6 @@ public class VrfIpReservation {
    * @return type
   **/
   @javax.annotation.Nonnull
-
   public TypeEnum getType() {
     return type;
   }
@@ -528,7 +518,6 @@ public class VrfIpReservation {
    * @return vrf
   **/
   @javax.annotation.Nonnull
-
   public Vrf getVrf() {
     return vrf;
   }
@@ -550,7 +539,6 @@ public class VrfIpReservation {
    * @return _public
   **/
   @javax.annotation.Nullable
-
   public Boolean getPublic() {
     return _public;
   }
@@ -572,7 +560,6 @@ public class VrfIpReservation {
    * @return management
   **/
   @javax.annotation.Nullable
-
   public Boolean getManagement() {
     return management;
   }
@@ -594,7 +581,6 @@ public class VrfIpReservation {
    * @return manageable
   **/
   @javax.annotation.Nullable
-
   public Boolean getManageable() {
     return manageable;
   }
@@ -616,7 +602,6 @@ public class VrfIpReservation {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Object getCustomdata() {
     return customdata;
   }
@@ -638,7 +623,6 @@ public class VrfIpReservation {
    * @return bill
   **/
   @javax.annotation.Nullable
-
   public Boolean getBill() {
     return bill;
   }
@@ -660,7 +644,6 @@ public class VrfIpReservation {
    * @return projectLite
   **/
   @javax.annotation.Nullable
-
   public Project getProjectLite() {
     return projectLite;
   }
@@ -682,7 +665,6 @@ public class VrfIpReservation {
    * @return address
   **/
   @javax.annotation.Nullable
-
   public String getAddress() {
     return address;
   }
@@ -704,7 +686,6 @@ public class VrfIpReservation {
    * @return gateway
   **/
   @javax.annotation.Nullable
-
   public String getGateway() {
     return gateway;
   }
@@ -726,7 +707,6 @@ public class VrfIpReservation {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public Metro getMetro() {
     return metro;
   }

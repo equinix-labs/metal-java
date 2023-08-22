@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -78,7 +82,6 @@ public class ParentBlock {
    * @return cidr
   **/
   @javax.annotation.Nullable
-
   public Integer getCidr() {
     return cidr;
   }
@@ -100,7 +103,6 @@ public class ParentBlock {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -122,7 +124,6 @@ public class ParentBlock {
    * @return netmask
   **/
   @javax.annotation.Nullable
-
   public String getNetmask() {
     return netmask;
   }
@@ -144,7 +145,6 @@ public class ParentBlock {
    * @return network
   **/
   @javax.annotation.Nullable
-
   public String getNetwork() {
     return network;
   }

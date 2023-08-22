@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -71,7 +75,7 @@ public class Membership {
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
-  private List<String> roles = null;
+  private List<String> roles;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -95,7 +99,6 @@ public class Membership {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -117,7 +120,6 @@ public class Membership {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -139,7 +141,6 @@ public class Membership {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -161,7 +162,6 @@ public class Membership {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public Href getProject() {
     return project;
   }
@@ -191,7 +191,6 @@ public class Membership {
    * @return roles
   **/
   @javax.annotation.Nullable
-
   public List<String> getRoles() {
     return roles;
   }
@@ -213,7 +212,6 @@ public class Membership {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -235,7 +233,6 @@ public class Membership {
    * @return user
   **/
   @javax.annotation.Nullable
-
   public Href getUser() {
     return user;
   }

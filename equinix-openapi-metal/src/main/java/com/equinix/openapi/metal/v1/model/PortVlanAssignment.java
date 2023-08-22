@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -144,7 +148,6 @@ public class PortVlanAssignment {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -166,7 +169,6 @@ public class PortVlanAssignment {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -188,7 +190,6 @@ public class PortVlanAssignment {
    * @return _native
   **/
   @javax.annotation.Nullable
-
   public Boolean getNative() {
     return _native;
   }
@@ -210,7 +211,6 @@ public class PortVlanAssignment {
    * @return port
   **/
   @javax.annotation.Nullable
-
   public Href getPort() {
     return port;
   }
@@ -232,7 +232,6 @@ public class PortVlanAssignment {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public StateEnum getState() {
     return state;
   }
@@ -254,7 +253,6 @@ public class PortVlanAssignment {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -276,7 +274,6 @@ public class PortVlanAssignment {
    * @return virtualNetwork
   **/
   @javax.annotation.Nullable
-
   public Href getVirtualNetwork() {
     return virtualNetwork;
   }
@@ -298,7 +295,6 @@ public class PortVlanAssignment {
    * @return vlan
   **/
   @javax.annotation.Nullable
-
   public Integer getVlan() {
     return vlan;
   }

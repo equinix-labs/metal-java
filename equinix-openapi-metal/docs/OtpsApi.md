@@ -10,7 +10,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**regenerateCodes**](OtpsApi.md#regenerateCodes) | **POST** /user/otp/recovery-codes | Generate new recovery codes |
 
 
-<a name="findEnsureOtp"></a>
+<a id="findEnsureOtp"></a>
 # **findEnsureOtp**
 > findEnsureOtp(otp)
 
@@ -80,7 +80,7 @@ null (empty response body)
 | **400** | bad request |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="findRecoveryCodes"></a>
+<a id="findRecoveryCodes"></a>
 # **findRecoveryCodes**
 > RecoveryCodeList findRecoveryCodes()
 
@@ -148,7 +148,7 @@ This endpoint does not need any parameter.
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="receiveCodes"></a>
+<a id="receiveCodes"></a>
 # **receiveCodes**
 > receiveCodes()
 
@@ -216,7 +216,7 @@ null (empty response body)
 | **422** | unprocessable entity |  -  |
 | **500** | internal server error |  -  |
 
-<a name="regenerateCodes"></a>
+<a id="regenerateCodes"></a>
 # **regenerateCodes**
 > RecoveryCodeList regenerateCodes()
 

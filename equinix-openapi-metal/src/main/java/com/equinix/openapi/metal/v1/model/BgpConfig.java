@@ -40,6 +40,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -137,7 +141,7 @@ public class BgpConfig {
 
   public static final String SERIALIZED_NAME_RANGES = "ranges";
   @SerializedName(SERIALIZED_NAME_RANGES)
-  private List<GlobalBgpRange> ranges = null;
+  private List<GlobalBgpRange> ranges;
 
   public static final String SERIALIZED_NAME_REQUESTED_AT = "requested_at";
   @SerializedName(SERIALIZED_NAME_REQUESTED_AT)
@@ -149,7 +153,7 @@ public class BgpConfig {
 
   public static final String SERIALIZED_NAME_SESSIONS = "sessions";
   @SerializedName(SERIALIZED_NAME_SESSIONS)
-  private List<BgpSession> sessions = null;
+  private List<BgpSession> sessions;
 
   /**
    * Status of the BGP Config. Status \&quot;requested\&quot; is valid only with the \&quot;global\&quot; deployment_type.
@@ -218,7 +222,6 @@ public class BgpConfig {
    * @return asn
   **/
   @javax.annotation.Nullable
-
   public Integer getAsn() {
     return asn;
   }
@@ -240,7 +243,6 @@ public class BgpConfig {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -262,7 +264,6 @@ public class BgpConfig {
    * @return deploymentType
   **/
   @javax.annotation.Nullable
-
   public DeploymentTypeEnum getDeploymentType() {
     return deploymentType;
   }
@@ -284,7 +285,6 @@ public class BgpConfig {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -306,7 +306,6 @@ public class BgpConfig {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -328,7 +327,6 @@ public class BgpConfig {
    * @return maxPrefix
   **/
   @javax.annotation.Nullable
-
   public Integer getMaxPrefix() {
     return maxPrefix;
   }
@@ -350,7 +348,6 @@ public class BgpConfig {
    * @return md5
   **/
   @javax.annotation.Nullable
-
   public String getMd5() {
     return md5;
   }
@@ -372,7 +369,6 @@ public class BgpConfig {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public Href getProject() {
     return project;
   }
@@ -402,7 +398,6 @@ public class BgpConfig {
    * @return ranges
   **/
   @javax.annotation.Nullable
-
   public List<GlobalBgpRange> getRanges() {
     return ranges;
   }
@@ -424,7 +419,6 @@ public class BgpConfig {
    * @return requestedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getRequestedAt() {
     return requestedAt;
   }
@@ -446,7 +440,6 @@ public class BgpConfig {
    * @return routeObject
   **/
   @javax.annotation.Nullable
-
   public String getRouteObject() {
     return routeObject;
   }
@@ -476,7 +469,6 @@ public class BgpConfig {
    * @return sessions
   **/
   @javax.annotation.Nullable
-
   public List<BgpSession> getSessions() {
     return sessions;
   }
@@ -498,7 +490,6 @@ public class BgpConfig {
    * @return status
   **/
   @javax.annotation.Nullable
-
   public StatusEnum getStatus() {
     return status;
   }

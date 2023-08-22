@@ -9,7 +9,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findInvitationById**](InvitationsApi.md#findInvitationById) | **GET** /invitations/{id} | View an invitation |
 
 
-<a name="acceptInvitation"></a>
+<a id="acceptInvitation"></a>
 # **acceptInvitation**
 > Membership acceptInvitation(id, include)
 
@@ -83,7 +83,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="declineInvitation"></a>
+<a id="declineInvitation"></a>
 # **declineInvitation**
 > declineInvitation(id)
 
@@ -154,7 +154,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findInvitationById"></a>
+<a id="findInvitationById"></a>
 # **findInvitationById**
 > Invitation findInvitationById(id, include)
 

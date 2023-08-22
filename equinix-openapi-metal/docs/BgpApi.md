@@ -13,7 +13,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updateBgpSession**](BgpApi.md#updateBgpSession) | **PUT** /bgp/sessions/{id} | Update the BGP session |
 
 
-<a name="deleteBgpSession"></a>
+<a id="deleteBgpSession"></a>
 # **deleteBgpSession**
 > deleteBgpSession(id)
 
@@ -84,7 +84,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findBgpConfigByProject"></a>
+<a id="findBgpConfigByProject"></a>
 # **findBgpConfigByProject**
 > BgpConfig findBgpConfigByProject(id, include)
 
@@ -158,7 +158,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found  The project was not found.  |  -  |
 
-<a name="findBgpSessionById"></a>
+<a id="findBgpSessionById"></a>
 # **findBgpSessionById**
 > BgpSession findBgpSessionById(id, include)
 
@@ -232,7 +232,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findGlobalBgpRanges"></a>
+<a id="findGlobalBgpRanges"></a>
 # **findGlobalBgpRanges**
 > GlobalBgpRangeList findGlobalBgpRanges(id)
 
@@ -304,7 +304,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findProjectBgpSessions"></a>
+<a id="findProjectBgpSessions"></a>
 # **findProjectBgpSessions**
 > BgpSessionList findProjectBgpSessions(id)
 
@@ -375,7 +375,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="requestBgpConfig"></a>
+<a id="requestBgpConfig"></a>
 # **requestBgpConfig**
 > requestBgpConfig(id, bgpConfigRequestInput, include)
 
@@ -451,7 +451,7 @@ null (empty response body)
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="updateBgpSession"></a>
+<a id="updateBgpSession"></a>
 # **updateBgpSession**
 > updateBgpSession(id, body)
 

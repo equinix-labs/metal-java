@@ -36,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -54,7 +58,7 @@ import com.equinix.openapi.JSON;
 public class BgpDynamicNeighborList {
   public static final String SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS = "bgp_dynamic_neighbors";
   @SerializedName(SERIALIZED_NAME_BGP_DYNAMIC_NEIGHBORS)
-  private List<BgpDynamicNeighbor> bgpDynamicNeighbors = null;
+  private List<BgpDynamicNeighbor> bgpDynamicNeighbors;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -82,7 +86,6 @@ public class BgpDynamicNeighborList {
    * @return bgpDynamicNeighbors
   **/
   @javax.annotation.Nullable
-
   public List<BgpDynamicNeighbor> getBgpDynamicNeighbors() {
     return bgpDynamicNeighbors;
   }
@@ -104,7 +107,6 @@ public class BgpDynamicNeighborList {
    * @return meta
   **/
   @javax.annotation.Nullable
-
   public Meta getMeta() {
     return meta;
   }

@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -53,7 +57,7 @@ import com.equinix.openapi.JSON;
 public class ProjectUsageList {
   public static final String SERIALIZED_NAME_USAGES = "usages";
   @SerializedName(SERIALIZED_NAME_USAGES)
-  private List<ProjectUsage> usages = null;
+  private List<ProjectUsage> usages;
 
   public ProjectUsageList() {
   }
@@ -77,7 +81,6 @@ public class ProjectUsageList {
    * @return usages
   **/
   @javax.annotation.Nullable
-
   public List<ProjectUsage> getUsages() {
     return usages;
   }

@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -60,7 +64,7 @@ public class Metadata {
 
   public static final String SERIALIZED_NAME_CUSTOMDATA = "customdata";
   @SerializedName(SERIALIZED_NAME_CUSTOMDATA)
-  private Map<String, Object> customdata = null;
+  private Map<String, Object> customdata = new HashMap<>();
 
   public static final String SERIALIZED_NAME_FACILITY = "facility";
   @SerializedName(SERIALIZED_NAME_FACILITY)
@@ -96,7 +100,7 @@ public class Metadata {
 
   public static final String SERIALIZED_NAME_PRIVATE_SUBNETS = "private_subnets";
   @SerializedName(SERIALIZED_NAME_PRIVATE_SUBNETS)
-  private List<String> privateSubnets = null;
+  private List<String> privateSubnets;
 
   public static final String SERIALIZED_NAME_RESERVED = "reserved";
   @SerializedName(SERIALIZED_NAME_RESERVED)
@@ -108,7 +112,7 @@ public class Metadata {
 
   public static final String SERIALIZED_NAME_SSH_KEYS = "ssh_keys";
   @SerializedName(SERIALIZED_NAME_SSH_KEYS)
-  private List<String> sshKeys = null;
+  private List<String> sshKeys;
 
   public static final String SERIALIZED_NAME_SWITCH_SHORT_ID = "switch_short_id";
   @SerializedName(SERIALIZED_NAME_SWITCH_SHORT_ID)
@@ -183,11 +187,11 @@ public class Metadata {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_VOLUMES = "volumes";
   @SerializedName(SERIALIZED_NAME_VOLUMES)
-  private List<String> volumes = null;
+  private List<String> volumes;
 
   public Metadata() {
   }
@@ -203,7 +207,6 @@ public class Metadata {
    * @return propertyClass
   **/
   @javax.annotation.Nullable
-
   public String getPropertyClass() {
     return propertyClass;
   }
@@ -233,7 +236,6 @@ public class Metadata {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Map<String, Object> getCustomdata() {
     return customdata;
   }
@@ -255,7 +257,6 @@ public class Metadata {
    * @return facility
   **/
   @javax.annotation.Nullable
-
   public String getFacility() {
     return facility;
   }
@@ -277,7 +278,6 @@ public class Metadata {
    * @return hostname
   **/
   @javax.annotation.Nullable
-
   public String getHostname() {
     return hostname;
   }
@@ -299,7 +299,6 @@ public class Metadata {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -321,7 +320,6 @@ public class Metadata {
    * @return iqn
   **/
   @javax.annotation.Nullable
-
   public String getIqn() {
     return iqn;
   }
@@ -343,7 +341,6 @@ public class Metadata {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public String getMetro() {
     return metro;
   }
@@ -365,7 +362,6 @@ public class Metadata {
    * @return network
   **/
   @javax.annotation.Nullable
-
   public MetadataNetwork getNetwork() {
     return network;
   }
@@ -387,7 +383,6 @@ public class Metadata {
    * @return operatingSystem
   **/
   @javax.annotation.Nullable
-
   public Object getOperatingSystem() {
     return operatingSystem;
   }
@@ -409,7 +404,6 @@ public class Metadata {
    * @return plan
   **/
   @javax.annotation.Nullable
-
   public String getPlan() {
     return plan;
   }
@@ -439,7 +433,6 @@ public class Metadata {
    * @return privateSubnets
   **/
   @javax.annotation.Nullable
-
   public List<String> getPrivateSubnets() {
     return privateSubnets;
   }
@@ -461,7 +454,6 @@ public class Metadata {
    * @return reserved
   **/
   @javax.annotation.Nullable
-
   public Boolean getReserved() {
     return reserved;
   }
@@ -483,7 +475,6 @@ public class Metadata {
    * @return specs
   **/
   @javax.annotation.Nullable
-
   public Object getSpecs() {
     return specs;
   }
@@ -513,7 +504,6 @@ public class Metadata {
    * @return sshKeys
   **/
   @javax.annotation.Nullable
-
   public List<String> getSshKeys() {
     return sshKeys;
   }
@@ -535,7 +525,6 @@ public class Metadata {
    * @return switchShortId
   **/
   @javax.annotation.Nullable
-
   public String getSwitchShortId() {
     return switchShortId;
   }
@@ -557,7 +546,6 @@ public class Metadata {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public StateEnum getState() {
     return state;
   }
@@ -587,7 +575,6 @@ public class Metadata {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }
@@ -617,7 +604,6 @@ public class Metadata {
    * @return volumes
   **/
   @javax.annotation.Nullable
-
   public List<String> getVolumes() {
     return volumes;
   }

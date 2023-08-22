@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -56,7 +60,7 @@ public class Error {
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<String> errors = null;
+  private List<String> errors;
 
   public Error() {
   }
@@ -72,7 +76,6 @@ public class Error {
    * @return error
   **/
   @javax.annotation.Nullable
-
   public String getError() {
     return error;
   }
@@ -102,7 +105,6 @@ public class Error {
    * @return errors
   **/
   @javax.annotation.Nullable
-
   public List<String> getErrors() {
     return errors;
   }

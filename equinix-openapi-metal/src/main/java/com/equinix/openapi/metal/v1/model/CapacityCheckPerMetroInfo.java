@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -78,7 +82,6 @@ public class CapacityCheckPerMetroInfo {
    * @return available
   **/
   @javax.annotation.Nullable
-
   public Boolean getAvailable() {
     return available;
   }
@@ -100,7 +103,6 @@ public class CapacityCheckPerMetroInfo {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public String getMetro() {
     return metro;
   }
@@ -122,7 +124,6 @@ public class CapacityCheckPerMetroInfo {
    * @return plan
   **/
   @javax.annotation.Nullable
-
   public String getPlan() {
     return plan;
   }
@@ -144,7 +145,6 @@ public class CapacityCheckPerMetroInfo {
    * @return quantity
   **/
   @javax.annotation.Nullable
-
   public Integer getQuantity() {
     return quantity;
   }

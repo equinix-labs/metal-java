@@ -33,6 +33,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -91,7 +95,6 @@ public class SpotMarketPricesPerMetroReport {
    * @return am
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerFacility getAm() {
     return am;
   }
@@ -113,7 +116,6 @@ public class SpotMarketPricesPerMetroReport {
    * @return ch
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerFacility getCh() {
     return ch;
   }
@@ -135,7 +137,6 @@ public class SpotMarketPricesPerMetroReport {
    * @return da
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerFacility getDa() {
     return da;
   }
@@ -157,7 +158,6 @@ public class SpotMarketPricesPerMetroReport {
    * @return la
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerFacility getLa() {
     return la;
   }
@@ -179,7 +179,6 @@ public class SpotMarketPricesPerMetroReport {
    * @return ny
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerFacility getNy() {
     return ny;
   }
@@ -201,7 +200,6 @@ public class SpotMarketPricesPerMetroReport {
    * @return sg
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerFacility getSg() {
     return sg;
   }
@@ -223,7 +221,6 @@ public class SpotMarketPricesPerMetroReport {
    * @return sv
   **/
   @javax.annotation.Nullable
-
   public SpotPricesPerFacility getSv() {
     return sv;
   }

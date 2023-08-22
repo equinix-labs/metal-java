@@ -36,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -110,7 +114,6 @@ public class SpotMarketRequest {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -132,7 +135,6 @@ public class SpotMarketRequest {
    * @return devicesMax
   **/
   @javax.annotation.Nullable
-
   public Integer getDevicesMax() {
     return devicesMax;
   }
@@ -154,7 +156,6 @@ public class SpotMarketRequest {
    * @return devicesMin
   **/
   @javax.annotation.Nullable
-
   public Integer getDevicesMin() {
     return devicesMin;
   }
@@ -176,7 +177,6 @@ public class SpotMarketRequest {
    * @return endAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getEndAt() {
     return endAt;
   }
@@ -198,7 +198,6 @@ public class SpotMarketRequest {
    * @return facilities
   **/
   @javax.annotation.Nullable
-
   public Href getFacilities() {
     return facilities;
   }
@@ -220,7 +219,6 @@ public class SpotMarketRequest {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -242,7 +240,6 @@ public class SpotMarketRequest {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -264,7 +261,6 @@ public class SpotMarketRequest {
    * @return instances
   **/
   @javax.annotation.Nullable
-
   public Href getInstances() {
     return instances;
   }
@@ -286,7 +282,6 @@ public class SpotMarketRequest {
    * @return maxBidPrice
   **/
   @javax.annotation.Nullable
-
   public Float getMaxBidPrice() {
     return maxBidPrice;
   }
@@ -308,7 +303,6 @@ public class SpotMarketRequest {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public SpotMarketRequestMetro getMetro() {
     return metro;
   }
@@ -330,7 +324,6 @@ public class SpotMarketRequest {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public Href getProject() {
     return project;
   }

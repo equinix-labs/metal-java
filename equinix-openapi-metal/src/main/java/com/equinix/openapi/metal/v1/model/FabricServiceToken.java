@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -231,7 +235,6 @@ public class FabricServiceToken {
    * @return expiresAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getExpiresAt() {
     return expiresAt;
   }
@@ -253,7 +256,6 @@ public class FabricServiceToken {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -275,7 +277,6 @@ public class FabricServiceToken {
    * @return maxAllowedSpeed
   **/
   @javax.annotation.Nullable
-
   public Integer getMaxAllowedSpeed() {
     return maxAllowedSpeed;
   }
@@ -297,7 +298,6 @@ public class FabricServiceToken {
    * @return role
   **/
   @javax.annotation.Nullable
-
   public RoleEnum getRole() {
     return role;
   }
@@ -319,7 +319,6 @@ public class FabricServiceToken {
    * @return serviceTokenType
   **/
   @javax.annotation.Nullable
-
   public ServiceTokenTypeEnum getServiceTokenType() {
     return serviceTokenType;
   }
@@ -341,7 +340,6 @@ public class FabricServiceToken {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public StateEnum getState() {
     return state;
   }

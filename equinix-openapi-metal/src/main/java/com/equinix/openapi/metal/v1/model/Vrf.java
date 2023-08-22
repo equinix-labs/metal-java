@@ -40,6 +40,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -90,11 +94,11 @@ public class Vrf {
 
   public static final String SERIALIZED_NAME_VIRTUAL_CIRCUITS = "virtual_circuits";
   @SerializedName(SERIALIZED_NAME_VIRTUAL_CIRCUITS)
-  private List<VrfVirtualCircuit> virtualCircuits = null;
+  private List<VrfVirtualCircuit> virtualCircuits;
 
   public static final String SERIALIZED_NAME_IP_RANGES = "ip_ranges";
   @SerializedName(SERIALIZED_NAME_IP_RANGES)
-  private List<String> ipRanges = null;
+  private List<String> ipRanges;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -122,7 +126,7 @@ public class Vrf {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags;
 
   public Vrf() {
   }
@@ -138,7 +142,6 @@ public class Vrf {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -160,7 +163,6 @@ public class Vrf {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -182,7 +184,6 @@ public class Vrf {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -204,7 +205,6 @@ public class Vrf {
    * @return bill
   **/
   @javax.annotation.Nullable
-
   public Boolean getBill() {
     return bill;
   }
@@ -226,7 +226,6 @@ public class Vrf {
    * @return bgpDynamicNeighborsEnabled
   **/
   @javax.annotation.Nullable
-
   public Boolean getBgpDynamicNeighborsEnabled() {
     return bgpDynamicNeighborsEnabled;
   }
@@ -248,7 +247,6 @@ public class Vrf {
    * @return bgpDynamicNeighborsExportRouteMap
   **/
   @javax.annotation.Nullable
-
   public Boolean getBgpDynamicNeighborsExportRouteMap() {
     return bgpDynamicNeighborsExportRouteMap;
   }
@@ -270,7 +268,6 @@ public class Vrf {
    * @return bgpDynamicNeighborsBfdEnabled
   **/
   @javax.annotation.Nullable
-
   public Boolean getBgpDynamicNeighborsBfdEnabled() {
     return bgpDynamicNeighborsBfdEnabled;
   }
@@ -292,7 +289,6 @@ public class Vrf {
    * @return localAsn
   **/
   @javax.annotation.Nullable
-
   public Integer getLocalAsn() {
     return localAsn;
   }
@@ -322,7 +318,6 @@ public class Vrf {
    * @return virtualCircuits
   **/
   @javax.annotation.Nullable
-
   public List<VrfVirtualCircuit> getVirtualCircuits() {
     return virtualCircuits;
   }
@@ -352,7 +347,6 @@ public class Vrf {
    * @return ipRanges
   **/
   @javax.annotation.Nullable
-
   public List<String> getIpRanges() {
     return ipRanges;
   }
@@ -374,7 +368,6 @@ public class Vrf {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public Project getProject() {
     return project;
   }
@@ -396,7 +389,6 @@ public class Vrf {
    * @return metro
   **/
   @javax.annotation.Nullable
-
   public Metro getMetro() {
     return metro;
   }
@@ -418,7 +410,6 @@ public class Vrf {
    * @return createdBy
   **/
   @javax.annotation.Nullable
-
   public User getCreatedBy() {
     return createdBy;
   }
@@ -440,7 +431,6 @@ public class Vrf {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -462,7 +452,6 @@ public class Vrf {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -484,7 +473,6 @@ public class Vrf {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -514,7 +502,6 @@ public class Vrf {
    * @return tags
   **/
   @javax.annotation.Nullable
-
   public List<String> getTags() {
     return tags;
   }

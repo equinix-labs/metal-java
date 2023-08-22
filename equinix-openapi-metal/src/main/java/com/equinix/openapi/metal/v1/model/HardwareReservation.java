@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -124,7 +128,6 @@ public class HardwareReservation {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -146,7 +149,6 @@ public class HardwareReservation {
    * @return customRate
   **/
   @javax.annotation.Nullable
-
   public Float getCustomRate() {
     return customRate;
   }
@@ -168,7 +170,6 @@ public class HardwareReservation {
    * @return device
   **/
   @javax.annotation.Nullable
-
   public Device getDevice() {
     return device;
   }
@@ -190,7 +191,6 @@ public class HardwareReservation {
    * @return facility
   **/
   @javax.annotation.Nullable
-
   public Facility getFacility() {
     return facility;
   }
@@ -212,7 +212,6 @@ public class HardwareReservation {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -234,7 +233,6 @@ public class HardwareReservation {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -256,7 +254,6 @@ public class HardwareReservation {
    * @return needOfService
   **/
   @javax.annotation.Nullable
-
   public Boolean getNeedOfService() {
     return needOfService;
   }
@@ -278,7 +275,6 @@ public class HardwareReservation {
    * @return plan
   **/
   @javax.annotation.Nullable
-
   public Plan getPlan() {
     return plan;
   }
@@ -300,7 +296,6 @@ public class HardwareReservation {
    * @return project
   **/
   @javax.annotation.Nullable
-
   public Project getProject() {
     return project;
   }
@@ -322,7 +317,6 @@ public class HardwareReservation {
    * @return provisionable
   **/
   @javax.annotation.Nullable
-
   public Boolean getProvisionable() {
     return provisionable;
   }
@@ -344,7 +338,6 @@ public class HardwareReservation {
    * @return shortId
   **/
   @javax.annotation.Nullable
-
   public String getShortId() {
     return shortId;
   }
@@ -366,7 +359,6 @@ public class HardwareReservation {
    * @return spare
   **/
   @javax.annotation.Nullable
-
   public Boolean getSpare() {
     return spare;
   }
@@ -388,7 +380,6 @@ public class HardwareReservation {
    * @return switchUuid
   **/
   @javax.annotation.Nullable
-
   public String getSwitchUuid() {
     return switchUuid;
   }
@@ -410,7 +401,6 @@ public class HardwareReservation {
    * @return terminationTime
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getTerminationTime() {
     return terminationTime;
   }

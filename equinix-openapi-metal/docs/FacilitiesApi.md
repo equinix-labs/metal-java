@@ -9,7 +9,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findFacilitiesByProject**](FacilitiesApi.md#findFacilitiesByProject) | **GET** /projects/{id}/facilities | Retrieve all facilities visible by the project |
 
 
-<a name="findFacilities"></a>
+<a id="findFacilities"></a>
 # **findFacilities**
 > FacilityList findFacilities(include, exclude)
 
@@ -81,7 +81,7 @@ public class Example {
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="findFacilitiesByOrganization"></a>
+<a id="findFacilitiesByOrganization"></a>
 # **findFacilitiesByOrganization**
 > FacilityList findFacilitiesByOrganization(id, include, exclude)
 
@@ -157,7 +157,7 @@ public class Example {
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findFacilitiesByProject"></a>
+<a id="findFacilitiesByProject"></a>
 # **findFacilitiesByProject**
 > FacilityList findFacilitiesByProject(id, include, exclude)
 

@@ -12,7 +12,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findProjectAPIKeys**](AuthenticationApi.md#findProjectAPIKeys) | **GET** /projects/{id}/api-keys | Retrieve all API keys for the project. |
 
 
-<a name="createAPIKey"></a>
+<a id="createAPIKey"></a>
 # **createAPIKey**
 > AuthToken createAPIKey(authTokenInput, include)
 
@@ -86,7 +86,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createProjectAPIKey"></a>
+<a id="createProjectAPIKey"></a>
 # **createProjectAPIKey**
 > AuthToken createProjectAPIKey(id, authTokenInput, include)
 
@@ -162,7 +162,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="deleteAPIKey"></a>
+<a id="deleteAPIKey"></a>
 # **deleteAPIKey**
 > deleteAPIKey(id)
 
@@ -232,7 +232,7 @@ null (empty response body)
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="deleteUserAPIKey"></a>
+<a id="deleteUserAPIKey"></a>
 # **deleteUserAPIKey**
 > deleteUserAPIKey(id)
 
@@ -302,7 +302,7 @@ null (empty response body)
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="findAPIKeys"></a>
+<a id="findAPIKeys"></a>
 # **findAPIKeys**
 > AuthTokenList findAPIKeys(search, include)
 
@@ -375,7 +375,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="findProjectAPIKeys"></a>
+<a id="findProjectAPIKeys"></a>
 # **findProjectAPIKeys**
 > AuthTokenList findProjectAPIKeys(id, include)
 

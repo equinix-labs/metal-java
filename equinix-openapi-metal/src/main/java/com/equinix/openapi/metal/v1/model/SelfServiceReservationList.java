@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -53,7 +57,7 @@ import com.equinix.openapi.JSON;
 public class SelfServiceReservationList {
   public static final String SERIALIZED_NAME_RESERVATIONS = "reservations";
   @SerializedName(SERIALIZED_NAME_RESERVATIONS)
-  private List<SelfServiceReservationResponse> reservations = null;
+  private List<SelfServiceReservationResponse> reservations;
 
   public SelfServiceReservationList() {
   }
@@ -77,7 +81,6 @@ public class SelfServiceReservationList {
    * @return reservations
   **/
   @javax.annotation.Nullable
-
   public List<SelfServiceReservationResponse> getReservations() {
     return reservations;
   }

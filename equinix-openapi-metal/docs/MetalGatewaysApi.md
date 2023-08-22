@@ -12,7 +12,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**getMetalGatewayElasticIps**](MetalGatewaysApi.md#getMetalGatewayElasticIps) | **GET** /metal-gateways/{id}/ips | List Metal Gateway Elastic IPs |
 
 
-<a name="createMetalGateway"></a>
+<a id="createMetalGateway"></a>
 # **createMetalGateway**
 > FindMetalGatewayById200Response createMetalGateway(projectId, createMetalGatewayRequest, include, exclude, page, perPage)
 
@@ -94,7 +94,7 @@ public class Example {
 | **404** | not found |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="createMetalGatewayElasticIp"></a>
+<a id="createMetalGatewayElasticIp"></a>
 # **createMetalGatewayElasticIp**
 > IPAssignment createMetalGatewayElasticIp(id, metalGatewayElasticIpCreateInput, include, exclude)
 
@@ -173,7 +173,7 @@ public class Example {
 | **404** | Not Found |  -  |
 | **422** | Unprocessable entity |  -  |
 
-<a name="deleteMetalGateway"></a>
+<a id="deleteMetalGateway"></a>
 # **deleteMetalGateway**
 > FindMetalGatewayById200Response deleteMetalGateway(id, include, exclude)
 
@@ -248,7 +248,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="findMetalGatewayById"></a>
+<a id="findMetalGatewayById"></a>
 # **findMetalGatewayById**
 > FindMetalGatewayById200Response findMetalGatewayById(id, include, exclude)
 
@@ -323,7 +323,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="findMetalGatewaysByProject"></a>
+<a id="findMetalGatewaysByProject"></a>
 # **findMetalGatewaysByProject**
 > MetalGatewayList findMetalGatewaysByProject(projectId, include, exclude, page, perPage)
 
@@ -402,7 +402,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="getMetalGatewayElasticIps"></a>
+<a id="getMetalGatewayElasticIps"></a>
 # **getMetalGatewayElasticIps**
 > IPAssignmentList getMetalGatewayElasticIps(id, include, exclude)
 

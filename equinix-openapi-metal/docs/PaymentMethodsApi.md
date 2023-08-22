@@ -9,7 +9,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**updatePaymentMethod**](PaymentMethodsApi.md#updatePaymentMethod) | **PUT** /payment-methods/{id} | Update the payment method |
 
 
-<a name="deletePaymentMethod"></a>
+<a id="deletePaymentMethod"></a>
 # **deletePaymentMethod**
 > deletePaymentMethod(id)
 
@@ -79,7 +79,7 @@ null (empty response body)
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="findPaymentMethodById"></a>
+<a id="findPaymentMethodById"></a>
 # **findPaymentMethodById**
 > PaymentMethod findPaymentMethodById(id, include)
 
@@ -152,7 +152,7 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="updatePaymentMethod"></a>
+<a id="updatePaymentMethod"></a>
 # **updatePaymentMethod**
 > PaymentMethod updatePaymentMethod(id, paymentMethodUpdateInput, include)
 

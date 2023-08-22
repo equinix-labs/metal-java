@@ -9,7 +9,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findTransferRequestById**](TransferRequestsApi.md#findTransferRequestById) | **GET** /transfers/{id} | View a transfer request |
 
 
-<a name="acceptTransferRequest"></a>
+<a id="acceptTransferRequest"></a>
 # **acceptTransferRequest**
 > acceptTransferRequest(id)
 
@@ -80,7 +80,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="declineTransferRequest"></a>
+<a id="declineTransferRequest"></a>
 # **declineTransferRequest**
 > declineTransferRequest(id)
 
@@ -151,7 +151,7 @@ null (empty response body)
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
 
-<a name="findTransferRequestById"></a>
+<a id="findTransferRequestById"></a>
 # **findTransferRequestById**
 > TransferRequest findTransferRequestById(id, include)
 

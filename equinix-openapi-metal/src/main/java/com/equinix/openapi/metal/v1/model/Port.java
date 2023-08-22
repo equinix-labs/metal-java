@@ -39,6 +39,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -193,7 +197,7 @@ public class Port {
 
   public static final String SERIALIZED_NAME_VIRTUAL_NETWORKS = "virtual_networks";
   @SerializedName(SERIALIZED_NAME_VIRTUAL_NETWORKS)
-  private List<Href> virtualNetworks = null;
+  private List<Href> virtualNetworks;
 
   public Port() {
   }
@@ -209,7 +213,6 @@ public class Port {
    * @return bond
   **/
   @javax.annotation.Nullable
-
   public BondPortData getBond() {
     return bond;
   }
@@ -231,7 +234,6 @@ public class Port {
    * @return data
   **/
   @javax.annotation.Nullable
-
   public PortData getData() {
     return data;
   }
@@ -253,7 +255,6 @@ public class Port {
    * @return disbondOperationSupported
   **/
   @javax.annotation.Nullable
-
   public Boolean getDisbondOperationSupported() {
     return disbondOperationSupported;
   }
@@ -275,7 +276,6 @@ public class Port {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -297,7 +297,6 @@ public class Port {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -319,7 +318,6 @@ public class Port {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -341,7 +339,6 @@ public class Port {
    * @return type
   **/
   @javax.annotation.Nullable
-
   public TypeEnum getType() {
     return type;
   }
@@ -363,7 +360,6 @@ public class Port {
    * @return networkType
   **/
   @javax.annotation.Nullable
-
   public NetworkTypeEnum getNetworkType() {
     return networkType;
   }
@@ -385,7 +381,6 @@ public class Port {
    * @return nativeVirtualNetwork
   **/
   @javax.annotation.Nullable
-
   public VirtualNetwork getNativeVirtualNetwork() {
     return nativeVirtualNetwork;
   }
@@ -415,7 +410,6 @@ public class Port {
    * @return virtualNetworks
   **/
   @javax.annotation.Nullable
-
   public List<Href> getVirtualNetworks() {
     return virtualNetworks;
   }

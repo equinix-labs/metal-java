@@ -32,6 +32,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -127,7 +131,6 @@ public class BgpConfigRequestInput {
    * @return asn
   **/
   @javax.annotation.Nonnull
-
   public Integer getAsn() {
     return asn;
   }
@@ -149,7 +152,6 @@ public class BgpConfigRequestInput {
    * @return deploymentType
   **/
   @javax.annotation.Nonnull
-
   public DeploymentTypeEnum getDeploymentType() {
     return deploymentType;
   }
@@ -171,7 +173,6 @@ public class BgpConfigRequestInput {
    * @return md5
   **/
   @javax.annotation.Nullable
-
   public String getMd5() {
     return md5;
   }
@@ -193,7 +194,6 @@ public class BgpConfigRequestInput {
    * @return useCase
   **/
   @javax.annotation.Nullable
-
   public String getUseCase() {
     return useCase;
   }

@@ -39,6 +39,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -57,7 +61,7 @@ import com.equinix.openapi.JSON;
 public class PlanSpecs {
   public static final String SERIALIZED_NAME_CPUS = "cpus";
   @SerializedName(SERIALIZED_NAME_CPUS)
-  private List<PlanSpecsCpusInner> cpus = null;
+  private List<PlanSpecsCpusInner> cpus;
 
   public static final String SERIALIZED_NAME_MEMORY = "memory";
   @SerializedName(SERIALIZED_NAME_MEMORY)
@@ -65,11 +69,11 @@ public class PlanSpecs {
 
   public static final String SERIALIZED_NAME_DRIVES = "drives";
   @SerializedName(SERIALIZED_NAME_DRIVES)
-  private List<PlanSpecsDrivesInner> drives = null;
+  private List<PlanSpecsDrivesInner> drives;
 
   public static final String SERIALIZED_NAME_NICS = "nics";
   @SerializedName(SERIALIZED_NAME_NICS)
-  private List<PlanSpecsNicsInner> nics = null;
+  private List<PlanSpecsNicsInner> nics;
 
   public static final String SERIALIZED_NAME_FEATURES = "features";
   @SerializedName(SERIALIZED_NAME_FEATURES)
@@ -97,7 +101,6 @@ public class PlanSpecs {
    * @return cpus
   **/
   @javax.annotation.Nullable
-
   public List<PlanSpecsCpusInner> getCpus() {
     return cpus;
   }
@@ -119,7 +122,6 @@ public class PlanSpecs {
    * @return memory
   **/
   @javax.annotation.Nullable
-
   public PlanSpecsMemory getMemory() {
     return memory;
   }
@@ -149,7 +151,6 @@ public class PlanSpecs {
    * @return drives
   **/
   @javax.annotation.Nullable
-
   public List<PlanSpecsDrivesInner> getDrives() {
     return drives;
   }
@@ -179,7 +180,6 @@ public class PlanSpecs {
    * @return nics
   **/
   @javax.annotation.Nullable
-
   public List<PlanSpecsNicsInner> getNics() {
     return nics;
   }
@@ -201,7 +201,6 @@ public class PlanSpecs {
    * @return features
   **/
   @javax.annotation.Nullable
-
   public PlanSpecsFeatures getFeatures() {
     return features;
   }

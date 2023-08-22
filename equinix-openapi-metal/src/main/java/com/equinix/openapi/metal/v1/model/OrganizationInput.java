@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -100,7 +104,6 @@ public class OrganizationInput {
    * @return address
   **/
   @javax.annotation.Nullable
-
   public Address getAddress() {
     return address;
   }
@@ -122,7 +125,6 @@ public class OrganizationInput {
    * @return billingAddress
   **/
   @javax.annotation.Nullable
-
   public Address getBillingAddress() {
     return billingAddress;
   }
@@ -144,7 +146,6 @@ public class OrganizationInput {
    * @return customdata
   **/
   @javax.annotation.Nullable
-
   public Object getCustomdata() {
     return customdata;
   }
@@ -166,7 +167,6 @@ public class OrganizationInput {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -188,7 +188,6 @@ public class OrganizationInput {
    * @return enforce2faAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getEnforce2faAt() {
     return enforce2faAt;
   }
@@ -210,7 +209,6 @@ public class OrganizationInput {
    * @return logo
   **/
   @javax.annotation.Nullable
-
   public byte[] getLogo() {
     return logo;
   }
@@ -232,7 +230,6 @@ public class OrganizationInput {
    * @return name
   **/
   @javax.annotation.Nullable
-
   public String getName() {
     return name;
   }
@@ -254,7 +251,6 @@ public class OrganizationInput {
    * @return twitter
   **/
   @javax.annotation.Nullable
-
   public String getTwitter() {
     return twitter;
   }
@@ -276,7 +272,6 @@ public class OrganizationInput {
    * @return website
   **/
   @javax.annotation.Nullable
-
   public String getWebsite() {
     return website;
   }

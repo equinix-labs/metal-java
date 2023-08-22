@@ -8,7 +8,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**resetPassword**](PasswordResetTokensApi.md#resetPassword) | **DELETE** /reset-password | Reset current user password |
 
 
-<a name="createPasswordResetToken"></a>
+<a id="createPasswordResetToken"></a>
 # **createPasswordResetToken**
 > createPasswordResetToken(email)
 
@@ -78,7 +78,7 @@ null (empty response body)
 | **401** | unauthorized |  -  |
 | **422** | unprocessable entity |  -  |
 
-<a name="resetPassword"></a>
+<a id="resetPassword"></a>
 # **resetPassword**
 > NewPassword resetPassword()
 

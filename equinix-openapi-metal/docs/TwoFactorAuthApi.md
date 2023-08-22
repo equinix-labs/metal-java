@@ -10,7 +10,7 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**enableTfaSms**](TwoFactorAuthApi.md#enableTfaSms) | **POST** /user/otp/sms | Enable two factor auth using sms |
 
 
-<a name="disableTfaApp"></a>
+<a id="disableTfaApp"></a>
 # **disableTfaApp**
 > disableTfaApp()
 
@@ -76,7 +76,7 @@ null (empty response body)
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="disableTfaSms"></a>
+<a id="disableTfaSms"></a>
 # **disableTfaSms**
 > disableTfaSms()
 
@@ -142,7 +142,7 @@ null (empty response body)
 | **401** | unauthorized |  -  |
 | **404** | not found |  -  |
 
-<a name="enableTfaApp"></a>
+<a id="enableTfaApp"></a>
 # **enableTfaApp**
 > enableTfaApp()
 
@@ -207,7 +207,7 @@ null (empty response body)
 | **200** | ok |  -  |
 | **401** | unauthorized |  -  |
 
-<a name="enableTfaSms"></a>
+<a id="enableTfaSms"></a>
 # **enableTfaSms**
 > enableTfaSms()
 

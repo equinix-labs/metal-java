@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -104,7 +108,6 @@ public class UserLite {
    * @return avatarThumbUrl
   **/
   @javax.annotation.Nullable
-
   public String getAvatarThumbUrl() {
     return avatarThumbUrl;
   }
@@ -126,7 +129,6 @@ public class UserLite {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -148,7 +150,6 @@ public class UserLite {
    * @return email
   **/
   @javax.annotation.Nullable
-
   public String getEmail() {
     return email;
   }
@@ -170,7 +171,6 @@ public class UserLite {
    * @return firstName
   **/
   @javax.annotation.Nullable
-
   public String getFirstName() {
     return firstName;
   }
@@ -192,7 +192,6 @@ public class UserLite {
    * @return fullName
   **/
   @javax.annotation.Nullable
-
   public String getFullName() {
     return fullName;
   }
@@ -214,7 +213,6 @@ public class UserLite {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -236,7 +234,6 @@ public class UserLite {
    * @return id
   **/
   @javax.annotation.Nonnull
-
   public UUID getId() {
     return id;
   }
@@ -258,7 +255,6 @@ public class UserLite {
    * @return lastName
   **/
   @javax.annotation.Nullable
-
   public String getLastName() {
     return lastName;
   }
@@ -280,7 +276,6 @@ public class UserLite {
    * @return shortId
   **/
   @javax.annotation.Nonnull
-
   public String getShortId() {
     return shortId;
   }
@@ -302,7 +297,6 @@ public class UserLite {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }

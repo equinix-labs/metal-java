@@ -37,6 +37,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -75,7 +79,7 @@ public class Event {
 
   public static final String SERIALIZED_NAME_RELATIONSHIPS = "relationships";
   @SerializedName(SERIALIZED_NAME_RELATIONSHIPS)
-  private List<Href> relationships = null;
+  private List<Href> relationships;
 
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -107,7 +111,6 @@ public class Event {
    * @return body
   **/
   @javax.annotation.Nullable
-
   public String getBody() {
     return body;
   }
@@ -129,7 +132,6 @@ public class Event {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -151,7 +153,6 @@ public class Event {
    * @return href
   **/
   @javax.annotation.Nullable
-
   public String getHref() {
     return href;
   }
@@ -173,7 +174,6 @@ public class Event {
    * @return id
   **/
   @javax.annotation.Nullable
-
   public UUID getId() {
     return id;
   }
@@ -195,7 +195,6 @@ public class Event {
    * @return interpolated
   **/
   @javax.annotation.Nullable
-
   public String getInterpolated() {
     return interpolated;
   }
@@ -225,7 +224,6 @@ public class Event {
    * @return relationships
   **/
   @javax.annotation.Nullable
-
   public List<Href> getRelationships() {
     return relationships;
   }
@@ -247,7 +245,6 @@ public class Event {
    * @return state
   **/
   @javax.annotation.Nullable
-
   public String getState() {
     return state;
   }
@@ -269,7 +266,6 @@ public class Event {
    * @return type
   **/
   @javax.annotation.Nullable
-
   public String getType() {
     return type;
   }
@@ -291,7 +287,6 @@ public class Event {
    * @return modifiedBy
   **/
   @javax.annotation.Nullable
-
   public Object getModifiedBy() {
     return modifiedBy;
   }
@@ -313,7 +308,6 @@ public class Event {
    * @return ip
   **/
   @javax.annotation.Nullable
-
   public String getIp() {
     return ip;
   }
