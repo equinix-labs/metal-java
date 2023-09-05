@@ -104,6 +104,10 @@ public class Device {
   @SerializedName(SERIALIZED_NAME_FACILITY)
   private Facility facility;
 
+  public static final String SERIALIZED_NAME_FIRMWARE_SET_ID = "firmware_set_id";
+  @SerializedName(SERIALIZED_NAME_FIRMWARE_SET_ID)
+  private UUID firmwareSetId;
+
   public static final String SERIALIZED_NAME_HARDWARE_RESERVATION = "hardware_reservation";
   @SerializedName(SERIALIZED_NAME_HARDWARE_RESERVATION)
   private HardwareReservation hardwareReservation;
@@ -479,6 +483,27 @@ public class Device {
 
   public void setFacility(Facility facility) {
     this.facility = facility;
+  }
+
+
+  public Device firmwareSetId(UUID firmwareSetId) {
+    
+    this.firmwareSetId = firmwareSetId;
+    return this;
+  }
+
+   /**
+   * The UUID of the firmware set to associate with the device.
+   * @return firmwareSetId
+  **/
+  @javax.annotation.Nullable
+  public UUID getFirmwareSetId() {
+    return firmwareSetId;
+  }
+
+
+  public void setFirmwareSetId(UUID firmwareSetId) {
+    this.firmwareSetId = firmwareSetId;
   }
 
 
@@ -1314,6 +1339,7 @@ public class Device {
         Objects.equals(this.customdata, device.customdata) &&
         Objects.equals(this.description, device.description) &&
         Objects.equals(this.facility, device.facility) &&
+        Objects.equals(this.firmwareSetId, device.firmwareSetId) &&
         Objects.equals(this.hardwareReservation, device.hardwareReservation) &&
         Objects.equals(this.hostname, device.hostname) &&
         Objects.equals(this.href, device.href) &&
@@ -1353,7 +1379,7 @@ public class Device {
 
   @Override
   public int hashCode() {
-    return Objects.hash(alwaysPxe, billingCycle, bondingMode, createdAt, createdBy, customdata, description, facility, hardwareReservation, hostname, href, id, imageUrl, ipAddresses, ipxeScriptUrl, iqn, locked, metro, networkFrozen, networkPorts, operatingSystem, actions, plan, project, projectLite, provisioningEvents, provisioningPercentage, rootPassword, shortId, spotInstance, spotPriceMax, sshKeys, state, storage, switchUuid, tags, terminationTime, updatedAt, user, userdata, volumes, sos, additionalProperties);
+    return Objects.hash(alwaysPxe, billingCycle, bondingMode, createdAt, createdBy, customdata, description, facility, firmwareSetId, hardwareReservation, hostname, href, id, imageUrl, ipAddresses, ipxeScriptUrl, iqn, locked, metro, networkFrozen, networkPorts, operatingSystem, actions, plan, project, projectLite, provisioningEvents, provisioningPercentage, rootPassword, shortId, spotInstance, spotPriceMax, sshKeys, state, storage, switchUuid, tags, terminationTime, updatedAt, user, userdata, volumes, sos, additionalProperties);
   }
 
   @Override
@@ -1368,6 +1394,7 @@ public class Device {
     sb.append("    customdata: ").append(toIndentedString(customdata)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    facility: ").append(toIndentedString(facility)).append("\n");
+    sb.append("    firmwareSetId: ").append(toIndentedString(firmwareSetId)).append("\n");
     sb.append("    hardwareReservation: ").append(toIndentedString(hardwareReservation)).append("\n");
     sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
@@ -1433,6 +1460,7 @@ public class Device {
     openapiFields.add("customdata");
     openapiFields.add("description");
     openapiFields.add("facility");
+    openapiFields.add("firmware_set_id");
     openapiFields.add("hardware_reservation");
     openapiFields.add("hostname");
     openapiFields.add("href");
@@ -1497,6 +1525,9 @@ public class Device {
       // validate the optional field `facility`
       if (jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonNull()) {
         Facility.validateJsonObject(jsonObj.getAsJsonObject("facility"));
+      }
+      if ((jsonObj.get("firmware_set_id") != null && !jsonObj.get("firmware_set_id").isJsonNull()) && !jsonObj.get("firmware_set_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `firmware_set_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("firmware_set_id").toString()));
       }
       // validate the optional field `hardware_reservation`
       if (jsonObj.get("hardware_reservation") != null && !jsonObj.get("hardware_reservation").isJsonNull()) {

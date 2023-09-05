@@ -54,6 +54,10 @@ import com.equinix.openapi.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DedicatedPortCreateInput {
+  public static final String SERIALIZED_NAME_BILLING_ACCOUNT_NAME = "billing_account_name";
+  @SerializedName(SERIALIZED_NAME_BILLING_ACCOUNT_NAME)
+  private String billingAccountName;
+
   public static final String SERIALIZED_NAME_CONTACT_EMAIL = "contact_email";
   @SerializedName(SERIALIZED_NAME_CONTACT_EMAIL)
   private String contactEmail;
@@ -186,8 +190,33 @@ public class DedicatedPortCreateInput {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
+  public static final String SERIALIZED_NAME_USE_CASE = "use_case";
+  @SerializedName(SERIALIZED_NAME_USE_CASE)
+  private String useCase;
+
   public DedicatedPortCreateInput() {
   }
+
+  public DedicatedPortCreateInput billingAccountName(String billingAccountName) {
+    
+    this.billingAccountName = billingAccountName;
+    return this;
+  }
+
+   /**
+   * The billing account name of the Equinix Fabric account.
+   * @return billingAccountName
+  **/
+  @javax.annotation.Nullable
+  public String getBillingAccountName() {
+    return billingAccountName;
+  }
+
+
+  public void setBillingAccountName(String billingAccountName) {
+    this.billingAccountName = billingAccountName;
+  }
+
 
   public DedicatedPortCreateInput contactEmail(String contactEmail) {
     
@@ -406,6 +435,27 @@ public class DedicatedPortCreateInput {
     this.type = type;
   }
 
+
+  public DedicatedPortCreateInput useCase(String useCase) {
+    
+    this.useCase = useCase;
+    return this;
+  }
+
+   /**
+   * The intended use case of the dedicated port.
+   * @return useCase
+  **/
+  @javax.annotation.Nullable
+  public String getUseCase() {
+    return useCase;
+  }
+
+
+  public void setUseCase(String useCase) {
+    this.useCase = useCase;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -461,7 +511,8 @@ public class DedicatedPortCreateInput {
       return false;
     }
     DedicatedPortCreateInput dedicatedPortCreateInput = (DedicatedPortCreateInput) o;
-    return Objects.equals(this.contactEmail, dedicatedPortCreateInput.contactEmail) &&
+    return Objects.equals(this.billingAccountName, dedicatedPortCreateInput.billingAccountName) &&
+        Objects.equals(this.contactEmail, dedicatedPortCreateInput.contactEmail) &&
         Objects.equals(this.description, dedicatedPortCreateInput.description) &&
         Objects.equals(this.metro, dedicatedPortCreateInput.metro) &&
         Objects.equals(this.mode, dedicatedPortCreateInput.mode) &&
@@ -470,19 +521,21 @@ public class DedicatedPortCreateInput {
         Objects.equals(this.redundancy, dedicatedPortCreateInput.redundancy) &&
         Objects.equals(this.speed, dedicatedPortCreateInput.speed) &&
         Objects.equals(this.tags, dedicatedPortCreateInput.tags) &&
-        Objects.equals(this.type, dedicatedPortCreateInput.type)&&
+        Objects.equals(this.type, dedicatedPortCreateInput.type) &&
+        Objects.equals(this.useCase, dedicatedPortCreateInput.useCase)&&
         Objects.equals(this.additionalProperties, dedicatedPortCreateInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactEmail, description, metro, mode, name, project, redundancy, speed, tags, type, additionalProperties);
+    return Objects.hash(billingAccountName, contactEmail, description, metro, mode, name, project, redundancy, speed, tags, type, useCase, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DedicatedPortCreateInput {\n");
+    sb.append("    billingAccountName: ").append(toIndentedString(billingAccountName)).append("\n");
     sb.append("    contactEmail: ").append(toIndentedString(contactEmail)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    metro: ").append(toIndentedString(metro)).append("\n");
@@ -493,6 +546,7 @@ public class DedicatedPortCreateInput {
     sb.append("    speed: ").append(toIndentedString(speed)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    useCase: ").append(toIndentedString(useCase)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -516,6 +570,7 @@ public class DedicatedPortCreateInput {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("billing_account_name");
     openapiFields.add("contact_email");
     openapiFields.add("description");
     openapiFields.add("metro");
@@ -526,6 +581,7 @@ public class DedicatedPortCreateInput {
     openapiFields.add("speed");
     openapiFields.add("tags");
     openapiFields.add("type");
+    openapiFields.add("use_case");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -554,6 +610,9 @@ public class DedicatedPortCreateInput {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("billing_account_name") != null && !jsonObj.get("billing_account_name").isJsonNull()) && !jsonObj.get("billing_account_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `billing_account_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billing_account_name").toString()));
+      }
       if ((jsonObj.get("contact_email") != null && !jsonObj.get("contact_email").isJsonNull()) && !jsonObj.get("contact_email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `contact_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contact_email").toString()));
       }
@@ -581,6 +640,9 @@ public class DedicatedPortCreateInput {
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("use_case") != null && !jsonObj.get("use_case").isJsonNull()) && !jsonObj.get("use_case").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `use_case` to be a primitive type in the JSON string but got `%s`", jsonObj.get("use_case").toString()));
       }
   }
 

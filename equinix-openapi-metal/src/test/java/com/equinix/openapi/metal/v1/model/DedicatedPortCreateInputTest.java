@@ -40,6 +40,14 @@ public class DedicatedPortCreateInputTest {
     }
 
     /**
+     * Test the property 'billingAccountName'
+     */
+    @Test
+    public void billingAccountNameTest() {
+        // TODO: test billingAccountName
+    }
+
+    /**
      * Test the property 'contactEmail'
      */
     @Test
@@ -117,6 +125,14 @@ public class DedicatedPortCreateInputTest {
     @Test
     public void typeTest() {
         // TODO: test type
+    }
+
+    /**
+     * Test the property 'useCase'
+     */
+    @Test
+    public void useCaseTest() {
+        // TODO: test useCase
     }
 
 }

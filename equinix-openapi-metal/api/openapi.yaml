@@ -1612,7 +1612,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeviceUpdateInput'
-        description: Facility to update
+        description: Device to update
         required: true
       responses:
         "200":
@@ -14373,6 +14373,9 @@ components:
       type: object
     DedicatedPortCreateInput:
       properties:
+        billing_account_name:
+          description: The billing account name of the Equinix Fabric account.
+          type: string
         contact_email:
           description: The preferred email used for communication and notifications
             about the Equinix Fabric interconnection. Required when using a Project
@@ -14417,6 +14420,9 @@ components:
             \ should be 'dedicated'."
           enum:
           - dedicated
+          type: string
+        use_case:
+          description: The intended use case of the dedicated port.
           type: string
       required:
       - metro
@@ -14669,6 +14675,7 @@ components:
           pricing: "{}"
           slug: slug
           distro_label: distro_label
+        firmware_set_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         billing_cycle: billing_cycle
         customdata:
           key: ""
@@ -14967,6 +14974,10 @@ components:
           type: string
         facility:
           $ref: '#/components/schemas/Facility'
+        firmware_set_id:
+          description: The UUID of the firmware set to associate with the device.
+          format: uuid
+          type: string
         hardware_reservation:
           $ref: '#/components/schemas/HardwareReservation'
         hostname:
@@ -15580,6 +15591,7 @@ components:
             pricing: "{}"
             slug: slug
             distro_label: distro_label
+          firmware_set_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           billing_cycle: billing_cycle
           customdata:
             key: ""
@@ -16101,6 +16113,7 @@ components:
             pricing: "{}"
             slug: slug
             distro_label: distro_label
+          firmware_set_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           billing_cycle: billing_cycle
           customdata:
             key: ""
