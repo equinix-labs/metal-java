@@ -15,6 +15,7 @@
 |**customdata** | **Map&lt;String, Object&gt;** |  |  [optional] |
 |**description** | **String** |  |  [optional] |
 |**facility** | [**Facility**](Facility.md) |  |  [optional] |
+|**firmwareSetId** | **UUID** | The UUID of the firmware set to associate with the device. |  [optional] |
 |**hardwareReservation** | [**HardwareReservation**](HardwareReservation.md) |  |  [optional] |
 |**hostname** | **String** |  |  [optional] |
 |**href** | **String** |  |  [optional] |

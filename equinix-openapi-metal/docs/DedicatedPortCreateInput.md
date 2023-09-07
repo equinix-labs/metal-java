@@ -7,6 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**billingAccountName** | **String** | The billing account name of the Equinix Fabric account. |  [optional] |
 |**contactEmail** | **String** | The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key. |  [optional] |
 |**description** | **String** |  |  [optional] |
 |**metro** | **String** | A Metro ID or code. For interconnections with Dedicated Ports, this will be the location of the issued Dedicated Ports. |  |
@@ -17,6 +18,7 @@
 |**speed** | **Integer** | A interconnection speed, in bps, mbps, or gbps. For Dedicated Ports, this can be 10Gbps or 100Gbps. |  [optional] |
 |**tags** | **List&lt;String&gt;** |  |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | When requesting for a dedicated port, the value of this field should be &#39;dedicated&#39;. |  |
+|**useCase** | **String** | The intended use case of the dedicated port. |  [optional] |
 
 
 

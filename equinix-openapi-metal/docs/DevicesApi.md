@@ -1366,7 +1366,7 @@ public class Example {
 
     DevicesApi apiInstance = new DevicesApi(defaultClient);
     UUID id = UUID.randomUUID(); // UUID | Device UUID
-    DeviceUpdateInput deviceUpdateInput = new DeviceUpdateInput(); // DeviceUpdateInput | Facility to update
+    DeviceUpdateInput deviceUpdateInput = new DeviceUpdateInput(); // DeviceUpdateInput | Device to update
     List<String> include = Arrays.asList(); // List<String> | Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects.
     List<String> exclude = Arrays.asList(); // List<String> | Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects.
     try {
@@ -1388,7 +1388,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID**| Device UUID | |
-| **deviceUpdateInput** | [**DeviceUpdateInput**](DeviceUpdateInput.md)| Facility to update | |
+| **deviceUpdateInput** | [**DeviceUpdateInput**](DeviceUpdateInput.md)| Device to update | |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |
 | **exclude** | [**List&lt;String&gt;**](String.md)| Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. | [optional] |
 

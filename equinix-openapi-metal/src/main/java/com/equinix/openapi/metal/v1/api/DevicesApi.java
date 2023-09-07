@@ -2760,7 +2760,7 @@ public class DevicesApi {
     /**
      * Build call for updateDevice
      * @param id Device UUID (required)
-     * @param deviceUpdateInput Facility to update (required)
+     * @param deviceUpdateInput Device to update (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback Callback for upload/download progress
@@ -2850,7 +2850,7 @@ public class DevicesApi {
      * Update the device
      * Updates the device.
      * @param id Device UUID (required)
-     * @param deviceUpdateInput Facility to update (required)
+     * @param deviceUpdateInput Device to update (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return Device
@@ -2874,7 +2874,7 @@ public class DevicesApi {
      * Update the device
      * Updates the device.
      * @param id Device UUID (required)
-     * @param deviceUpdateInput Facility to update (required)
+     * @param deviceUpdateInput Device to update (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @return ApiResponse&lt;Device&gt;
@@ -2899,7 +2899,7 @@ public class DevicesApi {
      * Update the device (asynchronously)
      * Updates the device.
      * @param id Device UUID (required)
-     * @param deviceUpdateInput Facility to update (required)
+     * @param deviceUpdateInput Device to update (required)
      * @param include Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. (optional)
      * @param exclude Nested attributes to exclude. Excluded objects will return only the href attribute. Attribute names can be dotted (up to 3 levels) to exclude deeply nested objects. (optional)
      * @param _callback The callback to be executed when the API call finishes
