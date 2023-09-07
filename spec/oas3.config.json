@@ -1,8 +1,8 @@
 {
    "groupId": "com.equinix",
    "artifactId": "equinix-openapi-metal",
-   "artifactVersion": "0.4.1",
-   "httpUserAgent": "metal-java/0.4.1",
+   "artifactVersion": "0.5.0",
+   "httpUserAgent": "metal-java/0.5.0",
    "library": "okhttp-gson",
    "invokerPackage": "com.equinix.openapi",
    "modelPackage": "com.equinix.openapi.metal.v1.model",
