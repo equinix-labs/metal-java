@@ -82,6 +82,14 @@ public class DeviceUpdateInputTest {
     }
 
     /**
+     * Test the property 'firmwareSetId'
+     */
+    @Test
+    public void firmwareSetIdTest() {
+        // TODO: test firmwareSetId
+    }
+
+    /**
      * Test the property 'ipxeScriptUrl'
      */
     @Test

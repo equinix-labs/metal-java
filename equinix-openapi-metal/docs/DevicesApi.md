@@ -20,6 +20,8 @@ All URIs are relative to *https://api.equinix.com/metal/v1*
 | [**findProjectDevices**](DevicesApi.md#findProjectDevices) | **GET** /projects/{id}/devices | Retrieve all devices of a project |
 | [**findTraffic**](DevicesApi.md#findTraffic) | **GET** /devices/{id}/traffic | Retrieve device traffic |
 | [**getBgpNeighborData**](DevicesApi.md#getBgpNeighborData) | **GET** /devices/{id}/bgp/neighbors | Retrieve BGP neighbor data for this device |
+| [**getDeviceFirmwareSets**](DevicesApi.md#getDeviceFirmwareSets) | **GET** /devices/{id}/firmware-sets | Get Device&#39;s associated Firmware Set |
+| [**getDeviceHealthRollup**](DevicesApi.md#getDeviceHealthRollup) | **GET** /devices/{id}/diagnostics/health/rollup | Get Device&#39;s Health Status |
 | [**performAction**](DevicesApi.md#performAction) | **POST** /devices/{id}/actions | Perform an action |
 | [**updateDevice**](DevicesApi.md#updateDevice) | **PUT** /devices/{id} | Update the device |
 
@@ -1261,6 +1263,150 @@ public class Example {
 | **401** | unauthorized |  -  |
 | **403** | forbidden |  -  |
 | **404** | not found |  -  |
+
+<a id="getDeviceFirmwareSets"></a>
+# **getDeviceFirmwareSets**
+> FirmwareSetResponse getDeviceFirmwareSets(id)
+
+Get Device&#39;s associated Firmware Set
+
+Returns the firmware set associated with the device. If a custom firmware set is associated with the device, then it is returned. Otherwise, if a default firmware set is available it is returned.
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.DevicesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    DevicesApi apiInstance = new DevicesApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | Device UUID
+    try {
+      FirmwareSetResponse result = apiInstance.getDeviceFirmwareSets(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DevicesApi#getDeviceFirmwareSets");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| Device UUID | |
+
+### Return type
+
+[**FirmwareSetResponse**](FirmwareSetResponse.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful operation |  -  |
+| **401** | Error responses are included with 4xx and 5xx HTTP responses from the API service. Either \&quot;error\&quot; or \&quot;errors\&quot; will be set. |  -  |
+| **404** | Error responses are included with 4xx and 5xx HTTP responses from the API service. Either \&quot;error\&quot; or \&quot;errors\&quot; will be set. |  -  |
+| **500** | Internal Server Error |  -  |
+
+<a id="getDeviceHealthRollup"></a>
+# **getDeviceHealthRollup**
+> DeviceHealthRollup getDeviceHealthRollup(id)
+
+Get Device&#39;s Health Status
+
+Returns the health rollup status of the device.
+
+### Example
+```java
+// Import classes:
+import com.equinix.openapi.ApiClient;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.Configuration;
+import com.equinix.openapi.auth.*;
+import com.equinix.openapi.models.*;
+import com.equinix.openapi.metal.v1.api.DevicesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.equinix.com/metal/v1");
+    
+    // Configure API key authorization: x_auth_token
+    ApiKeyAuth x_auth_token = (ApiKeyAuth) defaultClient.getAuthentication("x_auth_token");
+    x_auth_token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_auth_token.setApiKeyPrefix("Token");
+
+    DevicesApi apiInstance = new DevicesApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | Device UUID
+    try {
+      DeviceHealthRollup result = apiInstance.getDeviceHealthRollup(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DevicesApi#getDeviceHealthRollup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **UUID**| Device UUID | |
+
+### Return type
+
+[**DeviceHealthRollup**](DeviceHealthRollup.md)
+
+### Authorization
+
+[x_auth_token](../README.md#x_auth_token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful operation |  -  |
+| **401** | Error responses are included with 4xx and 5xx HTTP responses from the API service. Either \&quot;error\&quot; or \&quot;errors\&quot; will be set. |  -  |
+| **404** | Error responses are included with 4xx and 5xx HTTP responses from the API service. Either \&quot;error\&quot; or \&quot;errors\&quot; will be set. |  -  |
+| **500** | Internal Server Error |  -  |
 
 <a id="performAction"></a>
 # **performAction**
