@@ -241,6 +241,8 @@ Class | Method | HTTP request | Description
 *DevicesApi* | [**findProjectDevices**](docs/DevicesApi.md#findProjectDevices) | **GET** /projects/{id}/devices | Retrieve all devices of a project
 *DevicesApi* | [**findTraffic**](docs/DevicesApi.md#findTraffic) | **GET** /devices/{id}/traffic | Retrieve device traffic
 *DevicesApi* | [**getBgpNeighborData**](docs/DevicesApi.md#getBgpNeighborData) | **GET** /devices/{id}/bgp/neighbors | Retrieve BGP neighbor data for this device
+*DevicesApi* | [**getDeviceFirmwareSets**](docs/DevicesApi.md#getDeviceFirmwareSets) | **GET** /devices/{id}/firmware-sets | Get Device&#39;s associated Firmware Set
+*DevicesApi* | [**getDeviceHealthRollup**](docs/DevicesApi.md#getDeviceHealthRollup) | **GET** /devices/{id}/diagnostics/health/rollup | Get Device&#39;s Health Status
 *DevicesApi* | [**performAction**](docs/DevicesApi.md#performAction) | **POST** /devices/{id}/actions | Perform an action
 *DevicesApi* | [**updateDevice**](docs/DevicesApi.md#updateDevice) | **PUT** /devices/{id} | Update the device
 *EmailsApi* | [**createEmail**](docs/EmailsApi.md#createEmail) | **POST** /emails | Create an email
@@ -259,6 +261,8 @@ Class | Method | HTTP request | Description
 *FacilitiesApi* | [**findFacilities**](docs/FacilitiesApi.md#findFacilities) | **GET** /facilities | Retrieve all facilities
 *FacilitiesApi* | [**findFacilitiesByOrganization**](docs/FacilitiesApi.md#findFacilitiesByOrganization) | **GET** /organizations/{id}/facilities | Retrieve all facilities visible by the organization
 *FacilitiesApi* | [**findFacilitiesByProject**](docs/FacilitiesApi.md#findFacilitiesByProject) | **GET** /projects/{id}/facilities | Retrieve all facilities visible by the project
+*FirmwareSetsApi* | [**getOrganizationFirmwareSets**](docs/FirmwareSetsApi.md#getOrganizationFirmwareSets) | **GET** /organizations/{id}/firmware-sets | Get Organization&#39;s Firmware Sets
+*FirmwareSetsApi* | [**getProjectFirmwareSets**](docs/FirmwareSetsApi.md#getProjectFirmwareSets) | **GET** /projects/{id}/firmware-sets | Get Project&#39;s Firmware Sets
 *HardwareReservationsApi* | [**activateHardwareReservation**](docs/HardwareReservationsApi.md#activateHardwareReservation) | **POST** /hardware-reservations/{id}/activate | Activate a spare hardware reservation
 *HardwareReservationsApi* | [**findHardwareReservationById**](docs/HardwareReservationsApi.md#findHardwareReservationById) | **GET** /hardware-reservations/{id} | Retrieve a hardware reservation
 *HardwareReservationsApi* | [**findProjectHardwareReservations**](docs/HardwareReservationsApi.md#findProjectHardwareReservations) | **GET** /projects/{id}/hardware-reservations | Retrieve all hardware reservations for a given project
@@ -424,6 +428,8 @@ Class | Method | HTTP request | Description
 
  - [ActivateHardwareReservationRequest](docs/ActivateHardwareReservationRequest.md)
  - [Address](docs/Address.md)
+ - [Attribute](docs/Attribute.md)
+ - [AttributeData](docs/AttributeData.md)
  - [AuthToken](docs/AuthToken.md)
  - [AuthTokenInput](docs/AuthTokenInput.md)
  - [AuthTokenList](docs/AuthTokenList.md)
@@ -450,6 +456,7 @@ Class | Method | HTTP request | Description
  - [CapacityInput](docs/CapacityInput.md)
  - [CapacityLevelPerBaremetal](docs/CapacityLevelPerBaremetal.md)
  - [CapacityList](docs/CapacityList.md)
+ - [Component](docs/Component.md)
  - [Coordinates](docs/Coordinates.md)
  - [CreateDeviceRequest](docs/CreateDeviceRequest.md)
  - [CreateEmailInput](docs/CreateEmailInput.md)
@@ -465,6 +472,7 @@ Class | Method | HTTP request | Description
  - [DeviceCreateInMetroInput](docs/DeviceCreateInMetroInput.md)
  - [DeviceCreateInput](docs/DeviceCreateInput.md)
  - [DeviceCreatedBy](docs/DeviceCreatedBy.md)
+ - [DeviceHealthRollup](docs/DeviceHealthRollup.md)
  - [DeviceList](docs/DeviceList.md)
  - [DeviceMetro](docs/DeviceMetro.md)
  - [DeviceProject](docs/DeviceProject.md)
@@ -487,6 +495,9 @@ Class | Method | HTTP request | Description
  - [FindIPAddressById200Response](docs/FindIPAddressById200Response.md)
  - [FindMetalGatewayById200Response](docs/FindMetalGatewayById200Response.md)
  - [FindTrafficTimeframeParameter](docs/FindTrafficTimeframeParameter.md)
+ - [FirmwareSet](docs/FirmwareSet.md)
+ - [FirmwareSetListResponse](docs/FirmwareSetListResponse.md)
+ - [FirmwareSetResponse](docs/FirmwareSetResponse.md)
  - [GlobalBgpRange](docs/GlobalBgpRange.md)
  - [GlobalBgpRangeList](docs/GlobalBgpRangeList.md)
  - [HardwareReservation](docs/HardwareReservation.md)

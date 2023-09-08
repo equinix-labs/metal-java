@@ -19,122 +19,54 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for DeviceUpdateInput
+ * Model tests for AttributeData
  */
-public class DeviceUpdateInputTest {
-    private final DeviceUpdateInput model = new DeviceUpdateInput();
+public class AttributeDataTest {
+    private final AttributeData model = new AttributeData();
 
     /**
-     * Model tests for DeviceUpdateInput
+     * Model tests for AttributeData
      */
     @Test
-    public void testDeviceUpdateInput() {
-        // TODO: test DeviceUpdateInput
+    public void testAttributeData() {
+        // TODO: test AttributeData
     }
 
     /**
-     * Test the property 'alwaysPxe'
+     * Test the property 'latest'
      */
     @Test
-    public void alwaysPxeTest() {
-        // TODO: test alwaysPxe
+    public void latestTest() {
+        // TODO: test latest
     }
 
     /**
-     * Test the property 'billingCycle'
+     * Test the property 'model'
      */
     @Test
-    public void billingCycleTest() {
-        // TODO: test billingCycle
+    public void modelTest() {
+        // TODO: test model
     }
 
     /**
-     * Test the property 'customdata'
+     * Test the property 'vendor'
      */
     @Test
-    public void customdataTest() {
-        // TODO: test customdata
+    public void vendorTest() {
+        // TODO: test vendor
     }
 
     /**
-     * Test the property 'description'
+     * Test the property 'plan'
      */
     @Test
-    public void descriptionTest() {
-        // TODO: test description
-    }
-
-    /**
-     * Test the property 'hostname'
-     */
-    @Test
-    public void hostnameTest() {
-        // TODO: test hostname
-    }
-
-    /**
-     * Test the property 'firmwareSetId'
-     */
-    @Test
-    public void firmwareSetIdTest() {
-        // TODO: test firmwareSetId
-    }
-
-    /**
-     * Test the property 'ipxeScriptUrl'
-     */
-    @Test
-    public void ipxeScriptUrlTest() {
-        // TODO: test ipxeScriptUrl
-    }
-
-    /**
-     * Test the property 'locked'
-     */
-    @Test
-    public void lockedTest() {
-        // TODO: test locked
-    }
-
-    /**
-     * Test the property 'networkFrozen'
-     */
-    @Test
-    public void networkFrozenTest() {
-        // TODO: test networkFrozen
-    }
-
-    /**
-     * Test the property 'spotInstance'
-     */
-    @Test
-    public void spotInstanceTest() {
-        // TODO: test spotInstance
-    }
-
-    /**
-     * Test the property 'tags'
-     */
-    @Test
-    public void tagsTest() {
-        // TODO: test tags
-    }
-
-    /**
-     * Test the property 'userdata'
-     */
-    @Test
-    public void userdataTest() {
-        // TODO: test userdata
+    public void planTest() {
+        // TODO: test plan
     }
 
 }

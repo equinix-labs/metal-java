@@ -76,6 +76,10 @@ public class DeviceUpdateInput {
   @SerializedName(SERIALIZED_NAME_HOSTNAME)
   private String hostname;
 
+  public static final String SERIALIZED_NAME_FIRMWARE_SET_ID = "firmware_set_id";
+  @SerializedName(SERIALIZED_NAME_FIRMWARE_SET_ID)
+  private String firmwareSetId;
+
   public static final String SERIALIZED_NAME_IPXE_SCRIPT_URL = "ipxe_script_url";
   @SerializedName(SERIALIZED_NAME_IPXE_SCRIPT_URL)
   private String ipxeScriptUrl;
@@ -213,6 +217,27 @@ public class DeviceUpdateInput {
 
   public void setHostname(String hostname) {
     this.hostname = hostname;
+  }
+
+
+  public DeviceUpdateInput firmwareSetId(String firmwareSetId) {
+    
+    this.firmwareSetId = firmwareSetId;
+    return this;
+  }
+
+   /**
+   * Get firmwareSetId
+   * @return firmwareSetId
+  **/
+  @javax.annotation.Nullable
+  public String getFirmwareSetId() {
+    return firmwareSetId;
+  }
+
+
+  public void setFirmwareSetId(String firmwareSetId) {
+    this.firmwareSetId = firmwareSetId;
   }
 
 
@@ -409,6 +434,7 @@ public class DeviceUpdateInput {
         Objects.equals(this.customdata, deviceUpdateInput.customdata) &&
         Objects.equals(this.description, deviceUpdateInput.description) &&
         Objects.equals(this.hostname, deviceUpdateInput.hostname) &&
+        Objects.equals(this.firmwareSetId, deviceUpdateInput.firmwareSetId) &&
         Objects.equals(this.ipxeScriptUrl, deviceUpdateInput.ipxeScriptUrl) &&
         Objects.equals(this.locked, deviceUpdateInput.locked) &&
         Objects.equals(this.networkFrozen, deviceUpdateInput.networkFrozen) &&
@@ -420,7 +446,7 @@ public class DeviceUpdateInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(alwaysPxe, billingCycle, customdata, description, hostname, ipxeScriptUrl, locked, networkFrozen, spotInstance, tags, userdata, additionalProperties);
+    return Objects.hash(alwaysPxe, billingCycle, customdata, description, hostname, firmwareSetId, ipxeScriptUrl, locked, networkFrozen, spotInstance, tags, userdata, additionalProperties);
   }
 
   @Override
@@ -432,6 +458,7 @@ public class DeviceUpdateInput {
     sb.append("    customdata: ").append(toIndentedString(customdata)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
+    sb.append("    firmwareSetId: ").append(toIndentedString(firmwareSetId)).append("\n");
     sb.append("    ipxeScriptUrl: ").append(toIndentedString(ipxeScriptUrl)).append("\n");
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
     sb.append("    networkFrozen: ").append(toIndentedString(networkFrozen)).append("\n");
@@ -466,6 +493,7 @@ public class DeviceUpdateInput {
     openapiFields.add("customdata");
     openapiFields.add("description");
     openapiFields.add("hostname");
+    openapiFields.add("firmware_set_id");
     openapiFields.add("ipxe_script_url");
     openapiFields.add("locked");
     openapiFields.add("network_frozen");
@@ -497,6 +525,9 @@ public class DeviceUpdateInput {
       }
       if ((jsonObj.get("hostname") != null && !jsonObj.get("hostname").isJsonNull()) && !jsonObj.get("hostname").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hostname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hostname").toString()));
+      }
+      if ((jsonObj.get("firmware_set_id") != null && !jsonObj.get("firmware_set_id").isJsonNull()) && !jsonObj.get("firmware_set_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `firmware_set_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("firmware_set_id").toString()));
       }
       if ((jsonObj.get("ipxe_script_url") != null && !jsonObj.get("ipxe_script_url").isJsonNull()) && !jsonObj.get("ipxe_script_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ipxe_script_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ipxe_script_url").toString()));

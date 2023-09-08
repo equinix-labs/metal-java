@@ -11,130 +11,58 @@
  */
 
 
-package com.equinix.openapi.metal.v1.model;
+package com.equinix.openapi.metal.v1.api;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.metal.v1.model.Error;
+import com.equinix.openapi.metal.v1.model.FirmwareSetListResponse;
+import java.util.UUID;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-
 
 /**
- * Model tests for DeviceUpdateInput
+ * API tests for FirmwareSetsApi
  */
-public class DeviceUpdateInputTest {
-    private final DeviceUpdateInput model = new DeviceUpdateInput();
+@Disabled
+public class FirmwareSetsApiTest {
+
+    private final FirmwareSetsApi api = new FirmwareSetsApi();
 
     /**
-     * Model tests for DeviceUpdateInput
+     * Get Organization&#39;s Firmware Sets
+     *
+     * Returns all firmware sets associated with the organization.
+     *
+     * @throws ApiException if the Api call fails
      */
     @Test
-    public void testDeviceUpdateInput() {
-        // TODO: test DeviceUpdateInput
+    public void getOrganizationFirmwareSetsTest() throws ApiException {
+        UUID id = null;
+        Integer page = null;
+        Integer perPage = null;
+        FirmwareSetListResponse response = api.getOrganizationFirmwareSets(id, page, perPage);
+        // TODO: test validations
     }
 
     /**
-     * Test the property 'alwaysPxe'
+     * Get Project&#39;s Firmware Sets
+     *
+     * Returns all firmware sets associated with the project or organization.
+     *
+     * @throws ApiException if the Api call fails
      */
     @Test
-    public void alwaysPxeTest() {
-        // TODO: test alwaysPxe
-    }
-
-    /**
-     * Test the property 'billingCycle'
-     */
-    @Test
-    public void billingCycleTest() {
-        // TODO: test billingCycle
-    }
-
-    /**
-     * Test the property 'customdata'
-     */
-    @Test
-    public void customdataTest() {
-        // TODO: test customdata
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
-    }
-
-    /**
-     * Test the property 'hostname'
-     */
-    @Test
-    public void hostnameTest() {
-        // TODO: test hostname
-    }
-
-    /**
-     * Test the property 'firmwareSetId'
-     */
-    @Test
-    public void firmwareSetIdTest() {
-        // TODO: test firmwareSetId
-    }
-
-    /**
-     * Test the property 'ipxeScriptUrl'
-     */
-    @Test
-    public void ipxeScriptUrlTest() {
-        // TODO: test ipxeScriptUrl
-    }
-
-    /**
-     * Test the property 'locked'
-     */
-    @Test
-    public void lockedTest() {
-        // TODO: test locked
-    }
-
-    /**
-     * Test the property 'networkFrozen'
-     */
-    @Test
-    public void networkFrozenTest() {
-        // TODO: test networkFrozen
-    }
-
-    /**
-     * Test the property 'spotInstance'
-     */
-    @Test
-    public void spotInstanceTest() {
-        // TODO: test spotInstance
-    }
-
-    /**
-     * Test the property 'tags'
-     */
-    @Test
-    public void tagsTest() {
-        // TODO: test tags
-    }
-
-    /**
-     * Test the property 'userdata'
-     */
-    @Test
-    public void userdataTest() {
-        // TODO: test userdata
+    public void getProjectFirmwareSetsTest() throws ApiException {
+        UUID id = null;
+        Integer page = null;
+        Integer perPage = null;
+        FirmwareSetListResponse response = api.getProjectFirmwareSets(id, page, perPage);
+        // TODO: test validations
     }
 
 }

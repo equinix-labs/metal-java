@@ -12,6 +12,7 @@
 |**customdata** | **Map&lt;String, Object&gt;** |  |  [optional] |
 |**description** | **String** |  |  [optional] |
 |**hostname** | **String** |  |  [optional] |
+|**firmwareSetId** | **String** |  |  [optional] |
 |**ipxeScriptUrl** | **String** |  |  [optional] |
 |**locked** | **Boolean** | Whether the device should be locked, preventing accidental deletion. |  [optional] |
 |**networkFrozen** | **Boolean** | If true, this instance can not be converted to a different network type. |  [optional] |

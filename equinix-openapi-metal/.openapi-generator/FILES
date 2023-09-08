@@ -8,6 +8,8 @@ build.gradle
 build.sbt
 docs/ActivateHardwareReservationRequest.md
 docs/Address.md
+docs/Attribute.md
+docs/AttributeData.md
 docs/AuthToken.md
 docs/AuthTokenInput.md
 docs/AuthTokenList.md
@@ -38,6 +40,7 @@ docs/CapacityCheckPerMetroList.md
 docs/CapacityInput.md
 docs/CapacityLevelPerBaremetal.md
 docs/CapacityList.md
+docs/Component.md
 docs/Coordinates.md
 docs/CreateDeviceRequest.md
 docs/CreateEmailInput.md
@@ -53,6 +56,7 @@ docs/DeviceCreateInFacilityInput.md
 docs/DeviceCreateInMetroInput.md
 docs/DeviceCreateInput.md
 docs/DeviceCreatedBy.md
+docs/DeviceHealthRollup.md
 docs/DeviceList.md
 docs/DeviceMetro.md
 docs/DeviceProject.md
@@ -79,6 +83,10 @@ docs/Filesystem.md
 docs/FindIPAddressById200Response.md
 docs/FindMetalGatewayById200Response.md
 docs/FindTrafficTimeframeParameter.md
+docs/FirmwareSet.md
+docs/FirmwareSetListResponse.md
+docs/FirmwareSetResponse.md
+docs/FirmwareSetsApi.md
 docs/GlobalBgpRange.md
 docs/GlobalBgpRangeList.md
 docs/HardwareReservation.md
@@ -314,6 +322,7 @@ src/main/java/com/equinix/openapi/metal/v1/api/DevicesApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/EmailsApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/EventsApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/FacilitiesApi.java
+src/main/java/com/equinix/openapi/metal/v1/api/FirmwareSetsApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/HardwareReservationsApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/IncidentsApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/InterconnectionsApi.java
@@ -347,6 +356,8 @@ src/main/java/com/equinix/openapi/metal/v1/api/VrfsApi.java
 src/main/java/com/equinix/openapi/metal/v1/model/AbstractOpenApiSchema.java
 src/main/java/com/equinix/openapi/metal/v1/model/ActivateHardwareReservationRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/Address.java
+src/main/java/com/equinix/openapi/metal/v1/model/Attribute.java
+src/main/java/com/equinix/openapi/metal/v1/model/AttributeData.java
 src/main/java/com/equinix/openapi/metal/v1/model/AuthToken.java
 src/main/java/com/equinix/openapi/metal/v1/model/AuthTokenInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/AuthTokenList.java
@@ -373,6 +384,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/CapacityCheckPerMetroList.java
 src/main/java/com/equinix/openapi/metal/v1/model/CapacityInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/CapacityLevelPerBaremetal.java
 src/main/java/com/equinix/openapi/metal/v1/model/CapacityList.java
+src/main/java/com/equinix/openapi/metal/v1/model/Component.java
 src/main/java/com/equinix/openapi/metal/v1/model/Coordinates.java
 src/main/java/com/equinix/openapi/metal/v1/model/CreateDeviceRequest.java
 src/main/java/com/equinix/openapi/metal/v1/model/CreateEmailInput.java
@@ -388,6 +400,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/DeviceCreateInFacilityInput.jav
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceCreateInMetroInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceCreatedBy.java
+src/main/java/com/equinix/openapi/metal/v1/model/DeviceHealthRollup.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceList.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceMetro.java
 src/main/java/com/equinix/openapi/metal/v1/model/DeviceProject.java
@@ -410,6 +423,9 @@ src/main/java/com/equinix/openapi/metal/v1/model/Filesystem.java
 src/main/java/com/equinix/openapi/metal/v1/model/FindIPAddressById200Response.java
 src/main/java/com/equinix/openapi/metal/v1/model/FindMetalGatewayById200Response.java
 src/main/java/com/equinix/openapi/metal/v1/model/FindTrafficTimeframeParameter.java
+src/main/java/com/equinix/openapi/metal/v1/model/FirmwareSet.java
+src/main/java/com/equinix/openapi/metal/v1/model/FirmwareSetListResponse.java
+src/main/java/com/equinix/openapi/metal/v1/model/FirmwareSetResponse.java
 src/main/java/com/equinix/openapi/metal/v1/model/GlobalBgpRange.java
 src/main/java/com/equinix/openapi/metal/v1/model/GlobalBgpRangeList.java
 src/main/java/com/equinix/openapi/metal/v1/model/HardwareReservation.java
@@ -589,6 +605,7 @@ src/test/java/com/equinix/openapi/metal/v1/api/DevicesApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/EmailsApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/EventsApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/FacilitiesApiTest.java
+src/test/java/com/equinix/openapi/metal/v1/api/FirmwareSetsApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/HardwareReservationsApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/IncidentsApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/InterconnectionsApiTest.java
@@ -621,6 +638,8 @@ src/test/java/com/equinix/openapi/metal/v1/api/VlansApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/VrfsApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/ActivateHardwareReservationRequestTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/AddressTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/AttributeDataTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/AttributeTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/AuthTokenInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/AuthTokenListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/AuthTokenProjectTest.java
@@ -647,6 +666,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/CapacityCheckPerMetroListTest.j
 src/test/java/com/equinix/openapi/metal/v1/model/CapacityInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/CapacityLevelPerBaremetalTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/CapacityListTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/ComponentTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/CoordinatesTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/CreateDeviceRequestTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/CreateEmailInputTest.java
@@ -661,6 +681,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/DeviceCreateInFacilityInputTest
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceCreateInMetroInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceCreatedByTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/DeviceHealthRollupTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceMetroTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/DeviceProjectLiteTest.java
@@ -684,6 +705,9 @@ src/test/java/com/equinix/openapi/metal/v1/model/FilesystemTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/FindIPAddressById200ResponseTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/FindMetalGatewayById200ResponseTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/FindTrafficTimeframeParameterTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/FirmwareSetListResponseTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/FirmwareSetResponseTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/FirmwareSetTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/GlobalBgpRangeListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/GlobalBgpRangeTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/HardwareReservationListTest.java

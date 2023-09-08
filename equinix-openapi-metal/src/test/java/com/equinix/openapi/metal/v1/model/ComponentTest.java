@@ -19,122 +19,114 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for DeviceUpdateInput
+ * Model tests for Component
  */
-public class DeviceUpdateInputTest {
-    private final DeviceUpdateInput model = new DeviceUpdateInput();
+public class ComponentTest {
+    private final Component model = new Component();
 
     /**
-     * Model tests for DeviceUpdateInput
+     * Model tests for Component
      */
     @Test
-    public void testDeviceUpdateInput() {
-        // TODO: test DeviceUpdateInput
+    public void testComponent() {
+        // TODO: test Component
     }
 
     /**
-     * Test the property 'alwaysPxe'
+     * Test the property 'uuid'
      */
     @Test
-    public void alwaysPxeTest() {
-        // TODO: test alwaysPxe
+    public void uuidTest() {
+        // TODO: test uuid
     }
 
     /**
-     * Test the property 'billingCycle'
+     * Test the property 'vendor'
      */
     @Test
-    public void billingCycleTest() {
-        // TODO: test billingCycle
+    public void vendorTest() {
+        // TODO: test vendor
     }
 
     /**
-     * Test the property 'customdata'
+     * Test the property 'model'
      */
     @Test
-    public void customdataTest() {
-        // TODO: test customdata
+    public void modelTest() {
+        // TODO: test model
     }
 
     /**
-     * Test the property 'description'
+     * Test the property 'filename'
      */
     @Test
-    public void descriptionTest() {
-        // TODO: test description
+    public void filenameTest() {
+        // TODO: test filename
     }
 
     /**
-     * Test the property 'hostname'
+     * Test the property 'version'
      */
     @Test
-    public void hostnameTest() {
-        // TODO: test hostname
+    public void versionTest() {
+        // TODO: test version
     }
 
     /**
-     * Test the property 'firmwareSetId'
+     * Test the property 'component'
      */
     @Test
-    public void firmwareSetIdTest() {
-        // TODO: test firmwareSetId
+    public void componentTest() {
+        // TODO: test component
     }
 
     /**
-     * Test the property 'ipxeScriptUrl'
+     * Test the property 'checksum'
      */
     @Test
-    public void ipxeScriptUrlTest() {
-        // TODO: test ipxeScriptUrl
+    public void checksumTest() {
+        // TODO: test checksum
     }
 
     /**
-     * Test the property 'locked'
+     * Test the property 'upstreamUrl'
      */
     @Test
-    public void lockedTest() {
-        // TODO: test locked
+    public void upstreamUrlTest() {
+        // TODO: test upstreamUrl
     }
 
     /**
-     * Test the property 'networkFrozen'
+     * Test the property 'repositoryUrl'
      */
     @Test
-    public void networkFrozenTest() {
-        // TODO: test networkFrozen
+    public void repositoryUrlTest() {
+        // TODO: test repositoryUrl
     }
 
     /**
-     * Test the property 'spotInstance'
+     * Test the property 'createdAt'
      */
     @Test
-    public void spotInstanceTest() {
-        // TODO: test spotInstance
+    public void createdAtTest() {
+        // TODO: test createdAt
     }
 
     /**
-     * Test the property 'tags'
+     * Test the property 'updatedAt'
      */
     @Test
-    public void tagsTest() {
-        // TODO: test tags
-    }
-
-    /**
-     * Test the property 'userdata'
-     */
-    @Test
-    public void userdataTest() {
-        // TODO: test userdata
+    public void updatedAtTest() {
+        // TODO: test updatedAt
     }
 
 }

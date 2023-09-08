@@ -21,10 +21,12 @@ import com.equinix.openapi.metal.v1.model.BgpSessionNeighbors;
 import com.equinix.openapi.metal.v1.model.CreateDeviceRequest;
 import com.equinix.openapi.metal.v1.model.Device;
 import com.equinix.openapi.metal.v1.model.DeviceActionInput;
+import com.equinix.openapi.metal.v1.model.DeviceHealthRollup;
 import com.equinix.openapi.metal.v1.model.DeviceList;
 import com.equinix.openapi.metal.v1.model.DeviceUpdateInput;
 import com.equinix.openapi.metal.v1.model.Error;
 import com.equinix.openapi.metal.v1.model.FindTrafficTimeframeParameter;
+import com.equinix.openapi.metal.v1.model.FirmwareSetResponse;
 import com.equinix.openapi.metal.v1.model.IPAssignment;
 import com.equinix.openapi.metal.v1.model.IPAssignmentInput;
 import com.equinix.openapi.metal.v1.model.IPAssignmentList;
@@ -314,6 +316,34 @@ public class DevicesApiTest {
         UUID id = null;
         List<String> include = null;
         BgpSessionNeighbors response = api.getBgpNeighborData(id, include);
+        // TODO: test validations
+    }
+
+    /**
+     * Get Device&#39;s associated Firmware Set
+     *
+     * Returns the firmware set associated with the device. If a custom firmware set is associated with the device, then it is returned. Otherwise, if a default firmware set is available it is returned.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDeviceFirmwareSetsTest() throws ApiException {
+        UUID id = null;
+        FirmwareSetResponse response = api.getDeviceFirmwareSets(id);
+        // TODO: test validations
+    }
+
+    /**
+     * Get Device&#39;s Health Status
+     *
+     * Returns the health rollup status of the device.
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getDeviceHealthRollupTest() throws ApiException {
+        UUID id = null;
+        DeviceHealthRollup response = api.getDeviceHealthRollup(id);
         // TODO: test validations
     }
 

@@ -13,128 +13,82 @@
 
 package com.equinix.openapi.metal.v1.model;
 
+import com.equinix.openapi.metal.v1.model.Attribute;
+import com.equinix.openapi.metal.v1.model.Component;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for DeviceUpdateInput
+ * Model tests for FirmwareSet
  */
-public class DeviceUpdateInputTest {
-    private final DeviceUpdateInput model = new DeviceUpdateInput();
+public class FirmwareSetTest {
+    private final FirmwareSet model = new FirmwareSet();
 
     /**
-     * Model tests for DeviceUpdateInput
+     * Model tests for FirmwareSet
      */
     @Test
-    public void testDeviceUpdateInput() {
-        // TODO: test DeviceUpdateInput
+    public void testFirmwareSet() {
+        // TODO: test FirmwareSet
     }
 
     /**
-     * Test the property 'alwaysPxe'
+     * Test the property 'uuid'
      */
     @Test
-    public void alwaysPxeTest() {
-        // TODO: test alwaysPxe
+    public void uuidTest() {
+        // TODO: test uuid
     }
 
     /**
-     * Test the property 'billingCycle'
+     * Test the property 'name'
      */
     @Test
-    public void billingCycleTest() {
-        // TODO: test billingCycle
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
-     * Test the property 'customdata'
+     * Test the property 'createdAt'
      */
     @Test
-    public void customdataTest() {
-        // TODO: test customdata
+    public void createdAtTest() {
+        // TODO: test createdAt
     }
 
     /**
-     * Test the property 'description'
+     * Test the property 'updatedAt'
      */
     @Test
-    public void descriptionTest() {
-        // TODO: test description
+    public void updatedAtTest() {
+        // TODO: test updatedAt
     }
 
     /**
-     * Test the property 'hostname'
+     * Test the property 'attributes'
      */
     @Test
-    public void hostnameTest() {
-        // TODO: test hostname
+    public void attributesTest() {
+        // TODO: test attributes
     }
 
     /**
-     * Test the property 'firmwareSetId'
+     * Test the property 'componentFirmware'
      */
     @Test
-    public void firmwareSetIdTest() {
-        // TODO: test firmwareSetId
-    }
-
-    /**
-     * Test the property 'ipxeScriptUrl'
-     */
-    @Test
-    public void ipxeScriptUrlTest() {
-        // TODO: test ipxeScriptUrl
-    }
-
-    /**
-     * Test the property 'locked'
-     */
-    @Test
-    public void lockedTest() {
-        // TODO: test locked
-    }
-
-    /**
-     * Test the property 'networkFrozen'
-     */
-    @Test
-    public void networkFrozenTest() {
-        // TODO: test networkFrozen
-    }
-
-    /**
-     * Test the property 'spotInstance'
-     */
-    @Test
-    public void spotInstanceTest() {
-        // TODO: test spotInstance
-    }
-
-    /**
-     * Test the property 'tags'
-     */
-    @Test
-    public void tagsTest() {
-        // TODO: test tags
-    }
-
-    /**
-     * Test the property 'userdata'
-     */
-    @Test
-    public void userdataTest() {
-        // TODO: test userdata
+    public void componentFirmwareTest() {
+        // TODO: test componentFirmware
     }
 
 }

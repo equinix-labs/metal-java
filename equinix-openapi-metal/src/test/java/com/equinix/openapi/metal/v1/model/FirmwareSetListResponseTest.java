@@ -13,6 +13,7 @@
 
 package com.equinix.openapi.metal.v1.model;
 
+import com.equinix.openapi.metal.v1.model.FirmwareSet;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -20,121 +21,71 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for DeviceUpdateInput
+ * Model tests for FirmwareSetListResponse
  */
-public class DeviceUpdateInputTest {
-    private final DeviceUpdateInput model = new DeviceUpdateInput();
+public class FirmwareSetListResponseTest {
+    private final FirmwareSetListResponse model = new FirmwareSetListResponse();
 
     /**
-     * Model tests for DeviceUpdateInput
+     * Model tests for FirmwareSetListResponse
      */
     @Test
-    public void testDeviceUpdateInput() {
-        // TODO: test DeviceUpdateInput
+    public void testFirmwareSetListResponse() {
+        // TODO: test FirmwareSetListResponse
     }
 
     /**
-     * Test the property 'alwaysPxe'
+     * Test the property 'pageSize'
      */
     @Test
-    public void alwaysPxeTest() {
-        // TODO: test alwaysPxe
+    public void pageSizeTest() {
+        // TODO: test pageSize
     }
 
     /**
-     * Test the property 'billingCycle'
+     * Test the property 'page'
      */
     @Test
-    public void billingCycleTest() {
-        // TODO: test billingCycle
+    public void pageTest() {
+        // TODO: test page
     }
 
     /**
-     * Test the property 'customdata'
+     * Test the property 'pageCount'
      */
     @Test
-    public void customdataTest() {
-        // TODO: test customdata
+    public void pageCountTest() {
+        // TODO: test pageCount
     }
 
     /**
-     * Test the property 'description'
+     * Test the property 'totalPages'
      */
     @Test
-    public void descriptionTest() {
-        // TODO: test description
+    public void totalPagesTest() {
+        // TODO: test totalPages
     }
 
     /**
-     * Test the property 'hostname'
+     * Test the property 'totalRecordCount'
      */
     @Test
-    public void hostnameTest() {
-        // TODO: test hostname
+    public void totalRecordCountTest() {
+        // TODO: test totalRecordCount
     }
 
     /**
-     * Test the property 'firmwareSetId'
+     * Test the property 'records'
      */
     @Test
-    public void firmwareSetIdTest() {
-        // TODO: test firmwareSetId
-    }
-
-    /**
-     * Test the property 'ipxeScriptUrl'
-     */
-    @Test
-    public void ipxeScriptUrlTest() {
-        // TODO: test ipxeScriptUrl
-    }
-
-    /**
-     * Test the property 'locked'
-     */
-    @Test
-    public void lockedTest() {
-        // TODO: test locked
-    }
-
-    /**
-     * Test the property 'networkFrozen'
-     */
-    @Test
-    public void networkFrozenTest() {
-        // TODO: test networkFrozen
-    }
-
-    /**
-     * Test the property 'spotInstance'
-     */
-    @Test
-    public void spotInstanceTest() {
-        // TODO: test spotInstance
-    }
-
-    /**
-     * Test the property 'tags'
-     */
-    @Test
-    public void tagsTest() {
-        // TODO: test tags
-    }
-
-    /**
-     * Test the property 'userdata'
-     */
-    @Test
-    public void userdataTest() {
-        // TODO: test userdata
+    public void recordsTest() {
+        // TODO: test records
     }
 
 }
