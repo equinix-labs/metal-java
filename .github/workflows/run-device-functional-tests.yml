@@ -42,7 +42,7 @@ jobs:
         cache: maven
 
     - name: Run equinix metal-java make
-      run: make docker_run
+      run: make generate
 
     - name: Install equinix client
       working-directory: ./equinix-openapi-metal

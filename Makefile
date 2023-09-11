@@ -1,4 +1,4 @@
-.PHONY: docker_run docker_generate
+.PHONY: all clean patch pull generate codegen move-workflow build_client
 
 CURRENT_UID := $(shell id -u)
 CURRENT_GID := $(shell id -g)
@@ -38,12 +38,14 @@ SPEC_FETCHED_PATCHES=patches/spec.fetched.json
 OPENAPI_CODEGEN_IMAGE=openapitools/openapi-generator-cli:v6.6.0
 DOCKER_OPENAPI=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/local ${OPENAPI_CODEGEN_IMAGE}
 
-docker_run: clean patch pull docker_generate move-workflow build_client
+all: clean patch pull generate
+
+generate: codegen move-workflow build_client
 
 pull:
 	${CRI} pull ${OPENAPI_CODEGEN_IMAGE}
 
-docker_generate:
+codegen:
 	${DOCKER_OPENAPI} generate \
 		-i /local/${PATCHED_SPEC_ENTRY_POINT} \
 		-g java \

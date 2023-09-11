@@ -31,7 +31,7 @@ jobs:
         git fetch
         echo -e "\nThis is executing for branch: ${GITHUB_REF_NAME}."
         git checkout ${GITHUB_REF_NAME}
-        make docker_run
+        make patch generate
         echo -e "Make execution completed."
         git add spec/oas3.patched/.
         git add spec/oas3.stitched/.
