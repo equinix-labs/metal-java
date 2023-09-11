@@ -37,7 +37,7 @@ SPEC_FETCHED_PATCHES=patches/spec.fetched.json
 ##
 # openapi-generator-cli - docker
 ##
-OPENAPI_CODEGEN_IMAGE=openapitools/openapi-generator-cli:v6.6.0
+OPENAPI_CODEGEN_IMAGE=openapitools/openapi-generator-cli:v7.0.0
 DOCKER_OPENAPI=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/local ${OPENAPI_CODEGEN_IMAGE}
 
 all: pull fetch patch generate
