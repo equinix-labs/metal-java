@@ -11,180 +11,38 @@
  */
 
 
-package com.equinix.openapi.metal.v1.model;
+package com.equinix.openapi.metal.v1.api;
 
-import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.Organization;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import com.equinix.openapi.ApiException;
+import com.equinix.openapi.metal.v1.model.Error;
+import java.io.File;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * Model tests for Project
+ * API tests for ConsoleLogDetailsApi
  */
-public class ProjectTest {
-    private final Project model = new Project();
+@Disabled
+public class ConsoleLogDetailsApiTest {
+
+    private final ConsoleLogDetailsApi api = new ConsoleLogDetailsApi();
 
     /**
-     * Model tests for Project
+     * Capture a screenshot from the device, if supported, via the BMC.
+     *
+     * @throws ApiException if the Api call fails
      */
     @Test
-    public void testProject() {
-        // TODO: test Project
-    }
-
-    /**
-     * Test the property 'bgpConfig'
-     */
-    @Test
-    public void bgpConfigTest() {
-        // TODO: test bgpConfig
-    }
-
-    /**
-     * Test the property 'createdAt'
-     */
-    @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
-    }
-
-    /**
-     * Test the property 'customdata'
-     */
-    @Test
-    public void customdataTest() {
-        // TODO: test customdata
-    }
-
-    /**
-     * Test the property 'devices'
-     */
-    @Test
-    public void devicesTest() {
-        // TODO: test devices
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'invitations'
-     */
-    @Test
-    public void invitationsTest() {
-        // TODO: test invitations
-    }
-
-    /**
-     * Test the property 'maxDevices'
-     */
-    @Test
-    public void maxDevicesTest() {
-        // TODO: test maxDevices
-    }
-
-    /**
-     * Test the property 'members'
-     */
-    @Test
-    public void membersTest() {
-        // TODO: test members
-    }
-
-    /**
-     * Test the property 'memberships'
-     */
-    @Test
-    public void membershipsTest() {
-        // TODO: test memberships
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'networkStatus'
-     */
-    @Test
-    public void networkStatusTest() {
-        // TODO: test networkStatus
-    }
-
-    /**
-     * Test the property 'organization'
-     */
-    @Test
-    public void organizationTest() {
-        // TODO: test organization
-    }
-
-    /**
-     * Test the property 'paymentMethod'
-     */
-    @Test
-    public void paymentMethodTest() {
-        // TODO: test paymentMethod
-    }
-
-    /**
-     * Test the property 'sshKeys'
-     */
-    @Test
-    public void sshKeysTest() {
-        // TODO: test sshKeys
-    }
-
-    /**
-     * Test the property 'updatedAt'
-     */
-    @Test
-    public void updatedAtTest() {
-        // TODO: test updatedAt
-    }
-
-    /**
-     * Test the property 'volumes'
-     */
-    @Test
-    public void volumesTest() {
-        // TODO: test volumes
-    }
-
-    /**
-     * Test the property 'type'
-     */
-    @Test
-    public void typeTest() {
-        // TODO: test type
-    }
-
-    /**
-     * Test the property 'tags'
-     */
-    @Test
-    public void tagsTest() {
-        // TODO: test tags
+    public void captureScreenshotTest() throws ApiException {
+        UUID id = null;
+        File response = api.captureScreenshot(id);
+        // TODO: test validations
     }
 
 }

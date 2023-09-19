@@ -41,6 +41,7 @@ docs/CapacityInput.md
 docs/CapacityLevelPerBaremetal.md
 docs/CapacityList.md
 docs/Component.md
+docs/ConsoleLogDetailsApi.md
 docs/Coordinates.md
 docs/CreateDeviceRequest.md
 docs/CreateEmailInput.md
@@ -318,6 +319,7 @@ src/main/java/com/equinix/openapi/metal/v1/api/AuthenticationApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/BatchesApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/BgpApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/CapacityApi.java
+src/main/java/com/equinix/openapi/metal/v1/api/ConsoleLogDetailsApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/DevicesApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/EmailsApi.java
 src/main/java/com/equinix/openapi/metal/v1/api/EventsApi.java
@@ -601,6 +603,7 @@ src/test/java/com/equinix/openapi/metal/v1/api/AuthenticationApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/BatchesApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/BgpApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/CapacityApiTest.java
+src/test/java/com/equinix/openapi/metal/v1/api/ConsoleLogDetailsApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/DevicesApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/EmailsApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/EventsApiTest.java

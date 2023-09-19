@@ -182,6 +182,9 @@ tags:
     Firmware Sets Management. Notice: Firmware Sets are a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information.
   name: Firmware Sets
 - description: |
+    Console Log Details. Notice: This is a test feature currently under active development, and only available to certain users. Please contact Customer Success for more information.
+  name: Console Log Details
+- description: |
     Global BGP Range Management
   externalDocs:
     url: https://metal.equinix.com/developers/docs/bgp/global-bgp/
@@ -1940,6 +1943,47 @@ paths:
       summary: Retrieve the custom metadata of an instance
       tags:
       - Devices
+      x-accepts: application/json
+  /devices/{id}/diagnostics/screenshot:
+    get:
+      description: "Capture a screenshot from the device, if supported, via the BMC."
+      operationId: captureScreenshot
+      parameters:
+      - description: Device UUID
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+      responses:
+        "200":
+          content:
+            application/jpeg:
+              schema:
+                format: binary
+                type: string
+          description: An image file
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: not found
+        "501":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: not implemented for device
+      tags:
+      - Console Log Details
       x-accepts: application/json
   /devices/{id}/diagnostics/health/rollup:
     get:
@@ -13271,6 +13315,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -13356,6 +13401,7 @@ components:
               - href: href
               - href: href
               created_at: 2000-01-23T04:56:07.000+00:00
+              type: default
               memberships:
               - href: href
               - href: href
@@ -13656,6 +13702,7 @@ components:
               - href: href
               - href: href
               created_at: 2000-01-23T04:56:07.000+00:00
+              type: default
               memberships:
               - href: href
               - href: href
@@ -13741,6 +13788,7 @@ components:
                 - href: href
                 - href: href
                 created_at: 2000-01-23T04:56:07.000+00:00
+                type: default
                 memberships:
                 - href: href
                 - href: href
@@ -13956,6 +14004,7 @@ components:
               - href: href
               - href: href
               created_at: 2000-01-23T04:56:07.000+00:00
+              type: default
               memberships:
               - href: href
               - href: href
@@ -14041,6 +14090,7 @@ components:
                 - href: href
                 - href: href
                 created_at: 2000-01-23T04:56:07.000+00:00
+                type: default
                 memberships:
                 - href: href
                 - href: href
@@ -15058,6 +15108,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -15994,6 +16045,7 @@ components:
               - href: href
               - href: href
               created_at: 2000-01-23T04:56:07.000+00:00
+              type: default
               memberships:
               - href: href
               - href: href
@@ -16516,6 +16568,7 @@ components:
               - href: href
               - href: href
               created_at: 2000-01-23T04:56:07.000+00:00
+              type: default
               memberships:
               - href: href
               - href: href
@@ -17494,6 +17547,7 @@ components:
           - href: href
           - href: href
           created_at: 2000-01-23T04:56:07.000+00:00
+          type: default
           memberships:
           - href: href
           - href: href
@@ -17722,6 +17776,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -17886,6 +17941,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -21213,6 +21269,7 @@ components:
         - href: href
         - href: href
         created_at: 2000-01-23T04:56:07.000+00:00
+        type: default
         memberships:
         - href: href
         - href: href
@@ -21332,6 +21389,13 @@ components:
           items:
             $ref: '#/components/schemas/Href'
           type: array
+        type:
+          description: The type of the project. Projects of type `vmce` are part of
+            an in development feature and not available to all customers.
+          enum:
+          - default
+          - vmce
+          type: string
         tags:
           items:
             type: string
@@ -21343,6 +21407,7 @@ components:
         organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         customdata: "{}"
+        type: default
         tags:
         - tags
         - tags
@@ -21361,6 +21426,14 @@ components:
         payment_method_id:
           format: uuid
           type: string
+        type:
+          description: The type of the project. If no type is specified the project
+            type will automatically be `default` Projects of type 'vmce' are part
+            of an in development feature and not available to all customers.
+          enum:
+          - default
+          - vmce
+          type: string
         tags:
           items:
             type: string
@@ -21373,6 +21446,7 @@ components:
         payment_method_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         customdata: "{}"
+        type: default
         tags:
         - tags
         - tags
@@ -21387,6 +21461,14 @@ components:
           type: string
         payment_method_id:
           format: uuid
+          type: string
+        type:
+          description: The type of the project. If no type is specified the project
+            type will automatically be `default` Projects of type 'vmce' are part
+            of an in development feature and not available to all customers.
+          enum:
+          - default
+          - vmce
           type: string
         tags:
           items:
@@ -21416,6 +21498,7 @@ components:
           - href: href
           - href: href
           created_at: 2000-01-23T04:56:07.000+00:00
+          type: default
           memberships:
           - href: href
           - href: href
@@ -21490,6 +21573,7 @@ components:
           - href: href
           - href: href
           created_at: 2000-01-23T04:56:07.000+00:00
+          type: default
           memberships:
           - href: href
           - href: href
@@ -23678,6 +23762,7 @@ components:
           - href: href
           - href: href
           created_at: 2000-01-23T04:56:07.000+00:00
+          type: default
           memberships:
           - href: href
           - href: href
@@ -24067,6 +24152,7 @@ components:
           - href: href
           - href: href
           created_at: 2000-01-23T04:56:07.000+00:00
+          type: default
           memberships:
           - href: href
           - href: href
@@ -24143,6 +24229,7 @@ components:
           - href: href
           - href: href
           created_at: 2000-01-23T04:56:07.000+00:00
+          type: default
           memberships:
           - href: href
           - href: href
@@ -24225,6 +24312,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -24514,6 +24602,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -24590,6 +24679,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -24672,6 +24762,7 @@ components:
               - href: href
               - href: href
               created_at: 2000-01-23T04:56:07.000+00:00
+              type: default
               memberships:
               - href: href
               - href: href
@@ -24865,6 +24956,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -24941,6 +25033,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -25023,6 +25116,7 @@ components:
               - href: href
               - href: href
               created_at: 2000-01-23T04:56:07.000+00:00
+              type: default
               memberships:
               - href: href
               - href: href
@@ -25229,6 +25323,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -25394,6 +25489,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -25598,6 +25694,7 @@ components:
           - href: href
           - href: href
           created_at: 2000-01-23T04:56:07.000+00:00
+          type: default
           memberships:
           - href: href
           - href: href
@@ -25683,6 +25780,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -25941,6 +26039,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -26026,6 +26125,7 @@ components:
               - href: href
               - href: href
               created_at: 2000-01-23T04:56:07.000+00:00
+              type: default
               memberships:
               - href: href
               - href: href
@@ -26233,6 +26333,7 @@ components:
             - href: href
             - href: href
             created_at: 2000-01-23T04:56:07.000+00:00
+            type: default
             memberships:
             - href: href
             - href: href
@@ -26550,6 +26651,7 @@ components:
               - href: href
               - href: href
               created_at: 2000-01-23T04:56:07.000+00:00
+              type: default
               memberships:
               - href: href
               - href: href
@@ -26635,6 +26737,7 @@ components:
                 - href: href
                 - href: href
                 created_at: 2000-01-23T04:56:07.000+00:00
+                type: default
                 memberships:
                 - href: href
                 - href: href
@@ -26842,6 +26945,7 @@ components:
               - href: href
               - href: href
               created_at: 2000-01-23T04:56:07.000+00:00
+              type: default
               memberships:
               - href: href
               - href: href
@@ -27045,6 +27149,7 @@ components:
               - href: href
               - href: href
               created_at: 2000-01-23T04:56:07.000+00:00
+              type: default
               memberships:
               - href: href
               - href: href
@@ -27130,6 +27235,7 @@ components:
                 - href: href
                 - href: href
                 created_at: 2000-01-23T04:56:07.000+00:00
+                type: default
                 memberships:
                 - href: href
                 - href: href
@@ -27337,6 +27443,7 @@ components:
               - href: href
               - href: href
               created_at: 2000-01-23T04:56:07.000+00:00
+              type: default
               memberships:
               - href: href
               - href: href

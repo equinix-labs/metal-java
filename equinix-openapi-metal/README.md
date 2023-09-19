@@ -225,6 +225,7 @@ Class | Method | HTTP request | Description
 *CapacityApi* | [**findCapacityForMetro**](docs/CapacityApi.md#findCapacityForMetro) | **GET** /capacity/metros | View capacity for metros
 *CapacityApi* | [**findOrganizationCapacityPerFacility**](docs/CapacityApi.md#findOrganizationCapacityPerFacility) | **GET** /organizations/{id}/capacity | View available hardware plans per Facility for given organization
 *CapacityApi* | [**findOrganizationCapacityPerMetro**](docs/CapacityApi.md#findOrganizationCapacityPerMetro) | **GET** /organizations/{id}/capacity/metros | View available hardware plans per Metro for given organization
+*ConsoleLogDetailsApi* | [**captureScreenshot**](docs/ConsoleLogDetailsApi.md#captureScreenshot) | **GET** /devices/{id}/diagnostics/screenshot | 
 *DevicesApi* | [**createBgpSession**](docs/DevicesApi.md#createBgpSession) | **POST** /devices/{id}/bgp/sessions | Create a BGP session
 *DevicesApi* | [**createDevice**](docs/DevicesApi.md#createDevice) | **POST** /projects/{id}/devices | Create a device
 *DevicesApi* | [**createIPAssignment**](docs/DevicesApi.md#createIPAssignment) | **POST** /devices/{id}/ips | Create an ip assignment
