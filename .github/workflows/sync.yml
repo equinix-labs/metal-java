@@ -40,7 +40,7 @@ jobs:
       id: generate
       if: ${{ always() && steps.patch.conclusion == 'success' }}
       run: |
-        make docker_generate move-workflow build_client
+        make generate
         git add equinix-openapi-metal
         echo `git commit -m 'sync: generate client with patched ${{ steps.date.outputs.date }} spec'`
     - name: Create Pull Request
