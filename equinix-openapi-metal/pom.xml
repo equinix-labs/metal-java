@@ -5,7 +5,7 @@
     <artifactId>equinix-openapi-metal</artifactId>
     <packaging>jar</packaging>
     <name>equinix-openapi-metal</name>
-    <version>0.6.0</version>
+    <version>0.7.0</version>
     <url>https://github.com/openapitools/openapi-generator</url>
     <description>OpenAPI Java</description>
     <scm>
