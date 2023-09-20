@@ -38,9 +38,9 @@ SPEC_FETCHED_PATCHES=patches/spec.fetched.json
 OPENAPI_CODEGEN_IMAGE=openapitools/openapi-generator-cli:v6.6.0
 DOCKER_OPENAPI=${CRI} run --rm -u ${CURRENT_UID}:${CURRENT_GID} -v $(CURDIR):/local ${OPENAPI_CODEGEN_IMAGE}
 
-all: clean patch pull generate
+all: pull fetch patch generate
 
-generate: codegen move-workflow build_client
+generate: clean codegen move-workflow build_client
 
 pull:
 	${CRI} pull ${OPENAPI_CODEGEN_IMAGE}
