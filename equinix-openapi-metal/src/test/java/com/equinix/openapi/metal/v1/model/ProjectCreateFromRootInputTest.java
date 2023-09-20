@@ -73,6 +73,14 @@ public class ProjectCreateFromRootInputTest {
     }
 
     /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
+    /**
      * Test the property 'tags'
      */
     @Test

@@ -122,6 +122,57 @@ public class Project {
   @SerializedName(SERIALIZED_NAME_VOLUMES)
   private List<Href> volumes;
 
+  /**
+   * The type of the project. Projects of type &#x60;vmce&#x60; are part of an in development feature and not available to all customers.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    DEFAULT("default"),
+    
+    VMCE("vmce");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
+
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags;
@@ -513,6 +564,27 @@ public class Project {
   }
 
 
+  public Project type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The type of the project. Projects of type &#x60;vmce&#x60; are part of an in development feature and not available to all customers.
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
   public Project tags(List<String> tags) {
     
     this.tags = tags;
@@ -612,13 +684,14 @@ public class Project {
         Objects.equals(this.sshKeys, project.sshKeys) &&
         Objects.equals(this.updatedAt, project.updatedAt) &&
         Objects.equals(this.volumes, project.volumes) &&
+        Objects.equals(this.type, project.type) &&
         Objects.equals(this.tags, project.tags)&&
         Objects.equals(this.additionalProperties, project.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bgpConfig, createdAt, customdata, devices, id, invitations, maxDevices, members, memberships, name, networkStatus, organization, paymentMethod, sshKeys, updatedAt, volumes, tags, additionalProperties);
+    return Objects.hash(bgpConfig, createdAt, customdata, devices, id, invitations, maxDevices, members, memberships, name, networkStatus, organization, paymentMethod, sshKeys, updatedAt, volumes, type, tags, additionalProperties);
   }
 
   @Override
@@ -641,6 +714,7 @@ public class Project {
     sb.append("    sshKeys: ").append(toIndentedString(sshKeys)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    volumes: ").append(toIndentedString(volumes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -681,6 +755,7 @@ public class Project {
     openapiFields.add("ssh_keys");
     openapiFields.add("updated_at");
     openapiFields.add("volumes");
+    openapiFields.add("type");
     openapiFields.add("tags");
 
     // a set of required properties/fields (JSON key names)
@@ -800,6 +875,9 @@ public class Project {
             Href.validateJsonObject(jsonArrayvolumes.get(i).getAsJsonObject());
           };
         }
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {

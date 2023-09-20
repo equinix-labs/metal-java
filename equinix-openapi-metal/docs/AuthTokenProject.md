@@ -23,7 +23,17 @@
 |**sshKeys** | [**List&lt;Href&gt;**](Href.md) |  |  [optional] |
 |**updatedAt** | **OffsetDateTime** |  |  [optional] |
 |**volumes** | [**List&lt;Href&gt;**](Href.md) |  |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) | The type of the project. Projects of type &#x60;vmce&#x60; are part of an in development feature and not available to all customers. |  [optional] |
 |**tags** | **List&lt;String&gt;** |  |  [optional] |
+
+
+
+## Enum: TypeEnum
+
+| Name | Value |
+|---- | -----|
+| DEFAULT | &quot;default&quot; |
+| VMCE | &quot;vmce&quot; |
 
 
 

@@ -71,6 +71,57 @@ public class ProjectCreateFromRootInput {
   @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD_ID)
   private UUID paymentMethodId;
 
+  /**
+   * The type of the project. If no type is specified the project type will automatically be &#x60;default&#x60; Projects of type &#39;vmce&#39; are part of an in development feature and not available to all customers.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    DEFAULT("default"),
+    
+    VMCE("vmce");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
+
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags;
@@ -162,6 +213,27 @@ public class ProjectCreateFromRootInput {
   }
 
 
+  public ProjectCreateFromRootInput type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The type of the project. If no type is specified the project type will automatically be &#x60;default&#x60; Projects of type &#39;vmce&#39; are part of an in development feature and not available to all customers.
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
   public ProjectCreateFromRootInput tags(List<String> tags) {
     
     this.tags = tags;
@@ -249,13 +321,14 @@ public class ProjectCreateFromRootInput {
         Objects.equals(this.name, projectCreateFromRootInput.name) &&
         Objects.equals(this.organizationId, projectCreateFromRootInput.organizationId) &&
         Objects.equals(this.paymentMethodId, projectCreateFromRootInput.paymentMethodId) &&
+        Objects.equals(this.type, projectCreateFromRootInput.type) &&
         Objects.equals(this.tags, projectCreateFromRootInput.tags)&&
         Objects.equals(this.additionalProperties, projectCreateFromRootInput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customdata, name, organizationId, paymentMethodId, tags, additionalProperties);
+    return Objects.hash(customdata, name, organizationId, paymentMethodId, type, tags, additionalProperties);
   }
 
   @Override
@@ -266,6 +339,7 @@ public class ProjectCreateFromRootInput {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    paymentMethodId: ").append(toIndentedString(paymentMethodId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -294,6 +368,7 @@ public class ProjectCreateFromRootInput {
     openapiFields.add("name");
     openapiFields.add("organization_id");
     openapiFields.add("payment_method_id");
+    openapiFields.add("type");
     openapiFields.add("tags");
 
     // a set of required properties/fields (JSON key names)
@@ -328,6 +403,9 @@ public class ProjectCreateFromRootInput {
       }
       if ((jsonObj.get("payment_method_id") != null && !jsonObj.get("payment_method_id").isJsonNull()) && !jsonObj.get("payment_method_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `payment_method_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payment_method_id").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
