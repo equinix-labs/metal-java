@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.VlanVirtualCircuitUpdateInput;
 import com.equinix.openapi.metal.v1.model.VrfVirtualCircuitUpdateInput;
 import com.google.gson.TypeAdapter;
@@ -24,9 +23,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import javax.ws.rs.core.GenericType;
+
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -55,6 +56,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
 
 import com.equinix.openapi.JSON;
@@ -84,25 +86,23 @@ public class VirtualCircuitUpdateInput extends AbstractOpenApiSchema {
 
                     // check if the actual instance is of the type `VlanVirtualCircuitUpdateInput`
                     if (value.getActualInstance() instanceof VlanVirtualCircuitUpdateInput) {
-                        JsonObject obj = adapterVlanVirtualCircuitUpdateInput.toJsonTree((VlanVirtualCircuitUpdateInput)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
+                      JsonElement element = adapterVlanVirtualCircuitUpdateInput.toJsonTree((VlanVirtualCircuitUpdateInput)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
                     }
-
                     // check if the actual instance is of the type `VrfVirtualCircuitUpdateInput`
                     if (value.getActualInstance() instanceof VrfVirtualCircuitUpdateInput) {
-                        JsonObject obj = adapterVrfVirtualCircuitUpdateInput.toJsonTree((VrfVirtualCircuitUpdateInput)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
+                      JsonElement element = adapterVrfVirtualCircuitUpdateInput.toJsonTree((VrfVirtualCircuitUpdateInput)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
                     }
-
                     throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: VlanVirtualCircuitUpdateInput, VrfVirtualCircuitUpdateInput");
                 }
 
                 @Override
                 public VirtualCircuitUpdateInput read(JsonReader in) throws IOException {
                     Object deserialized = null;
-                    JsonObject jsonObject = elementAdapter.read(in).getAsJsonObject();
+                    JsonElement jsonElement = elementAdapter.read(in);
 
                     int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
@@ -110,44 +110,43 @@ public class VirtualCircuitUpdateInput extends AbstractOpenApiSchema {
 
                     // deserialize VlanVirtualCircuitUpdateInput
                     try {
-                        // validate the JSON object to see if any exception is thrown
-                        VlanVirtualCircuitUpdateInput.validateJsonObject(jsonObject);
-                        actualAdapter = adapterVlanVirtualCircuitUpdateInput;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'VlanVirtualCircuitUpdateInput'");
+                      // validate the JSON object to see if any exception is thrown
+                      VlanVirtualCircuitUpdateInput.validateJsonElement(jsonElement);
+                      actualAdapter = adapterVlanVirtualCircuitUpdateInput;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'VlanVirtualCircuitUpdateInput'");
                     } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for VlanVirtualCircuitUpdateInput failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'VlanVirtualCircuitUpdateInput'", e);
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for VlanVirtualCircuitUpdateInput failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'VlanVirtualCircuitUpdateInput'", e);
                     }
-
                     // deserialize VrfVirtualCircuitUpdateInput
                     try {
-                        // validate the JSON object to see if any exception is thrown
-                        VrfVirtualCircuitUpdateInput.validateJsonObject(jsonObject);
-                        actualAdapter = adapterVrfVirtualCircuitUpdateInput;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'VrfVirtualCircuitUpdateInput'");
+                      // validate the JSON object to see if any exception is thrown
+                      VrfVirtualCircuitUpdateInput.validateJsonElement(jsonElement);
+                      actualAdapter = adapterVrfVirtualCircuitUpdateInput;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'VrfVirtualCircuitUpdateInput'");
                     } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for VrfVirtualCircuitUpdateInput failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'VrfVirtualCircuitUpdateInput'", e);
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for VrfVirtualCircuitUpdateInput failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'VrfVirtualCircuitUpdateInput'", e);
                     }
 
                     if (match == 1) {
                         VirtualCircuitUpdateInput ret = new VirtualCircuitUpdateInput();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonObject));
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for VirtualCircuitUpdateInput: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonObject.toString()));
+                    throw new IOException(String.format("Failed deserialization for VirtualCircuitUpdateInput: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
     }
 
     // store a list of schema names defined in oneOf
-    public static final Map<String, GenericType> schemas = new HashMap<String, GenericType>();
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
     public VirtualCircuitUpdateInput() {
         super("oneOf", Boolean.FALSE);
@@ -164,14 +163,12 @@ public class VirtualCircuitUpdateInput extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("VlanVirtualCircuitUpdateInput", new GenericType<VlanVirtualCircuitUpdateInput>() {
-        });
-        schemas.put("VrfVirtualCircuitUpdateInput", new GenericType<VrfVirtualCircuitUpdateInput>() {
-        });
+        schemas.put("VlanVirtualCircuitUpdateInput", VlanVirtualCircuitUpdateInput.class);
+        schemas.put("VrfVirtualCircuitUpdateInput", VrfVirtualCircuitUpdateInput.class);
     }
 
     @Override
-    public Map<String, GenericType> getSchemas() {
+    public Map<String, Class<?>> getSchemas() {
         return VirtualCircuitUpdateInput.schemas;
     }
 
@@ -181,7 +178,6 @@ public class VirtualCircuitUpdateInput extends AbstractOpenApiSchema {
      * VlanVirtualCircuitUpdateInput, VrfVirtualCircuitUpdateInput
      *
      * It could be an instance of the 'oneOf' schemas.
-     * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
      */
     @Override
     public void setActualInstance(Object instance) {
@@ -219,7 +215,6 @@ public class VirtualCircuitUpdateInput extends AbstractOpenApiSchema {
     public VlanVirtualCircuitUpdateInput getVlanVirtualCircuitUpdateInput() throws ClassCastException {
         return (VlanVirtualCircuitUpdateInput)super.getActualInstance();
     }
-
     /**
      * Get the actual instance of `VrfVirtualCircuitUpdateInput`. If the actual instance is not `VrfVirtualCircuitUpdateInput`,
      * the ClassCastException will be thrown.
@@ -231,20 +226,19 @@ public class VirtualCircuitUpdateInput extends AbstractOpenApiSchema {
         return (VrfVirtualCircuitUpdateInput)super.getActualInstance();
     }
 
-
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VirtualCircuitUpdateInput
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to VirtualCircuitUpdateInput
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     // validate oneOf schemas one by one
     int validCount = 0;
     ArrayList<String> errorMessages = new ArrayList<>();
     // validate the json string with VlanVirtualCircuitUpdateInput
     try {
-      VlanVirtualCircuitUpdateInput.validateJsonObject(jsonObj);
+      VlanVirtualCircuitUpdateInput.validateJsonElement(jsonElement);
       validCount++;
     } catch (Exception e) {
       errorMessages.add(String.format("Deserialization for VlanVirtualCircuitUpdateInput failed with `%s`.", e.getMessage()));
@@ -252,14 +246,14 @@ public class VirtualCircuitUpdateInput extends AbstractOpenApiSchema {
     }
     // validate the json string with VrfVirtualCircuitUpdateInput
     try {
-      VrfVirtualCircuitUpdateInput.validateJsonObject(jsonObj);
+      VrfVirtualCircuitUpdateInput.validateJsonElement(jsonElement);
       validCount++;
     } catch (Exception e) {
       errorMessages.add(String.format("Deserialization for VrfVirtualCircuitUpdateInput failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
     if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for VirtualCircuitUpdateInput with oneOf schemas: VlanVirtualCircuitUpdateInput, VrfVirtualCircuitUpdateInput. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
+      throw new IOException(String.format("The JSON string is invalid for VirtualCircuitUpdateInput with oneOf schemas: VlanVirtualCircuitUpdateInput, VrfVirtualCircuitUpdateInput. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
     }
   }
 

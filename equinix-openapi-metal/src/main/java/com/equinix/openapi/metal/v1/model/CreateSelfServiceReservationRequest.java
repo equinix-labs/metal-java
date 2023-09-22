@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.CreateSelfServiceReservationRequestPeriod;
 import com.equinix.openapi.metal.v1.model.SelfServiceReservationItemRequest;
 import com.google.gson.TypeAdapter;
@@ -25,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -275,17 +275,18 @@ public class CreateSelfServiceReservationRequest {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CreateSelfServiceReservationRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CreateSelfServiceReservationRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CreateSelfServiceReservationRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!CreateSelfServiceReservationRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateSelfServiceReservationRequest is not found in the empty JSON string", CreateSelfServiceReservationRequest.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("item") != null && !jsonObj.get("item").isJsonNull()) {
         JsonArray jsonArrayitem = jsonObj.getAsJsonArray("item");
         if (jsonArrayitem != null) {
@@ -296,7 +297,7 @@ public class CreateSelfServiceReservationRequest {
 
           // validate the optional field `item` (array)
           for (int i = 0; i < jsonArrayitem.size(); i++) {
-            SelfServiceReservationItemRequest.validateJsonObject(jsonArrayitem.get(i).getAsJsonObject());
+            SelfServiceReservationItemRequest.validateJsonElement(jsonArrayitem.get(i));
           };
         }
       }
@@ -305,7 +306,7 @@ public class CreateSelfServiceReservationRequest {
       }
       // validate the optional field `period`
       if (jsonObj.get("period") != null && !jsonObj.get("period").isJsonNull()) {
-        CreateSelfServiceReservationRequestPeriod.validateJsonObject(jsonObj.getAsJsonObject("period"));
+        CreateSelfServiceReservationRequestPeriod.validateJsonElement(jsonObj.get("period"));
       }
   }
 
@@ -346,8 +347,9 @@ public class CreateSelfServiceReservationRequest {
 
            @Override
            public CreateSelfServiceReservationRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              CreateSelfServiceReservationRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

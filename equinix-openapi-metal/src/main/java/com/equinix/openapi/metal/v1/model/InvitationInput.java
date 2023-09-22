@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -361,24 +361,25 @@ public class InvitationInput {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to InvitationInput
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to InvitationInput
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!InvitationInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!InvitationInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InvitationInput is not found in the empty JSON string", InvitationInput.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : InvitationInput.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("invitee").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `invitee` to be a primitive type in the JSON string but got `%s`", jsonObj.get("invitee").toString()));
       }
@@ -389,11 +390,11 @@ public class InvitationInput {
         throw new IllegalArgumentException(String.format("Expected the field `organization_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organization_id").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("projects_ids") != null && !jsonObj.get("projects_ids").isJsonArray()) {
+      if (jsonObj.get("projects_ids") != null && !jsonObj.get("projects_ids").isJsonNull() && !jsonObj.get("projects_ids").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `projects_ids` to be an array in the JSON string but got `%s`", jsonObj.get("projects_ids").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonArray()) {
+      if (jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonNull() && !jsonObj.get("roles").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `roles` to be an array in the JSON string but got `%s`", jsonObj.get("roles").toString()));
       }
   }
@@ -435,8 +436,9 @@ public class InvitationInput {
 
            @Override
            public InvitationInput read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              InvitationInput instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

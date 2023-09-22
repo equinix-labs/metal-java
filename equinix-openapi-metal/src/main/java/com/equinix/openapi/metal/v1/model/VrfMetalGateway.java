@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.Project;
 import com.equinix.openapi.metal.v1.model.VirtualNetwork;
@@ -27,6 +26,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 import java.util.UUID;
 
 import com.google.gson.Gson;
@@ -487,27 +487,28 @@ public class VrfMetalGateway {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VrfMetalGateway
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to VrfMetalGateway
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!VrfMetalGateway.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!VrfMetalGateway.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VrfMetalGateway is not found in the empty JSON string", VrfMetalGateway.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : VrfMetalGateway.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `created_by`
       if (jsonObj.get("created_by") != null && !jsonObj.get("created_by").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("created_by"));
+        Href.validateJsonElement(jsonObj.get("created_by"));
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
@@ -517,21 +518,21 @@ public class VrfMetalGateway {
       }
       // validate the optional field `ip_reservation`
       if (jsonObj.get("ip_reservation") != null && !jsonObj.get("ip_reservation").isJsonNull()) {
-        VrfIpReservationOrHref.validateJsonObject(jsonObj.getAsJsonObject("ip_reservation"));
+        VrfIpReservationOrHref.validateJsonElement(jsonObj.get("ip_reservation"));
       }
       // validate the optional field `project`
       if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
-        Project.validateJsonObject(jsonObj.getAsJsonObject("project"));
+        Project.validateJsonElement(jsonObj.get("project"));
       }
       if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
       }
       // validate the optional field `virtual_network`
       if (jsonObj.get("virtual_network") != null && !jsonObj.get("virtual_network").isJsonNull()) {
-        VirtualNetwork.validateJsonObject(jsonObj.getAsJsonObject("virtual_network"));
+        VirtualNetwork.validateJsonElement(jsonObj.get("virtual_network"));
       }
       // validate the required field `vrf`
-      Vrf.validateJsonObject(jsonObj.getAsJsonObject("vrf"));
+      Vrf.validateJsonElement(jsonObj.get("vrf"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -571,8 +572,9 @@ public class VrfMetalGateway {
 
            @Override
            public VrfMetalGateway read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              VrfMetalGateway instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

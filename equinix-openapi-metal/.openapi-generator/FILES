@@ -111,10 +111,8 @@ docs/IPReservationRequestInput.md
 docs/IncidentsApi.md
 docs/InstancesBatchCreateInput.md
 docs/InstancesBatchCreateInputBatchesInner.md
-docs/InstancesBatchCreateInputBatchesInnerAllOf.md
 docs/Interconnection.md
 docs/InterconnectionList.md
-docs/InterconnectionMetro.md
 docs/InterconnectionPort.md
 docs/InterconnectionPortList.md
 docs/InterconnectionUpdateInput.md
@@ -449,10 +447,8 @@ src/main/java/com/equinix/openapi/metal/v1/model/IPReservationOrHref.java
 src/main/java/com/equinix/openapi/metal/v1/model/IPReservationRequestInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/InstancesBatchCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/InstancesBatchCreateInputBatchesInner.java
-src/main/java/com/equinix/openapi/metal/v1/model/InstancesBatchCreateInputBatchesInnerAllOf.java
 src/main/java/com/equinix/openapi/metal/v1/model/Interconnection.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionList.java
-src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionMetro.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionPort.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionPortList.java
 src/main/java/com/equinix/openapi/metal/v1/model/InterconnectionUpdateInput.java
@@ -730,11 +726,9 @@ src/test/java/com/equinix/openapi/metal/v1/model/IPReservationMetroTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPReservationOrHrefTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPReservationRequestInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/IPReservationTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/InstancesBatchCreateInputBatchesInnerAllOfTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InstancesBatchCreateInputBatchesInnerTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InstancesBatchCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionListTest.java
-src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionMetroTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionPortListTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionPortTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/InterconnectionTest.java

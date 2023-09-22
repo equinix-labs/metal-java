@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.DeviceCreateInFacilityInput;
 import com.equinix.openapi.metal.v1.model.DeviceCreateInMetroInput;
 import com.equinix.openapi.metal.v1.model.IPAddress;
@@ -28,12 +27,13 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.ws.rs.core.GenericType;
+
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -43,6 +43,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -62,6 +63,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
 
 import com.equinix.openapi.JSON;
@@ -78,8 +80,8 @@ public class CreateDeviceRequest extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'CreateDeviceRequest' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<DeviceCreateInFacilityInput> adapterDeviceCreateInFacilityInput = gson.getDelegateAdapter(this, TypeToken.get(DeviceCreateInFacilityInput.class));
             final TypeAdapter<DeviceCreateInMetroInput> adapterDeviceCreateInMetroInput = gson.getDelegateAdapter(this, TypeToken.get(DeviceCreateInMetroInput.class));
+            final TypeAdapter<DeviceCreateInFacilityInput> adapterDeviceCreateInFacilityInput = gson.getDelegateAdapter(this, TypeToken.get(DeviceCreateInFacilityInput.class));
 
             return (TypeAdapter<T>) new TypeAdapter<CreateDeviceRequest>() {
                 @Override
@@ -89,72 +91,69 @@ public class CreateDeviceRequest extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `DeviceCreateInFacilityInput`
-                    if (value.getActualInstance() instanceof DeviceCreateInFacilityInput) {
-                        JsonObject obj = adapterDeviceCreateInFacilityInput.toJsonTree((DeviceCreateInFacilityInput)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
-                    }
-
                     // check if the actual instance is of the type `DeviceCreateInMetroInput`
                     if (value.getActualInstance() instanceof DeviceCreateInMetroInput) {
-                        JsonObject obj = adapterDeviceCreateInMetroInput.toJsonTree((DeviceCreateInMetroInput)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
+                      JsonElement element = adapterDeviceCreateInMetroInput.toJsonTree((DeviceCreateInMetroInput)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
                     }
-
+                    // check if the actual instance is of the type `DeviceCreateInFacilityInput`
+                    if (value.getActualInstance() instanceof DeviceCreateInFacilityInput) {
+                      JsonElement element = adapterDeviceCreateInFacilityInput.toJsonTree((DeviceCreateInFacilityInput)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
                     throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: DeviceCreateInFacilityInput, DeviceCreateInMetroInput");
                 }
 
                 @Override
                 public CreateDeviceRequest read(JsonReader in) throws IOException {
                     Object deserialized = null;
-                    JsonObject jsonObject = elementAdapter.read(in).getAsJsonObject();
+                    JsonElement jsonElement = elementAdapter.read(in);
 
                     int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 
-                    // deserialize DeviceCreateInFacilityInput
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        DeviceCreateInFacilityInput.validateJsonObject(jsonObject);
-                        actualAdapter = adapterDeviceCreateInFacilityInput;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'DeviceCreateInFacilityInput'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for DeviceCreateInFacilityInput failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'DeviceCreateInFacilityInput'", e);
-                    }
-
                     // deserialize DeviceCreateInMetroInput
                     try {
-                        // validate the JSON object to see if any exception is thrown
-                        DeviceCreateInMetroInput.validateJsonObject(jsonObject);
-                        actualAdapter = adapterDeviceCreateInMetroInput;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'DeviceCreateInMetroInput'");
+                      // validate the JSON object to see if any exception is thrown
+                      DeviceCreateInMetroInput.validateJsonElement(jsonElement);
+                      actualAdapter = adapterDeviceCreateInMetroInput;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'DeviceCreateInMetroInput'");
                     } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for DeviceCreateInMetroInput failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'DeviceCreateInMetroInput'", e);
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for DeviceCreateInMetroInput failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'DeviceCreateInMetroInput'", e);
+                    }
+                    // deserialize DeviceCreateInFacilityInput
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      DeviceCreateInFacilityInput.validateJsonElement(jsonElement);
+                      actualAdapter = adapterDeviceCreateInFacilityInput;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'DeviceCreateInFacilityInput'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for DeviceCreateInFacilityInput failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'DeviceCreateInFacilityInput'", e);
                     }
 
                     if (match == 1) {
                         CreateDeviceRequest ret = new CreateDeviceRequest();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonObject));
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CreateDeviceRequest: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonObject.toString()));
+                    throw new IOException(String.format("Failed deserialization for CreateDeviceRequest: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
     }
 
     // store a list of schema names defined in oneOf
-    public static final Map<String, GenericType> schemas = new HashMap<String, GenericType>();
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
     public CreateDeviceRequest() {
         super("oneOf", Boolean.FALSE);
@@ -171,14 +170,12 @@ public class CreateDeviceRequest extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("DeviceCreateInFacilityInput", new GenericType<DeviceCreateInFacilityInput>() {
-        });
-        schemas.put("DeviceCreateInMetroInput", new GenericType<DeviceCreateInMetroInput>() {
-        });
+        schemas.put("DeviceCreateInMetroInput", DeviceCreateInMetroInput.class);
+        schemas.put("DeviceCreateInFacilityInput", DeviceCreateInFacilityInput.class);
     }
 
     @Override
-    public Map<String, GenericType> getSchemas() {
+    public Map<String, Class<?>> getSchemas() {
         return CreateDeviceRequest.schemas;
     }
 
@@ -188,16 +185,15 @@ public class CreateDeviceRequest extends AbstractOpenApiSchema {
      * DeviceCreateInFacilityInput, DeviceCreateInMetroInput
      *
      * It could be an instance of the 'oneOf' schemas.
-     * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (instance instanceof DeviceCreateInFacilityInput) {
+        if (instance instanceof DeviceCreateInMetroInput) {
             super.setActualInstance(instance);
             return;
         }
 
-        if (instance instanceof DeviceCreateInMetroInput) {
+        if (instance instanceof DeviceCreateInFacilityInput) {
             super.setActualInstance(instance);
             return;
         }
@@ -217,6 +213,16 @@ public class CreateDeviceRequest extends AbstractOpenApiSchema {
     }
 
     /**
+     * Get the actual instance of `DeviceCreateInMetroInput`. If the actual instance is not `DeviceCreateInMetroInput`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `DeviceCreateInMetroInput`
+     * @throws ClassCastException if the instance is not `DeviceCreateInMetroInput`
+     */
+    public DeviceCreateInMetroInput getDeviceCreateInMetroInput() throws ClassCastException {
+        return (DeviceCreateInMetroInput)super.getActualInstance();
+    }
+    /**
      * Get the actual instance of `DeviceCreateInFacilityInput`. If the actual instance is not `DeviceCreateInFacilityInput`,
      * the ClassCastException will be thrown.
      *
@@ -227,46 +233,34 @@ public class CreateDeviceRequest extends AbstractOpenApiSchema {
         return (DeviceCreateInFacilityInput)super.getActualInstance();
     }
 
-    /**
-     * Get the actual instance of `DeviceCreateInMetroInput`. If the actual instance is not `DeviceCreateInMetroInput`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `DeviceCreateInMetroInput`
-     * @throws ClassCastException if the instance is not `DeviceCreateInMetroInput`
-     */
-    public DeviceCreateInMetroInput getDeviceCreateInMetroInput() throws ClassCastException {
-        return (DeviceCreateInMetroInput)super.getActualInstance();
-    }
-
-
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CreateDeviceRequest
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to CreateDeviceRequest
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     // validate oneOf schemas one by one
     int validCount = 0;
     ArrayList<String> errorMessages = new ArrayList<>();
-    // validate the json string with DeviceCreateInFacilityInput
-    try {
-      DeviceCreateInFacilityInput.validateJsonObject(jsonObj);
-      validCount++;
-    } catch (Exception e) {
-      errorMessages.add(String.format("Deserialization for DeviceCreateInFacilityInput failed with `%s`.", e.getMessage()));
-      // continue to the next one
-    }
     // validate the json string with DeviceCreateInMetroInput
     try {
-      DeviceCreateInMetroInput.validateJsonObject(jsonObj);
+      DeviceCreateInMetroInput.validateJsonElement(jsonElement);
       validCount++;
     } catch (Exception e) {
       errorMessages.add(String.format("Deserialization for DeviceCreateInMetroInput failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
+    // validate the json string with DeviceCreateInFacilityInput
+    try {
+      DeviceCreateInFacilityInput.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for DeviceCreateInFacilityInput failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
     if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for CreateDeviceRequest with oneOf schemas: DeviceCreateInFacilityInput, DeviceCreateInMetroInput. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonObj.toString()));
+      throw new IOException(String.format("The JSON string is invalid for CreateDeviceRequest with oneOf schemas: DeviceCreateInFacilityInput, DeviceCreateInMetroInput. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
     }
   }
 

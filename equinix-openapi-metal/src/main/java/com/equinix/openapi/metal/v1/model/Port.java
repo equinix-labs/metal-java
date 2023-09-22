@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.BondPortData;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.PortData;
@@ -26,6 +25,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -545,24 +545,25 @@ public class Port {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Port
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Port
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Port.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Port.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Port is not found in the empty JSON string", Port.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `bond`
       if (jsonObj.get("bond") != null && !jsonObj.get("bond").isJsonNull()) {
-        BondPortData.validateJsonObject(jsonObj.getAsJsonObject("bond"));
+        BondPortData.validateJsonElement(jsonObj.get("bond"));
       }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        PortData.validateJsonObject(jsonObj.getAsJsonObject("data"));
+        PortData.validateJsonElement(jsonObj.get("data"));
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
@@ -581,7 +582,7 @@ public class Port {
       }
       // validate the optional field `native_virtual_network`
       if (jsonObj.get("native_virtual_network") != null && !jsonObj.get("native_virtual_network").isJsonNull()) {
-        VirtualNetwork.validateJsonObject(jsonObj.getAsJsonObject("native_virtual_network"));
+        VirtualNetwork.validateJsonElement(jsonObj.get("native_virtual_network"));
       }
       if (jsonObj.get("virtual_networks") != null && !jsonObj.get("virtual_networks").isJsonNull()) {
         JsonArray jsonArrayvirtualNetworks = jsonObj.getAsJsonArray("virtual_networks");
@@ -593,7 +594,7 @@ public class Port {
 
           // validate the optional field `virtual_networks` (array)
           for (int i = 0; i < jsonArrayvirtualNetworks.size(); i++) {
-            Href.validateJsonObject(jsonArrayvirtualNetworks.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArrayvirtualNetworks.get(i));
           };
         }
       }
@@ -636,8 +637,9 @@ public class Port {
 
            @Override
            public Port read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Port instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

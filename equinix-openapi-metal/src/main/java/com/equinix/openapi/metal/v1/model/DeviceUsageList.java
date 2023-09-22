@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.DeviceUsage;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -189,17 +189,18 @@ public class DeviceUsageList {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to DeviceUsageList
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to DeviceUsageList
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!DeviceUsageList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!DeviceUsageList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in DeviceUsageList is not found in the empty JSON string", DeviceUsageList.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("usages") != null && !jsonObj.get("usages").isJsonNull()) {
         JsonArray jsonArrayusages = jsonObj.getAsJsonArray("usages");
         if (jsonArrayusages != null) {
@@ -210,7 +211,7 @@ public class DeviceUsageList {
 
           // validate the optional field `usages` (array)
           for (int i = 0; i < jsonArrayusages.size(); i++) {
-            DeviceUsage.validateJsonObject(jsonArrayusages.get(i).getAsJsonObject());
+            DeviceUsage.validateJsonElement(jsonArrayusages.get(i));
           };
         }
       }
@@ -253,8 +254,9 @@ public class DeviceUsageList {
 
            @Override
            public DeviceUsageList read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              DeviceUsageList instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

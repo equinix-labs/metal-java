@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.IPReservationListIpAddressesInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -189,17 +189,18 @@ public class IPReservationList {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to IPReservationList
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to IPReservationList
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!IPReservationList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!IPReservationList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in IPReservationList is not found in the empty JSON string", IPReservationList.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("ip_addresses") != null && !jsonObj.get("ip_addresses").isJsonNull()) {
         JsonArray jsonArrayipAddresses = jsonObj.getAsJsonArray("ip_addresses");
         if (jsonArrayipAddresses != null) {
@@ -210,7 +211,7 @@ public class IPReservationList {
 
           // validate the optional field `ip_addresses` (array)
           for (int i = 0; i < jsonArrayipAddresses.size(); i++) {
-            IPReservationListIpAddressesInner.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
+            IPReservationListIpAddressesInner.validateJsonElement(jsonArrayipAddresses.get(i));
           };
         }
       }
@@ -253,8 +254,9 @@ public class IPReservationList {
 
            @Override
            public IPReservationList read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              IPReservationList instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

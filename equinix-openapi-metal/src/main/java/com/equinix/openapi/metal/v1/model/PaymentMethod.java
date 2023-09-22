@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.PaymentMethodBillingAddress;
 import com.google.gson.TypeAdapter;
@@ -25,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -584,20 +584,21 @@ public class PaymentMethod {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PaymentMethod
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to PaymentMethod
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!PaymentMethod.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!PaymentMethod.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PaymentMethod is not found in the empty JSON string", PaymentMethod.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `billing_address`
       if (jsonObj.get("billing_address") != null && !jsonObj.get("billing_address").isJsonNull()) {
-        PaymentMethodBillingAddress.validateJsonObject(jsonObj.getAsJsonObject("billing_address"));
+        PaymentMethodBillingAddress.validateJsonElement(jsonObj.get("billing_address"));
       }
       if ((jsonObj.get("card_type") != null && !jsonObj.get("card_type").isJsonNull()) && !jsonObj.get("card_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `card_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("card_type").toString()));
@@ -607,7 +608,7 @@ public class PaymentMethod {
       }
       // validate the optional field `created_by_user`
       if (jsonObj.get("created_by_user") != null && !jsonObj.get("created_by_user").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("created_by_user"));
+        Href.validateJsonElement(jsonObj.get("created_by_user"));
       }
       if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
@@ -626,7 +627,7 @@ public class PaymentMethod {
       }
       // validate the optional field `organization`
       if (jsonObj.get("organization") != null && !jsonObj.get("organization").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("organization"));
+        Href.validateJsonElement(jsonObj.get("organization"));
       }
       if (jsonObj.get("projects") != null && !jsonObj.get("projects").isJsonNull()) {
         JsonArray jsonArrayprojects = jsonObj.getAsJsonArray("projects");
@@ -638,7 +639,7 @@ public class PaymentMethod {
 
           // validate the optional field `projects` (array)
           for (int i = 0; i < jsonArrayprojects.size(); i++) {
-            Href.validateJsonObject(jsonArrayprojects.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArrayprojects.get(i));
           };
         }
       }
@@ -684,8 +685,9 @@ public class PaymentMethod {
 
            @Override
            public PaymentMethod read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              PaymentMethod instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

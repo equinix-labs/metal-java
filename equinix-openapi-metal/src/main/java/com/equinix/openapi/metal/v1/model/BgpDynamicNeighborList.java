@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.BgpDynamicNeighbor;
 import com.equinix.openapi.metal.v1.model.Meta;
 import com.google.gson.TypeAdapter;
@@ -24,6 +23,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -218,17 +218,18 @@ public class BgpDynamicNeighborList {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to BgpDynamicNeighborList
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to BgpDynamicNeighborList
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!BgpDynamicNeighborList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!BgpDynamicNeighborList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in BgpDynamicNeighborList is not found in the empty JSON string", BgpDynamicNeighborList.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("bgp_dynamic_neighbors") != null && !jsonObj.get("bgp_dynamic_neighbors").isJsonNull()) {
         JsonArray jsonArraybgpDynamicNeighbors = jsonObj.getAsJsonArray("bgp_dynamic_neighbors");
         if (jsonArraybgpDynamicNeighbors != null) {
@@ -239,13 +240,13 @@ public class BgpDynamicNeighborList {
 
           // validate the optional field `bgp_dynamic_neighbors` (array)
           for (int i = 0; i < jsonArraybgpDynamicNeighbors.size(); i++) {
-            BgpDynamicNeighbor.validateJsonObject(jsonArraybgpDynamicNeighbors.get(i).getAsJsonObject());
+            BgpDynamicNeighbor.validateJsonElement(jsonArraybgpDynamicNeighbors.get(i));
           };
         }
       }
       // validate the optional field `meta`
       if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
-        Meta.validateJsonObject(jsonObj.getAsJsonObject("meta"));
+        Meta.validateJsonElement(jsonObj.get("meta"));
       }
   }
 
@@ -286,8 +287,9 @@ public class BgpDynamicNeighborList {
 
            @Override
            public BgpDynamicNeighborList read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              BgpDynamicNeighborList instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

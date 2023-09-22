@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -22,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -375,36 +375,37 @@ public class Meta {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Meta
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Meta
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Meta.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Meta.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Meta is not found in the empty JSON string", Meta.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `first`
       if (jsonObj.get("first") != null && !jsonObj.get("first").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("first"));
+        Href.validateJsonElement(jsonObj.get("first"));
       }
       // validate the optional field `last`
       if (jsonObj.get("last") != null && !jsonObj.get("last").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("last"));
+        Href.validateJsonElement(jsonObj.get("last"));
       }
       // validate the optional field `next`
       if (jsonObj.get("next") != null && !jsonObj.get("next").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("next"));
+        Href.validateJsonElement(jsonObj.get("next"));
       }
       // validate the optional field `previous`
       if (jsonObj.get("previous") != null && !jsonObj.get("previous").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("previous"));
+        Href.validateJsonElement(jsonObj.get("previous"));
       }
       // validate the optional field `self`
       if (jsonObj.get("self") != null && !jsonObj.get("self").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("self"));
+        Href.validateJsonElement(jsonObj.get("self"));
       }
   }
 
@@ -445,8 +446,9 @@ public class Meta {
 
            @Override
            public Meta read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Meta instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

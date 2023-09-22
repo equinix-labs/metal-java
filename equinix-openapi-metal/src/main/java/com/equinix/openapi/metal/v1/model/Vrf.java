@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Metro;
 import com.equinix.openapi.metal.v1.model.Project;
 import com.equinix.openapi.metal.v1.model.User;
@@ -27,6 +26,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -658,17 +658,18 @@ public class Vrf {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Vrf
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Vrf
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Vrf.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Vrf.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Vrf is not found in the empty JSON string", Vrf.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
@@ -688,31 +689,31 @@ public class Vrf {
 
           // validate the optional field `virtual_circuits` (array)
           for (int i = 0; i < jsonArrayvirtualCircuits.size(); i++) {
-            VrfVirtualCircuit.validateJsonObject(jsonArrayvirtualCircuits.get(i).getAsJsonObject());
+            VrfVirtualCircuit.validateJsonElement(jsonArrayvirtualCircuits.get(i));
           };
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("ip_ranges") != null && !jsonObj.get("ip_ranges").isJsonArray()) {
+      if (jsonObj.get("ip_ranges") != null && !jsonObj.get("ip_ranges").isJsonNull() && !jsonObj.get("ip_ranges").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ip_ranges` to be an array in the JSON string but got `%s`", jsonObj.get("ip_ranges").toString()));
       }
       // validate the optional field `project`
       if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
-        Project.validateJsonObject(jsonObj.getAsJsonObject("project"));
+        Project.validateJsonElement(jsonObj.get("project"));
       }
       // validate the optional field `metro`
       if (jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) {
-        Metro.validateJsonObject(jsonObj.getAsJsonObject("metro"));
+        Metro.validateJsonElement(jsonObj.get("metro"));
       }
       // validate the optional field `created_by`
       if (jsonObj.get("created_by") != null && !jsonObj.get("created_by").isJsonNull()) {
-        User.validateJsonObject(jsonObj.getAsJsonObject("created_by"));
+        User.validateJsonElement(jsonObj.get("created_by"));
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
   }
@@ -754,8 +755,9 @@ public class Vrf {
 
            @Override
            public Vrf read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Vrf instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

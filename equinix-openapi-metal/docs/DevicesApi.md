@@ -1145,7 +1145,7 @@ public class Example {
     String direction = "inbound"; // String | Traffic direction
     String interval = "minute"; // String | Traffic interval
     String bucket = "internal"; // String | Traffic bucket
-    FindTrafficTimeframeParameter timeframe = new HashMap(); // FindTrafficTimeframeParameter | 
+    FindTrafficTimeframeParameter timeframe = new FindTrafficTimeframeParameter(); // FindTrafficTimeframeParameter | 
     try {
       apiInstance.findTraffic(id, direction, interval, bucket, timeframe);
     } catch (ApiException e) {

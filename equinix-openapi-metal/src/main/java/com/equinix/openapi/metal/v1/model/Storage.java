@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Disk;
 import com.equinix.openapi.metal.v1.model.Filesystem;
 import com.equinix.openapi.metal.v1.model.Raid;
@@ -25,6 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -263,17 +263,18 @@ public class Storage {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Storage
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Storage
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Storage.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Storage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Storage is not found in the empty JSON string", Storage.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("disks") != null && !jsonObj.get("disks").isJsonNull()) {
         JsonArray jsonArraydisks = jsonObj.getAsJsonArray("disks");
         if (jsonArraydisks != null) {
@@ -284,7 +285,7 @@ public class Storage {
 
           // validate the optional field `disks` (array)
           for (int i = 0; i < jsonArraydisks.size(); i++) {
-            Disk.validateJsonObject(jsonArraydisks.get(i).getAsJsonObject());
+            Disk.validateJsonElement(jsonArraydisks.get(i));
           };
         }
       }
@@ -298,7 +299,7 @@ public class Storage {
 
           // validate the optional field `raid` (array)
           for (int i = 0; i < jsonArrayraid.size(); i++) {
-            Raid.validateJsonObject(jsonArrayraid.get(i).getAsJsonObject());
+            Raid.validateJsonElement(jsonArrayraid.get(i));
           };
         }
       }
@@ -312,7 +313,7 @@ public class Storage {
 
           // validate the optional field `filesystems` (array)
           for (int i = 0; i < jsonArrayfilesystems.size(); i++) {
-            Filesystem.validateJsonObject(jsonArrayfilesystems.get(i).getAsJsonObject());
+            Filesystem.validateJsonElement(jsonArrayfilesystems.get(i));
           };
         }
       }
@@ -355,8 +356,9 @@ public class Storage {
 
            @Override
            public Storage read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Storage instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

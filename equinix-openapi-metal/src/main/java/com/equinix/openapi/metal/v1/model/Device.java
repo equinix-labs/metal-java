@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.DeviceActionsInner;
 import com.equinix.openapi.metal.v1.model.DeviceCreatedBy;
 import com.equinix.openapi.metal.v1.model.DeviceMetro;
@@ -37,6 +36,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -1501,37 +1501,38 @@ public class Device {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Device
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Device
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Device.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Device.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Device is not found in the empty JSON string", Device.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("billing_cycle") != null && !jsonObj.get("billing_cycle").isJsonNull()) && !jsonObj.get("billing_cycle").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `billing_cycle` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billing_cycle").toString()));
       }
       // validate the optional field `created_by`
       if (jsonObj.get("created_by") != null && !jsonObj.get("created_by").isJsonNull()) {
-        DeviceCreatedBy.validateJsonObject(jsonObj.getAsJsonObject("created_by"));
+        DeviceCreatedBy.validateJsonElement(jsonObj.get("created_by"));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the optional field `facility`
       if (jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonNull()) {
-        Facility.validateJsonObject(jsonObj.getAsJsonObject("facility"));
+        Facility.validateJsonElement(jsonObj.get("facility"));
       }
       if ((jsonObj.get("firmware_set_id") != null && !jsonObj.get("firmware_set_id").isJsonNull()) && !jsonObj.get("firmware_set_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `firmware_set_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("firmware_set_id").toString()));
       }
       // validate the optional field `hardware_reservation`
       if (jsonObj.get("hardware_reservation") != null && !jsonObj.get("hardware_reservation").isJsonNull()) {
-        HardwareReservation.validateJsonObject(jsonObj.getAsJsonObject("hardware_reservation"));
+        HardwareReservation.validateJsonElement(jsonObj.get("hardware_reservation"));
       }
       if ((jsonObj.get("hostname") != null && !jsonObj.get("hostname").isJsonNull()) && !jsonObj.get("hostname").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hostname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hostname").toString()));
@@ -1555,7 +1556,7 @@ public class Device {
 
           // validate the optional field `ip_addresses` (array)
           for (int i = 0; i < jsonArrayipAddresses.size(); i++) {
-            IPAssignment.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
+            IPAssignment.validateJsonElement(jsonArrayipAddresses.get(i));
           };
         }
       }
@@ -1567,7 +1568,7 @@ public class Device {
       }
       // validate the optional field `metro`
       if (jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) {
-        DeviceMetro.validateJsonObject(jsonObj.getAsJsonObject("metro"));
+        DeviceMetro.validateJsonElement(jsonObj.get("metro"));
       }
       if (jsonObj.get("network_ports") != null && !jsonObj.get("network_ports").isJsonNull()) {
         JsonArray jsonArraynetworkPorts = jsonObj.getAsJsonArray("network_ports");
@@ -1579,13 +1580,13 @@ public class Device {
 
           // validate the optional field `network_ports` (array)
           for (int i = 0; i < jsonArraynetworkPorts.size(); i++) {
-            Port.validateJsonObject(jsonArraynetworkPorts.get(i).getAsJsonObject());
+            Port.validateJsonElement(jsonArraynetworkPorts.get(i));
           };
         }
       }
       // validate the optional field `operating_system`
       if (jsonObj.get("operating_system") != null && !jsonObj.get("operating_system").isJsonNull()) {
-        OperatingSystem.validateJsonObject(jsonObj.getAsJsonObject("operating_system"));
+        OperatingSystem.validateJsonElement(jsonObj.get("operating_system"));
       }
       if (jsonObj.get("actions") != null && !jsonObj.get("actions").isJsonNull()) {
         JsonArray jsonArrayactions = jsonObj.getAsJsonArray("actions");
@@ -1597,21 +1598,21 @@ public class Device {
 
           // validate the optional field `actions` (array)
           for (int i = 0; i < jsonArrayactions.size(); i++) {
-            DeviceActionsInner.validateJsonObject(jsonArrayactions.get(i).getAsJsonObject());
+            DeviceActionsInner.validateJsonElement(jsonArrayactions.get(i));
           };
         }
       }
       // validate the optional field `plan`
       if (jsonObj.get("plan") != null && !jsonObj.get("plan").isJsonNull()) {
-        Plan.validateJsonObject(jsonObj.getAsJsonObject("plan"));
+        Plan.validateJsonElement(jsonObj.get("plan"));
       }
       // validate the optional field `project`
       if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
-        DeviceProject.validateJsonObject(jsonObj.getAsJsonObject("project"));
+        DeviceProject.validateJsonElement(jsonObj.get("project"));
       }
       // validate the optional field `project_lite`
       if (jsonObj.get("project_lite") != null && !jsonObj.get("project_lite").isJsonNull()) {
-        DeviceProjectLite.validateJsonObject(jsonObj.getAsJsonObject("project_lite"));
+        DeviceProjectLite.validateJsonElement(jsonObj.get("project_lite"));
       }
       if (jsonObj.get("provisioning_events") != null && !jsonObj.get("provisioning_events").isJsonNull()) {
         JsonArray jsonArrayprovisioningEvents = jsonObj.getAsJsonArray("provisioning_events");
@@ -1623,7 +1624,7 @@ public class Device {
 
           // validate the optional field `provisioning_events` (array)
           for (int i = 0; i < jsonArrayprovisioningEvents.size(); i++) {
-            Event.validateJsonObject(jsonArrayprovisioningEvents.get(i).getAsJsonObject());
+            Event.validateJsonElement(jsonArrayprovisioningEvents.get(i));
           };
         }
       }
@@ -1643,7 +1644,7 @@ public class Device {
 
           // validate the optional field `ssh_keys` (array)
           for (int i = 0; i < jsonArraysshKeys.size(); i++) {
-            Href.validateJsonObject(jsonArraysshKeys.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArraysshKeys.get(i));
           };
         }
       }
@@ -1652,13 +1653,13 @@ public class Device {
       }
       // validate the optional field `storage`
       if (jsonObj.get("storage") != null && !jsonObj.get("storage").isJsonNull()) {
-        Storage.validateJsonObject(jsonObj.getAsJsonObject("storage"));
+        Storage.validateJsonElement(jsonObj.get("storage"));
       }
       if ((jsonObj.get("switch_uuid") != null && !jsonObj.get("switch_uuid").isJsonNull()) && !jsonObj.get("switch_uuid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `switch_uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("switch_uuid").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       if ((jsonObj.get("user") != null && !jsonObj.get("user").isJsonNull()) && !jsonObj.get("user").isJsonPrimitive()) {
@@ -1677,7 +1678,7 @@ public class Device {
 
           // validate the optional field `volumes` (array)
           for (int i = 0; i < jsonArrayvolumes.size(); i++) {
-            Href.validateJsonObject(jsonArrayvolumes.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArrayvolumes.get(i));
           };
         }
       }
@@ -1723,8 +1724,9 @@ public class Device {
 
            @Override
            public Device read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Device instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
