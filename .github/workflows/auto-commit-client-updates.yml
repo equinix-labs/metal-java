@@ -25,22 +25,21 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-      
-    - name: Commit to branch if client is updated after executing make.
+
+    - name: Apply spec patches
+      id: patch
       run: |
-        git fetch
-        echo -e "\nThis is executing for branch: ${GITHUB_REF_NAME}."
-        git checkout ${GITHUB_REF_NAME}
-        make docker_run
-        echo -e "Make execution completed."
-        git add spec/oas3.patched/.
-        git add spec/oas3.stitched/.
-        git add equinix-openapi-metal/.
-        echo -e "\nGit status:"
-        echo `git status`
-        cdate=`date`
-        cmsg="Auto commit generated client changes - $cdate"
-        echo -e "\nCommit message created : $cmsg"
-        echo -e "\nCommitting if there are files to update in client dir:"
-        echo `git commit -m "$cmsg"`
+        make patch
+        git add spec/oas3.patched
+        echo `git commit -m 'sync: apply patches to existing spec'`
+
+    - name: Generate code
+      id: generate
+      run: |
+        make generate
+        git add equinix-openapi-metal
+        echo `git commit -m 'sync: generate client with patched spec'`
+
+    - name: Push changes
+      run: |
         echo `git push`
