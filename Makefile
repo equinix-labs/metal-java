@@ -14,6 +14,8 @@ OPENAPI_URL=https://api.equinix.com/metal/v1/api-docs
 GIT_ORG=equinix-labs
 GIT_REPO=metal-java
 
+PACKAGE_VERSION=$(shell cat version)
+
 # Equinix Metal OAS 3.0.0
 OPENAPI_CONFIG:=spec/oas3.config.json
 OPENAPI_GENERATED_CLIENT=equinix-openapi-metal/
@@ -47,6 +49,8 @@ pull:
 
 codegen:
 	${DOCKER_OPENAPI} generate \
+		--http-user-agent "${GIT_REPO}/${PACKAGE_VERSION}" \
+		-p artifactVersion=${PACKAGE_VERSION} \
 		-i /local/${PATCHED_SPEC_ENTRY_POINT} \
 		-g java \
 		-c /local/${OPENAPI_CONFIG} \

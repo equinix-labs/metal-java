@@ -1,0 +1,42 @@
+{
+    "branches": [
+      "main"
+    ],
+    "ci": false,
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits"
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits"
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "successComment": "This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} :tada:",
+          "labels": false,
+          "releasedLabels": false
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "echo -n '${nextRelease.version}' > version && make generate",
+          "publishCmd": "mvn -f equinix-openapi-metal -B package && mvn -f equinix-openapi-metal deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/equinix-labs/metal-java"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "message": "ci: regenerate code for version ${nextRelease.version}",
+          "assets": ["."]
+        }
+      ]
+    ]
+  }
