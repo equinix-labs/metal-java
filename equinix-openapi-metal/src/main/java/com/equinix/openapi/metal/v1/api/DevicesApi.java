@@ -2082,6 +2082,7 @@ public class DevicesApi {
      * @param search Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. (optional)
      * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
+     * @param metro Filter by device metro (optional)
      * @param hostname Filter by partial hostname (optional)
      * @param reserved Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. (optional)
      * @param tag Filter by device tag (optional)
@@ -2103,7 +2104,7 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectDevicesCall(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call findProjectDevicesCall(UUID id, String search, List<String> categories, String facility, String metro, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2139,6 +2140,10 @@ public class DevicesApi {
 
         if (facility != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("facility", facility));
+        }
+
+        if (metro != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("metro", metro));
         }
 
         if (hostname != null) {
@@ -2197,13 +2202,13 @@ public class DevicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call findProjectDevicesValidateBeforeCall(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call findProjectDevicesValidateBeforeCall(UUID id, String search, List<String> categories, String facility, String metro, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling findProjectDevices(Async)");
         }
 
-        return findProjectDevicesCall(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
+        return findProjectDevicesCall(id, search, categories, facility, metro, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
 
     }
 
@@ -2214,6 +2219,7 @@ public class DevicesApi {
      * @param search Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. (optional)
      * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
+     * @param metro Filter by device metro (optional)
      * @param hostname Filter by partial hostname (optional)
      * @param reserved Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. (optional)
      * @param tag Filter by device tag (optional)
@@ -2234,8 +2240,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public DeviceList findProjectDevices(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        ApiResponse<DeviceList> localVarResp = findProjectDevicesWithHttpInfo(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
+    public DeviceList findProjectDevices(UUID id, String search, List<String> categories, String facility, String metro, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        ApiResponse<DeviceList> localVarResp = findProjectDevicesWithHttpInfo(id, search, categories, facility, metro, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
         return localVarResp.getData();
     }
 
@@ -2246,6 +2252,7 @@ public class DevicesApi {
      * @param search Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. (optional)
      * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
+     * @param metro Filter by device metro (optional)
      * @param hostname Filter by partial hostname (optional)
      * @param reserved Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. (optional)
      * @param tag Filter by device tag (optional)
@@ -2266,8 +2273,8 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeviceList> findProjectDevicesWithHttpInfo(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
-        okhttp3.Call localVarCall = findProjectDevicesValidateBeforeCall(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, null);
+    public ApiResponse<DeviceList> findProjectDevicesWithHttpInfo(UUID id, String search, List<String> categories, String facility, String metro, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage) throws ApiException {
+        okhttp3.Call localVarCall = findProjectDevicesValidateBeforeCall(id, search, categories, facility, metro, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, null);
         Type localVarReturnType = new TypeToken<DeviceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2279,6 +2286,7 @@ public class DevicesApi {
      * @param search Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. (optional)
      * @param categories Filter by plan category (optional)
      * @param facility Filter by device facility (optional)
+     * @param metro Filter by device metro (optional)
      * @param hostname Filter by partial hostname (optional)
      * @param reserved Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. (optional)
      * @param tag Filter by device tag (optional)
@@ -2300,9 +2308,9 @@ public class DevicesApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call findProjectDevicesAsync(UUID id, String search, List<String> categories, String facility, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<DeviceList> _callback) throws ApiException {
+    public okhttp3.Call findProjectDevicesAsync(UUID id, String search, List<String> categories, String facility, String metro, String hostname, Boolean reserved, String tag, String type, Boolean hasTerminationTime, List<String> include, List<String> exclude, Integer page, Integer perPage, final ApiCallback<DeviceList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = findProjectDevicesValidateBeforeCall(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
+        okhttp3.Call localVarCall = findProjectDevicesValidateBeforeCall(id, search, categories, facility, metro, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<DeviceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

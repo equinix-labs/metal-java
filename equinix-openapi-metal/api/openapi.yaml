@@ -8024,6 +8024,11 @@ paths:
         name: facility
         schema:
           type: string
+      - description: Filter by device metro
+        in: query
+        name: metro
+        schema:
+          type: string
       - description: Filter by partial hostname
         in: query
         name: hostname
@@ -9191,6 +9196,7 @@ paths:
       x-accepts: application/json
   /projects/{id}/transfers:
     post:
+      deprecated: true
       description: Organization owners can transfer their projects to other organizations.
       operationId: createTransferRequest
       parameters:
@@ -14513,7 +14519,7 @@ components:
       type: object
     CapacityCheckPerMetroInfo:
       example:
-        quantity: 0
+        quantity: quantity
         metro: metro
         available: true
         plan: plan
@@ -14530,16 +14536,16 @@ components:
           type: string
         quantity:
           description: The number of servers sent to check capacity.
-          type: integer
+          type: string
       type: object
     CapacityCheckPerMetroList:
       example:
         servers:
-        - quantity: 0
+        - quantity: quantity
           metro: metro
           available: true
           plan: plan
-        - quantity: 0
+        - quantity: quantity
           metro: metro
           available: true
           plan: plan
@@ -27668,9 +27674,10 @@ components:
             type: string
           type: array
         local_asn:
-          description: The new `local_asn` value for the VRF. This field cannot be
-            updated when there are active Interconnection Virtual Circuits associated
-            to the VRF.
+          description: "The new `local_asn` value for the VRF. This field cannot be\
+            \ updated when there are active Interconnection Virtual Circuits associated\
+            \ to the VRF, or if any of the VLANs of the VRF's metal gateway has been\
+            \ assigned on an instance."
           format: int32
           type: integer
         name:

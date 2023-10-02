@@ -1017,7 +1017,7 @@ public class Example {
 
 <a id="findProjectDevices"></a>
 # **findProjectDevices**
-> DeviceList findProjectDevices(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage)
+> DeviceList findProjectDevices(id, search, categories, facility, metro, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage)
 
 Retrieve all devices of a project
 
@@ -1049,6 +1049,7 @@ public class Example {
     String search = "search_example"; // String | Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses.
     List<String> categories = Arrays.asList(); // List<String> | Filter by plan category
     String facility = "facility_example"; // String | Filter by device facility
+    String metro = "metro_example"; // String | Filter by device metro
     String hostname = "hostname_example"; // String | Filter by partial hostname
     Boolean reserved = true; // Boolean | Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances.
     String tag = "tag_example"; // String | Filter by device tag
@@ -1059,7 +1060,7 @@ public class Example {
     Integer page = 1; // Integer | Page to return
     Integer perPage = 10; // Integer | Items returned per page
     try {
-      DeviceList result = apiInstance.findProjectDevices(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
+      DeviceList result = apiInstance.findProjectDevices(id, search, categories, facility, metro, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DevicesApi#findProjectDevices");
@@ -1080,6 +1081,7 @@ public class Example {
 | **search** | **String**| Search by hostname, description, short_id, reservation short_id, tags, plan name, plan slug, facility code, facility name, operating system name, operating system slug, IP addresses. | [optional] |
 | **categories** | [**List&lt;String&gt;**](String.md)| Filter by plan category | [optional] [enum: compute, storage] |
 | **facility** | **String**| Filter by device facility | [optional] |
+| **metro** | **String**| Filter by device metro | [optional] |
 | **hostname** | **String**| Filter by partial hostname | [optional] |
 | **reserved** | **Boolean**| Filter only reserved instances. When set to true, only include reserved instances. When set to false, only include on-demand instances. | [optional] |
 | **tag** | **String**| Filter by device tag | [optional] |
