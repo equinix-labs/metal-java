@@ -20,10 +20,16 @@ get:
         enum:
           - compute
           - storage
+          - vmce
         example: compute
   - description: Filter by device facility
     in: query
     name: facility
+    schema:
+      type: string
+  - description: Filter by device metro
+    in: query
+    name: metro
     schema:
       type: string
   - description: Filter by partial hostname
