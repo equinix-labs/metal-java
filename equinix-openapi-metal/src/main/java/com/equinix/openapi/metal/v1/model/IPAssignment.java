@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.IPAssignmentMetro;
 import com.equinix.openapi.metal.v1.model.ParentBlock;
@@ -25,6 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 import java.util.UUID;
 
 import com.google.gson.Gson;
@@ -736,23 +736,24 @@ public class IPAssignment {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to IPAssignment
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to IPAssignment
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!IPAssignment.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!IPAssignment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in IPAssignment is not found in the empty JSON string", IPAssignment.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) && !jsonObj.get("address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
       }
       // validate the optional field `assigned_to`
       if (jsonObj.get("assigned_to") != null && !jsonObj.get("assigned_to").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("assigned_to"));
+        Href.validateJsonElement(jsonObj.get("assigned_to"));
       }
       if ((jsonObj.get("gateway") != null && !jsonObj.get("gateway").isJsonNull()) && !jsonObj.get("gateway").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `gateway` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gateway").toString()));
@@ -765,7 +766,7 @@ public class IPAssignment {
       }
       // validate the optional field `metro`
       if (jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) {
-        IPAssignmentMetro.validateJsonObject(jsonObj.getAsJsonObject("metro"));
+        IPAssignmentMetro.validateJsonElement(jsonObj.get("metro"));
       }
       if ((jsonObj.get("netmask") != null && !jsonObj.get("netmask").isJsonNull()) && !jsonObj.get("netmask").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `netmask` to be a primitive type in the JSON string but got `%s`", jsonObj.get("netmask").toString()));
@@ -775,7 +776,7 @@ public class IPAssignment {
       }
       // validate the optional field `parent_block`
       if (jsonObj.get("parent_block") != null && !jsonObj.get("parent_block").isJsonNull()) {
-        ParentBlock.validateJsonObject(jsonObj.getAsJsonObject("parent_block"));
+        ParentBlock.validateJsonElement(jsonObj.get("parent_block"));
       }
       if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
@@ -822,8 +823,9 @@ public class IPAssignment {
 
            @Override
            public IPAssignment read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              IPAssignment instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

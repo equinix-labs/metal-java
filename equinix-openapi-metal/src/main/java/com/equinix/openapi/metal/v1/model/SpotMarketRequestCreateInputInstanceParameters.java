@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -698,17 +698,18 @@ public class SpotMarketRequestCreateInputInstanceParameters {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SpotMarketRequestCreateInputInstanceParameters
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to SpotMarketRequestCreateInputInstanceParameters
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!SpotMarketRequestCreateInputInstanceParameters.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!SpotMarketRequestCreateInputInstanceParameters.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SpotMarketRequestCreateInputInstanceParameters is not found in the empty JSON string", SpotMarketRequestCreateInputInstanceParameters.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("billing_cycle") != null && !jsonObj.get("billing_cycle").isJsonNull()) && !jsonObj.get("billing_cycle").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `billing_cycle` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billing_cycle").toString()));
       }
@@ -716,14 +717,14 @@ public class SpotMarketRequestCreateInputInstanceParameters {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("features") != null && !jsonObj.get("features").isJsonArray()) {
+      if (jsonObj.get("features") != null && !jsonObj.get("features").isJsonNull() && !jsonObj.get("features").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `features` to be an array in the JSON string but got `%s`", jsonObj.get("features").toString()));
       }
       if ((jsonObj.get("hostname") != null && !jsonObj.get("hostname").isJsonNull()) && !jsonObj.get("hostname").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hostname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hostname").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("hostnames") != null && !jsonObj.get("hostnames").isJsonArray()) {
+      if (jsonObj.get("hostnames") != null && !jsonObj.get("hostnames").isJsonNull() && !jsonObj.get("hostnames").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `hostnames` to be an array in the JSON string but got `%s`", jsonObj.get("hostnames").toString()));
       }
       if ((jsonObj.get("operating_system") != null && !jsonObj.get("operating_system").isJsonNull()) && !jsonObj.get("operating_system").isJsonPrimitive()) {
@@ -733,15 +734,15 @@ public class SpotMarketRequestCreateInputInstanceParameters {
         throw new IllegalArgumentException(String.format("Expected the field `plan` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("project_ssh_keys") != null && !jsonObj.get("project_ssh_keys").isJsonArray()) {
+      if (jsonObj.get("project_ssh_keys") != null && !jsonObj.get("project_ssh_keys").isJsonNull() && !jsonObj.get("project_ssh_keys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `project_ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("project_ssh_keys").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("user_ssh_keys") != null && !jsonObj.get("user_ssh_keys").isJsonArray()) {
+      if (jsonObj.get("user_ssh_keys") != null && !jsonObj.get("user_ssh_keys").isJsonNull() && !jsonObj.get("user_ssh_keys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `user_ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("user_ssh_keys").toString()));
       }
       if ((jsonObj.get("userdata") != null && !jsonObj.get("userdata").isJsonNull()) && !jsonObj.get("userdata").isJsonPrimitive()) {
@@ -786,8 +787,9 @@ public class SpotMarketRequestCreateInputInstanceParameters {
 
            @Override
            public SpotMarketRequestCreateInputInstanceParameters read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              SpotMarketRequestCreateInputInstanceParameters instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

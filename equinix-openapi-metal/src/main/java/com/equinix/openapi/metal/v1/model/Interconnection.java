@@ -14,11 +14,10 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.FabricServiceToken;
 import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.InterconnectionMetro;
 import com.equinix.openapi.metal.v1.model.InterconnectionPort;
+import com.equinix.openapi.metal.v1.model.Metro;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -27,6 +26,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -78,7 +78,7 @@ public class Interconnection {
 
   public static final String SERIALIZED_NAME_METRO = "metro";
   @SerializedName(SERIALIZED_NAME_METRO)
-  private InterconnectionMetro metro;
+  private Metro metro;
 
   /**
    * The mode of the interconnection (only relevant to Dedicated Ports). Shared connections won&#39;t have this field. Can be either &#39;standard&#39; or &#39;tunnel&#39;.   The default mode of an interconnection on a Dedicated Port is &#39;standard&#39;. The mode can only be changed when there are no associated virtual circuits on the interconnection.   In tunnel mode, an 802.1q tunnel is added to a port to send/receive double tagged packets from server instances.
@@ -364,7 +364,7 @@ public class Interconnection {
   }
 
 
-  public Interconnection metro(InterconnectionMetro metro) {
+  public Interconnection metro(Metro metro) {
     
     this.metro = metro;
     return this;
@@ -375,12 +375,12 @@ public class Interconnection {
    * @return metro
   **/
   @javax.annotation.Nullable
-  public InterconnectionMetro getMetro() {
+  public Metro getMetro() {
     return metro;
   }
 
 
-  public void setMetro(InterconnectionMetro metro) {
+  public void setMetro(Metro metro) {
     this.metro = metro;
   }
 
@@ -855,17 +855,18 @@ public class Interconnection {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Interconnection
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Interconnection
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Interconnection.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Interconnection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Interconnection is not found in the empty JSON string", Interconnection.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("contact_email") != null && !jsonObj.get("contact_email").isJsonNull()) && !jsonObj.get("contact_email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `contact_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contact_email").toString()));
       }
@@ -874,14 +875,14 @@ public class Interconnection {
       }
       // validate the optional field `facility`
       if (jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("facility"));
+        Href.validateJsonElement(jsonObj.get("facility"));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // validate the optional field `metro`
       if (jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) {
-        InterconnectionMetro.validateJsonObject(jsonObj.getAsJsonObject("metro"));
+        Metro.validateJsonElement(jsonObj.get("metro"));
       }
       if ((jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) && !jsonObj.get("mode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
@@ -891,7 +892,7 @@ public class Interconnection {
       }
       // validate the optional field `organization`
       if (jsonObj.get("organization") != null && !jsonObj.get("organization").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("organization"));
+        Href.validateJsonElement(jsonObj.get("organization"));
       }
       if (jsonObj.get("ports") != null && !jsonObj.get("ports").isJsonNull()) {
         JsonArray jsonArrayports = jsonObj.getAsJsonArray("ports");
@@ -903,7 +904,7 @@ public class Interconnection {
 
           // validate the optional field `ports` (array)
           for (int i = 0; i < jsonArrayports.size(); i++) {
-            InterconnectionPort.validateJsonObject(jsonArrayports.get(i).getAsJsonObject());
+            InterconnectionPort.validateJsonElement(jsonArrayports.get(i));
           };
         }
       }
@@ -920,7 +921,7 @@ public class Interconnection {
 
           // validate the optional field `service_tokens` (array)
           for (int i = 0; i < jsonArrayserviceTokens.size(); i++) {
-            FabricServiceToken.validateJsonObject(jsonArrayserviceTokens.get(i).getAsJsonObject());
+            FabricServiceToken.validateJsonElement(jsonArrayserviceTokens.get(i));
           };
         }
       }
@@ -928,7 +929,7 @@ public class Interconnection {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       if ((jsonObj.get("token") != null && !jsonObj.get("token").isJsonNull()) && !jsonObj.get("token").isJsonPrimitive()) {
@@ -939,7 +940,7 @@ public class Interconnection {
       }
       // validate the optional field `requested_by`
       if (jsonObj.get("requested_by") != null && !jsonObj.get("requested_by").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("requested_by"));
+        Href.validateJsonElement(jsonObj.get("requested_by"));
       }
   }
 
@@ -980,8 +981,9 @@ public class Interconnection {
 
            @Override
            public Interconnection read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Interconnection instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

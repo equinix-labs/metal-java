@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.IPAssignment;
 import com.equinix.openapi.metal.v1.model.IPReservation;
@@ -30,10 +29,11 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import javax.ws.rs.core.GenericType;
+
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -43,6 +43,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -62,6 +63,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
 
 import com.equinix.openapi.JSON;
@@ -78,8 +80,8 @@ public class IPReservationOrHref extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'IPReservationOrHref' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<Href> adapterHref = gson.getDelegateAdapter(this, TypeToken.get(Href.class));
             final TypeAdapter<IPReservation> adapterIPReservation = gson.getDelegateAdapter(this, TypeToken.get(IPReservation.class));
+            final TypeAdapter<Href> adapterHref = gson.getDelegateAdapter(this, TypeToken.get(Href.class));
 
             return (TypeAdapter<T>) new TypeAdapter<IPReservationOrHref>() {
                 @Override
@@ -89,63 +91,64 @@ public class IPReservationOrHref extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `Href`
-                    if (value.getActualInstance() instanceof Href) {
-                        JsonObject obj = adapterHref.toJsonTree((Href)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
-                    }
-
                     // check if the actual instance is of the type `IPReservation`
                     if (value.getActualInstance() instanceof IPReservation) {
-                        JsonObject obj = adapterIPReservation.toJsonTree((IPReservation)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
+                      JsonElement element = adapterIPReservation.toJsonTree((IPReservation)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
                     }
-
-                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: Href, IPReservation");
+                    // check if the actual instance is of the type `Href`
+                    if (value.getActualInstance() instanceof Href) {
+                      JsonElement element = adapterHref.toJsonTree((Href)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemae: Href, IPReservation");
                 }
 
                 @Override
                 public IPReservationOrHref read(JsonReader in) throws IOException {
                     Object deserialized = null;
-                    JsonObject jsonObject = elementAdapter.read(in).getAsJsonObject();
+                    JsonElement jsonElement = elementAdapter.read(in);
 
-                    // deserialize Href
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        Href.validateJsonObject(jsonObject);
-                        log.log(Level.FINER, "Input data matches schema 'Href'");
-                        IPReservationOrHref ret = new IPReservationOrHref();
-                        ret.setActualInstance(adapterHref.fromJsonTree(jsonObject));
-                        return ret;
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        log.log(Level.FINER, "Input data does not match schema 'Href'", e);
-                    }
+                    ArrayList<String> errorMessages = new ArrayList<>();
+                    TypeAdapter actualAdapter = elementAdapter;
 
                     // deserialize IPReservation
                     try {
-                        // validate the JSON object to see if any exception is thrown
-                        IPReservation.validateJsonObject(jsonObject);
-                        log.log(Level.FINER, "Input data matches schema 'IPReservation'");
-                        IPReservationOrHref ret = new IPReservationOrHref();
-                        ret.setActualInstance(adapterIPReservation.fromJsonTree(jsonObject));
-                        return ret;
+                      // validate the JSON object to see if any exception is thrown
+                      IPReservation.validateJsonElement(jsonElement);
+                      actualAdapter = adapterIPReservation;
+                      IPReservationOrHref ret = new IPReservationOrHref();
+                      ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                      return ret;
                     } catch (Exception e) {
-                        // deserialization failed, continue
-                        log.log(Level.FINER, "Input data does not match schema 'IPReservation'", e);
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for IPReservation failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'IPReservation'", e);
+                    }
+                    // deserialize Href
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      Href.validateJsonElement(jsonElement);
+                      actualAdapter = adapterHref;
+                      IPReservationOrHref ret = new IPReservationOrHref();
+                      ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                      return ret;
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for Href failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'Href'", e);
                     }
 
-
-                    throw new IOException(String.format("Failed deserialization for IPReservationOrHref: no class matched. JSON: %s", jsonObject.toString()));
+                    throw new IOException(String.format("Failed deserialization for IPReservationOrHref: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
     }
 
     // store a list of schema names defined in anyOf
-    public static final Map<String, GenericType> schemas = new HashMap<String, GenericType>();
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
     public IPReservationOrHref() {
         super("anyOf", Boolean.FALSE);
@@ -162,14 +165,12 @@ public class IPReservationOrHref extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("Href", new GenericType<Href>() {
-        });
-        schemas.put("IPReservation", new GenericType<IPReservation>() {
-        });
+        schemas.put("IPReservation", IPReservation.class);
+        schemas.put("Href", Href.class);
     }
 
     @Override
-    public Map<String, GenericType> getSchemas() {
+    public Map<String, Class<?>> getSchemas() {
         return IPReservationOrHref.schemas;
     }
 
@@ -179,16 +180,15 @@ public class IPReservationOrHref extends AbstractOpenApiSchema {
      * Href, IPReservation
      *
      * It could be an instance of the 'anyOf' schemas.
-     * The anyOf child schemas may themselves be a composed schema (allOf, anyOf, anyOf).
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (instance instanceof Href) {
+        if (instance instanceof IPReservation) {
             super.setActualInstance(instance);
             return;
         }
 
-        if (instance instanceof IPReservation) {
+        if (instance instanceof Href) {
             super.setActualInstance(instance);
             return;
         }
@@ -208,6 +208,16 @@ public class IPReservationOrHref extends AbstractOpenApiSchema {
     }
 
     /**
+     * Get the actual instance of `IPReservation`. If the actual instance is not `IPReservation`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `IPReservation`
+     * @throws ClassCastException if the instance is not `IPReservation`
+     */
+    public IPReservation getIPReservation() throws ClassCastException {
+        return (IPReservation)super.getActualInstance();
+    }
+    /**
      * Get the actual instance of `Href`. If the actual instance is not `Href`,
      * the ClassCastException will be thrown.
      *
@@ -218,46 +228,33 @@ public class IPReservationOrHref extends AbstractOpenApiSchema {
         return (Href)super.getActualInstance();
     }
 
-    /**
-     * Get the actual instance of `IPReservation`. If the actual instance is not `IPReservation`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `IPReservation`
-     * @throws ClassCastException if the instance is not `IPReservation`
-     */
-    public IPReservation getIPReservation() throws ClassCastException {
-        return (IPReservation)super.getActualInstance();
-    }
-
-
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to IPReservationOrHref
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to IPReservationOrHref
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     // validate anyOf schemas one by one
-    int validCount = 0;
-    // validate the json string with Href
-    try {
-      Href.validateJsonObject(jsonObj);
-      return; // return earlier as at least one schema is valid with respect to the Json object
-      //validCount++;
-    } catch (Exception e) {
-      // continue to the next one
-    }
+    ArrayList<String> errorMessages = new ArrayList<>();
     // validate the json string with IPReservation
     try {
-      IPReservation.validateJsonObject(jsonObj);
-      return; // return earlier as at least one schema is valid with respect to the Json object
-      //validCount++;
+      IPReservation.validateJsonElement(jsonElement);
+      return;
     } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for IPReservation failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
-    if (validCount == 0) {
-      throw new IOException(String.format("The JSON string is invalid for IPReservationOrHref with anyOf schemas: Href, IPReservation. JSON: %s", jsonObj.toString()));
+    // validate the json string with Href
+    try {
+      Href.validateJsonElement(jsonElement);
+      return;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for Href failed with `%s`.", e.getMessage()));
+      // continue to the next one
     }
+    throw new IOException(String.format("The JSON string is invalid for IPReservationOrHref with anyOf schemas: Href, IPReservation. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+    
   }
 
  /**

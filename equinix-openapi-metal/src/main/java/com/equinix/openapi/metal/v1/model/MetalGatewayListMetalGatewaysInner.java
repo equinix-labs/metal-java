@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.IPReservationOrHref;
 import com.equinix.openapi.metal.v1.model.MetalGateway;
@@ -29,9 +28,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 import java.util.UUID;
 
-import javax.ws.rs.core.GenericType;
+
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -60,6 +61,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
 
 import com.equinix.openapi.JSON;
@@ -76,8 +78,8 @@ public class MetalGatewayListMetalGatewaysInner extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'MetalGatewayListMetalGatewaysInner' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<MetalGateway> adapterMetalGateway = gson.getDelegateAdapter(this, TypeToken.get(MetalGateway.class));
             final TypeAdapter<VrfMetalGateway> adapterVrfMetalGateway = gson.getDelegateAdapter(this, TypeToken.get(VrfMetalGateway.class));
+            final TypeAdapter<MetalGateway> adapterMetalGateway = gson.getDelegateAdapter(this, TypeToken.get(MetalGateway.class));
 
             return (TypeAdapter<T>) new TypeAdapter<MetalGatewayListMetalGatewaysInner>() {
                 @Override
@@ -87,63 +89,64 @@ public class MetalGatewayListMetalGatewaysInner extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `MetalGateway`
-                    if (value.getActualInstance() instanceof MetalGateway) {
-                        JsonObject obj = adapterMetalGateway.toJsonTree((MetalGateway)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
-                    }
-
                     // check if the actual instance is of the type `VrfMetalGateway`
                     if (value.getActualInstance() instanceof VrfMetalGateway) {
-                        JsonObject obj = adapterVrfMetalGateway.toJsonTree((VrfMetalGateway)value.getActualInstance()).getAsJsonObject();
-                        elementAdapter.write(out, obj);
-                        return;
+                      JsonElement element = adapterVrfMetalGateway.toJsonTree((VrfMetalGateway)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
                     }
-
-                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: MetalGateway, VrfMetalGateway");
+                    // check if the actual instance is of the type `MetalGateway`
+                    if (value.getActualInstance() instanceof MetalGateway) {
+                      JsonElement element = adapterMetalGateway.toJsonTree((MetalGateway)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemae: MetalGateway, VrfMetalGateway");
                 }
 
                 @Override
                 public MetalGatewayListMetalGatewaysInner read(JsonReader in) throws IOException {
                     Object deserialized = null;
-                    JsonObject jsonObject = elementAdapter.read(in).getAsJsonObject();
+                    JsonElement jsonElement = elementAdapter.read(in);
 
-                    // deserialize MetalGateway
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        MetalGateway.validateJsonObject(jsonObject);
-                        log.log(Level.FINER, "Input data matches schema 'MetalGateway'");
-                        MetalGatewayListMetalGatewaysInner ret = new MetalGatewayListMetalGatewaysInner();
-                        ret.setActualInstance(adapterMetalGateway.fromJsonTree(jsonObject));
-                        return ret;
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        log.log(Level.FINER, "Input data does not match schema 'MetalGateway'", e);
-                    }
+                    ArrayList<String> errorMessages = new ArrayList<>();
+                    TypeAdapter actualAdapter = elementAdapter;
 
                     // deserialize VrfMetalGateway
                     try {
-                        // validate the JSON object to see if any exception is thrown
-                        VrfMetalGateway.validateJsonObject(jsonObject);
-                        log.log(Level.FINER, "Input data matches schema 'VrfMetalGateway'");
-                        MetalGatewayListMetalGatewaysInner ret = new MetalGatewayListMetalGatewaysInner();
-                        ret.setActualInstance(adapterVrfMetalGateway.fromJsonTree(jsonObject));
-                        return ret;
+                      // validate the JSON object to see if any exception is thrown
+                      VrfMetalGateway.validateJsonElement(jsonElement);
+                      actualAdapter = adapterVrfMetalGateway;
+                      MetalGatewayListMetalGatewaysInner ret = new MetalGatewayListMetalGatewaysInner();
+                      ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                      return ret;
                     } catch (Exception e) {
-                        // deserialization failed, continue
-                        log.log(Level.FINER, "Input data does not match schema 'VrfMetalGateway'", e);
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for VrfMetalGateway failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'VrfMetalGateway'", e);
+                    }
+                    // deserialize MetalGateway
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      MetalGateway.validateJsonElement(jsonElement);
+                      actualAdapter = adapterMetalGateway;
+                      MetalGatewayListMetalGatewaysInner ret = new MetalGatewayListMetalGatewaysInner();
+                      ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                      return ret;
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for MetalGateway failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'MetalGateway'", e);
                     }
 
-
-                    throw new IOException(String.format("Failed deserialization for MetalGatewayListMetalGatewaysInner: no class matched. JSON: %s", jsonObject.toString()));
+                    throw new IOException(String.format("Failed deserialization for MetalGatewayListMetalGatewaysInner: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
     }
 
     // store a list of schema names defined in anyOf
-    public static final Map<String, GenericType> schemas = new HashMap<String, GenericType>();
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
     public MetalGatewayListMetalGatewaysInner() {
         super("anyOf", Boolean.FALSE);
@@ -160,14 +163,12 @@ public class MetalGatewayListMetalGatewaysInner extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("MetalGateway", new GenericType<MetalGateway>() {
-        });
-        schemas.put("VrfMetalGateway", new GenericType<VrfMetalGateway>() {
-        });
+        schemas.put("VrfMetalGateway", VrfMetalGateway.class);
+        schemas.put("MetalGateway", MetalGateway.class);
     }
 
     @Override
-    public Map<String, GenericType> getSchemas() {
+    public Map<String, Class<?>> getSchemas() {
         return MetalGatewayListMetalGatewaysInner.schemas;
     }
 
@@ -177,16 +178,15 @@ public class MetalGatewayListMetalGatewaysInner extends AbstractOpenApiSchema {
      * MetalGateway, VrfMetalGateway
      *
      * It could be an instance of the 'anyOf' schemas.
-     * The anyOf child schemas may themselves be a composed schema (allOf, anyOf, anyOf).
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (instance instanceof MetalGateway) {
+        if (instance instanceof VrfMetalGateway) {
             super.setActualInstance(instance);
             return;
         }
 
-        if (instance instanceof VrfMetalGateway) {
+        if (instance instanceof MetalGateway) {
             super.setActualInstance(instance);
             return;
         }
@@ -206,6 +206,16 @@ public class MetalGatewayListMetalGatewaysInner extends AbstractOpenApiSchema {
     }
 
     /**
+     * Get the actual instance of `VrfMetalGateway`. If the actual instance is not `VrfMetalGateway`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `VrfMetalGateway`
+     * @throws ClassCastException if the instance is not `VrfMetalGateway`
+     */
+    public VrfMetalGateway getVrfMetalGateway() throws ClassCastException {
+        return (VrfMetalGateway)super.getActualInstance();
+    }
+    /**
      * Get the actual instance of `MetalGateway`. If the actual instance is not `MetalGateway`,
      * the ClassCastException will be thrown.
      *
@@ -216,46 +226,33 @@ public class MetalGatewayListMetalGatewaysInner extends AbstractOpenApiSchema {
         return (MetalGateway)super.getActualInstance();
     }
 
-    /**
-     * Get the actual instance of `VrfMetalGateway`. If the actual instance is not `VrfMetalGateway`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `VrfMetalGateway`
-     * @throws ClassCastException if the instance is not `VrfMetalGateway`
-     */
-    public VrfMetalGateway getVrfMetalGateway() throws ClassCastException {
-        return (VrfMetalGateway)super.getActualInstance();
-    }
-
-
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to MetalGatewayListMetalGatewaysInner
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to MetalGatewayListMetalGatewaysInner
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     // validate anyOf schemas one by one
-    int validCount = 0;
-    // validate the json string with MetalGateway
-    try {
-      MetalGateway.validateJsonObject(jsonObj);
-      return; // return earlier as at least one schema is valid with respect to the Json object
-      //validCount++;
-    } catch (Exception e) {
-      // continue to the next one
-    }
+    ArrayList<String> errorMessages = new ArrayList<>();
     // validate the json string with VrfMetalGateway
     try {
-      VrfMetalGateway.validateJsonObject(jsonObj);
-      return; // return earlier as at least one schema is valid with respect to the Json object
-      //validCount++;
+      VrfMetalGateway.validateJsonElement(jsonElement);
+      return;
     } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for VrfMetalGateway failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
-    if (validCount == 0) {
-      throw new IOException(String.format("The JSON string is invalid for MetalGatewayListMetalGatewaysInner with anyOf schemas: MetalGateway, VrfMetalGateway. JSON: %s", jsonObj.toString()));
+    // validate the json string with MetalGateway
+    try {
+      MetalGateway.validateJsonElement(jsonElement);
+      return;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for MetalGateway failed with `%s`.", e.getMessage()));
+      // continue to the next one
     }
+    throw new IOException(String.format("The JSON string is invalid for MetalGatewayListMetalGatewaysInner with anyOf schemas: MetalGateway, VrfMetalGateway. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+    
   }
 
  /**

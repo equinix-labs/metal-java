@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.Organization;
 import com.google.gson.TypeAdapter;
@@ -25,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -763,20 +763,21 @@ public class Project {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Project
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Project
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Project.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Project.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Project is not found in the empty JSON string", Project.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `bgp_config`
       if (jsonObj.get("bgp_config") != null && !jsonObj.get("bgp_config").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("bgp_config"));
+        Href.validateJsonElement(jsonObj.get("bgp_config"));
       }
       if (jsonObj.get("devices") != null && !jsonObj.get("devices").isJsonNull()) {
         JsonArray jsonArraydevices = jsonObj.getAsJsonArray("devices");
@@ -788,7 +789,7 @@ public class Project {
 
           // validate the optional field `devices` (array)
           for (int i = 0; i < jsonArraydevices.size(); i++) {
-            Href.validateJsonObject(jsonArraydevices.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArraydevices.get(i));
           };
         }
       }
@@ -805,7 +806,7 @@ public class Project {
 
           // validate the optional field `invitations` (array)
           for (int i = 0; i < jsonArrayinvitations.size(); i++) {
-            Href.validateJsonObject(jsonArrayinvitations.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArrayinvitations.get(i));
           };
         }
       }
@@ -819,7 +820,7 @@ public class Project {
 
           // validate the optional field `members` (array)
           for (int i = 0; i < jsonArraymembers.size(); i++) {
-            Href.validateJsonObject(jsonArraymembers.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArraymembers.get(i));
           };
         }
       }
@@ -833,7 +834,7 @@ public class Project {
 
           // validate the optional field `memberships` (array)
           for (int i = 0; i < jsonArraymemberships.size(); i++) {
-            Href.validateJsonObject(jsonArraymemberships.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArraymemberships.get(i));
           };
         }
       }
@@ -842,11 +843,11 @@ public class Project {
       }
       // validate the optional field `organization`
       if (jsonObj.get("organization") != null && !jsonObj.get("organization").isJsonNull()) {
-        Organization.validateJsonObject(jsonObj.getAsJsonObject("organization"));
+        Organization.validateJsonElement(jsonObj.get("organization"));
       }
       // validate the optional field `payment_method`
       if (jsonObj.get("payment_method") != null && !jsonObj.get("payment_method").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("payment_method"));
+        Href.validateJsonElement(jsonObj.get("payment_method"));
       }
       if (jsonObj.get("ssh_keys") != null && !jsonObj.get("ssh_keys").isJsonNull()) {
         JsonArray jsonArraysshKeys = jsonObj.getAsJsonArray("ssh_keys");
@@ -858,7 +859,7 @@ public class Project {
 
           // validate the optional field `ssh_keys` (array)
           for (int i = 0; i < jsonArraysshKeys.size(); i++) {
-            Href.validateJsonObject(jsonArraysshKeys.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArraysshKeys.get(i));
           };
         }
       }
@@ -872,7 +873,7 @@ public class Project {
 
           // validate the optional field `volumes` (array)
           for (int i = 0; i < jsonArrayvolumes.size(); i++) {
-            Href.validateJsonObject(jsonArrayvolumes.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArrayvolumes.get(i));
           };
         }
       }
@@ -880,7 +881,7 @@ public class Project {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
   }
@@ -922,8 +923,9 @@ public class Project {
 
            @Override
            public Project read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Project instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

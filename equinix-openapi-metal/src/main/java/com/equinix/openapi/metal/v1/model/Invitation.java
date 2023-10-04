@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -24,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -530,17 +530,18 @@ public class Invitation {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Invitation
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Invitation
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Invitation.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Invitation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Invitation is not found in the empty JSON string", Invitation.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
@@ -549,11 +550,11 @@ public class Invitation {
       }
       // validate the optional field `invitation`
       if (jsonObj.get("invitation") != null && !jsonObj.get("invitation").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("invitation"));
+        Href.validateJsonElement(jsonObj.get("invitation"));
       }
       // validate the optional field `invited_by`
       if (jsonObj.get("invited_by") != null && !jsonObj.get("invited_by").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("invited_by"));
+        Href.validateJsonElement(jsonObj.get("invited_by"));
       }
       if ((jsonObj.get("invitee") != null && !jsonObj.get("invitee").isJsonNull()) && !jsonObj.get("invitee").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `invitee` to be a primitive type in the JSON string but got `%s`", jsonObj.get("invitee").toString()));
@@ -563,7 +564,7 @@ public class Invitation {
       }
       // validate the optional field `organization`
       if (jsonObj.get("organization") != null && !jsonObj.get("organization").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("organization"));
+        Href.validateJsonElement(jsonObj.get("organization"));
       }
       if (jsonObj.get("projects") != null && !jsonObj.get("projects").isJsonNull()) {
         JsonArray jsonArrayprojects = jsonObj.getAsJsonArray("projects");
@@ -575,12 +576,12 @@ public class Invitation {
 
           // validate the optional field `projects` (array)
           for (int i = 0; i < jsonArrayprojects.size(); i++) {
-            Href.validateJsonObject(jsonArrayprojects.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArrayprojects.get(i));
           };
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonArray()) {
+      if (jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonNull() && !jsonObj.get("roles").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `roles` to be an array in the JSON string but got `%s`", jsonObj.get("roles").toString()));
       }
   }
@@ -622,8 +623,9 @@ public class Invitation {
 
            @Override
            public Invitation read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Invitation instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

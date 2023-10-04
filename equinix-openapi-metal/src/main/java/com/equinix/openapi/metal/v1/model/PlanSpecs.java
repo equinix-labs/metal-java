@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.PlanSpecsCpusInner;
 import com.equinix.openapi.metal.v1.model.PlanSpecsDrivesInner;
 import com.equinix.openapi.metal.v1.model.PlanSpecsFeatures;
@@ -27,6 +26,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -321,17 +321,18 @@ public class PlanSpecs {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PlanSpecs
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to PlanSpecs
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!PlanSpecs.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!PlanSpecs.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PlanSpecs is not found in the empty JSON string", PlanSpecs.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("cpus") != null && !jsonObj.get("cpus").isJsonNull()) {
         JsonArray jsonArraycpus = jsonObj.getAsJsonArray("cpus");
         if (jsonArraycpus != null) {
@@ -342,13 +343,13 @@ public class PlanSpecs {
 
           // validate the optional field `cpus` (array)
           for (int i = 0; i < jsonArraycpus.size(); i++) {
-            PlanSpecsCpusInner.validateJsonObject(jsonArraycpus.get(i).getAsJsonObject());
+            PlanSpecsCpusInner.validateJsonElement(jsonArraycpus.get(i));
           };
         }
       }
       // validate the optional field `memory`
       if (jsonObj.get("memory") != null && !jsonObj.get("memory").isJsonNull()) {
-        PlanSpecsMemory.validateJsonObject(jsonObj.getAsJsonObject("memory"));
+        PlanSpecsMemory.validateJsonElement(jsonObj.get("memory"));
       }
       if (jsonObj.get("drives") != null && !jsonObj.get("drives").isJsonNull()) {
         JsonArray jsonArraydrives = jsonObj.getAsJsonArray("drives");
@@ -360,7 +361,7 @@ public class PlanSpecs {
 
           // validate the optional field `drives` (array)
           for (int i = 0; i < jsonArraydrives.size(); i++) {
-            PlanSpecsDrivesInner.validateJsonObject(jsonArraydrives.get(i).getAsJsonObject());
+            PlanSpecsDrivesInner.validateJsonElement(jsonArraydrives.get(i));
           };
         }
       }
@@ -374,13 +375,13 @@ public class PlanSpecs {
 
           // validate the optional field `nics` (array)
           for (int i = 0; i < jsonArraynics.size(); i++) {
-            PlanSpecsNicsInner.validateJsonObject(jsonArraynics.get(i).getAsJsonObject());
+            PlanSpecsNicsInner.validateJsonElement(jsonArraynics.get(i));
           };
         }
       }
       // validate the optional field `features`
       if (jsonObj.get("features") != null && !jsonObj.get("features").isJsonNull()) {
-        PlanSpecsFeatures.validateJsonObject(jsonObj.getAsJsonObject("features"));
+        PlanSpecsFeatures.validateJsonElement(jsonObj.get("features"));
       }
   }
 
@@ -421,8 +422,9 @@ public class PlanSpecs {
 
            @Override
            public PlanSpecs read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              PlanSpecs instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

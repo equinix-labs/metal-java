@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.IPAssignment;
 import com.equinix.openapi.metal.v1.model.IPReservationFacility;
@@ -29,6 +28,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -994,32 +994,33 @@ public class IPReservation {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to IPReservation
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to IPReservation
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!IPReservation.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!IPReservation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in IPReservation is not found in the empty JSON string", IPReservation.openapiRequiredFields.toString()));
         }
       }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      Set<Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
         if (!IPReservation.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IPReservation` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IPReservation` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : IPReservation.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) && !jsonObj.get("address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
       }
@@ -1033,7 +1034,7 @@ public class IPReservation {
 
           // validate the optional field `assignments` (array)
           for (int i = 0; i < jsonArrayassignments.size(); i++) {
-            IPAssignment.validateJsonObject(jsonArrayassignments.get(i).getAsJsonObject());
+            IPAssignment.validateJsonElement(jsonArrayassignments.get(i));
           };
         }
       }
@@ -1045,7 +1046,7 @@ public class IPReservation {
       }
       // validate the optional field `facility`
       if (jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonNull()) {
-        IPReservationFacility.validateJsonObject(jsonObj.getAsJsonObject("facility"));
+        IPReservationFacility.validateJsonElement(jsonObj.get("facility"));
       }
       if ((jsonObj.get("gateway") != null && !jsonObj.get("gateway").isJsonNull()) && !jsonObj.get("gateway").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `gateway` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gateway").toString()));
@@ -1058,11 +1059,11 @@ public class IPReservation {
       }
       // validate the optional field `metal_gateway`
       if (jsonObj.get("metal_gateway") != null && !jsonObj.get("metal_gateway").isJsonNull()) {
-        MetalGatewayLite.validateJsonObject(jsonObj.getAsJsonObject("metal_gateway"));
+        MetalGatewayLite.validateJsonElement(jsonObj.get("metal_gateway"));
       }
       // validate the optional field `metro`
       if (jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) {
-        IPReservationMetro.validateJsonObject(jsonObj.getAsJsonObject("metro"));
+        IPReservationMetro.validateJsonElement(jsonObj.get("metro"));
       }
       if ((jsonObj.get("netmask") != null && !jsonObj.get("netmask").isJsonNull()) && !jsonObj.get("netmask").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `netmask` to be a primitive type in the JSON string but got `%s`", jsonObj.get("netmask").toString()));
@@ -1072,21 +1073,21 @@ public class IPReservation {
       }
       // validate the optional field `project`
       if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
-        Project.validateJsonObject(jsonObj.getAsJsonObject("project"));
+        Project.validateJsonElement(jsonObj.get("project"));
       }
       // validate the optional field `project_lite`
       if (jsonObj.get("project_lite") != null && !jsonObj.get("project_lite").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("project_lite"));
+        Href.validateJsonElement(jsonObj.get("project_lite"));
       }
       // validate the optional field `requested_by`
       if (jsonObj.get("requested_by") != null && !jsonObj.get("requested_by").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("requested_by"));
+        Href.validateJsonElement(jsonObj.get("requested_by"));
       }
       if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
@@ -1114,9 +1115,9 @@ public class IPReservation {
 
            @Override
            public IPReservation read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
            }
 
        }.nullSafe();

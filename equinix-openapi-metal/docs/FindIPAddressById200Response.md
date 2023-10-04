@@ -48,6 +48,10 @@
 
 | Name | Value |
 |---- | -----|
+| GLOBAL_IPV4 | &quot;global_ipv4&quot; |
+| PUBLIC_IPV4 | &quot;public_ipv4&quot; |
+| PRIVATE_IPV4 | &quot;private_ipv4&quot; |
+| PUBLIC_IPV6 | &quot;public_ipv6&quot; |
 | VRF | &quot;vrf&quot; |
 
 

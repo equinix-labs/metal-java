@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.PortConvertLayer3InputRequestIpsInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -189,17 +189,18 @@ public class PortConvertLayer3Input {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PortConvertLayer3Input
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to PortConvertLayer3Input
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!PortConvertLayer3Input.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!PortConvertLayer3Input.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortConvertLayer3Input is not found in the empty JSON string", PortConvertLayer3Input.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("request_ips") != null && !jsonObj.get("request_ips").isJsonNull()) {
         JsonArray jsonArrayrequestIps = jsonObj.getAsJsonArray("request_ips");
         if (jsonArrayrequestIps != null) {
@@ -210,7 +211,7 @@ public class PortConvertLayer3Input {
 
           // validate the optional field `request_ips` (array)
           for (int i = 0; i < jsonArrayrequestIps.size(); i++) {
-            PortConvertLayer3InputRequestIpsInner.validateJsonObject(jsonArrayrequestIps.get(i).getAsJsonObject());
+            PortConvertLayer3InputRequestIpsInner.validateJsonElement(jsonArrayrequestIps.get(i));
           };
         }
       }
@@ -253,8 +254,9 @@ public class PortConvertLayer3Input {
 
            @Override
            public PortConvertLayer3Input read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              PortConvertLayer3Input instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

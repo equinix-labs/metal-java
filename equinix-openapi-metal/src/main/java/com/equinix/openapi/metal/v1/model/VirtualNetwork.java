@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.MetalGatewayLite;
 import com.google.gson.TypeAdapter;
@@ -24,6 +23,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -515,27 +515,28 @@ public class VirtualNetwork {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VirtualNetwork
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to VirtualNetwork
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!VirtualNetwork.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!VirtualNetwork.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VirtualNetwork is not found in the empty JSON string", VirtualNetwork.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `assigned_to`
       if (jsonObj.get("assigned_to") != null && !jsonObj.get("assigned_to").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("assigned_to"));
+        Href.validateJsonElement(jsonObj.get("assigned_to"));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the optional field `facility`
       if (jsonObj.get("facility") != null && !jsonObj.get("facility").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("facility"));
+        Href.validateJsonElement(jsonObj.get("facility"));
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
@@ -553,7 +554,7 @@ public class VirtualNetwork {
 
           // validate the optional field `instances` (array)
           for (int i = 0; i < jsonArrayinstances.size(); i++) {
-            Href.validateJsonObject(jsonArrayinstances.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArrayinstances.get(i));
           };
         }
       }
@@ -567,19 +568,19 @@ public class VirtualNetwork {
 
           // validate the optional field `metal_gateways` (array)
           for (int i = 0; i < jsonArraymetalGateways.size(); i++) {
-            MetalGatewayLite.validateJsonObject(jsonArraymetalGateways.get(i).getAsJsonObject());
+            MetalGatewayLite.validateJsonElement(jsonArraymetalGateways.get(i));
           };
         }
       }
       // validate the optional field `metro`
       if (jsonObj.get("metro") != null && !jsonObj.get("metro").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("metro"));
+        Href.validateJsonElement(jsonObj.get("metro"));
       }
       if ((jsonObj.get("metro_code") != null && !jsonObj.get("metro_code").isJsonNull()) && !jsonObj.get("metro_code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `metro_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metro_code").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
   }
@@ -621,8 +622,9 @@ public class VirtualNetwork {
 
            @Override
            public VirtualNetwork read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              VirtualNetwork instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

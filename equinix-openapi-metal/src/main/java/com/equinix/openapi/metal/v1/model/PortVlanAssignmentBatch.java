@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.Port;
 import com.equinix.openapi.metal.v1.model.PortVlanAssignmentBatchVlanAssignmentsInner;
@@ -26,6 +25,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -476,19 +476,20 @@ public class PortVlanAssignmentBatch {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PortVlanAssignmentBatch
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to PortVlanAssignmentBatch
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!PortVlanAssignmentBatch.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!PortVlanAssignmentBatch.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PortVlanAssignmentBatch is not found in the empty JSON string", PortVlanAssignmentBatch.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the optional json data is an array if present
-      if (jsonObj.get("error_messages") != null && !jsonObj.get("error_messages").isJsonArray()) {
+      if (jsonObj.get("error_messages") != null && !jsonObj.get("error_messages").isJsonNull() && !jsonObj.get("error_messages").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `error_messages` to be an array in the JSON string but got `%s`", jsonObj.get("error_messages").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
@@ -496,7 +497,7 @@ public class PortVlanAssignmentBatch {
       }
       // validate the optional field `port`
       if (jsonObj.get("port") != null && !jsonObj.get("port").isJsonNull()) {
-        Port.validateJsonObject(jsonObj.getAsJsonObject("port"));
+        Port.validateJsonElement(jsonObj.get("port"));
       }
       if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
@@ -511,13 +512,13 @@ public class PortVlanAssignmentBatch {
 
           // validate the optional field `vlan_assignments` (array)
           for (int i = 0; i < jsonArrayvlanAssignments.size(); i++) {
-            PortVlanAssignmentBatchVlanAssignmentsInner.validateJsonObject(jsonArrayvlanAssignments.get(i).getAsJsonObject());
+            PortVlanAssignmentBatchVlanAssignmentsInner.validateJsonElement(jsonArrayvlanAssignments.get(i));
           };
         }
       }
       // validate the optional field `project`
       if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
-        Href.validateJsonObject(jsonObj.getAsJsonObject("project"));
+        Href.validateJsonElement(jsonObj.get("project"));
       }
   }
 
@@ -558,8 +559,9 @@ public class PortVlanAssignmentBatch {
 
            @Override
            public PortVlanAssignmentBatch read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              PortVlanAssignmentBatch instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

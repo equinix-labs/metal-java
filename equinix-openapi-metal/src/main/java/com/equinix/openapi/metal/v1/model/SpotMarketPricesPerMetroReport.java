@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.SpotPricesPerFacility;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -22,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -347,44 +347,45 @@ public class SpotMarketPricesPerMetroReport {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SpotMarketPricesPerMetroReport
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to SpotMarketPricesPerMetroReport
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!SpotMarketPricesPerMetroReport.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!SpotMarketPricesPerMetroReport.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SpotMarketPricesPerMetroReport is not found in the empty JSON string", SpotMarketPricesPerMetroReport.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `am`
       if (jsonObj.get("am") != null && !jsonObj.get("am").isJsonNull()) {
-        SpotPricesPerFacility.validateJsonObject(jsonObj.getAsJsonObject("am"));
+        SpotPricesPerFacility.validateJsonElement(jsonObj.get("am"));
       }
       // validate the optional field `ch`
       if (jsonObj.get("ch") != null && !jsonObj.get("ch").isJsonNull()) {
-        SpotPricesPerFacility.validateJsonObject(jsonObj.getAsJsonObject("ch"));
+        SpotPricesPerFacility.validateJsonElement(jsonObj.get("ch"));
       }
       // validate the optional field `da`
       if (jsonObj.get("da") != null && !jsonObj.get("da").isJsonNull()) {
-        SpotPricesPerFacility.validateJsonObject(jsonObj.getAsJsonObject("da"));
+        SpotPricesPerFacility.validateJsonElement(jsonObj.get("da"));
       }
       // validate the optional field `la`
       if (jsonObj.get("la") != null && !jsonObj.get("la").isJsonNull()) {
-        SpotPricesPerFacility.validateJsonObject(jsonObj.getAsJsonObject("la"));
+        SpotPricesPerFacility.validateJsonElement(jsonObj.get("la"));
       }
       // validate the optional field `ny`
       if (jsonObj.get("ny") != null && !jsonObj.get("ny").isJsonNull()) {
-        SpotPricesPerFacility.validateJsonObject(jsonObj.getAsJsonObject("ny"));
+        SpotPricesPerFacility.validateJsonElement(jsonObj.get("ny"));
       }
       // validate the optional field `sg`
       if (jsonObj.get("sg") != null && !jsonObj.get("sg").isJsonNull()) {
-        SpotPricesPerFacility.validateJsonObject(jsonObj.getAsJsonObject("sg"));
+        SpotPricesPerFacility.validateJsonElement(jsonObj.get("sg"));
       }
       // validate the optional field `sv`
       if (jsonObj.get("sv") != null && !jsonObj.get("sv").isJsonNull()) {
-        SpotPricesPerFacility.validateJsonObject(jsonObj.getAsJsonObject("sv"));
+        SpotPricesPerFacility.validateJsonElement(jsonObj.get("sv"));
       }
   }
 
@@ -425,8 +426,9 @@ public class SpotMarketPricesPerMetroReport {
 
            @Override
            public SpotMarketPricesPerMetroReport read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              SpotMarketPricesPerMetroReport instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

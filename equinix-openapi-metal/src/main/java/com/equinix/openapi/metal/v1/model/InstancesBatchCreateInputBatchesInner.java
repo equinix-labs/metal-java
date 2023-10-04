@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.IPAddress;
 import com.equinix.openapi.metal.v1.model.SSHKeyInput;
 import com.equinix.openapi.metal.v1.model.Storage;
@@ -26,6 +25,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -1103,26 +1103,27 @@ public class InstancesBatchCreateInputBatchesInner {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to InstancesBatchCreateInputBatchesInner
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to InstancesBatchCreateInputBatchesInner
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!InstancesBatchCreateInputBatchesInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!InstancesBatchCreateInputBatchesInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InstancesBatchCreateInputBatchesInner is not found in the empty JSON string", InstancesBatchCreateInputBatchesInner.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : InstancesBatchCreateInputBatchesInner.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the optional json data is an array if present
-      if (jsonObj.get("hostnames") != null && !jsonObj.get("hostnames").isJsonArray()) {
+      if (jsonObj.get("hostnames") != null && !jsonObj.get("hostnames").isJsonNull() && !jsonObj.get("hostnames").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `hostnames` to be an array in the JSON string but got `%s`", jsonObj.get("hostnames").toString()));
       }
       if (!jsonObj.get("metro").isJsonPrimitive()) {
@@ -1135,7 +1136,7 @@ public class InstancesBatchCreateInputBatchesInner {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("features") != null && !jsonObj.get("features").isJsonArray()) {
+      if (jsonObj.get("features") != null && !jsonObj.get("features").isJsonNull() && !jsonObj.get("features").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `features` to be an array in the JSON string but got `%s`", jsonObj.get("features").toString()));
       }
       if ((jsonObj.get("hardware_reservation_id") != null && !jsonObj.get("hardware_reservation_id").isJsonNull()) && !jsonObj.get("hardware_reservation_id").isJsonPrimitive()) {
@@ -1154,7 +1155,7 @@ public class InstancesBatchCreateInputBatchesInner {
 
           // validate the optional field `ip_addresses` (array)
           for (int i = 0; i < jsonArrayipAddresses.size(); i++) {
-            IPAddress.validateJsonObject(jsonArrayipAddresses.get(i).getAsJsonObject());
+            IPAddress.validateJsonElement(jsonArrayipAddresses.get(i));
           };
         }
       }
@@ -1168,7 +1169,7 @@ public class InstancesBatchCreateInputBatchesInner {
         throw new IllegalArgumentException(String.format("Expected the field `plan` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("project_ssh_keys") != null && !jsonObj.get("project_ssh_keys").isJsonArray()) {
+      if (jsonObj.get("project_ssh_keys") != null && !jsonObj.get("project_ssh_keys").isJsonNull() && !jsonObj.get("project_ssh_keys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `project_ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("project_ssh_keys").toString()));
       }
       if (jsonObj.get("ssh_keys") != null && !jsonObj.get("ssh_keys").isJsonNull()) {
@@ -1181,20 +1182,20 @@ public class InstancesBatchCreateInputBatchesInner {
 
           // validate the optional field `ssh_keys` (array)
           for (int i = 0; i < jsonArraysshKeys.size(); i++) {
-            SSHKeyInput.validateJsonObject(jsonArraysshKeys.get(i).getAsJsonObject());
+            SSHKeyInput.validateJsonElement(jsonArraysshKeys.get(i));
           };
         }
       }
       // validate the optional field `storage`
       if (jsonObj.get("storage") != null && !jsonObj.get("storage").isJsonNull()) {
-        Storage.validateJsonObject(jsonObj.getAsJsonObject("storage"));
+        Storage.validateJsonElement(jsonObj.get("storage"));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("user_ssh_keys") != null && !jsonObj.get("user_ssh_keys").isJsonArray()) {
+      if (jsonObj.get("user_ssh_keys") != null && !jsonObj.get("user_ssh_keys").isJsonNull() && !jsonObj.get("user_ssh_keys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `user_ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("user_ssh_keys").toString()));
       }
       if ((jsonObj.get("userdata") != null && !jsonObj.get("userdata").isJsonNull()) && !jsonObj.get("userdata").isJsonPrimitive()) {
@@ -1245,8 +1246,9 @@ public class InstancesBatchCreateInputBatchesInner {
 
            @Override
            public InstancesBatchCreateInputBatchesInner read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              InstancesBatchCreateInputBatchesInner instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

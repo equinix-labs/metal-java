@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -469,17 +469,18 @@ public class SelfServiceReservationItemResponse {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SelfServiceReservationItemResponse
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to SelfServiceReservationItemResponse
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!SelfServiceReservationItemResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!SelfServiceReservationItemResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SelfServiceReservationItemResponse is not found in the empty JSON string", SelfServiceReservationItemResponse.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
@@ -502,7 +503,7 @@ public class SelfServiceReservationItemResponse {
         throw new IllegalArgumentException(String.format("Expected the field `plan_slug` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan_slug").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("plan_categories") != null && !jsonObj.get("plan_categories").isJsonArray()) {
+      if (jsonObj.get("plan_categories") != null && !jsonObj.get("plan_categories").isJsonNull() && !jsonObj.get("plan_categories").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `plan_categories` to be an array in the JSON string but got `%s`", jsonObj.get("plan_categories").toString()));
       }
       if ((jsonObj.get("term") != null && !jsonObj.get("term").isJsonNull()) && !jsonObj.get("term").isJsonPrimitive()) {
@@ -547,8 +548,9 @@ public class SelfServiceReservationItemResponse {
 
            @Override
            public SelfServiceReservationItemResponse read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              SelfServiceReservationItemResponse instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

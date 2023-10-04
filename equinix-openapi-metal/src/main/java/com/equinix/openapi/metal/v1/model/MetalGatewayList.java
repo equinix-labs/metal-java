@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Meta;
 import com.equinix.openapi.metal.v1.model.MetalGatewayListMetalGatewaysInner;
 import com.google.gson.TypeAdapter;
@@ -24,6 +23,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -218,17 +218,18 @@ public class MetalGatewayList {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to MetalGatewayList
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to MetalGatewayList
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!MetalGatewayList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!MetalGatewayList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in MetalGatewayList is not found in the empty JSON string", MetalGatewayList.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("metal_gateways") != null && !jsonObj.get("metal_gateways").isJsonNull()) {
         JsonArray jsonArraymetalGateways = jsonObj.getAsJsonArray("metal_gateways");
         if (jsonArraymetalGateways != null) {
@@ -239,13 +240,13 @@ public class MetalGatewayList {
 
           // validate the optional field `metal_gateways` (array)
           for (int i = 0; i < jsonArraymetalGateways.size(); i++) {
-            MetalGatewayListMetalGatewaysInner.validateJsonObject(jsonArraymetalGateways.get(i).getAsJsonObject());
+            MetalGatewayListMetalGatewaysInner.validateJsonElement(jsonArraymetalGateways.get(i));
           };
         }
       }
       // validate the optional field `meta`
       if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
-        Meta.validateJsonObject(jsonObj.getAsJsonObject("meta"));
+        Meta.validateJsonElement(jsonObj.get("meta"));
       }
   }
 
@@ -286,8 +287,9 @@ public class MetalGatewayList {
 
            @Override
            public MetalGatewayList read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              MetalGatewayList instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

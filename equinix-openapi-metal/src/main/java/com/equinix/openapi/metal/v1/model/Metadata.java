@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.MetadataNetwork;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -763,17 +763,18 @@ public class Metadata {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Metadata
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Metadata
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Metadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Metadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Metadata is not found in the empty JSON string", Metadata.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("class") != null && !jsonObj.get("class").isJsonNull()) && !jsonObj.get("class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("class").toString()));
       }
@@ -794,17 +795,17 @@ public class Metadata {
       }
       // validate the optional field `network`
       if (jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) {
-        MetadataNetwork.validateJsonObject(jsonObj.getAsJsonObject("network"));
+        MetadataNetwork.validateJsonElement(jsonObj.get("network"));
       }
       if ((jsonObj.get("plan") != null && !jsonObj.get("plan").isJsonNull()) && !jsonObj.get("plan").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `plan` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("private_subnets") != null && !jsonObj.get("private_subnets").isJsonArray()) {
+      if (jsonObj.get("private_subnets") != null && !jsonObj.get("private_subnets").isJsonNull() && !jsonObj.get("private_subnets").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `private_subnets` to be an array in the JSON string but got `%s`", jsonObj.get("private_subnets").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("ssh_keys") != null && !jsonObj.get("ssh_keys").isJsonArray()) {
+      if (jsonObj.get("ssh_keys") != null && !jsonObj.get("ssh_keys").isJsonNull() && !jsonObj.get("ssh_keys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ssh_keys` to be an array in the JSON string but got `%s`", jsonObj.get("ssh_keys").toString()));
       }
       if ((jsonObj.get("switch_short_id") != null && !jsonObj.get("switch_short_id").isJsonNull()) && !jsonObj.get("switch_short_id").isJsonPrimitive()) {
@@ -814,11 +815,11 @@ public class Metadata {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonArray()) {
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("volumes") != null && !jsonObj.get("volumes").isJsonArray()) {
+      if (jsonObj.get("volumes") != null && !jsonObj.get("volumes").isJsonNull() && !jsonObj.get("volumes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `volumes` to be an array in the JSON string but got `%s`", jsonObj.get("volumes").toString()));
       }
   }
@@ -860,8 +861,9 @@ public class Metadata {
 
            @Override
            public Metadata read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Metadata instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

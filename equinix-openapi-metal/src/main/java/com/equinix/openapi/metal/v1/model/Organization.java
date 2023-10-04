@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.Address;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.google.gson.TypeAdapter;
@@ -25,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -656,24 +656,25 @@ public class Organization {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Organization
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Organization
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Organization.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Organization.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Organization is not found in the empty JSON string", Organization.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `address`
       if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
-        Address.validateJsonObject(jsonObj.getAsJsonObject("address"));
+        Address.validateJsonElement(jsonObj.get("address"));
       }
       // validate the optional field `billing_address`
       if (jsonObj.get("billing_address") != null && !jsonObj.get("billing_address").isJsonNull()) {
-        Address.validateJsonObject(jsonObj.getAsJsonObject("billing_address"));
+        Address.validateJsonElement(jsonObj.get("billing_address"));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
@@ -694,7 +695,7 @@ public class Organization {
 
           // validate the optional field `members` (array)
           for (int i = 0; i < jsonArraymembers.size(); i++) {
-            Href.validateJsonObject(jsonArraymembers.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArraymembers.get(i));
           };
         }
       }
@@ -708,7 +709,7 @@ public class Organization {
 
           // validate the optional field `memberships` (array)
           for (int i = 0; i < jsonArraymemberships.size(); i++) {
-            Href.validateJsonObject(jsonArraymemberships.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArraymemberships.get(i));
           };
         }
       }
@@ -725,7 +726,7 @@ public class Organization {
 
           // validate the optional field `projects` (array)
           for (int i = 0; i < jsonArrayprojects.size(); i++) {
-            Href.validateJsonObject(jsonArrayprojects.get(i).getAsJsonObject());
+            Href.validateJsonElement(jsonArrayprojects.get(i));
           };
         }
       }
@@ -774,8 +775,9 @@ public class Organization {
 
            @Override
            public Organization read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Organization instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

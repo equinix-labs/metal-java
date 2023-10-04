@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.BgpNeighborData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -189,17 +189,18 @@ public class BgpSessionNeighbors {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to BgpSessionNeighbors
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to BgpSessionNeighbors
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!BgpSessionNeighbors.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!BgpSessionNeighbors.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in BgpSessionNeighbors is not found in the empty JSON string", BgpSessionNeighbors.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("bgp_neighbors") != null && !jsonObj.get("bgp_neighbors").isJsonNull()) {
         JsonArray jsonArraybgpNeighbors = jsonObj.getAsJsonArray("bgp_neighbors");
         if (jsonArraybgpNeighbors != null) {
@@ -210,7 +211,7 @@ public class BgpSessionNeighbors {
 
           // validate the optional field `bgp_neighbors` (array)
           for (int i = 0; i < jsonArraybgpNeighbors.size(); i++) {
-            BgpNeighborData.validateJsonObject(jsonArraybgpNeighbors.get(i).getAsJsonObject());
+            BgpNeighborData.validateJsonElement(jsonArraybgpNeighbors.get(i));
           };
         }
       }
@@ -253,8 +254,9 @@ public class BgpSessionNeighbors {
 
            @Override
            public BgpSessionNeighbors read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              BgpSessionNeighbors instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

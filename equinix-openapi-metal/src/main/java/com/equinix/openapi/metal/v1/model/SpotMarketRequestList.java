@@ -14,7 +14,6 @@
 package com.equinix.openapi.metal.v1.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.equinix.openapi.metal.v1.model.SpotMarketRequest;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -189,17 +189,18 @@ public class SpotMarketRequestList {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SpotMarketRequestList
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to SpotMarketRequestList
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!SpotMarketRequestList.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!SpotMarketRequestList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SpotMarketRequestList is not found in the empty JSON string", SpotMarketRequestList.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("spot_market_requests") != null && !jsonObj.get("spot_market_requests").isJsonNull()) {
         JsonArray jsonArrayspotMarketRequests = jsonObj.getAsJsonArray("spot_market_requests");
         if (jsonArrayspotMarketRequests != null) {
@@ -210,7 +211,7 @@ public class SpotMarketRequestList {
 
           // validate the optional field `spot_market_requests` (array)
           for (int i = 0; i < jsonArrayspotMarketRequests.size(); i++) {
-            SpotMarketRequest.validateJsonObject(jsonArrayspotMarketRequests.get(i).getAsJsonObject());
+            SpotMarketRequest.validateJsonElement(jsonArrayspotMarketRequests.get(i));
           };
         }
       }
@@ -253,8 +254,9 @@ public class SpotMarketRequestList {
 
            @Override
            public SpotMarketRequestList read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              SpotMarketRequestList instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
