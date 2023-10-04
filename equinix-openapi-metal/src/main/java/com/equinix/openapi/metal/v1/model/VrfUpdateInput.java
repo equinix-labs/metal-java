@@ -209,7 +209,7 @@ public class VrfUpdateInput {
   }
 
    /**
-   * The new &#x60;local_asn&#x60; value for the VRF. This field cannot be updated when there are active Interconnection Virtual Circuits associated to the VRF.
+   * The new &#x60;local_asn&#x60; value for the VRF. This field cannot be updated when there are active Interconnection Virtual Circuits associated to the VRF, or if any of the VLANs of the VRF&#39;s metal gateway has been assigned on an instance.
    * @return localAsn
   **/
   @javax.annotation.Nullable

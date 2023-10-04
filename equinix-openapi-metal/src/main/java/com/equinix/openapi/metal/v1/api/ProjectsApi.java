@@ -404,7 +404,9 @@ public class ProjectsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createTransferRequestCall(UUID id, TransferRequestInput transferRequestInput, List<String> include, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -455,6 +457,7 @@ public class ProjectsApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createTransferRequestValidateBeforeCall(UUID id, TransferRequestInput transferRequestInput, List<String> include, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
@@ -488,7 +491,9 @@ public class ProjectsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public TransferRequest createTransferRequest(UUID id, TransferRequestInput transferRequestInput, List<String> include) throws ApiException {
         ApiResponse<TransferRequest> localVarResp = createTransferRequestWithHttpInfo(id, transferRequestInput, include);
         return localVarResp.getData();
@@ -511,7 +516,9 @@ public class ProjectsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<TransferRequest> createTransferRequestWithHttpInfo(UUID id, TransferRequestInput transferRequestInput, List<String> include) throws ApiException {
         okhttp3.Call localVarCall = createTransferRequestValidateBeforeCall(id, transferRequestInput, include, null);
         Type localVarReturnType = new TypeToken<TransferRequest>(){}.getType();
@@ -536,7 +543,9 @@ public class ProjectsApi {
         <tr><td> 404 </td><td> not found </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> unprocessable entity </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createTransferRequestAsync(UUID id, TransferRequestInput transferRequestInput, List<String> include, final ApiCallback<TransferRequest> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createTransferRequestValidateBeforeCall(id, transferRequestInput, include, _callback);

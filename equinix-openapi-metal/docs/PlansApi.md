@@ -61,7 +61,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categories** | [**List&lt;String&gt;**](String.md)| Filter plans by its category | [optional] [enum: compute, storage] |
+| **categories** | [**List&lt;String&gt;**](String.md)| Filter plans by its category | [optional] [enum: compute, storage, vmce] |
 | **type** | **String**| Filter plans by its plan type | [optional] [enum: standard, workload_optimized, custom] |
 | **slug** | **String**| Filter plans by slug | [optional] |
 | **include** | [**List&lt;String&gt;**](String.md)| Nested attributes to include. Included objects will return their full attributes. Attribute names can be dotted (up to 3 levels) to included deeply nested objects. | [optional] |

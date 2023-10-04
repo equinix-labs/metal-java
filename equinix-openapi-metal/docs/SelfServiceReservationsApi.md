@@ -210,7 +210,7 @@ public class Example {
 | **projectId** | **UUID**| Project UUID | |
 | **page** | **Integer**| Page to return | [optional] [default to 1] |
 | **perPage** | **Integer**| Items returned per page | [optional] [default to 10] |
-| **categories** | [**List&lt;String&gt;**](String.md)| Filter reservations by items category | [optional] [enum: compute, storage] |
+| **categories** | [**List&lt;String&gt;**](String.md)| Filter reservations by items category | [optional] [enum: compute, storage, vmce] |
 
 ### Return type
 
