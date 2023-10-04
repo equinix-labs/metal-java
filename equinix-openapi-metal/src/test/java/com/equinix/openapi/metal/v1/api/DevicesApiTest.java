@@ -273,6 +273,7 @@ public class DevicesApiTest {
         String search = null;
         List<String> categories = null;
         String facility = null;
+        String metro = null;
         String hostname = null;
         Boolean reserved = null;
         String tag = null;
@@ -282,7 +283,7 @@ public class DevicesApiTest {
         List<String> exclude = null;
         Integer page = null;
         Integer perPage = null;
-        DeviceList response = api.findProjectDevices(id, search, categories, facility, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
+        DeviceList response = api.findProjectDevices(id, search, categories, facility, metro, hostname, reserved, tag, type, hasTerminationTime, include, exclude, page, perPage);
         // TODO: test validations
     }
 
