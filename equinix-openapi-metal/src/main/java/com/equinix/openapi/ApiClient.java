@@ -140,7 +140,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("metal-java/0.7.0");
+        setUserAgent("metal-java/0.8.0");
 
         authentications = new HashMap<String, Authentication>();
     }
