@@ -28,14 +28,14 @@
         "@semantic-release/exec",
         {
           "prepareCmd": "echo -n '${nextRelease.version}' > version && make generate",
-          "publishCmd": "mvn -f equinix-openapi-metal -B package && mvn -f equinix-openapi-metal deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/equinix-labs/metal-java"
+          "publishCmd": "export GITHUB_TOKEN='${process.env.GITHUB_TOKEN}'; cd equinix-openapi-metal && mvn -B package --file pom.xml && mvn deploy -s ${process.env.SETTINGS_PATH} -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/ctreatma/metal-java"
         }
       ],
       [
         "@semantic-release/git",
         {
           "message": "ci: regenerate code for version ${nextRelease.version}",
-          "assets": ["."]
+          "assets": ["version", "equinix-openapi-metal/src"]
         }
       ]
     ]

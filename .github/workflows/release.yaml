@@ -34,6 +34,7 @@ jobs:
             conventional-changelog-conventionalcommits@4.6.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SETTINGS_PATH: ${{ github.workspace }}/settings.xml
           GIT_AUTHOR_NAME: equinix-labs@auto-commit-workflow
           GIT_AUTHOR_EMAIL: bot@equinix.noreply.github.com
           GIT_COMMITTER_NAME: equinix-labs@auto-commit-workflow
