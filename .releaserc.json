@@ -28,7 +28,7 @@
         "@semantic-release/exec",
         {
           "prepareCmd": "echo -n '${nextRelease.version}' > version && make generate",
-          "publishCmd": "export GITHUB_TOKEN='${process.env.GITHUB_TOKEN}'; cd equinix-openapi-metal && mvn -B package --file pom.xml && mvn deploy -s ${process.env.SETTINGS_PATH} -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/ctreatma/metal-java"
+          "publishCmd": "export GITHUB_TOKEN='${process.env.GITHUB_TOKEN}'; cd equinix-openapi-metal && mvn -B package --file pom.xml && mvn deploy -s ${process.env.SETTINGS_PATH} -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/equinix-labs/metal-java"
         }
       ],
       [
