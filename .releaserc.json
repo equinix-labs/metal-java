@@ -35,7 +35,14 @@
         "@semantic-release/git",
         {
           "message": "ci: regenerate code for version ${nextRelease.version}",
-          "assets": ["version", "equinix-openapi-metal/src"]
+          "assets": [
+            "version",
+            "equinix-openapi-metal/src",
+            "equinix-openapi-metal/README.md",
+            "equinix-openapi-metal/build.gradle",
+            "equinix-openapi-metal/build.sbt",
+            "equinix-openapi-metal/pom.xml"
+          ]
         }
       ]
     ]
