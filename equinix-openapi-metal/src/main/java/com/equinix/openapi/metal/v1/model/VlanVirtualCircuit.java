@@ -164,6 +164,57 @@ public class VlanVirtualCircuit {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags;
 
+  /**
+   * Gets or Sets type
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    VLAN("vlan"),
+    
+    VRF("vrf");
+
+    private Object value;
+
+    TypeEnum(Object value) {
+      this.value = value;
+    }
+
+    public Object getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(Object value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        Object value =  jsonReader.nextObject();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
+
   public static final String SERIALIZED_NAME_VIRTUAL_NETWORK = "virtual_network";
   @SerializedName(SERIALIZED_NAME_VIRTUAL_NETWORK)
   private Href virtualNetwork;
@@ -401,6 +452,27 @@ public class VlanVirtualCircuit {
   }
 
 
+  public VlanVirtualCircuit type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
   public VlanVirtualCircuit virtualNetwork(Href virtualNetwork) {
     
     this.virtualNetwork = virtualNetwork;
@@ -411,7 +483,7 @@ public class VlanVirtualCircuit {
    * Get virtualNetwork
    * @return virtualNetwork
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Href getVirtualNetwork() {
     return virtualNetwork;
   }
@@ -549,6 +621,7 @@ public class VlanVirtualCircuit {
         Objects.equals(this.speed, vlanVirtualCircuit.speed) &&
         Objects.equals(this.status, vlanVirtualCircuit.status) &&
         Objects.equals(this.tags, vlanVirtualCircuit.tags) &&
+        Objects.equals(this.type, vlanVirtualCircuit.type) &&
         Objects.equals(this.virtualNetwork, vlanVirtualCircuit.virtualNetwork) &&
         Objects.equals(this.vnid, vlanVirtualCircuit.vnid) &&
         Objects.equals(this.createdAt, vlanVirtualCircuit.createdAt) &&
@@ -558,7 +631,7 @@ public class VlanVirtualCircuit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bill, description, id, name, nniVlan, port, project, speed, status, tags, virtualNetwork, vnid, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(bill, description, id, name, nniVlan, port, project, speed, status, tags, type, virtualNetwork, vnid, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -575,6 +648,7 @@ public class VlanVirtualCircuit {
     sb.append("    speed: ").append(toIndentedString(speed)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    virtualNetwork: ").append(toIndentedString(virtualNetwork)).append("\n");
     sb.append("    vnid: ").append(toIndentedString(vnid)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
@@ -612,6 +686,7 @@ public class VlanVirtualCircuit {
     openapiFields.add("speed");
     openapiFields.add("status");
     openapiFields.add("tags");
+    openapiFields.add("type");
     openapiFields.add("virtual_network");
     openapiFields.add("vnid");
     openapiFields.add("created_at");
@@ -619,7 +694,6 @@ public class VlanVirtualCircuit {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("virtual_network");
   }
 
  /**
@@ -632,13 +706,6 @@ public class VlanVirtualCircuit {
       if (jsonElement == null) {
         if (!VlanVirtualCircuit.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VlanVirtualCircuit is not found in the empty JSON string", VlanVirtualCircuit.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : VlanVirtualCircuit.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -666,8 +733,10 @@ public class VlanVirtualCircuit {
       if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
-      // validate the required field `virtual_network`
-      Href.validateJsonElement(jsonObj.get("virtual_network"));
+      // validate the optional field `virtual_network`
+      if (jsonObj.get("virtual_network") != null && !jsonObj.get("virtual_network").isJsonNull()) {
+        Href.validateJsonElement(jsonObj.get("virtual_network"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

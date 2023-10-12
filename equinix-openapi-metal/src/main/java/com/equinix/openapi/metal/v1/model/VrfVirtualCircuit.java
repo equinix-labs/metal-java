@@ -181,6 +181,55 @@ public class VrfVirtualCircuit {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags;
 
+  /**
+   * Gets or Sets type
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    VRF("vrf");
+
+    private Object value;
+
+    TypeEnum(Object value) {
+      this.value = value;
+    }
+
+    public Object getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(Object value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        Object value =  jsonReader.nextObject();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
+
   public static final String SERIALIZED_NAME_VRF = "vrf";
   @SerializedName(SERIALIZED_NAME_VRF)
   private Vrf vrf;
@@ -498,6 +547,27 @@ public class VrfVirtualCircuit {
   }
 
 
+  public VrfVirtualCircuit type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
   public VrfVirtualCircuit vrf(Vrf vrf) {
     
     this.vrf = vrf;
@@ -629,6 +699,7 @@ public class VrfVirtualCircuit {
         Objects.equals(this.status, vrfVirtualCircuit.status) &&
         Objects.equals(this.subnet, vrfVirtualCircuit.subnet) &&
         Objects.equals(this.tags, vrfVirtualCircuit.tags) &&
+        Objects.equals(this.type, vrfVirtualCircuit.type) &&
         Objects.equals(this.vrf, vrfVirtualCircuit.vrf) &&
         Objects.equals(this.createdAt, vrfVirtualCircuit.createdAt) &&
         Objects.equals(this.updatedAt, vrfVirtualCircuit.updatedAt)&&
@@ -637,7 +708,7 @@ public class VrfVirtualCircuit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerIp, description, id, md5, metalIp, name, port, nniVlan, peerAsn, project, speed, status, subnet, tags, vrf, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(customerIp, description, id, md5, metalIp, name, port, nniVlan, peerAsn, project, speed, status, subnet, tags, type, vrf, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -658,6 +729,7 @@ public class VrfVirtualCircuit {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    subnet: ").append(toIndentedString(subnet)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    vrf: ").append(toIndentedString(vrf)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
@@ -698,6 +770,7 @@ public class VrfVirtualCircuit {
     openapiFields.add("status");
     openapiFields.add("subnet");
     openapiFields.add("tags");
+    openapiFields.add("type");
     openapiFields.add("vrf");
     openapiFields.add("created_at");
     openapiFields.add("updated_at");

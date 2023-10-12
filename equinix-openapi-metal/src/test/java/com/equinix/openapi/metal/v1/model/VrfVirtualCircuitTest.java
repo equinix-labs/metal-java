@@ -156,6 +156,14 @@ public class VrfVirtualCircuitTest {
     }
 
     /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
+    /**
      * Test the property 'vrf'
      */
     @Test

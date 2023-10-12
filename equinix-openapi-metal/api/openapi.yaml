@@ -13517,6 +13517,7 @@ components:
                 href: href
               created_at: 2000-01-23T04:56:07.000+00:00
               vrf: null
+              type: "{}"
               metal_ip: 12.0.0.1
               speed: 7
               tags:
@@ -13538,6 +13539,7 @@ components:
                 href: href
               created_at: 2000-01-23T04:56:07.000+00:00
               vrf: null
+              type: "{}"
               metal_ip: 12.0.0.1
               speed: 7
               tags:
@@ -13904,6 +13906,7 @@ components:
                   href: href
                 created_at: 2000-01-23T04:56:07.000+00:00
                 vrf: null
+                type: "{}"
                 metal_ip: 12.0.0.1
                 speed: 7
                 tags:
@@ -13925,6 +13928,7 @@ components:
                   href: href
                 created_at: 2000-01-23T04:56:07.000+00:00
                 vrf: null
+                type: "{}"
                 metal_ip: 12.0.0.1
                 speed: 7
                 tags:
@@ -14206,6 +14210,7 @@ components:
                   href: href
                 created_at: 2000-01-23T04:56:07.000+00:00
                 vrf: null
+                type: "{}"
                 metal_ip: 12.0.0.1
                 speed: 7
                 tags:
@@ -14227,6 +14232,7 @@ components:
                   href: href
                 created_at: 2000-01-23T04:56:07.000+00:00
                 vrf: null
+                type: "{}"
                 metal_ip: 12.0.0.1
                 speed: 7
                 tags:
@@ -23699,6 +23705,11 @@ components:
           items:
             type: string
           type: array
+        type:
+          enum:
+          - vlan
+          - vrf
+          type: object
         virtual_network:
           $ref: '#/components/schemas/Href'
         vnid:
@@ -23709,8 +23720,6 @@ components:
         updated_at:
           format: date-time
           type: string
-      required:
-      - virtual_network
       type: object
     VlanVirtualCircuitCreateInput:
       properties:
@@ -23882,6 +23891,7 @@ components:
             href: href
           created_at: 2000-01-23T04:56:07.000+00:00
           vrf: null
+          type: "{}"
           metal_ip: 12.0.0.1
           speed: 7
           tags:
@@ -23903,6 +23913,7 @@ components:
             href: href
           created_at: 2000-01-23T04:56:07.000+00:00
           vrf: null
+          type: "{}"
           metal_ip: 12.0.0.1
           speed: 7
           tags:
@@ -24432,6 +24443,7 @@ components:
               href: href
             created_at: 2000-01-23T04:56:07.000+00:00
             vrf: null
+            type: "{}"
             metal_ip: 12.0.0.1
             speed: 7
             tags:
@@ -24453,6 +24465,7 @@ components:
               href: href
             created_at: 2000-01-23T04:56:07.000+00:00
             vrf: null
+            type: "{}"
             metal_ip: 12.0.0.1
             speed: 7
             tags:
@@ -24882,6 +24895,7 @@ components:
                 href: href
               created_at: 2000-01-23T04:56:07.000+00:00
               vrf: null
+              type: "{}"
               metal_ip: 12.0.0.1
               speed: 7
               tags:
@@ -24903,6 +24917,7 @@ components:
                 href: href
               created_at: 2000-01-23T04:56:07.000+00:00
               vrf: null
+              type: "{}"
               metal_ip: 12.0.0.1
               speed: 7
               tags:
@@ -25236,6 +25251,7 @@ components:
                 href: href
               created_at: 2000-01-23T04:56:07.000+00:00
               vrf: null
+              type: "{}"
               metal_ip: 12.0.0.1
               speed: 7
               tags:
@@ -25257,6 +25273,7 @@ components:
                 href: href
               created_at: 2000-01-23T04:56:07.000+00:00
               vrf: null
+              type: "{}"
               metal_ip: 12.0.0.1
               speed: 7
               tags:
@@ -25443,6 +25460,7 @@ components:
               href: href
             created_at: 2000-01-23T04:56:07.000+00:00
             vrf: null
+            type: "{}"
             metal_ip: 12.0.0.1
             speed: 7
             tags:
@@ -25464,6 +25482,7 @@ components:
               href: href
             created_at: 2000-01-23T04:56:07.000+00:00
             vrf: null
+            type: "{}"
             metal_ip: 12.0.0.1
             speed: 7
             tags:
@@ -25609,6 +25628,7 @@ components:
               href: href
             created_at: 2000-01-23T04:56:07.000+00:00
             vrf: null
+            type: "{}"
             metal_ip: 12.0.0.1
             speed: 7
             tags:
@@ -25630,6 +25650,7 @@ components:
               href: href
             created_at: 2000-01-23T04:56:07.000+00:00
             vrf: null
+            type: "{}"
             metal_ip: 12.0.0.1
             speed: 7
             tags:
@@ -25900,6 +25921,7 @@ components:
               href: href
             created_at: 2000-01-23T04:56:07.000+00:00
             vrf: null
+            type: "{}"
             metal_ip: 12.0.0.1
             speed: 7
             tags:
@@ -25921,6 +25943,7 @@ components:
               href: href
             created_at: 2000-01-23T04:56:07.000+00:00
             vrf: null
+            type: "{}"
             metal_ip: 12.0.0.1
             speed: 7
             tags:
@@ -26245,6 +26268,7 @@ components:
                 href: href
               created_at: 2000-01-23T04:56:07.000+00:00
               vrf: null
+              type: "{}"
               metal_ip: 12.0.0.1
               speed: 7
               tags:
@@ -26266,6 +26290,7 @@ components:
                 href: href
               created_at: 2000-01-23T04:56:07.000+00:00
               vrf: null
+              type: "{}"
               metal_ip: 12.0.0.1
               speed: 7
               tags:
@@ -26453,6 +26478,7 @@ components:
               href: href
             created_at: 2000-01-23T04:56:07.000+00:00
             vrf: null
+            type: "{}"
             metal_ip: 12.0.0.1
             speed: 7
             tags:
@@ -26474,6 +26500,7 @@ components:
               href: href
             created_at: 2000-01-23T04:56:07.000+00:00
             vrf: null
+            type: "{}"
             metal_ip: 12.0.0.1
             speed: 7
             tags:
@@ -26857,6 +26884,7 @@ components:
                   href: href
                 created_at: 2000-01-23T04:56:07.000+00:00
                 vrf: null
+                type: "{}"
                 metal_ip: 12.0.0.1
                 speed: 7
                 tags:
@@ -26878,6 +26906,7 @@ components:
                   href: href
                 created_at: 2000-01-23T04:56:07.000+00:00
                 vrf: null
+                type: "{}"
                 metal_ip: 12.0.0.1
                 speed: 7
                 tags:
@@ -27065,6 +27094,7 @@ components:
                 href: href
               created_at: 2000-01-23T04:56:07.000+00:00
               vrf: null
+              type: "{}"
               metal_ip: 12.0.0.1
               speed: 7
               tags:
@@ -27086,6 +27116,7 @@ components:
                 href: href
               created_at: 2000-01-23T04:56:07.000+00:00
               vrf: null
+              type: "{}"
               metal_ip: 12.0.0.1
               speed: 7
               tags:
@@ -27355,6 +27386,7 @@ components:
                   href: href
                 created_at: 2000-01-23T04:56:07.000+00:00
                 vrf: null
+                type: "{}"
                 metal_ip: 12.0.0.1
                 speed: 7
                 tags:
@@ -27376,6 +27408,7 @@ components:
                   href: href
                 created_at: 2000-01-23T04:56:07.000+00:00
                 vrf: null
+                type: "{}"
                 metal_ip: 12.0.0.1
                 speed: 7
                 tags:
@@ -27563,6 +27596,7 @@ components:
                 href: href
               created_at: 2000-01-23T04:56:07.000+00:00
               vrf: null
+              type: "{}"
               metal_ip: 12.0.0.1
               speed: 7
               tags:
@@ -27584,6 +27618,7 @@ components:
                 href: href
               created_at: 2000-01-23T04:56:07.000+00:00
               vrf: null
+              type: "{}"
               metal_ip: 12.0.0.1
               speed: 7
               tags:
@@ -27704,6 +27739,7 @@ components:
           href: href
         created_at: 2000-01-23T04:56:07.000+00:00
         vrf: null
+        type: "{}"
         metal_ip: 12.0.0.1
         speed: 7
         tags:
@@ -27794,6 +27830,10 @@ components:
           items:
             type: string
           type: array
+        type:
+          enum:
+          - vrf
+          type: object
         vrf:
           $ref: '#/components/schemas/Vrf'
         created_at:
