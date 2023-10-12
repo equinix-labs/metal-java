@@ -649,6 +649,7 @@ Class | Method | HTTP request | Description
  - [VlanFabricVcCreateInput](docs/VlanFabricVcCreateInput.md)
  - [VlanVirtualCircuit](docs/VlanVirtualCircuit.md)
  - [VlanVirtualCircuitCreateInput](docs/VlanVirtualCircuitCreateInput.md)
+ - [VlanVirtualCircuitType](docs/VlanVirtualCircuitType.md)
  - [VlanVirtualCircuitUpdateInput](docs/VlanVirtualCircuitUpdateInput.md)
  - [Vrf](docs/Vrf.md)
  - [VrfCreateInput](docs/VrfCreateInput.md)
@@ -667,6 +668,7 @@ Class | Method | HTTP request | Description
  - [VrfUpdateInput](docs/VrfUpdateInput.md)
  - [VrfVirtualCircuit](docs/VrfVirtualCircuit.md)
  - [VrfVirtualCircuitCreateInput](docs/VrfVirtualCircuitCreateInput.md)
+ - [VrfVirtualCircuitType](docs/VrfVirtualCircuitType.md)
  - [VrfVirtualCircuitUpdateInput](docs/VrfVirtualCircuitUpdateInput.md)
 
 

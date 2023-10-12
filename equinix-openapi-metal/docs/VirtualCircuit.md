@@ -17,7 +17,7 @@
 |**speed** | **Integer** | integer representing bps speed |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) | The status changes of a VRF virtual circuit are generally the same as Virtual Circuits that aren&#39;t in a VRF. However, for VRF Virtual Circuits on Fabric VCs, the status will change to &#39;waiting_on_peering_details&#39; once the Fabric service token associated with the virtual circuit has been redeemed on Fabric, and Metal has found the associated Fabric connection. At this point, users can update the subnet, MD5 password, customer IP and/or metal IP accordingly. For VRF Virtual Circuits on Dedicated Ports, we require all peering details to be set on creation of a VRF Virtual Circuit. The status will change to &#x60;changing_peering_details&#x60; whenever an active VRF Virtual Circuit has any of its peering details updated. |  [optional] |
 |**tags** | **List&lt;String&gt;** |  |  [optional] |
-|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
+|**type** | **VrfVirtualCircuitType** |  |  [optional] |
 |**virtualNetwork** | [**Href**](Href.md) |  |  [optional] |
 |**vnid** | **Integer** |  |  [optional] |
 |**createdAt** | **OffsetDateTime** |  |  [optional] |
@@ -47,15 +47,6 @@
 | CHANGING_PEERING_DETAILS_FAILED | &quot;changing_peering_details_failed&quot; |
 | DEACTIVATION_FAILED | &quot;deactivation_failed&quot; |
 | DELETE_FAILED | &quot;delete_failed&quot; |
-
-
-
-## Enum: TypeEnum
-
-| Name | Value |
-|---- | -----|
-| VLAN | &quot;vlan&quot; |
-| VRF | &quot;vrf&quot; |
 
 
 

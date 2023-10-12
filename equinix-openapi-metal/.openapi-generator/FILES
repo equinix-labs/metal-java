@@ -266,6 +266,7 @@ docs/VirtualNetworkList.md
 docs/VlanFabricVcCreateInput.md
 docs/VlanVirtualCircuit.md
 docs/VlanVirtualCircuitCreateInput.md
+docs/VlanVirtualCircuitType.md
 docs/VlanVirtualCircuitUpdateInput.md
 docs/VlansApi.md
 docs/Vrf.md
@@ -285,6 +286,7 @@ docs/VrfRouteUpdateInput.md
 docs/VrfUpdateInput.md
 docs/VrfVirtualCircuit.md
 docs/VrfVirtualCircuitCreateInput.md
+docs/VrfVirtualCircuitType.md
 docs/VrfVirtualCircuitUpdateInput.md
 docs/VrfsApi.md
 git_push.sh
@@ -576,6 +578,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/VirtualNetworkList.java
 src/main/java/com/equinix/openapi/metal/v1/model/VlanFabricVcCreateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuit.java
 src/main/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuitCreateInput.java
+src/main/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuitType.java
 src/main/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuitUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/Vrf.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfCreateInput.java
@@ -594,6 +597,7 @@ src/main/java/com/equinix/openapi/metal/v1/model/VrfRouteUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfUpdateInput.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuit.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitCreateInput.java
+src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitType.java
 src/main/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitUpdateInput.java
 src/test/java/com/equinix/openapi/metal/v1/api/AuthenticationApiTest.java
 src/test/java/com/equinix/openapi/metal/v1/api/BatchesApiTest.java
@@ -857,6 +861,7 @@ src/test/java/com/equinix/openapi/metal/v1/model/VirtualNetworkTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VlanFabricVcCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuitCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuitTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuitTypeTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VlanVirtualCircuitUpdateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfFabricVcCreateInputTest.java
@@ -875,4 +880,5 @@ src/test/java/com/equinix/openapi/metal/v1/model/VrfTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfUpdateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitCreateInputTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitTest.java
+src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitTypeTest.java
 src/test/java/com/equinix/openapi/metal/v1/model/VrfVirtualCircuitUpdateInputTest.java
