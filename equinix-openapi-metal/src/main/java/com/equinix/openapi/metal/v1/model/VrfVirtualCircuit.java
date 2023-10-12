@@ -508,7 +508,7 @@ public class VrfVirtualCircuit {
    * Get vrf
    * @return vrf
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Vrf getVrf() {
     return vrf;
   }
@@ -704,6 +704,7 @@ public class VrfVirtualCircuit {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("vrf");
   }
 
  /**
@@ -716,6 +717,13 @@ public class VrfVirtualCircuit {
       if (jsonElement == null) {
         if (!VrfVirtualCircuit.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in VrfVirtualCircuit is not found in the empty JSON string", VrfVirtualCircuit.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : VrfVirtualCircuit.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -755,10 +763,8 @@ public class VrfVirtualCircuit {
       if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
-      // validate the optional field `vrf`
-      if (jsonObj.get("vrf") != null && !jsonObj.get("vrf").isJsonNull()) {
-        Vrf.validateJsonElement(jsonObj.get("vrf"));
-      }
+      // validate the required field `vrf`
+      Vrf.validateJsonElement(jsonObj.get("vrf"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
