@@ -51,6 +51,7 @@ properties:
   type:
     enum:
     - vlan
+    type: string
   virtual_network:
     $ref: './Href.yaml'
   vnid:

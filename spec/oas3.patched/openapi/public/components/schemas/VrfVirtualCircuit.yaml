@@ -78,6 +78,7 @@ properties:
   type:
     enum:
     - vrf
+    type: string
   vrf:
     $ref: './Vrf.yaml'
   created_at:
