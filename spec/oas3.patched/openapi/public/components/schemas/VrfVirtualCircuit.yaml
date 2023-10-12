@@ -76,9 +76,7 @@ properties:
       type: string
     type: array
   type:
-    enum:
-    - vrf
-    type: string
+    $ref: './VrfVirtualCircuitType.yaml'
   vrf:
     $ref: './Vrf.yaml'
   created_at:
