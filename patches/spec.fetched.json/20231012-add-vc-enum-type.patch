@@ -1,0 +1,24 @@
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuit.yaml b/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuit.yaml
+index 2d150b05..2af30a7a 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuit.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuit.yaml
+@@ -51,6 +51,7 @@ properties:
+   type:
+     enum:
+     - vlan
++    type: string
+   virtual_network:
+     $ref: './Href.yaml'
+   vnid:
+diff --git a/spec/oas3.patched/openapi/public/components/schemas/VrfVirtualCircuit.yaml b/spec/oas3.patched/openapi/public/components/schemas/VrfVirtualCircuit.yaml
+index 0ab53602..abc4c3a7 100644
+--- a/spec/oas3.patched/openapi/public/components/schemas/VrfVirtualCircuit.yaml
++++ b/spec/oas3.patched/openapi/public/components/schemas/VrfVirtualCircuit.yaml
+@@ -78,6 +78,7 @@ properties:
+   type:
+     enum:
+     - vrf
++    type: string
+   vrf:
+     $ref: './Vrf.yaml'
+   created_at:
