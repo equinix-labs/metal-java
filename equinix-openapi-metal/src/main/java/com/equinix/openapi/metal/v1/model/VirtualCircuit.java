@@ -18,6 +18,7 @@ import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.VlanVirtualCircuit;
 import com.equinix.openapi.metal.v1.model.Vrf;
 import com.equinix.openapi.metal.v1.model.VrfVirtualCircuit;
+import com.equinix.openapi.metal.v1.model.VrfVirtualCircuitType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;

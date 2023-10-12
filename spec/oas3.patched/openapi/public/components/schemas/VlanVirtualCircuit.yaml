@@ -1,5 +1,3 @@
-required:
-- virtual_network
 properties:
   bill:
     type: boolean
@@ -50,6 +48,8 @@ properties:
     items:
       type: string
     type: array
+  type:
+    $ref: './VlanVirtualCircuitType.yaml'
   virtual_network:
     $ref: './Href.yaml'
   vnid:

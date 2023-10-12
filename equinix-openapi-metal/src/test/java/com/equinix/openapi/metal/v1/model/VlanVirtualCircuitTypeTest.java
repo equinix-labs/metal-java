@@ -13,179 +13,20 @@
 
 package com.equinix.openapi.metal.v1.model;
 
-import com.equinix.openapi.metal.v1.model.Href;
-import com.equinix.openapi.metal.v1.model.Vrf;
-import com.equinix.openapi.metal.v1.model.VrfVirtualCircuitType;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for VrfVirtualCircuit
+ * Model tests for VlanVirtualCircuitType
  */
-public class VrfVirtualCircuitTest {
-    private final VrfVirtualCircuit model = new VrfVirtualCircuit();
-
+public class VlanVirtualCircuitTypeTest {
     /**
-     * Model tests for VrfVirtualCircuit
+     * Model tests for VlanVirtualCircuitType
      */
     @Test
-    public void testVrfVirtualCircuit() {
-        // TODO: test VrfVirtualCircuit
-    }
-
-    /**
-     * Test the property 'customerIp'
-     */
-    @Test
-    public void customerIpTest() {
-        // TODO: test customerIp
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'md5'
-     */
-    @Test
-    public void md5Test() {
-        // TODO: test md5
-    }
-
-    /**
-     * Test the property 'metalIp'
-     */
-    @Test
-    public void metalIpTest() {
-        // TODO: test metalIp
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'port'
-     */
-    @Test
-    public void portTest() {
-        // TODO: test port
-    }
-
-    /**
-     * Test the property 'nniVlan'
-     */
-    @Test
-    public void nniVlanTest() {
-        // TODO: test nniVlan
-    }
-
-    /**
-     * Test the property 'peerAsn'
-     */
-    @Test
-    public void peerAsnTest() {
-        // TODO: test peerAsn
-    }
-
-    /**
-     * Test the property 'project'
-     */
-    @Test
-    public void projectTest() {
-        // TODO: test project
-    }
-
-    /**
-     * Test the property 'speed'
-     */
-    @Test
-    public void speedTest() {
-        // TODO: test speed
-    }
-
-    /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
-     * Test the property 'subnet'
-     */
-    @Test
-    public void subnetTest() {
-        // TODO: test subnet
-    }
-
-    /**
-     * Test the property 'tags'
-     */
-    @Test
-    public void tagsTest() {
-        // TODO: test tags
-    }
-
-    /**
-     * Test the property 'type'
-     */
-    @Test
-    public void typeTest() {
-        // TODO: test type
-    }
-
-    /**
-     * Test the property 'vrf'
-     */
-    @Test
-    public void vrfTest() {
-        // TODO: test vrf
-    }
-
-    /**
-     * Test the property 'createdAt'
-     */
-    @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
-    }
-
-    /**
-     * Test the property 'updatedAt'
-     */
-    @Test
-    public void updatedAtTest() {
-        // TODO: test updatedAt
+    public void testVlanVirtualCircuitType() {
+        // TODO: test VlanVirtualCircuitType
     }
 
 }

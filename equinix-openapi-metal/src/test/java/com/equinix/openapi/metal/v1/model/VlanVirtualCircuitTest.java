@@ -14,6 +14,7 @@
 package com.equinix.openapi.metal.v1.model;
 
 import com.equinix.openapi.metal.v1.model.Href;
+import com.equinix.openapi.metal.v1.model.VlanVirtualCircuitType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -120,6 +121,14 @@ public class VlanVirtualCircuitTest {
     @Test
     public void tagsTest() {
         // TODO: test tags
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
     }
 
     /**

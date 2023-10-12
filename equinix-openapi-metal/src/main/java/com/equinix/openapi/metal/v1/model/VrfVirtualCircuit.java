@@ -16,6 +16,7 @@ package com.equinix.openapi.metal.v1.model;
 import java.util.Objects;
 import com.equinix.openapi.metal.v1.model.Href;
 import com.equinix.openapi.metal.v1.model.Vrf;
+import com.equinix.openapi.metal.v1.model.VrfVirtualCircuitType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -180,6 +181,10 @@ public class VrfVirtualCircuit {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags;
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private VrfVirtualCircuitType type;
 
   public static final String SERIALIZED_NAME_VRF = "vrf";
   @SerializedName(SERIALIZED_NAME_VRF)
@@ -498,6 +503,27 @@ public class VrfVirtualCircuit {
   }
 
 
+  public VrfVirtualCircuit type(VrfVirtualCircuitType type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  public VrfVirtualCircuitType getType() {
+    return type;
+  }
+
+
+  public void setType(VrfVirtualCircuitType type) {
+    this.type = type;
+  }
+
+
   public VrfVirtualCircuit vrf(Vrf vrf) {
     
     this.vrf = vrf;
@@ -629,6 +655,7 @@ public class VrfVirtualCircuit {
         Objects.equals(this.status, vrfVirtualCircuit.status) &&
         Objects.equals(this.subnet, vrfVirtualCircuit.subnet) &&
         Objects.equals(this.tags, vrfVirtualCircuit.tags) &&
+        Objects.equals(this.type, vrfVirtualCircuit.type) &&
         Objects.equals(this.vrf, vrfVirtualCircuit.vrf) &&
         Objects.equals(this.createdAt, vrfVirtualCircuit.createdAt) &&
         Objects.equals(this.updatedAt, vrfVirtualCircuit.updatedAt)&&
@@ -637,7 +664,7 @@ public class VrfVirtualCircuit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerIp, description, id, md5, metalIp, name, port, nniVlan, peerAsn, project, speed, status, subnet, tags, vrf, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(customerIp, description, id, md5, metalIp, name, port, nniVlan, peerAsn, project, speed, status, subnet, tags, type, vrf, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -658,6 +685,7 @@ public class VrfVirtualCircuit {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    subnet: ").append(toIndentedString(subnet)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    vrf: ").append(toIndentedString(vrf)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
@@ -698,6 +726,7 @@ public class VrfVirtualCircuit {
     openapiFields.add("status");
     openapiFields.add("subnet");
     openapiFields.add("tags");
+    openapiFields.add("type");
     openapiFields.add("vrf");
     openapiFields.add("created_at");
     openapiFields.add("updated_at");
