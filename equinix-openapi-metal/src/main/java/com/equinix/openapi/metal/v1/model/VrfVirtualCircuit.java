@@ -188,13 +188,13 @@ public class VrfVirtualCircuit {
   public enum TypeEnum {
     VRF("vrf");
 
-    private Object value;
+    private String value;
 
-    TypeEnum(Object value) {
+    TypeEnum(String value) {
       this.value = value;
     }
 
-    public Object getValue() {
+    public String getValue() {
       return value;
     }
 
@@ -203,7 +203,7 @@ public class VrfVirtualCircuit {
       return String.valueOf(value);
     }
 
-    public static TypeEnum fromValue(Object value) {
+    public static TypeEnum fromValue(String value) {
       for (TypeEnum b : TypeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
@@ -220,7 +220,7 @@ public class VrfVirtualCircuit {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        Object value =  jsonReader.nextObject();
+        String value =  jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -835,6 +835,9 @@ public class VrfVirtualCircuit {
       // ensure the optional json data is an array if present
       if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // validate the required field `vrf`
       Vrf.validateJsonElement(jsonObj.get("vrf"));
