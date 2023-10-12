@@ -162,7 +162,7 @@ public class VlanVirtualCircuit {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = new ArrayList<>();
+  private List<String> tags;
 
   public static final String SERIALIZED_NAME_VIRTUAL_NETWORK = "virtual_network";
   @SerializedName(SERIALIZED_NAME_VIRTUAL_NETWORK)
@@ -193,7 +193,7 @@ public class VlanVirtualCircuit {
    * True if the Virtual Circuit is being billed. Currently, only Virtual Circuits of Fabric VCs (Metal Billed) will be billed. Usage will start the first time the Virtual Circuit becomes active, and will not stop until it is deleted from Metal.
    * @return bill
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getBill() {
     return bill;
   }
@@ -214,7 +214,7 @@ public class VlanVirtualCircuit {
    * Get description
    * @return description
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getDescription() {
     return description;
   }
@@ -235,7 +235,7 @@ public class VlanVirtualCircuit {
    * Get id
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public UUID getId() {
     return id;
   }
@@ -256,7 +256,7 @@ public class VlanVirtualCircuit {
    * Get name
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -277,7 +277,7 @@ public class VlanVirtualCircuit {
    * Get nniVlan
    * @return nniVlan
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getNniVlan() {
     return nniVlan;
   }
@@ -298,7 +298,7 @@ public class VlanVirtualCircuit {
    * Get port
    * @return port
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Href getPort() {
     return port;
   }
@@ -319,7 +319,7 @@ public class VlanVirtualCircuit {
    * Get project
    * @return project
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Href getProject() {
     return project;
   }
@@ -361,7 +361,7 @@ public class VlanVirtualCircuit {
    * The status of a Virtual Circuit is always &#39;pending&#39; on creation. The status can turn to &#39;Waiting on Customer VLAN&#39; if a Metro VLAN was not set yet on the Virtual Circuit and is the last step needed for full activation. For Dedicated interconnections, as long as the Dedicated Port has been associated to the Virtual Circuit and a NNI VNID has been set, it will turn to &#39;waiting_on_customer_vlan&#39;. For Fabric VCs, it will only change to &#39;waiting_on_customer_vlan&#39; once the corresponding Fabric connection has been found on the Fabric side. If the Fabric service token associated with the Virtual Circuit hasn&#39;t been redeemed on Fabric within the expiry time, it will change to an &#x60;expired&#x60; status. Once a Metro VLAN is set on the Virtual Circuit (which for Fabric VCs, can be set on creation of a Fabric VC) and the necessary set up is done, it will turn into &#39;Activating&#39; status as it tries to activate the Virtual Circuit. Once the Virtual Circuit fully activates and is configured on the switch, it will turn to staus &#39;active&#39;. For Fabric VCs (Metal Billed), we will start billing the moment the status of the Virtual Circuit turns to &#39;active&#39;. If there are any changes to the VLAN after the Virtual Circuit is in an &#39;active&#39; status, the status will show &#39;changing_vlan&#39; if a new VLAN has been provided, or &#39;deactivating&#39; if we are removing the VLAN. When a deletion request is issued for the Virtual Circuit, it will move to a &#39;deleting&#39; status, and we will immediately unconfigure the switch for the Virtual Circuit and issue a deletion on any associated Fabric connections. Any associated Metro VLANs on the virtual circuit will also be unassociated after the switch has been successfully unconfigured. If there are any associated Fabric connections, we will only fully delete the Virtual Circuit once we have checked that the Fabric connection was fully deprovisioned on Fabric.
    * @return status
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public StatusEnum getStatus() {
     return status;
   }
@@ -390,7 +390,7 @@ public class VlanVirtualCircuit {
    * Get tags
    * @return tags
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<String> getTags() {
     return tags;
   }
@@ -432,7 +432,7 @@ public class VlanVirtualCircuit {
    * Get vnid
    * @return vnid
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Integer getVnid() {
     return vnid;
   }
@@ -619,17 +619,7 @@ public class VlanVirtualCircuit {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("bill");
-    openapiRequiredFields.add("description");
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("nni_vlan");
-    openapiRequiredFields.add("port");
-    openapiRequiredFields.add("project");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("tags");
     openapiRequiredFields.add("virtual_network");
-    openapiRequiredFields.add("vnid");
   }
 
  /**
@@ -652,26 +642,28 @@ public class VlanVirtualCircuit {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("description").isJsonPrimitive()) {
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // validate the required field `port`
-      Href.validateJsonElement(jsonObj.get("port"));
-      // validate the required field `project`
-      Href.validateJsonElement(jsonObj.get("project"));
-      if (!jsonObj.get("status").isJsonPrimitive()) {
+      // validate the optional field `port`
+      if (jsonObj.get("port") != null && !jsonObj.get("port").isJsonNull()) {
+        Href.validateJsonElement(jsonObj.get("port"));
+      }
+      // validate the optional field `project`
+      if (jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) {
+        Href.validateJsonElement(jsonObj.get("project"));
+      }
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("tags") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("tags").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       // validate the required field `virtual_network`
