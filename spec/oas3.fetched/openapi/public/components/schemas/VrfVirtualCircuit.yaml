@@ -75,6 +75,9 @@ properties:
     items:
       type: string
     type: array
+  type:
+    enum:
+    - vrf
   vrf:
     $ref: './Vrf.yaml'
   created_at:
