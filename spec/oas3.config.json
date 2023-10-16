@@ -7,5 +7,6 @@
    "apiPackage": "com.equinix.openapi.metal.v1.api",
    "hideGenerationTimestamp": true,
    "disallowAdditionalPropertiesIfNotPresent": false,
-   "legacyDiscriminatorBehavior": true
+   "legacyDiscriminatorBehavior": true,
+   "templateDir": "/local/templates"
 }
