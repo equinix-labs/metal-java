@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 {{#gson}}
 import java.io.IOException;
 import com.google.gson.TypeAdapter;
+import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -75,6 +76,11 @@ import com.google.gson.stream.JsonWriter;
       {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = jsonReader.{{#isNumber}}nextString(){{/isNumber}}{{#isInteger}}nextInt(){{/isInteger}}{{^isNumber}}{{^isInteger}}next{{{dataType}}}(){{/isInteger}}{{/isNumber}};
       return {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
     }
+  }
+
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+    {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = jsonElement.{{#isNumber}}getAsString(){{/isNumber}}{{#isInteger}}getAsInt(){{/isInteger}}{{^isNumber}}{{^isInteger}}getAs{{{dataType}}}(){{/isInteger}}{{/isNumber}};
+    {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
   }
 {{/gson}}
 {{#jsonb}}

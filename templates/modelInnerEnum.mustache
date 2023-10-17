@@ -71,6 +71,11 @@
         return {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = jsonElement.{{#isNumber}}getAsString(){{/isNumber}}{{#isInteger}}getAsInt(){{/isInteger}}{{^isNumber}}{{^isInteger}}getAs{{{dataType}}}(){{/isInteger}}{{/isNumber}};
+      {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
+    }
 {{/gson}}
 {{#jsonb}}
     public static final class Deserializer implements JsonbDeserializer<{{datatypeWithEnum}}> {
