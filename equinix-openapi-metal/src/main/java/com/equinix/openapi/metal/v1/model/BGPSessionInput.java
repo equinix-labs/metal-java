@@ -97,6 +97,11 @@ public class BGPSessionInput {
         return AddressFamilyEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      AddressFamilyEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_ADDRESS_FAMILY = "address_family";
@@ -267,6 +272,10 @@ public class BGPSessionInput {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("address_family") != null && !jsonObj.get("address_family").isJsonNull()) && !jsonObj.get("address_family").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address_family` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address_family").toString()));
+      }
+      // validate the optional field `address_family`
+      if (jsonObj.get("address_family") != null && !jsonObj.get("address_family").isJsonNull()) {
+        AddressFamilyEnum.validateJsonElement(jsonObj.get("address_family"));
       }
   }
 

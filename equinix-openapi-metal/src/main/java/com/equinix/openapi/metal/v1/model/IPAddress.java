@@ -99,6 +99,11 @@ public class IPAddress {
         return AddressFamilyEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      Integer value = jsonElement.getAsInt();
+      AddressFamilyEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_ADDRESS_FAMILY = "address_family";
@@ -331,6 +336,10 @@ public class IPAddress {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `address_family`
+      if (jsonObj.get("address_family") != null && !jsonObj.get("address_family").isJsonNull()) {
+        AddressFamilyEnum.validateJsonElement(jsonObj.get("address_family"));
+      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("ip_reservations") != null && !jsonObj.get("ip_reservations").isJsonNull() && !jsonObj.get("ip_reservations").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ip_reservations` to be an array in the JSON string but got `%s`", jsonObj.get("ip_reservations").toString()));

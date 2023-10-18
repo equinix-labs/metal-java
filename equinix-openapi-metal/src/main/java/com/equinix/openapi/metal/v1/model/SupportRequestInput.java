@@ -109,6 +109,11 @@ public class SupportRequestInput {
         return PriorityEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      PriorityEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
@@ -370,6 +375,10 @@ public class SupportRequestInput {
       }
       if ((jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) && !jsonObj.get("priority").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `priority` to be a primitive type in the JSON string but got `%s`", jsonObj.get("priority").toString()));
+      }
+      // validate the optional field `priority`
+      if (jsonObj.get("priority") != null && !jsonObj.get("priority").isJsonNull()) {
+        PriorityEnum.validateJsonElement(jsonObj.get("priority"));
       }
       if ((jsonObj.get("project_id") != null && !jsonObj.get("project_id").isJsonNull()) && !jsonObj.get("project_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `project_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project_id").toString()));

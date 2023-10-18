@@ -113,6 +113,11 @@ public class BgpConfig {
         return DeploymentTypeEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      DeploymentTypeEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_DEPLOYMENT_TYPE = "deployment_type";
@@ -201,6 +206,11 @@ public class BgpConfig {
         String value =  jsonReader.nextString();
         return StatusEnum.fromValue(value);
       }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      StatusEnum.fromValue(value);
     }
   }
 
@@ -660,6 +670,10 @@ public class BgpConfig {
       if ((jsonObj.get("deployment_type") != null && !jsonObj.get("deployment_type").isJsonNull()) && !jsonObj.get("deployment_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `deployment_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deployment_type").toString()));
       }
+      // validate the optional field `deployment_type`
+      if (jsonObj.get("deployment_type") != null && !jsonObj.get("deployment_type").isJsonNull()) {
+        DeploymentTypeEnum.validateJsonElement(jsonObj.get("deployment_type"));
+      }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
@@ -706,6 +720,10 @@ public class BgpConfig {
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      // validate the optional field `status`
+      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+        StatusEnum.validateJsonElement(jsonObj.get("status"));
       }
   }
 

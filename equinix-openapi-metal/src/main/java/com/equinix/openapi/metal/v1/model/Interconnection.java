@@ -125,6 +125,11 @@ public class Interconnection {
         return ModeEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      ModeEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_MODE = "mode";
@@ -187,6 +192,11 @@ public class Interconnection {
         String value =  jsonReader.nextString();
         return RedundancyEnum.fromValue(value);
       }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      RedundancyEnum.fromValue(value);
     }
   }
 
@@ -258,6 +268,11 @@ public class Interconnection {
         String value =  jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      TypeEnum.fromValue(value);
     }
   }
 
@@ -887,6 +902,10 @@ public class Interconnection {
       if ((jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) && !jsonObj.get("mode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
       }
+      // validate the optional field `mode`
+      if (jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) {
+        ModeEnum.validateJsonElement(jsonObj.get("mode"));
+      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -910,6 +929,10 @@ public class Interconnection {
       }
       if ((jsonObj.get("redundancy") != null && !jsonObj.get("redundancy").isJsonNull()) && !jsonObj.get("redundancy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redundancy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redundancy").toString()));
+      }
+      // validate the optional field `redundancy`
+      if (jsonObj.get("redundancy") != null && !jsonObj.get("redundancy").isJsonNull()) {
+        RedundancyEnum.validateJsonElement(jsonObj.get("redundancy"));
       }
       if (jsonObj.get("service_tokens") != null && !jsonObj.get("service_tokens").isJsonNull()) {
         JsonArray jsonArrayserviceTokens = jsonObj.getAsJsonArray("service_tokens");
@@ -937,6 +960,10 @@ public class Interconnection {
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      // validate the optional field `type`
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
       }
       // validate the optional field `requested_by`
       if (jsonObj.get("requested_by") != null && !jsonObj.get("requested_by").isJsonNull()) {

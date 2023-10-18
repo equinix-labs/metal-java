@@ -97,6 +97,11 @@ public class CreateSelfServiceReservationRequestPeriod {
         return CountEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      Integer value = jsonElement.getAsInt();
+      CountEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_COUNT = "count";
@@ -145,6 +150,11 @@ public class CreateSelfServiceReservationRequestPeriod {
         String value =  jsonReader.nextString();
         return UnitEnum.fromValue(value);
       }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      UnitEnum.fromValue(value);
     }
   }
 
@@ -310,8 +320,16 @@ public class CreateSelfServiceReservationRequestPeriod {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `count`
+      if (jsonObj.get("count") != null && !jsonObj.get("count").isJsonNull()) {
+        CountEnum.validateJsonElement(jsonObj.get("count"));
+      }
       if ((jsonObj.get("unit") != null && !jsonObj.get("unit").isJsonNull()) && !jsonObj.get("unit").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `unit` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unit").toString()));
+      }
+      // validate the optional field `unit`
+      if (jsonObj.get("unit") != null && !jsonObj.get("unit").isJsonNull()) {
+        UnitEnum.validateJsonElement(jsonObj.get("unit"));
       }
   }
 
