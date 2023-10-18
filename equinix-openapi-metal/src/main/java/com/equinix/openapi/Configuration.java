@@ -15,7 +15,7 @@ package com.equinix.openapi;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Configuration {
-    public static final String VERSION = "0.10.0";
+    public static final String VERSION = "0.10.1";
 
     private static ApiClient defaultApiClient = new ApiClient();
 
