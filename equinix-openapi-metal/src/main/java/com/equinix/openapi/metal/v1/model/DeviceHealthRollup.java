@@ -100,6 +100,11 @@ public class DeviceHealthRollup {
         return HealthRollupEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      HealthRollupEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_HEALTH_ROLLUP = "health_rollup";
@@ -262,6 +267,10 @@ public class DeviceHealthRollup {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("health_rollup") != null && !jsonObj.get("health_rollup").isJsonNull()) && !jsonObj.get("health_rollup").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `health_rollup` to be a primitive type in the JSON string but got `%s`", jsonObj.get("health_rollup").toString()));
+      }
+      // validate the optional field `health_rollup`
+      if (jsonObj.get("health_rollup") != null && !jsonObj.get("health_rollup").isJsonNull()) {
+        HealthRollupEnum.validateJsonElement(jsonObj.get("health_rollup"));
       }
   }
 

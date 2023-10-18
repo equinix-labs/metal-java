@@ -102,6 +102,11 @@ public class BgpSession {
         return AddressFamilyEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      AddressFamilyEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_ADDRESS_FAMILY = "address_family";
@@ -178,6 +183,11 @@ public class BgpSession {
         String value =  jsonReader.nextString();
         return StatusEnum.fromValue(value);
       }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      StatusEnum.fromValue(value);
     }
   }
 
@@ -534,6 +544,8 @@ public class BgpSession {
       if (!jsonObj.get("address_family").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address_family` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address_family").toString()));
       }
+      // validate the required field `address_family`
+      AddressFamilyEnum.validateJsonElement(jsonObj.get("address_family"));
       // validate the optional field `device`
       if (jsonObj.get("device") != null && !jsonObj.get("device").isJsonNull()) {
         Href.validateJsonElement(jsonObj.get("device"));
@@ -550,6 +562,10 @@ public class BgpSession {
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      // validate the optional field `status`
+      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+        StatusEnum.validateJsonElement(jsonObj.get("status"));
       }
   }
 

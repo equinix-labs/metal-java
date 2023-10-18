@@ -116,6 +116,11 @@ public class IPReservationFacility {
         return FeaturesEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      FeaturesEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_FEATURES = "features";

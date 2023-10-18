@@ -110,6 +110,11 @@ public class InterconnectionPort {
         return RoleEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      RoleEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_ROLE = "role";
@@ -166,6 +171,11 @@ public class InterconnectionPort {
         String value =  jsonReader.nextString();
         return StatusEnum.fromValue(value);
       }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      StatusEnum.fromValue(value);
     }
   }
 
@@ -565,8 +575,16 @@ public class InterconnectionPort {
       if ((jsonObj.get("role") != null && !jsonObj.get("role").isJsonNull()) && !jsonObj.get("role").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `role` to be a primitive type in the JSON string but got `%s`", jsonObj.get("role").toString()));
       }
+      // validate the optional field `role`
+      if (jsonObj.get("role") != null && !jsonObj.get("role").isJsonNull()) {
+        RoleEnum.validateJsonElement(jsonObj.get("role"));
+      }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      // validate the optional field `status`
+      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+        StatusEnum.validateJsonElement(jsonObj.get("status"));
       }
       if ((jsonObj.get("switch_id") != null && !jsonObj.get("switch_id").isJsonNull()) && !jsonObj.get("switch_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `switch_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("switch_id").toString()));

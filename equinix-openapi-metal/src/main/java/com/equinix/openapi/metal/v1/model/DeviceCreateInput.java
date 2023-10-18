@@ -114,6 +114,11 @@ public class DeviceCreateInput {
         return BillingCycleEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      BillingCycleEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_BILLING_CYCLE = "billing_cycle";
@@ -989,6 +994,10 @@ public class DeviceCreateInput {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("billing_cycle") != null && !jsonObj.get("billing_cycle").isJsonNull()) && !jsonObj.get("billing_cycle").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `billing_cycle` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billing_cycle").toString()));
+      }
+      // validate the optional field `billing_cycle`
+      if (jsonObj.get("billing_cycle") != null && !jsonObj.get("billing_cycle").isJsonNull()) {
+        BillingCycleEnum.validateJsonElement(jsonObj.get("billing_cycle"));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));

@@ -120,6 +120,11 @@ public class InvitationInput {
         return RolesEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      RolesEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_ROLES = "roles";

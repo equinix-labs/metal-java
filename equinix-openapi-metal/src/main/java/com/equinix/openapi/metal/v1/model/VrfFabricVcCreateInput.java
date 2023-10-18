@@ -124,6 +124,11 @@ public class VrfFabricVcCreateInput {
         return ServiceTokenTypeEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      ServiceTokenTypeEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_SERVICE_TOKEN_TYPE = "service_token_type";
@@ -180,6 +185,11 @@ public class VrfFabricVcCreateInput {
         String value =  jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      TypeEnum.fromValue(value);
     }
   }
 
@@ -615,6 +625,8 @@ public class VrfFabricVcCreateInput {
       if (!jsonObj.get("service_token_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `service_token_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("service_token_type").toString()));
       }
+      // validate the required field `service_token_type`
+      ServiceTokenTypeEnum.validateJsonElement(jsonObj.get("service_token_type"));
       // ensure the optional json data is an array if present
       if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
@@ -622,6 +634,8 @@ public class VrfFabricVcCreateInput {
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
+      // validate the required field `type`
+      TypeEnum.validateJsonElement(jsonObj.get("type"));
       // ensure the required json array is present
       if (jsonObj.get("vrfs") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");

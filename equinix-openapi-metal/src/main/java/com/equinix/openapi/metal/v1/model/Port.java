@@ -128,6 +128,11 @@ public class Port {
         return TypeEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      TypeEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_TYPE = "type";
@@ -184,6 +189,11 @@ public class Port {
         String value =  jsonReader.nextString();
         return NetworkTypeEnum.fromValue(value);
       }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      NetworkTypeEnum.fromValue(value);
     }
   }
 
@@ -577,8 +587,16 @@ public class Port {
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
+      // validate the optional field `type`
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
+      }
       if ((jsonObj.get("network_type") != null && !jsonObj.get("network_type").isJsonNull()) && !jsonObj.get("network_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `network_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("network_type").toString()));
+      }
+      // validate the optional field `network_type`
+      if (jsonObj.get("network_type") != null && !jsonObj.get("network_type").isJsonNull()) {
+        NetworkTypeEnum.validateJsonElement(jsonObj.get("network_type"));
       }
       // validate the optional field `native_virtual_network`
       if (jsonObj.get("native_virtual_network") != null && !jsonObj.get("native_virtual_network").isJsonNull()) {

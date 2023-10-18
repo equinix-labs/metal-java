@@ -111,6 +111,11 @@ public class FabricServiceToken {
         return RoleEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      RoleEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_ROLE = "role";
@@ -161,6 +166,11 @@ public class FabricServiceToken {
         String value =  jsonReader.nextString();
         return ServiceTokenTypeEnum.fromValue(value);
       }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      ServiceTokenTypeEnum.fromValue(value);
     }
   }
 
@@ -214,6 +224,11 @@ public class FabricServiceToken {
         String value =  jsonReader.nextString();
         return StateEnum.fromValue(value);
       }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      StateEnum.fromValue(value);
     }
   }
 
@@ -481,11 +496,23 @@ public class FabricServiceToken {
       if ((jsonObj.get("role") != null && !jsonObj.get("role").isJsonNull()) && !jsonObj.get("role").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `role` to be a primitive type in the JSON string but got `%s`", jsonObj.get("role").toString()));
       }
+      // validate the optional field `role`
+      if (jsonObj.get("role") != null && !jsonObj.get("role").isJsonNull()) {
+        RoleEnum.validateJsonElement(jsonObj.get("role"));
+      }
       if ((jsonObj.get("service_token_type") != null && !jsonObj.get("service_token_type").isJsonNull()) && !jsonObj.get("service_token_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `service_token_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("service_token_type").toString()));
       }
+      // validate the optional field `service_token_type`
+      if (jsonObj.get("service_token_type") != null && !jsonObj.get("service_token_type").isJsonNull()) {
+        ServiceTokenTypeEnum.validateJsonElement(jsonObj.get("service_token_type"));
+      }
       if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
+      }
+      // validate the optional field `state`
+      if (jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) {
+        StateEnum.validateJsonElement(jsonObj.get("state"));
       }
   }
 

@@ -101,6 +101,11 @@ public class BgpConfigRequestInput {
         return DeploymentTypeEnum.fromValue(value);
       }
     }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      DeploymentTypeEnum.fromValue(value);
+    }
   }
 
   public static final String SERIALIZED_NAME_DEPLOYMENT_TYPE = "deployment_type";
@@ -335,6 +340,8 @@ public class BgpConfigRequestInput {
       if (!jsonObj.get("deployment_type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `deployment_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deployment_type").toString()));
       }
+      // validate the required field `deployment_type`
+      DeploymentTypeEnum.validateJsonElement(jsonObj.get("deployment_type"));
       if ((jsonObj.get("md5") != null && !jsonObj.get("md5").isJsonNull()) && !jsonObj.get("md5").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `md5` to be a primitive type in the JSON string but got `%s`", jsonObj.get("md5").toString()));
       }
