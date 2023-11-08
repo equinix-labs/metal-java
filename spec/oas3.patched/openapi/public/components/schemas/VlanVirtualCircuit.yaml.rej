@@ -1,0 +1,12 @@
+--- spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuit.yaml
++++ spec/oas3.patched/openapi/public/components/schemas/VlanVirtualCircuit.yaml
+@@ -49,8 +49,7 @@ properties:
+       type: string
+     type: array
+   type:
+-    enum:
+-    - vlan
++    $ref: './VlanVirtualCircuitType.yaml'
+   virtual_network:
+     $ref: './Href.yaml'
+   vnid:

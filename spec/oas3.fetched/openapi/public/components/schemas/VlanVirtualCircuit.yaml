@@ -49,6 +49,7 @@ properties:
       type: string
     type: array
   type:
+    type: string
     enum:
     - vlan
   virtual_network:

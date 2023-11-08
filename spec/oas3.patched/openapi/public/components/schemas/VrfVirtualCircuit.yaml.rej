@@ -1,0 +1,12 @@
+--- spec/oas3.patched/openapi/public/components/schemas/VrfVirtualCircuit.yaml
++++ spec/oas3.patched/openapi/public/components/schemas/VrfVirtualCircuit.yaml
+@@ -76,8 +76,7 @@ properties:
+       type: string
+     type: array
+   type:
+-    enum:
+-    - vrf
++    $ref: './VrfVirtualCircuitType.yaml'
+   vrf:
+     $ref: './Vrf.yaml'
+   created_at:

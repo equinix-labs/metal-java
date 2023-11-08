@@ -49,7 +49,9 @@ properties:
       type: string
     type: array
   type:
-    $ref: './VlanVirtualCircuitType.yaml'
+    type: string
+    enum:
+    - vlan
   virtual_network:
     $ref: './Href.yaml'
   vnid:
