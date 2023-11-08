@@ -76,6 +76,7 @@ properties:
       type: string
     type: array
   type:
+    type: string
     enum:
     - vrf
   vrf:
