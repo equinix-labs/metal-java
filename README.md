@@ -1,10 +1,5 @@
 # OpenAPI Generated Java Client for Equinix Metal
 
-[![Experimental](https://img.shields.io/badge/Stability-Experimental-red.svg)](https://github.com/equinix-labs/equinix-labs/blob/main/uniform-standards.md)
-
-> **[Experimental](https://github.com/equinix-labs/equinix-labs/blob/main/experimental-statement.md)**
-> This is experimental. Don't use it in production. Examples demonstrate that this client is usable. Please submit patches and open issues with your experience. This repo contains java code generated from customized Equinix Metal oas3. The client is generated using the java client support built into the openapi-generator.
-
 ## Prerequisite:
 
 1. Jq (https://stedolan.github.io/jq/) : Jq command is used inside makefile to format OAS 3.0 json read from equinix public url.
